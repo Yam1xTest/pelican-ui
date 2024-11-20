@@ -54,13 +54,8 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    - name: Run dev server
-      run: |
-        npm run test &
-        npx --yes wait-on http://localhost:3000
-
     - name: Run Playwright tests
-      run: rimraf playwright/.cache && playwright test -c playwright-ct.config.ts --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      run: playwright test -c playwright-ct.config.ts --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
     - uses: actions/upload-artifact@v4
       if: always()
