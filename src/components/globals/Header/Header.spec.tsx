@@ -1,12 +1,28 @@
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { Breakpoint } from '@/src/common/enum';
 import { setViewportSize } from '@/test/helpers';
-import { test, expect, Page } from '@playwright/test';
+import { test, expect } from '@playwright/experimental-ct-react';
+import {
+  EMAIL,
+  NAVIGATION_LINKS,
+  PHONE,
+  POPUP_TICKET_BUY_TEXT,
+} from '@/src/common/mocks/globals-mock';
+import { Page } from 'playwright';
+import { Header } from './Header';
 
 test.describe(`HeaderComponentTests`, () => {
   test.beforeEach(async ({
-    page,
+    mount,
   }) => {
-    await page.goto(AppRoute.HOME);
+    await mount(
+      <Header
+        navigationLinks={NAVIGATION_LINKS}
+        email={EMAIL}
+        phone={PHONE}
+        popupTicketBuyText={POPUP_TICKET_BUY_TEXT}
+        overlayElementRef={null as any}
+      />,
+    );
   });
 
   test(`MobileTest`, mobileTest);
@@ -83,6 +99,8 @@ async function desktopXlTest({
 
 function getHeaderByTestId({
   page,
-}: { page: Page }) {
+}: {
+  page: Page
+}) {
   return page.getByTestId(`header`);
 }

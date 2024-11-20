@@ -16,7 +16,9 @@
     "lint:ts:fix": "next lint -- --fix",
     "lint:scss:fix": "npm run lint:scss -- --fix",
     "prepare": "husky",
-    "test-e2e-ui": "npx playwright test --ui"
+    "test-e2e-ui": "npx playwright test --ui",
+    "playwright-ct:clear-cache": "rimraf playwright/.cache",
+    "test-ct": "cross-env NODE_ENV=test npm run playwright-ct:clear-cache && playwright test -c playwright-ct.config.ts"
   },
   "dependencies": {
     "@axe-core/playwright": "^4.10.1",
@@ -39,7 +41,8 @@
   "devDependencies": {
     "@commitlint/cli": "^19.0.3",
     "@commitlint/config-conventional": "^19.0.3",
-    "@playwright/test": "^1.48.1",
+    "@playwright/experimental-ct-react": "^1.49.0",
+    "@playwright/test": "^1.49.0",
     "@stylistic/eslint-plugin": "^1.6.3",
     "@stylistic/stylelint-config": "^1.0.1",
     "@types/node": "^20",

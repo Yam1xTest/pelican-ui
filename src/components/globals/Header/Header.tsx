@@ -30,8 +30,9 @@ export function Header({
 }: HeaderProps) {
   const [isActive, setIsActive] = useState(false);
   const windowWidth = useWindowWidth();
+
   useEffect(() => {
-    const mainElement = overlayElementRef.current!;
+    const mainElement = overlayElementRef?.current!;
 
     if (isActive) {
       mainElement.classList.add(`is-visible`);

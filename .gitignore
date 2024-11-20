@@ -131,6 +131,8 @@ dist
 /test-results/
 /playwright-report/
 /test/pw-test-results/
+/test/pw-test-results/component-tests
 /blob-report/
 /playwright/.cache/
 /test/playwright-report/axeReport/
+/test/playwright-report/screenshots/
