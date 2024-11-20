@@ -55,7 +55,7 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Run Playwright tests
-      run: playwright test -c playwright-ct.config.ts --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      run: npx rimraf playwright/.cache && npx playwright test -c playwright-ct.config.ts --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
     - uses: actions/upload-artifact@v4
       if: always()
