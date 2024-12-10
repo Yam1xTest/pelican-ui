@@ -33,7 +33,6 @@ export function Services({
           <a
             href={`tel:${phone}`}
             className="services__phone-link"
-            tabIndex={-1}
           >
             <span
               className="services__phone-button button button--secondary"
@@ -46,7 +45,6 @@ export function Services({
           <a
             href={`mailto:${email}`}
             className="services__email-link"
-            tabIndex={-1}
           >
             <span
               className="services__email-button button button--primary"
