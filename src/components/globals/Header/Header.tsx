@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import clsx from "clsx";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
+import Link from "next/link";
 import { HeaderLogo } from "./components/HeaderLogo/HeaderLogo";
 import { Button } from "../Button/Button";
 import { HeaderNavigation } from "./components/HeaderNavigation/HeaderNavigation";
@@ -79,12 +80,12 @@ export function Header({
           )}
           {isDesktop && (
             <div className="header__buttons">
-              <Button
-                className="header__contact-button"
-                theme="secondary"
+              <Link
+                className="button button--secondary header__contact-button"
+                href={`mailto:${email}`}
               >
                 Связаться
-              </Button>
+              </Link>
               <Button
                 className="header__ticket-button"
                 theme="primary"
