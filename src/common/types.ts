@@ -133,6 +133,7 @@ export type TicketsComponentProps = {
   id: number
   __component: BlockTypes.TICKETS,
   generalTicketsTitle: string,
+  generalTicketsLink: string,
   subsidizedTicketsTitle: string,
   subsidizedTicketsSubtitle: string,
   generalTickets: Ticket[],

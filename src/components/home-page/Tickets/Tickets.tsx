@@ -7,6 +7,7 @@ import { TicketCard } from "./components/TicketCard/TicketCard";
 
 export function Tickets({
   generalTicketsTitle,
+  generalTicketsLink,
   subsidizedTicketsTitle,
   generalTickets,
   subsidizedTickets,
@@ -37,6 +38,7 @@ export function Tickets({
                 key={el.id}
                 ticket={el}
                 isGeneral
+                link={generalTicketsLink}
               />
             ))}
             {isTablet && !isTabletXl && (
