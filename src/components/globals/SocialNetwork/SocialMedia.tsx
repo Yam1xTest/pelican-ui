@@ -10,22 +10,26 @@ const ICONS = [
   {
     id: 1,
     icon: IconVk,
-    link: `#`,
+    link: `https://vk.com/chelzoopark`,
+    name: `Вконтакте`,
   },
   {
     id: 2,
     icon: IconTg,
-    link: `#`,
+    link: `https://t.me/chel_zoo`,
+    name: `Телеграм`,
   },
   {
     id: 3,
     icon: IconOk,
-    link: `#`,
+    link: `https://m.ok.ru/chelzoo`,
+    name: `Одноклассники`,
   },
   {
     id: 4,
     icon: IconDzen,
-    link: `#`,
+    link: `https://dzen.ru/chelzoo`,
+    name: `Дзен`,
   },
 ];
 
@@ -40,11 +44,13 @@ export function SocialMedia({
         id,
         icon,
         link,
+        name,
       }) => (
         <Link
           className={`${className} social-link`}
           href={link}
           key={id}
+          aria-label={`Ссылка на ${name}`}
         >
           {React.createElement(icon)}
         </Link>

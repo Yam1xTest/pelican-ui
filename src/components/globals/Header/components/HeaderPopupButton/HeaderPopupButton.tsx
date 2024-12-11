@@ -20,6 +20,7 @@ export function HeaderPopupButton({
       onClick={handleToggle}
       onKeyUp={handleOnKeyUp}
       tabIndex={0}
+      aria-label={`${isActive ? `Закрыть меню` : `Открыть меню`} `}
     >
       <span />
     </div>
