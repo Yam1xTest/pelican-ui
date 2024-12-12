@@ -39,6 +39,7 @@ export type GlobalComponentProps = {
   email: string;
   phone: string;
   popupTicketBuyText: string;
+  ticketBuyLink: string;
   footerNavTitleLeft: string;
   footerNavTitleRight: string;
 };

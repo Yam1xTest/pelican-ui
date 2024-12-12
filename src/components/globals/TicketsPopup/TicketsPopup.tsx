@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { POPUP_TICKET_BUY_TEXT } from "@/src/common/mocks/globals-mock";
+import { POPUP_TICKET_BUY_TEXT, TICKET_BUY_LINK } from "@/src/common/mocks/globals-mock";
 import { GlobalComponentProps } from "@/src/common/types";
 import { useTicketPopup } from '@/src/common/hooks/useTicketPopup';
 import Link from 'next/link';
@@ -155,8 +155,8 @@ export function TicketsPopup({
               </Accordion>
             </div>
             <Link
-              className="tickets-popup__buy-button button button--primary button--featured "
-              href="#"
+              className="tickets-popup__buy-button button button--primary button--featured"
+              href={TICKET_BUY_LINK}
             >
               Купить билет
             </Link>
