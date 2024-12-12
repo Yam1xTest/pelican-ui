@@ -18,6 +18,7 @@ export function Video({
   return (
     <div
       className={className}
+      aria-hidden="true"
     >
       <Plyr
         source={{
