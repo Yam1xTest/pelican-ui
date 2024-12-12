@@ -48,8 +48,8 @@ export function TicketsPopup({
 
   return (
     <div className="tickets-popup">
-      <FocusLock>
-        {isActive && (
+      {isActive && (
+        <FocusLock>
           <div
             className="container tickets-popup__inner"
             data-testId="tickets-popup"
@@ -121,7 +121,6 @@ export function TicketsPopup({
                 triggerText="Правила посещения"
                 className="tickets-popup__accordion accordion--ticket-rules"
                 icon={iconChevron}
-
               >
                 <TicketsPopupRulesList
                   className="tickets-popup__rules-list"
@@ -138,7 +137,6 @@ export function TicketsPopup({
                 triggerText="Возврат билетов"
                 className="tickets-popup__accordion tickets-popup__accordion--refund accordion--ticket-rules"
                 icon={iconChevron}
-
               >
                 <div className="tickets-popup__refund">
                   <div className="tickets-popup__refund-head">Возврат билета осуществляется в&nbsp;следующих случаях:</div>
@@ -164,8 +162,8 @@ export function TicketsPopup({
             </Link>
             <p className="tickets-popup__disclaimer">Покупая билет, вы соглашаетесь с&nbsp;правилами посещения</p>
           </div>
-        )}
-      </FocusLock>
+        </FocusLock>
+      )}
     </div>
   );
 }
