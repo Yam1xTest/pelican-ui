@@ -5,6 +5,7 @@ import { GlobalComponentProps } from "@/src/common/types";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useRouter } from "next/router";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
+import { MutableRefObject } from "react";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 
 type FooterProps =
@@ -14,7 +15,9 @@ type FooterProps =
   | "ticketsPopupSubsidized"
   | "ticketsPopupRulesImages"
   | "ticketsPopupRefundReasons"
-  >;
+  > & {
+    footerElementRef: MutableRefObject<null> | HTMLElement
+  };
 
 export function Footer({
   officialLinks,
@@ -25,6 +28,7 @@ export function Footer({
   footerNavTitleLeft,
   footerNavTitleRight,
   popupTicketBuyText,
+  footerElementRef,
 }: FooterProps) {
   const router = useRouter();
 
@@ -38,7 +42,8 @@ export function Footer({
   } = useTicketPopup();
 
   return (
-    <div
+    <footer
+      ref={footerElementRef}
       className="footer"
       data-testid="footer"
     >
@@ -196,6 +201,6 @@ export function Footer({
           ))}
         </ul>
       </div>
-    </div>
+    </footer>
   );
 }

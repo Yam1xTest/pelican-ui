@@ -19,6 +19,8 @@ const HeaderPopup = dynamic(
 
 type HeaderProps = Pick<GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
   overlayElementRef: MutableRefObject<null | HTMLElement>,
+  mainElementRef: MutableRefObject<null | HTMLElement>,
+  footerElementRef: MutableRefObject<null | HTMLElement>,
   isMobileMenuOpen: boolean,
   handleMobileMenuToggle: () => void,
 };
@@ -29,11 +31,11 @@ export function Header({
   phone,
   popupTicketBuyText,
   overlayElementRef,
+  mainElementRef,
+  footerElementRef,
   isMobileMenuOpen,
   handleMobileMenuToggle,
-}: HeaderProps & {
-  overlayElementRef: MutableRefObject<null | HTMLElement>
-}) {
+}: HeaderProps) {
   const {
     handleTicketPopupToggle,
   } = useTicketPopup();
@@ -43,13 +45,19 @@ export function Header({
 
   useEffect(() => {
     const overlayElement = overlayElementRef.current!;
+    const mainElement = mainElementRef.current!;
+    const footerElement = footerElementRef.current!;
 
     if (isMobileMenuOpen) {
       overlayElement.classList.add(`is-visible`);
+      mainElement.setAttribute(`inert`, `true`);
+      footerElement.setAttribute(`inert`, `true`);
     }
 
     return () => {
       overlayElement.classList.remove(`is-visible`);
+      mainElement.removeAttribute(`inert`);
+      footerElement.removeAttribute(`inert`);
     };
   }, [isMobileMenuOpen]);
 
