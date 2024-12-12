@@ -80,6 +80,7 @@ export function TicketsPopup({
                   category={category}
                   price={price}
                   description={description}
+                  hasLink
                 />
               ))}
               <TicketsPopupCard
@@ -87,6 +88,7 @@ export function TicketsPopup({
                 className="tickets-popup__card tickets-popup-card--with-accordion"
                 category="Льготный"
                 description="Требуется подтверждающий льготу оригинал документа, покупка только на&nbsp;кассе"
+                hasLink={false}
               >
                 <Accordion
                   triggerText="Подробнее"
