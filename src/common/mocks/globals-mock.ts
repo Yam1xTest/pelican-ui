@@ -32,7 +32,7 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   {
     id: 3,
     name: `Адрес`,
-    link: `#`,
+    link: `#map-section`,
   },
   {
     id: 5,
