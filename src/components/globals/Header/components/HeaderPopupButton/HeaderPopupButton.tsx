@@ -13,6 +13,7 @@ export function HeaderPopupButton({
   return (
     <div
       role="button"
+      aria-pressed="false"
       className={clsx(`${className} header-popup-button`, {
         active: isActive,
       })}
