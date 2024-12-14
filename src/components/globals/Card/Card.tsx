@@ -70,13 +70,19 @@ export function Card({
             'card__info--services': isService,
           })}
           >
-            <h3 className={clsx(`card__title`, {
-              'card__title--news': isNews,
-              'card__title--services': isService,
-            })}
-            >
-              {title}
-            </h3>
+            {
+              isNews
+                ? (
+                  <h2 className="card__title card__title--news">
+                    {title}
+                  </h2>
+                )
+                : (
+                  <h3 className="card__title card__title--services">
+                    {title}
+                  </h3>
+                )
+            }
             <p className={clsx(`card__description`, {
               'card__description--news': isNews,
               'card__description--services': isService,
