@@ -74,7 +74,10 @@ export function Header({
             className="header__logo"
           />
           {isDesktop && (
-            <HeaderNavigation navigationLinks={navigationLinks} />
+            <HeaderNavigation
+              className="header__navigation"
+              navigationLinks={navigationLinks}
+            />
           )}
         </div>
 

@@ -2,8 +2,8 @@ import { GlobalComponentProps } from "@/src/common/types";
 import { CSSTransition } from 'react-transition-group';
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MouseEventHandler } from "react";
-import { HeaderNavigationPopup } from "./components/HeaderNavigationPopup/HeaderNavigationPopup";
 import { SocialMedia } from "../../../SocialNetwork/SocialMedia";
+import { HeaderNavigation } from "../HeaderNavigation/HeaderNavigation";
 
 export function HeaderPopup({
   className,
@@ -47,7 +47,7 @@ export function HeaderPopup({
             >
               {popupTicketBuyText}
             </button>
-            <HeaderNavigationPopup
+            <HeaderNavigation
               className="header-popup__nav"
               navigationLinks={navigationLinks}
             />
