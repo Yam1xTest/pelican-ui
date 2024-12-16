@@ -33,8 +33,9 @@ export function Footer({
   const router = useRouter();
 
   const {
-    isDesktop,
+    isMobile,
     isTablet,
+    isDesktop,
   } = useWindowWidth();
 
   const {
@@ -154,21 +155,40 @@ export function Footer({
                   )
               )
             }
+            {
+              isTablet && (
+                <div className="footer__copyright">
+                  Сайт разработан
+                  <Link
+                    href="https://www.tourmalinecore.com/"
+                    className="footer__copyright-link"
+                  >
+                    Tourmaline Core
+                    <span className="footer__heart">❤</span>
+                  </Link>
+                </div>
+              )
+            }
             <div className="footer__social-media">
               <SocialMedia
                 className="footer__social-icon"
               />
             </div>
-            <div className="footer__copyright">
-              Сайт разработан
-              <Link
-                href="https://www.tourmalinecore.com/"
-                className="footer__copyright-link"
-              >
-                Tourmaline Core
-                <span className="footer__heart">❤</span>
-              </Link>
-            </div>
+            {
+              isMobile && (
+                <div className="footer__copyright">
+                  Сайт разработан
+                  <Link
+                    href="https://www.tourmalinecore.com/"
+                    className="footer__copyright-link"
+                  >
+                    Tourmaline Core
+                    <span className="footer__heart">❤</span>
+                  </Link>
+                </div>
+              )
+            }
+
           </div>
         </div>
       </div>
