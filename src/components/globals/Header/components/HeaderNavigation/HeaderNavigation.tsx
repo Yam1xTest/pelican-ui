@@ -32,6 +32,7 @@ export function HeaderNavigation({
                   router.push(link);
                 }
               }}
+              data-testid="header-navigation-link"
             >
               {name}
             </Link>

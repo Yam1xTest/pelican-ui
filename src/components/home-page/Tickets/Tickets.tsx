@@ -86,6 +86,7 @@ export function Tickets({
                     <Link
                       className="tickets__link text-link"
                       href="#"
+                      data-testid="tickets-discounts-link"
                     >
                       по ссылке.
                     </Link>

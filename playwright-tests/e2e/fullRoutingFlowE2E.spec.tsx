@@ -1,5 +1,5 @@
-import { AppRoute } from '@/src/common/enum';
-import { gotoPage, setViewportSize } from '@/playwright-tests/helpers';
+import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { gotoPage, hideTextAndMedia, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`TabTests`, () => {
@@ -13,6 +13,8 @@ test.describe(`TabTests`, () => {
   });
 
   test(`MobileTest`, mobileTest);
+
+  test(`TabletTest`, desktopTest);
 });
 
 async function mobileTest({
@@ -24,13 +26,14 @@ async function mobileTest({
     page,
   });
 
-  await page.getByTestId(`text-and-media`)
-    .evaluate((element) => element.style.visibility = `hidden`);
+  await hideTextAndMedia({
+    page,
+  });
 
   const expectedTabOrder = [
     `header-logo`,
     `header-popup-button`,
-    `hero-tickets-contact-button`,
+    `hero-contact-button`,
     `hero-tickets-popup-button`,
     `services-phone-link`,
     `services-email-link`,
@@ -54,6 +57,63 @@ async function mobileTest({
     `social-icon-odnoklassniki`,
     `social-icon-dzen`,
     `footer-copyright-link`,
+    `footer-official-link`,
+    `footer-official-link`,
+    `footer-official-link`,
+  ];
+
+  for (const element of expectedTabOrder) {
+    await page.keyboard.press(`Tab`);
+    await page.waitForTimeout(500);
+    await expect(page.locator(`:focus`))
+      .toHaveAttribute(`data-testid`, `${element}`);
+  }
+}
+
+async function desktopTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP,
+  });
+
+  await hideTextAndMedia({
+    page,
+  });
+
+  const expectedTabOrder = [
+    `header-logo`,
+    `header-navigation-link`,
+    `header-navigation-link`,
+    `header-navigation-link`,
+    `header-navigation-link`,
+    `header-navigation-link`,
+    `header-contact-button`,
+    `header-tickets-popup-button`,
+    `services-phone-link`,
+    `services-email-link`,
+    `contact-zoo-btn`,
+    `ticket-card-link`,
+    `ticket-card-link`,
+    `ticket-card-link`,
+    `tickets-discounts-link`,
+    `map-address-link`,
+    `footer-tickets-popup-button`,
+    `footer-nav-link`,
+    `footer-nav-link`,
+    `footer-nav-link`,
+    `footer-nav-link`,
+    `footer-nav-link`,
+    `footer-tel-link`,
+    `footer-email-link`,
+    `footer-copyright-link`,
+    `social-icon-vkontakte`,
+    `social-icon-telegram`,
+    `social-icon-odnoklassniki`,
+    `social-icon-dzen`,
     `footer-official-link`,
     `footer-official-link`,
     `footer-official-link`,

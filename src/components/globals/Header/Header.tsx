@@ -94,6 +94,7 @@ export function Header({
               <Link
                 className="button button--secondary header__contact-button"
                 href={`mailto:${email}`}
+                data-testid="header-contact-button"
               >
                 Связаться
               </Link>
@@ -102,6 +103,7 @@ export function Header({
                 theme="primary"
                 isFeatured
                 onClick={handleTicketPopupToggle}
+                data-testid="header-tickets-popup-button"
               >
                 Билеты
               </Button>
