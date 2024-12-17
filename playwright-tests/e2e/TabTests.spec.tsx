@@ -74,6 +74,43 @@ async function mobileTest({
   }
 }
 
+async function mobileMenuOpenTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+  });
+
+  await page.getByTestId(`header-popup-button`)
+    .click();
+
+  const expectedTabOrder = [
+    `header-popup-ticket-button`,
+    `header-navigation-link`,
+    `header-navigation-link`,
+    `header-navigation-link`,
+    `header-navigation-link`,
+    `header-navigation-link`,
+    `header-popup-phone`,
+    `header-popup-email`,
+    `social-icon-vkontakte`,
+    `social-icon-telegram`,
+    `social-icon-odnoklassniki`,
+    `social-icon-dzen`,
+    // `header-logo`,
+    // `header-popup-button`,
+  ];
+
+  for (const element of expectedTabOrder) {
+    await page.keyboard.press(`Tab`);
+    await page.waitForTimeout(500);
+    await expect(page.locator(`:focus`))
+      .toHaveAttribute(`data-testid`, `${element}`);
+  }
+}
+
 async function desktopTest({
   page,
 }: {

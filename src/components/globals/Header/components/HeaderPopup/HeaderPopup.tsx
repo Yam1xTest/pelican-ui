@@ -44,6 +44,7 @@ export function HeaderPopup({
                 handleTicketPopupToggle();
                 onTicketPopupOpen(e);
               }}
+              data-testid="header-popup-ticket-button"
             >
               {popupTicketBuyText}
             </button>
@@ -57,12 +58,14 @@ export function HeaderPopup({
                 <a
                   href={`tel:${phone}`}
                   className="header-popup__phone"
+                  data-testid="header-popup-phone"
                 >
                   {phone}
                 </a>
                 <a
                   href={`mailto:${email}`}
                   className="header-popup__email"
+                  data-testid="header-popup-email"
                 >
                   {email}
                 </a>
