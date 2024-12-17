@@ -14,7 +14,11 @@ test.describe(`TabTests`, () => {
 
   test(`MobileTest`, mobileTest);
 
+  // test(`MobileMenuOpenTest`, mobileMenuOpenTest);
+
   test(`TabletTest`, desktopTest);
+
+  test(`TicketsPopupOpenTest`, ticketsPopupOpenTest);
 });
 
 async function mobileTest({
@@ -117,6 +121,38 @@ async function desktopTest({
     `footer-official-link`,
     `footer-official-link`,
     `footer-official-link`,
+  ];
+
+  for (const element of expectedTabOrder) {
+    await page.keyboard.press(`Tab`);
+    await page.waitForTimeout(500);
+    await expect(page.locator(`:focus`))
+      .toHaveAttribute(`data-testid`, `${element}`);
+  }
+}
+
+async function ticketsPopupOpenTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP,
+  });
+
+  await page.getByTestId(`header-tickets-popup-button`)
+    .click();
+
+  const expectedTabOrder = [
+    `tickets-popup-card-link`,
+    `tickets-popup-card-link`,
+    `tickets-popup-card-link`,
+    `accordion-trigger`,
+    `accordion-trigger`,
+    `accordion-trigger`,
+    `tickets-popup-buy-button`,
+    `tickets-popup-close-button`,
   ];
 
   for (const element of expectedTabOrder) {

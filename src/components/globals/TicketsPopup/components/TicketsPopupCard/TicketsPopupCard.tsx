@@ -35,6 +35,7 @@ export function TicketsPopupCard({
             className="tickets-popup-card__link"
             href={TICKET_BUY_LINK}
             target="blank"
+            data-testid="tickets-popup-card-link"
           >
             <div className="tickets-popup-card__category-wrapper">
               <div className="tickets-popup-card__category">{category}</div>

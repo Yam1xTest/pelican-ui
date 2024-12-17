@@ -159,6 +159,7 @@ export function TicketsPopup({
             <Link
               className="tickets-popup__buy-button button button--primary button--featured"
               href={TICKET_BUY_LINK}
+              data-testid="tickets-popup-buy-button"
             >
               Купить билет
             </Link>
