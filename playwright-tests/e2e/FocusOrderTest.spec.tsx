@@ -2,7 +2,7 @@ import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { gotoPage, hideTextAndMedia, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`TabTests`, () => {
+test.describe(`Logical focus order verification`, () => {
   test.beforeEach(async ({
     page,
   }) => {
@@ -14,7 +14,7 @@ test.describe(`TabTests`, () => {
 
   test(`MobileTest`, mobileTest);
 
-  // test(`MobileMenuOpenTest`, mobileMenuOpenTest);
+  test(`MobileMenuOpenTest`, mobileMenuOpenTest);
 
   test(`TabletTest`, desktopTest);
 
@@ -34,7 +34,7 @@ async function mobileTest({
     page,
   });
 
-  const expectedTabOrder = [
+  const expectedFocusOrder = [
     `header-logo`,
     `header-popup-button`,
     `hero-contact-button`,
@@ -66,7 +66,7 @@ async function mobileTest({
     `footer-official-link`,
   ];
 
-  for (const element of expectedTabOrder) {
+  for (const element of expectedFocusOrder) {
     await page.keyboard.press(`Tab`);
     await page.waitForTimeout(500);
     await expect(page.locator(`:focus`))
@@ -86,7 +86,7 @@ async function mobileMenuOpenTest({
   await page.getByTestId(`header-popup-button`)
     .click();
 
-  const expectedTabOrder = [
+  const expectedFocusOrder = [
     `header-popup-ticket-button`,
     `header-navigation-link`,
     `header-navigation-link`,
@@ -103,7 +103,7 @@ async function mobileMenuOpenTest({
     // `header-popup-button`,
   ];
 
-  for (const element of expectedTabOrder) {
+  for (const element of expectedFocusOrder) {
     await page.keyboard.press(`Tab`);
     await page.waitForTimeout(500);
     await expect(page.locator(`:focus`))
@@ -125,7 +125,7 @@ async function desktopTest({
     page,
   });
 
-  const expectedTabOrder = [
+  const expectedFocusOrder = [
     `header-logo`,
     `header-navigation-link`,
     `header-navigation-link`,
@@ -160,7 +160,7 @@ async function desktopTest({
     `footer-official-link`,
   ];
 
-  for (const element of expectedTabOrder) {
+  for (const element of expectedFocusOrder) {
     await page.keyboard.press(`Tab`);
     await page.waitForTimeout(500);
     await expect(page.locator(`:focus`))
@@ -181,7 +181,7 @@ async function ticketsPopupOpenTest({
   await page.getByTestId(`header-tickets-popup-button`)
     .click();
 
-  const expectedTabOrder = [
+  const expectedFocusOrder = [
     `tickets-popup-card-link`,
     `tickets-popup-card-link`,
     `tickets-popup-card-link`,
@@ -192,7 +192,7 @@ async function ticketsPopupOpenTest({
     `tickets-popup-close-button`,
   ];
 
-  for (const element of expectedTabOrder) {
+  for (const element of expectedFocusOrder) {
     await page.keyboard.press(`Tab`);
     await page.waitForTimeout(500);
     await expect(page.locator(`:focus`))
