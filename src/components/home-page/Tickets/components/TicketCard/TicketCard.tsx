@@ -31,6 +31,7 @@ export function TicketCard({
           <Link
             className="ticket-card__link"
             href={link}
+            data-testid="ticket-card-link"
           >
             <div className="ticket-card__inner">
               <h3 className="ticket-card__category">{ticket.category}</h3>

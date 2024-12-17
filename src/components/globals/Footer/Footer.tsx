@@ -80,6 +80,7 @@ export function Footer({
                       <Link
                         href={link}
                         className="footer__nav-link"
+                        data-testid="footer-nav-link"
                       >
                         {name}
                       </Link>
@@ -102,6 +103,7 @@ export function Footer({
                       <Link
                         href={link}
                         className="footer__nav-link"
+                        data-testid="footer-nav-link"
                         onClick={(e) => {
                           e.preventDefault();
                           if (router.pathname !== link) {
@@ -121,6 +123,7 @@ export function Footer({
                 <Link
                   href={`tel:${phone}`}
                   className="footer__contact-link"
+                  data-testid="footer-tel-link"
                 >
                   {phone}
                 </Link>
@@ -129,6 +132,7 @@ export function Footer({
                 <Link
                   href={`mailto:${email}`}
                   className="footer__contact-link"
+                  data-testid="footer-email-link"
                 >
                   {email}
                 </Link>
@@ -162,6 +166,7 @@ export function Footer({
                   <Link
                     href="https://www.tourmalinecore.com/"
                     className="footer__copyright-link"
+                    data-testid="footer-copyright-link"
                   >
                     Tourmaline Core
                     <span className="footer__heart">❤</span>
@@ -181,6 +186,7 @@ export function Footer({
                   <Link
                     href="https://www.tourmalinecore.com/"
                     className="footer__copyright-link"
+                    data-testid="footer-copyright-link"
                   >
                     Tourmaline Core
                     <span className="footer__heart">❤</span>
@@ -209,6 +215,7 @@ export function Footer({
               <Link
                 href={link}
                 className="footer__official-link"
+                data-testid="footer-official-link"
               >
                 <Image
                   className="footer__official-link-logo"

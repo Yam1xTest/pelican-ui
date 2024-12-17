@@ -58,6 +58,7 @@ export function Tickets({
               className="tickets__ticket-button"
               theme="primary"
               onClick={handleTicketPopupToggle}
+              data-testid="tickets-buy-button"
             >
               Купить билет
             </Button>
@@ -100,6 +101,7 @@ export function Tickets({
                <Link
                  href="#"
                  className="tickets__ticket-button button button--primary"
+                 data-testid="tickets-all-discounts"
                >
                  Другие льготы
                </Link>

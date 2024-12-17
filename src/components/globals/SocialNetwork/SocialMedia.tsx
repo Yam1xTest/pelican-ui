@@ -11,25 +11,25 @@ const ICONS = [
     id: 1,
     icon: IconVk,
     link: `https://vk.com/chelzoopark`,
-    name: `Вконтакте`,
+    name: `vkontakte`,
   },
   {
     id: 2,
     icon: IconTg,
     link: `https://t.me/chel_zoo`,
-    name: `Телеграм`,
+    name: `telegram`,
   },
   {
     id: 3,
     icon: IconOk,
     link: `https://m.ok.ru/chelzoo`,
-    name: `Одноклассники`,
+    name: `odnoklassniki`,
   },
   {
     id: 4,
     icon: IconDzen,
     link: `https://dzen.ru/chelzoo`,
-    name: `Дзен`,
+    name: `dzen`,
   },
 ];
 
@@ -51,6 +51,7 @@ export function SocialMedia({
           href={link}
           key={id}
           aria-label={`Ссылка на ${name}`}
+          data-testid={`social-icon-${name}`}
         >
           {React.createElement(icon)}
         </Link>

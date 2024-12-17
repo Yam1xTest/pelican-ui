@@ -53,7 +53,7 @@ export function Hero({
             <Button
               className="hero__contact-button"
               theme="secondary"
-
+              data-testid="hero-tickets-contact-button"
             >
               Связаться
             </Button>
