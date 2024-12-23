@@ -76,6 +76,7 @@ export function Tickets({
                 key={el.id}
                 ticket={el}
                 isSubsidized
+                link=""
               />
             ))}
             {
