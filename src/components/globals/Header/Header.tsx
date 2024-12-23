@@ -59,6 +59,7 @@ export function Header({
       mainElement.removeAttribute(`inert`);
       footerElement.removeAttribute(`inert`);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobileMenuOpen]);
 
   return (
