@@ -15,8 +15,9 @@ type FooterProps =
   | "ticketsPopupSubsidized"
   | "ticketsPopupRulesImages"
   | "ticketsPopupRefundReasons"
+  | "ticketBuyLink"
   > & {
-    footerElementRef: MutableRefObject<null> | HTMLElement
+    footerElementRef: MutableRefObject<HTMLDivElement | null>
   };
 
 export function Footer({
