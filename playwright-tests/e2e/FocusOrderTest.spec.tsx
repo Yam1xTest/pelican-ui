@@ -92,7 +92,6 @@ async function mobileMenuOpenTest({
     `header-navigation-link`,
     `header-navigation-link`,
     `header-navigation-link`,
-    `header-navigation-link`,
     `header-popup-phone`,
     `header-popup-email`,
     `social-icon-vkontakte`,
@@ -127,7 +126,6 @@ async function desktopTest({
 
   const expectedFocusOrder = [
     `header-logo`,
-    `header-navigation-link`,
     `header-navigation-link`,
     `header-navigation-link`,
     `header-navigation-link`,
