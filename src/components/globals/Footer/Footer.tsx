@@ -90,7 +90,7 @@ export function Footer({
                 </ul>
               </div>
               <div className="footer__col">
-                <h3 className="footer__title">{footerNavTitleRight}</h3>
+                <p className="footer__title">{footerNavTitleRight}</p>
                 <ul className="footer__nav">
                   {footerAboutLinks.map(({
                     id,
