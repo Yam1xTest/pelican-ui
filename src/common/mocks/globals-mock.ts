@@ -30,11 +30,6 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
     link: `#`,
   },
   {
-    id: 3,
-    name: `Адрес`,
-    link: `#map-section`,
-  },
-  {
     id: 5,
     name: `Документы`,
     link: AppRoute.DOCUMENTS,
