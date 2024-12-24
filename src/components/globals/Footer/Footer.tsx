@@ -54,7 +54,7 @@ export function Footer({
           <div className="footer__top">
             <div className="footer__cols">
               <div className="footer__col footer__col--left">
-                <h3 className="footer__title">{footerNavTitleLeft}</h3>
+                <p className="footer__title">{footerNavTitleLeft}</p>
                 <ul className="footer__nav">
                   <li
                     className="footer__nav-item"
@@ -170,7 +170,12 @@ export function Footer({
                     data-testid="footer-copyright-link"
                   >
                     Tourmaline Core
-                    <span className="footer__heart">❤</span>
+                    <span
+                      className="footer__heart"
+                      aria-hidden="true"
+                    >
+                      ❤
+                    </span>
                   </Link>
                 </div>
               )
@@ -222,6 +227,7 @@ export function Footer({
                   className="footer__official-link-logo"
                   src={icon}
                   alt={alt}
+                  aria-hidden="true"
                 />
                 <span className="footer__official-link-name">{name}</span>
               </Link>

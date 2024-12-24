@@ -10,7 +10,6 @@ import crossIcon from "../../../../public/images/tickets-popup/icon-cross.svg";
 import { TicketsPopupCard } from './components/TicketsPopupCard/TicketsPopupCard';
 import iconChevron from "../../../../public/images/svg/icon-chevron.svg";
 import iconChevronGreen from "../../../../public/images/svg/icon-chevron-green.svg";
-import { Button } from '../Button/Button';
 import { TicketsPopupRulesList } from './components/TicketsPopupRulesList/TicketsPopupRulesList';
 import { TicketsPopupRefundReasons } from './components/TicketsPopupRefundReasons/TicketsPopupRefundReasons';
 
@@ -129,12 +128,12 @@ export function TicketsPopup({
                   className="tickets-popup__rules-list"
                   ticketsPopupRulesImages={ticketsPopupRulesImages}
                 />
-                <Button
-                  className="tickets-popup__more-link"
-                  theme="secondary"
+                <Link
+                  className="tickets-popup__more-link button button--secondary"
+                  href="/"
                 >
                   Подробнее о правилах посещения
-                </Button>
+                </Link>
               </Accordion>
               <Accordion
                 triggerText="Возврат билетов"
