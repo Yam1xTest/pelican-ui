@@ -35,6 +35,8 @@ export function Accordion({
           setIsOpen(!isOpen);
         }}
         className="accordion__trigger button"
+        aria-expanded={`${!!isOpen}`}
+        aria-controls="accordion-content"
         data-testid="accordion-trigger"
       >
         {isOpen ? triggerHideText || triggerText : triggerText}
@@ -51,6 +53,7 @@ export function Accordion({
       {isOpen && (
         <div
           className="accordion__content"
+          id="accordion-content"
           data-testid="accordion-content"
         >
           {children}
