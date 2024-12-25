@@ -64,7 +64,7 @@ export function Footer({
                       type="button"
                       className="button footer__nav-link"
                       onClick={handleTicketPopupToggle}
-                      aria-label="Открыть попап с билетами"
+                      aria-label="Открыть модальное окно с билетами"
                       data-testid="footer-tickets-popup-button"
                     >
                       {popupTicketBuyText}
@@ -172,6 +172,7 @@ export function Footer({
                   <Link
                     href="https://www.tourmalinecore.com/"
                     className="footer__copyright-link"
+                    target="_blank"
                     aria-label="Перейти на сайт компании Tourmaline Core"
                     data-testid="footer-copyright-link"
                   >
@@ -198,6 +199,7 @@ export function Footer({
                   <Link
                     href="https://www.tourmalinecore.com/"
                     className="footer__copyright-link"
+                    target="_blank"
                     aria-label="Перейти на сайт компании Tourmaline Core"
                     data-testid="footer-copyright-link"
                   >

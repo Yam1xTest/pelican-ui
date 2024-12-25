@@ -44,7 +44,7 @@ export function HeaderPopup({
                 handleTicketPopupToggle();
                 onTicketPopupOpen(e);
               }}
-              aria-label="Открыть попап с билетами"
+              aria-label="Открыть модальное окно с билетами"
               data-testid="header-popup-ticket-button"
             >
               {popupTicketBuyText}

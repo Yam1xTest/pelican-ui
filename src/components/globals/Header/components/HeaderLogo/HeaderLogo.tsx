@@ -18,7 +18,7 @@ export function HeaderLogo({
     <Link
       className={`${className} header-logo`}
       href={AppRoute.HOME}
-      aria-label="Ссылка на главную"
+      aria-label="Ссылка на главную страницу"
       data-testid="header-logo"
     >
       <Image

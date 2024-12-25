@@ -63,7 +63,7 @@ export function TicketsPopup({
                 className="button tickets-popup__close-btn"
                 onClick={handleTicketPopupToggle}
                 data-testid="tickets-popup-close-button"
-                aria-label="Закрыть попап с билетами"
+                aria-label="Закрыть модальное окно с билетами"
               >
                 <Image
                   priority
