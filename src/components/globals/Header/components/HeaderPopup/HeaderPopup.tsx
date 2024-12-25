@@ -44,6 +44,7 @@ export function HeaderPopup({
                 handleTicketPopupToggle();
                 onTicketPopupOpen(e);
               }}
+              aria-label="Открыть попап с билетами"
               data-testid="header-popup-ticket-button"
             >
               {popupTicketBuyText}
@@ -58,6 +59,7 @@ export function HeaderPopup({
                 <a
                   href={`tel:${phone}`}
                   className="header-popup__phone"
+                  aria-label={`Связаться с нами по телефону ${phone}`}
                   data-testid="header-popup-phone"
                 >
                   {phone}
@@ -65,6 +67,7 @@ export function HeaderPopup({
                 <a
                   href={`mailto:${email}`}
                   className="header-popup__email"
+                  aria-label={`Связаться с нами по почте ${email}`}
                   data-testid="header-popup-email"
                 >
                   {email}

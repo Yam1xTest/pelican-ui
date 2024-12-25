@@ -64,6 +64,7 @@ export function Footer({
                       type="button"
                       className="button footer__nav-link"
                       onClick={handleTicketPopupToggle}
+                      aria-label="Открыть попап с билетами"
                       data-testid="footer-tickets-popup-button"
                     >
                       {popupTicketBuyText}
@@ -81,6 +82,7 @@ export function Footer({
                       <Link
                         href={link}
                         className="footer__nav-link"
+                        aria-label={`Перейти на страницу ${name}`}
                         data-testid="footer-nav-link"
                       >
                         {name}
@@ -111,6 +113,7 @@ export function Footer({
                             router.push(link);
                           }
                         }}
+                        aria-label={`Перейти на страницу ${name}`}
                       >
                         {name}
                       </Link>
@@ -124,6 +127,7 @@ export function Footer({
                 <Link
                   href={`tel:${phone}`}
                   className="footer__contact-link"
+                  aria-label={`Связаться с нами по телефону ${phone}`}
                   data-testid="footer-tel-link"
                 >
                   {phone}
@@ -133,6 +137,7 @@ export function Footer({
                 <Link
                   href={`mailto:${email}`}
                   className="footer__contact-link"
+                  aria-label={`Связаться с нами по почте ${email}`}
                   data-testid="footer-email-link"
                 >
                   {email}
@@ -167,6 +172,7 @@ export function Footer({
                   <Link
                     href="https://www.tourmalinecore.com/"
                     className="footer__copyright-link"
+                    aria-label="Перейти на сайт компании Tourmaline Core"
                     data-testid="footer-copyright-link"
                   >
                     Tourmaline Core
@@ -192,6 +198,7 @@ export function Footer({
                   <Link
                     href="https://www.tourmalinecore.com/"
                     className="footer__copyright-link"
+                    aria-label="Перейти на сайт компании Tourmaline Core"
                     data-testid="footer-copyright-link"
                   >
                     Tourmaline Core

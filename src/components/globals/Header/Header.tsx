@@ -95,6 +95,7 @@ export function Header({
               <Link
                 className="button button--secondary header__contact-button"
                 href={`mailto:${email}`}
+                aria-label="Связаться с нами по почте"
                 data-testid="header-contact-button"
               >
                 Связаться
@@ -104,6 +105,7 @@ export function Header({
                 theme="primary"
                 isFeatured
                 onClick={handleTicketPopupToggle}
+                aria-label="Открыть попап с билетами"
                 data-testid="header-tickets-popup-button"
               >
                 Билеты

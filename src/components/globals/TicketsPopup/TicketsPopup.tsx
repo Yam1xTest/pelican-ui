@@ -97,6 +97,7 @@ export function TicketsPopup({
                   triggerHideText="Скрыть"
                   className="accordion--ticket-card"
                   icon={iconChevronGreen}
+                  ariaLabel="Подробнее о льготных категориях"
                 >
                   <ul className="tickets-popup__prices-table">
                     {ticketsPopupSubsidized.map(({

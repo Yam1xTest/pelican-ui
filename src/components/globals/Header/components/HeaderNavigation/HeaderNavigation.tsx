@@ -32,6 +32,7 @@ export function HeaderNavigation({
                   router.push(link);
                 }
               }}
+              aria-label={`Перейти на страницу ${name}`}
               data-testid="header-navigation-link"
             >
               {name}
