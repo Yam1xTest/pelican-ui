@@ -49,7 +49,9 @@ export function TicketsPopup({
   return (
     <div className="tickets-popup">
       {isActive && (
-        <FocusLock>
+        <FocusLock
+          returnFocus
+        >
           <div
             className="container tickets-popup__inner"
             data-testId="tickets-popup"
