@@ -21,23 +21,23 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   {
     id: 1,
     name: `Льготы`,
-    link: `#`,
+    link: `https://vk.com/topic-71671982_48253263`,
   },
   {
     id: 2,
     name: `Правила посещения`,
-    link: `#`,
+    link: `http://chelzoo.ru/media/articles/2022/05/06/prikaz-221-ot-050522-o-pravilah-posescheniya-2.pdf`,
   },
-  {
-    id: 3,
-    name: `Адрес`,
-    link: `#`,
-  },
-  {
-    id: 4,
-    name: `Услуги`,
-    link: `#`,
-  },
+  // {
+  //   id: 3,
+  //   name: `Адрес`,
+  //   link: `#`,
+  // },
+  // {
+  //   id: 4,
+  //   name: `Услуги`,
+  //   link: `#`,
+  // },
   {
     id: 5,
     name: `Документы`,
@@ -54,13 +54,13 @@ export const FOOTER_USER_LINKS: GlobalComponentProps['footerUserLinks'] = [
   {
     id: 1,
     name: `Льготы`,
-    link: `#`,
+    link: `https://vk.com/topic-71671982_48253263`,
   },
-  {
-    id: 2,
-    name: `Услуги`,
-    link: `#`,
-  },
+  // {
+  //   id: 2,
+  //   name: `Услуги`,
+  //   link: `#`,
+  // },
 ];
 
 export const FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
@@ -77,7 +77,7 @@ export const FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
   {
     id: 3,
     name: `Правила посещения`,
-    link: `#`,
+    link: `http://chelzoo.ru/media/articles/2022/05/06/prikaz-221-ot-050522-o-pravilah-posescheniya-2.pdf`,
   },
   {
     id: 4,
