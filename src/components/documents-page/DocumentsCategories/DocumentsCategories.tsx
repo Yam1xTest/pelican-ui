@@ -6,7 +6,7 @@ export function DocumentsCategories({
   documentsCategories,
 }: {
   documentsTitle: string,
-  documentsCategories: DocumentsCategoriesProps[],
+  documentsCategories: DocumentsCategoriesProps[] | null,
 }) {
   return (
     <section
@@ -15,7 +15,7 @@ export function DocumentsCategories({
     >
       <h1 className="documents-categories__title">{documentsTitle}</h1>
       <ul className="documents-categories__list">
-        {documentsCategories.map(({
+        {documentsCategories && documentsCategories.map(({
           id,
           title,
         }) => (
