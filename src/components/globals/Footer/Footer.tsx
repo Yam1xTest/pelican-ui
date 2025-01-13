@@ -38,7 +38,7 @@ export function Footer({
   } = useTicketPopup();
 
   return (
-    <div
+    <footer
       className="footer"
       data-testid="footer"
     >
@@ -159,6 +159,7 @@ export function Footer({
               <Link
                 href="https://www.tourmalinecore.com/"
                 className="footer__copyright-link"
+                target="blank"
               >
                 Tourmaline Core
                 <span className="footer__heart">❤</span>
@@ -196,6 +197,6 @@ export function Footer({
           ))}
         </ul>
       </div>
-    </div>
+    </footer>
   );
 }
