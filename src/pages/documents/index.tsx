@@ -13,7 +13,7 @@ export default function DocumentsPage({
   pageData: DocumentsPageProps,
   documentCategories: DocumentsCategoriesProps[],
 }) {
-  if (!pageData) {
+  if (!pageData || !documentCategories) {
     return <NotFound />;
   }
 
@@ -67,7 +67,6 @@ export async function getServerSideProps() {
   } catch {
     return {
       props: {
-        pageData: DOCUMENTS_PAGE,
         documentCategories: null,
       },
     };
