@@ -4,7 +4,7 @@ import { DOCUMENTS_PAGE, DocumentsPageProps } from '@/src/common/mocks/documents
 import { api } from '@/src/common/utils/HttpClient';
 import { DOCUMENTS_CATEGORIES, DocumentsCategoriesProps } from '@/src/common/mocks/documents-page-mock/documents-categories-mock';
 import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
-import { DocumentsCategoryListResponse } from '@/src/common/api-types';
+import { DocumentListResponse, DocumentsCategoryListResponse } from '@/src/common/api-types';
 
 export default function DocumentsPage({
   pageData,
@@ -52,11 +52,20 @@ export async function getServerSideProps() {
   try {
     const documentsCategoriesResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories`);
 
-    const documentsCategories: DocumentsCategoriesProps[] = documentsCategoriesResponse.data!
-      .map((documentsCategoriesItem) => ({
-        id: documentsCategoriesItem.id!,
-        title: documentsCategoriesItem.attributes!.title,
-      }));
+    const documentsCategories: DocumentsCategoriesProps[] = (await Promise.all(
+      documentsCategoriesResponse.data!
+        .map(async (documentsCategoriesItem) => {
+          const documentsResponse: DocumentListResponse = await api.get(`/documents?filters[category][id][$eq]=${documentsCategoriesItem.id}`);
+
+          if (documentsResponse.meta?.pagination?.total) {
+            return ({
+              id: documentsCategoriesItem.id!,
+              title: documentsCategoriesItem.attributes!.title,
+            });
+          }
+          return null;
+        }),
+    )).filter((item): item is DocumentsCategoriesProps => item !== null);
 
     return {
       props: {
