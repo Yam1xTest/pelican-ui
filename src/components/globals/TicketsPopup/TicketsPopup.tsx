@@ -151,8 +151,11 @@ export function TicketsPopup({
                   className="tickets-popup__refund-reasons"
                 />
                 <Link
-                  href="#"
                   className="tickets-popup__more-link button button--secondary"
+                  href="http://chelzoo.ru/articles/prikaz-ob-utverzhdenii-pravil-prodazhi-i-vozvrata-/"
+                  // TODO: Remove when the page appears
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Подробнее о возврате билетов
                 </Link>
