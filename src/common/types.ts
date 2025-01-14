@@ -169,3 +169,17 @@ export type Meta = {
     total: number
   }
 };
+
+export type DocumentsQuery = {
+  filters: {
+    category: {
+      id: {
+        $eq: number,
+      },
+    },
+    createdAt: {
+      $gte: string,
+      $lte: string,
+    },
+  },
+};
