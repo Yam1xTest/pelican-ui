@@ -28,6 +28,7 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
     name: `Правила посещения`,
     link: `http://chelzoo.ru/media/articles/2022/05/06/prikaz-221-ot-050522-o-pravilah-posescheniya-2.pdf`,
   },
+  // TODO: Uncomment when the page appears
   // {
   //   id: 3,
   //   name: `Адрес`,
@@ -56,6 +57,7 @@ export const FOOTER_USER_LINKS: GlobalComponentProps['footerUserLinks'] = [
     name: `Льготы`,
     link: `https://vk.com/topic-71671982_48253263`,
   },
+  // TODO: Uncomment when the page appears
   // {
   //   id: 2,
   //   name: `Услуги`,
