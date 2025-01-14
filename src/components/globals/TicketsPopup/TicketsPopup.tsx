@@ -9,7 +9,6 @@ import crossIcon from "../../../../public/images/tickets-popup/icon-cross.svg";
 import { TicketsPopupCard } from './components/TicketsPopupCard/TicketsPopupCard';
 import iconChevron from "../../../../public/images/svg/icon-chevron.svg";
 import iconChevronGreen from "../../../../public/images/svg/icon-chevron-green.svg";
-import { Button } from '../Button/Button';
 import { TicketsPopupRulesList } from './components/TicketsPopupRulesList/TicketsPopupRulesList';
 import { TicketsPopupRefundReasons } from './components/TicketsPopupRefundReasons/TicketsPopupRefundReasons';
 
@@ -106,8 +105,11 @@ export function TicketsPopup({
                   ))}
                 </ul>
                 <Link
-                  href="#"
                   className="tickets-popup__link button button--secondary"
+                  href="https://vk.com/topic-71671982_48253263"
+                  // TODO: Remove when the page appears
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Остальные льготные категории
                 </Link>
@@ -125,12 +127,15 @@ export function TicketsPopup({
                 className="tickets-popup__rules-list"
                 ticketsPopupRulesImages={ticketsPopupRulesImages}
               />
-              <Button
-                className="tickets-popup__more-link"
-                theme="secondary"
+              <Link
+                className="tickets-popup__more-link button button--secondary"
+                href="http://chelzoo.ru/media/articles/2022/05/06/prikaz-221-ot-050522-o-pravilah-posescheniya-2.pdf"
+                // TODO: Remove when the page appears
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Подробнее о правилах посещения
-              </Button>
+              </Link>
             </Accordion>
             <Accordion
               triggerText="Возврат билетов"

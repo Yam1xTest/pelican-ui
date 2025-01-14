@@ -159,7 +159,8 @@ export function Footer({
               <Link
                 href="https://www.tourmalinecore.com/"
                 className="footer__copyright-link"
-                target="blank"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Tourmaline Core
                 <span className="footer__heart">❤</span>
