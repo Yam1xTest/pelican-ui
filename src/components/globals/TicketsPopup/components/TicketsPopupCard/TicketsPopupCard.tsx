@@ -4,7 +4,6 @@ import Link from "next/link";
 import { PropsWithChildren } from "react";
 
 type TicketsPopupCardProps = PropsWithChildren & {
-  key: string;
   className?: string;
   category: string;
   price?: string;
@@ -13,7 +12,6 @@ type TicketsPopupCardProps = PropsWithChildren & {
 };
 
 export function TicketsPopupCard({
-  key,
   className,
   category,
   price,
@@ -23,7 +21,6 @@ export function TicketsPopupCard({
 }: TicketsPopupCardProps) {
   return (
     <li
-      key={key}
       className={clsx(
         `tickets-popup-card`,
         className,

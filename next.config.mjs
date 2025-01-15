@@ -8,6 +8,7 @@ const nextConfig = {
   },
 
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'http',
@@ -22,17 +23,7 @@ const nextConfig = {
         hostname: '**'
       },
     ]
-  },
-
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/home',
-        permanent: true,
-      },
-    ];
-  },
+  }
 };
 
 export default nextConfig;

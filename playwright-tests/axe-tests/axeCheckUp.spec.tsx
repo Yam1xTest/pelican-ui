@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import AxePuppeteer from '@axe-core/playwright';
 import { writeFileSync, mkdirSync } from 'fs';
 import { dirname } from 'path';
-import { Breakpoint } from '@/src/common/enum';
+import { AppRoute, Breakpoint } from '@/src/common/enum';
 
 test(`axeCheckUp`, async ({
   page,
@@ -11,7 +11,7 @@ test(`axeCheckUp`, async ({
     width: Breakpoint.DESKTOP_XL,
     height: 1080,
   });
-  await page.goto(`/home`);
+  await page.goto(AppRoute.HOME);
 
   const results = await new AxePuppeteer({
     page,
@@ -34,27 +34,26 @@ test(`axeCheckUp`, async ({
     `focusable-element`,
   ];
 
-  const violationsToCheck = results
-    .violations
-    .filter((violation) => violationIdsToCheck.includes(violation.id));
+  const violationsToCheck = results.violations.filter((violation) => violationIdsToCheck
+    .includes(violation.id));
 
   if (violationsToCheck.length > 0) {
-    /* eslint-disable no-console */
     console.table(violationsToCheck.map((violation) => ({
       id: violation.id,
       impact: violation.impact,
       description: violation.description,
       nodes: violation.nodes.length,
     })));
+
+    throw new Error(`Accessibility violations found: ${violationsToCheck.length}`);
   } else {
     console.log(`No accessibility violations found.`);
-    /* eslint-enable no-console */
   }
 
   const filePath = `./test/playwright-report/axeReport/axe-report.json`;
-
   mkdirSync(dirname(filePath), {
     recursive: true,
   });
+
   writeFileSync(filePath, JSON.stringify(violationsToCheck, null, 2));
 });
