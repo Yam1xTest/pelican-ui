@@ -11,13 +11,13 @@ import noTouchingImage from '../../../public/images/tickets-popup/no-touching.pn
 import noTeasingImage from '../../../public/images/tickets-popup/no-teasing.png';
 import { AppRoute } from "../enum";
 
-export const EMAIL = `metodist@chelzoo.ru`;
-export const PHONE = `+7 (351) 263-18-64`;
-export const POPUP_TICKET_BUY_TEXT = `Билеты`;
-export const FOOTER_NAV_TITLE_LEFT = `Посетителям`;
-export const FOOTER_NAV_TITLE_RIGHT = `О зоопарке`;
+export const MOCK_EMAIL = `metodist@chelzoo.ru`;
+export const MOCK_PHONE = `+7 (351) 263-18-64`;
+export const MOCK_POPUP_TICKET_BUY_TEXT = `Билеты`;
+export const MOCK_FOOTER_NAV_TITLE_LEFT = `Посетителям`;
+export const MOCK_FOOTER_NAV_TITLE_RIGHT = `О зоопарке`;
 
-export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
+export const MOCK_NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   {
     id: 1,
     name: `Льготы`,
@@ -50,7 +50,7 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   },
 ];
 
-export const FOOTER_USER_LINKS: GlobalComponentProps['footerUserLinks'] = [
+export const MOCK_FOOTER_USER_LINKS: GlobalComponentProps['footerUserLinks'] = [
   {
     id: 1,
     name: `Льготы`,
@@ -63,7 +63,7 @@ export const FOOTER_USER_LINKS: GlobalComponentProps['footerUserLinks'] = [
   },
 ];
 
-export const FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
+export const MOCK_FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
   {
     id: 1,
     name: `Новости`,
@@ -86,7 +86,7 @@ export const FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
   },
 ];
 
-export const OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [
+export const MOCK_OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [
   {
     id: 1,
     name: `Управление культуры администрации\u00A0г.\u00A0Челябинска`,
@@ -110,7 +110,7 @@ export const OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [
   },
 ];
 
-export const TICKETS_POPUP_GENERAL: GlobalComponentProps['ticketsPopupGeneral'] = [
+export const MOCK_TICKETS_POPUP_GENERAL: GlobalComponentProps['ticketsPopupGeneral'] = [
   {
     id: 0,
     category: `Взрослые, дети\u00A0от\u00A014\u00A0лет`,
@@ -130,7 +130,7 @@ export const TICKETS_POPUP_GENERAL: GlobalComponentProps['ticketsPopupGeneral'] 
   },
 ];
 
-export const TICKETS_POPUP_SUBSIDIZED: GlobalComponentProps['ticketsPopupSubsidized'] = [
+export const MOCK_TICKETS_POPUP_SUBSIDIZED: GlobalComponentProps['ticketsPopupSubsidized'] = [
   {
     id: 0,
     category: `Студенты`,
@@ -158,7 +158,7 @@ export const TICKETS_POPUP_SUBSIDIZED: GlobalComponentProps['ticketsPopupSubsidi
   },
 ];
 
-export const TICKETS_POPUP_RULES_IMAGES: GlobalComponentProps['ticketsPopupRulesImages'] = [
+export const MOCK_TICKETS_POPUP_RULES_IMAGES: GlobalComponentProps['ticketsPopupRulesImages'] = [
   {
     url: noFoodImage,
     alternativeText: `Нельзя кормить животных`,
@@ -193,7 +193,7 @@ export const TICKETS_POPUP_RULES_IMAGES: GlobalComponentProps['ticketsPopupRules
   },
 ];
 
-export const TICKETS_POPUP_REFUND_REASONS: GlobalComponentProps['ticketsPopupRefundReasons'] = [
+export const MOCK_TICKETS_POPUP_REFUND_REASONS: GlobalComponentProps['ticketsPopupRefundReasons'] = [
   {
     id: 0,
     refundReason: `отмены, замены либо переноса оказания услуги по инициативе Зоопарка;`,

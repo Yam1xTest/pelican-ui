@@ -18,7 +18,7 @@ export type DocumentsListComponentProps = {
   }
 };
 
-export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
+export const MOCK_DOCUMENTS_LIST: DocumentsListComponentProps[] = [
   {
     id: 0,
     date: `07.07.2019`,

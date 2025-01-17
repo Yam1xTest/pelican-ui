@@ -3,7 +3,7 @@ export type DocumentsCategoriesProps = {
   title: string,
 };
 
-export const DOCUMENTS_CATEGORIES: DocumentsCategoriesProps[] = [
+export const MOCK_DOCUMENTS_CATEGORIES: DocumentsCategoriesProps[] = [
   {
     id: 1,
     title: `Отчеты`,

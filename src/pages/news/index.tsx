@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import qs from 'qs';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
-import { NEWS_PAGE, NewsPageProps } from '@/src/common/mocks/news-page-mock/news-page-mock';
-import { NEWS, NewsProps } from '@/src/common/mocks/news-page-mock/news-mock';
+import { MOCK_NEWS_PAGE, NewsPageProps } from '@/src/common/mocks/news-page-mock/news-page-mock';
+import { MOCK_NEWS, NewsProps } from '@/src/common/mocks/news-page-mock/news-mock';
 import { NEWS_LIMIT, NewsList } from '@/src/components/news-page/NewsList/NewsList';
 import { api } from '@/src/common/utils/HttpClient';
 import { NewsCollectionListResponse } from '@/src/common/api-types';
@@ -53,9 +53,9 @@ export async function getServerSideProps({
   if (process.env.APP_ENV === `static`) {
     return {
       props: {
-        pageData: NEWS_PAGE,
-        news: NEWS.slice(0, query.pageSize || NEWS_LIMIT),
-        totalNews: NEWS.length,
+        pageData: MOCK_NEWS_PAGE,
+        news: MOCK_NEWS.slice(0, query.pageSize || NEWS_LIMIT),
+        totalNews: MOCK_NEWS.length,
       },
     };
   }
@@ -86,7 +86,7 @@ export async function getServerSideProps({
 
     return {
       props: {
-        pageData: NEWS_PAGE,
+        pageData: MOCK_NEWS_PAGE,
         news,
         totalNews: newsResponse.meta!.pagination!.total!,
       },

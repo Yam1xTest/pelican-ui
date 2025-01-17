@@ -2,7 +2,7 @@ import heroImage from '@/public/images/hero/hero-main-page.png';
 import { BlockTypes } from "../../enum";
 import { HeroComponentProps } from '../../types';
 
-export const HERO: HeroComponentProps = {
+export const MOCK_HERO: HeroComponentProps = {
   id: 1,
   __component: BlockTypes.HERO,
   title: `Челябинский зоопарк`,

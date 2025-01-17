@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { POPUP_TICKET_BUY_TEXT } from "@/src/common/mocks/globals-mock";
+import { MOCK_POPUP_TICKET_BUY_TEXT } from "@/src/common/mocks/globals-mock";
 import { GlobalComponentProps } from "@/src/common/types";
 import { useTicketPopup } from '@/src/common/hooks/useTicketPopup';
 import Link from 'next/link';
@@ -54,7 +54,7 @@ export function TicketsPopup({
           data-testid="tickets-popup"
         >
           <div className="tickets-popup__head">
-            <span className="tickets-popup__title">{POPUP_TICKET_BUY_TEXT}</span>
+            <span className="tickets-popup__title">{MOCK_POPUP_TICKET_BUY_TEXT}</span>
             <button
               type="button"
               className="button tickets-popup__close-btn"

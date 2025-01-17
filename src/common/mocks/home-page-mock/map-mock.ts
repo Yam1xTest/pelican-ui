@@ -2,7 +2,7 @@ import lamaImage from '@/public/images/map/lama.png';
 import { BlockTypes } from "../../enum";
 import { MapComponentProps } from "../../types";
 
-export const MAP: MapComponentProps = {
+export const MOCK_MAP: MapComponentProps = {
   id: 6,
   __component: BlockTypes.MAP,
   title: `Челябинск,\nул. Труда 191 `,

@@ -5,7 +5,7 @@ import exitLecturesImage from "@/public/images/services/exit-lectures.png";
 import { ServicesComponentProps } from "../../types";
 import { BlockTypes } from "../../enum";
 
-export const SERVICES: ServicesComponentProps = {
+export const MOCK_SERVICES: ServicesComponentProps = {
   id: 3,
   __component: BlockTypes.SERVICES,
   title: `Наши услуги`,

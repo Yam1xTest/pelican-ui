@@ -3,7 +3,7 @@ import SmallImageSrc from "@/public/images/contact-zoo/contact-zoo-small.png";
 import { ContactZooPreviewComponentProps } from "../../types";
 import { BlockTypes } from "../../enum";
 
-export const CONTACT_ZOO_PREVIEW: ContactZooPreviewComponentProps = {
+export const MOCK_CONTACT_ZOO_PREVIEW: ContactZooPreviewComponentProps = {
   id: 4,
   __component: BlockTypes.CONTACT_ZOO_PREVIEW,
   title: `Один из первых и самых больших контактных зоопарков`,
