@@ -130,3 +130,19 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.glider-track {
+  margin-right: 48px !important;
+
+  @include tablet {
+    margin-right: 36px !important;
+  }
+
+  @include tablet-xl {
+    margin-right: 70px !important;
+  }
+
+  @include desktop-xl {
+    margin-right: 92px !important;
+  }
+}
