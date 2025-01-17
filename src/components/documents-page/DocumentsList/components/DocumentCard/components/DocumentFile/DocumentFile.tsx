@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { DocumentFileProps } from "@/src/common/mocks/documents-page-mock/documents-list-mock";
+import { DocumentFileProps } from "@/src/common/mocks/collections-mock/documents-collection-mock";
 import { IconOpenDocument } from "../IconOpenDocument/IconOpenDocument";
 
 export function DocumentFile({

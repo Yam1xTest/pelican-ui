@@ -2,7 +2,7 @@ import Head from 'next/head';
 import qs from 'qs';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 import { MOCK_NEWS_PAGE, NewsPageProps } from '@/src/common/mocks/news-page-mock/news-page-mock';
-import { MOCK_NEWS, NewsProps } from '@/src/common/mocks/news-page-mock/news-mock';
+import { MOCK_NEWS, NewsProps } from '@/src/common/mocks/collections-mock/news-collection-mock';
 import { NEWS_LIMIT, NewsList } from '@/src/components/news-page/NewsList/NewsList';
 import { api } from '@/src/common/utils/HttpClient';
 import { NewsCollectionListResponse } from '@/src/common/api-types';

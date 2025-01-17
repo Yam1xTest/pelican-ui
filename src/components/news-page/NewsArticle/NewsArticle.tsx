@@ -1,4 +1,4 @@
-import { NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
+import { NewsProps } from "@/src/common/mocks/collections-mock/news-collection-mock";
 import dayjs from "dayjs";
 import { MarkdownText } from "../../globals/MarkdownText/MarkdownText";
 

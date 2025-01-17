@@ -5,7 +5,7 @@ export type DocumentFileProps = {
   ext: string,
 };
 
-export type DocumentsListComponentProps = {
+export type DocumentsComponentProps = {
   id: number,
   date: string,
   showDate: boolean,
@@ -18,7 +18,7 @@ export type DocumentsListComponentProps = {
   }
 };
 
-export const MOCK_DOCUMENTS_LIST: DocumentsListComponentProps[] = [
+export const MOCK_DOCUMENTS: DocumentsComponentProps[] = [
   {
     id: 0,
     date: `07.07.2019`,

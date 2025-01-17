@@ -1,4 +1,4 @@
-import { DocumentsCategoriesProps } from "@/src/common/mocks/documents-page-mock/documents-categories-mock";
+import { DocumentsCategoriesProps } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
 import { DocumentsCategory } from "@/src/components/documents-page/DocumentsCategories/components/DocumentsCategory/DocumentsCategory";
 
 export function DocumentsCategories({

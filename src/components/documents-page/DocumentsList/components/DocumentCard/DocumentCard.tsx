@@ -1,6 +1,6 @@
 import { Accordion } from "@/src/components/globals/Accordion/Accordion";
 import iconChevronBlack from "@/public/images/svg/icon-chevron-black.svg";
-import { DocumentsListComponentProps } from "@/src/common/mocks/documents-page-mock/documents-list-mock";
+import { DocumentsComponentProps } from "@/src/common/mocks/collections-mock/documents-collection-mock";
 import { MarkdownText } from "@/src/components/globals/MarkdownText/MarkdownText";
 import dayjs from "dayjs";
 import { DocumentFile } from "./components/DocumentFile/DocumentFile";
@@ -13,7 +13,7 @@ export function DocumentCard({
   subtitle,
   description,
   files,
-}: Omit<DocumentsListComponentProps, 'id' | 'category'> & {
+}: Omit<DocumentsComponentProps, 'id' | 'category'> & {
   className: string,
 }) {
   const isSingleDocument = files.length === 1;

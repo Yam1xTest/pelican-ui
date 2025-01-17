@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
+import { NewsProps } from "@/src/common/mocks/collections-mock/news-collection-mock";
 import { NewsCard } from "./components/NewsCard/NewsCard";
 import { Button } from "../../globals/Button/Button";
 

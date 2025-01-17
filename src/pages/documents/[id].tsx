@@ -1,6 +1,6 @@
 import { DocumentListResponse, DocumentsCategoryListResponse } from "@/src/common/api-types";
-import { MOCK_DOCUMENTS_CATEGORIES, DocumentsCategoriesProps } from "@/src/common/mocks/documents-page-mock/documents-categories-mock";
-import { MOCK_DOCUMENTS_LIST, DocumentsListComponentProps } from "@/src/common/mocks/documents-page-mock/documents-list-mock";
+import { MOCK_DOCUMENTS_CATEGORIES, DocumentsCategoriesProps } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
+import { MOCK_DOCUMENTS, DocumentsComponentProps } from "@/src/common/mocks/collections-mock/documents-collection-mock";
 import { api } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
@@ -12,7 +12,7 @@ export default function DocumentsCategories({
   documents,
 }: {
   category: DocumentsCategoriesProps,
-  documents: DocumentsListComponentProps[],
+  documents: DocumentsComponentProps[],
 }) {
   if (!category) {
     return <NotFound />;
@@ -48,7 +48,7 @@ export async function getServerSideProps({
         category: MOCK_DOCUMENTS_CATEGORIES.find(({
           id,
         }) => id === +query.id) || null,
-        documents: MOCK_DOCUMENTS_LIST.filter(({
+        documents: MOCK_DOCUMENTS.filter(({
           category,
         }) => category.id === +query.id),
       },
@@ -78,7 +78,7 @@ export async function getServerSideProps({
     const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?${qs.stringify(categoryQueryParams)}`);
     const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(documentsQueryParams)}`);
 
-    const documents: DocumentsListComponentProps[] = documentsResponse.data!
+    const documents: DocumentsComponentProps[] = documentsResponse.data!
       .map((documentsItem) => ({
         id: documentsItem.id!,
         date: documentsItem.attributes!.publishedAt!,

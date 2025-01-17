@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 import { MOCK_DOCUMENTS_PAGE, DocumentsPageProps } from '@/src/common/mocks/documents-page-mock/documents-page-mock';
 import { api } from '@/src/common/utils/HttpClient';
-import { MOCK_DOCUMENTS_CATEGORIES, DocumentsCategoriesProps } from '@/src/common/mocks/documents-page-mock/documents-categories-mock';
+import { MOCK_DOCUMENTS_CATEGORIES, DocumentsCategoriesProps } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
 import { DocumentsCategoryListResponse } from '@/src/common/api-types';
 

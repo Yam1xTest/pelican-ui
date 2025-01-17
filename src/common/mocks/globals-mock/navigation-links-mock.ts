@@ -1,6 +1,7 @@
 import { AppRoute } from "../../enum";
 import { GlobalComponentProps } from "../../types";
 
+// TODO: maybe this applies to collections?
 export const MOCK_NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   {
     id: 1,
