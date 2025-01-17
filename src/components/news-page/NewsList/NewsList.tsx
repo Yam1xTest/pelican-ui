@@ -11,7 +11,7 @@ export function NewsList({
   news,
   total,
 }: {
-  news: NewsProps[]
+  news: Omit<NewsProps, 'innerContent' | 'publishedAt'>[]
   title: string,
   total: number;
 }) {
