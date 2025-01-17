@@ -98,8 +98,6 @@ async function mobileMenuOpenTest({
     `social-icon-telegram`,
     `social-icon-odnoklassniki`,
     `social-icon-dzen`,
-    // `header-logo`,
-    // `header-popup-button`,
   ];
 
   for (const element of expectedFocusOrder) {
