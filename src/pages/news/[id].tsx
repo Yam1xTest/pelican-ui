@@ -5,13 +5,16 @@ import { NewsArticle } from "@/src/components/news-page/NewsArticle/NewsArticle"
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
 import { NewsCollectionListResponseDataItem } from '@/src/common/api-types';
+import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
 
 type SingleNewsProps = Pick<NewsProps, 'innerContent' | 'publishedAt' | 'title'>;
 
 export default function News({
   news,
+  otherNews,
 }: {
   news: SingleNewsProps
+  otherNews: Pick<NewsProps, 'id' | 'description' | 'title'>[]
 }) {
   if (!news) {
     return <NotFound />;
@@ -31,6 +34,7 @@ export default function News({
         date={news.publishedAt}
         innerContent={news.innerContent}
       />
+      {otherNews.length > 0 && <NewsSlider news={otherNews} />}
     </>
   );
 }
@@ -43,11 +47,20 @@ export async function getServerSideProps({
   }
 }) {
   if (process.env.APP_ENV === `static`) {
+    const otherNews = NEWS.filter((news) => news.id !== +query.id)
+      .map((news) => ({
+        id: news.id,
+        title: news.title,
+        description: news.description || null,
+      }))
+      .slice(0, 4);
+
     return {
       props: {
         news: NEWS.find(({
           id,
         }) => id === +query.id) || null,
+        otherNews,
       },
     };
   }
