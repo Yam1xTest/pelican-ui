@@ -13,11 +13,6 @@ export function DocumentsList({
 }) {
   const [chosenYear, setChosenYear] = useState<number>(0);
 
-  console.log(documents?.filter(({
-    date,
-  }) => dayjs(date)
-    .year() === chosenYear));
-
   return (
     <section
       className="documents container"

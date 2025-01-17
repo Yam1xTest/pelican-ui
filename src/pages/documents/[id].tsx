@@ -81,7 +81,7 @@ export async function getServerSideProps({
     const documents: DocumentsListComponentProps[] = documentsResponse.data!
       .map((documentsItem) => ({
         id: documentsItem.id!,
-        date: documentsItem.attributes!.publishedAt!,
+        date: documentsItem.attributes!.date!,
         showDate: documentsItem.attributes!.showDate!,
         title: documentsItem.attributes!.title!,
         subtitle: documentsItem.attributes!.subtitle,
