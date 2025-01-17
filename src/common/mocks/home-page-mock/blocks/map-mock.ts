@@ -1,6 +1,6 @@
 import lamaImage from '@/public/images/map/lama.png';
-import { BlockTypes } from "../../enum";
-import { MapComponentProps } from "../../types";
+import { BlockTypes } from "../../../enum";
+import { MapComponentProps } from "../../../types";
 
 export const MOCK_MAP: MapComponentProps = {
   id: 6,

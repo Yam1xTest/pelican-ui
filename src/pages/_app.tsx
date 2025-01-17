@@ -8,19 +8,19 @@ import { Layout } from '../components/globals/Layout/Layout';
 import { NotFound } from '../components/not-found-page/NotFound/NotFound';
 import { WindowWidthProvider } from '../common/providers/WindowWidthProvider';
 import {
-  MOCK_POPUP_TICKET_BUY_TEXT,
   MOCK_EMAIL,
-  MOCK_PHONE,
   MOCK_NAVIGATION_LINKS,
+  MOCK_PHONE,
+  MOCK_POPUP_TICKET_BUY_TEXT,
+  MOCK_TICKETS_POPUP_GENERAL,
+  MOCK_TICKETS_POPUP_REFUND_REASONS,
+  MOCK_TICKETS_POPUP_RULES_IMAGES,
+  MOCK_TICKETS_POPUP_SUBSIDIZED,
   MOCK_FOOTER_ABOUT_LINKS,
-  MOCK_FOOTER_USER_LINKS,
-  MOCK_OFFICIAL_LINKS,
   MOCK_FOOTER_NAV_TITLE_LEFT,
   MOCK_FOOTER_NAV_TITLE_RIGHT,
-  MOCK_TICKETS_POPUP_GENERAL,
-  MOCK_TICKETS_POPUP_SUBSIDIZED,
-  MOCK_TICKETS_POPUP_RULES_IMAGES,
-  MOCK_TICKETS_POPUP_REFUND_REASONS,
+  MOCK_FOOTER_USER_LINKS,
+  MOCK_OFFICIAL_LINKS,
 } from '../common/mocks/globals-mock';
 
 const inter = localFont({

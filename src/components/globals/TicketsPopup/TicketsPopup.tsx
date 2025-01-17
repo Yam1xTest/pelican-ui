@@ -1,14 +1,14 @@
 import Image from 'next/image';
-import { MOCK_POPUP_TICKET_BUY_TEXT } from "@/src/common/mocks/globals-mock";
 import { GlobalComponentProps } from "@/src/common/types";
 import { useTicketPopup } from '@/src/common/hooks/useTicketPopup';
 import Link from 'next/link';
 import { MutableRefObject, useEffect } from 'react';
-import { Accordion } from "../Accordion/Accordion";
-import crossIcon from "../../../../public/images/tickets-popup/icon-cross.svg";
+import { MOCK_POPUP_TICKET_BUY_TEXT } from '@/src/common/mocks/globals-mock';
+import crossIcon from "@/public/images/tickets-popup/icon-cross.svg";
+import iconChevron from "@/public/images/svg/icon-chevron.svg";
+import iconChevronGreen from "@/public/images/svg/icon-chevron-green.svg";
 import { TicketsPopupCard } from './components/TicketsPopupCard/TicketsPopupCard';
-import iconChevron from "../../../../public/images/svg/icon-chevron.svg";
-import iconChevronGreen from "../../../../public/images/svg/icon-chevron-green.svg";
+import { Accordion } from "../Accordion/Accordion";
 import { Button } from '../Button/Button';
 import { TicketsPopupRulesList } from './components/TicketsPopupRulesList/TicketsPopupRulesList';
 import { TicketsPopupRefundReasons } from './components/TicketsPopupRefundReasons/TicketsPopupRefundReasons';
@@ -54,7 +54,9 @@ export function TicketsPopup({
           data-testid="tickets-popup"
         >
           <div className="tickets-popup__head">
-            <span className="tickets-popup__title">{MOCK_POPUP_TICKET_BUY_TEXT}</span>
+            <span className="tickets-popup__title">
+              {MOCK_POPUP_TICKET_BUY_TEXT}
+            </span>
             <button
               type="button"
               className="button tickets-popup__close-btn"
