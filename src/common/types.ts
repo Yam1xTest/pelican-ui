@@ -171,6 +171,7 @@ export type Meta = {
 };
 
 export type DocumentsQuery = {
+  populate: string[],
   filters: {
     category: {
       id: {
@@ -181,5 +182,8 @@ export type DocumentsQuery = {
       $gte: string,
       $lte: string,
     },
+  },
+  pagination: {
+    pageSize: number,
   },
 };
