@@ -16,6 +16,7 @@ export function DocumentsList({
   return (
     <section
       className="documents container"
+      data-testid="documents"
     >
       <h1 className="documents__title">{categoryTitle}</h1>
       <Tabs
@@ -23,7 +24,6 @@ export function DocumentsList({
       />
       <ul
         className="documents__list"
-        data-testid="documents-list"
       >
         {documents?.filter(({
           date,
