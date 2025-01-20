@@ -65,6 +65,7 @@ export function NewsSlider({
             type="button"
             className="news-slider__button news-slider__button--prev"
             onClick={scrollToPrevItem}
+            aria-label="Пролистнуть новости влево"
           >
             <IconArrow />
           </button>
@@ -73,6 +74,7 @@ export function NewsSlider({
             type="button"
             className="news-slider__button"
             onClick={scrollToNextItem}
+            aria-label="Пролистнуть новости вправо"
           >
             <IconArrow />
           </button>
