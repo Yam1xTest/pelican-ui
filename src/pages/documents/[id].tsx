@@ -1,6 +1,7 @@
 import { DocumentListResponse, DocumentsCategoryListResponse } from "@/src/common/api-types";
-import { MOCK_DOCUMENTS_CATEGORIES, DocumentsCategoriesProps } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
-import { MOCK_DOCUMENTS, DocumentsComponentProps } from "@/src/common/mocks/collections-mock/documents-collection-mock";
+import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
+import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
+import { DocumentsCategoriesProps, DocumentsProps } from "@/src/common/types";
 import { api } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
@@ -12,7 +13,7 @@ export default function DocumentsCategories({
   documents,
 }: {
   category: DocumentsCategoriesProps,
-  documents: DocumentsComponentProps[],
+  documents: DocumentsProps[],
 }) {
   if (!category) {
     return <NotFound />;
@@ -78,7 +79,7 @@ export async function getServerSideProps({
     const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?${qs.stringify(categoryQueryParams)}`);
     const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(documentsQueryParams)}`);
 
-    const documents: DocumentsComponentProps[] = documentsResponse.data!
+    const documents: DocumentsProps[] = documentsResponse.data!
       .map((documentsItem) => ({
         id: documentsItem.id!,
         date: documentsItem.attributes!.publishedAt!,

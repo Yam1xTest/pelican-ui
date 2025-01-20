@@ -1,10 +1,11 @@
 import qs from 'qs';
-import { MOCK_NEWS, NewsProps } from "@/src/common/mocks/collections-mock/news-collection-mock";
+import { MOCK_NEWS } from "@/src/common/mocks/collections-mock/news-collection-mock";
 import { api } from "@/src/common/utils/HttpClient";
 import { NewsArticle } from "@/src/components/news-page/NewsArticle/NewsArticle";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
 import { NewsCollectionListResponseDataItem } from '@/src/common/api-types';
+import { NewsProps } from '@/src/common/types';
 
 type SingleNewsProps = Pick<NewsProps, 'innerContent' | 'publishedAt' | 'title'>;
 

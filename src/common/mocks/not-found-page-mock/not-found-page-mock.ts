@@ -1,6 +1,14 @@
 
 import { BlockTypes } from "../../enum";
-import { NotFoundComponentProps, NotFoundPageProps } from "../../types";
+import { NotFoundComponentProps } from "../../types";
+
+type NotFoundPageProps = {
+  id: number,
+  title: string;
+  blocks: (
+    NotFoundComponentProps
+  )[];
+};
 
 const MOCK_NOT_FOUND: NotFoundComponentProps = {
   id: 1,

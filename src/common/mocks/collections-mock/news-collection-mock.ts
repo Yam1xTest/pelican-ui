@@ -6,12 +6,7 @@ import winterModeImage from "@/public/images/news/winter-mode.png";
 import vacancyImage from "@/public/images/news/vacancy.png";
 import zooDayImage from "@/public/images/news/zoo-day.png";
 import alpacaDayImage from "@/public/images/news/alpaca-day.png";
-import { CardProps } from "../../types";
-
-export type NewsProps = CardProps & {
-  publishedAt?: string;
-  innerContent: string;
-};
+import { NewsProps } from "../../types";
 
 const STATIC_DATE = new Date(`03.10.24`)
   .toJSON();

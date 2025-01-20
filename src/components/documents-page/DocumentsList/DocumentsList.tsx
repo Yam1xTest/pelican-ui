@@ -1,4 +1,4 @@
-import { DocumentsComponentProps } from "@/src/common/mocks/collections-mock/documents-collection-mock";
+import { DocumentsProps } from "@/src/common/types";
 import { DocumentCard } from "@/src/components/documents-page/DocumentsList/components/DocumentCard/DocumentCard";
 
 export function DocumentsList({
@@ -6,7 +6,7 @@ export function DocumentsList({
   documents,
 }: {
   categoryTitle: string,
-  documents: DocumentsComponentProps[],
+  documents: DocumentsProps[],
 }) {
   return (
     <section

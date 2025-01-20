@@ -1,9 +1,4 @@
-
-export type NewsPageProps = {
-  id: number,
-  title: string;
-  newsTitle: string;
-};
+import { NewsPageProps } from "../../types";
 
 export const MOCK_NEWS_PAGE: NewsPageProps = {
   id: 1,
