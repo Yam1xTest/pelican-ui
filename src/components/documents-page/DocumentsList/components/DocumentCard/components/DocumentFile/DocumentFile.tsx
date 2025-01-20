@@ -24,6 +24,7 @@ export function DocumentFile({
         className={`document-file__link document-file__link--${numberOfFilesStyle}`}
         href={url}
         target="_blank"
+        rel="noopener noreferrer"
         aria-label={`Открыть файл с документом ${name.replace(`${extension}`, ``)} в новой вкладке`}
       >
         {numberOfFiles > 1 && (
