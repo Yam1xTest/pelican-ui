@@ -31,6 +31,8 @@ export function TicketCard({
           <Link
             className="ticket-card__link"
             href={link}
+            target="_blank"
+            rel="noopener noreferrer"
             data-testid="ticket-card-link"
           >
             <div className="ticket-card__inner">
