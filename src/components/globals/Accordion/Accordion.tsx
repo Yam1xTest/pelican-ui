@@ -38,7 +38,7 @@ export function Accordion({
         }}
         className="accordion__trigger button"
         aria-label={ariaLabel}
-        aria-expanded={`${!!isOpen}`}
+        aria-expanded={!!isOpen}
         aria-controls="accordion-content"
         data-testid="accordion-trigger"
       >
