@@ -61,7 +61,11 @@ export async function getServerSideProps() {
     const documentsCategories: DocumentsCategoriesProps[] = (await Promise.all(
       documentsCategoriesResponse.data!
         .map(async (documentsCategoriesItem) => {
-          const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams(documentsCategoriesItem.id!, year, 1))}`);
+          const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
+            id: documentsCategoriesItem.id!,
+            year,
+            pageSize: 1,
+          }))}`);
 
           if (documentsResponse.meta?.pagination?.total) {
             return ({

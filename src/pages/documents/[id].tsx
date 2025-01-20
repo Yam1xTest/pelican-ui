@@ -71,7 +71,11 @@ export async function getServerSideProps({
     const year = dayjs()
       .year();
 
-    const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams(+query.id, year, 100))}`);
+    const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
+      id: +query.id,
+      year,
+      pageSize: 100,
+    }))}`);
 
     const documents: DocumentsListComponentProps[] = documentsResponse.data!
       .map((documentsItem) => ({
