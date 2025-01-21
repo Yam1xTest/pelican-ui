@@ -169,3 +169,21 @@ export type Meta = {
     total: number
   }
 };
+
+export type DocumentsQuery = {
+  populate: string[],
+  filters: {
+    category: {
+      id: {
+        $eq: number,
+      },
+    },
+    createdAt: {
+      $gte: string,
+      $lte: string,
+    },
+  },
+  pagination: {
+    pageSize: number,
+  },
+};
