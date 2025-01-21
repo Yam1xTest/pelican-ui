@@ -54,7 +54,7 @@ export function Header({
   }, [isMobileMenuOpen]);
 
   return (
-    <div
+    <header
       className={clsx(`header`, {
         active: isMobileMenuOpen,
       })}
@@ -109,6 +109,6 @@ export function Header({
           onTicketPopupOpen={() => handleMobileMenuToggle()}
         />
       )}
-    </div>
+    </header>
   );
 }

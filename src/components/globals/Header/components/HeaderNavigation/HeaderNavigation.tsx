@@ -36,6 +36,20 @@ export function HeaderNavigation({
           </Link>
         </li>
       ))}
+      {/* TODO: Remove when the page appears */}
+      <li
+        key="2"
+        className={`${className || `header-navigation`}__item`}
+      >
+        <Link
+          href="/documents/Visiting-rules.pdf"
+          className={`${className || `header-navigation`}__link`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Правила посещения
+        </Link>
+      </li>
     </ul>
   );
 }
