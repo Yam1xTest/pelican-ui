@@ -16,7 +16,7 @@ test.describe(`Logical focus order verification`, () => {
 
   test(`MobileMenuOpenTest`, mobileMenuOpenTest);
 
-  test(`TabletTest`, desktopTest);
+  test(`DesktopTest`, desktopTest);
 
   test(`TicketsPopupOpenTest`, ticketsPopupOpenTest);
 });
