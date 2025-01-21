@@ -6,6 +6,7 @@ import Glider from 'react-glider';
 import { NewsSliderCard } from "./components/NewsSliderCard/NewsSliderCard";
 import { IconArrow } from "./components/IconArrow/IconArrow";
 import 'glider-js/glider.min.css';
+import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 
 export function NewsSlider({
   news,
@@ -15,6 +16,9 @@ export function NewsSlider({
   const gliderRef = useRef <GliderMethods>(null);
   const prevButtonRef = useRef<HTMLButtonElement>(null);
   const nextButtonRef = useRef<HTMLButtonElement>(null);
+  const {
+    isDesktopXL,
+  } = useWindowWidth();
 
   useEffect(() => {
     prevButtonRef.current!.disabled = true;
@@ -30,7 +34,10 @@ export function NewsSlider({
         <Glider
           ref={gliderRef}
           className="container"
-          slidesToShow="auto"
+          slidesToShow={isDesktopXL ? 3 : `auto`}
+          {...(isDesktopXL && {
+            slidesToScroll: 3,
+          })}
           itemWidth={289}
           duration={1}
           exactWidth
@@ -45,7 +52,7 @@ export function NewsSlider({
             {
               breakpoint: 1920,
               settings: {
-                itemWidth: 576,
+                itemWidth: 590,
               },
             },
           ]}
@@ -63,7 +70,7 @@ export function NewsSlider({
           <button
             ref={prevButtonRef}
             type="button"
-            className="news-slider__button news-slider__button--prev"
+            className="news-slider__button button news-slider__button--prev"
             onClick={scrollToPrevItem}
             aria-label="Пролистнуть новости влево"
           >
@@ -72,7 +79,7 @@ export function NewsSlider({
           <button
             ref={nextButtonRef}
             type="button"
-            className="news-slider__button"
+            className="news-slider__button button"
             onClick={scrollToNextItem}
             aria-label="Пролистнуть новости вправо"
           >

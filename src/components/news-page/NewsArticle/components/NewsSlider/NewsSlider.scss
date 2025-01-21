@@ -63,15 +63,10 @@
   }
 
   &__button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
     border-radius: 100%;
     width: 40px;
     height: 40px;
     background-color: $color-white;
-    cursor: pointer;
     transition: all 0.2s ease-in;
 
     svg {
@@ -86,21 +81,21 @@
       }
     }
 
-    &:disabled {
-      background-color: $color-white-40;
-      pointer-events: none;
-
-      svg {
-        stroke: $color-white-40;
-      }
-    }
-
     &:focus,
     &:hover {
       background-color: $color-green;
 
       svg {
         stroke: $color-white;
+      }
+    }
+
+    &[disabled] {
+      background-color: $color-white-40;
+      pointer-events: none;
+
+      svg {
+        stroke: $color-white-40;
       }
     }
 
