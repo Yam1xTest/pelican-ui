@@ -113,8 +113,12 @@ export function TicketsPopup({
                     ))}
                   </ul>
                   <Link
-                    href="#"
                     className="tickets-popup__link button button--secondary"
+                    // TODO: Change path when the page appears
+                    href="https://vk.com/topic-71671982_48253263"
+                    // TODO: Remove when the page appears
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Остальные льготные категории
                   </Link>
@@ -123,6 +127,10 @@ export function TicketsPopup({
             </ul>
             <div className="tickets-popup__accordions">
               <Accordion
+                triggerText="Подробнее"
+                triggerHideText="Скрыть"
+                className="accordion--ticket-card"
+                icon={iconChevronGreen}
                 triggerText="Правила посещения"
                 className="tickets-popup__accordion accordion--ticket-rules"
                 icon={iconChevron}
@@ -133,7 +141,11 @@ export function TicketsPopup({
                 />
                 <Link
                   className="tickets-popup__more-link button button--secondary"
-                  href="/"
+                  // TODO: Change path when the page appears
+                  href="http://chelzoo.ru/media/articles/2022/05/06/prikaz-221-ot-050522-o-pravilah-posescheniya-2.pdf"
+                  // TODO: Remove when the page appears
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Подробнее о правилах посещения
                 </Link>
@@ -151,8 +163,12 @@ export function TicketsPopup({
                     className="tickets-popup__refund-reasons"
                   />
                   <Link
-                    href="#"
                     className="tickets-popup__more-link button button--secondary"
+                    // TODO: Change path when the page appears
+                    href="http://chelzoo.ru/articles/prikaz-ob-utverzhdenii-pravil-prodazhi-i-vozvrata-/"
+                    // TODO: Remove when the page appears
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Подробнее о возврате билетов
                   </Link>

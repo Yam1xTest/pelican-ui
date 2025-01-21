@@ -4,7 +4,10 @@ import { DOCUMENTS_PAGE, DocumentsPageProps } from '@/src/common/mocks/documents
 import { api } from '@/src/common/utils/HttpClient';
 import { DOCUMENTS_CATEGORIES, DocumentsCategoriesProps } from '@/src/common/mocks/documents-page-mock/documents-categories-mock';
 import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
-import { DocumentsCategoryListResponse } from '@/src/common/api-types';
+import { DocumentListResponse, DocumentsCategoryListResponse } from '@/src/common/api-types';
+import qs from 'qs';
+import dayjs from 'dayjs';
+import { getDocumentsQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
 
 export default function DocumentsPage({
   pageData,
@@ -52,11 +55,27 @@ export async function getServerSideProps() {
   try {
     const documentsCategoriesResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories`);
 
-    const documentsCategories: DocumentsCategoriesProps[] = documentsCategoriesResponse.data!
-      .map((documentsCategoriesItem) => ({
-        id: documentsCategoriesItem.id!,
-        title: documentsCategoriesItem.attributes!.title,
-      }));
+    const year = dayjs()
+      .year();
+
+    const documentsCategories: DocumentsCategoriesProps[] = (await Promise.all(
+      documentsCategoriesResponse.data!
+        .map(async (documentsCategoriesItem) => {
+          const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
+            id: documentsCategoriesItem.id!,
+            year,
+            pageSize: 1,
+          }))}`);
+
+          if (documentsResponse.meta?.pagination?.total) {
+            return ({
+              id: documentsCategoriesItem.id!,
+              title: documentsCategoriesItem.attributes!.title,
+            });
+          }
+          return null;
+        }),
+    )).filter((item): item is DocumentsCategoriesProps => item !== null);
 
     return {
       props: {

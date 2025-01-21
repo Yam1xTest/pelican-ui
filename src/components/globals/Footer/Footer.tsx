@@ -119,6 +119,20 @@ export function Footer({
                       </Link>
                     </li>
                   ))}
+                  {/* TODO: Remove when the page appears */}
+                  <li
+                    key="3"
+                    className="footer__nav-item"
+                  >
+                    <Link
+                      href="/documents/Visiting-rules.pdf"
+                      className="footer__nav-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Правила посещения
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -200,6 +214,7 @@ export function Footer({
                     href="https://www.tourmalinecore.com/"
                     className="footer__copyright-link"
                     target="_blank"
+					rel="noopener noreferrer"
                     aria-label="Перейти на сайт компании Tourmaline Core"
                     data-testid="footer-copyright-link"
                   >
@@ -209,7 +224,6 @@ export function Footer({
                 </div>
               )
             }
-
           </div>
         </div>
       </div>

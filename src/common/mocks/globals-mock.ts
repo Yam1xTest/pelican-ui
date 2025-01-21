@@ -22,13 +22,24 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   {
     id: 1,
     name: `Льготы`,
-    link: `#`,
+    link: `https://vk.com/topic-71671982_48253263`,
   },
-  {
-    id: 2,
-    name: `Правила посещения`,
-    link: `#`,
-  },
+  // TODO: Uncomment when the page appears
+  // {
+  //   id: 2,
+  //   name: `Правила посещения`,
+  //   link: `#`,
+  // },
+  // {
+  //   id: 3,
+  //   name: `Адрес`,
+  //   link: `#`,
+  // },
+  // {
+  //   id: 4,
+  //   name: `Услуги`,
+  //   link: `#`,
+  // },
   {
     id: 5,
     name: `Документы`,
@@ -45,8 +56,14 @@ export const FOOTER_USER_LINKS: GlobalComponentProps['footerUserLinks'] = [
   {
     id: 1,
     name: `Льготы`,
-    link: `#`,
+    link: `https://vk.com/topic-71671982_48253263`,
   },
+  // TODO: Uncomment when the page appears
+  // {
+  //   id: 2,
+  //   name: `Услуги`,
+  //   link: `#`,
+  // },
 ];
 
 export const FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
@@ -60,11 +77,12 @@ export const FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
     name: `Документы`,
     link: AppRoute.DOCUMENTS,
   },
-  {
-    id: 3,
-    name: `Правила посещения`,
-    link: `#`,
-  },
+  // TODO: Uncomment when the page appears
+  // {
+  //   id: 3,
+  //   name: `Правила посещения`,
+  //   link: `#`,
+  // },
   {
     id: 4,
     name: `Оставить отзыв`,
