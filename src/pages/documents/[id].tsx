@@ -2,9 +2,11 @@ import { DocumentListResponse, DocumentsCategoryListResponse } from "@/src/commo
 import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
 import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
 import { DocumentsCategoriesProps, DocumentsProps } from "@/src/common/types";
+import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryParams";
 import { api } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
+import dayjs from "dayjs";
 import Head from "next/head";
 import qs from "qs";
 
@@ -64,20 +66,17 @@ export async function getServerSideProps({
     },
   };
 
-  const documentsQueryParams = {
-    populate: [`files`, `category`],
-    filters: {
-      category: {
-        id: {
-          $eq: query.id,
-        },
-      },
-    },
-  };
-
   try {
     const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?${qs.stringify(categoryQueryParams)}`);
-    const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(documentsQueryParams)}`);
+
+    const year = dayjs()
+      .year();
+
+    const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
+      id: +query.id,
+      year,
+      pageSize: 100,
+    }))}`);
 
     const documents: DocumentsProps[] = documentsResponse.data!
       .map((documentsItem) => ({

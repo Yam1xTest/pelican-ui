@@ -4,8 +4,11 @@ import { MOCK_DOCUMENTS_PAGE } from '@/src/common/mocks/documents-page-mock/docu
 import { api } from '@/src/common/utils/HttpClient';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
-import { DocumentsCategoryListResponse } from '@/src/common/api-types';
+import { DocumentListResponse, DocumentsCategoryListResponse } from '@/src/common/api-types';
 import { DocumentsCategoriesProps, DocumentsPageProps } from '@/src/common/types';
+import { getDocumentsQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
+import dayjs from 'dayjs';
+import qs from 'qs';
 
 export default function DocumentsPage({
   pageData,
@@ -53,11 +56,27 @@ export async function getServerSideProps() {
   try {
     const documentsCategoriesResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories`);
 
-    const documentsCategories: DocumentsCategoriesProps[] = documentsCategoriesResponse.data!
-      .map((documentsCategoriesItem) => ({
-        id: documentsCategoriesItem.id!,
-        title: documentsCategoriesItem.attributes!.title,
-      }));
+    const year = dayjs()
+      .year();
+
+    const documentsCategories: DocumentsCategoriesProps[] = (await Promise.all(
+      documentsCategoriesResponse.data!
+        .map(async (documentsCategoriesItem) => {
+          const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
+            id: documentsCategoriesItem.id!,
+            year,
+            pageSize: 1,
+          }))}`);
+
+          if (documentsResponse.meta?.pagination?.total) {
+            return ({
+              id: documentsCategoriesItem.id!,
+              title: documentsCategoriesItem.attributes!.title,
+            });
+          }
+          return null;
+        }),
+    )).filter((item): item is DocumentsCategoriesProps => item !== null);
 
     return {
       props: {
