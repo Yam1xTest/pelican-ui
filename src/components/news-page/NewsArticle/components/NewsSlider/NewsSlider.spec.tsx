@@ -16,6 +16,8 @@ test.describe(`NewsSliderComponentTest`, () => {
     });
   });
 
+  test(`NavigationTest`, navigationTest);
+
   test(`MobileTest`, mobileTest);
 
   test(`TabletTest`, tabletTest);
@@ -26,6 +28,19 @@ test.describe(`NewsSliderComponentTest`, () => {
 
   test(`DesktopXlTest`, desktopXlTest);
 });
+
+async function navigationTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await page.getByTestId(`slider-card`)
+    .first()
+    .click();
+
+  await expect(page)
+    .toHaveURL(`${AppRoute.NEWS}/0`);
+}
 
 async function mobileTest({
   page,
