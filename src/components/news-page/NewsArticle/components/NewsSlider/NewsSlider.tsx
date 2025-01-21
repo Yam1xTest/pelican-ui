@@ -3,7 +3,6 @@ import { NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
 import { useEffect, useRef } from "react";
 import { GliderMethods } from "react-glider/dist/types";
 import Glider from 'react-glider';
-import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { NewsSliderCard } from "./components/NewsSliderCard/NewsSliderCard";
 import { IconArrow } from "./components/IconArrow/IconArrow";
 import 'glider-js/glider.min.css';
@@ -16,9 +15,6 @@ export function NewsSlider({
   const gliderRef = useRef <GliderMethods>(null);
   const prevButtonRef = useRef<HTMLButtonElement>(null);
   const nextButtonRef = useRef<HTMLButtonElement>(null);
-  const {
-    isDesktopXL,
-  } = useWindowWidth();
 
   useEffect(() => {
     prevButtonRef.current!.disabled = true;
@@ -34,10 +30,7 @@ export function NewsSlider({
         <Glider
           ref={gliderRef}
           className="container"
-          slidesToShow={isDesktopXL ? 3 : `auto`}
-          {...(isDesktopXL && {
-            slidesToScroll: 3,
-          })}
+          slidesToShow="auto"
           itemWidth={289}
           duration={1}
           exactWidth
@@ -52,7 +45,9 @@ export function NewsSlider({
             {
               breakpoint: 1920,
               settings: {
-                itemWidth: 590,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                itemWidth: 576,
               },
             },
           ]}
