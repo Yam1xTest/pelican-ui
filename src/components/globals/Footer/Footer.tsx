@@ -107,6 +107,20 @@ export function Footer({
                       </Link>
                     </li>
                   ))}
+                  {/* TODO: Remove when the page appears */}
+                  <li
+                    key="3"
+                    className="footer__nav-item"
+                  >
+                    <Link
+                      href="/documents/Visiting-rules.pdf"
+                      className="footer__nav-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Правила посещения
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>

@@ -129,6 +129,7 @@ export function TicketsPopup({
               />
               <Link
                 className="tickets-popup__more-link button button--secondary"
+                // TODO: Change path when the page appears
                 href="http://chelzoo.ru/media/articles/2022/05/06/prikaz-221-ot-050522-o-pravilah-posescheniya-2.pdf"
                 // TODO: Remove when the page appears
                 target="_blank"
@@ -152,6 +153,7 @@ export function TicketsPopup({
                 />
                 <Link
                   className="tickets-popup__more-link button button--secondary"
+                  // TODO: Change path when the page appears
                   href="http://chelzoo.ru/articles/prikaz-ob-utverzhdenii-pravil-prodazhi-i-vozvrata-/"
                   // TODO: Remove when the page appears
                   target="_blank"
