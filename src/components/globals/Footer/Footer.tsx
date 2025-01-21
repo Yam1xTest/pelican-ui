@@ -127,8 +127,10 @@ export function Footer({
                     <Link
                       href="/documents/Visiting-rules.pdf"
                       className="footer__nav-link"
+                      data-testid="footer-nav-link"
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="Перейти на страницу Правила посещения"
                     >
                       Правила посещения
                     </Link>
@@ -214,7 +216,7 @@ export function Footer({
                     href="https://www.tourmalinecore.com/"
                     className="footer__copyright-link"
                     target="_blank"
-					rel="noopener noreferrer"
+                    rel="noopener noreferrer"
                     aria-label="Перейти на сайт компании Tourmaline Core"
                     data-testid="footer-copyright-link"
                   >

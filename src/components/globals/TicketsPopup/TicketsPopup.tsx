@@ -127,10 +127,6 @@ export function TicketsPopup({
             </ul>
             <div className="tickets-popup__accordions">
               <Accordion
-                triggerText="Подробнее"
-                triggerHideText="Скрыть"
-                className="accordion--ticket-card"
-                icon={iconChevronGreen}
                 triggerText="Правила посещения"
                 className="tickets-popup__accordion accordion--ticket-rules"
                 icon={iconChevron}
@@ -157,7 +153,6 @@ export function TicketsPopup({
               >
                 <div className="tickets-popup__refund">
                   <div className="tickets-popup__refund-head">Возврат билета осуществляется в&nbsp;следующих случаях:</div>
-
                   <TicketsPopupRefundReasons
                     ticketsPopupRefundReasons={ticketsPopupRefundReasons}
                     className="tickets-popup__refund-reasons"
