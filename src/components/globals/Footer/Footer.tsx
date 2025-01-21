@@ -38,7 +38,7 @@ export function Footer({
   } = useTicketPopup();
 
   return (
-    <div
+    <footer
       className="footer"
       data-testid="footer"
     >
@@ -107,6 +107,20 @@ export function Footer({
                       </Link>
                     </li>
                   ))}
+                  {/* TODO: Remove when the page appears */}
+                  <li
+                    key="3"
+                    className="footer__nav-item"
+                  >
+                    <Link
+                      href="/documents/Visiting-rules.pdf"
+                      className="footer__nav-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Правила посещения
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -159,6 +173,8 @@ export function Footer({
               <Link
                 href="https://www.tourmalinecore.com/"
                 className="footer__copyright-link"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Tourmaline Core
                 <span className="footer__heart">❤</span>
@@ -196,6 +212,6 @@ export function Footer({
           ))}
         </ul>
       </div>
-    </div>
+    </footer>
   );
 }

@@ -6,23 +6,24 @@ export const MOCK_NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   {
     id: 1,
     name: `Льготы`,
-    link: `#`,
+    link: `https://vk.com/topic-71671982_48253263`,
   },
-  {
-    id: 2,
-    name: `Правила посещения`,
-    link: `#`,
-  },
-  {
-    id: 3,
-    name: `Адрес`,
-    link: `#`,
-  },
-  {
-    id: 4,
-    name: `Услуги`,
-    link: `#`,
-  },
+  // TODO: Uncomment when the page appears
+  // {
+  //   id: 2,
+  //   name: `Правила посещения`,
+  //   link: `#`,
+  // },
+  // {
+  //   id: 3,
+  //   name: `Адрес`,
+  //   link: `#`,
+  // },
+  // {
+  //   id: 4,
+  //   name: `Услуги`,
+  //   link: `#`,
+  // },
   {
     id: 5,
     name: `Документы`,
