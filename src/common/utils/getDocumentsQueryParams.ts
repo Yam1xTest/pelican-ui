@@ -2,11 +2,13 @@ import { DocumentsQuery } from "../types";
 
 export function getDocumentsQueryParams({
   id,
-  year,
+  yearsGte,
+  yearsLte,
   pageSize,
 }: {
   id: number,
-  year: number,
+  yearsGte: number,
+  yearsLte: number,
   pageSize: number,
 }): DocumentsQuery {
   return {
@@ -17,9 +19,9 @@ export function getDocumentsQueryParams({
           $eq: id,
         },
       },
-      createdAt: {
-        $gte: `${year - 2}-01-01T00:00:00.000Z`,
-        $lte: `${year}-12-31T00:00:00.000Z`,
+      date: {
+        $gte: `${yearsGte}-01-01`,
+        $lte: `${yearsLte}-12-31`,
       },
     },
     pagination: {

@@ -178,7 +178,7 @@ export type DocumentsQuery = {
         $eq: number,
       },
     },
-    createdAt: {
+    date: {
       $gte: string,
       $lte: string,
     },

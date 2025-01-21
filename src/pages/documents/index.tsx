@@ -63,7 +63,8 @@ export async function getServerSideProps() {
         .map(async (documentsCategoriesItem) => {
           const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
             id: documentsCategoriesItem.id!,
-            year,
+            yearsGte: year - 2,
+            yearsLte: year,
             pageSize: 1,
           }))}`);
 

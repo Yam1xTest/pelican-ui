@@ -41,7 +41,7 @@ export async function getServerSideProps({
   query,
 }: {
   query: {
-    id: string
+    id: string,
   }
 }) {
   if (process.env.APP_ENV === `static`) {
@@ -73,7 +73,8 @@ export async function getServerSideProps({
 
     const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
       id: +query.id,
-      year,
+      yearsGte: year,
+      yearsLte: year,
       pageSize: 100,
     }))}`);
 
