@@ -29,11 +29,19 @@ test.describe(`MapComponentTests`, () => {
       page,
     });
 
-    await expect(page.getByTestId(`map-image`))
+    const mapImage = page.getByTestId(`map-image`);
+
+    await mapImage.scrollIntoViewIfNeeded();
+
+    await expect(mapImage)
       .not
       .toHaveJSProperty(`naturalWidth`, 0);
 
-    await expect(page.getByTestId(`map-card-image`))
+    const mapCardImage = page.getByTestId(`map-card-image`);
+
+    await mapCardImage.scrollIntoViewIfNeeded();
+
+    await expect(mapCardImage)
       .not
       .toHaveJSProperty(`naturalWidth`, 0);
   });
