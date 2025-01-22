@@ -15,6 +15,7 @@ import { useRouter } from 'next/router';
 import { Header } from '../Header/Header';
 import { TicketsPopup } from '../TicketsPopup/TicketsPopup';
 import { Footer } from '../Footer/Footer';
+import { SkipLink } from '../SkipLink/SkipLink';
 
 type LayoutProps = GlobalComponentProps & PropsWithChildren;
 
@@ -81,6 +82,9 @@ export function Layout({
   return (
     <TicketPopupProvider>
       <div className="layout">
+        <SkipLink
+          mainElementRef={mainElementRef}
+        />
         <Header
           navigationLinks={navigationLinks}
           email={email}
@@ -100,8 +104,11 @@ export function Layout({
           overlayElementRef={overlayElementRef}
         />
         <main
+          id="main-content"
           ref={mainElementRef}
           className="main"
+          tabIndex={-1}
+          data-testid="main-content"
         >
           {children}
         </main>
