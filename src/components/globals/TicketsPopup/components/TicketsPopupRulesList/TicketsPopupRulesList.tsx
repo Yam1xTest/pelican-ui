@@ -26,6 +26,7 @@ export function TicketsPopupRulesList({
           key={alternativeText}
         >
           <Image
+            data-testid="rule-image"
             className="tickets-popup-rules-list__rule-img"
             src={url}
             alt={alternativeText}

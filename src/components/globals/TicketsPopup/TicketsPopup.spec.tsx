@@ -274,9 +274,26 @@ async function openTicketsPopupAccordions({
     })
     .click();
 
+  await waitRulesImage({
+    page,
+  });
+
   await page.getByTestId(`accordion-trigger`)
     .filter({
       hasText: `Возврат билетов`,
     })
     .click();
+}
+
+async function waitRulesImage({
+  page,
+}: {
+  page: Page
+}) {
+  for (const img of await page.getByTestId(`rule-image`)
+    .all()) {
+    // eslint-disable-next-line no-await-in-loop
+    await expect(img)
+      .toHaveJSProperty(`complete`, true);
+  }
 }

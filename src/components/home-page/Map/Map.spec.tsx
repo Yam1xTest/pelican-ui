@@ -29,9 +29,8 @@ test.describe(`MapComponentTests`, () => {
       page,
     });
 
-    await page.waitForSelector(`[data-testid="map-image"]`, {
-      state: `visible`,
-    });
+    await expect(page.getByTestId(`map-image`))
+      .toHaveJSProperty(`complete`, true);
   });
 
   test(`MobileTest`, mobileTest);
