@@ -82,13 +82,11 @@ async function desktopTest({
     width: Breakpoint.DESKTOP,
   });
 
-  await page.waitForSelector(`[data-testid="contact-zoo-large-image"]`, {
-    state: `visible`,
-  });
+  await expect(page.getByTestId(`contact-zoo-large-image`))
+    .toHaveJSProperty(`complete`, true);
 
-  await page.waitForSelector(`[data-testid="contact-zoo-small-image"]`, {
-    state: `visible`,
-  });
+  await expect(page.getByTestId(`contact-zoo-small-image`))
+    .toHaveJSProperty(`complete`, true);
 
   await expect(getContactZooByTestId({
     page,
