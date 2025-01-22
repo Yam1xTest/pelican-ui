@@ -30,7 +30,12 @@ test.describe(`MapComponentTests`, () => {
     });
 
     await expect(page.getByTestId(`map-image`))
-      .toHaveJSProperty(`complete`, true);
+      .not
+      .toHaveJSProperty(`naturalWidth`, 0);
+
+    await expect(page.getByTestId(`map-card-image`))
+      .not
+      .toHaveJSProperty(`naturalWidth`, 0);
   });
 
   test(`MobileTest`, mobileTest);

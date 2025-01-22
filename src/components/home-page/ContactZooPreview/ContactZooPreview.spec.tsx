@@ -16,7 +16,8 @@ test.describe(`ContactZooComponentTests`, () => {
     });
 
     await expect(page.getByTestId(`contact-zoo-large-image`))
-      .toHaveJSProperty(`complete`, true);
+      .not
+      .toHaveJSProperty(`naturalWidth`, 0);
   });
 
   test(`MobileTest`, mobileTest);
@@ -86,7 +87,8 @@ async function desktopTest({
   });
 
   await expect(page.getByTestId(`contact-zoo-small-image`))
-    .toHaveJSProperty(`complete`, true);
+    .not
+    .toHaveJSProperty(`naturalWidth`, 0);
 
   await expect(getContactZooByTestId({
     page,

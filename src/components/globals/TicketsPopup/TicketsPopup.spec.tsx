@@ -293,7 +293,6 @@ async function waitRulesImage({
   for (const img of await page.getByTestId(`rule-image`)
     .all()) {
     // eslint-disable-next-line no-await-in-loop
-    await expect(img)
-      .toHaveJSProperty(`complete`, true);
+    await expect(img).not.toHaveJSProperty(`naturalWidth`, 0);
   }
 }
