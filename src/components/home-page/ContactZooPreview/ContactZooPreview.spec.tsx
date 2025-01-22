@@ -15,7 +15,11 @@ test.describe(`ContactZooComponentTests`, () => {
       page,
     });
 
-    await expect(page.getByTestId(`contact-zoo-large-image`))
+    const largeImage = page.getByTestId(`contact-zoo-large-image`);
+
+    await largeImage.scrollIntoViewIfNeeded();
+
+    await expect(largeImage)
       .not
       .toHaveJSProperty(`naturalWidth`, 0);
   });
