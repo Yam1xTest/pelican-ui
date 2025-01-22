@@ -56,13 +56,16 @@ export default function App({
 }: AppProps) {
   const {
     pathname,
+    query,
   } = useRouter();
 
   useEffect(() => {
-    document.body.scroll({
-      top: 0,
-    });
-  }, [pathname]);
+    if (!query?.pageSize) {
+      document.body.scroll({
+        top: 0,
+      });
+    }
+  }, [pathname, query]);
 
   if (!pageProps.globalData) {
     return (

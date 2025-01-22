@@ -38,6 +38,7 @@ export function Hero({
       {isDesktop && <h1 className="hero__title">{title}</h1>}
       <div className="hero__image-wrapper">
         <Image
+          data-testid="hero-image"
           src={image.url}
           alt={image.alternativeText}
           sizes="(min-width: 768px) 50vw, 100vw"

@@ -23,7 +23,7 @@ export function MarkdownText({
               width="500"
               height="500"
               priority
-              alt={props.alt}
+              alt={props.alt || ``}
             />
           );
         },

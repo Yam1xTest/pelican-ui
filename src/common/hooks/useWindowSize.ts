@@ -13,5 +13,6 @@ export function useWindowWidth() {
     isTablet: windowWidth >= Breakpoint.TABLET,
     isTabletXl: windowWidth >= Breakpoint.TABLET_XL,
     isDesktop: windowWidth >= Breakpoint.DESKTOP,
+    isDesktopXL: windowWidth >= Breakpoint.DESKTOP_XL,
   };
 }

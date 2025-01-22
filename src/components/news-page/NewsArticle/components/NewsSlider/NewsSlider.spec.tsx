@@ -1,50 +1,22 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import {
-  gotoPage,
-  hideFooter,
-  hideHeader,
-  hideTickets,
-  setViewportSize,
-} from '@/playwright-tests/helpers';
+import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`MapComponentTests`, () => {
+test.describe(`NewsSliderComponentTest`, () => {
   test.beforeEach(async ({
     page,
   }) => {
     await gotoPage({
       page,
-      url: AppRoute.HOME,
+      url: `${AppRoute.NEWS}/1`,
     });
 
     await hideHeader({
       page,
     });
-
-    await hideFooter({
-      page,
-    });
-
-    await hideTickets({
-      page,
-    });
-
-    const mapImage = page.getByTestId(`map-image`);
-
-    await mapImage.scrollIntoViewIfNeeded();
-
-    await expect(mapImage)
-      .not
-      .toHaveJSProperty(`naturalWidth`, 0);
-
-    const mapCardImage = page.getByTestId(`map-card-image`);
-
-    await mapCardImage.scrollIntoViewIfNeeded();
-
-    await expect(mapCardImage)
-      .not
-      .toHaveJSProperty(`naturalWidth`, 0);
   });
+
+  test(`NavigationTest`, navigationTest);
 
   test(`MobileTest`, mobileTest);
 
@@ -57,6 +29,19 @@ test.describe(`MapComponentTests`, () => {
   test(`DesktopXlTest`, desktopXlTest);
 });
 
+async function navigationTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await page.getByTestId(`slider-card`)
+    .first()
+    .click();
+
+  await expect(page)
+    .toHaveURL(`${AppRoute.NEWS}/0`);
+}
+
 async function mobileTest({
   page,
 }: {
@@ -66,10 +51,10 @@ async function mobileTest({
     page,
   });
 
-  await expect(getMapByTestId({
+  await expect(getNewsSliderByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-mobile.png`);
+    .toHaveScreenshot(`news-slider-mobile.png`);
 }
 
 async function tabletTest({
@@ -82,10 +67,10 @@ async function tabletTest({
     width: Breakpoint.TABLET,
   });
 
-  await expect(getMapByTestId({
+  await expect(getNewsSliderByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-tablet.png`);
+    .toHaveScreenshot(`news-slider-tablet.png`);
 }
 
 async function tabletXlTest({
@@ -96,13 +81,12 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
-    height: 923,
   });
 
-  await expect(getMapByTestId({
+  await expect(getNewsSliderByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-tablet-xl.png`);
+    .toHaveScreenshot(`news-slider-tablet-xl.png`);
 }
 
 async function desktopTest({
@@ -113,13 +97,12 @@ async function desktopTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
-    height: 881,
   });
 
-  await expect(getMapByTestId({
+  await expect(getNewsSliderByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-desktop.png`);
+    .toHaveScreenshot(`news-slider-desktop.png`);
 }
 
 async function desktopXlTest({
@@ -130,19 +113,18 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 1219,
   });
 
-  await expect(getMapByTestId({
+  await expect(getNewsSliderByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-desktop-xl.png`);
+    .toHaveScreenshot(`news-slider-desktop-xl.png`);
 }
 
-function getMapByTestId({
+function getNewsSliderByTestId({
   page,
 }: {
   page: Page
 }) {
-  return page.getByTestId(`map`);
+  return page.getByTestId(`news-slider`);
 }

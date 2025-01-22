@@ -14,6 +14,14 @@ test.describe(`ContactZooComponentTests`, () => {
     await hideHeader({
       page,
     });
+
+    const largeImage = page.getByTestId(`contact-zoo-large-image`);
+
+    await largeImage.scrollIntoViewIfNeeded();
+
+    await expect(largeImage)
+      .not
+      .toHaveJSProperty(`naturalWidth`, 0);
   });
 
   test(`MobileTest`, mobileTest);
@@ -81,6 +89,10 @@ async function desktopTest({
     page,
     width: Breakpoint.DESKTOP,
   });
+
+  await expect(page.getByTestId(`contact-zoo-small-image`))
+    .not
+    .toHaveJSProperty(`naturalWidth`, 0);
 
   await expect(getContactZooByTestId({
     page,

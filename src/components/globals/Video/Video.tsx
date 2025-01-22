@@ -8,6 +8,7 @@ const Plyr = dynamic(() => import(`plyr-react`), {
 
 type VideoProps = {
   className?: string,
+  dataTestid?: string,
   title?: string,
   sources: Source,
   options?: Options,
@@ -15,6 +16,7 @@ type VideoProps = {
 
 export function Video({
   className,
+  dataTestid,
   title,
   sources,
   options,
@@ -23,6 +25,7 @@ export function Video({
     <div
       className={className}
       aria-hidden="true"
+      data-testid={dataTestid}
     >
       <Plyr
         source={{

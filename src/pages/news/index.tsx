@@ -13,7 +13,7 @@ export default function NewsPage({
   totalNews,
 }: {
   pageData: NewsPageProps,
-  news: NewsProps[],
+  news: Omit<NewsProps, 'innerContent' | 'publishedAt'>[],
   totalNews: number,
 }) {
   if (!pageData || !news) {

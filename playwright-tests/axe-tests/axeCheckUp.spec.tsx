@@ -38,6 +38,7 @@ test(`axeCheckUp`, async ({
     .includes(violation.id));
 
   if (violationsToCheck.length > 0) {
+    // eslint-disable-next-line no-console
     console.table(violationsToCheck.map((violation) => ({
       id: violation.id,
       impact: violation.impact,
@@ -47,10 +48,11 @@ test(`axeCheckUp`, async ({
 
     throw new Error(`Accessibility violations found: ${violationsToCheck.length}`);
   } else {
+    // eslint-disable-next-line no-console
     console.log(`No accessibility violations found.`);
   }
 
-  const filePath = `./test/playwright-report/axeReport/axe-report.json`;
+  const filePath = `./playwright-tests/axeReport/axe-report.json`;
   mkdirSync(dirname(filePath), {
     recursive: true,
   });

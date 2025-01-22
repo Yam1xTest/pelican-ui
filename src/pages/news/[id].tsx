@@ -4,14 +4,20 @@ import { api } from "@/src/common/utils/HttpClient";
 import { NewsArticle } from "@/src/components/news-page/NewsArticle/NewsArticle";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
-import { NewsCollectionListResponseDataItem } from '@/src/common/api-types';
+import { NewsCollectionListResponse, NewsCollectionListResponseDataItem } from '@/src/common/api-types';
+import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
+
+const NEWS_SLIDER_LIMIT = 4;
 
 type SingleNewsProps = Pick<NewsProps, 'innerContent' | 'publishedAt' | 'title'>;
+type OtherNewsProps = Pick<NewsProps, 'id' | 'description' | 'title'>[];
 
 export default function News({
   news,
+  otherNews,
 }: {
   news: SingleNewsProps
+  otherNews: OtherNewsProps
 }) {
   if (!news) {
     return <NotFound />;
@@ -31,6 +37,7 @@ export default function News({
         date={news.publishedAt}
         innerContent={news.innerContent}
       />
+      {otherNews.length > 0 && <NewsSlider news={otherNews} />}
     </>
   );
 }
@@ -43,24 +50,49 @@ export async function getServerSideProps({
   }
 }) {
   if (process.env.APP_ENV === `static`) {
+    const otherNews = NEWS.filter((news) => news.id !== +query.id)
+      .map((news) => ({
+        id: news.id,
+        title: news.title,
+        description: news.description || null,
+      }))
+      .slice(0, NEWS_SLIDER_LIMIT);
+
     return {
       props: {
         news: NEWS.find(({
           id,
         }) => id === +query.id) || null,
+        otherNews,
       },
     };
   }
 
+  const newsQueryParams = {
+    fields: [
+      `title`,
+      `innerContent`,
+      `publishedAt`,
+    ],
+  };
+
+  const otherNewsQueryParams = {
+    fields: [`title`, `description`],
+    sort: {
+      publishedAt: `desc`,
+    },
+    filters: {
+      id: {
+        $ne: query.id,
+      },
+    },
+    pagination: {
+      pageSize: NEWS_SLIDER_LIMIT,
+    },
+  };
+
   try {
-    const queryParams = {
-      fields: [
-        `title`,
-        `innerContent`,
-        `publishedAt`,
-      ],
-    };
-    const newsResponse = await api.get<NewsCollectionListResponseDataItem>(`/news/${query.id}?${qs.stringify(queryParams)}`);
+    const newsResponse = await api.get<NewsCollectionListResponseDataItem>(`/news/${query.id}?${qs.stringify(newsQueryParams)}`);
 
     const news: SingleNewsProps = {
       title: newsResponse.data.attributes!.title!,
@@ -68,9 +100,18 @@ export async function getServerSideProps({
       publishedAt: newsResponse.data.attributes?.publishedAt,
     };
 
+    const otherNewsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(otherNewsQueryParams)}`);
+
+    const otherNews: OtherNewsProps = otherNewsResponse.data!.map((otherNewsItem) => ({
+      id: otherNewsItem.id!,
+      title: otherNewsItem?.attributes!.title,
+      description: otherNewsItem?.attributes?.description,
+    }));
+
     return {
       props: {
         news,
+        otherNews,
       },
     };
   } catch {
