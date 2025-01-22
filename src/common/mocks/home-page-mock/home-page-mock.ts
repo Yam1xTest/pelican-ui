@@ -8,7 +8,7 @@ import { TEXT_AND_MEDIA } from "./text-and-media-mock";
 
 export const HOME_PAGE: HomePageProps = {
   id: 1,
-  title: `Домашняя страница`,
+  title: `Челябинский зоопарк: главная страница`,
   blocks: [
     HERO,
     TEXT_AND_MEDIA,
