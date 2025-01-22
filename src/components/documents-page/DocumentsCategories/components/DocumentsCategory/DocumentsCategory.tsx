@@ -1,6 +1,7 @@
 import Link from "next/link";
+import dayjs from "dayjs";
 import { AppRoute } from "@/src/common/enum";
-import { IconArrow } from "./components/IconArrow/IconArrow";
+import { IconArrow } from "@/src/components/documents-page/DocumentsCategories/components/DocumentsCategory/components/IconArrow/IconArrow";
 
 export function DocumentsCategory({
   className,
@@ -11,11 +12,19 @@ export function DocumentsCategory({
   id: number,
   title: string,
 }) {
+  const currentYear = dayjs()
+    .year();
+
   return (
     <li className={`${className} documents-category`}>
       <Link
         className="documents-category__wrapper"
-        href={`${AppRoute.DOCUMENTS}/${id}`}
+        href={{
+          pathname: `${AppRoute.DOCUMENTS}/${id}`,
+          query: {
+            year: currentYear,
+          },
+        }}
         data-testid="documents-category"
       >
         <h2 className="documents-category__title">{title}</h2>
