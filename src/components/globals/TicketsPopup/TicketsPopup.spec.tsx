@@ -87,7 +87,7 @@ async function mobileClickedTest({
     height: 1780,
   });
 
-  openTicketsPopupAccordions({
+  await openTicketsPopupAccordions({
     page,
   });
 
@@ -125,7 +125,7 @@ async function tabletClickedTest({
     height: 1556,
   });
 
-  openTicketsPopupAccordions({
+  await openTicketsPopupAccordions({
     page,
   });
 
@@ -163,7 +163,7 @@ async function tabletXlClickedTest({
     height: 1747,
   });
 
-  openTicketsPopupAccordions({
+  await openTicketsPopupAccordions({
     page,
   });
 
@@ -201,7 +201,7 @@ async function desktopClickedTest({
     height: 1704,
   });
 
-  openTicketsPopupAccordions({
+  await openTicketsPopupAccordions({
     page,
   });
 
@@ -239,7 +239,7 @@ async function desktopXlClickedTest({
     height: 2170,
   });
 
-  openTicketsPopupAccordions({
+  await openTicketsPopupAccordions({
     page,
   });
 

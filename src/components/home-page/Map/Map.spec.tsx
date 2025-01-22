@@ -28,6 +28,10 @@ test.describe(`MapComponentTests`, () => {
     await hideTickets({
       page,
     });
+
+    await page.waitForSelector(`[data-testid="map-image"]`, {
+      state: `visible`,
+    });
   });
 
   test(`MobileTest`, mobileTest);
