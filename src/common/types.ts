@@ -170,6 +170,24 @@ export type Meta = {
   }
 };
 
+export type DocumentsCategoriesQuery = {
+  populate: string[],
+  filters: {
+    category: {
+      id: {
+        $eq: number,
+      },
+    },
+    publishedAt: {
+      $gte: string,
+      $lte: string,
+    },
+  },
+  pagination: {
+    pageSize: number,
+  },
+};
+
 export type DocumentsQuery = {
   populate: string[],
   filters: {
@@ -179,8 +197,8 @@ export type DocumentsQuery = {
       },
     },
     date: {
-      $gte: string,
       $lte: string,
+      $gte: string,
     },
   },
   pagination: {

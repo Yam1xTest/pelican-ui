@@ -1,14 +1,41 @@
-import { DocumentsQuery } from "../types";
+import { DocumentsCategoriesQuery, DocumentsQuery } from "@/src/common/types";
 
-export function getDocumentsQueryParams({
+export function getDocumentsCategoriesQueryParams({
   id,
-  yearsGte,
-  yearsLte,
+  year,
   pageSize,
 }: {
   id: number,
-  yearsGte: number,
-  yearsLte: number,
+  year: number,
+  pageSize: number,
+})
+  : DocumentsCategoriesQuery {
+  return {
+    populate: [`files`, `category`],
+    filters: {
+      category: {
+        id: {
+          $eq: id,
+        },
+      },
+      publishedAt: {
+        $gte: `${year - 2}-01-01T00:00:00.000Z`,
+        $lte: `${year}-12-31T00:00:00.000Z`,
+      },
+    },
+    pagination: {
+      pageSize,
+    },
+  };
+}
+
+export function getDocumentsQueryParams({
+  id,
+  year,
+  pageSize,
+}: {
+  id: number,
+  year: string,
   pageSize: number,
 }): DocumentsQuery {
   return {
@@ -20,8 +47,8 @@ export function getDocumentsQueryParams({
         },
       },
       date: {
-        $gte: `${yearsGte}-01-01`,
-        $lte: `${yearsLte}-12-31`,
+        $lte: `${year}-12-31`,
+        $gte: `${year}-01-01`,
       },
     },
     pagination: {
