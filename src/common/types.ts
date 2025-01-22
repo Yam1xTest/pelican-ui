@@ -39,6 +39,7 @@ export type GlobalComponentProps = {
   email: string;
   phone: string;
   popupTicketBuyText: string;
+  ticketBuyLink: string;
   footerNavTitleLeft: string;
   footerNavTitleRight: string;
 };
@@ -134,6 +135,7 @@ export type TicketsComponentProps = {
   id: number
   __component: BlockTypes.TICKETS,
   generalTicketsTitle: string,
+  generalTicketsLink: string,
   subsidizedTicketsTitle: string,
   subsidizedTicketsSubtitle: string,
   generalTickets: Ticket[],
@@ -168,4 +170,22 @@ export type Meta = {
     pageCount: number;
     total: number
   }
+};
+
+export type DocumentsQuery = {
+  populate: string[],
+  filters: {
+    category: {
+      id: {
+        $eq: number,
+      },
+    },
+    createdAt: {
+      $gte: string,
+      $lte: string,
+    },
+  },
+  pagination: {
+    pageSize: number,
+  },
 };

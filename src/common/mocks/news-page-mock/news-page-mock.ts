@@ -7,6 +7,6 @@ export type NewsPageProps = {
 
 export const NEWS_PAGE: NewsPageProps = {
   id: 1,
-  title: `Новости`,
+  title: `Новости Челябинского зоопарка`,
   newsTitle: `Новости зоопарка`,
 };

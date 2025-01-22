@@ -14,6 +14,7 @@ import { AppRoute } from "../enum";
 export const EMAIL = `metodist@chelzoo.ru`;
 export const PHONE = `+7 (351) 263-18-64`;
 export const POPUP_TICKET_BUY_TEXT = `Билеты`;
+export const TICKET_BUY_LINK = `https://widget.afisha.yandex.ru/w/sessions/ticketsteam-803@37605507?clientKey=3bc42fbd-a832-49aa-a269-79188e18d9e1&regionId=56`;
 export const FOOTER_NAV_TITLE_LEFT = `Посетителям`;
 export const FOOTER_NAV_TITLE_RIGHT = `О зоопарке`;
 
@@ -21,23 +22,24 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   {
     id: 1,
     name: `Льготы`,
-    link: `#`,
+    link: `https://vk.com/topic-71671982_48253263`,
   },
-  {
-    id: 2,
-    name: `Правила посещения`,
-    link: `#`,
-  },
-  {
-    id: 3,
-    name: `Адрес`,
-    link: `#`,
-  },
-  {
-    id: 4,
-    name: `Услуги`,
-    link: `#`,
-  },
+  // TODO: Uncomment when the page appears
+  // {
+  //   id: 2,
+  //   name: `Правила посещения`,
+  //   link: `#`,
+  // },
+  // {
+  //   id: 3,
+  //   name: `Адрес`,
+  //   link: `#`,
+  // },
+  // {
+  //   id: 4,
+  //   name: `Услуги`,
+  //   link: `#`,
+  // },
   {
     id: 5,
     name: `Документы`,
@@ -54,13 +56,14 @@ export const FOOTER_USER_LINKS: GlobalComponentProps['footerUserLinks'] = [
   {
     id: 1,
     name: `Льготы`,
-    link: `#`,
+    link: `https://vk.com/topic-71671982_48253263`,
   },
-  {
-    id: 2,
-    name: `Услуги`,
-    link: `#`,
-  },
+  // TODO: Uncomment when the page appears
+  // {
+  //   id: 2,
+  //   name: `Услуги`,
+  //   link: `#`,
+  // },
 ];
 
 export const FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
@@ -74,11 +77,12 @@ export const FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
     name: `Документы`,
     link: AppRoute.DOCUMENTS,
   },
-  {
-    id: 3,
-    name: `Правила посещения`,
-    link: `#`,
-  },
+  // TODO: Uncomment when the page appears
+  // {
+  //   id: 3,
+  //   name: `Правила посещения`,
+  //   link: `#`,
+  // },
   {
     id: 4,
     name: `Оставить отзыв`,
@@ -90,21 +94,21 @@ export const OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [
   {
     id: 1,
     name: `Управление культуры администрации\u00A0г.\u00A0Челябинска`,
-    link: `#`,
+    link: `https://kultura174.ru/`,
     icon: iconAdministration1,
     alt: `Иконка`,
   },
   {
     id: 2,
     name: `Министерство культуры Челябинской области`,
-    link: `#`,
+    link: `https://mincult.gov74.ru/`,
     icon: iconAdministration2,
     alt: `Иконка`,
   },
   {
     id: 3,
     name: `Администрация г.\u00A0Челябинска`,
-    link: `#`,
+    link: `https://cheladmin.ru/`,
     icon: iconAdministration1,
     alt: `Иконка`,
   },

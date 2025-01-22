@@ -12,30 +12,50 @@ export function HeaderNavigation({
   const router = useRouter();
 
   return (
-    <ul className={className || `header-navigation`}>
-      {navigationLinks.map(({
-        id,
-        name,
-        link,
-      }) => (
+    <nav className={`${className} header-navigation`}>
+      <ul className="header-navigation__list">
+        {navigationLinks.map(({
+          id,
+          name,
+          link,
+        }) => (
+          <li
+            key={id}
+            className="header-navigation__item"
+          >
+            <Link
+              href={link}
+              className="header-navigation__link"
+              onClick={(e) => {
+                e.preventDefault();
+                if (router.pathname !== link) {
+                  router.push(link);
+                }
+              }}
+              aria-label={`Перейти на страницу ${name}`}
+              data-testid="header-navigation-link"
+            >
+              {name}
+            </Link>
+          </li>
+        ))}
+        {/* TODO: Remove when the page appears */}
         <li
-          key={id}
-          className={`${className || `header-navigation`}__item`}
+          key="2"
+          className="header-navigation__item"
         >
           <Link
-            href={link}
-            className={`${className || `header-navigation`}__link`}
-            onClick={(e) => {
-              e.preventDefault();
-              if (router.pathname !== link) {
-                router.push(link);
-              }
-            }}
+            href="/documents/Visiting-rules.pdf"
+            className="header-navigation__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Перейти на страницу Правила посещения"
+            data-testid="header-navigation-link"
           >
-            {name}
+            Правила посещения
           </Link>
         </li>
-      ))}
-    </ul>
+      </ul>
+    </nav>
   );
 }
