@@ -3,11 +3,11 @@ import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 import { DOCUMENTS_PAGE, DocumentsPageProps } from '@/src/common/mocks/documents-page-mock/documents-page-mock';
 import { api } from '@/src/common/utils/HttpClient';
 import { DOCUMENTS_CATEGORIES, DocumentsCategoriesProps } from '@/src/common/mocks/documents-page-mock/documents-categories-mock';
-import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
 import { DocumentListResponse, DocumentsCategoryListResponse } from '@/src/common/api-types';
 import qs from 'qs';
 import dayjs from 'dayjs';
-import { getDocumentsQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
+import { getDocumentsCategoriesQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
+import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
 
 export default function DocumentsPage({
   pageData,
@@ -61,10 +61,9 @@ export async function getServerSideProps() {
     const documentsCategories: DocumentsCategoriesProps[] = (await Promise.all(
       documentsCategoriesResponse.data!
         .map(async (documentsCategoriesItem) => {
-          const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
+          const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsCategoriesQueryParams({
             id: documentsCategoriesItem.id!,
-            yearsGte: year - 2,
-            yearsLte: year,
+            year,
             pageSize: 1,
           }))}`);
 

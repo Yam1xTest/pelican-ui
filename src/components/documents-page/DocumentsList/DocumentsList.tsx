@@ -1,18 +1,19 @@
 import { DocumentsListComponentProps } from "@/src/common/mocks/documents-page-mock/documents-list-mock";
 import { DocumentCard } from "@/src/components/documents-page/DocumentsList/components/DocumentCard/DocumentCard";
-import { useState } from "react";
-import dayjs from "dayjs";
-import { Tabs } from "../../globals/Tabs/Tabs";
+import Tabs from "@/src/components/globals/Tabs/Tabs";
 
 export function DocumentsList({
+  // TODO: Change props names to universal component
   categoryTitle,
+  availableYears,
   documents,
+  tabsRef,
 }: {
   categoryTitle: string,
+  availableYears: number[],
   documents: DocumentsListComponentProps[],
+  tabsRef: React.Ref<any>,
 }) {
-  const [chosenYear, setChosenYear] = useState<number>(0);
-
   return (
     <section
       className="documents container"
@@ -20,35 +21,32 @@ export function DocumentsList({
     >
       <h1 className="documents__title">{categoryTitle}</h1>
       <Tabs
-        setChosenYear={setChosenYear}
+        availableYears={availableYears}
+        ref={tabsRef}
       />
       <ul
         className="documents__list"
       >
-        {documents?.filter(({
+        {documents?.map(({
+          id,
           date,
-        }) => dayjs(date)
-          .year() === chosenYear)
-          .map(({
-            id,
-            date,
-            showDate,
-            title,
-            subtitle,
-            description,
-            files,
-          }) => (
-            <DocumentCard
-              className="documents__item"
-              key={id}
-              date={date}
-              showDate={showDate}
-              title={title}
-              subtitle={subtitle}
-              description={description}
-              files={files}
-            />
-          ))}
+          showDate,
+          title,
+          subtitle,
+          description,
+          files,
+        }) => (
+          <DocumentCard
+            className="documents__item"
+            key={id}
+            date={date}
+            showDate={showDate}
+            title={title}
+            subtitle={subtitle}
+            description={description}
+            files={files}
+          />
+        ))}
       </ul>
     </section>
   );

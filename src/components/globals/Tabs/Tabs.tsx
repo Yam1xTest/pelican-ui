@@ -1,51 +1,46 @@
-import dayjs from "dayjs";
-import { useEffect, useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-export function Tabs({
-  setChosenYear,
+function Tabs({
+  availableYears,
 }: {
-  setChosenYear: React.Dispatch<React.SetStateAction<number>>,
-}) {
-  const currentYear = dayjs()
-    .year();
-
-  useEffect(() => {
-    setChosenYear(currentYear);
-  }, []);
-
+  availableYears: number[],
+}, ref: React.Ref<any>) {
   const [isActiveIndex, setIsActiveIndex] = useState(0);
+  const router = useRouter();
 
-  function GetYears(): number[] {
-    const years = [];
-
-    for (let year = currentYear; year >= currentYear - 2; year--) {
-      years.push(year);
-    }
-    return years;
-  }
+  useImperativeHandle(ref, () => ({
+    setIsActiveIndex,
+  }));
 
   return (
     <ul
-      className="documents-tabs"
+      className="tabs"
     >
-      {GetYears()
+      {availableYears
         .map((year, index) => (
           <li
-            className="dockument-tabs__tab"
+            className="tabs__tab"
             key={year}
           >
-            <button
-              className={`documents-tabs__button documents-tabs__button${index === isActiveIndex ? `--active` : ``}`}
-              type="button"
-              onClick={() => {
-                setIsActiveIndex(index);
-                setChosenYear(year);
+            <Link
+              className={`tabs__button tabs__button${index === isActiveIndex ? `--active` : ``}`}
+              href={{
+                pathname: router.pathname,
+                query: {
+                  id: router.query.id,
+                  year,
+                },
               }}
+              onClick={() => setIsActiveIndex(index)}
             >
               {year}
-            </button>
+            </Link>
           </li>
         ))}
     </ul>
   );
 }
+
+export default forwardRef(Tabs);

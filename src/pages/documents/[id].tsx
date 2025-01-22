@@ -8,14 +8,29 @@ import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import dayjs from "dayjs";
 import Head from "next/head";
 import qs from "qs";
+import { useEffect, useRef } from "react";
 
 export default function DocumentsCategories({
   category,
+  queryYear,
+  availableYears,
   documents,
 }: {
   category: DocumentsCategoriesProps,
+  queryYear: string,
+  availableYears: number[],
   documents: DocumentsListComponentProps[],
 }) {
+  const tabsRef = useRef<{
+    setIsActiveIndex:(index: number) => void
+  }>(null);
+
+  useEffect(() => {
+    if (tabsRef.current) {
+      tabsRef.current.setIsActiveIndex(availableYears.indexOf(+queryYear));
+    }
+  }, []);
+
   if (!category) {
     return <NotFound />;
   }
@@ -31,7 +46,9 @@ export default function DocumentsCategories({
       </Head>
       <DocumentsList
         categoryTitle={category.title}
+        availableYears={availableYears}
         documents={documents}
+        tabsRef={tabsRef}
       />
     </>
   );
@@ -42,6 +59,7 @@ export async function getServerSideProps({
 }: {
   query: {
     id: string,
+    year: string,
   }
 }) {
   if (process.env.APP_ENV === `static`) {
@@ -68,13 +86,42 @@ export async function getServerSideProps({
   try {
     const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?${qs.stringify(categoryQueryParams)}`);
 
-    const year = dayjs()
+    const currentYear = dayjs()
       .year();
+
+    const availableYears: number[] = [];
+
+    await Promise.all(
+      Array.from({
+        length: 3,
+      })
+        .map(async (_, i) => {
+          const year = currentYear - i;
+          const yearsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
+            id: +query.id,
+            year: `${year}`,
+            pageSize: 1,
+          }))}`);
+
+          if (yearsResponse.meta?.pagination?.total) {
+            availableYears.push(year);
+          }
+        }),
+    );
+
+    availableYears.sort((a: number, b:number) => b - a);
+
+    if (!availableYears.includes(+query.year)) {
+      return {
+        props: {
+          category: null,
+        },
+      };
+    }
 
     const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
       id: +query.id,
-      yearsGte: year,
-      yearsLte: year,
+      year: query.year,
       pageSize: 100,
     }))}`);
 
@@ -103,6 +150,8 @@ export async function getServerSideProps({
           id: categoryResponse.data![0].id,
           title: categoryResponse.data![0].attributes!.title,
         },
+        queryYear: query.year,
+        availableYears,
         documents,
       },
     };
