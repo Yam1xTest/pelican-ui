@@ -2,6 +2,7 @@ import { AppRoute, Breakpoint } from '@/src/common/enum';
 import {
   gotoPage,
   hideHeader,
+  hideSkipLink,
   hideTextAndMedia,
   setViewportSize,
 } from '@/playwright-tests/helpers';
@@ -17,6 +18,10 @@ test.describe(`ServicesComponentTests`, () => {
     });
 
     await hideHeader({
+      page,
+    });
+
+    await hideSkipLink({
       page,
     });
 
