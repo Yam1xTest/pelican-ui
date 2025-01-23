@@ -8,7 +8,9 @@ export async function gotoPage({
   page: Page,
   url: string
 }) {
-  await page.goto(url);
+  await page.goto(url, {
+    waitUntil: `networkidle`,
+  });
 }
 
 export async function setViewportSize({
@@ -23,6 +25,30 @@ export async function setViewportSize({
   await page.setViewportSize({
     width,
     height,
+  });
+}
+const globalBlocks = [`header`, `footer`];
+const blocks = [
+  `hero`,
+  `text-and-media`,
+  `services`,
+  `contact-zoo`,
+  `tickets`,
+  `map`,
+];
+
+export async function hideAllHomeBlocksExceptTheTestedOne({
+  page,
+  testedBlock,
+}: {
+  page: Page,
+  testedBlock: string,
+}) {
+  [...globalBlocks, ...blocks].forEach(async (block) => {
+    if (block !== testedBlock) {
+      await page.getByTestId(block)
+        .evaluate((element) => element.style.display = `none`);
+    }
   });
 }
 
