@@ -129,6 +129,15 @@ export type HomePageProps = {
   )[];
 };
 
+export type ContactZooProps = {
+  id: number,
+  title: string;
+  blocks: (
+    HeroComponentProps
+    | TicketsComponentProps
+  )[];
+};
+
 export type NotFoundComponentProps = {
   id: number,
   __component: BlockTypes.NOT_FOUND,

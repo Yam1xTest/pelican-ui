@@ -2,6 +2,7 @@ export enum AppRoute {
   HOME = `/`,
   NEWS = `/news`,
   DOCUMENTS = `/documents`,
+  CONTACT_ZOO = `/contact-zoo`,
 }
 
 export enum Breakpoint {
