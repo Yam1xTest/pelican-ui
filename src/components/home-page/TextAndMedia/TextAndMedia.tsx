@@ -18,6 +18,7 @@ export function TextAndMedia({
       </div>
       <Video
         className="text-and-media__video"
+        dataTestid="text-and-media-video"
         title={video.alt}
         sources={
           {

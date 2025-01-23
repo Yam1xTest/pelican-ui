@@ -134,3 +134,4 @@ dist
 /playwright-report/
 /playwright-report/axeReport/
 /playwright-tests/playwright-test-results
+/playwright-tests/axeReport/

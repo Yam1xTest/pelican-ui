@@ -19,6 +19,7 @@ export function ContactZooPreviewImages({
     <div className={`${className} contact-zoo-images`}>
       <div className="contact-zoo-images__wrapper">
         <Image
+          data-testid="contact-zoo-large-image"
           className="contact-zoo-images__image"
           src={largeImage.url}
           alt={largeImage.alternativeText}
@@ -29,6 +30,7 @@ export function ContactZooPreviewImages({
       {isDesktop && smallImage && (
         <div className="contact-zoo-images__wrapper">
           <Image
+            data-testid="contact-zoo-small-image"
             className="contact-zoo-images__image"
             src={smallImage.url}
             alt={smallImage.alternativeText}
