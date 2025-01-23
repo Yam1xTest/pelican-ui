@@ -1,20 +1,12 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import {
-  gotoPage,
-  hideHeader,
-  hideMap,
-  setViewportSize,
-} from '@/playwright-tests/helpers';
+import { hideHeader, hideMap, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`FooterTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.HOME,
-    });
+    await page.goto(AppRoute.HOME);
 
     await hideHeader({
       page,

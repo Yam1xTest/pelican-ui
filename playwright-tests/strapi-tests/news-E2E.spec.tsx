@@ -5,17 +5,13 @@ import {
   deleteImages,
   uploadImage,
 } from './strapi-helpers';
-import { gotoPage } from '../helpers';
 
 // Todo skipped because it is not configured in the pipeline
 test.describe.skip(`News integration tests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await gotoPage({
-      page,
-      url: `http://pelican.local.tourmalinecore.internal:40110/cms/admin/`,
-    });
+    await page.goto(`http://pelican.local.tourmalinecore.internal:40110/cms/admin/`);
 
     await authenticate({
       page,
@@ -126,10 +122,7 @@ async function checkNewsPageOnFront({
   description: string,
   innerContent: string
 }) {
-  await gotoPage({
-    page,
-    url: `http://localhost:3000/news`,
-  });
+  await page.goto(`http://localhost:3000/news`);
 
   await expect(page.getByText(title))
     .toBeVisible();
@@ -150,10 +143,7 @@ async function deleteNews({
 }: {
   page: Page
 }) {
-  await gotoPage({
-    page,
-    url: `http://pelican.local.tourmalinecore.internal:40110/cms/admin/content-manager/collection-types/api::news-collection.news-collection`,
-  });
+  await page.goto(`http://pelican.local.tourmalinecore.internal:40110/cms/admin/content-manager/collection-types/api::news-collection.news-collection`);
 
   await clickByCheckboxAndDeleteWithConfirm({
     page,

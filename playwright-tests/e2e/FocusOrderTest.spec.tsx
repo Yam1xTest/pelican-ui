@@ -1,15 +1,12 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, hideTextAndMedia, setViewportSize } from '@/playwright-tests/helpers';
+import { hideTextAndMedia, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`Logical focus order verification`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.HOME,
-    });
+    await page.goto(AppRoute.HOME);
   });
 
   test(`MobileTest`, mobileTest);

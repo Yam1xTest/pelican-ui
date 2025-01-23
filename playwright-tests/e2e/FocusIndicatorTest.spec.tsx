@@ -1,5 +1,5 @@
 import { AppRoute } from '@/src/common/enum';
-import { gotoPage, hideTextAndMedia, setViewportSize } from '@/playwright-tests/helpers';
+import { hideTextAndMedia, setViewportSize } from '@/playwright-tests/helpers';
 import { test, Page } from '@playwright/test';
 import { assert } from 'console';
 
@@ -7,10 +7,7 @@ test.describe(`Visible focus indicator verification`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.HOME,
-    });
+    await page.goto(AppRoute.HOME);
 
     await hideTextAndMedia({
       page,

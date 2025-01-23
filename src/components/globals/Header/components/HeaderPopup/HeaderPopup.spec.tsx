@@ -1,5 +1,5 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, setViewportSize } from '@/playwright-tests/helpers';
+import { setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`HeaderPopupTests`, () => {
@@ -43,10 +43,7 @@ async function navigationTest({
 }: {
   page: Page,
 }) {
-  await gotoPage({
-    page,
-    url: AppRoute.NEWS,
-  });
+  await page.goto(AppRoute.NEWS);
 
   await getHeaderPopupButtonByTestId({
     page,

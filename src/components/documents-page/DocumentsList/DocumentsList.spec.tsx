@@ -1,4 +1,4 @@
-import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
+import { hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { test, expect, Page } from '@playwright/test';
 
@@ -6,10 +6,7 @@ test.describe(`DocumentsListComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await gotoPage({
-      page,
-      url: `${AppRoute.DOCUMENTS}/1`,
-    });
+    await page.goto(`${AppRoute.DOCUMENTS}/1`);
 
     await hideHeader({
       page,
