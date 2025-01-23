@@ -1,10 +1,6 @@
-export type DocumentsPageProps = {
-  id: number,
-  title: string,
-  documentsTitle: string;
-};
+import { DocumentsPageProps } from "../../types";
 
-export const DOCUMENTS_PAGE: DocumentsPageProps = {
+export const MOCK_DOCUMENTS_PAGE: DocumentsPageProps = {
   id: 1,
   title: `Документы`,
   documentsTitle: `Информация о\u00A0деятельности МБУК\u00A0«Зоопарк»`,

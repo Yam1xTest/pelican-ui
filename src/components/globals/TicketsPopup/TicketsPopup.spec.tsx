@@ -1,12 +1,15 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { setViewportSize } from '@/playwright-tests/helpers';
+import { gotoPage, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`TicketsPopupComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await page.goto(AppRoute.HOME);
+    await gotoPage({
+      page,
+      url: AppRoute.HOME,
+    });
 
     await page.getByTestId(`footer-tickets-popup-button`)
       .click();
@@ -84,7 +87,7 @@ async function mobileClickedTest({
     height: 1780,
   });
 
-  openTicketsPopupAccordions({
+  await openTicketsPopupAccordions({
     page,
   });
 
@@ -122,7 +125,7 @@ async function tabletClickedTest({
     height: 1556,
   });
 
-  openTicketsPopupAccordions({
+  await openTicketsPopupAccordions({
     page,
   });
 
@@ -160,7 +163,7 @@ async function tabletXlClickedTest({
     height: 1747,
   });
 
-  openTicketsPopupAccordions({
+  await openTicketsPopupAccordions({
     page,
   });
 
@@ -198,7 +201,7 @@ async function desktopClickedTest({
     height: 1704,
   });
 
-  openTicketsPopupAccordions({
+  await openTicketsPopupAccordions({
     page,
   });
 
@@ -236,7 +239,7 @@ async function desktopXlClickedTest({
     height: 2170,
   });
 
-  openTicketsPopupAccordions({
+  await openTicketsPopupAccordions({
     page,
   });
 
@@ -259,21 +262,48 @@ async function openTicketsPopupAccordions({
 }: {
   page: Page
 }) {
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Подробнее`,
-    })
-    .click();
+  await clickAccordionTriggerByText({
+    page,
+    text: `Подробнее`,
+  });
 
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Правила посещения`,
-    })
-    .click();
+  await clickAccordionTriggerByText({
+    page,
+    text: `Правила посещения`,
+  });
 
+  await waitRulesImage({
+    page,
+  });
+
+  await clickAccordionTriggerByText({
+    page,
+    text: `Возврат билетов`,
+  });
+}
+
+async function clickAccordionTriggerByText({
+  page,
+  text,
+}: {
+  page: Page,
+  text: string,
+}) {
   await page.getByTestId(`accordion-trigger`)
     .filter({
-      hasText: `Возврат билетов`,
+      hasText: text,
     })
     .click();
+}
+
+async function waitRulesImage({
+  page,
+}: {
+  page: Page
+}) {
+  for (const img of await page.getByTestId(`rule-image`)
+    .all()) {
+    // eslint-disable-next-line no-await-in-loop
+    await expect(img).not.toHaveJSProperty(`naturalWidth`, 0);
+  }
 }

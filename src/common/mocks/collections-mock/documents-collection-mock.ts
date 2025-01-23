@@ -1,24 +1,6 @@
-export type DocumentFileProps = {
-  id: number,
-  name: string,
-  url: string,
-  ext: string,
-};
+import { DocumentsProps } from "../../types";
 
-export type DocumentsListComponentProps = {
-  id: number,
-  date: string,
-  showDate: boolean,
-  title: string,
-  subtitle?: string,
-  description?: string,
-  files: DocumentFileProps[],
-  category: {
-    id: number,
-  }
-};
-
-export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
+export const MOCK_DOCUMENTS: DocumentsProps[] = [
   {
     id: 0,
     date: `07.07.2019`,

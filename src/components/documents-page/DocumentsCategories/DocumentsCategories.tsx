@@ -1,11 +1,11 @@
-import { DocumentsCategoriesProps } from "@/src/common/mocks/documents-page-mock/documents-categories-mock";
+import { DocumentsCategoriesProps, DocumentsPageProps } from "@/src/common/types";
 import { DocumentsCategory } from "@/src/components/documents-page/DocumentsCategories/components/DocumentsCategory/DocumentsCategory";
 
 export function DocumentsCategories({
   documentsTitle,
   documentsCategories,
 }: {
-  documentsTitle: string,
+  documentsTitle: DocumentsPageProps['documentsTitle'],
   documentsCategories: DocumentsCategoriesProps[],
 }) {
   return (

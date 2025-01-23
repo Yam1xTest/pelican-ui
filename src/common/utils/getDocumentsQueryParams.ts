@@ -1,4 +1,3 @@
-import { DocumentsQuery } from "../types";
 
 export function getDocumentsQueryParams({
   id,
@@ -8,7 +7,7 @@ export function getDocumentsQueryParams({
   id: number,
   year: number,
   pageSize: number,
-}): DocumentsQuery {
+}) {
   return {
     populate: [`files`, `category`],
     filters: {

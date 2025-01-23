@@ -1,13 +1,14 @@
 import Head from 'next/head';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
-import { DOCUMENTS_PAGE, DocumentsPageProps } from '@/src/common/mocks/documents-page-mock/documents-page-mock';
+import { MOCK_DOCUMENTS_PAGE } from '@/src/common/mocks/documents-page-mock/documents-page-mock';
 import { api } from '@/src/common/utils/HttpClient';
-import { DOCUMENTS_CATEGORIES, DocumentsCategoriesProps } from '@/src/common/mocks/documents-page-mock/documents-categories-mock';
+import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
 import { DocumentListResponse, DocumentsCategoryListResponse } from '@/src/common/api-types';
-import qs from 'qs';
-import dayjs from 'dayjs';
+import { DocumentsCategoriesProps, DocumentsPageProps } from '@/src/common/types';
 import { getDocumentsQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
+import dayjs from 'dayjs';
+import qs from 'qs';
 
 export default function DocumentsPage({
   pageData,
@@ -46,8 +47,8 @@ export async function getServerSideProps() {
   if (process.env.APP_ENV === `static`) {
     return {
       props: {
-        pageData: DOCUMENTS_PAGE,
-        documentCategories: DOCUMENTS_CATEGORIES,
+        pageData: MOCK_DOCUMENTS_PAGE,
+        documentCategories: MOCK_DOCUMENTS_CATEGORIES,
       },
     };
   }
@@ -79,7 +80,7 @@ export async function getServerSideProps() {
 
     return {
       props: {
-        pageData: DOCUMENTS_PAGE,
+        pageData: MOCK_DOCUMENTS_PAGE,
         documentCategories: documentsCategories,
       },
     };

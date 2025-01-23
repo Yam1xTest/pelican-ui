@@ -11,6 +11,10 @@ test.describe(`TextAndMediaComponentTests`, () => {
     await hideHeader({
       page,
     });
+
+    await expect(page.getByTestId(`text-and-media-video`))
+      .not
+      .toHaveJSProperty(`naturalWidth`, 0);
   });
 
   test(`MobileTest`, mobileTest);

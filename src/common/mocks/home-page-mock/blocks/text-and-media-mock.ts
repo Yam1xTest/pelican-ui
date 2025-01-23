@@ -1,7 +1,7 @@
-import { BlockTypes } from "../../enum";
-import { TextAndMediaComponentProps } from "../../types";
+import { BlockTypes } from "../../../enum";
+import { TextAndMediaComponentProps } from "../../../types";
 
-export const TEXT_AND_MEDIA: TextAndMediaComponentProps = {
+export const MOCK_TEXT_AND_MEDIA: TextAndMediaComponentProps = {
   id: 2,
   __component: BlockTypes.TEXT_AND_MEDIA,
   title: `В зоопарке\n141 вид животных`,

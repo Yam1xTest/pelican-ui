@@ -38,6 +38,7 @@ export function MapAddressCard({
         {isTablet && (
           <div className="map-address-card__image-wrapper">
             <Image
+              data-testid="map-card-image"
               loading="lazy"
               src={image.url}
               alt={image.alternativeText}
