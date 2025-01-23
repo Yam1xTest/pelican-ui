@@ -17,7 +17,8 @@
     &--active {
       border: none;
       color: $color-white;
-      background-color: $color-green;
+      background-color: $color-green-dark;
+      pointer-events: none;
     }
 
     @include desktop-xl {
