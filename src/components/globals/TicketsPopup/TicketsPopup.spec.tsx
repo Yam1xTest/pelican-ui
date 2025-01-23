@@ -262,25 +262,36 @@ async function openTicketsPopupAccordions({
 }: {
   page: Page
 }) {
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Подробнее`,
-    })
-    .click();
+  await clickAccordionTriggerByText({
+    page,
+    text: `Подробнее`,
+  });
 
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Правила посещения`,
-    })
-    .click();
+  await clickAccordionTriggerByText({
+    page,
+    text: `Правила посещения`,
+  });
 
   await waitRulesImage({
     page,
   });
 
+  await clickAccordionTriggerByText({
+    page,
+    text: `Возврат билетов`,
+  });
+}
+
+async function clickAccordionTriggerByText({
+  page,
+  text,
+}: {
+  page: Page,
+  text: string,
+}) {
   await page.getByTestId(`accordion-trigger`)
     .filter({
-      hasText: `Возврат билетов`,
+      hasText: text,
     })
     .click();
 }

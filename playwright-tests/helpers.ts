@@ -8,9 +8,7 @@ export async function gotoPage({
   page: Page,
   url: string
 }) {
-  await page.goto(url, {
-    waitUntil: `networkidle`,
-  });
+  await page.goto(url);
 }
 
 export async function setViewportSize({
