@@ -86,7 +86,8 @@ export function Tickets({
                     С остальными льготными категориями вы можете ознакомиться
                     <Link
                       className="tickets__link text-link"
-                      href="#"
+                      // TODO: Remove when the page appears
+                      href="https://vk.com/topic-71671982_48253263"
                       aria-label="Перейти на страницу со списком льгот"
                       data-testid="tickets-discounts-link"
                     >
@@ -94,7 +95,6 @@ export function Tickets({
                     </Link>
                   </p>
                 </li>
-
               )
             }
           </ul>

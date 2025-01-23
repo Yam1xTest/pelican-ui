@@ -27,6 +27,30 @@ export async function setViewportSize({
     height,
   });
 }
+const globalBlocks = [`header`, `footer`];
+const blocks = [
+  `hero`,
+  `text-and-media`,
+  `services`,
+  `contact-zoo`,
+  `tickets`,
+  `map`,
+];
+
+export async function hideAllHomeBlocksExceptTheTestedOne({
+  page,
+  testedBlock,
+}: {
+  page: Page,
+  testedBlock: string,
+}) {
+  [...globalBlocks, ...blocks].forEach(async (block) => {
+    if (block !== testedBlock) {
+      await page.getByTestId(block)
+        .evaluate((element) => element.style.display = `none`);
+    }
+  });
+}
 
 export async function hideHeader({
   page,

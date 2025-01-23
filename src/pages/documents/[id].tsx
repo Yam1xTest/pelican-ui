@@ -1,6 +1,7 @@
 import { DocumentListResponse, DocumentsCategoryListResponse } from "@/src/common/api-types";
-import { DOCUMENTS_CATEGORIES, DocumentsCategoriesProps } from "@/src/common/mocks/documents-page-mock/documents-categories-mock";
-import { DOCUMENTS_LIST, DocumentsListComponentProps } from "@/src/common/mocks/documents-page-mock/documents-list-mock";
+import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
+import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
+import { DocumentsCategoriesProps, DocumentsProps } from "@/src/common/types";
 import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryParams";
 import { api } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
@@ -14,7 +15,7 @@ export default function DocumentsCategories({
   documents,
 }: {
   category: DocumentsCategoriesProps,
-  documents: DocumentsListComponentProps[],
+  documents: DocumentsProps[],
 }) {
   if (!category) {
     return <NotFound />;
@@ -47,10 +48,10 @@ export async function getServerSideProps({
   if (process.env.APP_ENV === `static`) {
     return {
       props: {
-        category: DOCUMENTS_CATEGORIES.find(({
+        category: MOCK_DOCUMENTS_CATEGORIES.find(({
           id,
         }) => id === +query.id) || null,
-        documents: DOCUMENTS_LIST.filter(({
+        documents: MOCK_DOCUMENTS.filter(({
           category,
         }) => category.id === +query.id),
       },
@@ -77,7 +78,7 @@ export async function getServerSideProps({
       pageSize: 100,
     }))}`);
 
-    const documents: DocumentsListComponentProps[] = documentsResponse.data!
+    const documents: DocumentsProps[] = documentsResponse.data!
       .map((documentsItem) => ({
         id: documentsItem.id!,
         date: documentsItem.attributes!.publishedAt!,

@@ -6,17 +6,12 @@ import winterModeImage from "@/public/images/news/winter-mode.png";
 import vacancyImage from "@/public/images/news/vacancy.png";
 import zooDayImage from "@/public/images/news/zoo-day.png";
 import alpacaDayImage from "@/public/images/news/alpaca-day.png";
-import { CardProps } from "../../types";
+import { NewsProps } from "../../types";
 
-export type NewsProps = CardProps & {
-  publishedAt?: string;
-  innerContent: string;
-};
-
-const staticDate = new Date(`03.10.24`)
+const STATIC_DATE = new Date(`03.10.24`)
   .toJSON();
 
-export const NEWS: NewsProps[] = [
+export const MOCK_NEWS: NewsProps[] = [
   {
     id: 0,
     image: {
@@ -71,7 +66,7 @@ export const NEWS: NewsProps[] = [
     },
     title: `30 сентября — санитарный день`,
     description: `Завтра, 30 сентября, Челябинский зоопарк ЗАКРЫТ на санитарный день.`,
-    publishedAt: staticDate,
+    publishedAt: STATIC_DATE,
     innerContent: ``,
   },
   {
@@ -82,7 +77,7 @@ export const NEWS: NewsProps[] = [
     },
     title: `Переходим на зимний режим`,
     description: `Внимание! С 1 октября зоопарк переходит на зимний режим работы!`,
-    publishedAt: staticDate,
+    publishedAt: STATIC_DATE,
     innerContent: ``,
   },
   {
@@ -93,7 +88,7 @@ export const NEWS: NewsProps[] = [
     },
     title: `Вакансия`,
     description: `Открыта вакансия уборщика территории.`,
-    publishedAt: staticDate,
+    publishedAt: STATIC_DATE,
     innerContent: ``,
   },
   {
@@ -104,7 +99,7 @@ export const NEWS: NewsProps[] = [
     },
     title: `Приглашаем на День рождения зоопарка`,
     description: `14 сентября будем праздновать День рождения зоопарка.Приглашаем...`,
-    publishedAt: staticDate,
+    publishedAt: STATIC_DATE,
     innerContent: ``,
   },
   {
@@ -115,7 +110,7 @@ export const NEWS: NewsProps[] = [
     },
     title: `Всемирный день альпака`,
     description: `10 сентября отмечается день альпака.`,
-    publishedAt: staticDate,
+    publishedAt: STATIC_DATE,
     innerContent: ``,
   },
 ];

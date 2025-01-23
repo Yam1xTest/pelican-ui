@@ -1,8 +1,8 @@
 
-import { NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
 import { useEffect, useRef } from "react";
 import { GliderMethods } from "react-glider/dist/types";
 import Glider from 'react-glider';
+import { NewsProps } from "@/src/common/types";
 import { NewsSliderCard } from "./components/NewsSliderCard/NewsSliderCard";
 import { IconArrow } from "./components/IconArrow/IconArrow";
 import 'glider-js/glider.min.css';

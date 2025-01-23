@@ -1,5 +1,5 @@
 import { AppRoute } from "@/src/common/enum";
-import { NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
+import { NewsProps } from "@/src/common/types";
 import Link from "next/link";
 
 export function NewsSliderCard({

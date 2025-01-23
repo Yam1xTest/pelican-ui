@@ -1,4 +1,4 @@
-import { TICKET_BUY_LINK } from "@/src/common/mocks/globals-mock";
+import { MOCK_TICKET_BUY_LINK } from "@/src/common/mocks/globals-mock";
 import clsx from "clsx";
 import Link from "next/link";
 import { PropsWithChildren } from "react";
@@ -30,7 +30,7 @@ export function TicketsPopupCard({
         hasLink ? (
           <Link
             className="tickets-popup-card__link"
-            href={TICKET_BUY_LINK}
+            href={MOCK_TICKET_BUY_LINK}
             target="blank"
             data-testid="tickets-popup-card-link"
           >
