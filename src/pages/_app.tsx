@@ -8,19 +8,20 @@ import { Layout } from '../components/globals/Layout/Layout';
 import { NotFound } from '../components/not-found-page/NotFound/NotFound';
 import { WindowWidthProvider } from '../common/providers/WindowWidthProvider';
 import {
-  MOCK_EMAIL,
-  MOCK_NAVIGATION_LINKS,
-  MOCK_PHONE,
   MOCK_POPUP_TICKET_BUY_TEXT,
-  MOCK_TICKETS_POPUP_GENERAL,
-  MOCK_TICKETS_POPUP_REFUND_REASONS,
-  MOCK_TICKETS_POPUP_RULES_IMAGES,
-  MOCK_TICKETS_POPUP_SUBSIDIZED,
+  MOCK_TICKET_BUY_LINK,
+  MOCK_EMAIL,
+  MOCK_PHONE,
+  MOCK_NAVIGATION_LINKS,
   MOCK_FOOTER_ABOUT_LINKS,
-  MOCK_FOOTER_NAV_TITLE_LEFT,
-  MOCK_FOOTER_NAV_TITLE_RIGHT,
   MOCK_FOOTER_USER_LINKS,
   MOCK_OFFICIAL_LINKS,
+  MOCK_FOOTER_NAV_TITLE_LEFT,
+  MOCK_FOOTER_NAV_TITLE_RIGHT,
+  MOCK_TICKETS_POPUP_GENERAL,
+  MOCK_TICKETS_POPUP_SUBSIDIZED,
+  MOCK_TICKETS_POPUP_RULES_IMAGES,
+  MOCK_TICKETS_POPUP_REFUND_REASONS,
 } from '../common/mocks/globals-mock';
 
 const inter = localFont({
@@ -55,13 +56,16 @@ export default function App({
 }: AppProps) {
   const {
     pathname,
+    query,
   } = useRouter();
 
   useEffect(() => {
-    document.body.scroll({
-      top: 0,
-    });
-  }, [pathname]);
+    if (!query?.pageSize) {
+      document.body.scroll({
+        top: 0,
+      });
+    }
+  }, [pathname, query]);
 
   if (!pageProps.globalData) {
     return (
@@ -76,6 +80,7 @@ export default function App({
     email,
     phone,
     popupTicketBuyText,
+    ticketBuyLink,
     footerAboutLinks,
     footerUserLinks,
     officialLinks,
@@ -98,6 +103,7 @@ export default function App({
           email={email}
           phone={phone}
           popupTicketBuyText={popupTicketBuyText}
+          ticketBuyLink={ticketBuyLink}
           footerNavTitleLeft={footerNavTitleLeft}
           footerNavTitleRight={footerNavTitleRight}
           ticketsPopupGeneral={ticketsPopupGeneral}
@@ -126,6 +132,7 @@ App.getInitialProps = async () => ({
   pageProps: {
     globalData: {
       popupTicketBuyText: MOCK_POPUP_TICKET_BUY_TEXT,
+      ticketBuyLink: MOCK_TICKET_BUY_LINK,
       email: MOCK_EMAIL,
       phone: MOCK_PHONE,
       navigationLinks: MOCK_NAVIGATION_LINKS,

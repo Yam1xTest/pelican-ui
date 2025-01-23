@@ -15,6 +15,7 @@ export function Hero({
   image,
 }: Omit<HeroComponentProps, 'id' | '__component'>) {
   const {
+    isMobile,
     isDesktop,
   } = useWindowWidth();
 
@@ -27,9 +28,17 @@ export function Hero({
       className="hero container"
       data-testid="hero"
     >
-      {isDesktop && <div className="hero__title">{title}</div>}
+      {((isMobile && !isDesktop)) && (
+        <h1
+          className="visually-hidden"
+        >
+          {title}
+        </h1>
+      )}
+      {isDesktop && <h1 className="hero__title">{title}</h1>}
       <div className="hero__image-wrapper">
         <Image
+          data-testid="hero-image"
           src={image.url}
           alt={image.alternativeText}
           sizes="(min-width: 768px) 50vw, 100vw"
@@ -54,7 +63,7 @@ export function Hero({
             <Button
               className="hero__contact-button"
               theme="secondary"
-
+              data-testid="hero-contact-button"
             >
               Связаться
             </Button>

@@ -156,6 +156,12 @@
     }
   }
 
+  &__link {
+    display: block;
+    height: 100%;
+    min-height: inherit;
+  }
+
   &--general {
     position: relative;
     background-image: url("../../../../../../public/images/tickets/bg-leopard-green.png");
@@ -170,15 +176,15 @@
     @include tablet-xl {
       transition: background-image ease-out 0.4s;
 
-      &:focus,
-      &:hover {
+      &:has(a:hover),
+      &:has(a:focus) {
         background-image: url("../../../../../../public/images/tickets/bg-leopard-green.png");
       }
     }
   }
 
   &--subsidized {
-    background-image: url("../../../../../../public/images/tickets/bg-zebra.png");
+    background-image: url("../../../../../../public/images/backgrounds/bg-zebra.png");
 
     &:last-child {
       display: none;

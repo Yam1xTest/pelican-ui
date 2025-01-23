@@ -28,6 +28,22 @@ test.describe(`MapComponentTests`, () => {
     await hideTickets({
       page,
     });
+
+    const mapImage = page.getByTestId(`map-image`);
+
+    await mapImage.scrollIntoViewIfNeeded();
+
+    await expect(mapImage)
+      .not
+      .toHaveJSProperty(`naturalWidth`, 0);
+
+    const mapCardImage = page.getByTestId(`map-card-image`);
+
+    await mapCardImage.scrollIntoViewIfNeeded();
+
+    await expect(mapCardImage)
+      .not
+      .toHaveJSProperty(`naturalWidth`, 0);
   });
 
   test(`MobileTest`, mobileTest);

@@ -1,10 +1,13 @@
+import { MOCK_TICKET_BUY_LINK } from "@/src/common/mocks/globals-mock";
 import clsx from "clsx";
+import Link from "next/link";
 import { PropsWithChildren } from "react";
 
 type TicketsPopupCardProps = PropsWithChildren & {
   className?: string;
   category: string;
   price?: string;
+  hasLink: boolean;
   description?: string;
 };
 
@@ -13,6 +16,7 @@ export function TicketsPopupCard({
   category,
   price,
   description,
+  hasLink,
   children,
 }: TicketsPopupCardProps) {
   return (
@@ -22,20 +26,49 @@ export function TicketsPopupCard({
         className,
       )}
     >
-      <div className="tickets-popup-card__wrapper">
-        <div className="tickets-popup-card__category">{category}</div>
-        {
-          description && (
-            <div className="tickets-popup-card__description">{description}</div>
-          )
-        }
-      </div>
       {
-        price && (
-          <div className="tickets-popup-card__price">{price}</div>
+        hasLink ? (
+          <Link
+            className="tickets-popup-card__link"
+            href={MOCK_TICKET_BUY_LINK}
+            target="blank"
+            data-testid="tickets-popup-card-link"
+          >
+            <div className="tickets-popup-card__category-wrapper">
+              <div className="tickets-popup-card__category">{category}</div>
+              {
+                description && (
+                  <div className="tickets-popup-card__description">{description}</div>
+                )
+              }
+            </div>
+            {
+              price && (
+                <div className="tickets-popup-card__price">{price}</div>
+              )
+            }
+            {children}
+          </Link>
         )
+          : (
+            <div className="tickets-popup-card__inner">
+              <div className="tickets-popup-card__category-wrapper">
+                <div className="tickets-popup-card__category">{category}</div>
+                {
+                  description && (
+                    <div className="tickets-popup-card__description">{description}</div>
+                  )
+                }
+              </div>
+              {
+                price && (
+                  <div className="tickets-popup-card__price">{price}</div>
+                )
+              }
+              {children}
+            </div>
+          )
       }
-      {children}
     </li>
   );
 }

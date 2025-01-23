@@ -1,0 +1,64 @@
+.news-slider-card {
+  align-content: unset !important;
+  flex: 0 0 auto !important;
+  border-radius: 32px;
+  padding: 24px 20px;
+  background-color: $color-white;
+  transition: background-color 0.2s ease-in;
+
+  &__title {
+    @include body-1-medium;
+
+    margin-bottom: 4px;
+    color: $color-black-75;
+
+    @include tablet-xl {
+      @include body-2-medium;
+
+      margin-bottom: 8px;
+    }
+  }
+
+  &__description {
+    @include caption-1-regular;
+
+    color: $color-black-60;
+
+    @include tablet-xl {
+      @include text-regular;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $color-yellow;
+  }
+
+  & + & {
+    margin-left: 16px;
+
+    @include tablet {
+      margin-left: 12px;
+    }
+
+    @include tablet-xl {
+      margin-left: 24px;
+    }
+
+    @include desktop-xl {
+      margin-left: 32px;
+    }
+  }
+
+  @include tablet {
+    padding: 24px 20px 47px;
+  }
+
+  @include tablet-xl {
+    padding: 28px 24px;
+  }
+
+  @include desktop-xl {
+    padding: 36px 32px 39px;
+  }
+}

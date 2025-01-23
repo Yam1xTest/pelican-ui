@@ -10,6 +10,7 @@ import noTeasingImage from '@/public/images/tickets-popup/no-teasing.png';
 import { GlobalComponentProps } from '../../types';
 
 export const MOCK_POPUP_TICKET_BUY_TEXT = `Билеты`;
+export const MOCK_TICKET_BUY_LINK = `https://widget.afisha.yandex.ru/w/sessions/ticketsteam-803@37605507?clientKey=3bc42fbd-a832-49aa-a269-79188e18d9e1&regionId=56`;
 
 export const MOCK_TICKETS_POPUP_GENERAL: GlobalComponentProps['ticketsPopupGeneral'] = [
   {

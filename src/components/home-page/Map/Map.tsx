@@ -13,10 +13,12 @@ export function Map({
     <section
       className="map"
       data-testid="map"
+      id="map-section"
     >
       <Image
         loading="lazy"
         className="map__backgound-image"
+        data-testid="map-image"
         src={mapBackgroundImage}
         alt="Карта"
       />

@@ -11,8 +11,8 @@ export function NewsList({
   news,
   total,
 }: {
-  news: NewsProps[]
   newsTitle: string,
+  news: Omit<NewsProps, 'innerContent' | 'publishedAt'>[]
   total: number;
 }) {
   const [pageSize, setPageSize] = useState(NEWS_LIMIT);

@@ -5,6 +5,7 @@ export const MOCK_TICKETS: TicketsComponentProps = {
   id: 5,
   __component: BlockTypes.TICKETS,
   generalTicketsTitle: `Входные билеты`,
+  generalTicketsLink: `https://widget.afisha.yandex.ru/w/sessions/ticketsteam-803@37605507?clientKey=3bc42fbd-a832-49aa-a269-79188e18d9e1&regionId=56`,
   subsidizedTicketsTitle: `Льготные билеты`,
   subsidizedTicketsSubtitle: `Купить льготный билет можно только на кассе зоопарка.`,
   generalTickets: [

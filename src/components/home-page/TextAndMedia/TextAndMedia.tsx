@@ -18,6 +18,7 @@ export function TextAndMedia({
       </div>
       <Video
         className="text-and-media__video"
+        dataTestid="text-and-media-video"
         title={video.alt}
         sources={
           {
@@ -30,7 +31,7 @@ export function TextAndMedia({
             active: true,
           },
           muted: true,
-          controls: [`play-large`],
+          controls: [],
           autoplay: process.env.APP_ENV !== `static`,
           fullscreen: {
             enabled: false,

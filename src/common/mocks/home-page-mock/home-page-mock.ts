@@ -8,7 +8,7 @@ import { HomePageProps } from "../../types";
 
 export const MOCK_HOME_PAGE: HomePageProps = {
   id: 1,
-  title: `Домашняя страница`,
+  title: `Челябинский зоопарк: главная страница`,
   blocks: [
     MOCK_HERO,
     MOCK_TEXT_AND_MEDIA,
