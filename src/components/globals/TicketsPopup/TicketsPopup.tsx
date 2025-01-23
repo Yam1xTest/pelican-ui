@@ -4,14 +4,14 @@ import { useTicketPopup } from '@/src/common/hooks/useTicketPopup';
 import Link from 'next/link';
 import { MutableRefObject, useEffect } from 'react';
 import FocusLock from 'react-focus-lock';
-import { Accordion } from "../Accordion/Accordion";
 import crossIcon from "@/public/images/tickets-popup/icon-cross.svg";
-import { TicketsPopupCard } from './components/TicketsPopupCard/TicketsPopupCard';
 import iconChevron from "@/public/images/svg/icon-chevron.svg";
 import iconChevronGreen from "@/public/images/svg/icon-chevron-green.svg";
+import { MOCK_POPUP_TICKET_BUY_TEXT, MOCK_TICKET_BUY_LINK } from '@/src/common/mocks/globals-mock/ticket-mock';
+import { Accordion } from "../Accordion/Accordion";
+import { TicketsPopupCard } from './components/TicketsPopupCard/TicketsPopupCard';
 import { TicketsPopupRulesList } from './components/TicketsPopupRulesList/TicketsPopupRulesList';
 import { TicketsPopupRefundReasons } from './components/TicketsPopupRefundReasons/TicketsPopupRefundReasons';
-import { MOCK_POPUP_TICKET_BUY_TEXT, MOCK_TICKET_BUY_LINK } from '@/src/common/mocks/globals-mock/ticket-mock';
 
 export function TicketsPopup({
   ticketsPopupGeneral,
