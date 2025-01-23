@@ -35,6 +35,7 @@ async function mobileTest({
   });
 
   const expectedFocusOrder = [
+    `skip-link`,
     `header-logo`,
     `header-popup-button`,
     `hero-contact-button`,
@@ -123,6 +124,7 @@ async function desktopTest({
   });
 
   const expectedFocusOrder = [
+    `skip-link`,
     `header-logo`,
     `header-navigation-link`,
     `header-navigation-link`,

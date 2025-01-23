@@ -61,6 +61,15 @@ export async function hideHeader({
     .evaluate((element) => element.style.visibility = `hidden`);
 }
 
+export async function hideSkipLink({
+  page,
+}: {
+  page: Page,
+}) {
+  await page.getByTestId(`skip-link`)
+    .evaluate((element) => element.style.visibility = `hidden`);
+}
+
 export async function hideFooter({
   page,
 }: {
