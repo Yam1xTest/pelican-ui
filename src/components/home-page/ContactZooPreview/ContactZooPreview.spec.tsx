@@ -20,7 +20,7 @@ test.describe(`ContactZooComponentTests`, () => {
       page,
     });
 
- 	await hideSkipLink({
+    await hideSkipLink({
       page,
     });
 
