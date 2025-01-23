@@ -7,13 +7,17 @@
   z-index: $skip-link;
   display: block;
   padding: 15px;
-  font-size: 18px;
+  width: 80%;
   color: $color-white;
   background: $color-green-dark;
   transform: translateY(-100%);
 
   &:focus {
     transform: translate(-50%, 0);
+  }
+
+  @include tablet {
+    width: auto;
   }
 }
 
