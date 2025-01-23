@@ -26,6 +26,8 @@ async function mobileTest({
 
   await page.keyboard.press(`Tab`);
 
+  await page.waitForTimeout(500);
+
   await page.getByTestId(`skip-link`)
     .click();
 
