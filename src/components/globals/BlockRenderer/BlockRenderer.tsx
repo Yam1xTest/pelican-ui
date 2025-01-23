@@ -67,7 +67,9 @@ type Block = HeroComponentProps
   | ContactZooPreviewComponentProps
   | MapComponentProps
   | TicketsComponentProps
-  | NotFoundComponentProps;
+  | NotFoundComponentProps
+  // | ContactZooHeroComponentProps
+  ;
 
 export const BlockRenderer = ({
   block,
@@ -82,6 +84,18 @@ export const BlockRenderer = ({
     case BlockTypes.HERO:
       return (
         <Hero
+          title={block.title}
+          image={block.image}
+          scheduleTitle={block.scheduleTitle}
+          scheduleTimetables={block.scheduleTimetables}
+          infoCardTitle={block.infoCardTitle}
+          infoCardDescription={block.infoCardDescription}
+        />
+      );
+    case BlockTypes.CONTACT_ZOO_HERO:
+      return (
+        <Hero
+          isContactZoo
           title={block.title}
           image={block.image}
           scheduleTitle={block.scheduleTitle}
