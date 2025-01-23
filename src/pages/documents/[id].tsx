@@ -7,6 +7,7 @@ import { DocumentsList } from "@/src/components/documents-page/DocumentsList/Doc
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import dayjs from "dayjs";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import qs from "qs";
 import { useEffect, useRef } from "react";
 
@@ -25,7 +26,20 @@ export default function DocumentsCategories({
     setIsActiveIndex:(index: number) => void
   }>(null);
 
+  const router = useRouter();
+
   useEffect(() => {
+    if (queryYear) {
+      router.push(
+        {
+          query: {
+            ...router.query,
+            year: queryYear,
+          },
+        },
+      );
+    }
+
     if (tabsRef.current) {
       tabsRef.current.setIsActiveIndex(availableYears.indexOf(+queryYear));
     }
@@ -111,7 +125,9 @@ export async function getServerSideProps({
 
     availableYears.sort((a: number, b:number) => b - a);
 
-    if (!availableYears.includes(+query.year)) {
+    const lastYear = String(availableYears[0]);
+
+    if (query.year && !availableYears.includes(+(query.year))) {
       return {
         props: {
           category: null,
@@ -121,7 +137,7 @@ export async function getServerSideProps({
 
     const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
       id: +query.id,
-      year: query.year,
+      year: query.year || lastYear,
       pageSize: 100,
     }))}`);
 
@@ -150,7 +166,7 @@ export async function getServerSideProps({
           id: categoryResponse.data![0].id,
           title: categoryResponse.data![0].attributes!.title,
         },
-        queryYear: query.year,
+        queryYear: query.year || lastYear,
         availableYears,
         documents,
       },
