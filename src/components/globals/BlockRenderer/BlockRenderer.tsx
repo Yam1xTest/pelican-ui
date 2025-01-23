@@ -13,7 +13,7 @@ import {
 import dynamic from 'next/dynamic';
 
 const Hero = dynamic(
-  () => import(`../../home-page/Hero/Hero`).then((component) => component.Hero),
+  () => import(`../Hero/Hero`).then((component) => component.Hero),
   {
     ssr: false,
   },
