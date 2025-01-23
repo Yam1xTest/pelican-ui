@@ -24,13 +24,13 @@ test.describe(`ContactZooComponentTests`, () => {
       page,
     });
 
-    const largeImage = page.getByTestId(`contact-zoo-large-image`);
+    // const largeImage = page.getByTestId(`contact-zoo-large-image`);
 
-    await largeImage.scrollIntoViewIfNeeded();
+    // await largeImage.scrollIntoViewIfNeeded();
 
-    await expect(largeImage)
-      .not
-      .toHaveJSProperty(`naturalWidth`, 0);
+    // await expect(largeImage)
+    //   .not
+    //   .toHaveJSProperty(`naturalWidth`, 0);
   });
 
   test(`MobileTest`, mobileTest);

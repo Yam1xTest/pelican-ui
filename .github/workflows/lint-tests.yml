@@ -117,7 +117,7 @@ jobs:
 
     - uses: actions/upload-artifact@v4
       # we don't really need successful runs reports
-      if: always()
+      if: failure()
       with:
         name: blob-report-${{ matrix.shardIndex }}
         path: blob-report
@@ -125,7 +125,7 @@ jobs:
 
   merge-reports:
     # we don't really need successful runs reports
-    if: always()
+    if: failure()
     runs-on: ubuntu-24.04 
     needs: [check-lint,run-tests]
 
