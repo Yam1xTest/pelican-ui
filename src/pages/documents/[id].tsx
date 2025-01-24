@@ -1,6 +1,11 @@
 import { DocumentListResponse, DocumentsCategoryListResponse } from "@/src/common/api-types";
 import { DOCUMENTS_CATEGORIES, DocumentsCategoriesProps } from "@/src/common/mocks/documents-page-mock/documents-categories-mock";
-import { DOCUMENTS_LIST, DocumentsListComponentProps } from "@/src/common/mocks/documents-page-mock/documents-list-mock";
+import {
+  DOCUMENTS_LIST,
+  DOCUMENTS_TABS,
+  DocumentsListComponentProps,
+  DocumentsTabsComponentProps,
+} from "@/src/common/mocks/documents-page-mock/documents-list-mock";
 import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryParams";
 import { api } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
@@ -13,15 +18,18 @@ import { useEffect, useRef } from "react";
 
 export default function DocumentsCategories({
   category,
-  queryYear,
-  availableYears,
+  tabs,
   documents,
 }: {
   category: DocumentsCategoriesProps,
-  queryYear: string,
-  availableYears: number[],
+  tabs: DocumentsTabsComponentProps,
   documents: DocumentsListComponentProps[],
 }) {
+  const {
+    queryYear,
+    availableYears,
+  } = tabs;
+
   const tabsRef = useRef<{
     setIsActiveIndex:(index: number) => void
   }>(null);
@@ -82,6 +90,7 @@ export async function getServerSideProps({
         category: DOCUMENTS_CATEGORIES.find(({
           id,
         }) => id === +query.id) || null,
+        tabs: DOCUMENTS_TABS,
         documents: DOCUMENTS_LIST.filter(({
           category,
         }) => category.id === +query.id),
@@ -127,7 +136,7 @@ export async function getServerSideProps({
 
     const lastYear = String(availableYears[0]);
 
-    if (query.year && !availableYears.includes(+(query.year))) {
+    if (query.year && !availableYears.includes(+query.year)) {
       return {
         props: {
           category: null,
@@ -166,8 +175,10 @@ export async function getServerSideProps({
           id: categoryResponse.data![0].id,
           title: categoryResponse.data![0].attributes!.title,
         },
-        queryYear: query.year || lastYear,
-        availableYears,
+        tabs: {
+          queryYear: query.year || lastYear,
+          availableYears,
+        },
         documents,
       },
     };
