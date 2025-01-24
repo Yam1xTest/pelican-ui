@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-import { hideHeader, setViewportSize } from '@/playwright-tests/helpers';
+import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { test, expect, Page } from '@playwright/test';
 
@@ -7,7 +7,10 @@ test.describe(`DocumentsCategoriesListComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await page.goto(AppRoute.DOCUMENTS);
+    await gotoPage({
+      page,
+      url: AppRoute.DOCUMENTS,
+    });
 
     await hideHeader({
       page,
@@ -47,7 +50,10 @@ async function routeTest({
 
   await page.goBack();
 
-  await page.goto(`${AppRoute.DOCUMENTS}/100`);
+  await gotoPage({
+    page,
+    url: `${AppRoute.DOCUMENTS}/100`,
+  });
   await page.getByTestId(`not-found`);
 }
 

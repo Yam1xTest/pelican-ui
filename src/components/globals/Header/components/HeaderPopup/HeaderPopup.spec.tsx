@@ -1,12 +1,15 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { setViewportSize } from '@/playwright-tests/helpers';
+import { gotoPage, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`HeaderPopupTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await page.goto(AppRoute.HOME);
+    await gotoPage({
+      page,
+      url: AppRoute.HOME,
+    });
   });
 
   test(`ActionTest`, actionTest);
@@ -43,7 +46,10 @@ async function navigationTest({
 }: {
   page: Page,
 }) {
-  await page.goto(AppRoute.NEWS);
+  await gotoPage({
+    page,
+    url: AppRoute.NEWS,
+  });
 
   await getHeaderPopupButtonByTestId({
     page,

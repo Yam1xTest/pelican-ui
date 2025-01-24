@@ -1,12 +1,15 @@
 import { AppRoute } from '@/src/common/enum';
-import { setViewportSize } from '@/playwright-tests/helpers';
+import { gotoPage, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`SkipLinkTest`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await page.goto(AppRoute.HOME);
+    await gotoPage({
+      page,
+      url: AppRoute.HOME,
+    });
   });
 
   test(`MobileTest`, mobileTest);

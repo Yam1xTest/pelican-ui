@@ -1,12 +1,15 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { hideHeader, setViewportSize } from '@/playwright-tests/helpers';
+import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`NewsArticleComponentTest`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await page.goto(`${AppRoute.NEWS}/1`);
+    await gotoPage({
+      page,
+      url: `${AppRoute.NEWS}/1`,
+    });
 
     await hideHeader({
       page,

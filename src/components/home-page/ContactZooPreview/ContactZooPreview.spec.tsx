@@ -1,12 +1,20 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { hideHeader, hideSkipLink, setViewportSize } from '@/playwright-tests/helpers';
+import {
+  gotoPage,
+  hideHeader,
+  hideSkipLink,
+  setViewportSize,
+} from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`ContactZooComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await page.goto(AppRoute.HOME);
+    await gotoPage({
+      page,
+      url: AppRoute.HOME,
+    });
 
     await hideHeader({
       page,

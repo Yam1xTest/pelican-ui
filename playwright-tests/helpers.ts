@@ -1,6 +1,22 @@
 import { Breakpoint } from "@/src/common/enum";
 import { Page } from "@playwright/test";
 
+export async function gotoPage({
+  page,
+  url,
+}: {
+  page: Page,
+  url: string
+}) {
+  // await page.goto(url);
+
+  // If the images don't have time to load on the page, use this
+  // networkidle - https://playwright.dev/docs/api/class-frame#frame-goto
+  await page.goto(url, {
+    waitUntil: `networkidle`,
+  });
+}
+
 export async function setViewportSize({
   page,
   width = Breakpoint.MOBILE,
