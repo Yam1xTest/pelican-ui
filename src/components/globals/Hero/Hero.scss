@@ -1,4 +1,5 @@
 .hero {
+  $this: &;
   $buttons-gap-mobile: 12px;
   $buttons-gap-tablet-xl: 16px;
 
@@ -96,6 +97,12 @@
 
     @include tablet-xl {
       gap: 16px;
+    }
+  }
+
+  &--contact-zoo {
+    #{$this}__title {
+      color: $color-brown;
     }
   }
 

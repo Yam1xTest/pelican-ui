@@ -4,7 +4,7 @@ import { HeroComponentProps } from '../../../types';
 
 export const MOCK_HERO: HeroComponentProps = {
   id: 1,
-  __component: BlockTypes.HERO,
+  __component: BlockTypes.CONTACT_ZOO_HERO,
   title: `Контактный зоопарк`,
   image: {
     url: heroImage,
