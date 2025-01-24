@@ -18,6 +18,20 @@ export type DocumentsListComponentProps = {
   }
 };
 
+export type DocumentsTabsComponentProps = {
+  queryYear: string,
+  availableYears: number[],
+};
+
+export const DOCUMENTS_TABS: DocumentsTabsComponentProps = {
+  queryYear: `2025`,
+  availableYears: [
+    2025,
+    2024,
+    2023,
+  ],
+};
+
 export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
   {
     id: 0,
