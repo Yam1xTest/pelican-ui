@@ -43,6 +43,11 @@ To run the tests you need to run the website dev server executing the following 
 npm run dev:static
 ```
 
+This mode is designed to create screenshots, and it is also recommended to use it to run tests. Image optimization is disabled in this mode:
+```bash
+npm run dev:static:take-screenshots
+```
+
 When you see that the website dev server is started successfully and you can open it at http://localhost:3000 while keeping the first terminal alive in a separate terminal you can run the tests in headless mode (no browser UI) executing:
 ```bash
 npm run test-e2e

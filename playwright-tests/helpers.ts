@@ -4,12 +4,22 @@ import { Page } from "@playwright/test";
 export async function gotoPage({
   page,
   url,
+  useNetworkidle = true,
 }: {
   page: Page,
   url: string
+  useNetworkidle?: boolean
 }) {
+  // Allows you to accurately wait for content on the site to load.
+  /* Do not use networkidle it for sections where requests take a long time,
+     otherwise the test may fail due to a timeout.
+  */
+  // networkidle - https://playwright.dev/docs/api/class-frame#frame-goto
   await page.goto(url, {
-    waitUntil: `networkidle`,
+    ...(
+      useNetworkidle && {
+        waitUntil: `networkidle`,
+      }),
   });
 }
 
@@ -25,30 +35,6 @@ export async function setViewportSize({
   await page.setViewportSize({
     width,
     height,
-  });
-}
-const globalBlocks = [`header`, `footer`];
-const blocks = [
-  `hero`,
-  `text-and-media`,
-  `services`,
-  `contact-zoo`,
-  `tickets`,
-  `map`,
-];
-
-export async function hideAllHomeBlocksExceptTheTestedOne({
-  page,
-  testedBlock,
-}: {
-  page: Page,
-  testedBlock: string,
-}) {
-  [...globalBlocks, ...blocks].forEach(async (block) => {
-    if (block !== testedBlock) {
-      await page.getByTestId(block)
-        .evaluate((element) => element.style.display = `none`);
-    }
   });
 }
 

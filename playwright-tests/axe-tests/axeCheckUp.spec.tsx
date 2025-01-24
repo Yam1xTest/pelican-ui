@@ -3,6 +3,7 @@ import AxePuppeteer from '@axe-core/playwright';
 import { writeFileSync, mkdirSync } from 'fs';
 import { dirname } from 'path';
 import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { gotoPage } from '../helpers';
 
 test(`axeCheckUp`, async ({
   page,
@@ -11,7 +12,11 @@ test(`axeCheckUp`, async ({
     width: Breakpoint.DESKTOP_XL,
     height: 1080,
   });
-  await page.goto(AppRoute.HOME);
+
+  await gotoPage({
+    page,
+    url: AppRoute.HOME,
+  });
 
   const results = await new AxePuppeteer({
     page,
