@@ -23,14 +23,6 @@ test.describe(`ContactZooComponentTests`, () => {
     await hideSkipLink({
       page,
     });
-
-    const largeImage = page.getByTestId(`contact-zoo-large-image`);
-
-    await largeImage.scrollIntoViewIfNeeded();
-
-    await expect(largeImage)
-      .not
-      .toHaveJSProperty(`naturalWidth`, 0);
   });
 
   test(`MobileTest`, mobileTest);

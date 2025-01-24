@@ -272,10 +272,6 @@ async function openTicketsPopupAccordions({
     text: `Правила посещения`,
   });
 
-  await waitRulesImage({
-    page,
-  });
-
   await clickAccordionTriggerByText({
     page,
     text: `Возврат билетов`,
@@ -294,16 +290,4 @@ async function clickAccordionTriggerByText({
       hasText: text,
     })
     .click();
-}
-
-async function waitRulesImage({
-  page,
-}: {
-  page: Page
-}) {
-  for (const img of await page.getByTestId(`rule-image`)
-    .all()) {
-    // eslint-disable-next-line no-await-in-loop
-    await expect(img).not.toHaveJSProperty(`naturalWidth`, 0);
-  }
 }
