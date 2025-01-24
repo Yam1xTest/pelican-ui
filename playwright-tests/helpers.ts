@@ -4,16 +4,22 @@ import { Page } from "@playwright/test";
 export async function gotoPage({
   page,
   url,
+  useNetworkidle = true,
 }: {
   page: Page,
   url: string
+  useNetworkidle?: boolean
 }) {
-  // await page.goto(url);
-
-  // If the images don't have time to load on the page, use this
+  // Allows you to accurately wait for content on the site to load.
+  /* Do not use networkidle it for sections where requests take a long time,
+     otherwise the test may fail due to a timeout.
+  */
   // networkidle - https://playwright.dev/docs/api/class-frame#frame-goto
   await page.goto(url, {
-    waitUntil: `networkidle`,
+    ...(
+      useNetworkidle && {
+        waitUntil: `networkidle`,
+      }),
   });
 }
 
