@@ -19,6 +19,13 @@ const Hero = dynamic(
   },
 );
 
+const HomepageHero = dynamic(
+  () => import(`../../home-page/HomepageHero/HomepageHero`).then((component) => component.HomepageHero),
+  {
+    ssr: false,
+  },
+);
+
 const TextAndMedia = dynamic(
   () => import(`../../home-page/TextAndMedia/TextAndMedia`).then((component) => component.TextAndMedia),
   {
@@ -83,7 +90,7 @@ export const BlockRenderer = ({
   switch (block.__component) {
     case BlockTypes.HERO:
       return (
-        <Hero
+        <HomepageHero
           title={block.title}
           image={block.image}
           scheduleTitle={block.scheduleTitle}
