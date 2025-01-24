@@ -18,20 +18,6 @@ export type DocumentsListComponentProps = {
   }
 };
 
-export type DocumentsTabsComponentProps = {
-  queryYear: string,
-  availableYears: number[],
-};
-
-export const DOCUMENTS_TABS: DocumentsTabsComponentProps = {
-  queryYear: `2025`,
-  availableYears: [
-    2025,
-    2024,
-    2023,
-  ],
-};
-
 export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
   {
     id: 0,
@@ -118,4 +104,32 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
       id: 1,
     },
   },
+  {
+    id: 4,
+    date: `2024-01-17`,
+    showDate: false,
+    title: `Протокол закупки №7731263`,
+    files: [
+      {
+        id: 1,
+        name: `Протокол закупки №7731263`,
+        url: `/public/documents/Protocol.pdf`,
+        ext: `.pdf`,
+      },
+    ],
+    category: {
+      id: 1,
+    },
+  },
+];
+
+export type DocumentsTabsComponentProps = {
+  queryYear: string,
+  availableYears: number[],
+};
+
+export const DOCUMENTS_TABS: DocumentsTabsComponentProps[`availableYears`] = [
+  2025,
+  2024,
+  2023,
 ];

@@ -16,6 +16,8 @@ test.describe(`DocumentsListComponentTests`, () => {
     });
   });
 
+  test(`TabActionTest`, tabAction);
+
   test(`MobileTest`, mobileTest);
 
   test(`MobileClickedTest`, mobileClickedTest);
@@ -36,6 +38,22 @@ test.describe(`DocumentsListComponentTests`, () => {
 
   test(`DesktopXlClickedTest`, desktopXlClickedTest);
 });
+
+async function tabAction({
+  page,
+}: {
+  page: Page,
+}) {
+  await page.locator(`li`, {
+    hasText: `2024`,
+  })
+    .click();
+
+  await expect(page.locator(`li`, {
+    hasText: `Протокол закупки №7731263`,
+  }))
+    .toBeVisible();
+}
 
 async function mobileTest({
   page,

@@ -18,18 +18,15 @@ import { useEffect, useRef } from "react";
 
 export default function DocumentsCategories({
   category,
-  tabs,
+  queryYear,
+  availableYears,
   documents,
 }: {
   category: DocumentsCategoriesProps,
-  tabs: DocumentsTabsComponentProps,
+  queryYear: DocumentsTabsComponentProps[`queryYear`],
+  availableYears: DocumentsTabsComponentProps[`availableYears`],
   documents: DocumentsListComponentProps[],
 }) {
-  const {
-    queryYear,
-    availableYears,
-  } = tabs;
-
   const tabsRef = useRef<{
     setIsActiveIndex:(index: number) => void
   }>(null);
@@ -85,15 +82,24 @@ export async function getServerSideProps({
   }
 }) {
   if (process.env.APP_ENV === `static`) {
+    const lastYear = String(DOCUMENTS_TABS[0]);
+
     return {
       props: {
         category: DOCUMENTS_CATEGORIES.find(({
           id,
         }) => id === +query.id) || null,
-        tabs: DOCUMENTS_TABS,
+        queryYear: query.year || lastYear,
+        availableYears: DOCUMENTS_TABS,
         documents: DOCUMENTS_LIST.filter(({
+          date,
           category,
-        }) => category.id === +query.id),
+        }) => {
+          const isCategory = category.id === +query.id;
+          const isYear = date.split(`-`)[0] === (query.year || lastYear);
+
+          return isCategory && isYear;
+        }),
       },
     };
   }
