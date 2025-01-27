@@ -12,6 +12,12 @@
     padding: 8px 32px;
     color: $color-black-75;
 
+    &:hover {
+      border: none;
+      color: $color-white;
+      background-color: $color-green;
+    }
+
     &--active {
       border: none;
       color: $color-white;
