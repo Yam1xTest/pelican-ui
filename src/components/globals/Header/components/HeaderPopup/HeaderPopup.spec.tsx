@@ -6,7 +6,10 @@ test.describe(`HeaderPopupTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await page.goto(AppRoute.HOME);
+    await gotoPage({
+      page,
+      url: AppRoute.HOME,
+    });
   });
 
   test(`ActionTest`, actionTest);

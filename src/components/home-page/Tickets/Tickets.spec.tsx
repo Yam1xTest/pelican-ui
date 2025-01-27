@@ -4,6 +4,7 @@ import {
   gotoPage,
   hideHeader,
   hideMap,
+  hideSkipLink,
   setViewportSize,
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
@@ -18,6 +19,10 @@ test.describe(`TicketsComponentTests`, () => {
     });
 
     await hideHeader({
+      page,
+    });
+
+    await hideSkipLink({
       page,
     });
 

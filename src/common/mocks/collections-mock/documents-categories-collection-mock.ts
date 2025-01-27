@@ -1,9 +1,6 @@
-export type DocumentsCategoriesProps = {
-  id: number,
-  title: string,
-};
+import { DocumentsCategoriesProps } from "../../types";
 
-export const DOCUMENTS_CATEGORIES: DocumentsCategoriesProps[] = [
+export const MOCK_DOCUMENTS_CATEGORIES: DocumentsCategoriesProps[] = [
   {
     id: 1,
     title: `Отчеты`,

@@ -35,26 +35,16 @@ export type GlobalComponentProps = {
   ticketsPopupGeneral: Ticket[];
   ticketsPopupSubsidized: Ticket[];
   ticketsPopupRulesImages: Image[];
-  ticketsPopupRefundReasons: { id: number, refundReason: string }[]
+  ticketsPopupRefundReasons: {
+    id: number,
+    refundReason: string
+  }[]
   email: string;
   phone: string;
   popupTicketBuyText: string;
   ticketBuyLink: string;
   footerNavTitleLeft: string;
   footerNavTitleRight: string;
-};
-
-export type HomePageProps = {
-  id: number,
-  title: string;
-  blocks: (
-    HeroComponentProps
-    | TextAndMediaComponentProps
-    | ServicesComponentProps
-    | ContactZooPreviewComponentProps
-    | MapComponentProps
-    | TicketsComponentProps
-  )[];
 };
 
 export type HeroComponentProps = {
@@ -96,16 +86,16 @@ export type ServicesComponentProps = {
   emailText: string,
 };
 
+export type ServicesCardProps = CardProps & {
+  description: string,
+  labels: string[],
+};
+
 export type CardProps = {
   id: number,
   image: Image,
   title: string,
   description?: string,
-};
-
-export type ServicesCardProps = CardProps & {
-  description: string,
-  labels: string[],
 };
 
 export type ContactZooPreviewComponentProps = {
@@ -117,11 +107,6 @@ export type ContactZooPreviewComponentProps = {
   smallImage?: Image
 };
 
-type Image = {
-  url: StaticImageData | string;
-  alternativeText: string;
-};
-
 export type MapComponentProps = {
   id: number
   __component: BlockTypes.MAP,
@@ -129,6 +114,24 @@ export type MapComponentProps = {
   subtitle: string,
   note: string,
   image: Image,
+};
+
+export type HomePageProps = {
+  id: number,
+  title: string;
+  blocks: (
+    HeroComponentProps
+    | TextAndMediaComponentProps
+    | ServicesComponentProps
+    | ContactZooPreviewComponentProps
+    | MapComponentProps
+    | TicketsComponentProps
+  )[];
+};
+
+export type NotFoundComponentProps = {
+  id: number,
+  __component: BlockTypes.NOT_FOUND,
 };
 
 export type TicketsComponentProps = {
@@ -150,26 +153,56 @@ export type Ticket = {
   frequency?: string,
 };
 
-export type NotFoundPageProps = {
+export type NewsPageProps = {
   id: number,
   title: string;
-  blocks: (
-    NotFoundComponentProps
-  )[];
+  newsTitle: string;
 };
 
-export type NotFoundComponentProps = {
+export type NewsProps = CardProps & {
+  publishedAt?: string;
+  innerContent: string;
+};
+
+export type DocumentsPageProps = {
   id: number,
-  __component: BlockTypes.NOT_FOUND,
+  title: string,
+  documentsTitle: string;
 };
 
-export type Meta = {
-  pagination: {
-    page: number;
-    pageSize: number;
-    pageCount: number;
-    total: number
+export type DocumentsTabsComponentProps = {
+  queryYear: string,
+  availableYears: number[],
+};
+
+export type DocumentsCategoriesProps = {
+  id: number,
+  title: string,
+};
+
+export type DocumentFileProps = {
+  id: number,
+  name: string,
+  url: string,
+  ext: string,
+};
+
+export type DocumentsProps = {
+  id: number,
+  date: string,
+  showDate: boolean,
+  title: string,
+  subtitle?: string,
+  description?: string,
+  files: DocumentFileProps[],
+  category: {
+    id: number,
   }
+};
+
+type Image = {
+  url: StaticImageData | string;
+  alternativeText: string;
 };
 
 export type DocumentsCategoriesQuery = {

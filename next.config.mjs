@@ -8,6 +8,7 @@ const nextConfig = {
   },
 
   images: {
+    unoptimized: process.env.NODE_ENV === 'test',
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {

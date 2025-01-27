@@ -1,18 +1,18 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
+import { NewsProps } from "@/src/common/types";
 import { NewsCard } from "./components/NewsCard/NewsCard";
 import { Button } from "../../globals/Button/Button";
 
 export const NEWS_LIMIT = 6;
 
 export function NewsList({
-  title,
+  newsTitle,
   news,
   total,
 }: {
+  newsTitle: string,
   news: Omit<NewsProps, 'innerContent' | 'publishedAt'>[]
-  title: string,
   total: number;
 }) {
   const [pageSize, setPageSize] = useState(NEWS_LIMIT);
@@ -35,7 +35,7 @@ export function NewsList({
       data-testid="news-list"
     >
       <div className="news-list__wrapper container">
-        <h1 className="news-list__title">{title}</h1>
+        <h1 className="news-list__title">{newsTitle}</h1>
         <ul className="news-list__cards">
           {news.map((newsCard) => (
             <NewsCard

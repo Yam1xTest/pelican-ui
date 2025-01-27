@@ -262,37 +262,32 @@ async function openTicketsPopupAccordions({
 }: {
   page: Page
 }) {
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Подробнее`,
-    })
-    .click();
-
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Правила посещения`,
-    })
-    .click();
-
-  await waitRulesImage({
+  await clickAccordionTriggerByText({
     page,
+    text: `Подробнее`,
   });
 
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Возврат билетов`,
-    })
-    .click();
+  await clickAccordionTriggerByText({
+    page,
+    text: `Правила посещения`,
+  });
+
+  await clickAccordionTriggerByText({
+    page,
+    text: `Возврат билетов`,
+  });
 }
 
-async function waitRulesImage({
+async function clickAccordionTriggerByText({
   page,
+  text,
 }: {
-  page: Page
+  page: Page,
+  text: string,
 }) {
-  for (const img of await page.getByTestId(`rule-image`)
-    .all()) {
-    // eslint-disable-next-line no-await-in-loop
-    await expect(img).not.toHaveJSProperty(`naturalWidth`, 0);
-  }
+  await page.getByTestId(`accordion-trigger`)
+    .filter({
+      hasText: text,
+    })
+    .click();
 }

@@ -1,11 +1,7 @@
 import { DocumentListResponse, DocumentsCategoryListResponse } from "@/src/common/api-types";
-import { DOCUMENTS_CATEGORIES, DocumentsCategoriesProps } from "@/src/common/mocks/documents-page-mock/documents-categories-mock";
-import {
-  DOCUMENTS_LIST,
-  DOCUMENTS_TABS,
-  DocumentsListComponentProps,
-  DocumentsTabsComponentProps,
-} from "@/src/common/mocks/documents-page-mock/documents-list-mock";
+import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
+import { DocumentsTabsComponentProps, MOCK_DOCUMENTS, MOCK_DOCUMENTS_TABS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
+import { DocumentsCategoriesProps, DocumentsProps } from "@/src/common/types";
 import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryParams";
 import { api } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
@@ -25,7 +21,7 @@ export default function DocumentsCategories({
   category: DocumentsCategoriesProps,
   queryYear: DocumentsTabsComponentProps[`queryYear`],
   availableYears: DocumentsTabsComponentProps[`availableYears`],
-  documents: DocumentsListComponentProps[],
+  documents: DocumentsTabsComponentProps[],
 }) {
   const tabsRef = useRef<{
     setIsActiveIndex:(index: number) => void
@@ -82,16 +78,16 @@ export async function getServerSideProps({
   }
 }) {
   if (process.env.APP_ENV === `static`) {
-    const lastYear = String(DOCUMENTS_TABS[0]);
+    const lastYear = String(MOCK_DOCUMENTS_TABS[0]);
 
     return {
       props: {
-        category: DOCUMENTS_CATEGORIES.find(({
+        category: MOCK_DOCUMENTS_CATEGORIES.find(({
           id,
         }) => id === +query.id) || null,
         queryYear: query.year || lastYear,
-        availableYears: DOCUMENTS_TABS,
-        documents: DOCUMENTS_LIST.filter(({
+        availableYears: MOCK_DOCUMENTS_TABS,
+        documents: MOCK_DOCUMENTS.filter(({
           date,
           category,
         }) => {
@@ -156,7 +152,7 @@ export async function getServerSideProps({
       pageSize: 100,
     }))}`);
 
-    const documents: DocumentsListComponentProps[] = documentsResponse.data!
+    const documents: DocumentsProps[] = documentsResponse.data!
       .map((documentsItem) => ({
         id: documentsItem.id!,
         date: documentsItem.attributes!.date!,

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AppRoute } from "@/src/common/enum";
-import { IconArrow } from "@/src/components/documents-page/DocumentsCategories/components/DocumentsCategory/components/IconArrow/IconArrow";
+import { DocumentsCategoriesProps } from "@/src/common/types";
+import { IconArrow } from "./components/IconArrow/IconArrow";
 
 export function DocumentsCategory({
   className,
@@ -8,8 +9,8 @@ export function DocumentsCategory({
   title,
 }: {
   className: string,
-  id: number,
-  title: string,
+  id: DocumentsCategoriesProps['id'],
+  title: DocumentsCategoriesProps['title'],
 }) {
   return (
     <li className={`${className} documents-category`}>

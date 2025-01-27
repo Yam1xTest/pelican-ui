@@ -1,5 +1,10 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
+import {
+  gotoPage,
+  hideHeader,
+  hideSkipLink,
+  setViewportSize,
+} from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`ContactZooComponentTests`, () => {
@@ -15,13 +20,9 @@ test.describe(`ContactZooComponentTests`, () => {
       page,
     });
 
-    const largeImage = page.getByTestId(`contact-zoo-large-image`);
-
-    await largeImage.scrollIntoViewIfNeeded();
-
-    await expect(largeImage)
-      .not
-      .toHaveJSProperty(`naturalWidth`, 0);
+    await hideSkipLink({
+      page,
+    });
   });
 
   test(`MobileTest`, mobileTest);

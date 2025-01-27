@@ -1,5 +1,5 @@
-import { NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
 import dayjs from "dayjs";
+import { NewsProps } from "@/src/common/types";
 import { MarkdownText } from "../../globals/MarkdownText/MarkdownText";
 
 export function NewsArticle({

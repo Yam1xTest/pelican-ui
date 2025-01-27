@@ -1,11 +1,12 @@
 import qs from 'qs';
-import { NEWS, NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
+import { MOCK_NEWS } from "@/src/common/mocks/collections-mock/news-collection-mock";
 import { api } from "@/src/common/utils/HttpClient";
 import { NewsArticle } from "@/src/components/news-page/NewsArticle/NewsArticle";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
 import { NewsCollectionListResponse, NewsCollectionListResponseDataItem } from '@/src/common/api-types';
 import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
+import { NewsProps } from '@/src/common/types';
 
 const NEWS_SLIDER_LIMIT = 4;
 
@@ -50,7 +51,7 @@ export async function getServerSideProps({
   }
 }) {
   if (process.env.APP_ENV === `static`) {
-    const otherNews = NEWS.filter((news) => news.id !== +query.id)
+    const otherNews = MOCK_NEWS.filter((news) => news.id !== +query.id)
       .map((news) => ({
         id: news.id,
         title: news.title,
@@ -60,7 +61,7 @@ export async function getServerSideProps({
 
     return {
       props: {
-        news: NEWS.find(({
+        news: MOCK_NEWS.find(({
           id,
         }) => id === +query.id) || null,
         otherNews,

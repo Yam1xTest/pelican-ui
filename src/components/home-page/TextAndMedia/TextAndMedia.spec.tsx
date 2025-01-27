@@ -1,20 +1,20 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { hideHeader, setViewportSize } from '@/playwright-tests/helpers';
+import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`TextAndMediaComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await page.goto(AppRoute.HOME);
+    await gotoPage({
+      page,
+      url: AppRoute.HOME,
+      useNetworkidle: false,
+    });
 
     await hideHeader({
       page,
     });
-
-    await expect(page.getByTestId(`text-and-media-video`))
-      .not
-      .toHaveJSProperty(`naturalWidth`, 0);
   });
 
   test(`MobileTest`, mobileTest);

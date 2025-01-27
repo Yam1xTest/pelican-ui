@@ -50,7 +50,10 @@ async function routeTest({
 
   await page.goBack();
 
-  await page.goto(`${AppRoute.DOCUMENTS}/100`);
+  await gotoPage({
+    page,
+    url: `${AppRoute.DOCUMENTS}/100`,
+  });
   await page.getByTestId(`not-found`);
 }
 
