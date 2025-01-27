@@ -1,24 +1,21 @@
 .tabs {
   display: flex;
-  flex-direction: row;
   padding-bottom: 24px;
   gap: 8px;
 
   &__button {
     @include caption-2-medium;
 
+    display: block;
     border: 1px solid $color-black-75;
     border-radius: 110px;
-    padding: 7px 31px;
-    box-sizing: border-box;
+    padding: 8px 32px;
     color: $color-black-75;
-    background-color: $color-background-page;
 
     &--active {
       border: none;
       color: $color-white;
       background-color: $color-green-dark;
-      pointer-events: none;
     }
 
     @include desktop-xl {
