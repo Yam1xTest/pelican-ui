@@ -3,7 +3,6 @@ import { DocumentCard } from "@/src/components/documents-page/DocumentsList/comp
 import Tabs from "@/src/components/globals/Tabs/Tabs";
 
 export function DocumentsList({
-  // TODO: Change props names to universal component
   categoryTitle,
   availableYears,
   documents,
@@ -11,7 +10,7 @@ export function DocumentsList({
 }: {
   categoryTitle: string,
   availableYears: number[],
-  documents: DocumentsListComponentProps[],
+  documents: DocumentsProps[],
   tabsRef: React.Ref<any>,
 }) {
   return (
