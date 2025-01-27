@@ -1,11 +1,12 @@
 import { forwardRef, useImperativeHandle, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { DocumentsTabsProps } from "@/src/common/types";
 
 function Tabs({
   availableYears,
 }: {
-  availableYears: number[],
+  availableYears: DocumentsTabsProps[`availableYears`],
 }, ref: React.Ref<any>) {
   const [isActiveIndex, setIsActiveIndex] = useState(0);
   const router = useRouter();

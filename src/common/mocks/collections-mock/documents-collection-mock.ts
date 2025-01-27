@@ -1,4 +1,4 @@
-import { DocumentsProps, DocumentsTabsComponentProps } from "../../types";
+import { DocumentsProps, DocumentsTabsProps } from "../../types";
 
 export const MOCK_DOCUMENTS: DocumentsProps[] = [
   {
@@ -105,7 +105,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
   },
 ];
 
-export const MOCK_DOCUMENTS_TABS: DocumentsTabsComponentProps[`availableYears`] = [
+export const MOCK_DOCUMENTS_TABS: DocumentsTabsProps[`availableYears`] = [
   2025,
   2024,
   2023,

@@ -170,7 +170,7 @@ export type DocumentsPageProps = {
   documentsTitle: string;
 };
 
-export type DocumentsTabsComponentProps = {
+export type DocumentsTabsProps = {
   queryYear: string,
   availableYears: number[],
 };

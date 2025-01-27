@@ -1,4 +1,4 @@
-import { DocumentsProps } from "@/src/common/types";
+import { DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
 import { DocumentCard } from "@/src/components/documents-page/DocumentsList/components/DocumentCard/DocumentCard";
 import Tabs from "@/src/components/globals/Tabs/Tabs";
 
@@ -9,7 +9,7 @@ export function DocumentsList({
   tabsRef,
 }: {
   categoryTitle: string,
-  availableYears: number[],
+  availableYears: DocumentsTabsProps[`availableYears`],
   documents: DocumentsProps[],
   tabsRef: React.Ref<any>,
 }) {

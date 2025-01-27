@@ -1,7 +1,7 @@
 import { DocumentListResponse, DocumentsCategoryListResponse } from "@/src/common/api-types";
 import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
 import { MOCK_DOCUMENTS, MOCK_DOCUMENTS_TABS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
-import { DocumentsCategoriesProps, DocumentsProps, DocumentsTabsComponentProps } from "@/src/common/types";
+import { DocumentsCategoriesProps, DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
 import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryParams";
 import { api } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
@@ -19,8 +19,8 @@ export default function DocumentsCategories({
   documents,
 }: {
   category: DocumentsCategoriesProps,
-  queryYear: DocumentsTabsComponentProps[`queryYear`],
-  availableYears: DocumentsTabsComponentProps[`availableYears`],
+  queryYear: DocumentsTabsProps[`queryYear`],
+  availableYears: DocumentsTabsProps[`availableYears`],
   documents: DocumentsProps[],
 }) {
   const tabsRef = useRef<{
