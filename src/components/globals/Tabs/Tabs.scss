@@ -1,6 +1,6 @@
 .tabs {
   display: flex;
-  padding-bottom: 24px;
+  margin-bottom: 24px;
   gap: 8px;
 
   &__button {
@@ -11,15 +11,16 @@
     border-radius: 110px;
     padding: 8px 32px;
     color: $color-black-75;
+    transition: 0.2s;
 
     &:hover {
-      border: none;
+      border-color: $color-green;
       color: $color-white;
       background-color: $color-green;
     }
 
     &--active {
-      border: none;
+      border-color: $color-green-dark;
       color: $color-white;
       background-color: $color-green-dark;
     }
