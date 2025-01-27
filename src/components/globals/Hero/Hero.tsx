@@ -63,11 +63,13 @@ export function Hero({
           className="hero__schedule-card"
           scheduleTitle={scheduleTitle}
           scheduleTimetables={scheduleTimetables}
+          isContactZoo={isContactZoo}
         />
         <HeroInfoCard
           className="hero__info-card"
           infoCardTitle={infoCardTitle}
           infoCardDescription={infoCardDescription}
+          isContactZoo={isContactZoo}
         />
       </div>
       {(!isDesktop && !isContactZoo)

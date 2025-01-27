@@ -1,4 +1,4 @@
-import heroImage from '@/public/images/hero/hero-main-page.png';
+import heroImage from '@/public/images/hero/hero-contact-zoo.png';
 import { BlockTypes } from "../../../enum";
 import { HeroComponentProps } from '../../../types';
 

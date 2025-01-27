@@ -101,8 +101,74 @@
   }
 
   &--contact-zoo {
+    padding-bottom: 104px;
+
+    #{$this}__image-wrapper {
+      @include tablet {
+        max-height: 363px;
+        grid-area: 2 / 1 / 4 / 2;
+      }
+
+      @include tablet-xl {
+        max-height: 422px;
+      }
+
+      @include desktop {
+        max-height: 580px;
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+      }
+
+      @include desktop-xl {
+        max-height: 803px;
+      }
+    }
+
+    #{$this}__cards {
+      @include tablet {
+        grid-area: 2 / 2 / 4 / 3;
+      }
+
+      @include desktop {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+    }
+
     #{$this}__title {
+      @include h1-text;
+
       color: $color-brown;
+
+      @include tablet {
+        margin-bottom: 4px;
+        font-size: 48px;
+        line-height: 1;
+        grid-area: 1 / 1 / 2 / 3;
+      }
+
+      @include tablet-xl {
+        margin-bottom: 8px;
+        line-height: 1.25;
+      }
+
+      @include desktop {
+        margin-bottom: 0;
+        font-weight: 600;
+        font-size: 96px;
+        line-height: 1;
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
+      }
+
+      @include desktop-xl {
+        font-size: 128px;
+      }
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
     }
   }
 
@@ -138,10 +204,18 @@
     padding-bottom: 56px;
     grid-template-columns: 49.2% 49.2%;
     grid-template-rows: repeat(1, 1fr);
+
+    &--contact-zoo {
+      padding-bottom: 40px;
+    }
   }
 
   @include tablet-xl {
     gap: 16px;
+
+    &--contact-zoo {
+      padding-bottom: 56px;
+    }
   }
 
   @include desktop {
@@ -150,6 +224,10 @@
     gap: 130px 24px;
     grid-template-columns: 40.6% 1fr;
     grid-template-rows: 192px 1fr;
+
+    &--contact-zoo {
+      padding-bottom: 80px;
+    }
   }
 
   @include desktop-xl {
@@ -157,5 +235,9 @@
     padding-bottom: 88px;
     gap: 192px 32px;
     grid-template-rows: 256px 1fr;
+
+    &--contact-zoo {
+      padding-bottom: 176px;
+    }
   }
 }

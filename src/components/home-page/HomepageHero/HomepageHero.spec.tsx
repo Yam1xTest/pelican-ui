@@ -55,6 +55,7 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
+    height: 437,
   });
 
   await expect(getHeroByTestId({
@@ -71,6 +72,7 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
+    height: 556,
   });
 
   await expect(getHeroByTestId({
