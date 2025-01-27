@@ -34,6 +34,7 @@ function Tabs({
                 },
               }}
               onClick={() => setIsActiveIndex(index)}
+              aria-label={`Отобразить документы за ${year} год`}
             >
               {year}
             </Link>
