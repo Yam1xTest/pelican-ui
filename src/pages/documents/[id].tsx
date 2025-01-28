@@ -1,6 +1,6 @@
 import { DocumentListResponse, DocumentsCategoryListResponse } from "@/src/common/api-types";
 import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
-import { MOCK_DOCUMENTS, MOCK_DOCUMENTS_TABS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
+import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
 import { DocumentsCategoriesProps, DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
 import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryParams";
 import { api } from "@/src/common/utils/HttpClient";
@@ -69,8 +69,33 @@ export async function getServerSideProps({
     year: string,
   }
 }) {
+  const currentYear = dayjs()
+    .year();
+
   if (process.env.APP_ENV === `static`) {
-    const lastYear = String(MOCK_DOCUMENTS_TABS[0]);
+    const availableYears: number[] = [];
+
+    Array.from({
+      length: 3,
+    })
+      .map(async (_, i) => {
+        const year = currentYear - i;
+        const documentsResponse = MOCK_DOCUMENTS.filter(({
+          date,
+          category,
+        }) => {
+          const isCategory = category.id === +query.id;
+          const isYear = date.split(`-`)[0] === String(year);
+
+          return isCategory && isYear;
+        });
+
+        if (documentsResponse.length) {
+          availableYears.push(year);
+        }
+      });
+
+    const lastYear = String(availableYears[0]);
     const filteredDocuments = MOCK_DOCUMENTS.filter(({
       date,
       category,
@@ -87,7 +112,7 @@ export async function getServerSideProps({
           id,
         }) => id === +query.id) || null,
         queryYear: query.year || lastYear,
-        availableYears: MOCK_DOCUMENTS_TABS,
+        availableYears,
         documents: filteredDocuments,
       },
     };
@@ -103,9 +128,6 @@ export async function getServerSideProps({
 
   try {
     const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?${qs.stringify(categoryQueryParams)}`);
-
-    const currentYear = dayjs()
-      .year();
 
     const availableYears: number[] = [];
 
