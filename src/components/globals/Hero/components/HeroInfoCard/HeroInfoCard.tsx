@@ -10,7 +10,7 @@ export function HeroInfoCard({
   className: string,
   infoCardTitle?: HeroComponentProps['infoCardTitle'],
   infoCardDescription: HeroComponentProps['infoCardDescription'],
-  isContactZoo:HeroComponentProps['isContactZoo'],
+  isContactZoo: HeroComponentProps['isContactZoo'],
 }) {
   return (
     <div className={clsx(

@@ -12,7 +12,7 @@ export function HeroSchedule({
   className: string,
   scheduleTitle: HeroComponentProps['scheduleTitle'],
   scheduleTimetables: HeroComponentProps['scheduleTimetables'],
-  isContactZoo:HeroComponentProps['isContactZoo'],
+  isContactZoo: HeroComponentProps['isContactZoo'],
 }) {
   const {
     isTablet,

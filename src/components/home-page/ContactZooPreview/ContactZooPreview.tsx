@@ -1,5 +1,6 @@
 import { ContactZooPreviewComponentProps } from "@/src/common/types";
 import Link from "next/link";
+import { AppRoute } from "@/src/common/enum";
 import { ContactZooPreviewImages } from "./components/ContactZooPreviewImages/ContactZooPreviewImages";
 
 export function ContactZooPreview({
@@ -24,7 +25,8 @@ export function ContactZooPreview({
           smallImage={smallImage}
         />
         <Link
-          href="/contact-zoo"
+          // href="/contact-zoo"
+          href={AppRoute.CONTACT_ZOO}
           className="contact-zoo__btn button button--primary"
           aria-label="Перейти на страницу контактного зоопарка"
           data-testid="contact-zoo-btn"

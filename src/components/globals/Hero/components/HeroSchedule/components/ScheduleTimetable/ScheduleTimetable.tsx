@@ -8,7 +8,7 @@ export function ScheduleTimetable({
 }: {
   className: string,
   scheduleTimetable: Timetable,
-  isContactZoo:HeroComponentProps['isContactZoo'],
+  isContactZoo: HeroComponentProps['isContactZoo'],
 }) {
   return (
     <li className={clsx(

@@ -15,6 +15,7 @@ export function ContactZooHero({
       scheduleTitle={scheduleTitle}
       scheduleTimetables={scheduleTimetables}
       infoCardDescription={infoCardDescription}
+      isContactZoo
     />
   );
 }

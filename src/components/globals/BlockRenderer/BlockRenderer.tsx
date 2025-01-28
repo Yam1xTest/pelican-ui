@@ -12,8 +12,8 @@ import {
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
-const Hero = dynamic(
-  () => import(`../Hero/Hero`).then((component) => component.Hero),
+const ContactZooHero = dynamic(
+  () => import(`../../contact-zoo-page/ContactZooHero/ContactZooHero`).then((component) => component.ContactZooHero),
   {
     ssr: false,
   },
@@ -100,7 +100,7 @@ export const BlockRenderer = ({
       );
     case BlockTypes.CONTACT_ZOO_HERO:
       return (
-        <Hero
+        <ContactZooHero
           isContactZoo
           title={block.title}
           image={block.image}
