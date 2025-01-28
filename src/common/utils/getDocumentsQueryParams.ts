@@ -1,4 +1,3 @@
-import { DocumentsCategoriesQuery, DocumentsQuery } from "@/src/common/types";
 
 export function getDocumentsCategoriesQueryParams({
   id,
@@ -8,8 +7,7 @@ export function getDocumentsCategoriesQueryParams({
   id: number,
   year: number,
   pageSize: number,
-})
-  : DocumentsCategoriesQuery {
+}) {
   return {
     populate: [`files`, `category`],
     filters: {
@@ -37,7 +35,7 @@ export function getDocumentsQueryParams({
   id: number,
   year: string,
   pageSize: number,
-}): DocumentsQuery {
+}) {
   return {
     populate: [`files`, `category`],
     filters: {

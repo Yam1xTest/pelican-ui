@@ -10,7 +10,7 @@ import dayjs from "dayjs";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import qs from "qs";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 export default function DocumentsCategories({
   category,
@@ -23,10 +23,6 @@ export default function DocumentsCategories({
   availableYears: DocumentsTabsProps[`availableYears`],
   documents: DocumentsProps[],
 }) {
-  const tabsRef = useRef<{
-    setIsActiveIndex:(index: number) => void
-  }>(null);
-
   const router = useRouter();
 
   useEffect(() => {
@@ -39,10 +35,6 @@ export default function DocumentsCategories({
           },
         },
       );
-    }
-
-    if (tabsRef.current) {
-      tabsRef.current.setIsActiveIndex(availableYears.indexOf(+queryYear));
     }
   }, []);
 
@@ -63,7 +55,7 @@ export default function DocumentsCategories({
         categoryTitle={category.title}
         availableYears={availableYears}
         documents={documents}
-        tabsRef={tabsRef}
+        currentYear={+queryYear}
       />
     </>
   );
@@ -79,6 +71,15 @@ export async function getServerSideProps({
 }) {
   if (process.env.APP_ENV === `static`) {
     const lastYear = String(MOCK_DOCUMENTS_TABS[0]);
+    const filteredDocuments = MOCK_DOCUMENTS.filter(({
+      date,
+      category,
+    }) => {
+      const isCategory = category.id === +query.id;
+      const isYear = date.split(`-`)[0] === (query.year || lastYear);
+
+      return isCategory && isYear;
+    });
 
     return {
       props: {
@@ -87,15 +88,7 @@ export async function getServerSideProps({
         }) => id === +query.id) || null,
         queryYear: query.year || lastYear,
         availableYears: MOCK_DOCUMENTS_TABS,
-        documents: MOCK_DOCUMENTS.filter(({
-          date,
-          category,
-        }) => {
-          const isCategory = category.id === +query.id;
-          const isYear = date.split(`-`)[0] === (query.year || lastYear);
-
-          return isCategory && isYear;
-        }),
+        documents: filteredDocuments,
       },
     };
   }
@@ -177,10 +170,8 @@ export async function getServerSideProps({
           id: categoryResponse.data![0].id,
           title: categoryResponse.data![0].attributes!.title,
         },
-        tabs: {
-          queryYear: query.year || lastYear,
-          availableYears,
-        },
+        queryYear: query.year || lastYear,
+        availableYears,
         documents,
       },
     };

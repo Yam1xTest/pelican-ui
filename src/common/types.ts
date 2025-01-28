@@ -204,39 +204,3 @@ type Image = {
   url: StaticImageData | string;
   alternativeText: string;
 };
-
-export type DocumentsCategoriesQuery = {
-  populate: string[],
-  filters: {
-    category: {
-      id: {
-        $eq: number,
-      },
-    },
-    publishedAt: {
-      $gte: string,
-      $lte: string,
-    },
-  },
-  pagination: {
-    pageSize: number,
-  },
-};
-
-export type DocumentsQuery = {
-  populate: string[],
-  filters: {
-    category: {
-      id: {
-        $eq: number,
-      },
-    },
-    date: {
-      $lte: string,
-      $gte: string,
-    },
-  },
-  pagination: {
-    pageSize: number,
-  },
-};

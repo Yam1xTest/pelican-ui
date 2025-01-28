@@ -1,28 +1,48 @@
 import { DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
 import { DocumentCard } from "@/src/components/documents-page/DocumentsList/components/DocumentCard/DocumentCard";
-import Tabs from "@/src/components/globals/Tabs/Tabs";
+import { useRouter } from "next/router";
+import { Tab } from "../../globals/Tab/Tab";
 
 export function DocumentsList({
   categoryTitle,
   availableYears,
   documents,
-  tabsRef,
+  currentYear,
 }: {
   categoryTitle: string,
   availableYears: DocumentsTabsProps[`availableYears`],
   documents: DocumentsProps[],
-  tabsRef: React.Ref<any>,
+  currentYear: number
 }) {
+  const router = useRouter();
+
   return (
     <section
       className="documents container"
       data-testid="documents"
     >
       <h1 className="documents__title">{categoryTitle}</h1>
-      <Tabs
-        availableYears={availableYears}
-        ref={tabsRef}
-      />
+      <ul className="documents__tabs">
+        {availableYears.map((year) => (
+          <Tab
+            key={year}
+            className="documents__tab"
+            label={year}
+            isActive={currentYear === year}
+            onClick={() => {
+              router.push(
+                {
+                  query: {
+                    ...router.query,
+                    year,
+                  },
+                },
+              );
+            }}
+            ariaLabel={`Отобразить документы за ${year} год`}
+          />
+        ))}
+      </ul>
       <ul
         className="documents__list"
       >
