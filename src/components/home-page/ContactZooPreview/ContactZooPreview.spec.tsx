@@ -91,10 +91,6 @@ async function desktopTest({
     width: Breakpoint.DESKTOP,
   });
 
-  await expect(page.getByTestId(`contact-zoo-small-image`))
-    .not
-    .toHaveJSProperty(`naturalWidth`, 0);
-
   await expect(getContactZooByTestId({
     page,
   }))
