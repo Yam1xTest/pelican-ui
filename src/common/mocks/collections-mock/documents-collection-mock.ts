@@ -1,4 +1,4 @@
-import { DocumentsProps, DocumentsTabsProps } from "../../types";
+import { DocumentsProps } from "../../types";
 
 export const MOCK_DOCUMENTS: DocumentsProps[] = [
   {
@@ -93,7 +93,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
     title: `Протокол закупки №7731263`,
     files: [
       {
-        id: 1,
+        id: 7,
         name: `Протокол закупки №7731263`,
         url: `/public/documents/Protocol.pdf`,
         ext: `.pdf`,
@@ -103,10 +103,21 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       id: 1,
     },
   },
-];
-
-export const MOCK_DOCUMENTS_TABS: DocumentsTabsProps[`availableYears`] = [
-  2025,
-  2024,
-  2023,
+  {
+    id: 5,
+    date: `2023-01-17`,
+    showDate: true,
+    title: `Протокол закупки №55667788`,
+    files: [
+      {
+        id: 8,
+        name: `Протокол закупки №55667788`,
+        url: `/public/documents/Protocol.pdf`,
+        ext: `.pdf`,
+      },
+    ],
+    category: {
+      id: 1,
+    },
+  },
 ];
