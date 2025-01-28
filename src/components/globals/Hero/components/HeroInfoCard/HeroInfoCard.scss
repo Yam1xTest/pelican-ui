@@ -54,6 +54,27 @@
     }
   }
 
+  @include tablet-xl {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @include tablet-xl {
+    border-radius: 32px;
+    padding: 24px 32px;
+  }
+
+  @include desktop {
+    padding: 24px;
+    width: 41%;
+  }
+
+  @include desktop-xl {
+    border-radius: 40px;
+    padding: 32px;
+  }
+
   &--contact-zoo {
     #{$this}__description {
       @include tablet {
@@ -74,28 +95,7 @@
     }
 
     @include desktop {
-      justify-content: center !important;
+      justify-content: center;
     }
-  }
-
-  @include tablet-xl {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  @include tablet-xl {
-    border-radius: 32px;
-    padding: 24px 32px;
-  }
-
-  @include desktop {
-    padding: 24px;
-    width: 41%;
-  }
-
-  @include desktop-xl {
-    border-radius: 40px;
-    padding: 32px;
   }
 }

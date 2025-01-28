@@ -100,6 +100,59 @@
     }
   }
 
+  &__contact-button,
+  &__ticket-button {
+    @include caption-1-medium;
+
+    flex-grow: 1;
+    padding: 12px 24px;
+    width: calc(50% - $buttons-gap-mobile / 2);
+    height: 47px;
+    min-width: 165px;
+
+    @include tablet-xl {
+      padding: 16px 24px;
+      width: calc(50% - $buttons-gap-tablet-xl / 2);
+    }
+
+    @include tablet {
+      min-width: 175px;
+    }
+
+    @include tablet-xl {
+      @include text-medium;
+
+      height: 60px;
+      min-width: 228px;
+    }
+  }
+
+  @include tablet {
+    padding-top: 32px;
+    padding-bottom: 56px;
+    grid-template-columns: 49.2% 49.2%;
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  @include tablet-xl {
+    gap: 16px;
+  }
+
+  @include desktop {
+    padding-top: 40px;
+    padding-bottom: 64px;
+    gap: 130px 24px;
+    grid-template-columns: 40.6% 1fr;
+    grid-template-rows: 192px 1fr;
+  }
+
+  @include desktop-xl {
+    padding-top: 64px;
+    padding-bottom: 88px;
+    gap: 192px 32px;
+    grid-template-rows: 256px 1fr;
+  }
+
   &--contact-zoo {
     padding-bottom: 104px;
 
@@ -167,76 +220,22 @@
     }
 
     @include tablet {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-    }
-  }
-
-  &__contact-button,
-  &__ticket-button {
-    @include caption-1-medium;
-
-    flex-grow: 1;
-    padding: 12px 24px;
-    width: calc(50% - $buttons-gap-mobile / 2);
-    height: 47px;
-    min-width: 165px;
-
-    @include tablet-xl {
-      padding: 16px 24px;
-      width: calc(50% - $buttons-gap-tablet-xl / 2);
-    }
-
-    @include tablet {
-      min-width: 175px;
-    }
-
-    @include tablet-xl {
-      @include text-medium;
-
-      height: 60px;
-      min-width: 228px;
-    }
-  }
-
-  @include tablet {
-    padding-top: 32px;
-    padding-bottom: 56px;
-    grid-template-columns: 49.2% 49.2%;
-    grid-template-rows: repeat(1, 1fr);
-
-    &--contact-zoo {
       padding-bottom: 40px;
+      grid-template-columns: repeat(2, 1fr);
+
+      // grid-template-rows: repeat(3, 1fr);
     }
-  }
 
-  @include tablet-xl {
-    gap: 16px;
-
-    &--contact-zoo {
+    @include tablet-xl {
       padding-bottom: 56px;
     }
-  }
 
-  @include desktop {
-    padding-top: 40px;
-    padding-bottom: 64px;
-    gap: 130px 24px;
-    grid-template-columns: 40.6% 1fr;
-    grid-template-rows: 192px 1fr;
-
-    &--contact-zoo {
+    @include desktop {
       padding-bottom: 80px;
+      grid-template-columns: 40.6% 1fr;
     }
-  }
 
-  @include desktop-xl {
-    padding-top: 64px;
-    padding-bottom: 88px;
-    gap: 192px 32px;
-    grid-template-rows: 256px 1fr;
-
-    &--contact-zoo {
+    @include desktop-xl {
       padding-bottom: 176px;
     }
   }

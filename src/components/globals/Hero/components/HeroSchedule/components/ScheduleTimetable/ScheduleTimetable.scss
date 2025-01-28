@@ -40,15 +40,15 @@
     }
   }
 
+  @include tablet {
+    border-left: none;
+    padding-left: 0;
+  }
+
   &--contact-zoo {
     border-left-color: $color-brown;
     #{$this}__time {
       color: $color-brown;
     }
-  }
-
-  @include tablet {
-    border-left: none;
-    padding-left: 0;
   }
 }
