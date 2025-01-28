@@ -24,7 +24,6 @@ export function ContactZooPreview({
           smallImage={smallImage}
         />
         <Link
-        // ToDo: add link from enum when the page is ready
           href="/contact-zoo"
           className="contact-zoo__btn button button--primary"
           aria-label="Перейти на страницу контактного зоопарка"

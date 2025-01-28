@@ -75,7 +75,6 @@ type Block = HeroComponentProps
   | MapComponentProps
   | TicketsComponentProps
   | NotFoundComponentProps
-  // | ContactZooHeroComponentProps
   ;
 
 export const BlockRenderer = ({
