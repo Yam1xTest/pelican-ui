@@ -25,7 +25,7 @@ export function ContactZooPreview({
         />
         <Link
         // ToDo: add link from enum when the page is ready
-          href="/"
+          href="/contact-zoo"
           className="contact-zoo__btn button button--primary"
           aria-label="Перейти на страницу контактного зоопарка"
           data-testid="contact-zoo-btn"
