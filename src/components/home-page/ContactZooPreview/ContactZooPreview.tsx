@@ -25,7 +25,6 @@ export function ContactZooPreview({
           smallImage={smallImage}
         />
         <Link
-          // href="/contact-zoo"
           href={AppRoute.CONTACT_ZOO}
           className="contact-zoo__btn button button--primary"
           aria-label="Перейти на страницу контактного зоопарка"
