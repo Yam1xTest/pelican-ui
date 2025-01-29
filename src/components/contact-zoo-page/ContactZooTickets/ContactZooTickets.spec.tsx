@@ -15,7 +15,7 @@ test.describe(`ContactZooTicketsComponentTests`, () => {
   }) => {
     await gotoPage({
       page,
-      url: AppRoute.HOME,
+      url: AppRoute.CONTACT_ZOO,
     });
 
     await hideHeader({
@@ -49,13 +49,13 @@ async function mobileTest({
 }) {
   await setViewportSize({
     page,
-    height: 1270,
+    height: 642,
   });
 
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-mobile.png`);
+    .toHaveScreenshot(`contact-zoo-tickets-mobile.png`);
 }
 
 async function tabletTest({
@@ -66,13 +66,13 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
-    height: 948,
+    height: 429,
   });
 
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-tablet.png`);
+    .toHaveScreenshot(`contact-zoo-tickets-tablet.png`);
 }
 
 async function tabletXlTest({
@@ -83,13 +83,13 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
-    height: 572,
+    height: 360,
   });
 
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-tablet-xl.png`);
+    .toHaveScreenshot(`contact-zoo-tickets-tablet-xl.png`);
 }
 
 async function desktopTest({
@@ -100,13 +100,13 @@ async function desktopTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
-    height: 774,
+    height: 517,
   });
 
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-desktop.png`);
+    .toHaveScreenshot(`contact-zoo-tickets-desktop.png`);
 }
 
 async function desktopXlTest({
@@ -117,13 +117,13 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 1056,
+    height: 763,
   });
 
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-desktop-xl.png`);
+    .toHaveScreenshot(`contact-zoo-tickets-desktop-xl.png`);
 }
 
 function getTicketsByTestId({
