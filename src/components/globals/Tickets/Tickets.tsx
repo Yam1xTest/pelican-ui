@@ -39,9 +39,11 @@ export function Tickets({
     >
       <div className="tickets__inner container">
         <div className="tickets__group">
-          <h2 className="tickets__title">{generalTicketsTitle}</h2>
-          {isContactZoo
-          && <p>{generalTicketsSubtitle}</p>}
+          <div className="tickets__head">
+            <h2 className="tickets__title">{generalTicketsTitle}</h2>
+            {isContactZoo
+          && <p className="tickets__subtitle">{generalTicketsSubtitle}</p>}
+          </div>
           <ul className="tickets__list">
             {generalTickets.map((el) => (
               <TicketCard
@@ -50,6 +52,7 @@ export function Tickets({
                 ticket={el}
                 isGeneral
                 link={generalTicketsLink}
+                isContactZoo={isContactZoo}
               />
             ))}
             {!isContactZoo && isTablet && !isTabletXl && (
@@ -65,7 +68,7 @@ export function Tickets({
             )}
 
             {isContactZoo && (
-              <li className="tickets__item tickets__item--button">
+              <li className="tickets__item tickets__item--info">
                 {contactZooNote}
               </li>
             )}
