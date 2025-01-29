@@ -17,15 +17,15 @@
       background-color: $color-green-dark;
     }
 
+    @include desktop-xl {
+      padding: 12px 40px;
+    }
+
     &--active {
       border-color: $color-green-dark;
       color: $color-white;
       background-color: $color-green-dark;
       pointer-events: none;
-    }
-
-    @include desktop-xl {
-      padding: 12px 40px;
     }
   }
 }
