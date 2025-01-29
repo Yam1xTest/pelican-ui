@@ -5,7 +5,9 @@ export const MOCK_CONTACT_ZOO_TICKETS: TicketsComponentProps = {
   id: 5,
   __component: BlockTypes.CONTACT_ZOO_TICKETS,
   generalTicketsTitle: `Билеты`,
+  generalTicketsSubtitle: `Купить билет можно только на кассе контактного зоопарка.`,
   generalTicketsLink: `https://widget.afisha.yandex.ru/w/sessions/ticketsteam-803@37605507?clientKey=3bc42fbd-a832-49aa-a269-79188e18d9e1&regionId=56`,
+  contactZooNote: `Билет контактного зоопарка приобретается дополнительно ко входному билету зоопарка`,
   generalTickets: [
     {
       id: 0,

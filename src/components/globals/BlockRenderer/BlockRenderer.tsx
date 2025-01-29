@@ -172,12 +172,12 @@ export const BlockRenderer = ({
     case BlockTypes.CONTACT_ZOO_TICKETS:
       return (
         <ContactZooTickets
+          isContactZoo
           generalTicketsTitle={block.generalTicketsTitle}
+          generalTicketsSubtitle={block.generalTicketsSubtitle}
           generalTicketsLink={block.generalTicketsLink}
-          subsidizedTicketsTitle={block.subsidizedTicketsTitle}
-          subsidizedTicketsSubtitle={block.subsidizedTicketsSubtitle}
           generalTickets={block.generalTickets}
-          subsidizedTickets={block.subsidizedTickets}
+          contactZooNote={block.contactZooNote}
         />
       );
 
