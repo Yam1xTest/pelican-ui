@@ -22,4 +22,5 @@ export enum BlockTypes {
   TEXT_AND_MEDIA = `home.text-and-media`,
   NOT_FOUND = `not-found.not-found`,
   CONTACT_ZOO_HERO = `contact-zoo.hero`,
+  CONTACT_ZOO_TICKETS = `contact-zoo.tickets`,
 }

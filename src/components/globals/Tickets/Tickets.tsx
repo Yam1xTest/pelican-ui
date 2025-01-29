@@ -70,7 +70,7 @@ export function Tickets({
             <p className="tickets__subtitle">{subsidizedTicketsSubtitle}</p>
           </div>
           <ul className="tickets__list">
-            {subsidizedTickets.map((el) => (
+            {subsidizedTickets?.map((el) => (
               <TicketCard
                 className="tickets__item"
                 key={el.id}

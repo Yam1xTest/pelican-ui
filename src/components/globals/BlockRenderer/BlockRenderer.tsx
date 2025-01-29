@@ -54,8 +54,15 @@ const Map = dynamic(
   },
 );
 
-const Tickets = dynamic(
-  () => import(`../../home-page/Tickets/Tickets`).then((component) => component.Tickets),
+const HomepageTickets = dynamic(
+  () => import(`../../home-page/HomepageTickets/HomepageTickets`).then((component) => component.HomepageTickets),
+  {
+    ssr: false,
+  },
+);
+
+const ContactZooTickets = dynamic(
+  () => import(`../../contact-zoo-page/ContactZooTickets/ContactZooTickets`).then((component) => component.ContactZooTickets),
   {
     ssr: false,
   },
@@ -152,7 +159,19 @@ export const BlockRenderer = ({
 
     case BlockTypes.TICKETS:
       return (
-        <Tickets
+        <HomepageTickets
+          generalTicketsTitle={block.generalTicketsTitle}
+          generalTicketsLink={block.generalTicketsLink}
+          subsidizedTicketsTitle={block.subsidizedTicketsTitle}
+          subsidizedTicketsSubtitle={block.subsidizedTicketsSubtitle}
+          generalTickets={block.generalTickets}
+          subsidizedTickets={block.subsidizedTickets}
+        />
+      );
+
+    case BlockTypes.CONTACT_ZOO_TICKETS:
+      return (
+        <ContactZooTickets
           generalTicketsTitle={block.generalTicketsTitle}
           generalTicketsLink={block.generalTicketsLink}
           subsidizedTicketsTitle={block.subsidizedTicketsTitle}
