@@ -52,6 +52,8 @@ export function SocialMedia({
           key={id}
           aria-label={`Ссылка на ${name}`}
           data-testid={`social-icon-${name}`}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           {React.createElement(icon)}
         </Link>
