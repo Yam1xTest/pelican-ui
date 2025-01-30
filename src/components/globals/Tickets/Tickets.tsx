@@ -136,9 +136,7 @@ export function Tickets({
             </div>
           )
         }
-
       </div>
-
     </div>
   );
 }
