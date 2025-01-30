@@ -38,14 +38,14 @@ npm run generate-api-types
 
 ## Run Playwright Tests (Dev Containers only)
 
-To run the tests you need to run the website dev server executing the following script with test content with **no** backend interaction:
+To run the website dev server, you can execute the following script with test content and **no** backend interaction. This mode includes Next.js images optimization and is advised to be used when you want to check the work of the website as it is going to be on prod: 
 ```bash
 npm run dev:static
 ```
 
-This mode is designed to create screenshots, and it is also recommended to use it to run tests. Image optimization is disabled in this mode:
+*The following script is your weapon of choice for development.* It is designed to create screenshots, and is also recommended to be used to run tests and develop components through visual regression tests. Next.js images optimization is disabled in this mode, and there is also **no** backend interaction:
 ```bash
-npm run dev:static:take-screenshots
+npm run dev:static:without-image-optimization
 ```
 
 When you see that the website dev server is started successfully and you can open it at http://localhost:3000 while keeping the first terminal alive in a separate terminal you can run the tests in headless mode (no browser UI) executing:
