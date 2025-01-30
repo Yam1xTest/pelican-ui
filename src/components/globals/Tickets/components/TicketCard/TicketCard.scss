@@ -67,12 +67,12 @@
     max-width: 280px;
 
     @include tablet-xl {
-      max-width: 260px;
+      max-width: 258px;
     }
 
     @include desktop {
       padding: 24px;
-      max-width: 336px;
+      max-width: 330px;
     }
 
     @include desktop-xl {

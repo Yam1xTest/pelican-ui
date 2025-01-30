@@ -11,7 +11,7 @@ export const MOCK_CONTACT_ZOO_TICKETS: TicketsComponentProps = {
   generalTickets: [
     {
       id: 0,
-      category: `Дети до 3 лет`,
+      category: `Дети до 2 лет`,
       description: `Требуется подтверждающий документ.`,
       price: `Бесплатно`,
     },

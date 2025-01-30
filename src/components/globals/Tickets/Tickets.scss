@@ -310,6 +310,7 @@
 
   &--contact-zoo {
     margin-bottom: 56px;
+    padding-bottom: 40px;
 
     &::before,
     &::after {
@@ -318,20 +319,8 @@
       }
     }
 
-    // #{$this}__item {
-    //   &:last-child {
-    //     min-height: initial;
-
-    //     @include tablet-xl {
-    //       min-height: 160px;
-    //     }
-    //   }
-    // }
-
     #{$this}__subtitle {
-      @include tablet {
-        max-width: 290px;
-      }
+      max-width: 290px;
 
       @include tablet-xl {
         max-width: none;
@@ -341,14 +330,20 @@
         font-size: 18px;
       }
 
-      @include desktop {
+      @include desktop-xl {
         font-size: 24px;
       }
     }
 
     #{$this}__list {
+      margin-bottom: 0;
+
       @include desktop {
         margin-top: 40px;
+      }
+
+      @include desktop-xl {
+        margin-top: 30px;
       }
     }
 
