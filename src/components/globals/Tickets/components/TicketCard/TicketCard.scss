@@ -67,12 +67,12 @@
     max-width: 280px;
 
     @include tablet-xl {
-      max-width: 260px;
+      max-width: 258px;
     }
 
     @include desktop {
       padding: 24px;
-      max-width: 338px;
+      max-width: 330px;
     }
 
     @include desktop-xl {
@@ -206,6 +206,18 @@
       @include tablet-xl {
         display: none;
       }
+    }
+  }
+
+  &--contact-zoo {
+    pointer-events: none;
+
+    &:nth-child(2) {
+      background-image: url("../../../../../../public/images/tickets/bg-leopard-brown.png");
+    }
+
+    @include tablet {
+      background-image: url("../../../../../../public/images/tickets/bg-leopard-green.png");
     }
   }
 }
