@@ -113,6 +113,8 @@ export function Tickets({
                           href="https://vk.com/topic-71671982_48253263"
                           aria-label="Перейти на страницу со списком льгот"
                           data-testid="tickets-discounts-link"
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           по ссылке.
                         </Link>
