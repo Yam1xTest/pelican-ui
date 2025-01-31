@@ -52,7 +52,7 @@ export default function DocumentsCategories({
         <title>{category.title}</title>
       </Head>
       <DocumentsList
-        categoryTitle={category.title}
+        category={category}
         availableYears={availableYears}
         documents={documents}
         currentYear={+queryYear}
@@ -161,11 +161,31 @@ export async function getServerSideProps({
       };
     }
 
-    const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
-      id: +query.id,
-      year: query.year || lastYear,
-      pageSize: 100,
-    }))}`);
+    const documentsQueryParams = {
+      populate: [`files`, `category`],
+      filters: {
+        category: {
+          id: {
+            $eq: categoryResponse.data![0].id,
+          },
+        },
+      },
+      pagination: {
+        pageSize: 100,
+      },
+    };
+
+    let documentsResponse: DocumentListResponse;
+
+    if (categoryResponse.data![0].attributes!.isDivided) {
+      documentsResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
+        id: +query.id,
+        year: query.year || lastYear,
+        pageSize: 100,
+      }))}`);
+    } else {
+      documentsResponse = await api.get(`/documents?${qs.stringify(documentsQueryParams)}`);
+    }
 
     const documents: DocumentsProps[] = documentsResponse.data!
       .map((documentsItem) => ({
@@ -191,6 +211,7 @@ export async function getServerSideProps({
         category: {
           id: categoryResponse.data![0].id,
           title: categoryResponse.data![0].attributes!.title,
+          isDivided: categoryResponse.data![0].attributes?.isDivided,
         },
         queryYear: query.year || lastYear,
         availableYears,

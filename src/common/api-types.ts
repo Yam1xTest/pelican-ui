@@ -343,6 +343,7 @@ export interface DocumentResponse {
 export interface DocumentsCategoryRequest {
   data: {
     title: string;
+    isDivided?: boolean;
   };
 }
 
@@ -367,6 +368,7 @@ export interface DocumentsCategoryListResponse {
 
 export interface DocumentsCategory {
   title: string;
+  isDivided?: boolean;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */
