@@ -5,10 +5,10 @@ import { api } from '@/src/common/utils/HttpClient';
 import { DocumentListResponse, DocumentsCategoryListResponse } from '@/src/common/api-types';
 import qs from 'qs';
 import dayjs from 'dayjs';
-import { getDocumentsCategoriesQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
 import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { DocumentsCategoriesProps, DocumentsPageProps } from '@/src/common/types';
+import { getDocumentsQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
 
 export default function DocumentsPage({
   pageData,
@@ -56,15 +56,16 @@ export async function getServerSideProps() {
   try {
     const documentsCategoriesResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories`);
 
-    const year = dayjs()
+    const currentYear = dayjs()
       .year();
 
     const documentsCategories: DocumentsCategoriesProps[] = (await Promise.all(
       documentsCategoriesResponse.data!
         .map(async (documentsCategoriesItem) => {
-          const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsCategoriesQueryParams({
+          const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
             id: documentsCategoriesItem.id!,
-            year,
+            yearLte: currentYear,
+            yearGte: currentYear - 2,
             pageSize: 1,
           }))}`);
 

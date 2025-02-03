@@ -118,16 +118,8 @@ export async function getServerSideProps({
     };
   }
 
-  const categoryQueryParams = {
-    filters: {
-      id: {
-        $eq: query.id,
-      },
-    },
-  };
-
   try {
-    const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?${qs.stringify(categoryQueryParams)}`);
+    const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?filters[id][$eq]=${query.id}`);
 
     const availableYears: number[] = [];
 
@@ -139,7 +131,8 @@ export async function getServerSideProps({
           const year = currentYear - i;
           const yearsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
             id: +query.id,
-            year: `${year}`,
+            yearLte: year,
+            yearGte: year,
             pageSize: 1,
           }))}`);
 
@@ -151,7 +144,7 @@ export async function getServerSideProps({
 
     availableYears.sort((a: number, b:number) => b - a);
 
-    const lastYear = String(availableYears[0]);
+    const lastYear = availableYears[0] || currentYear;
 
     if (query.year && !availableYears.includes(+query.year)) {
       return {
@@ -161,30 +154,18 @@ export async function getServerSideProps({
       };
     }
 
-    const documentsQueryParams = {
-      populate: [`files`, `category`],
-      filters: {
-        category: {
-          id: {
-            $eq: categoryResponse.data![0].id,
-          },
-        },
-      },
-      pagination: {
-        pageSize: 100,
-      },
-    };
-
     let documentsResponse: DocumentListResponse;
 
     if (categoryResponse.data![0].attributes!.isDivided) {
       documentsResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
         id: +query.id,
-        year: query.year || lastYear,
-        pageSize: 100,
+        yearLte: +query.year || lastYear,
+        yearGte: +query.year || lastYear,
       }))}`);
     } else {
-      documentsResponse = await api.get(`/documents?${qs.stringify(documentsQueryParams)}`);
+      documentsResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
+        id: +query.id,
+      }))}`);
     }
 
     const documents: DocumentsProps[] = documentsResponse.data!
@@ -211,7 +192,7 @@ export async function getServerSideProps({
         category: {
           id: categoryResponse.data![0].id,
           title: categoryResponse.data![0].attributes!.title,
-          isDivided: categoryResponse.data![0].attributes?.isDivided,
+          isDivided: categoryResponse.data![0].attributes!.isDivided,
         },
         queryYear: query.year || lastYear,
         availableYears,
