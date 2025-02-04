@@ -1,107 +1,115 @@
 # pelican-ui
 
-## Prerequisites
+## Что нужно перед стартом
 
-- [Docker](https://www.docker.com/get-started/) (needed for Dev Containers)
+- [Docker](https://www.docker.com/get-started/) (требуется для Dev-контейнера)
 
-### If you develop inside Dev Containers
+### Если вы разрабатываете внутри Dev-контейнера
 - [VSCode](https://code.visualstudio.com/)
-- [Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- [Расширение Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
-### If you develop using good old Node.js (no Dev Containers)
+### Если вы разрабатываете с использованием старого доброго Node.js (без Dev-контейнеров)
 
-- [Node.js](https://nodejs.org/en) (version 20.18.0 was used but it should be also fine with some older versions, ideally install using `nvm` which will allow you to easily switch between Node.js versions if needed)
-- [VSCode](https://code.visualstudio.com/) (optional, you can use any IDE but VSCode has configured formatting on save by the lint rules of the project)
+- [Node.js](https://nodejs.org/en) (использовалась версия 20.18.0, но более старые версии также должны работать. В идеале устанавливать их с помощью `nvm`, чтобы можно было легко переключаться между версиями Node.js при необходимости)
+- [VSCode](https://code.visualstudio.com/) (опционально, можно использовать любую IDE, но в VSCode настроено форматирование при сохранении изменений по правилам линтинга проекта)
 
-## Local start
+## Локальный запуск
 
-Add a .env file based on .env.example
+Добавьте файл .env на основе .env.example.
 
-Install the required dependencies
+Установите необходимые зависимости:
 
 ```bash
 npm ci
 ```
 
-Starting a project in developer mode
+Запуск проекта в режиме разработчика:
 
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Чтобы увидеть страницу, откройте в браузере [http://localhost:3000](http://localhost:3000) .
 
-## Run re-generate TypeScript types by strapi swagger documentation
+## Запуск повторного создания типов TypeScript по документации strapi swagger
 ```bash
 npm run generate-api-types
 ```
 
+## Запуск тестов Playwright (только в Dev-контейнере)
+ 
+Для запуска дев-сервера, можно выполнить следующий скрипт с тестовыми данными и **без** взаимодействия с бэкендом. В этом режиме включена оптимизация изображений Next.js, его рекомендуется использовать, когда вы хотите посмотреть на работу сайта с оптимизациями приближенно к проду:
 
-## Run Playwright Tests (Dev Containers only)
-
-To run the website dev server, you can execute the following script with test content and **no** backend interaction. This mode includes Next.js images optimization and is advised to be used when you want to check the work of the website as it is going to be on prod: 
 ```bash
 npm run dev:static
 ```
 
-*The following script is your weapon of choice for development.* It is designed to create screenshots, and is also recommended to be used to run tests and develop components through visual regression tests. Next.js images optimization is disabled in this mode, and there is also **no** backend interaction:
+*Следующий скрипт рекомендуется использовать для разработки.* Его нужно использовать для создания скриншотов, а также для запуска тестов и разработки компонентов с помощью визуальных регрессионных тестов. Оптимизация изображений Next.js в этом режиме отключена, а также **отсутствует** взаимодействие с бэкендом:
 ```bash
 npm run dev:static:without-image-optimization
 ```
 
-When you see that the website dev server is started successfully and you can open it at http://localhost:3000 while keeping the first terminal alive in a separate terminal you can run the tests in headless mode (no browser UI) executing:
+После успешного запуска дев-сервера (его можно открыть по адресу http://localhost:3000), оставив первый терминал активным в отдельной вкладке терминала, вы можете запустить тесты в headless-режиме (без пользовательского интерфейса браузера), выполнив следующий скрипт:
+
 ```bash
 npm run test-e2e
 ```
 
-If you want to work purely inside your Dev Container you have to connect the the Dev Container VNC server (remote desktop) here http://localhost:6080/. The password is `vscode`. Now you should be able to see Playwright GUI executing one of the available scripts from `package.json` e.g.
+Если вы хотите работать исключительно внутри Dev-контейнера, вам нужно подключиться к VNC-серверу Dev-контейнера (удаленный рабочий стол) здесь http://localhost:6080/. Пароль: `vscode`. Выполнив следующую команду, вы должны увидеть интерфейс Playwright:
 
 ```bash
 npm run test-e2e:ui
 ```
 
-## Update Base Visual Regression Tests Snapshots
+## Обновление базовых скриншотов визуальных тестов
 
-When you need to update no longer actual snapshots you can do it using the following command:
+Когда вам нужно обновить уже неактуальные скриншоты, вы можете сделать это с помощью следующей команды:
+
 ```bash
 npx playwright test --update-snapshots
 ```
 
-It will change only those that are no longer the same. After visual verification by your own eyes you can commit new base snapshots.
+ Будут заменены только те скриншоты, в которых были расхождения. После визуальной проверки можно закоммитить новые базовые скриншоты.
 
-## See Tests Report Locally in Dev Container
+## Просмотр отчета о тестах локально в Dev-контейнере
 
-After you execute `npm run test-e2e` you can see the tests run report. For instance, if retries occured for a test or several of them. If a tests run failed report is going to be hosted for you automatically. If a test run succeeded you need to ask to host the report using the following script:
+После выполнения `npm run test-e2e` вы можете увидеть отчет о запуске тестов. Например, были ли повторные попытки при запуске одного или более тестов. Если тест упал, отчет будет сгененерирован автоматически. Если тест прошел успешно, то отчет можно сгенерировать с помощью команды:
+
 ```bash
 npx playwright show-report
 ```
 
-To see the hosted report you need to run the following command and then look through VNC:
+Чтобы просмотреть сгенерированный отчет, нужно запустить следующую команду и смотреть через VNC:
+
 ```bash
 npx playwright open localhost:9323
 ```
 
-## Playwright Version Upgrade
+## Обновление версии Playwright
 
-Playwright version has to be fixed to be compatible with Dev Containers workflow.
+Версия Playwright должна быть зафиксирована для корректной работы в Dev-контейнере.
 
-For instance, if you need to upgrade playwright version from 1.48.2 to 1.49.0.
+Например, вам нужно обновить версию Playwright с 1.48.2 до 1.49.0.
 
-- Check that the new needed version tag is available [here](https://mcr.microsoft.com/en-us/artifact/mar/playwright/tags)
-- If the new version has a dedicated noble docker image then upgrade its tag in `devcontainer.json` file like that
+- Проверьте, доступен ли тег новой версии, которая вам нужна, [здесь](https://mcr.microsoft.com/en-us/artifact/mar/playwright/tags)
+- Если в новой версии есть выделенный noble докер-образ, обновите его тег в файле `devcontainer.json` следующим образом:
 
-from
+было:
+
 ```
 "image": "mcr.microsoft.com/playwright:v1.48.2-noble",
 ```
-to
+стало:
+
 ```
 "image": "mcr.microsoft.com/playwright:v1.49.0-noble",
 ```
-- Uninstall previous version of plyawright packages executing the following commands
+- Удалите предыдущую версию пакетов Playwright, выполнив следующие команды:
+
 ```bash
 npm uninstall @playwright/test
 ```
-- Install the new **exact** and **fixed** version of playwright packages to dev deps executing the following commands (here the example is for 1.49.0 version, replace it with the needed one)
+- Установите новую **точную** и **зафиксированную** версию пакетов Playwright в dev- зависимости, выполнив следующие команды (здесь пример для версии 1.49.0, замените ее на нужную):
+
 ```bash
 npm install -D @playwright/test@1.49.0 --save-exact
 ```
