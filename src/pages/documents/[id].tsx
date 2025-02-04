@@ -27,7 +27,7 @@ export default function DocumentsCategories({
 
   useEffect(() => {
     if (queryYear) {
-      router.push(
+      router.replace(
         {
           query: {
             ...router.query,
