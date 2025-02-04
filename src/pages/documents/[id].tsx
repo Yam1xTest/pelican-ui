@@ -131,8 +131,10 @@ export async function getServerSideProps({
           const year = currentYear - i;
           const yearsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
             id: +query.id,
-            yearLte: year,
-            yearGte: year,
+            ...((categoryResponse.data![0].attributes!.isDivided) && {
+              yearLte: year,
+              yearGte: year,
+            }),
             pageSize: 1,
           }))}`);
 
