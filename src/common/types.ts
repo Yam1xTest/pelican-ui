@@ -166,7 +166,7 @@ export type Ticket = {
   description?: string,
   price: string,
   frequency?: string,
-  theme: `Зелёный` | `Коричневый`,
+  theme?: `Зелёный` | `Коричневый`,
 };
 
 export type NewsPageProps = {

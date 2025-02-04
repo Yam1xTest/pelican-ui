@@ -209,15 +209,11 @@
     }
   }
 
-  &--contact-zoo {
-    pointer-events: none;
+  &--bg-green {
+    background-image: url("../../../../public/images/tickets/bg-leopard-green.png");
+  }
 
-    &:nth-child(2) {
-      background-image: url("../../../../public/images/tickets/bg-leopard-brown.png");
-    }
-
-    @include tablet {
-      background-image: url("../../../../public/images/tickets/bg-leopard-green.png");
-    }
+  &--bg-brown {
+    background-image: url("../../../../public/images/tickets/bg-leopard-brown.png");
   }
 }

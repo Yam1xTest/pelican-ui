@@ -14,11 +14,13 @@ export const MOCK_CONTACT_ZOO_TICKETS: TicketsComponentProps = {
       category: `Дети до 2 лет`,
       description: `Требуется подтверждающий документ.`,
       price: `Бесплатно`,
+      theme: `Зелёный`,
     },
     {
       id: 1,
       category: `Взрослые, дети\u00A0от\u00A03\u00A0лет`,
       price: `100  ₽ / чел`,
+      theme: `Коричневый`,
     },
   ],
 };

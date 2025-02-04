@@ -8,14 +8,12 @@ export function TicketCard({
   link,
   isSubsidized,
   isGeneral,
-  isContactZoo,
 }: {
   className: string,
   link?: string,
   ticket: Ticket,
   isSubsidized?: boolean,
   isGeneral?: boolean,
-  isContactZoo?: boolean,
 }) {
   return (
     <li
@@ -25,7 +23,8 @@ export function TicketCard({
         {
           'ticket-card--general': isGeneral,
           'ticket-card--subsidized': isSubsidized,
-          'ticket-card--contact-zoo': isContactZoo,
+          'ticket-card--bg-green': ticket.theme === `Зелёный`,
+          'ticket-card--bg-brown': ticket.theme === `Коричневый`,
         },
       )}
     >
