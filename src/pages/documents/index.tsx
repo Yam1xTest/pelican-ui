@@ -64,7 +64,7 @@ export async function getServerSideProps() {
         .map(async (documentsCategoriesItem) => {
           const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
             id: documentsCategoriesItem.id!,
-            ...((documentsCategoriesItem.attributes?.isDivided) && {
+            ...((documentsCategoriesItem.attributes?.hasTabs) && {
               yearLte: currentYear,
               yearGte: currentYear - 2,
             }),

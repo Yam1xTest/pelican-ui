@@ -193,7 +193,7 @@ export type DocumentsTabsProps = {
 export type DocumentsCategoriesProps = {
   id: number,
   title: string,
-  isDivided: boolean,
+  hasTabs: boolean,
 };
 
 export type DocumentFileProps = {

@@ -22,7 +22,7 @@ export function DocumentsList({
       data-testid="documents"
     >
       <h1 className="documents__title">{category.title}</h1>
-      {category.isDivided && (
+      {category.hasTabs && (
         <ul className="documents__tabs">
           {availableYears.map((year) => (
             <Tab

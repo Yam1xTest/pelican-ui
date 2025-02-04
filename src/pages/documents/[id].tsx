@@ -73,7 +73,7 @@ export async function getServerSideProps({
     .year();
 
   if (process.env.APP_ENV === `static`) {
-    if (!MOCK_DOCUMENTS_CATEGORIES.find((item) => item.id === +query.id)?.isDivided) {
+    if (!MOCK_DOCUMENTS_CATEGORIES.find((item) => item.id === +query.id)?.hasTabs) {
       return {
         props: {
           category: MOCK_DOCUMENTS_CATEGORIES.find(({
@@ -154,7 +154,7 @@ export async function getServerSideProps({
           const year = currentYear - i;
           const yearsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
             id: +query.id,
-            ...((categoryResponse.data![0].attributes!.isDivided) && {
+            ...((categoryResponse.data![0].attributes!.hasTabs) && {
               yearLte: year,
               yearGte: year,
             }),
@@ -181,7 +181,7 @@ export async function getServerSideProps({
 
     let documentsResponse: DocumentListResponse;
 
-    if (categoryResponse.data![0].attributes!.isDivided) {
+    if (categoryResponse.data![0].attributes!.hasTabs) {
       documentsResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
         id: +query.id,
         yearLte: +query.year || lastYear,
@@ -217,7 +217,7 @@ export async function getServerSideProps({
         category: {
           id: categoryResponse.data![0].id,
           title: categoryResponse.data![0].attributes!.title,
-          isDivided: categoryResponse.data![0].attributes!.isDivided,
+          hasTabs: categoryResponse.data![0].attributes!.hasTabs,
         },
         queryYear: query.year || lastYear,
         availableYears,

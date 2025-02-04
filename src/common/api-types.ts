@@ -343,7 +343,7 @@ export interface DocumentResponse {
 export interface DocumentsCategoryRequest {
   data: {
     title: string;
-    isDivided?: boolean;
+    hasTabs?: boolean;
   };
 }
 
@@ -368,7 +368,7 @@ export interface DocumentsCategoryListResponse {
 
 export interface DocumentsCategory {
   title: string;
-  isDivided?: boolean;
+  hasTabs?: boolean;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */
