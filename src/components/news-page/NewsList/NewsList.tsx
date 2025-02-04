@@ -19,7 +19,7 @@ export function NewsList({
   const router = useRouter();
 
   useEffect(() => {
-    router.push({
+    router.replace({
       query: {
         pageSize,
       },
