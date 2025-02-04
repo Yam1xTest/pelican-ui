@@ -148,13 +148,16 @@ export type NotFoundComponentProps = {
 
 export type TicketsComponentProps = {
   id: number
-  __component: BlockTypes.TICKETS,
+  __component: BlockTypes.TICKETS | BlockTypes.CONTACT_ZOO_TICKETS,
   generalTicketsTitle: string,
+  generalTicketsSubtitle?: string,
   generalTicketsLink: string,
-  subsidizedTicketsTitle: string,
-  subsidizedTicketsSubtitle: string,
+  subsidizedTicketsTitle?: string,
+  subsidizedTicketsSubtitle?: string,
   generalTickets: Ticket[],
-  subsidizedTickets: Ticket[],
+  subsidizedTickets?: Ticket[],
+  isContactZoo?: boolean,
+  contactZooNote?: string,
 };
 
 export type Ticket = {

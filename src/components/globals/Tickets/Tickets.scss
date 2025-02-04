@@ -1,4 +1,5 @@
 .tickets {
+  $this: &;
   $gap-tablet: 12px;
   $gap-tablet-xl: 16px;
   $gap-desktop: 24px;
@@ -235,6 +236,37 @@
         display: flex;
       }
     }
+
+    &--info {
+      min-height: initial;
+      font-size: 14px;
+      line-height: 1.45;
+      opacity: 0.75;
+
+      @include tablet {
+        padding-top: 4px;
+        width: 100%;
+        font-size: 16px;
+      }
+
+      @include tablet-xl {
+        padding-top: 0;
+        width: calc(100% / 3);
+        min-height: 160px;
+        font-size: 20px;
+      }
+
+      @include desktop {
+        min-height: 219px;
+        font-size: 24px;
+        line-height: 1.4;
+      }
+
+      @include desktop-xl {
+        min-height: 309px;
+        font-size: 34px;
+      }
+    }
   }
 
   &__ticket-button {
@@ -274,5 +306,61 @@
   @include desktop-xl {
     border-radius: 64px;
     padding: 80px 0;
+  }
+
+  &--contact-zoo {
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+
+    &::before,
+    &::after {
+      @include tablet {
+        content: none;
+      }
+    }
+
+    #{$this}__subtitle {
+      max-width: 290px;
+
+      @include tablet-xl {
+        max-width: none;
+      }
+
+      @include desktop {
+        font-size: 18px;
+      }
+
+      @include desktop-xl {
+        font-size: 24px;
+      }
+    }
+
+    #{$this}__list {
+      margin-bottom: 0;
+
+      @include desktop {
+        margin-top: 40px;
+      }
+
+      @include desktop-xl {
+        margin-top: 30px;
+      }
+    }
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+
+    @include tablet-xl {
+      margin-bottom: 56px;
+    }
+
+    @include desktop {
+      margin-bottom: 80px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 176px;
+    }
   }
 }

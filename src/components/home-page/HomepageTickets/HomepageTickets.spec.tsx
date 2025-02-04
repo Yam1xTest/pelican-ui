@@ -9,7 +9,7 @@ import {
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`TicketsComponentTests`, () => {
+test.describe(`HomepageTicketsComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {

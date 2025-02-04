@@ -84,6 +84,8 @@ export function Footer({
                         className="footer__nav-link"
                         aria-label={`Перейти на страницу ${name}`}
                         data-testid="footer-nav-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         {name}
                       </Link>
@@ -247,6 +249,8 @@ export function Footer({
                 href={link}
                 className="footer__official-link"
                 data-testid="footer-official-link"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Image
                   className="footer__official-link-logo"
