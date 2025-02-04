@@ -175,7 +175,6 @@ export const BlockRenderer = ({
           isContactZoo
           generalTicketsTitle={block.generalTicketsTitle}
           generalTicketsSubtitle={block.generalTicketsSubtitle}
-          generalTicketsLink={block.generalTicketsLink}
           generalTickets={block.generalTickets}
           contactZooNote={block.contactZooNote}
         />
