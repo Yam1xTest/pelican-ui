@@ -1,9 +1,8 @@
-
 export function getDocumentsQueryParams({
   id,
   yearLte,
   yearGte,
-  pageSize = 1000,
+  pageSize = 100,
 }: {
   id: number,
   yearLte?: number,
