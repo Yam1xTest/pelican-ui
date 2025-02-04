@@ -73,6 +73,21 @@ export async function getServerSideProps({
     .year();
 
   if (process.env.APP_ENV === `static`) {
+    if (!MOCK_DOCUMENTS_CATEGORIES.find((item) => item.id === +query.id)?.isDivided) {
+      return {
+        props: {
+          category: MOCK_DOCUMENTS_CATEGORIES.find(({
+            id,
+          }) => id === +query.id) || null,
+          queryYear: query.year || null,
+          availableYears: [],
+          documents: MOCK_DOCUMENTS.filter(({
+            category,
+          }) => category.id === +query.id),
+        },
+      };
+    }
+
     const availableYears: number[] = [];
 
     Array.from({
@@ -94,6 +109,14 @@ export async function getServerSideProps({
           availableYears.push(year);
         }
       });
+
+    if (query.year && !availableYears.includes(+query.year)) {
+      return {
+        props: {
+          category: null,
+        },
+      };
+    }
 
     const lastYear = String(availableYears[0]);
     const filteredDocuments = MOCK_DOCUMENTS.filter(({

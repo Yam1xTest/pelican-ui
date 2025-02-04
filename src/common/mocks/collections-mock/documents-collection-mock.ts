@@ -120,4 +120,21 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       id: 1,
     },
   },
+  {
+    id: 6,
+    date: `2019-01-17`,
+    showDate: true,
+    title: `Протокол закупки  №8143788742`,
+    files: [
+      {
+        id: 1,
+        name: `Протокол закупки №8143788742`,
+        url: `/public/documents/Protocol.pdf`,
+        ext: `.pdf`,
+      },
+    ],
+    category: {
+      id: 3,
+    },
+  },
 ];
