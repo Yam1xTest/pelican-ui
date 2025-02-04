@@ -13,18 +13,21 @@ export const MOCK_TICKETS: TicketsComponentProps = {
       id: 0,
       category: `Взрослые, дети\u00A0от\u00A014\u00A0лет`,
       price: `400  ₽ / чел`,
+      theme: `Зелёный`,
     },
     {
       id: 1,
       category: `Дети от 5 до 13 лет`,
       description: `Требуется подтверждающий документ.`,
       price: `200  ₽ / чел`,
+      theme: `Зелёный`,
     },
     {
       id: 2,
       category: `Дети до 4 лет`,
       description: `Требуется подтверждающий документ.`,
       price: `Бесплатно`,
+      theme: `Зелёный`,
     },
   ],
   subsidizedTickets: [
@@ -34,18 +37,21 @@ export const MOCK_TICKETS: TicketsComponentProps = {
       description: `Требуется подтверждающий документ.`,
       price: `Бесплатно`,
       frequency: `1 раз в месяц`,
+      theme: `Зелёный`,
     },
     {
       id: 1,
       category: `Пенсионеры, студенты`,
       description: `Требуется подтверждающий документ.`,
       price: `200  ₽ / чел`,
+      theme: `Зелёный`,
     },
     {
       id: 2,
       category: `Инвалиды I и II групп`,
       description: `Требуется подтверждающий документ.`,
       price: `Бесплатно`,
+      theme: `Зелёный`,
     },
   ],
 };
