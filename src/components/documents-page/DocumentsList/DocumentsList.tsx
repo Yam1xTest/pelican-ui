@@ -30,7 +30,7 @@ export function DocumentsList({
             label={year}
             isActive={currentYear === year}
             onClick={() => {
-              router.push(
+              router.replace(
                 {
                   query: {
                     ...router.query,
