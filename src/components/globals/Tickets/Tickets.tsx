@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import clsx from "clsx";
-import { TicketCard } from "./components/TicketCard/TicketCard";
+import { TicketCard } from "../TicketCard/TicketCard";
 
 export function Tickets({
   generalTicketsTitle,
