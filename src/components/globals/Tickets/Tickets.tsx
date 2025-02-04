@@ -98,7 +98,7 @@ export function Tickets({
                     className="tickets__item"
                     key={el.id}
                     ticket={el}
-                    isSubsidized
+                    // isSubsidized
                     link=""
                   />
                 ))}

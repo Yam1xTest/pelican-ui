@@ -6,14 +6,14 @@ export function TicketCard({
   className,
   ticket,
   link,
-  // isSubsidized,
+  isSubsidized,
   isGeneral,
   isContactZoo,
 }: {
   className: string,
   link?: string,
   ticket: Ticket,
-  // isSubsidized?: boolean,
+  isSubsidized?: boolean,
   isGeneral?: boolean,
   isContactZoo?: boolean,
 }) {
@@ -24,7 +24,7 @@ export function TicketCard({
         className,
         {
           'ticket-card--general': isGeneral,
-          // 'ticket-card--subsidized': isSubsidized,
+          'ticket-card--subsidized': isSubsidized,
           'ticket-card--contact-zoo': isContactZoo,
         },
       )}

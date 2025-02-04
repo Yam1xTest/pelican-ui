@@ -78,8 +78,7 @@ export function HomepageTickets({
                 className="tickets__item"
                 key={el.id}
                 ticket={el}
-                // isSubsidized
-                // link=""
+                isSubsidized
               />
             ))}
             {
