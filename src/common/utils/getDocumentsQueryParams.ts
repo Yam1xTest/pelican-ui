@@ -1,21 +1,21 @@
 export function getDocumentsQueryParams({
   id,
-  yearLte,
-  yearGte,
+  yearLessThanOrEqual,
+  yearGreaterThanOrEqual,
   pageSize = 100,
 }: {
   id: number,
-  yearLte?: number,
-  yearGte?: number,
+  yearLessThanOrEqual?: number,
+  yearGreaterThanOrEqual?: number,
   pageSize?: number,
 }) {
   return {
     populate: [`files`, `category`],
     filters: {
-      ...((yearLte || yearGte) && {
+      ...((yearLessThanOrEqual || yearGreaterThanOrEqual) && {
         date: {
-          $lte: `${yearLte}-12-31`,
-          $gte: `${yearGte}-01-01`,
+          $lte: `${yearLessThanOrEqual}-12-31`,
+          $gte: `${yearGreaterThanOrEqual}-01-01`,
         },
       }),
       category: {

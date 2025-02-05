@@ -155,8 +155,8 @@ export async function getServerSideProps({
           const yearsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
             id: +query.id,
             ...((categoryResponse.data![0].attributes!.hasTabs) && {
-              yearLte: year,
-              yearGte: year,
+              yearLessThanOrEqual: year,
+              yearGreaterThanOrEqual: year,
             }),
             pageSize: 1,
           }))}`);
@@ -184,8 +184,8 @@ export async function getServerSideProps({
     if (categoryResponse.data![0].attributes!.hasTabs) {
       documentsResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
         id: +query.id,
-        yearLte: +query.year || lastYear,
-        yearGte: +query.year || lastYear,
+        yearLessThanOrEqual: +query.year || lastYear,
+        yearGreaterThanOrEqual: +query.year || lastYear,
       }))}`);
     } else {
       documentsResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
