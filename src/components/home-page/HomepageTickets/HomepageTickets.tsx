@@ -106,7 +106,8 @@ export function HomepageTickets({
             isMobile
              && (
                <Link
-                 href="#"
+                 // TODO: Remove when the page appears
+                 href="https://vk.com/topic-71671982_48253263"
                  className="tickets__ticket-button button button--primary"
                  data-testid="tickets-all-discounts"
                >
