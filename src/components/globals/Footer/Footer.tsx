@@ -52,8 +52,8 @@ export function Footer({
       <div className="footer__inner">
         <div className="container">
           <div className="footer__top">
-            <div className="footer__cols">
-              <div className="footer__col footer__col--left">
+            <div className="footer__cols grid">
+              <div className="footer__col footer__col--left col-12 col-tablet-4">
                 <p className="footer__title">{footerNavTitleLeft}</p>
                 <ul className="footer__nav">
                   <li
@@ -93,7 +93,7 @@ export function Footer({
                   ))}
                 </ul>
               </div>
-              <div className="footer__col">
+              <div className="footer__col col-12 col-tablet-4">
                 <p className="footer__title">{footerNavTitleRight}</p>
                 <ul className="footer__nav">
                   {footerAboutLinks.map(({
@@ -139,29 +139,55 @@ export function Footer({
                   </li>
                 </ul>
               </div>
+              {isTablet && (
+                <ul className="footer__col col-12 col-tablet-4">
+                  <li className="footer__contact">
+                    <Link
+                      href={`tel:${phone}`}
+                      className="footer__contact-link"
+                      aria-label={`Связаться с нами по телефону ${phone}`}
+                      data-testid="footer-tel-link"
+                    >
+                      {phone}
+                    </Link>
+                  </li>
+                  <li className="footer__contact">
+                    <Link
+                      href={`mailto:${email}`}
+                      className="footer__contact-link"
+                      aria-label={`Связаться с нами по почте ${email}`}
+                      data-testid="footer-email-link"
+                    >
+                      {email}
+                    </Link>
+                  </li>
+                </ul>
+              )}
             </div>
-            <ul className="footer__contacts">
-              <li className="footer__contact">
-                <Link
-                  href={`tel:${phone}`}
-                  className="footer__contact-link"
-                  aria-label={`Связаться с нами по телефону ${phone}`}
-                  data-testid="footer-tel-link"
-                >
-                  {phone}
-                </Link>
-              </li>
-              <li className="footer__contact">
-                <Link
-                  href={`mailto:${email}`}
-                  className="footer__contact-link"
-                  aria-label={`Связаться с нами по почте ${email}`}
-                  data-testid="footer-email-link"
-                >
-                  {email}
-                </Link>
-              </li>
-            </ul>
+            {!isTablet && (
+              <ul className="footer__contacts">
+                <li className="footer__contact">
+                  <Link
+                    href={`tel:${phone}`}
+                    className="footer__contact-link"
+                    aria-label={`Связаться с нами по телефону ${phone}`}
+                    data-testid="footer-tel-link"
+                  >
+                    {phone}
+                  </Link>
+                </li>
+                <li className="footer__contact">
+                  <Link
+                    href={`mailto:${email}`}
+                    className="footer__contact-link"
+                    aria-label={`Связаться с нами по почте ${email}`}
+                    data-testid="footer-email-link"
+                  >
+                    {email}
+                  </Link>
+                </li>
+              </ul>
+            )}
           </div>
           <div className="footer__middle grid">
             {

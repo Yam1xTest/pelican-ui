@@ -19,26 +19,16 @@
     }
   }
 
-  &__top {
-    @include tablet {
-      display: flex;
-    }
-  }
-
   &__cols {
-    display: flex;
+    grid-template-columns: repeat(12, 1fr);
 
     @include tablet {
-      width: 68%;
+      display: grid;
     }
   }
 
   &__col {
-    width: 50%;
-
-    &--left {
-      padding-right: 10px;
-    }
+    grid-column-end: span 6;
   }
 
   &__nav {
