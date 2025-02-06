@@ -21,10 +21,6 @@
 
   &__cols {
     grid-template-columns: repeat(12, 1fr);
-
-    @include tablet {
-      display: grid;
-    }
   }
 
   &__col {
@@ -79,15 +75,8 @@
   }
 
   &__official-link-item {
-    // & + & {
-    //   margin-top: 14px;
-    // }
-
     @include tablet {
-      // display: inline-grid;
       padding-right: 6px;
-
-      // width: calc(100% / 3);
 
       &:last-child {
         padding-right: 0;
@@ -163,10 +152,6 @@
 
   &__contacts {
     margin-top: 65px;
-
-    @include tablet {
-      margin-top: 0;
-    }
   }
 
   &__social-media {
@@ -200,10 +185,6 @@
     @include tablet {
       display: block;
     }
-
-    // @include tablet {
-    //   width: 33.8%;
-    // }
   }
 
   &__official-name-text {
@@ -253,15 +234,12 @@
   &__copyright {
     @include caption-2-medium;
 
-    // margin-top: 16px;
     font-weight: 500;
     font-size: 14px;
     line-height: 1.46;
 
     @include tablet {
       margin-top: 0;
-
-      // width: 34%;
     }
 
     @include desktop-xl {
@@ -398,11 +376,4 @@
       font-size: 34px;
     }
   }
-
-  // &__middle,
-  // &__official-links {
-  //   @include tablet {
-  //     display: flex;
-  //   }
-  // }
 }
