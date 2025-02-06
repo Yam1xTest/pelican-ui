@@ -53,7 +53,7 @@ export function Footer({
         <div className="container">
           <div className="footer__top">
             <div className="footer__cols grid">
-              <div className="footer__col footer__col--left col-12 col-tablet-4">
+              <div className="footer__col col-tablet-4">
                 <p className="footer__title">{footerNavTitleLeft}</p>
                 <ul className="footer__nav">
                   <li
@@ -93,7 +93,7 @@ export function Footer({
                   ))}
                 </ul>
               </div>
-              <div className="footer__col col-12 col-tablet-4">
+              <div className="footer__col col-tablet-4">
                 <p className="footer__title">{footerNavTitleRight}</p>
                 <ul className="footer__nav">
                   {footerAboutLinks.map(({
@@ -140,7 +140,7 @@ export function Footer({
                 </ul>
               </div>
               {isTablet && (
-                <ul className="footer__col col-12 col-tablet-4">
+                <ul className="footer__col col-tablet-4">
                   <li className="footer__contact">
                     <Link
                       href={`tel:${phone}`}
@@ -194,14 +194,14 @@ export function Footer({
               isTablet && (
                 isDesktop
                   ? (
-                    <div className="footer__official-name col-12 col-tablet-4">
+                    <div className="footer__official-name col-tablet-4">
                       <p className="footer__official-name-text">
                         Муниципальное Бюджетное Учреждение Культуры «Зоопарк»
                       </p>
                     </div>
                   )
                   : (
-                    <div className="footer__official-name col-12 col-tablet-4">
+                    <div className="footer__official-name col-tablet-4">
                       <p className="footer__official-name-text">
                         МБУК «Зоопарк»
                       </p>
@@ -211,7 +211,7 @@ export function Footer({
             }
             {
               isTablet && (
-                <div className="footer__copyright col-12 col-tablet-4">
+                <div className="footer__copyright col-tablet-4">
                   Сайт разработан
                   <Link
                     href="https://www.tourmalinecore.com/"
@@ -231,7 +231,7 @@ export function Footer({
                 </div>
               )
             }
-            <div className="footer__social-media col-12 col-tablet-4">
+            <div className="footer__social-media col-tablet-4">
               <SocialMedia
                 className="footer__social-icon"
               />
@@ -269,7 +269,7 @@ export function Footer({
           }) => (
             <li
               key={id}
-              className="footer__official-link-item col-12 col-tablet-4"
+              className="footer__official-link-item col-tablet-4"
             >
               <Link
                 href={link}
