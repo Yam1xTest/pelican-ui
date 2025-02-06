@@ -163,19 +163,19 @@ export function Footer({
               </li>
             </ul>
           </div>
-          <div className="footer__middle">
+          <div className="footer__middle grid">
             {
               isTablet && (
                 isDesktop
                   ? (
-                    <div className="footer__official-name">
+                    <div className="footer__official-name col-12 col-tablet-4">
                       <p className="footer__official-name-text">
                         Муниципальное Бюджетное Учреждение Культуры «Зоопарк»
                       </p>
                     </div>
                   )
                   : (
-                    <div className="footer__official-name">
+                    <div className="footer__official-name col-12 col-tablet-4">
                       <p className="footer__official-name-text">
                         МБУК «Зоопарк»
                       </p>
@@ -185,7 +185,7 @@ export function Footer({
             }
             {
               isTablet && (
-                <div className="footer__copyright">
+                <div className="footer__copyright col-12 col-tablet-4">
                   Сайт разработан
                   <Link
                     href="https://www.tourmalinecore.com/"
@@ -205,7 +205,7 @@ export function Footer({
                 </div>
               )
             }
-            <div className="footer__social-media">
+            <div className="footer__social-media col-12 col-tablet-4">
               <SocialMedia
                 className="footer__social-icon"
               />
@@ -233,7 +233,7 @@ export function Footer({
       </div>
 
       <div className="container footer__bottom">
-        <ul className="footer__official-links">
+        <ul className="footer__official-links grid">
           {officialLinks.map(({
             id,
             name,
@@ -243,7 +243,7 @@ export function Footer({
           }) => (
             <li
               key={id}
-              className="footer__official-link-item"
+              className="footer__official-link-item col-12 col-tablet-4"
             >
               <Link
                 href={link}
