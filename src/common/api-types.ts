@@ -343,6 +343,7 @@ export interface DocumentResponse {
 export interface DocumentsCategoryRequest {
   data: {
     title: string;
+    hasTabs?: boolean;
   };
 }
 
@@ -367,6 +368,7 @@ export interface DocumentsCategoryListResponse {
 
 export interface DocumentsCategory {
   title: string;
+  hasTabs?: boolean;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */

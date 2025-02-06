@@ -193,6 +193,7 @@ export type DocumentsTabsProps = {
 export type DocumentsCategoriesProps = {
   id: number,
   title: string,
+  hasTabs: boolean,
 };
 
 export type DocumentFileProps = {
