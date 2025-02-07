@@ -17,7 +17,7 @@ export function Hero({
   image,
   isContactZoo,
   email,
-}: Omit<HeroComponentProps, 'id' | '__component'> & Pick<GlobalComponentProps, 'email'>) {
+}: Omit<HeroComponentProps, 'id' | '__component'> & Partial<Pick<GlobalComponentProps, 'email'>>) {
   const {
     isMobile,
     isTablet,
