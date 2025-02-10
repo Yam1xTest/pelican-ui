@@ -61,8 +61,8 @@ const HomepageTickets = dynamic(
   },
 );
 
-const ContactZooTickets = dynamic(
-  () => import(`../../contact-zoo-page/ContactZooTickets/ContactZooTickets`).then((component) => component.ContactZooTickets),
+const Tickets = dynamic(
+  () => import(`../../globals/Tickets/Tickets`).then((component) => component.Tickets),
   {
     ssr: false,
   },
@@ -171,12 +171,11 @@ export const BlockRenderer = ({
 
     case BlockTypes.CONTACT_ZOO_TICKETS:
       return (
-        <ContactZooTickets
-          isContactZoo
-          generalTicketsTitle={block.generalTicketsTitle}
-          generalTicketsSubtitle={block.generalTicketsSubtitle}
-          generalTickets={block.generalTickets}
-          contactZooNote={block.contactZooNote}
+        <Tickets
+          title={block.generalTicketsTitle}
+          subtitle={block.generalTicketsSubtitle}
+          tickets={block.generalTickets}
+          note={block.contactZooNote}
         />
       );
 
