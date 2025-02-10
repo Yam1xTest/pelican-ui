@@ -151,7 +151,7 @@ export type TicketsComponentProps = {
   __component: BlockTypes.TICKETS | BlockTypes.CONTACT_ZOO_TICKETS,
   generalTicketsTitle: string,
   generalTicketsSubtitle?: string,
-  generalTicketsLink: string,
+  generalTicketsLink?: string,
   subsidizedTicketsTitle?: string,
   subsidizedTicketsSubtitle?: string,
   generalTickets: Ticket[],
@@ -166,6 +166,7 @@ export type Ticket = {
   description?: string,
   price: string,
   frequency?: string,
+  theme?: `Зелёный` | `Коричневый`,
 };
 
 export type NewsPageProps = {
