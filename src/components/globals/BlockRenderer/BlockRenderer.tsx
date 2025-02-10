@@ -61,8 +61,8 @@ const HomepageTickets = dynamic(
   },
 );
 
-const ContactZooTickets = dynamic(
-  () => import(`../../contact-zoo-page/ContactZooTickets/ContactZooTickets`).then((component) => component.ContactZooTickets),
+const Tickets = dynamic(
+  () => import(`../../globals/Tickets/Tickets`).then((component) => component.Tickets),
   {
     ssr: false,
   },
@@ -182,13 +182,12 @@ export const BlockRenderer = ({
 
   if (block.__component === BlockTypes.CONTACT_ZOO_TICKETS) {
     return (
-      <ContactZooTickets
-        isContactZoo
-        generalTicketsTitle={block.generalTicketsTitle}
-        generalTicketsSubtitle={block.generalTicketsSubtitle}
-        generalTicketsLink={block.generalTicketsLink}
-        generalTickets={block.generalTickets}
-        contactZooNote={block.contactZooNote}
+      <Tickets
+        title={block.generalTicketsTitle}
+        subtitle={block.generalTicketsSubtitle}
+        link={block.generalTicketsLink}
+        tickets={block.generalTickets}
+        note={block.contactZooNote}
       />
     );
   }

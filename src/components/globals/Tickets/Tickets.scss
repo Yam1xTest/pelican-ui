@@ -166,14 +166,13 @@
 
     @include tablet {
       display: flex;
-      align-items: end;
+      align-items: flex-start;
       flex-wrap: wrap;
       margin-bottom: 0;
       gap: $gap-tablet;
     }
 
     @include tablet-xl {
-      flex-wrap: nowrap;
       margin-top: 21px;
       gap: $gap-tablet-xl;
     }
@@ -202,15 +201,12 @@
     }
 
     @include tablet-xl {
-      width: calc(100% / 3);
+      width: calc((100% - 2 * $gap-tablet-xl) / 3);
     }
 
     @include desktop {
+      width: calc((100% - 2 * $gap-desktop) / 3);
       min-height: 219px;
-    }
-
-    @include desktop {
-      width: calc(100% / 3);
     }
 
     @include desktop-xl {
@@ -244,26 +240,24 @@
       opacity: 0.75;
 
       @include tablet {
+        flex-grow: 1;
         padding-top: 4px;
-        width: 100%;
         font-size: 16px;
       }
 
       @include tablet-xl {
         padding-top: 0;
-        width: calc(100% / 3);
-        min-height: 160px;
+        width: calc((100% - 2 * $gap-tablet-xl) / 3);
         font-size: 20px;
       }
 
       @include desktop {
-        min-height: 219px;
+        width: calc((100% - 2 * $gap-desktop) / 3);
         font-size: 24px;
         line-height: 1.4;
       }
 
       @include desktop-xl {
-        min-height: 309px;
         font-size: 34px;
       }
     }
@@ -308,7 +302,7 @@
     padding: 80px 0;
   }
 
-  &--contact-zoo {
+  &--internal-page {
     margin-bottom: 56px;
     padding-bottom: 40px;
 

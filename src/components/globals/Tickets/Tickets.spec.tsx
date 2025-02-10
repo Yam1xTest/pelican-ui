@@ -2,7 +2,7 @@ import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`ContactZooTicketsComponentTests`, () => {
+test.describe(`TicketsComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
@@ -40,7 +40,7 @@ async function mobileTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-tickets-mobile.png`);
+    .toHaveScreenshot(`tickets-mobile.png`);
 }
 
 async function tabletTest({
@@ -57,7 +57,7 @@ async function tabletTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-tickets-tablet.png`);
+    .toHaveScreenshot(`tickets-tablet.png`);
 }
 
 async function tabletXlTest({
@@ -74,7 +74,7 @@ async function tabletXlTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-tickets-tablet-xl.png`);
+    .toHaveScreenshot(`tickets-tablet-xl.png`);
 }
 
 async function desktopTest({
@@ -91,7 +91,7 @@ async function desktopTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-tickets-desktop.png`);
+    .toHaveScreenshot(`tickets-desktop.png`);
 }
 
 async function desktopXlTest({
@@ -108,7 +108,7 @@ async function desktopXlTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-tickets-desktop-xl.png`);
+    .toHaveScreenshot(`tickets-desktop-xl.png`);
 }
 
 function getTicketsByTestId({
