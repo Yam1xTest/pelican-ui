@@ -1,11 +1,12 @@
 /* eslint-disable no-case-declarations */
 import { SharedHeroComponent } from "../api-types";
 import { BlockTypes } from "../enum";
+import { Block } from "../types";
 
 export function mapContractByBlock({
   block,
 }: {
-  block: any
+  block: Block
 }) {
   switch (`${block.__component}`) {
     case BlockTypes.SHARED_HERO:

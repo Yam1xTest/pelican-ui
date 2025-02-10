@@ -1,5 +1,6 @@
 import { StaticImageData } from "next/image";
 import { BlockTypes } from "./enum";
+import { SharedHeroComponent, SharedSeoComponent } from "./api-types";
 
 export type GlobalComponentProps = {
   navigationLinks: {
@@ -214,6 +215,17 @@ export type DocumentsProps = {
   files: DocumentFileProps[],
   category: {
     id: number,
+  }
+};
+
+export type Block = SharedHeroComponent;
+
+export type PageData = {
+  data: {
+    attributes: {
+      blocks: Block[];
+      seo?: SharedSeoComponent
+    }
   }
 };
 

@@ -20,21 +20,23 @@ export default function UniversalPage({
   if (!pageData) {
     return <NotFound />;
   }
+
   const {
     email,
     phone,
   } = globalData;
 
   const {
-    seo, blocks,
+    seo,
+    blocks,
   } = pageData;
 
   return (
     <>
       <Head>
-        <title>{seo.metaTitle}</title>
+        <title>{seo?.metaTitle}</title>
         <meta
-          name={seo.metaDescription}
+          name={seo?.metaDescription}
           content="Сайт зоопарка"
         />
       </Head>
