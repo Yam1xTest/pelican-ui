@@ -135,7 +135,7 @@ export interface ContactZoo {
             title?: string;
             description?: string;
           };
-          sheduleCard?: {
+          scheduleCard?: {
             id?: number;
             title?: string;
             timetable?: {
@@ -317,7 +317,7 @@ export interface HeroInfoCardComponent {
   description?: string;
 }
 
-export interface HeroSheduleCardComponent {
+export interface HeroScheduleCardComponent {
   id?: number;
   title?: string;
   timetable?: {
@@ -560,7 +560,7 @@ export interface SharedHeroComponent {
     };
   };
   infoCard?: HeroInfoCardComponent;
-  sheduleCard?: HeroSheduleCardComponent;
+  scheduleCard?: HeroScheduleCardComponent;
 }
 
 export interface SharedSeoComponent {
@@ -1273,7 +1273,7 @@ export interface Home {
             title?: string;
             description?: string;
           };
-          sheduleCard?: {
+          scheduleCard?: {
             id?: number;
             title?: string;
             timetable?: {

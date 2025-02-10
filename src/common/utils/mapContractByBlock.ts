@@ -20,8 +20,8 @@ export function mapContractByBlock({
           url: sharedHeroBlock?.image?.data?.attributes?.url,
           alternativeText: sharedHeroBlock?.image?.data?.attributes?.alternativeText || ``,
         },
-        scheduleTitle: sharedHeroBlock?.sheduleCard?.title,
-        scheduleTimetables: sharedHeroBlock?.sheduleCard?.timetable,
+        scheduleTitle: sharedHeroBlock?.scheduleCard?.title,
+        scheduleTimetables: sharedHeroBlock?.scheduleCard?.timetable,
         infoCardTitle: sharedHeroBlock?.infoCard?.title,
         infoCardDescription: sharedHeroBlock?.infoCard?.description,
       };
