@@ -4,11 +4,12 @@ import { MOCK_DOCUMENTS_PAGE } from '@/src/common/mocks/documents-page-mock/docu
 import { api } from '@/src/common/utils/HttpClient';
 import { DocumentListResponse, DocumentsCategoryListResponse } from '@/src/common/api-types';
 import qs from 'qs';
-import dayjs from 'dayjs';
-import { getDocumentsCategoriesQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
 import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { DocumentsCategoriesProps, DocumentsPageProps } from '@/src/common/types';
+import { getDocumentsQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
+import { MOCK_DOCUMENTS } from '@/src/common/mocks/collections-mock/documents-collection-mock';
+import dayjs from 'dayjs';
 
 export default function DocumentsPage({
   pageData,
@@ -44,11 +45,42 @@ export default function DocumentsPage({
 }
 
 export async function getServerSideProps() {
+  const currentYear = dayjs()
+    .year();
+
   if (process.env.APP_ENV === `static`) {
+    const documentsCategories = MOCK_DOCUMENTS_CATEGORIES.filter(({
+      id,
+      hasTabs,
+    }) => {
+      for (let i = 0; i < 3; i++) {
+        const year = currentYear - i;
+        const documents = MOCK_DOCUMENTS.filter(({
+          date,
+          category,
+        }) => {
+          const isCategory = category.id === id;
+          const isYear = date.split(`-`)[0] === String(year);
+
+          if (isCategory && !hasTabs) {
+            return isCategory;
+          }
+
+          return isCategory && isYear;
+        });
+
+        if (documents.length) {
+          return true;
+        }
+      }
+
+      return false;
+    });
+
     return {
       props: {
         pageData: MOCK_DOCUMENTS_PAGE,
-        documentCategories: MOCK_DOCUMENTS_CATEGORIES,
+        documentCategories: documentsCategories,
       },
     };
   }
@@ -56,15 +88,15 @@ export async function getServerSideProps() {
   try {
     const documentsCategoriesResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories`);
 
-    const year = dayjs()
-      .year();
-
     const documentsCategories: DocumentsCategoriesProps[] = (await Promise.all(
       documentsCategoriesResponse.data!
         .map(async (documentsCategoriesItem) => {
-          const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsCategoriesQueryParams({
+          const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
             id: documentsCategoriesItem.id!,
-            year,
+            ...((documentsCategoriesItem.attributes?.hasTabs) && {
+              yearLessThanOrEqual: currentYear,
+              yearGreaterThanOrEqual: currentYear - 2,
+            }),
             pageSize: 1,
           }))}`);
 
