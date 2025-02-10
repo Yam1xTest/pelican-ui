@@ -41,7 +41,6 @@ export function HomepageTickets({
                 ticket={el}
                 isGeneral
                 link={generalTicketsLink}
-                // isContactZoo={isContactZoo}
               />
             ))}
             {isTablet && !isTabletXl && (
@@ -56,7 +55,7 @@ export function HomepageTickets({
               </li>
             )}
           </ul>
-          {(isMobile) && (
+          {isMobile && (
             <Button
               className="tickets__ticket-button"
               theme="primary"
