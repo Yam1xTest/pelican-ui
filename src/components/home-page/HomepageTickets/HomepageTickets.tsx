@@ -109,6 +109,8 @@ export function HomepageTickets({
                  href="https://vk.com/topic-71671982_48253263"
                  className="tickets__ticket-button button button--primary"
                  data-testid="tickets-all-discounts"
+                 target="_blank"
+                 rel="noopener noreferrer"
                >
                  Другие льготы
                </Link>
