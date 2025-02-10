@@ -22,8 +22,8 @@ export async function getPageData({
         slug: `home`,
         populate: [
           `blocks.infoCard`,
-          `blocks.sheduleCard`,
-          `blocks.sheduleCard.timetable`,
+          `blocks.scheduleCard`,
+          `blocks.scheduleCard.timetable`,
           `blocks.image`,
           `seo`,
         ],
@@ -41,8 +41,8 @@ export async function getPageData({
         slug,
         populate: [
           `blocks.infoCard`,
-          `blocks.sheduleCard`,
-          `blocks.sheduleCard.timetable`,
+          `blocks.scheduleCard`,
+          `blocks.scheduleCard.timetable`,
           `blocks.image`,
           `seo`,
         ],
