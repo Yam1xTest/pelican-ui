@@ -79,6 +79,8 @@ export type TextAndMediaComponentProps = {
     url: string,
     mime: string,
   },
+  contentOrder: "Текст слева, видео/изображение справа" | "Видео/изображение слева, текст справа",
+  viewFootsteps: boolean,
 };
 
 export type ServicesComponentProps = {

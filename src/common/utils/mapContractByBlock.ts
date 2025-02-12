@@ -30,13 +30,16 @@ export function mapContractByBlock({
 
       return {
         id: sharedTextAndMediaBlock?.id,
-        title: sharedTextAndMediaBlock?.title,
         __component: sharedTextAndMediaBlock.__component,
+        title: sharedTextAndMediaBlock?.title,
+        description: sharedTextAndMediaBlock?.description,
         media: {
           url: sharedTextAndMediaBlock?.media?.data?.attributes?.url,
           alternativeText: sharedTextAndMediaBlock?.media?.data?.attributes?.alternativeText || ``,
           mime: sharedTextAndMediaBlock?.media?.data?.attributes?.mime,
         },
+        contentOrder: sharedTextAndMediaBlock?.contentOrder,
+        viewFootsteps: sharedTextAndMediaBlock?.viewFootsteps,
       };
 
     default:

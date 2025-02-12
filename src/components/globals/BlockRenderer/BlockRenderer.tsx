@@ -128,6 +128,8 @@ export const BlockRenderer = ({
         title={block.title}
         description={block.description}
         media={block.media}
+        contentOrder={block.contentOrder}
+        viewFootsteps={block.viewFootsteps}
       />
     );
   }
