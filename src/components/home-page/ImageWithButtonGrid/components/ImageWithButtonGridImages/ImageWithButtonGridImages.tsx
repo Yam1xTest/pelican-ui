@@ -16,11 +16,10 @@ export function ImageWithButtonGridImages({
   } = useWindowWidth();
 
   return (
-    <div className={`${className} contact-zoo-images`}>
-      <div className="contact-zoo-images__wrapper">
+    <div className={`${className} grid-images`}>
+      <div className="grid-images__wrapper">
         <Image
-          data-testid="contact-zoo-large-image"
-          className="contact-zoo-images__image"
+          className="grid-images__image"
           src={largeImage.url}
           alt={largeImage.alternativeText}
           fill
@@ -28,10 +27,9 @@ export function ImageWithButtonGridImages({
         />
       </div>
       {isDesktop && smallImage && (
-        <div className="contact-zoo-images__wrapper">
+        <div className="grid-images__wrapper">
           <Image
-            data-testid="contact-zoo-small-image"
-            className="contact-zoo-images__image"
+            className="grid-images__image"
             src={smallImage.url}
             alt={smallImage.alternativeText}
             fill

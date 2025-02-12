@@ -12,22 +12,22 @@ export function ImageWithButtonGrid({
 }: Omit<ImageWithButtonGridComponentProps, 'id' | '__component'>) {
   return (
     <section
-      className="contact-zoo"
+      className="image-with-button-grid"
       data-testid="image-with-button-grid"
     >
-      <div className="contact-zoo__wrapper container">
-        <div className="contact-zoo__text">
-          <h2 className="contact-zoo__title">{title}</h2>
-          <p className="contact-zoo__description">{description}</p>
+      <div className="image-with-button-grid__wrapper container">
+        <div className="image-with-button-grid__text">
+          <h2 className="image-with-button-grid__title">{title}</h2>
+          <p className="image-with-button-grid__description">{description}</p>
         </div>
         <ImageWithButtonGridImages
-          className="contact-zoo__images"
+          className="image-with-button-grid__images"
           largeImage={largeImage}
           smallImage={smallImage}
         />
         <Link
           href={AppRoute.CONTACT_ZOO}
-          className="contact-zoo__btn button button--primary"
+          className="image-with-button-grid__btn button button--primary"
           aria-label="Перейти на страницу контактного зоопарка"
           data-testid="contact-zoo-btn"
         >
