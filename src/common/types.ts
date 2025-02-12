@@ -1,5 +1,6 @@
 import { StaticImageData } from "next/image";
 import { BlockTypes } from "./enum";
+import { SharedHeroComponent, SharedSeoComponent } from "./api-types";
 
 export type GlobalComponentProps = {
   navigationLinks: {
@@ -49,7 +50,7 @@ export type GlobalComponentProps = {
 
 export type HeroComponentProps = {
   id: number
-  __component: BlockTypes.HERO | BlockTypes.CONTACT_ZOO_HERO,
+  __component: BlockTypes.SHARED_HERO,
   title: string,
   image: Image,
   scheduleTitle: string,
@@ -120,8 +121,10 @@ export type MapComponentProps = {
 };
 
 export type HomePageProps = {
-  id: number,
-  title: string;
+  seo: {
+    metaTitle: string,
+    metaDescription: string,
+  },
   blocks: (
     HeroComponentProps
     | TextAndMediaComponentProps
@@ -129,12 +132,14 @@ export type HomePageProps = {
     | ContactZooPreviewComponentProps
     | MapComponentProps
     | TicketsComponentProps
-  )[];
+  )[],
 };
 
-export type ContactZooProps = {
-  id: number,
-  title: string;
+export type ContactZooPageProps = {
+  seo: {
+    metaTitle: string,
+    metaDescription: string,
+  },
   blocks: (
     HeroComponentProps
     | TicketsComponentProps
@@ -151,7 +156,7 @@ export type TicketsComponentProps = {
   __component: BlockTypes.TICKETS | BlockTypes.CONTACT_ZOO_TICKETS,
   generalTicketsTitle: string,
   generalTicketsSubtitle?: string,
-  generalTicketsLink: string,
+  generalTicketsLink?: string,
   subsidizedTicketsTitle?: string,
   subsidizedTicketsSubtitle?: string,
   generalTickets: Ticket[],
@@ -166,10 +171,10 @@ export type Ticket = {
   description?: string,
   price: string,
   frequency?: string,
+  theme?: `Зелёный` | `Коричневый`,
 };
 
 export type NewsPageProps = {
-  id: number,
   title: string;
   newsTitle: string;
 };
@@ -180,7 +185,6 @@ export type NewsProps = CardProps & {
 };
 
 export type DocumentsPageProps = {
-  id: number,
   title: string,
   documentsTitle: string;
 };
@@ -213,6 +217,17 @@ export type DocumentsProps = {
   files: DocumentFileProps[],
   category: {
     id: number,
+  }
+};
+
+export type Block = SharedHeroComponent;
+
+export type PageData = {
+  data: {
+    attributes: {
+      blocks: Block[];
+      seo?: SharedSeoComponent
+    }
   }
 };
 
