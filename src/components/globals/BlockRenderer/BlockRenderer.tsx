@@ -122,12 +122,12 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.TEXT_AND_MEDIA) {
+  if (block.__component === BlockTypes.SHARED_TEXT_AND_MEDIA) {
     return (
       <TextAndMedia
         title={block.title}
         description={block.description}
-        video={block.video}
+        media={block.media}
       />
     );
   }
