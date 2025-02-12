@@ -1,7 +1,6 @@
 .contact-zoo {
   position: relative;
   z-index: $contact-zoo;
-  padding-top: 52px;
 
   &::before {
     content: "";
@@ -176,21 +175,5 @@
       grid-column: 2 / 3;
       grid-row: 2 / 3;
     }
-  }
-
-  @include tablet {
-    padding-top: 40px;
-  }
-
-  @include tablet-xl {
-    padding-top: 28px;
-  }
-
-  @include desktop {
-    padding-top: 40px;
-  }
-
-  @include desktop-xl {
-    padding-top: 88px;
   }
 }
