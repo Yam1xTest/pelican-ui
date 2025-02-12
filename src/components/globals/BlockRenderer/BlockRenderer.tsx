@@ -11,6 +11,7 @@ import {
   NotFoundComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
+import { ImageWithButtonGrid } from '../ImageWithButtonGrid/ImageWithButtonGrid';
 
 const ContactZooHero = dynamic(
   () => import(`../../contact-zoo-page/ContactZooHero/ContactZooHero`).then((component) => component.ContactZooHero),
@@ -195,6 +196,19 @@ export const BlockRenderer = ({
 
   if (block.__component === BlockTypes.NOT_FOUND) {
     return <NotFound />;
+  }
+
+  // eslint-disable-next-line max-len
+  if (block.__component === BlockTypes.IMAGE_WITH_BUTTON_GRID && slug === AppRoute.INTERNAL_TEST_PAGE) {
+    return (
+      <ImageWithButtonGrid
+        title={block.title}
+        description={block.description}
+        largeImage={block.largeImage}
+        smallImage={block.smallImage}
+        isInternalPage
+      />
+    );
   }
 
   return null;

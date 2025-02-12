@@ -148,6 +148,16 @@ export type ContactZooPageProps = {
   )[];
 };
 
+export type InternalTestPageProps = {
+  seo: {
+    metaTitle: string,
+    metaDescription: string,
+  },
+  blocks: (
+    ImageWithButtonGridComponentProps
+  )[];
+};
+
 export type NotFoundComponentProps = {
   id: number,
   __component: BlockTypes.NOT_FOUND,
