@@ -40,8 +40,8 @@ const Services = dynamic(
   },
 );
 
-const ImageWithButtonGrid = dynamic(
-  () => import(`../../home-page/ImageWithButtonGrid/ImageWithButtonGrid`).then((component) => component.ImageWithButtonGrid),
+const HomepageImageWithButtonGrid = dynamic(
+  () => import(`../../home-page/HomepageImageWithButtonGrid/HomepageImageWithButtonGrid`).then((component) => component.HomepageImageWithButtonGrid),
   {
     ssr: false,
   },
@@ -145,9 +145,10 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.IMAGE_WITH_BUTTON_GRID) {
+  // if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID && slug === AppRoute.HOME) {
+  if (block.__component === BlockTypes.IMAGE_WITH_BUTTON_GRID && slug === AppRoute.HOME) {
     return (
-      <ImageWithButtonGrid
+      <HomepageImageWithButtonGrid
         title={block.title}
         description={block.description}
         largeImage={block.largeImage}
