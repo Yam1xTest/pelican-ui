@@ -1,14 +1,15 @@
-import { ContactZooPreviewComponentProps } from "@/src/common/types";
+import { ImageWithButtonGridComponentProps } from "@/src/common/types";
 import Link from "next/link";
 import { AppRoute } from "@/src/common/enum";
-import { ContactZooPreviewImages } from "./components/ContactZooPreviewImages/ContactZooPreviewImages";
+import { ImageWithButtonGridImages } from "./components/ImageWithButtonGridImages/ImageWithButtonGridImages";
 
-export function ContactZooPreview({
+export function ImageWithButtonGrid({
   title,
   description,
   largeImage,
   smallImage,
-}: Omit<ContactZooPreviewComponentProps, 'id' | '__component'>) {
+  isContactZoo,
+}: Omit<ImageWithButtonGridComponentProps, 'id' | '__component'>) {
   return (
     <section
       className="contact-zoo"
@@ -19,7 +20,7 @@ export function ContactZooPreview({
           <h2 className="contact-zoo__title">{title}</h2>
           <p className="contact-zoo__description">{description}</p>
         </div>
-        <ContactZooPreviewImages
+        <ImageWithButtonGridImages
           className="contact-zoo__images"
           largeImage={largeImage}
           smallImage={smallImage}
@@ -33,6 +34,7 @@ export function ContactZooPreview({
           Подробнее
         </Link>
       </div>
+      {isContactZoo && <div>!!!</div>}
     </section>
   );
 }

@@ -1,15 +1,15 @@
 import Image from "next/image";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
-import { ContactZooPreviewComponentProps } from "@/src/common/types";
+import { ImageWithButtonGridComponentProps } from "@/src/common/types";
 
-export function ContactZooPreviewImages({
+export function ImageWithButtonGridImages({
   className,
   largeImage,
   smallImage,
 }: {
   className: string,
-  largeImage: ContactZooPreviewComponentProps["largeImage"],
-  smallImage: ContactZooPreviewComponentProps["smallImage"],
+  largeImage: ImageWithButtonGridComponentProps["largeImage"],
+  smallImage: ImageWithButtonGridComponentProps["smallImage"],
 }) {
   const {
     isDesktop,

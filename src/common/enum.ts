@@ -16,7 +16,7 @@ export enum Breakpoint {
 export enum BlockTypes {
   SHARED_HERO = `shared.hero`,
   SERVICES = `home.services`,
-  CONTACT_ZOO_PREVIEW = `home.contact-zoo-preview`,
+  IMAGE_WITH_BUTTON_GRID = `home.image-with-button-grid`,
   TICKETS = `home.tickets`,
   MAP = `home.map`,
   TEXT_AND_MEDIA = `home.text-and-media`,

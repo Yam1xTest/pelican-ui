@@ -5,7 +5,7 @@ import {
   HeroComponentProps,
   TextAndMediaComponentProps,
   ServicesComponentProps,
-  ContactZooPreviewComponentProps,
+  ImageWithButtonGridComponentProps,
   MapComponentProps,
   TicketsComponentProps,
   NotFoundComponentProps,
@@ -40,8 +40,8 @@ const Services = dynamic(
   },
 );
 
-const ContactZooPreview = dynamic(
-  () => import(`../../home-page/ContactZooPreview/ContactZooPreview`).then((component) => component.ContactZooPreview),
+const ImageWithButtonGrid = dynamic(
+  () => import(`../../home-page/ImageWithButtonGrid/ImageWithButtonGrid`).then((component) => component.ImageWithButtonGrid),
   {
     ssr: false,
   },
@@ -78,7 +78,7 @@ const NotFound = dynamic(
 type Block = HeroComponentProps
   | TextAndMediaComponentProps
   | ServicesComponentProps
-  | ContactZooPreviewComponentProps
+  | ImageWithButtonGridComponentProps
   | MapComponentProps
   | TicketsComponentProps
   | NotFoundComponentProps;
@@ -145,9 +145,9 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.CONTACT_ZOO_PREVIEW) {
+  if (block.__component === BlockTypes.IMAGE_WITH_BUTTON_GRID) {
     return (
-      <ContactZooPreview
+      <ImageWithButtonGrid
         title={block.title}
         description={block.description}
         largeImage={block.largeImage}

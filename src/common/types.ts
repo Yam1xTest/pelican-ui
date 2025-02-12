@@ -102,9 +102,9 @@ export type CardProps = {
   description?: string,
 };
 
-export type ContactZooPreviewComponentProps = {
+export type ImageWithButtonGridComponentProps = {
   id: number
-  __component: BlockTypes.CONTACT_ZOO_PREVIEW,
+  __component: BlockTypes.IMAGE_WITH_BUTTON_GRID,
   title: string,
   description: string,
   largeImage: Image,
@@ -129,7 +129,7 @@ export type HomePageProps = {
     HeroComponentProps
     | TextAndMediaComponentProps
     | ServicesComponentProps
-    | ContactZooPreviewComponentProps
+    | ImageWithButtonGridComponentProps
     | MapComponentProps
     | TicketsComponentProps
   )[],
