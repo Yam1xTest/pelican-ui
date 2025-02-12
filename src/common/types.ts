@@ -108,7 +108,8 @@ export type ImageWithButtonGridComponentProps = {
   title: string,
   description: string,
   largeImage: Image,
-  smallImage?: Image
+  smallImage?: Image,
+  isInternalPage?: boolean
 };
 
 export type MapComponentProps = {

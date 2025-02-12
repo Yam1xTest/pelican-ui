@@ -1,6 +1,7 @@
 import { ImageWithButtonGridComponentProps } from "@/src/common/types";
 import Link from "next/link";
 import { AppRoute } from "@/src/common/enum";
+import clsx from "clsx";
 import { ImageWithButtonGridImages } from "./components/ImageWithButtonGridImages/ImageWithButtonGridImages";
 
 export function ImageWithButtonGrid({
@@ -8,11 +9,16 @@ export function ImageWithButtonGrid({
   description,
   largeImage,
   smallImage,
-  isContactZoo,
+  isInternalPage,
 }: Omit<ImageWithButtonGridComponentProps, 'id' | '__component'>) {
   return (
     <section
-      className="image-with-button-grid"
+      className={clsx(
+        `image-with-button-grid`,
+        {
+          'image-with-button-grid--internal-page': isInternalPage,
+        },
+      )}
       data-testid="image-with-button-grid"
     >
       <div className="image-with-button-grid__wrapper container">
@@ -34,7 +40,6 @@ export function ImageWithButtonGrid({
           Подробнее
         </Link>
       </div>
-      {isContactZoo && <div>!!!</div>}
     </section>
   );
 }
