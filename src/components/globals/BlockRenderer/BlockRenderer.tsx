@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/indent */
 import { AppRoute, BlockTypes } from '@/src/common/enum';
 import {
-    GlobalComponentProps,
-    HeroComponentProps,
-    TextAndMediaComponentProps,
-    CardsComponentProps,
-    ContactZooPreviewComponentProps,
-    MapComponentProps,
-    TicketsComponentProps,
-    NotFoundComponentProps,
-    ServicesComponentProps,
+  GlobalComponentProps,
+  HeroComponentProps,
+  TextAndMediaComponentProps,
+  CardsComponentProps,
+  ContactZooPreviewComponentProps,
+  MapComponentProps,
+  TicketsComponentProps,
+  NotFoundComponentProps,
+  ServicesComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
