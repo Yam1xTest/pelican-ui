@@ -7,7 +7,7 @@ import {
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`ImageWithButtonGridTests`, () => {
+test.describe(`HomepageImageWithButtonGridTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
