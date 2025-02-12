@@ -13,7 +13,7 @@ export function ImageWithButtonGrid({
   return (
     <section
       className="contact-zoo"
-      data-testid="contact-zoo"
+      data-testid="image-with-button-grid"
     >
       <div className="contact-zoo__wrapper container">
         <div className="contact-zoo__text">
