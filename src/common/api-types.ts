@@ -1159,8 +1159,8 @@ export interface DocumentsCategoryResponse {
 
 export interface HomeRequest {
   data: {
-    blocks?: SharedHeroComponent[];
-    seo?: SharedSeoComponent;
+    blocks?: (SharedHeroComponent | SharedTextAndMediaComponent)[];
+        seo?: SharedSeoComponent;
     versions?: (number | string)[];
     vuid?: string;
     versionNumber?: number;
@@ -1189,7 +1189,7 @@ export interface HomeListResponse {
 }
 
 export interface Home {
-  blocks?: SharedHeroComponent[];
+  blocks?: (SharedHeroComponent | SharedTextAndMediaComponent)[];
   seo?: SharedSeoComponent;
   /** @format date-time */
   createdAt?: string;
@@ -1447,6 +1447,64 @@ export interface HomeResponseDataObject {
 export interface HomeResponse {
   data?: HomeResponseDataObject;
   meta?: object;
+}
+
+export interface SharedTextAndMediaComponent {
+  id?: number;
+  __component?: string;
+  title?: string;
+  description?: string;
+  media?: {
+    data?: {
+      id?: number;
+      attributes?: {
+        name?: string;
+        alternativeText?: string;
+        caption?: string;
+        width?: number;
+        height?: number;
+        formats?: any;
+        hash?: string;
+        ext?: string;
+        mime?: string;
+        /** @format float */
+        size?: number;
+        url?: string;
+        previewUrl?: string;
+        provider?: string;
+        provider_metadata?: any;
+        related?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          }[];
+        };
+        folder?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        folderPath?: string;
+        /** @format date-time */
+        createdAt?: string;
+        /** @format date-time */
+        updatedAt?: string;
+        createdBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        updatedBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+      };
+    };
+  };
 }
 
 export interface NewsCollectionRequest {
