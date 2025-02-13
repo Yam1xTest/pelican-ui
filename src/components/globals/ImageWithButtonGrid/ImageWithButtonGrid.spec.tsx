@@ -1,4 +1,4 @@
-import { AppRoute } from '@/src/common/enum';
+import { AppRoute, BlockTypes } from '@/src/common/enum';
 import {
   gotoPage,
   hideHeader,
@@ -13,7 +13,7 @@ test.describe(`ImageWithButtonGridTests`, () => {
   }) => {
     await gotoPage({
       page,
-      url: AppRoute.INTERNAL_TEST_PAGE,
+      url: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.IMAGE_WITH_BUTTON_GRID}`,
     });
 
     await hideHeader({

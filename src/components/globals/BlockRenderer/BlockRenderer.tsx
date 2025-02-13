@@ -90,7 +90,7 @@ export const BlockRenderer = ({
   phone,
   email,
 }: {
-  slug: string,
+  slug?: string,
   block: Block,
   phone: GlobalComponentProps['phone'],
   email: GlobalComponentProps['email']
@@ -198,8 +198,7 @@ export const BlockRenderer = ({
     return <NotFound />;
   }
 
-  // eslint-disable-next-line max-len
-  if (block.__component === BlockTypes.IMAGE_WITH_BUTTON_GRID && slug === AppRoute.INTERNAL_TEST_PAGE) {
+  if (block.__component === BlockTypes.IMAGE_WITH_BUTTON_GRID) {
     return (
       <ImageWithButtonGrid
         title={block.title}
