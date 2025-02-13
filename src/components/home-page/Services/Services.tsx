@@ -1,16 +1,12 @@
-import { GlobalComponentProps, ServicesComponentProps } from "@/src/common/types";
+import { ServicesComponentProps } from "@/src/common/types";
 import { Cards } from "../../globals/Cards/Cards";
 
 export function Services({
   title,
   cards,
-  phoneText,
-  emailText,
   phone,
   email,
 }: Omit<ServicesComponentProps, 'id' | '__component'> & {
-  phone: GlobalComponentProps['phone'],
-  email: GlobalComponentProps['email']
 }) {
   return (
     <Cards
@@ -28,9 +24,7 @@ export function Services({
               <span
                 className="services__button button button--secondary"
               >
-                {phoneText}
-                {` `}
-                {phone}
+                {`Уточнить вопросы можно\nпо телефону: ${phone}`}
               </span>
             </a>
           </li>
@@ -42,9 +36,7 @@ export function Services({
               <span
                 className="services__button button button--primary"
               >
-                {emailText}
-                {` `}
-                {email}
+                {`Запись осуществляется\nпо почте: ${email}`}
               </span>
             </a>
           </li>

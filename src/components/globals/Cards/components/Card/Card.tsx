@@ -64,12 +64,15 @@ function renderCardMarkup({
       <div className="card__image-wrapper">
         {labels && (
           <ul className="card__labels">
-            {labels.map((label) => (
+            {labels.map(({
+              id,
+              text,
+            }) => (
               <li
                 className="card__label"
-                key={label}
+                key={id}
               >
-                {label}
+                {text}
               </li>
             ))}
           </ul>

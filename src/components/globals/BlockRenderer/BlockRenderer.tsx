@@ -139,10 +139,8 @@ export const BlockRenderer = ({
       <Services
         title={block.title}
         cards={block.cards}
-        phoneText={block.phoneText}
-        emailText={block.emailText}
-        phone={phone}
-        email={email}
+        phone={block.phone}
+        email={block.email}
       />
     );
   }
