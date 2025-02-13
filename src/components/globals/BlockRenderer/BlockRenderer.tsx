@@ -112,7 +112,7 @@ export const BlockRenderer = ({
   if (block.__component === BlockTypes.SHARED_HERO && slug === AppRoute.CONTACT_ZOO) {
     return (
       <ContactZooHero
-        isContactZoo
+        isInteralPage
         title={block.title}
         image={block.image}
         scheduleTitle={block.scheduleTitle}

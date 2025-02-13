@@ -61,7 +61,7 @@
     padding: 32px;
   }
 
-  &--contact-zoo {
+  &--internal-page {
     #{$this}__title {
       @include tablet {
         color: $color-brown;
