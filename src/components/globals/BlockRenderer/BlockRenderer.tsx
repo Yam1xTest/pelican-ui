@@ -12,6 +12,7 @@ import {
   ServicesComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
+import { Cards } from '../Cards/Cards';
 
 const ContactZooHero = dynamic(
   () => import(`../../contact-zoo-page/ContactZooHero/ContactZooHero`).then((component) => component.ContactZooHero),
@@ -90,7 +91,7 @@ export const BlockRenderer = ({
   block,
   email,
 }: {
-  slug: string,
+  slug?: string,
   block: Block,
   email: GlobalComponentProps['email']
 }) => {
@@ -139,6 +140,15 @@ export const BlockRenderer = ({
         cards={block.cards}
         phone={block.phone}
         email={block.email}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.SHARED_CARDS) {
+    return (
+      <Cards
+        title={block.title}
+        cards={block.cards}
       />
     );
   }

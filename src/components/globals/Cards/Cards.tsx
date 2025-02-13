@@ -22,7 +22,7 @@ export function Cards({
         `container cards`,
         className,
       )}
-      data-testid={dataTestId}
+      data-testid={dataTestId || `cards`}
     >
       <h1 className="cards__title">{title}</h1>
       <ul className="cards__list">
