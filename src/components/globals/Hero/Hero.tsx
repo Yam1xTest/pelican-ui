@@ -82,6 +82,7 @@ export function Hero({
               href={`mailto:${email}`}
               className="button button--secondary hero__contact-button"
               data-testid="hero-contact-button"
+              aria-label="Связаться с нами по почте"
             >
               Связаться
             </Link>
@@ -91,6 +92,7 @@ export function Hero({
               isFeatured
               onClick={handleTicketPopupToggle}
               data-testid="hero-tickets-popup-button"
+              aria-label="Открыть модальное окно  с билетами"
             >
               Билеты
             </Button>

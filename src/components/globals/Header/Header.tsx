@@ -105,7 +105,7 @@ export function Header({
                 theme="primary"
                 isFeatured
                 onClick={handleTicketPopupToggle}
-                aria-label="Открыть модальное окно  с билетами"
+                aria-label="Открыть модальное окно с билетами"
                 data-testid="header-tickets-popup-button"
               >
                 Билеты

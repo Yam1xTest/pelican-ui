@@ -88,12 +88,10 @@ type Block = HeroComponentProps
 export const BlockRenderer = ({
   slug,
   block,
-  phone,
   email,
 }: {
   slug: string,
   block: Block,
-  phone: GlobalComponentProps['phone'],
   email: GlobalComponentProps['email']
 }) => {
   if (block.__component === BlockTypes.SHARED_HERO && slug === AppRoute.HOME) {

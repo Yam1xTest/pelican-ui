@@ -31,7 +31,6 @@
     }
 
     @include desktop {
-      grid-auto-rows: 1fr;
       grid-template-columns: repeat(3, minmax(413px, 617px));
     }
 

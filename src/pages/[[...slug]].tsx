@@ -23,7 +23,6 @@ export default function UniversalPage({
 
   const {
     email,
-    phone,
   } = globalData;
 
   const {
@@ -45,7 +44,6 @@ export default function UniversalPage({
           slug={route.asPath}
           key={block.id}
           block={block}
-          phone={phone}
           email={email}
         />
       ))}
