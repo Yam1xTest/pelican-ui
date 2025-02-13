@@ -146,7 +146,6 @@ export const BlockRenderer = ({
     );
   }
 
-  // if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID && slug === AppRoute.HOME) {
   if (block.__component === BlockTypes.IMAGE_WITH_BUTTON_GRID && slug === AppRoute.HOME) {
     return (
       <HomepageImageWithButtonGrid

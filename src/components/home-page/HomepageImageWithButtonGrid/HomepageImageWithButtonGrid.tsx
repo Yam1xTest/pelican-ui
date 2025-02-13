@@ -1,5 +1,4 @@
 import { ImageWithButtonGridComponentProps } from "@/src/common/types";
-import { AppRoute } from "@/src/common/enum";
 import { ImageWithButtonGrid } from "../../globals/ImageWithButtonGrid/ImageWithButtonGrid";
 
 export function HomepageImageWithButtonGrid({
@@ -7,6 +6,7 @@ export function HomepageImageWithButtonGrid({
   description,
   largeImage,
   smallImage,
+  url,
 }: Omit<ImageWithButtonGridComponentProps, 'id' | '__component'>) {
   return (
     <ImageWithButtonGrid
@@ -14,7 +14,7 @@ export function HomepageImageWithButtonGrid({
       description={description}
       largeImage={largeImage}
       smallImage={smallImage}
-      url={AppRoute.CONTACT_ZOO}
+      url={url}
     />
   );
 }

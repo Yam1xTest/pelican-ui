@@ -104,7 +104,6 @@ export type CardProps = {
 
 export type ImageWithButtonGridComponentProps = {
   id: number
-  // __component: BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID,
   __component: BlockTypes.IMAGE_WITH_BUTTON_GRID,
   title: string,
   description: string,
@@ -234,8 +233,6 @@ export type DocumentsProps = {
 };
 
 export type Block = SharedHeroComponent;
-
-// export type BlockTwo = SharedImageWithButtonGrid;
 
 export type PageData = {
   data: {
