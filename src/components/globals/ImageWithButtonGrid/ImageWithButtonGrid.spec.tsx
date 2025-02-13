@@ -1,6 +1,7 @@
 import { AppRoute, BlockTypes, Breakpoint } from '@/src/common/enum';
 import {
   gotoPage,
+  hideFooter,
   hideHeader,
   hideSkipLink,
   setViewportSize,
@@ -13,10 +14,14 @@ test.describe(`ImageWithButtonGridTests`, () => {
   }) => {
     await gotoPage({
       page,
-      url: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.IMAGE_WITH_BUTTON_GRID}`,
+      url: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID}`,
     });
 
     await hideHeader({
+      page,
+    });
+
+    await hideFooter({
       page,
     });
 

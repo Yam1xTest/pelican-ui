@@ -146,7 +146,7 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.IMAGE_WITH_BUTTON_GRID && slug === AppRoute.HOME) {
+  if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID && slug === AppRoute.HOME) {
     return (
       <HomepageImageWithButtonGrid
         title={block.title}
@@ -198,7 +198,7 @@ export const BlockRenderer = ({
     return <NotFound />;
   }
 
-  if (block.__component === BlockTypes.IMAGE_WITH_BUTTON_GRID) {
+  if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID) {
     return (
       <ImageWithButtonGrid
         title={block.title}
