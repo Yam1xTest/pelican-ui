@@ -1,7 +1,7 @@
 import LargeImageSrc from "@/public/images/contact-zoo/contact-zoo-large.png";
 import SmallImageSrc from "@/public/images/contact-zoo/contact-zoo-small.png";
 import { ImageWithButtonGridComponentProps } from "../../../types";
-import { BlockTypes } from "../../../enum";
+import { AppRoute, BlockTypes } from "../../../enum";
 
 export const MOCK_IMAGE_WITH_BUTTON_GRID: ImageWithButtonGridComponentProps = {
   id: 4,
@@ -16,4 +16,5 @@ export const MOCK_IMAGE_WITH_BUTTON_GRID: ImageWithButtonGridComponentProps = {
     url: SmallImageSrc,
     alternativeText: `Изображение кролика`,
   },
+  url: AppRoute.HOME,
 };

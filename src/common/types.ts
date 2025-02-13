@@ -110,6 +110,7 @@ export type ImageWithButtonGridComponentProps = {
   description: string,
   largeImage: Image,
   smallImage?: Image,
+  url: string,
   isInternalPage?: boolean
 };
 
