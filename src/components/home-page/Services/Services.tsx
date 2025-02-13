@@ -18,35 +18,38 @@ export function Services({
       dataTestId="services"
       title={title}
       cards={cards}
-    >
-      <li>
-        <a
-          href={`tel:${phone}`}
-          data-testid="services-phone-link"
-        >
-          <span
-            className="services__button button button--secondary"
-          >
-            {phoneText}
-            {` `}
-            {phone}
-          </span>
-        </a>
-      </li>
-      <li>
-        <a
-          href={`mailto:${email}`}
-          data-testid="services-email-link"
-        >
-          <span
-            className="services__button button button--primary"
-          >
-            {emailText}
-            {` `}
-            {email}
-          </span>
-        </a>
-      </li>
-    </Cards>
+      listChildren={(
+        <>
+          <li>
+            <a
+              href={`tel:${phone}`}
+              data-testid="services-phone-link"
+            >
+              <span
+                className="services__button button button--secondary"
+              >
+                {phoneText}
+                {` `}
+                {phone}
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={`mailto:${email}`}
+              data-testid="services-email-link"
+            >
+              <span
+                className="services__button button button--primary"
+              >
+                {emailText}
+                {` `}
+                {email}
+              </span>
+            </a>
+          </li>
+        </>
+      )}
+    />
   );
 }

@@ -1,5 +1,6 @@
 import { CardsComponentProps } from "@/src/common/types";
-import { PropsWithChildren } from "react";
+import { ReactNode } from "react";
+import clsx from "clsx";
 import { Card } from "./components/Card/Card";
 
 export function Cards({
@@ -8,13 +9,19 @@ export function Cards({
   className,
   dataTestId,
   children,
-}: Omit<CardsComponentProps, 'id' | '__component'> & PropsWithChildren & {
+  listChildren,
+}: Omit<CardsComponentProps, 'id' | '__component'> & {
+  children?: ReactNode
+  listChildren?: ReactNode
   className?: string;
   dataTestId?: string;
 }) {
   return (
     <section
-      className={`container cards ${className}`}
+      className={clsx(
+        `container cards`,
+        className,
+      )}
       data-testid={dataTestId}
     >
       <h1 className="cards__title">{title}</h1>
@@ -28,10 +35,12 @@ export function Cards({
             title={card.title}
             description={card.description}
             labels={card.labels}
+            link={card.link}
           />
         ))}
-        {children}
+        {listChildren}
       </ul>
+      {children}
     </section>
   );
 }
