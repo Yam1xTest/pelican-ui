@@ -6,8 +6,8 @@ import { BlockTypes } from "../../../enum";
 export const MOCK_IMAGE_WITH_BUTTON_GRID: ImageWithButtonGridComponentProps = {
   id: 4,
   __component: BlockTypes.IMAGE_WITH_BUTTON_GRID,
-  title: `Lorem ipsum dolor sit amet, consectetur`,
-  description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. `,
+  title: `Один из первых и самых больших контактных зоопарков`,
+  description: `В этой части зоопарка вы почувствуете себя вдали от городской суеты в компании кур, гусей, коз и многих других животных.`,
   largeImage: {
     url: LargeImageSrc,
     alternativeText: `Изображение кролика`,
