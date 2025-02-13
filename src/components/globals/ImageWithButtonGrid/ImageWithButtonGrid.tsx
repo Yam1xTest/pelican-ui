@@ -35,7 +35,7 @@ export function ImageWithButtonGrid({
           href={url}
           className="image-with-button-grid__btn button button--primary"
           aria-label="Перейти на страницу контактного зоопарка"
-          data-testid="contact-zoo-btn"
+          data-testid="image-grid-btn"
         >
           Подробнее
         </Link>
