@@ -1,26 +1,25 @@
 import Image from "next/image";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
-import { ContactZooPreviewComponentProps } from "@/src/common/types";
+import { ImageWithButtonGridComponentProps } from "@/src/common/types";
 
-export function ContactZooPreviewImages({
+export function ImageWithButtonGridImages({
   className,
   largeImage,
   smallImage,
 }: {
   className: string,
-  largeImage: ContactZooPreviewComponentProps["largeImage"],
-  smallImage: ContactZooPreviewComponentProps["smallImage"],
+  largeImage: ImageWithButtonGridComponentProps["largeImage"],
+  smallImage: ImageWithButtonGridComponentProps["smallImage"],
 }) {
   const {
     isDesktop,
   } = useWindowWidth();
 
   return (
-    <div className={`${className} contact-zoo-images`}>
-      <div className="contact-zoo-images__wrapper">
+    <div className={`${className} grid-images`}>
+      <div className="grid-images__wrapper">
         <Image
-          data-testid="contact-zoo-large-image"
-          className="contact-zoo-images__image"
+          className="grid-images__image"
           src={largeImage.url}
           alt={largeImage.alternativeText}
           fill
@@ -28,10 +27,9 @@ export function ContactZooPreviewImages({
         />
       </div>
       {isDesktop && smallImage && (
-        <div className="contact-zoo-images__wrapper">
+        <div className="grid-images__wrapper">
           <Image
-            data-testid="contact-zoo-small-image"
-            className="contact-zoo-images__image"
+            className="grid-images__image"
             src={smallImage.url}
             alt={smallImage.alternativeText}
             fill

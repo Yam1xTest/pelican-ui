@@ -4,18 +4,18 @@ import clsx from "clsx";
 export function ScheduleTimetable({
   className,
   scheduleTimetable,
-  isContactZoo,
+  isInteralPage,
 }: {
   className: string,
   scheduleTimetable: Timetable,
-  isContactZoo: HeroComponentProps['isContactZoo'],
+  isInteralPage: HeroComponentProps['isInteralPage'],
 }) {
   return (
     <li className={clsx(
       `schedule-timetable`,
       className,
       {
-        'schedule-timetable--contact-zoo': isContactZoo,
+        'schedule-timetable--internal-page': isInteralPage,
       },
     )}
     >
