@@ -4,13 +4,15 @@ import {
   GlobalComponentProps,
   HeroComponentProps,
   TextAndMediaComponentProps,
-  ServicesComponentProps,
-  ImageWithButtonGridComponentProps,
+  CardsComponentProps,
   MapComponentProps,
   TicketsComponentProps,
   NotFoundComponentProps,
+  ServicesComponentProps,
+  ImageWithButtonGridComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
+import { Cards } from '../Cards/Cards';
 import { ImageWithButtonGrid } from '../ImageWithButtonGrid/ImageWithButtonGrid';
 
 const ContactZooHero = dynamic(
@@ -78,6 +80,7 @@ const NotFound = dynamic(
 
 type Block = HeroComponentProps
   | TextAndMediaComponentProps
+  | CardsComponentProps
   | ServicesComponentProps
   | ImageWithButtonGridComponentProps
   | MapComponentProps
@@ -87,12 +90,10 @@ type Block = HeroComponentProps
 export const BlockRenderer = ({
   slug,
   block,
-  phone,
   email,
 }: {
   slug?: string,
   block: Block,
-  phone: GlobalComponentProps['phone'],
   email: GlobalComponentProps['email']
 }) => {
   if (block.__component === BlockTypes.SHARED_HERO && slug === AppRoute.HOME) {
@@ -133,15 +134,22 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.SERVICES) {
+  if (block.__component === BlockTypes.HOME_SERVICES) {
     return (
       <Services
         title={block.title}
         cards={block.cards}
-        phoneText={block.phoneText}
-        emailText={block.emailText}
-        phone={phone}
-        email={email}
+        phone={block.phone}
+        email={block.email}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.SHARED_CARDS) {
+    return (
+      <Cards
+        title={block.title}
+        cards={block.cards}
       />
     );
   }

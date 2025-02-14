@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-import { SharedHeroComponent } from "../api-types";
+import { HomeServicesComponent, SharedHeroComponent } from "../api-types";
 import { BlockTypes } from "../enum";
 import { Block } from "../types";
 
@@ -24,6 +24,24 @@ export function mapContractByBlock({
         scheduleTimetables: sharedHeroBlock?.scheduleCard?.timetable,
         infoCardTitle: sharedHeroBlock?.infoCard?.title,
         infoCardDescription: sharedHeroBlock?.infoCard?.description,
+      };
+
+    case BlockTypes.HOME_SERVICES:
+      const servicesBlock = block as HomeServicesComponent;
+
+      return {
+        id: servicesBlock?.id,
+        __component: servicesBlock.__component,
+        title: servicesBlock.cards?.title,
+        phone: servicesBlock.phone,
+        email: servicesBlock.email,
+        cards: servicesBlock.cards?.cards?.map((card) => ({
+          ...card,
+          image: {
+            url: card.image?.data?.attributes?.url,
+            alternativeText: card.image?.data?.attributes?.alternativeText || ``,
+          },
+        })),
       };
 
     default:

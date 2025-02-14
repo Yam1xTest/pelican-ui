@@ -1,6 +1,6 @@
 import { StaticImageData } from "next/image";
 import { BlockTypes } from "./enum";
-import { SharedHeroComponent, SharedSeoComponent } from "./api-types";
+import { HomeServicesComponent, SharedHeroComponent, SharedSeoComponent } from "./api-types";
 
 export type GlobalComponentProps = {
   navigationLinks: {
@@ -81,18 +81,17 @@ export type TextAndMediaComponentProps = {
   },
 };
 
-export type ServicesComponentProps = {
-  id: number,
-  __component: BlockTypes.SERVICES,
-  title: string,
-  cards: ServicesCardProps[],
-  phoneText: string,
-  emailText: string,
+export type ServicesComponentProps = Omit<CardsComponentProps, '__component'> & {
+  __component: BlockTypes.HOME_SERVICES
+  phone: string,
+  email: string,
 };
 
-export type ServicesCardProps = CardProps & {
-  description: string,
-  labels: string[],
+export type CardsComponentProps = {
+  id: number,
+  __component: BlockTypes.SHARED_CARDS,
+  title: string,
+  cards: CardProps[],
 };
 
 export type CardProps = {
@@ -100,6 +99,11 @@ export type CardProps = {
   image: Image,
   title: string,
   description?: string,
+  link?: string,
+  labels?: {
+    id: number,
+    text: string
+  }[]
 };
 
 export type ImageWithButtonGridComponentProps = {
@@ -222,7 +226,7 @@ export type DocumentsProps = {
   }
 };
 
-export type Block = SharedHeroComponent;
+export type Block = SharedHeroComponent | HomeServicesComponent;
 
 export type PageData = {
   data: {
