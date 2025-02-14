@@ -14,7 +14,7 @@ export function Services({
       dataTestId="services"
       title={title}
       cards={cards}
-      listChildren={(
+      childrenList={(
         <>
           <li>
             <a
