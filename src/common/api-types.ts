@@ -1160,7 +1160,7 @@ export interface DocumentsCategoryResponse {
 export interface HomeRequest {
   data: {
     blocks?: (SharedHeroComponent | SharedTextAndMediaComponent)[];
-        seo?: SharedSeoComponent;
+    seo?: SharedSeoComponent;
     versions?: (number | string)[];
     vuid?: string;
     versionNumber?: number;
