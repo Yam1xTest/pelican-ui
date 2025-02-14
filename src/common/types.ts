@@ -104,7 +104,7 @@ export type CardProps = {
 
 export type ImageWithButtonGridComponentProps = {
   id: number
-  __component: BlockTypes.IMAGE_WITH_BUTTON_GRID,
+  __component: BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID,
   title: string,
   description: string,
   largeImage: Image,
