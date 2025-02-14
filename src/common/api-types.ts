@@ -1341,7 +1341,7 @@ export interface Home {
                   };
                 };
               };
-              contentOrder?: "Текст слева, видео/изображение справа" | "Видео/изображение слева, текст справа";
+              contentOrder?: "Текст слева" | "Текст справа";
               viewFootsteps?: boolean;
             }
         )[];
@@ -1566,7 +1566,7 @@ export interface SharedTextAndMediaComponent {
       };
     };
   };
-  contentOrder?: "Текст слева, видео/изображение справа" | "Видео/изображение слева, текст справа";
+  contentOrder?: "Текст слева" | "Текст справа";
   viewFootsteps?: boolean;
 }
 

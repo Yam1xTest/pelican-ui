@@ -11,6 +11,6 @@ export const MOCK_TEXT_AND_MEDIA: TextAndMediaComponentProps = {
     url: `/video/text-and-media-video.mp4`,
     mime: `video/mp4`,
   },
-  contentOrder: `Текст слева, видео/изображение справа`,
+  contentOrder: `Текст слева`,
   viewFootsteps: true,
 };
