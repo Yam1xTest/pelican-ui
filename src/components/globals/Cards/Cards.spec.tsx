@@ -48,7 +48,7 @@ async function mobileTest({
 }) {
   await setViewportSize({
     page,
-    height: 1300,
+    height: 1640,
   });
 
   await expect(getCardsByTestId({
@@ -65,7 +65,7 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
-    height: 915,
+    height: 1115,
   });
 
   await expect(getCardsByTestId({
@@ -82,7 +82,7 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
-    height: 1160,
+    height: 1360,
   });
 
   await expect(getCardsByTestId({
@@ -99,7 +99,7 @@ async function desktopTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
-    height: 730,
+    height: 1220,
   });
 
   await expect(getCardsByTestId({
@@ -116,7 +116,7 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 920,
+    height: 1520,
   });
 
   await expect(getCardsByTestId({
