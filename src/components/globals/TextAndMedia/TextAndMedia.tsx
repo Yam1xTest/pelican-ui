@@ -17,7 +17,7 @@ export function TextAndMedia({
         `text-and-media container`,
         {
           'text-and-media--inverse': contentOrder === `Текст справа`,
-          'text-and-media--withoutFootsteps': !viewFootsteps,
+          'text-and-media--without-footsteps': !viewFootsteps,
         },
       )}
       data-testid="text-and-media"
