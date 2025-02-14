@@ -1,7 +1,8 @@
-.contact-zoo {
+.image-with-button-grid {
+  $this: &;
+
   position: relative;
-  z-index: $contact-zoo;
-  padding-top: 52px;
+  z-index: $image-with-btn-grid;
 
   &::before {
     content: "";
@@ -178,19 +179,38 @@
     }
   }
 
-  @include tablet {
-    padding-top: 40px;
-  }
+  &--internal-page {
+    border-radius: none;
+    background-color: $color-white;
 
-  @include tablet-xl {
-    padding-top: 28px;
-  }
+    &::before {
+      content: none;
+    }
 
-  @include desktop {
-    padding-top: 40px;
-  }
+    #{$this}__btn {
+      &::before {
+        content: none;
+      }
+    }
+    #{$this}__wrapper {
+      @include tablet {
+        padding-bottom: 40px;
+      }
 
-  @include desktop-xl {
-    padding-top: 88px;
+      @include tablet-xl {
+        padding-top: 56px;
+        padding-bottom: 56px;
+      }
+
+      @include desktop {
+        padding-top: 104px;
+        padding-bottom: 104px;
+      }
+
+      @include desktop-xl {
+        padding-top: 80px;
+        padding-bottom: 80px;
+      }
+    }
   }
 }

@@ -2,7 +2,7 @@ import qs from "qs";
 import { AppRoute } from "../enum";
 import { api } from "./HttpClient";
 import { mapContractByBlock } from "./mapContractByBlock";
-import { MOCK_CONTACT_ZOO_PREVIEW } from "../mocks/home-page-mock/blocks/contact-zoo-preview-mock";
+import { MOCK_IMAGE_WITH_BUTTON_GRID } from "../mocks/home-page-mock/blocks/image-with-button-grid-mock";
 import { MOCK_MAP } from "../mocks/home-page-mock/blocks/map-mock";
 import { MOCK_SERVICES } from "../mocks/home-page-mock/blocks/services-mock";
 import { MOCK_TICKETS } from "../mocks/home-page-mock/blocks/tickets-mock";
@@ -29,7 +29,7 @@ export async function getPageData({
         ],
         staticBlocks: [
           MOCK_SERVICES,
-          MOCK_CONTACT_ZOO_PREVIEW,
+          MOCK_IMAGE_WITH_BUTTON_GRID,
           MOCK_TICKETS,
           MOCK_MAP,
         ],

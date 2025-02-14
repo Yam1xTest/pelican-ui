@@ -3,6 +3,7 @@ export enum AppRoute {
   NEWS = `/news`,
   DOCUMENTS = `/documents`,
   CONTACT_ZOO = `/contact-zoo`,
+  INTERNAL_TEST_PAGE = `/internal-test-page`,
 }
 
 export enum Breakpoint {
@@ -16,7 +17,7 @@ export enum Breakpoint {
 export enum BlockTypes {
   SHARED_HERO = `shared.hero`,
   SERVICES = `home.services`,
-  CONTACT_ZOO_PREVIEW = `home.contact-zoo-preview`,
+  SHARED_IMAGE_WITH_BUTTON_GRID = `shared.image-with-button-grid`,
   TICKETS = `home.tickets`,
   MAP = `home.map`,
   SHARED_TEXT_AND_MEDIA = `shared.text-and-media`,
