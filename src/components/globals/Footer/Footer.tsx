@@ -91,6 +91,22 @@ export function Footer({
                       </Link>
                     </li>
                   ))}
+                  {/* TODO: Remove when the page appears */}
+                  <li
+                    key="3"
+                    className="footer__nav-item"
+                  >
+                    <Link
+                      href="/documents/Visiting-rules.pdf"
+                      className="footer__nav-link"
+                      data-testid="footer-nav-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Перейти на страницу Правила посещения"
+                    >
+                      Правила посещения
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div className="footer__col col-tablet-4">
@@ -121,22 +137,6 @@ export function Footer({
                       </Link>
                     </li>
                   ))}
-                  {/* TODO: Remove when the page appears */}
-                  <li
-                    key="3"
-                    className="footer__nav-item"
-                  >
-                    <Link
-                      href="/documents/Visiting-rules.pdf"
-                      className="footer__nav-link"
-                      data-testid="footer-nav-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Перейти на страницу Правила посещения"
-                    >
-                      Правила посещения
-                    </Link>
-                  </li>
                 </ul>
               </div>
               {isTablet && (
