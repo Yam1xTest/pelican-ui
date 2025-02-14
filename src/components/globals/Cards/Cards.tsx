@@ -9,10 +9,10 @@ export function Cards({
   className,
   dataTestId,
   children,
-  listChildren,
+  childrenList,
 }: Omit<CardsComponentProps, 'id' | '__component'> & {
   children?: ReactNode
-  listChildren?: ReactNode
+  childrenList?: ReactNode
   className?: string;
   dataTestId?: string;
 }) {
@@ -38,7 +38,7 @@ export function Cards({
             link={card.link}
           />
         ))}
-        {listChildren}
+        {childrenList}
       </ul>
       {children}
     </section>
