@@ -152,6 +152,29 @@
 
   &--inverse {
     @include tablet {
+      &::before {
+        @include tablet {
+          left: auto;
+          right: 18%;
+          transform: scaleX(-1);
+        }
+
+        @include tablet-xl {
+          left: auto;
+          right: 15%;
+        }
+
+        @include desktop {
+          left: auto;
+          right: 11.9%;
+        }
+
+        @include desktop-xl {
+          left: auto;
+          right: 11.25%;
+        }
+      }
+
       #{$this}__text {
         order: 1;
       }
@@ -159,13 +182,13 @@
   }
 
   &--withoutFootsteps {
+    &::before {
+      display: none;
+    }
+
     @include tablet {
       padding-top: 56px;
       padding-bottom: 56px;
-
-      &::before {
-        display: none;
-      }
     }
 
     @include desktop {

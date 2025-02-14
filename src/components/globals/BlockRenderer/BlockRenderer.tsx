@@ -27,7 +27,7 @@ const HomepageHero = dynamic(
 );
 
 const TextAndMedia = dynamic(
-  () => import(`../../home-page/TextAndMedia/TextAndMedia`).then((component) => component.TextAndMedia),
+  () => import(`../TextAndMedia/TextAndMedia`).then((component) => component.TextAndMedia),
   {
     ssr: false,
   },

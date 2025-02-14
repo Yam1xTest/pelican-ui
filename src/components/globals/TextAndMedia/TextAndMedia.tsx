@@ -16,8 +16,8 @@ export function TextAndMedia({
       className={clsx(
         `text-and-media container`,
         {
-          'text-and-media--inverse': contentOrder === `Видео/изображение слева, текст справа`,
-          'text-and-media--withoutFootsteps': !viewFootsteps || contentOrder === `Видео/изображение слева, текст справа`,
+          'text-and-media--inverse': contentOrder === `Текст справа`,
+          'text-and-media--withoutFootsteps': !viewFootsteps,
         },
       )}
       data-testid="text-and-media"
