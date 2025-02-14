@@ -2,13 +2,14 @@ import qs from "qs";
 import { AppRoute } from "../enum";
 import { api } from "./HttpClient";
 import { mapContractByBlock } from "./mapContractByBlock";
-import { MOCK_CONTACT_ZOO_PREVIEW } from "../mocks/home-page-mock/blocks/contact-zoo-preview-mock";
+import { MOCK_IMAGE_WITH_BUTTON_GRID } from "../mocks/home-page-mock/blocks/image-with-button-grid-mock";
 import { MOCK_MAP } from "../mocks/home-page-mock/blocks/map-mock";
 import { MOCK_TEXT_AND_MEDIA } from "../mocks/home-page-mock/blocks/text-and-media-mock";
 import { MOCK_TICKETS } from "../mocks/home-page-mock/blocks/tickets-mock";
 import { MOCK_NOT_FOUND_PAGE } from "../mocks/not-found-page-mock/not-found-page-mock";
 import { MOCK_CONTACT_ZOO_TICKETS } from "../mocks/contact-zoo-page-mock/blocks/tickets-mock";
 import { PageData } from "../types";
+import { MOCK_SERVICES } from "../mocks/home-page-mock/blocks/services-mock";
 
 export async function getPageData({
   slug = ``,
@@ -32,7 +33,8 @@ export async function getPageData({
         ],
         staticBlocks: [
           MOCK_TEXT_AND_MEDIA,
-          MOCK_CONTACT_ZOO_PREVIEW,
+          MOCK_SERVICES,
+          MOCK_IMAGE_WITH_BUTTON_GRID,
           MOCK_TICKETS,
           MOCK_MAP,
         ],

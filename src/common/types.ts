@@ -59,7 +59,7 @@ export type HeroComponentProps = {
   infoCardDescription: string,
 
   // todo move to component level?
-  isContactZoo?: boolean
+  isInteralPage?: boolean
 };
 
 export type Timetable = {
@@ -106,13 +106,15 @@ export type CardProps = {
   }[]
 };
 
-export type ContactZooPreviewComponentProps = {
+export type ImageWithButtonGridComponentProps = {
   id: number
-  __component: BlockTypes.CONTACT_ZOO_PREVIEW,
+  __component: BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID,
   title: string,
   description: string,
   largeImage: Image,
-  smallImage?: Image
+  smallImage?: Image,
+  url: string,
+  isInternalPage?: boolean
 };
 
 export type MapComponentProps = {
@@ -133,7 +135,7 @@ export type HomePageProps = {
     HeroComponentProps
     | TextAndMediaComponentProps
     | ServicesComponentProps
-    | ContactZooPreviewComponentProps
+    | ImageWithButtonGridComponentProps
     | MapComponentProps
     | TicketsComponentProps
   )[],
@@ -165,7 +167,7 @@ export type TicketsComponentProps = {
   subsidizedTicketsSubtitle?: string,
   generalTickets: Ticket[],
   subsidizedTickets?: Ticket[],
-  isContactZoo?: boolean,
+  isInteralPage?: boolean,
   contactZooNote?: string,
 };
 

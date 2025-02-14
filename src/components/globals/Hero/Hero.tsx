@@ -15,7 +15,7 @@ export function Hero({
   infoCardTitle,
   infoCardDescription,
   image,
-  isContactZoo,
+  isInteralPage,
   email,
 }: Omit<HeroComponentProps, 'id' | '__component'> & Partial<Pick<GlobalComponentProps, 'email'>>) {
   const {
@@ -33,7 +33,7 @@ export function Hero({
       className={clsx(
         `hero container`,
         {
-          'hero--contact-zoo': isContactZoo,
+          'hero--internal-page': isInteralPage,
         },
       )}
       data-testid="hero"
@@ -41,9 +41,9 @@ export function Hero({
       {(((isMobile || isTablet) && !isDesktop)) && (
         <h1
           className={clsx(
-            `hero__title hero__title--contact-zoo`,
+            `hero__title hero__title--internal-page`,
             {
-              'visually-hidden': !isContactZoo,
+              'visually-hidden': !isInteralPage,
             },
           )}
         >
@@ -66,16 +66,16 @@ export function Hero({
           className="hero__schedule-card"
           scheduleTitle={scheduleTitle}
           scheduleTimetables={scheduleTimetables}
-          isContactZoo={isContactZoo}
+          isInteralPage={isInteralPage}
         />
         <HeroInfoCard
           className="hero__info-card"
           infoCardTitle={infoCardTitle}
           infoCardDescription={infoCardDescription}
-          isContactZoo={isContactZoo}
+          isInteralPage={isInteralPage}
         />
       </div>
-      {(!isDesktop && !isContactZoo)
+      {(!isDesktop && !isInteralPage)
         && (
           <div className="hero__buttons">
             <Link

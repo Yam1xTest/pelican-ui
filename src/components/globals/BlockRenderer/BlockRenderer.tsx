@@ -5,14 +5,15 @@ import {
   HeroComponentProps,
   TextAndMediaComponentProps,
   CardsComponentProps,
-  ContactZooPreviewComponentProps,
   MapComponentProps,
   TicketsComponentProps,
   NotFoundComponentProps,
   ServicesComponentProps,
+  ImageWithButtonGridComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 import { Cards } from '../Cards/Cards';
+import { ImageWithButtonGrid } from '../ImageWithButtonGrid/ImageWithButtonGrid';
 
 const ContactZooHero = dynamic(
   () => import(`../../contact-zoo-page/ContactZooHero/ContactZooHero`).then((component) => component.ContactZooHero),
@@ -42,8 +43,8 @@ const Services = dynamic(
   },
 );
 
-const ContactZooPreview = dynamic(
-  () => import(`../../home-page/ContactZooPreview/ContactZooPreview`).then((component) => component.ContactZooPreview),
+const HomepageImageWithButtonGrid = dynamic(
+  () => import(`../../home-page/HomepageImageWithButtonGrid/HomepageImageWithButtonGrid`).then((component) => component.HomepageImageWithButtonGrid),
   {
     ssr: false,
   },
@@ -81,7 +82,7 @@ type Block = HeroComponentProps
   | TextAndMediaComponentProps
   | CardsComponentProps
   | ServicesComponentProps
-  | ContactZooPreviewComponentProps
+  | ImageWithButtonGridComponentProps
   | MapComponentProps
   | TicketsComponentProps
   | NotFoundComponentProps;
@@ -112,7 +113,7 @@ export const BlockRenderer = ({
   if (block.__component === BlockTypes.SHARED_HERO && slug === AppRoute.CONTACT_ZOO) {
     return (
       <ContactZooHero
-        isContactZoo
+        isInteralPage
         title={block.title}
         image={block.image}
         scheduleTitle={block.scheduleTitle}
@@ -153,13 +154,14 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.CONTACT_ZOO_PREVIEW) {
+  if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID && slug === AppRoute.HOME) {
     return (
-      <ContactZooPreview
+      <HomepageImageWithButtonGrid
         title={block.title}
         description={block.description}
         largeImage={block.largeImage}
         smallImage={block.smallImage}
+        url={block.url}
       />
     );
   }
@@ -202,6 +204,19 @@ export const BlockRenderer = ({
 
   if (block.__component === BlockTypes.NOT_FOUND) {
     return <NotFound />;
+  }
+
+  if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID) {
+    return (
+      <ImageWithButtonGrid
+        title={block.title}
+        description={block.description}
+        largeImage={block.largeImage}
+        smallImage={block.smallImage}
+        url={block.url}
+        isInternalPage
+      />
+    );
   }
 
   return null;

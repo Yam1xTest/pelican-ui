@@ -18,7 +18,7 @@ export enum BlockTypes {
   SHARED_HERO = `shared.hero`,
   SHARED_CARDS = `shared.cards`,
   HOME_SERVICES = `home.services`,
-  CONTACT_ZOO_PREVIEW = `home.contact-zoo-preview`,
+  SHARED_IMAGE_WITH_BUTTON_GRID = `shared.image-with-button-grid`,
   TICKETS = `home.tickets`,
   MAP = `home.map`,
   TEXT_AND_MEDIA = `home.text-and-media`,

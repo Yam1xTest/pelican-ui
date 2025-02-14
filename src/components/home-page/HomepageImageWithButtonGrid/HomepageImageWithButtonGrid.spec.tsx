@@ -7,7 +7,7 @@ import {
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`ContactZooComponentTests`, () => {
+test.describe(`HomepageImageWithButtonGridTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
@@ -43,10 +43,10 @@ async function mobileTest({
     page,
   });
 
-  await expect(getContactZooByTestId({
+  await expect(getImageWithButtonGridByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-mobile.png`);
+    .toHaveScreenshot(`image-with-button-grid-mobile.png`);
 }
 
 async function tabletTest({
@@ -59,10 +59,10 @@ async function tabletTest({
     width: Breakpoint.TABLET,
   });
 
-  await expect(getContactZooByTestId({
+  await expect(getImageWithButtonGridByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-tablet.png`);
+    .toHaveScreenshot(`image-with-button-grid-tablet.png`);
 }
 
 async function tabletXlTest({
@@ -75,10 +75,10 @@ async function tabletXlTest({
     width: Breakpoint.TABLET_XL,
   });
 
-  await expect(getContactZooByTestId({
+  await expect(getImageWithButtonGridByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-tablet-xl.png`);
+    .toHaveScreenshot(`image-with-button-grid-tablet-xl.png`);
 }
 
 async function desktopTest({
@@ -91,16 +91,16 @@ async function desktopTest({
     width: Breakpoint.DESKTOP,
   });
 
-  await expect(getContactZooByTestId({
+  await expect(getImageWithButtonGridByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-desktop.png`);
+    .toHaveScreenshot(`image-with-button-grid-desktop.png`);
 }
 
-function getContactZooByTestId({
+function getImageWithButtonGridByTestId({
   page,
 }: {
   page: Page
 }) {
-  return page.getByTestId(`contact-zoo`);
+  return page.getByTestId(`image-with-button-grid`);
 }

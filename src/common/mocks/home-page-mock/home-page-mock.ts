@@ -1,4 +1,4 @@
-import { MOCK_CONTACT_ZOO_PREVIEW } from "./blocks/contact-zoo-preview-mock";
+import { MOCK_IMAGE_WITH_BUTTON_GRID } from "./blocks/image-with-button-grid-mock";
 import { HOME_MOCK_HERO } from "./blocks/home-hero-mock";
 import { MOCK_MAP } from "./blocks/map-mock";
 import { MOCK_SERVICES } from "./blocks/services-mock";
@@ -15,7 +15,7 @@ export const MOCK_HOME_PAGE: HomePageProps = {
     HOME_MOCK_HERO,
     MOCK_TEXT_AND_MEDIA,
     MOCK_SERVICES,
-    MOCK_CONTACT_ZOO_PREVIEW,
+    MOCK_IMAGE_WITH_BUTTON_GRID,
     MOCK_TICKETS,
     MOCK_MAP,
   ],
