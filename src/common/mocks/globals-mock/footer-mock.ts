@@ -40,11 +40,6 @@ export const MOCK_FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] =
   //   name: `Правила посещения`,
   //   link: `#`,
   // },
-  {
-    id: 4,
-    name: `Оставить отзыв`,
-    link: `https://docs.google.com/forms/d/11AMCo0nMCon6-_VX07lrWRhniSAd0Dei-gl1m_DS1Y0/viewform?hl=ru&hl=ru&edit_requested=true`,
-  },
 ];
 
 export const MOCK_OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [
