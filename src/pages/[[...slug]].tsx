@@ -30,7 +30,7 @@ export default function UniversalPage({
     seo,
     blocks,
   } = pageData;
-  console.log(blocks);
+
   return (
     <>
       <Head>
