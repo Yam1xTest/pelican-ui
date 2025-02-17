@@ -27,6 +27,8 @@
 @import "../components/home-page/Services/Services";
 @import "../components/globals/ImageWithButtonGrid/components/ImageWithButtonGridImages/ImageWithButtonGridImages";
 @import "../components/globals/ImageWithButtonGrid/ImageWithButtonGrid";
+@import "../components/globals/Categories/Categories";
+@import "../components/globals/Categories/components/Category/Category";
 @import "../components/home-page/Map/Map";
 @import "../components/home-page/Map/components/MapAddressCard/MapAddressCard";
 @import "../components/home-page/TextAndMedia/TextAndMedia";
@@ -35,8 +37,6 @@
 @import "../components/news-page/NewsArticle/components/NewsSlider/NewsSlider";
 @import "../components/news-page/NewsArticle/components/NewsSlider/components/NewsSliderCard/NewsSliderCard";
 @import "../components/not-found-page/NotFound/NotFound";
-@import "../components/documents-page/Categories/Categories";
-@import "../components/documents-page/Categories/components/Category/Category";
 @import "../components/documents-page/DocumentsList/DocumentsList";
 @import "../components/documents-page/DocumentsList/components/DocumentCard/DocumentCard";
 @import "../components/documents-page/DocumentsList/components/DocumentCard/components/DocumentFile/DocumentFile";

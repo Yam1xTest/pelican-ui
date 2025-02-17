@@ -3,7 +3,7 @@ import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helper
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`DocumentsCategoriesListComponentTests`, () => {
+test.describe(`CategoriesListComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
