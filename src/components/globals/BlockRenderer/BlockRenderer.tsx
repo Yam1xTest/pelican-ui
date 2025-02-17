@@ -138,7 +138,6 @@ export const BlockRenderer = ({
         viewFootsteps={block.viewFootsteps}
         isFirstBlock={block.isFirstBlock}
         isLastBlock={block.isLastBlock}
-        isInternalPage={slug !== AppRoute.HOME}
       />
     );
   }

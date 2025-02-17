@@ -181,10 +181,6 @@
     }
   }
 
-  &--internal-page {
-    @include shared-paddings;
-  }
-
   &--without-footsteps {
     @include shared-paddings;
 
