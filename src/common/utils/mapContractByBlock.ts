@@ -1,6 +1,5 @@
 /* eslint-disable no-case-declarations */
-import { HomeServicesComponent, SharedHeroComponent } from "../api-types";
-import { SharedHeroComponent, SharedTextAndMediaComponent } from "../api-types";
+import { HomeServicesComponent, SharedTextAndMediaComponent, SharedHeroComponent } from "../api-types";
 import { BlockTypes } from "../enum";
 import { Block } from "../types";
 
