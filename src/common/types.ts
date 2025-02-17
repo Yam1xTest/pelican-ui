@@ -212,7 +212,7 @@ export type CategoriesComponentProps = {
   __component: BlockTypes.SHARED_CATEGORIES,
   title: string,
   categories: CategoryProps[],
-}
+};
 
 export type DocumentFileProps = {
   id: number,
