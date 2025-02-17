@@ -80,7 +80,8 @@ export type TextAndMediaComponentProps = {
   },
   contentOrder: "Текст слева" | "Текст справа",
   viewFootsteps: boolean,
-};
+  isInternalPage?: boolean
+} & BlockPosition;
 
 export type ServicesComponentProps = Omit<CardsComponentProps, '__component'> & {
   __component: BlockTypes.HOME_SERVICES

@@ -45,6 +45,7 @@ export async function getPageData({
           `blocks.scheduleCard`,
           `blocks.scheduleCard.timetable`,
           `blocks.image`,
+          `blocks.media`,
           `seo`,
         ],
         staticBlocks: [MOCK_CONTACT_ZOO_TICKETS],

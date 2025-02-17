@@ -181,24 +181,15 @@
     }
   }
 
+  &--internal-page {
+    @include shared-paddings;
+  }
+
   &--without-footsteps {
+    @include shared-paddings;
+
     &::before {
       display: none;
-    }
-
-    @include tablet {
-      padding-top: 56px;
-      padding-bottom: 56px;
-    }
-
-    @include desktop {
-      padding-top: 80px;
-      padding-bottom: 80px;
-    }
-
-    @include desktop-xl {
-      padding-top: 88px;
-      padding-bottom: 88px;
     }
   }
 }

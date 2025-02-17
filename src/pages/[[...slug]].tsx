@@ -5,7 +5,6 @@ import { ContactZooPageProps, GlobalComponentProps, HomePageProps } from '../com
 import { NotFound } from '../components/not-found-page/NotFound/NotFound';
 import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
 import { getPageData } from '../common/utils/getPageData';
-import { AppRoute } from '../common/enum';
 
 type UniversalProps = {
   globalData: GlobalComponentProps,
@@ -108,7 +107,7 @@ function setBlockPosition({
   slug: string;
   blocks: any
 }) {
-  if (slug !== AppRoute.HOME && blocks.length) {
+  if (slug && blocks.length) {
     blocks[0].isFirstBlock = true;
     blocks[blocks.length - 1].isLastBlock = true;
   }

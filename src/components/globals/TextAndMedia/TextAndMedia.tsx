@@ -10,14 +10,20 @@ export function TextAndMedia({
   media,
   contentOrder,
   viewFootsteps,
+  isInternalPage,
+  isFirstBlock,
+  isLastBlock,
 }: Omit<TextAndMediaComponentProps, 'id' | '__component'>) {
   return (
     <section
       className={clsx(
         `text-and-media container`,
         {
+          'text-and-media--internal-page': isInternalPage,
           'text-and-media--inverse': contentOrder === `Текст справа`,
           'text-and-media--without-footsteps': !viewFootsteps,
+          'first-block': isFirstBlock,
+          'last-block': isLastBlock,
         },
       )}
       data-testid="text-and-media"
