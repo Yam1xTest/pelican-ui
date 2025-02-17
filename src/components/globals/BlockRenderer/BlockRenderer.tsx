@@ -231,7 +231,7 @@ export const BlockRenderer = ({
   if (block.__component === BlockTypes.SHARED_CATEGORIES) {
     return (
       <Categories
-        title={block.title}
+        categoriesTitle={block.categoriesTitle}
         categories={block.categories}
       />
     );

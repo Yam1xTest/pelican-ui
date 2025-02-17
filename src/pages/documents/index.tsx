@@ -37,7 +37,7 @@ export default function DocumentsPage({
         <title>{pageTitle}</title>
       </Head>
       <Categories
-        title={documentsTitle}
+        categoriesTitle={documentsTitle}
         categories={categories}
       />
     </>
