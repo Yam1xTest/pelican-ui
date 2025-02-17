@@ -1,4 +1,4 @@
-import { DocumentsCategoriesProps, DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
+import { CategoriesProps, DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
 import { DocumentCard } from "@/src/components/documents-page/DocumentsList/components/DocumentCard/DocumentCard";
 import { useRouter } from "next/router";
 import { Tab } from "../../globals/Tab/Tab";
@@ -9,7 +9,7 @@ export function DocumentsList({
   documents,
   currentYear,
 }: {
-  category: DocumentsCategoriesProps,
+  category: CategoriesProps,
   availableYears: DocumentsTabsProps[`availableYears`],
   documents: DocumentsProps[],
   currentYear: number

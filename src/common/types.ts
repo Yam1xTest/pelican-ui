@@ -200,7 +200,7 @@ export type DocumentsTabsProps = {
   availableYears: number[],
 };
 
-export type DocumentsCategoriesProps = {
+export type CategoriesProps = {
   id: number,
   title: string,
   hasTabs: boolean,

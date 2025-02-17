@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { AppRoute } from "@/src/common/enum";
-import { DocumentsCategoriesProps } from "@/src/common/types";
+import { CategoriesProps } from "@/src/common/types";
 import { IconArrow } from "./components/IconArrow/IconArrow";
 
 export function Category({
@@ -9,8 +9,8 @@ export function Category({
   title,
 }: {
   className: string,
-  id: DocumentsCategoriesProps['id'],
-  title: DocumentsCategoriesProps['title'],
+  id: CategoriesProps['id'],
+  title: CategoriesProps['title'],
 }) {
   return (
     <li className={`${className} documents-category`}>
