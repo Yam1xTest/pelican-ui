@@ -117,35 +117,3 @@ a {
   user-select: none;
   clip-path: inset(100%);
 }
-
-.first-block {
-  padding-top: 24px !important;
-
-  @include tablet {
-    padding-top: 32px !important;
-  }
-
-  @include desktop {
-    padding-top: 40px !important;
-  }
-
-  @include desktop-xl {
-    padding-top: 64px !important;
-  }
-}
-
-.last-block {
-  padding-bottom: 56px !important;
-
-  @include tablet {
-    padding-bottom: 48px !important;
-  }
-
-  @include desktop {
-    padding-bottom: 80px !important;
-  }
-
-  @include desktop-xl {
-    padding-bottom: 128px !important;
-  }
-}

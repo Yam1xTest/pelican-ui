@@ -2,6 +2,38 @@
   padding-top: 40px;
   padding-bottom: 40px;
 
+  &.last-block {
+    padding-bottom: 56px;
+
+    @include tablet {
+      padding-bottom: 48px;
+    }
+
+    @include desktop {
+      padding-bottom: 80px;
+    }
+
+    @include desktop-xl {
+      padding-bottom: 128px;
+    }
+  }
+
+  &.first-block {
+    padding-top: 24px;
+
+    @include tablet {
+      padding-top: 32px;
+    }
+
+    @include desktop {
+      padding-top: 40px;
+    }
+
+    @include desktop-xl {
+      padding-top: 64px;
+    }
+  }
+
   @include tablet {
     padding-top: 52px;
     padding-bottom: 52px;

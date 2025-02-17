@@ -199,21 +199,11 @@
     }
 
     @include tablet {
-      padding-bottom: 40px;
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @include tablet-xl {
-      padding-bottom: 56px;
-    }
-
     @include desktop {
-      padding-bottom: 80px;
       grid-template-columns: 40.6% 1fr;
-    }
-
-    @include desktop-xl {
-      padding-bottom: 176px;
     }
   }
 }
