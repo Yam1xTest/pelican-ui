@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, BlockTypes, Breakpoint } from '@/src/common/enum';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`CategoriesListComponentTests`, () => {
@@ -9,7 +9,7 @@ test.describe(`CategoriesListComponentTests`, () => {
   }) => {
     await gotoPage({
       page,
-      url: AppRoute.DOCUMENTS,
+      url: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_CATEGORIES}`,
     });
 
     await hideHeader({
