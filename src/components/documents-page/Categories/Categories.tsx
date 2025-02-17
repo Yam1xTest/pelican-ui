@@ -3,26 +3,26 @@ import { Category } from "./components/Category/Category";
 
 export function Categories({
   documentsTitle,
-  documentsCategories,
+  categories,
 }: {
   documentsTitle: DocumentsPageProps['documentsTitle'],
-  documentsCategories: CategoriesProps[],
+  categories: CategoriesProps[],
 }) {
   return (
     <section
-      className="documents-categories container"
-      data-testid="documents-categories"
+      className="categories container"
+      data-testid="categories"
     >
-      <h1 className="documents-categories__title">{documentsTitle}</h1>
-      <ul className="documents-categories__list">
-        {documentsCategories.map(({
+      <h1 className="categories__title">{documentsTitle}</h1>
+      <ul className="categories__list">
+        {categories.map(({
           id,
           title,
         }) => (
           <Category
             key={id}
-            className="documents-categories__item"
-            data-testid="documents-category"
+            className="categories__item"
+            data-testid="category"
             id={id}
             title={title}
           />

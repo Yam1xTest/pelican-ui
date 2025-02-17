@@ -13,12 +13,12 @@ import dayjs from 'dayjs';
 
 export default function DocumentsPage({
   pageData,
-  documentCategories,
+  categories,
 }: {
   pageData: DocumentsPageProps,
-  documentCategories: CategoriesProps[],
+  categories: CategoriesProps[],
 }) {
-  if (!pageData || !documentCategories) {
+  if (!pageData || !categories) {
     return <NotFound />;
   }
 
@@ -38,7 +38,7 @@ export default function DocumentsPage({
       </Head>
       <Categories
         documentsTitle={documentsTitle}
-        documentsCategories={documentCategories}
+        categories={categories}
       />
     </>
   );
@@ -80,7 +80,7 @@ export async function getServerSideProps() {
     return {
       props: {
         pageData: MOCK_DOCUMENTS_PAGE,
-        documentCategories: documentsCategories,
+        categories: documentsCategories,
       },
     };
   }

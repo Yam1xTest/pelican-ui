@@ -39,7 +39,7 @@ async function routeTest({
     page,
   });
 
-  await page.getByTestId(`documents-category`)
+  await page.getByTestId(`category`)
     .nth(0)
     .click();
 
@@ -141,5 +141,5 @@ function getDocumentsCategoriesListByTestId({
 }: {
   page: Page
 }) {
-  return page.getByTestId(`documents-categories`);
+  return page.getByTestId(`categories`);
 }

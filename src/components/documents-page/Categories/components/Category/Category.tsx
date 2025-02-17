@@ -13,18 +13,18 @@ export function Category({
   title: CategoriesProps['title'],
 }) {
   return (
-    <li className={`${className} documents-category`}>
+    <li className={`${className} category`}>
       <Link
-        className="documents-category__wrapper"
+        className="category__wrapper"
         href={{
           pathname: `${AppRoute.DOCUMENTS}/${id}`,
         }}
         aria-label={`Перейти на страницу категории ${title}`}
-        data-testid="documents-category"
+        data-testid="category"
       >
-        <h2 className="documents-category__title">{title}</h2>
-        <span className="documents-category__arrow">
-          <IconArrow className="documents-category__icon-arrow" />
+        <h2 className="category__title">{title}</h2>
+        <span className="category__arrow">
+          <IconArrow className="category__icon-arrow" />
         </span>
       </Link>
     </li>
