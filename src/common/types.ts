@@ -203,6 +203,7 @@ export type DocumentsTabsProps = {
 export type CategoryProps = {
   id: number,
   title: string,
+  pageUrl: string,
   hasTabs: boolean,
 };
 

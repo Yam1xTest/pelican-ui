@@ -1,15 +1,16 @@
 import Link from "next/link";
-import { AppRoute } from "@/src/common/enum";
 import { CategoryProps } from "@/src/common/types";
 import { IconArrow } from "./components/IconArrow/IconArrow";
 
 export function Category({
   className,
   id,
+  pageUrl,
   title,
 }: {
   className: string,
   id: CategoryProps['id'],
+  pageUrl: CategoryProps['pageUrl'],
   title: CategoryProps['title'],
 }) {
   return (
@@ -17,7 +18,7 @@ export function Category({
       <Link
         className="category__wrapper"
         href={{
-          pathname: `${AppRoute.DOCUMENTS}/${id}`,
+          pathname: `${pageUrl}/${id}`,
         }}
         aria-label={`Перейти на страницу категории ${title}`}
         data-testid="category"
