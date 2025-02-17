@@ -9,6 +9,7 @@ import { MOCK_TICKETS } from "../mocks/home-page-mock/blocks/tickets-mock";
 import { MOCK_NOT_FOUND_PAGE } from "../mocks/not-found-page-mock/not-found-page-mock";
 import { MOCK_CONTACT_ZOO_TICKETS } from "../mocks/contact-zoo-page-mock/blocks/tickets-mock";
 import { PageData } from "../types";
+import { MOCK_SERVICES } from "../mocks/home-page-mock/blocks/services-mock";
 
 export async function getPageData({
   slug = ``,
@@ -25,6 +26,10 @@ export async function getPageData({
           `blocks.scheduleCard.timetable`,
           `blocks.image`,
           `blocks.media`,
+          `blocks.cards`,
+          `blocks.cards.cards`,
+          `blocks.cards.cards.image`,
+          `blocks.cards.cards.labels`,
           `seo`,
         ],
         staticBlocks: [

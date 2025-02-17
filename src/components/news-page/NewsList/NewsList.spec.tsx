@@ -149,5 +149,5 @@ function getNewsCardByTestId({
 }: {
   page: Page
 }) {
-  return page.getByTestId(`news-list-card`);
+  return page.getByTestId(`cards-card`);
 }

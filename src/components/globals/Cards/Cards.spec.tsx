@@ -1,27 +1,27 @@
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, BlockTypes, Breakpoint } from '@/src/common/enum';
 import {
   gotoPage,
+  hideFooter,
   hideHeader,
-  hideMap,
   hideSkipLink,
   setViewportSize,
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`FooterTests`, () => {
+test.describe(`CardsComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
     await gotoPage({
       page,
-      url: AppRoute.HOME,
+      url: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_CARDS}`,
     });
 
     await hideHeader({
       page,
     });
 
-    await hideMap({
+    await hideFooter({
       page,
     });
 
@@ -48,13 +48,13 @@ async function mobileTest({
 }) {
   await setViewportSize({
     page,
-    height: 840,
+    height: 1640,
   });
 
-  await expect(getFooterByTestId({
+  await expect(getCardsByTestId({
     page,
   }))
-    .toHaveScreenshot(`footer-mobile.png`);
+    .toHaveScreenshot(`cards-mobile.png`);
 }
 
 async function tabletTest({
@@ -65,13 +65,13 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
-    height: 460,
+    height: 1115,
   });
 
-  await expect(getFooterByTestId({
+  await expect(getCardsByTestId({
     page,
   }))
-    .toHaveScreenshot(`footer-tablet.png`);
+    .toHaveScreenshot(`cards-tablet.png`);
 }
 
 async function tabletXlTest({
@@ -82,13 +82,13 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
-    height: 509,
+    height: 1360,
   });
 
-  await expect(getFooterByTestId({
+  await expect(getCardsByTestId({
     page,
   }))
-    .toHaveScreenshot(`footer-tablet-xl.png`);
+    .toHaveScreenshot(`cards-tablet-xl.png`);
 }
 
 async function desktopTest({
@@ -99,13 +99,13 @@ async function desktopTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
-    height: 578,
+    height: 1220,
   });
 
-  await expect(getFooterByTestId({
+  await expect(getCardsByTestId({
     page,
   }))
-    .toHaveScreenshot(`footer-desktop.png`);
+    .toHaveScreenshot(`cards-desktop.png`);
 }
 
 async function desktopXlTest({
@@ -116,19 +116,19 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 898,
+    height: 1520,
   });
 
-  await expect(getFooterByTestId({
+  await expect(getCardsByTestId({
     page,
   }))
-    .toHaveScreenshot(`footer-desktop-xl.png`);
+    .toHaveScreenshot(`cards-desktop-xl.png`);
 }
 
-function getFooterByTestId({
+function getCardsByTestId({
   page,
 }: {
   page: Page
 }) {
-  return page.getByTestId(`footer`);
+  return page.getByTestId(`cards`);
 }

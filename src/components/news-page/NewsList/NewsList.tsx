@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { NewsProps } from "@/src/common/types";
-import { NewsCard } from "./components/NewsCard/NewsCard";
+import { AppRoute } from "@/src/common/enum";
+import { Cards } from "../../globals/Cards/Cards";
 import { Button } from "../../globals/Button/Button";
 
 export const NEWS_LIMIT = 6;
@@ -30,38 +31,27 @@ export function NewsList({
   const isPaginationAvailable = pageSize < total;
 
   return (
-    <section
+    <Cards
       className="news-list"
-      data-testid="news-list"
+      dataTestId="news-list"
+      title={newsTitle}
+      cards={news.map((newsItem) => ({
+        ...newsItem,
+        link: `${AppRoute.NEWS}/${newsItem.id}`,
+      }))}
     >
-      <div className="news-list__wrapper container">
-        <h1 className="news-list__title">{newsTitle}</h1>
-        <ul className="news-list__cards">
-          {news.map((newsCard) => (
-            <NewsCard
-              id={newsCard.id}
-              className="news-list__card"
-              dataTestId="news-list-card"
-              key={newsCard.id}
-              image={newsCard.image}
-              title={newsCard.title}
-              description={newsCard.description}
-            />
-          ))}
-        </ul>
-        {isPaginationAvailable && (
-          <div className="news-list__button-container">
-            <Button
-              className="news-list__button"
-              data-testid="news-list-button"
-              theme="primary"
-              onClick={() => setPageSize(pageSize + NEWS_LIMIT)}
-            >
-              Загрузить ещё
-            </Button>
-          </div>
-        )}
-      </div>
-    </section>
+      {isPaginationAvailable && (
+        <div className="news-list__button-container">
+          <Button
+            className="news-list__button"
+            data-testid="news-list-button"
+            theme="primary"
+            onClick={() => setPageSize(pageSize + NEWS_LIMIT)}
+          >
+            Загрузить ещё
+          </Button>
+        </div>
+      )}
+    </Cards>
   );
 }

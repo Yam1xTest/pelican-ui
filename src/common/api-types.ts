@@ -688,11 +688,11 @@ export interface DocumentRequest {
     title: string;
     files: (number | string)[];
     /** @example "string or id" */
-    category?: number | string;
+    category: number | string;
     subtitle?: string;
     description?: string;
     /** @format date */
-    date?: string;
+    date: string;
   };
 }
 
@@ -945,11 +945,12 @@ export interface Document {
       };
     }[];
   };
-  category?: {
+  category: {
     data?: {
       id?: number;
       attributes?: {
         title?: string;
+        hasTabs?: boolean;
         /** @format date-time */
         createdAt?: string;
         /** @format date-time */
@@ -974,7 +975,7 @@ export interface Document {
   subtitle?: string;
   description?: string;
   /** @format date */
-  date?: string;
+  date: string;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */
@@ -1159,7 +1160,7 @@ export interface DocumentsCategoryResponse {
 
 export interface HomeRequest {
   data: {
-    blocks?: (SharedHeroComponent | SharedTextAndMediaComponent)[];
+    blocks?: (SharedHeroComponent | HomeServicesComponent)[];
     seo?: SharedSeoComponent;
     versions?: (number | string)[];
     vuid?: string;
@@ -1189,7 +1190,7 @@ export interface HomeListResponse {
 }
 
 export interface Home {
-  blocks?: (SharedHeroComponent | SharedTextAndMediaComponent)[];
+  blocks?: (SharedHeroComponent | HomeServicesComponent)[];
   seo?: SharedSeoComponent;
   /** @format date-time */
   createdAt?: string;
@@ -1288,61 +1289,73 @@ export interface Home {
           | {
               id?: number;
               __component?: string;
-              title?: string;
-              description?: string;
-              media?: {
-                data?: {
+              cards?: {
+                id?: number;
+                title?: string;
+                cards?: {
                   id?: number;
-                  attributes?: {
-                    name?: string;
-                    alternativeText?: string;
-                    caption?: string;
-                    width?: number;
-                    height?: number;
-                    formats?: any;
-                    hash?: string;
-                    ext?: string;
-                    mime?: string;
-                    /** @format float */
-                    size?: number;
-                    url?: string;
-                    previewUrl?: string;
-                    provider?: string;
-                    provider_metadata?: any;
-                    related?: {
-                      data?: {
-                        id?: number;
-                        attributes?: object;
-                      }[];
-                    };
-                    folder?: {
-                      data?: {
-                        id?: number;
-                        attributes?: object;
-                      };
-                    };
-                    folderPath?: string;
-                    /** @format date-time */
-                    createdAt?: string;
-                    /** @format date-time */
-                    updatedAt?: string;
-                    createdBy?: {
-                      data?: {
-                        id?: number;
-                        attributes?: object;
-                      };
-                    };
-                    updatedBy?: {
-                      data?: {
-                        id?: number;
-                        attributes?: object;
+                  title?: string;
+                  description?: string;
+                  image?: {
+                    data?: {
+                      id?: number;
+                      attributes?: {
+                        name?: string;
+                        alternativeText?: string;
+                        caption?: string;
+                        width?: number;
+                        height?: number;
+                        formats?: any;
+                        hash?: string;
+                        ext?: string;
+                        mime?: string;
+                        /** @format float */
+                        size?: number;
+                        url?: string;
+                        previewUrl?: string;
+                        provider?: string;
+                        provider_metadata?: any;
+                        related?: {
+                          data?: {
+                            id?: number;
+                            attributes?: object;
+                          }[];
+                        };
+                        folder?: {
+                          data?: {
+                            id?: number;
+                            attributes?: object;
+                          };
+                        };
+                        folderPath?: string;
+                        /** @format date-time */
+                        createdAt?: string;
+                        /** @format date-time */
+                        updatedAt?: string;
+                        createdBy?: {
+                          data?: {
+                            id?: number;
+                            attributes?: object;
+                          };
+                        };
+                        updatedBy?: {
+                          data?: {
+                            id?: number;
+                            attributes?: object;
+                          };
+                        };
                       };
                     };
                   };
-                };
+                  labels?: {
+                    id?: number;
+                    text?: string;
+                  }[];
+                  link?: string;
+                }[];
               };
-              contentOrder?: "Текст слева" | "Текст справа";
-              viewFootsteps?: boolean;
+              phone?: string;
+              email?: string;
             }
         )[];
         seo?: {
@@ -1510,64 +1523,78 @@ export interface HomeResponse {
   meta?: object;
 }
 
-export interface SharedTextAndMediaComponent {
+export interface SharedCardsComponent {
   id?: number;
-  __component?: string;
   title?: string;
-  description?: string;
-  media?: {
-    data?: {
-      id?: number;
-      attributes?: {
-        name?: string;
-        alternativeText?: string;
-        caption?: string;
-        width?: number;
-        height?: number;
-        formats?: any;
-        hash?: string;
-        ext?: string;
-        mime?: string;
-        /** @format float */
-        size?: number;
-        url?: string;
-        previewUrl?: string;
-        provider?: string;
-        provider_metadata?: any;
-        related?: {
-          data?: {
-            id?: number;
-            attributes?: object;
-          }[];
-        };
-        folder?: {
-          data?: {
-            id?: number;
-            attributes?: object;
+  cards?: {
+    id?: number;
+    title?: string;
+    description?: string;
+    image?: {
+      data?: {
+        id?: number;
+        attributes?: {
+          name?: string;
+          alternativeText?: string;
+          caption?: string;
+          width?: number;
+          height?: number;
+          formats?: any;
+          hash?: string;
+          ext?: string;
+          mime?: string;
+          /** @format float */
+          size?: number;
+          url?: string;
+          previewUrl?: string;
+          provider?: string;
+          provider_metadata?: any;
+          related?: {
+            data?: {
+              id?: number;
+              attributes?: object;
+            }[];
           };
-        };
-        folderPath?: string;
-        /** @format date-time */
-        createdAt?: string;
-        /** @format date-time */
-        updatedAt?: string;
-        createdBy?: {
-          data?: {
-            id?: number;
-            attributes?: object;
+          folder?: {
+            data?: {
+              id?: number;
+              attributes?: object;
+            };
           };
-        };
-        updatedBy?: {
-          data?: {
-            id?: number;
-            attributes?: object;
+          folderPath?: string;
+          /** @format date-time */
+          createdAt?: string;
+          /** @format date-time */
+          updatedAt?: string;
+          createdBy?: {
+            data?: {
+              id?: number;
+              attributes?: object;
+            };
+          };
+          updatedBy?: {
+            data?: {
+              id?: number;
+              attributes?: object;
+            };
           };
         };
       };
     };
-  };
-  contentOrder?: "Текст слева" | "Текст справа";
-  viewFootsteps?: boolean;
+    labels?: {
+      id?: number;
+      text?: string;
+    }[];
+    link?: string;
+  }[];
+}
+
+export interface HomeServicesComponent {
+  id?: number;
+  __component?: string;
+  cards?: SharedCardsComponent;
+  phone?: string;
+  email?: string;
 }
 
 export interface NewsCollectionRequest {
