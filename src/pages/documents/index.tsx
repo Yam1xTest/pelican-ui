@@ -23,7 +23,7 @@ export default function DocumentsPage({
   }
 
   const {
-    title,
+    pageTitle,
     documentsTitle,
   } = pageData;
 
@@ -34,7 +34,7 @@ export default function DocumentsPage({
           name="description"
           content="Сайт зоопарка"
         />
-        <title>{title}</title>
+        <title>{pageTitle}</title>
       </Head>
       <Categories
         title={documentsTitle}

@@ -191,7 +191,7 @@ export type NewsProps = CardProps & {
 };
 
 export type DocumentsPageProps = {
-  title: string,
+  pageTitle: string,
   documentsTitle: string;
 };
 
