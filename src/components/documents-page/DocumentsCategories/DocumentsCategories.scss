@@ -1,7 +1,6 @@
 .documents-categories {
   padding-top: 24px;
   padding-bottom: 40px;
-  min-height: calc(100vh - 64px);
 
   &__title {
     @include h1-text;
