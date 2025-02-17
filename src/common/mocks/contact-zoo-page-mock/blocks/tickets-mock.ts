@@ -1,13 +1,13 @@
 import { BlockTypes } from "../../../enum";
-import { TicketsComponentProps } from '../../../types';
+import { SharedTicketsComponentProps } from '../../../types';
 
-export const MOCK_CONTACT_ZOO_TICKETS: TicketsComponentProps = {
+export const MOCK_CONTACT_ZOO_TICKETS: SharedTicketsComponentProps = {
   id: 5,
-  __component: BlockTypes.CONTACT_ZOO_TICKETS,
-  generalTicketsTitle: `Билеты`,
-  generalTicketsSubtitle: `Купить билет можно только на\u00A0кассе контактного зоопарка.`,
-  contactZooNote: `Билет контактного зоопарка приобретается дополнительно ко\u00A0входному билету зоопарка`,
-  generalTickets: [
+  __component: BlockTypes.SHARED_TICKETS,
+  title: `Билеты`,
+  subtitle: `Купить билет можно только на\u00A0кассе контактного зоопарка.`,
+  note: `Билет контактного зоопарка приобретается дополнительно ко\u00A0входному билету зоопарка`,
+  tickets: [
     {
       id: 0,
       category: `Дети до 2 лет`,

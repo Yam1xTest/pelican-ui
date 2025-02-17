@@ -1,5 +1,10 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
+import {
+  gotoPage,
+  hideHeader,
+  hideSkipLink,
+  setViewportSize,
+} from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`TicketsComponentTests`, () => {
@@ -12,6 +17,10 @@ test.describe(`TicketsComponentTests`, () => {
     });
 
     await hideHeader({
+      page,
+    });
+
+    await hideSkipLink({
       page,
     });
   });

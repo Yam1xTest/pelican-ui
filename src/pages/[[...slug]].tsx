@@ -5,6 +5,7 @@ import { ContactZooPageProps, GlobalComponentProps, HomePageProps } from '../com
 import { NotFound } from '../components/not-found-page/NotFound/NotFound';
 import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
 import { getPageData } from '../common/utils/getPageData';
+import { AppRoute } from '../common/enum';
 
 type UniversalProps = {
   globalData: GlobalComponentProps,
@@ -29,7 +30,7 @@ export default function UniversalPage({
     seo,
     blocks,
   } = pageData;
-
+  console.log(blocks);
   return (
     <>
       <Head>
@@ -58,22 +59,37 @@ export async function getServerSideProps({
     slug: string,
   },
 }) {
+  let pageData;
   if (process.env.APP_ENV === `static`) {
+    pageData = getMockPageData({
+      slug: query.slug,
+    });
+
+    setBlockPosition({
+      slug: query.slug,
+      blocks: pageData.blocks,
+    });
+
     return {
       props: {
-        pageData: getMockPageData({
-          slug: query.slug,
-        }),
+        pageData,
       },
     };
   }
 
   try {
+    pageData = await getPageData({
+      slug: query.slug,
+    });
+
+    setBlockPosition({
+      slug: query.slug,
+      blocks: pageData.blocks,
+    });
+
     return {
       props: {
-        pageData: await getPageData({
-          slug: query.slug,
-        }),
+        pageData,
       },
     };
   } catch {
@@ -82,5 +98,18 @@ export async function getServerSideProps({
         pageData: null,
       },
     };
+  }
+}
+
+function setBlockPosition({
+  slug,
+  blocks,
+}: {
+  slug: string;
+  blocks: any
+}) {
+  if (slug !== AppRoute.HOME && blocks.length) {
+    blocks[0].isFirstBlock = true;
+    blocks[blocks.length - 1].isLastBlock = true;
   }
 }

@@ -1,0 +1,19 @@
+@mixin shared-paddings {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  @include tablet {
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+
+  @include desktop {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  @include desktop-xl {
+    padding-top: 88px;
+    padding-bottom: 88px;
+  }
+}

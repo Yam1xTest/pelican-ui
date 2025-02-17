@@ -1,8 +1,8 @@
 @import "reset";
 @import "media";
 @import "fonts-mixin";
+@import "paddings-mixin";
 @import "variables";
-@import "globals";
 @import "grid";
 
 // Component
@@ -47,3 +47,6 @@
 @import "../components/globals/Accordion/Accordion";
 @import "../components/globals/Tab/Tab";
 @import "../components/globals/SkipLink/SkipLink";
+
+// Globals
+@import "globals";
