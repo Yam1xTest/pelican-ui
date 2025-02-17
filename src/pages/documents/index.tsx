@@ -6,7 +6,7 @@ import { DocumentListResponse, DocumentsCategoryListResponse } from '@/src/commo
 import qs from 'qs';
 import { Categories } from '@/src/components/globals/Categories/Categories';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
-import { CategoriesProps, DocumentsPageProps } from '@/src/common/types';
+import { CategoryProps, DocumentsPageProps } from '@/src/common/types';
 import { getDocumentsQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
 import { MOCK_DOCUMENTS } from '@/src/common/mocks/collections-mock/documents-collection-mock';
 import dayjs from 'dayjs';
@@ -16,7 +16,7 @@ export default function DocumentsPage({
   categories,
 }: {
   pageData: DocumentsPageProps,
-  categories: CategoriesProps[],
+  categories: CategoryProps[],
 }) {
   if (!pageData || !categories) {
     return <NotFound />;
@@ -88,7 +88,7 @@ export async function getServerSideProps() {
   try {
     const documentsCategoriesResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories`);
 
-    const documentsCategories: CategoriesProps[] = (await Promise.all(
+    const documentsCategories: CategoryProps[] = (await Promise.all(
       documentsCategoriesResponse.data!
         .map(async (documentsCategoriesItem) => {
           const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
@@ -108,7 +108,7 @@ export async function getServerSideProps() {
           }
           return null;
         }),
-    )).filter((item): item is CategoriesProps => item !== null);
+    )).filter((item): item is CategoryProps => item !== null);
 
     return {
       props: {

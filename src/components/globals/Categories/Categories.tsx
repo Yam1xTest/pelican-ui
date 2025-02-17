@@ -1,4 +1,4 @@
-import { CategoriesProps, DocumentsPageProps } from "@/src/common/types";
+import { CategoryProps, DocumentsPageProps } from "@/src/common/types";
 import { Category } from "./components/Category/Category";
 
 export function Categories({
@@ -6,7 +6,7 @@ export function Categories({
   categories,
 }: {
   documentsTitle: DocumentsPageProps['documentsTitle'],
-  categories: CategoriesProps[],
+  categories: CategoryProps[],
 }) {
   return (
     <section
