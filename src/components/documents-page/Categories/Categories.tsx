@@ -1,7 +1,7 @@
 import { DocumentsCategoriesProps, DocumentsPageProps } from "@/src/common/types";
-import { DocumentsCategory } from "@/src/components/documents-page/DocumentsCategories/components/DocumentsCategory/DocumentsCategory";
+import { Category } from "./components/Category/Category";
 
-export function DocumentsCategories({
+export function Categories({
   documentsTitle,
   documentsCategories,
 }: {
@@ -19,7 +19,7 @@ export function DocumentsCategories({
           id,
           title,
         }) => (
-          <DocumentsCategory
+          <Category
             key={id}
             className="documents-categories__item"
             data-testid="documents-category"

@@ -3,7 +3,7 @@ import { AppRoute } from "@/src/common/enum";
 import { DocumentsCategoriesProps } from "@/src/common/types";
 import { IconArrow } from "./components/IconArrow/IconArrow";
 
-export function DocumentsCategory({
+export function Category({
   className,
   id,
   title,

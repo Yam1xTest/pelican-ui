@@ -4,7 +4,7 @@ import { MOCK_DOCUMENTS_PAGE } from '@/src/common/mocks/documents-page-mock/docu
 import { api } from '@/src/common/utils/HttpClient';
 import { DocumentListResponse, DocumentsCategoryListResponse } from '@/src/common/api-types';
 import qs from 'qs';
-import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
+import { Categories } from '@/src/components/documents-page/Categories/Categories';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { DocumentsCategoriesProps, DocumentsPageProps } from '@/src/common/types';
 import { getDocumentsQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
@@ -36,7 +36,7 @@ export default function DocumentsPage({
         />
         <title>{title}</title>
       </Head>
-      <DocumentsCategories
+      <Categories
         documentsTitle={documentsTitle}
         documentsCategories={documentCategories}
       />
