@@ -8,7 +8,7 @@ test.describe(`HeaderPopupTests`, () => {
   }) => {
     await gotoPage({
       page,
-      url: AppRoute.INTERNAL_TEST_PAGE,
+      url: AppRoute.HOME,
     });
   });
 
