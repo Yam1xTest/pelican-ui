@@ -75,7 +75,7 @@ export async function getServerSideProps({
   try {
     const newsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
 
-    const news: Omit<ArticleProps, 'innerContent' | 'publishedAt'>[] = newsResponse.data!.map((newsItem) => ({
+    const news: Omit<ArticleProps, 'innerContent' | 'publishedAt' | '__component'>[] = newsResponse.data!.map((newsItem) => ({
       id: newsItem.id!,
       image: {
         url: newsItem?.attributes?.image.data?.attributes?.url!,

@@ -198,8 +198,10 @@ export type NewsPageProps = {
 };
 
 export type ArticleProps = CardProps & {
+  __component: BlockTypes.SHARED_ARTICLE,
   publishedAt?: string;
   innerContent: string;
+  date?: string;
 };
 
 export type DocumentsPageProps = {

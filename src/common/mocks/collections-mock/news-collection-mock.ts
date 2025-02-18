@@ -7,6 +7,7 @@ import vacancyImage from "@/public/images/news/vacancy.png";
 import zooDayImage from "@/public/images/news/zoo-day.png";
 import alpacaDayImage from "@/public/images/news/alpaca-day.png";
 import { ArticleProps } from "../../types";
+import { BlockTypes } from "../../enum";
 
 const STATIC_DATE = new Date(`03.10.24`)
   .toJSON();
@@ -14,6 +15,7 @@ const STATIC_DATE = new Date(`03.10.24`)
 export const MOCK_NEWS: ArticleProps[] = [
   {
     id: 0,
+    __component: BlockTypes.SHARED_ARTICLE,
     image: {
       url: amurTigerImage,
       alternativeText: `Фотография амурского тигра`,
@@ -42,6 +44,7 @@ export const MOCK_NEWS: ArticleProps[] = [
   },
   {
     id: 1,
+    __component: BlockTypes.SHARED_ARTICLE,
     image: {
       url: employeeImage,
       alternativeText: `Фотография рычащего льва`,
@@ -60,6 +63,7 @@ export const MOCK_NEWS: ArticleProps[] = [
   },
   {
     id: 2,
+    __component: BlockTypes.SHARED_ARTICLE,
     image: {
       url: sanitaryDayImage,
       alternativeText: `Фотография леопарда`,
@@ -71,6 +75,7 @@ export const MOCK_NEWS: ArticleProps[] = [
   },
   {
     id: 3,
+    __component: BlockTypes.SHARED_ARTICLE,
     image: {
       url: winterModeImage,
       alternativeText: `Фотография лося`,
@@ -82,6 +87,7 @@ export const MOCK_NEWS: ArticleProps[] = [
   },
   {
     id: 4,
+    __component: BlockTypes.SHARED_ARTICLE,
     image: {
       url: vacancyImage,
       alternativeText: `Фотография убирающегося сотрудника`,
@@ -93,6 +99,7 @@ export const MOCK_NEWS: ArticleProps[] = [
   },
   {
     id: 5,
+    __component: BlockTypes.SHARED_ARTICLE,
     image: {
       url: zooDayImage,
       alternativeText: `Фотография рычащего льва`,
@@ -104,6 +111,7 @@ export const MOCK_NEWS: ArticleProps[] = [
   },
   {
     id: 6,
+    __component: BlockTypes.SHARED_ARTICLE,
     image: {
       url: alpacaDayImage,
       alternativeText: `Фотография женщины с альпакой`,

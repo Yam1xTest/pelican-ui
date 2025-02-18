@@ -1,4 +1,4 @@
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, BlockTypes, Breakpoint } from '@/src/common/enum';
 import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
@@ -8,7 +8,7 @@ test.describe(`ArticleComponentTest`, () => {
   }) => {
     await gotoPage({
       page,
-      url: `${AppRoute.NEWS}/1`,
+      url: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_ARTICLE}`,
     });
 
     await hideHeader({
