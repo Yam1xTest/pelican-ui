@@ -3,6 +3,7 @@ export enum AppRoute {
   NEWS = `/news`,
   DOCUMENTS = `/documents`,
   CONTACT_ZOO = `/contact-zoo`,
+  INTERNAL_TEST_PAGE = `/internal-test-page`,
 }
 
 export enum Breakpoint {
@@ -14,13 +15,13 @@ export enum Breakpoint {
 }
 
 export enum BlockTypes {
-  HERO = `home.hero`,
-  SERVICES = `home.services`,
-  CONTACT_ZOO_PREVIEW = `home.contact-zoo-preview`,
+  SHARED_HERO = `shared.hero`,
+  SHARED_CARDS = `shared.cards`,
+  SHARED_TICKETS = `shared.tickets`,
+  HOME_SERVICES = `home.services`,
+  SHARED_IMAGE_WITH_BUTTON_GRID = `shared.image-with-button-grid`,
   TICKETS = `home.tickets`,
   MAP = `home.map`,
-  TEXT_AND_MEDIA = `home.text-and-media`,
+  SHARED_TEXT_AND_MEDIA = `shared.text-and-media`,
   NOT_FOUND = `not-found.not-found`,
-  CONTACT_ZOO_HERO = `contact-zoo.hero`,
-  CONTACT_ZOO_TICKETS = `contact-zoo.tickets`,
 }

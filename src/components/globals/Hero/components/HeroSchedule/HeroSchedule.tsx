@@ -7,12 +7,12 @@ export function HeroSchedule({
   className,
   scheduleTitle,
   scheduleTimetables,
-  isContactZoo,
+  isInteralPage,
 }: {
   className: string,
   scheduleTitle: HeroComponentProps['scheduleTitle'],
   scheduleTimetables: HeroComponentProps['scheduleTimetables'],
-  isContactZoo: HeroComponentProps['isContactZoo'],
+  isInteralPage: HeroComponentProps['isInteralPage'],
 }) {
   const {
     isTablet,
@@ -23,7 +23,7 @@ export function HeroSchedule({
       `hero-schedule`,
       className,
       {
-        'hero-schedule--contact-zoo': isContactZoo,
+        'hero-schedule--internal-page': isInteralPage,
       },
     )}
     >
@@ -34,7 +34,7 @@ export function HeroSchedule({
             key={el.id}
             className="hero-schedule__timetable"
             scheduleTimetable={el}
-            isContactZoo={isContactZoo}
+            isInteralPage={isInteralPage}
           />
         ))}
       </ul>

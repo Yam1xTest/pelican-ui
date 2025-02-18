@@ -9,10 +9,6 @@
   position: relative;
   z-index: $tickets;
   overflow: hidden;
-  border-radius: 32px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: $color-white;
 
   &::before,
   &::after {
@@ -79,6 +75,25 @@
       bottom: 154px;
       width: 191px;
       height: 215px;
+    }
+  }
+
+  &__inner {
+    border-radius: 32px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: $color-white;
+
+    @include desktop {
+      border-radius: 64px;
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
+    @include desktop-xl {
+      border-radius: 64px;
+      padding-top: 80px;
+      padding-bottom: 80px;
     }
   }
 
@@ -166,14 +181,13 @@
 
     @include tablet {
       display: flex;
-      align-items: end;
+      align-items: flex-start;
       flex-wrap: wrap;
       margin-bottom: 0;
       gap: $gap-tablet;
     }
 
     @include tablet-xl {
-      flex-wrap: nowrap;
       margin-top: 21px;
       gap: $gap-tablet-xl;
     }
@@ -202,15 +216,12 @@
     }
 
     @include tablet-xl {
-      width: calc(100% / 3);
+      width: calc((100% - 2 * $gap-tablet-xl) / 3);
     }
 
     @include desktop {
+      width: calc((100% - 2 * $gap-desktop) / 3);
       min-height: 219px;
-    }
-
-    @include desktop {
-      width: calc(100% / 3);
     }
 
     @include desktop-xl {
@@ -244,26 +255,24 @@
       opacity: 0.75;
 
       @include tablet {
+        flex-grow: 1;
         padding-top: 4px;
-        width: 100%;
         font-size: 16px;
       }
 
       @include tablet-xl {
         padding-top: 0;
-        width: calc(100% / 3);
-        min-height: 160px;
+        width: calc((100% - 2 * $gap-tablet-xl) / 3);
         font-size: 20px;
       }
 
       @include desktop {
-        min-height: 219px;
+        width: calc((100% - 2 * $gap-desktop) / 3);
         font-size: 24px;
         line-height: 1.4;
       }
 
       @include desktop-xl {
-        min-height: 309px;
         font-size: 34px;
       }
     }
@@ -298,25 +307,17 @@
     margin-left: 4px;
   }
 
-  @include desktop {
-    border-radius: 64px;
-    padding: 64px 0;
-  }
-
-  @include desktop-xl {
-    border-radius: 64px;
-    padding: 80px 0;
-  }
-
-  &--contact-zoo {
-    margin-bottom: 56px;
-    padding-bottom: 40px;
+  &--internal-page {
+    @include shared-paddings;
 
     &::before,
     &::after {
       @include tablet {
         content: none;
       }
+    }
+    #{$this}__inner {
+      @include shared-paddings;
     }
 
     #{$this}__subtitle {
@@ -345,22 +346,6 @@
       @include desktop-xl {
         margin-top: 30px;
       }
-    }
-
-    @include tablet {
-      margin-bottom: 40px;
-    }
-
-    @include tablet-xl {
-      margin-bottom: 56px;
-    }
-
-    @include desktop {
-      margin-bottom: 80px;
-    }
-
-    @include desktop-xl {
-      margin-bottom: 176px;
     }
   }
 }

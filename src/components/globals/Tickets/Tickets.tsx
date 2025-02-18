@@ -1,143 +1,49 @@
-import { TicketsComponentProps } from "@/src/common/types";
-import { Button } from "@/src/components/globals/Button/Button";
-import Link from "next/link";
-import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
-import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import clsx from "clsx";
-import { TicketCard } from "./components/TicketCard/TicketCard";
+import { SharedTicketsComponentProps } from "@/src/common/types";
+import { TicketCard } from "../TicketCard/TicketCard";
+import { MarkdownText } from "../MarkdownText/MarkdownText";
 
 export function Tickets({
-  generalTicketsTitle,
-  generalTicketsSubtitle,
-  generalTicketsLink,
-  subsidizedTicketsTitle,
-  generalTickets,
-  subsidizedTickets,
-  subsidizedTicketsSubtitle,
-  isContactZoo,
-  contactZooNote,
-}: Omit<TicketsComponentProps, 'id' | '__component'>) {
-  const {
-    isTablet,
-    isMobile,
-    isTabletXl,
-  } = useWindowWidth();
-
-  const {
-    handleTicketPopupToggle,
-  } = useTicketPopup();
-
+  title,
+  subtitle,
+  link,
+  tickets,
+  note,
+  isFirstBlock,
+  isLastBlock,
+}: Omit<SharedTicketsComponentProps, 'id' | '__component'>) {
   return (
     <div
-      className={clsx(
-        `tickets`,
-        {
-          'tickets--contact-zoo': isContactZoo,
-        },
-      )}
+      className={clsx(`tickets tickets--internal-page`, {
+        'first-block': isFirstBlock,
+        'last-block': isLastBlock,
+      })}
       data-testid="tickets"
     >
       <div className="tickets__inner container">
         <div className="tickets__group">
           <div className="tickets__head">
-            <h2 className="tickets__title">{generalTicketsTitle}</h2>
-            {isContactZoo
-          && <p className="tickets__subtitle">{generalTicketsSubtitle}</p>}
+            <h2 className="tickets__title">{title}</h2>
+            {subtitle && <p className="tickets__subtitle">{subtitle}</p>}
           </div>
           <ul className="tickets__list">
-            {generalTickets.map((el) => (
+            {tickets.map((el) => (
               <TicketCard
                 className="tickets__item"
                 key={el.id}
                 ticket={el}
-                isGeneral
-                link={generalTicketsLink}
-                isContactZoo={isContactZoo}
+                link={link}
               />
             ))}
-            {!isContactZoo && isTablet && !isTabletXl && (
-              <li className="tickets__item tickets__item--button">
-                <Button
-                  className="tickets__ticket-button"
-                  theme="primary"
-                  onClick={handleTicketPopupToggle}
-                >
-                  Купить билет
-                </Button>
-              </li>
-            )}
-
-            {isContactZoo && (
+            {note && (
               <li className="tickets__item tickets__item--info">
-                {contactZooNote}
+                <MarkdownText>
+                  {note}
+                </MarkdownText>
               </li>
             )}
           </ul>
-          {(isMobile && !isContactZoo) && (
-            <Button
-              className="tickets__ticket-button"
-              theme="primary"
-              onClick={handleTicketPopupToggle}
-              data-testid="tickets-buy-button"
-            >
-              Купить билет
-            </Button>
-          )}
         </div>
-        {
-          !isContactZoo
-          && (
-            <div className="tickets__group">
-              <div className="tickets__head">
-                <h2 className="tickets__title">{subsidizedTicketsTitle}</h2>
-                <p className="tickets__subtitle">{subsidizedTicketsSubtitle}</p>
-              </div>
-              <ul className="tickets__list">
-                {subsidizedTickets?.map((el) => (
-                  <TicketCard
-                    className="tickets__item"
-                    key={el.id}
-                    ticket={el}
-                    isSubsidized
-                    link=""
-                  />
-                ))}
-                {
-                  isTablet && (
-                    <li className="tickets__item tickets__item--link">
-                      <p>
-                        С остальными льготными категориями вы можете ознакомиться
-                        <Link
-                          className="tickets__link text-link"
-                          // TODO: Remove when the page appears
-                          href="https://vk.com/topic-71671982_48253263"
-                          aria-label="Перейти на страницу со списком льгот"
-                          data-testid="tickets-discounts-link"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          по ссылке.
-                        </Link>
-                      </p>
-                    </li>
-                  )
-                }
-              </ul>
-              {
-                isMobile
-             && (
-               <Link
-                 href="#"
-                 className="tickets__ticket-button button button--primary"
-                 data-testid="tickets-all-discounts"
-               >
-                 Другие льготы
-               </Link>
-             )
-              }
-            </div>
-          )
-        }
       </div>
     </div>
   );

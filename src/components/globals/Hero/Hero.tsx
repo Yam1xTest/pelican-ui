@@ -1,9 +1,10 @@
 import Image from "next/image";
-import { HeroComponentProps } from "@/src/common/types";
+import { GlobalComponentProps, HeroComponentProps } from "@/src/common/types";
 import { Button } from "@/src/components/globals/Button/Button";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import clsx from "clsx";
+import Link from "next/link";
 import { HeroSchedule } from "./components/HeroSchedule/HeroSchedule";
 import { HeroInfoCard } from "./components/HeroInfoCard/HeroInfoCard";
 
@@ -14,8 +15,11 @@ export function Hero({
   infoCardTitle,
   infoCardDescription,
   image,
-  isContactZoo,
-}: Omit<HeroComponentProps, 'id' | '__component'>) {
+  isInteralPage,
+  email,
+  isFirstBlock,
+  isLastBlock,
+}: Omit<HeroComponentProps, 'id' | '__component'> & Partial<Pick<GlobalComponentProps, 'email'>>) {
   const {
     isMobile,
     isTablet,
@@ -31,7 +35,9 @@ export function Hero({
       className={clsx(
         `hero container`,
         {
-          'hero--contact-zoo': isContactZoo,
+          'hero--internal-page': isInteralPage,
+          'first-block': isFirstBlock,
+          'last-block': isLastBlock,
         },
       )}
       data-testid="hero"
@@ -39,9 +45,9 @@ export function Hero({
       {(((isMobile || isTablet) && !isDesktop)) && (
         <h1
           className={clsx(
-            `hero__title hero__title--contact-zoo`,
+            `hero__title hero__title--internal-page`,
             {
-              'visually-hidden': !isContactZoo,
+              'visually-hidden': !isInteralPage,
             },
           )}
         >
@@ -55,6 +61,7 @@ export function Hero({
           src={image.url}
           alt={image.alternativeText}
           sizes="(min-width: 768px) 50vw, 100vw"
+          fill
           priority
         />
       </div>
@@ -63,31 +70,33 @@ export function Hero({
           className="hero__schedule-card"
           scheduleTitle={scheduleTitle}
           scheduleTimetables={scheduleTimetables}
-          isContactZoo={isContactZoo}
+          isInteralPage={isInteralPage}
         />
         <HeroInfoCard
           className="hero__info-card"
           infoCardTitle={infoCardTitle}
           infoCardDescription={infoCardDescription}
-          isContactZoo={isContactZoo}
+          isInteralPage={isInteralPage}
         />
       </div>
-      {(!isDesktop && !isContactZoo)
+      {(!isDesktop && !isInteralPage)
         && (
           <div className="hero__buttons">
-            <Button
-              className="hero__contact-button"
-              theme="secondary"
+            <Link
+              href={`mailto:${email}`}
+              className="button button--secondary hero__contact-button"
               data-testid="hero-contact-button"
+              aria-label="Связаться с нами по почте"
             >
               Связаться
-            </Button>
+            </Link>
             <Button
               className="hero__ticket-button"
               theme="primary"
               isFeatured
               onClick={handleTicketPopupToggle}
               data-testid="hero-tickets-popup-button"
+              aria-label="Открыть модальное окно  с билетами"
             >
               Билеты
             </Button>

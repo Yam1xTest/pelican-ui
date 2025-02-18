@@ -1,15 +1,15 @@
-import { DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
+import { DocumentsCategoriesProps, DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
 import { DocumentCard } from "@/src/components/documents-page/DocumentsList/components/DocumentCard/DocumentCard";
 import { useRouter } from "next/router";
 import { Tab } from "../../globals/Tab/Tab";
 
 export function DocumentsList({
-  categoryTitle,
+  category,
   availableYears,
   documents,
   currentYear,
 }: {
-  categoryTitle: string,
+  category: DocumentsCategoriesProps,
   availableYears: DocumentsTabsProps[`availableYears`],
   documents: DocumentsProps[],
   currentYear: number
@@ -21,28 +21,30 @@ export function DocumentsList({
       className="documents container"
       data-testid="documents"
     >
-      <h1 className="documents__title">{categoryTitle}</h1>
-      <ul className="documents__tabs">
-        {availableYears.map((year) => (
-          <Tab
-            key={year}
-            className="documents__tab"
-            label={year}
-            isActive={currentYear === year}
-            onClick={() => {
-              router.push(
-                {
-                  query: {
-                    ...router.query,
-                    year,
+      <h1 className="documents__title">{category.title}</h1>
+      {category.hasTabs && (
+        <ul className="documents__tabs">
+          {availableYears.map((year) => (
+            <Tab
+              key={year}
+              className="documents__tab"
+              label={year}
+              isActive={currentYear === year}
+              onClick={() => {
+                router.replace(
+                  {
+                    query: {
+                      ...router.query,
+                      year,
+                    },
                   },
-                },
-              );
-            }}
-            ariaLabel={`Отобразить документы за ${year} год`}
-          />
-        ))}
-      </ul>
+                );
+              }}
+              ariaLabel={`Отобразить документы за ${year} год`}
+            />
+          ))}
+        </ul>
+      )}
       <ul
         className="documents__list"
       >

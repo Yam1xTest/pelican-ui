@@ -1,16 +1,20 @@
 /* eslint-disable @typescript-eslint/indent */
-import { BlockTypes } from '@/src/common/enum';
+import { AppRoute, BlockTypes } from '@/src/common/enum';
 import {
   GlobalComponentProps,
   HeroComponentProps,
   TextAndMediaComponentProps,
-  ServicesComponentProps,
-  ContactZooPreviewComponentProps,
+  CardsComponentProps,
   MapComponentProps,
   TicketsComponentProps,
   NotFoundComponentProps,
+  ServicesComponentProps,
+  ImageWithButtonGridComponentProps,
+  SharedTicketsComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
+import { Cards } from '../Cards/Cards';
+import { ImageWithButtonGrid } from '../ImageWithButtonGrid/ImageWithButtonGrid';
 
 const ContactZooHero = dynamic(
   () => import(`../../contact-zoo-page/ContactZooHero/ContactZooHero`).then((component) => component.ContactZooHero),
@@ -27,7 +31,7 @@ const HomepageHero = dynamic(
 );
 
 const TextAndMedia = dynamic(
-  () => import(`../../home-page/TextAndMedia/TextAndMedia`).then((component) => component.TextAndMedia),
+  () => import(`../TextAndMedia/TextAndMedia`).then((component) => component.TextAndMedia),
   {
     ssr: false,
   },
@@ -40,8 +44,8 @@ const Services = dynamic(
   },
 );
 
-const ContactZooPreview = dynamic(
-  () => import(`../../home-page/ContactZooPreview/ContactZooPreview`).then((component) => component.ContactZooPreview),
+const HomepageImageWithButtonGrid = dynamic(
+  () => import(`../../home-page/HomepageImageWithButtonGrid/HomepageImageWithButtonGrid`).then((component) => component.HomepageImageWithButtonGrid),
   {
     ssr: false,
   },
@@ -61,8 +65,8 @@ const HomepageTickets = dynamic(
   },
 );
 
-const ContactZooTickets = dynamic(
-  () => import(`../../contact-zoo-page/ContactZooTickets/ContactZooTickets`).then((component) => component.ContactZooTickets),
+const Tickets = dynamic(
+  () => import(`../../globals/Tickets/Tickets`).then((component) => component.Tickets),
   {
     ssr: false,
   },
@@ -76,117 +80,156 @@ const NotFound = dynamic(
 );
 
 type Block = HeroComponentProps
+  | SharedTicketsComponentProps
   | TextAndMediaComponentProps
+  | CardsComponentProps
   | ServicesComponentProps
-  | ContactZooPreviewComponentProps
+  | ImageWithButtonGridComponentProps
   | MapComponentProps
   | TicketsComponentProps
-  | NotFoundComponentProps
-  ;
+  | NotFoundComponentProps;
 
 export const BlockRenderer = ({
+  slug,
   block,
-  phone,
   email,
 }: {
+  slug?: string,
   block: Block,
-  phone: GlobalComponentProps['phone'],
   email: GlobalComponentProps['email']
 }) => {
-  switch (block.__component) {
-    case BlockTypes.HERO:
-      return (
-        <HomepageHero
-          title={block.title}
-          image={block.image}
-          scheduleTitle={block.scheduleTitle}
-          scheduleTimetables={block.scheduleTimetables}
-          infoCardTitle={block.infoCardTitle}
-          infoCardDescription={block.infoCardDescription}
-        />
-      );
-    case BlockTypes.CONTACT_ZOO_HERO:
-      return (
-        <ContactZooHero
-          isContactZoo
-          title={block.title}
-          image={block.image}
-          scheduleTitle={block.scheduleTitle}
-          scheduleTimetables={block.scheduleTimetables}
-          infoCardTitle={block.infoCardTitle}
-          infoCardDescription={block.infoCardDescription}
-        />
-      );
-    case BlockTypes.TEXT_AND_MEDIA:
-      return (
-        <TextAndMedia
-          title={block.title}
-          description={block.description}
-          video={block.video}
-        />
-      );
-    case BlockTypes.SERVICES:
-      return (
-        <Services
-          title={block.title}
-          cards={block.cards}
-          phoneText={block.phoneText}
-          emailText={block.emailText}
-          phone={phone}
-          email={email}
-        />
-      );
-
-    case BlockTypes.CONTACT_ZOO_PREVIEW:
-      return (
-        <ContactZooPreview
-          title={block.title}
-          description={block.description}
-          largeImage={block.largeImage}
-          smallImage={block.smallImage}
-        />
-      );
-
-    case BlockTypes.MAP:
-      return (
-        <Map
-          title={block.title}
-          subtitle={block.subtitle}
-          note={block.note}
-          image={block.image}
-        />
-      );
-
-    case BlockTypes.TICKETS:
-      return (
-        <HomepageTickets
-          generalTicketsTitle={block.generalTicketsTitle}
-          generalTicketsLink={block.generalTicketsLink}
-          subsidizedTicketsTitle={block.subsidizedTicketsTitle}
-          subsidizedTicketsSubtitle={block.subsidizedTicketsSubtitle}
-          generalTickets={block.generalTickets}
-          subsidizedTickets={block.subsidizedTickets}
-        />
-      );
-
-    case BlockTypes.CONTACT_ZOO_TICKETS:
-      return (
-        <ContactZooTickets
-          isContactZoo
-          generalTicketsTitle={block.generalTicketsTitle}
-          generalTicketsSubtitle={block.generalTicketsSubtitle}
-          generalTicketsLink={block.generalTicketsLink}
-          generalTickets={block.generalTickets}
-          contactZooNote={block.contactZooNote}
-        />
-      );
-
-    case BlockTypes.NOT_FOUND:
-      return (
-        <NotFound />
-      );
-
-    default:
-      return null;
+  if (block.__component === BlockTypes.SHARED_HERO && slug === AppRoute.HOME) {
+    return (
+      <HomepageHero
+        title={block.title}
+        image={block.image}
+        scheduleTitle={block.scheduleTitle}
+        scheduleTimetables={block.scheduleTimetables}
+        infoCardTitle={block.infoCardTitle}
+        infoCardDescription={block.infoCardDescription}
+        email={email}
+      />
+    );
   }
+
+  if (block.__component === BlockTypes.SHARED_HERO && slug === AppRoute.CONTACT_ZOO) {
+    return (
+      <ContactZooHero
+        isInteralPage
+        title={block.title}
+        image={block.image}
+        scheduleTitle={block.scheduleTitle}
+        scheduleTimetables={block.scheduleTimetables}
+        infoCardTitle={block.infoCardTitle}
+        infoCardDescription={block.infoCardDescription}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.SHARED_TEXT_AND_MEDIA) {
+    return (
+      <TextAndMedia
+        title={block.title}
+        description={block.description}
+        media={block.media}
+        contentOrder={block.contentOrder}
+        viewFootsteps={block.viewFootsteps}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.HOME_SERVICES) {
+    return (
+      <Services
+        title={block.title}
+        cards={block.cards}
+        phone={block.phone}
+        email={block.email}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.SHARED_CARDS) {
+    return (
+      <Cards
+        title={block.title}
+        cards={block.cards}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID && slug === AppRoute.HOME) {
+    return (
+      <HomepageImageWithButtonGrid
+        title={block.title}
+        description={block.description}
+        largeImage={block.largeImage}
+        smallImage={block.smallImage}
+        url={block.url}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.MAP) {
+    return (
+      <Map
+        title={block.title}
+        subtitle={block.subtitle}
+        note={block.note}
+        image={block.image}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.TICKETS) {
+    return (
+      <HomepageTickets
+        generalTicketsTitle={block.generalTicketsTitle}
+        generalTicketsLink={block.generalTicketsLink}
+        subsidizedTicketsTitle={block.subsidizedTicketsTitle}
+        subsidizedTicketsSubtitle={block.subsidizedTicketsSubtitle}
+        generalTickets={block.generalTickets}
+        subsidizedTickets={block.subsidizedTickets}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.SHARED_TICKETS) {
+    return (
+      <Tickets
+        title={block.title}
+        subtitle={block.subtitle}
+        link={block.link}
+        tickets={block.tickets}
+        note={block.note}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.NOT_FOUND) {
+    return <NotFound />;
+  }
+
+  if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID) {
+    return (
+      <ImageWithButtonGrid
+        title={block.title}
+        description={block.description}
+        largeImage={block.largeImage}
+        smallImage={block.smallImage}
+        url={block.url}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
+        isInternalPage
+      />
+    );
+  }
+
+  return null;
 };

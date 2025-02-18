@@ -1,45 +1,49 @@
 import Head from 'next/head';
 import { getMockPageData } from '@/src/common/utils/getMockPageData';
-import { ContactZooProps, GlobalComponentProps, HomePageProps } from '../common/types';
+import { useRouter } from 'next/router';
+import { ContactZooPageProps, GlobalComponentProps, HomePageProps } from '../common/types';
 import { NotFound } from '../components/not-found-page/NotFound/NotFound';
 import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
+import { getPageData } from '../common/utils/getPageData';
 
 type UniversalProps = {
   globalData: GlobalComponentProps,
-  pageData: HomePageProps | ContactZooProps,
+  pageData: HomePageProps | ContactZooPageProps,
 };
 
 export default function UniversalPage({
   globalData,
   pageData,
 }: UniversalProps) {
+  const route = useRouter();
+
   if (!pageData) {
     return <NotFound />;
   }
 
   const {
     email,
-    phone,
   } = globalData;
 
   const {
-    title, blocks,
+    seo,
+    blocks,
   } = pageData;
 
   return (
     <>
       <Head>
+        <title>{seo?.metaTitle}</title>
         <meta
-          name="description"
+          name={seo?.metaDescription}
           content="Сайт зоопарка"
         />
-        <title>{title}</title>
       </Head>
       {blocks.map((block) => (
         <BlockRenderer
+          slug={route.asPath}
           key={block.id}
           block={block}
-          phone={phone}
           email={email}
         />
       ))}
@@ -54,21 +58,57 @@ export async function getServerSideProps({
     slug: string,
   },
 }) {
-  // TODO Uncomment when the api appears, there will be static data here
-  // if (process.env.APP_ENV === `static`) {
-  //   return {
-  //     props: {
-  //       navigationLinks: NAVIGATION_LINKS,
-  //     },
-  //   };
-  // }
+  let pageData;
+  if (process.env.APP_ENV === `static`) {
+    pageData = getMockPageData({
+      slug: query.slug,
+    });
 
-  // TODO there will be a request in the Strapi api here
-  return {
-    props: {
-      pageData: getMockPageData({
-        slug: query.slug,
-      }),
-    },
-  };
+    setBlockPosition({
+      slug: query.slug,
+      blocks: pageData.blocks,
+    });
+
+    return {
+      props: {
+        pageData,
+      },
+    };
+  }
+
+  try {
+    pageData = await getPageData({
+      slug: query.slug,
+    });
+
+    setBlockPosition({
+      slug: query.slug,
+      blocks: pageData.blocks,
+    });
+
+    return {
+      props: {
+        pageData,
+      },
+    };
+  } catch {
+    return {
+      props: {
+        pageData: null,
+      },
+    };
+  }
+}
+
+function setBlockPosition({
+  slug,
+  blocks,
+}: {
+  slug: string;
+  blocks: any
+}) {
+  if (slug && blocks.length) {
+    blocks[0].isFirstBlock = true;
+    blocks[blocks.length - 1].isLastBlock = true;
+  }
 }

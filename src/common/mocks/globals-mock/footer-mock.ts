@@ -1,5 +1,8 @@
 import iconAdministration1 from '@/public/images/footer/adm1.png';
 import iconAdministration2 from '@/public/images/footer/adm2.png';
+import iconAdministration3 from '@/public/images/footer/adm3.png';
+import iconAdministration4 from '@/public/images/footer/adm4.png';
+import iconAdministration5 from '@/public/images/footer/adm5.png';
 import { AppRoute } from '../../enum';
 import { GlobalComponentProps } from '../../types';
 
@@ -37,11 +40,6 @@ export const MOCK_FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] =
   //   name: `Правила посещения`,
   //   link: `#`,
   // },
-  {
-    id: 4,
-    name: `Оставить отзыв`,
-    link: `https://docs.google.com/forms/d/11AMCo0nMCon6-_VX07lrWRhniSAd0Dei-gl1m_DS1Y0/viewform?hl=ru&hl=ru&edit_requested=true`,
-  },
 ];
 
 export const MOCK_OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [
@@ -64,6 +62,34 @@ export const MOCK_OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [
     name: `Администрация г.\u00A0Челябинска`,
     link: `https://cheladmin.ru/`,
     icon: iconAdministration1,
+    alt: `Иконка`,
+  },
+  {
+    id: 4,
+    name: `Губернатор Челябинской области`,
+    link: `https://gubernator74.ru/`,
+    icon: iconAdministration3,
+    alt: `Иконка`,
+  },
+  {
+    id: 5,
+    name: `Правительство Челябинской области`,
+    link: `https://pravmin.gov74.ru/`,
+    icon: iconAdministration2,
+    alt: `Иконка`,
+  },
+  {
+    id: 6,
+    name: `Министерство культуры Российской Федерации`,
+    link: `https://culture.gov.ru/`,
+    icon: iconAdministration4,
+    alt: `Иконка`,
+  },
+  {
+    id: 7,
+    name: `Портал Культура.РФ`,
+    link: `https://www.culture.ru/`,
+    icon: iconAdministration5,
     alt: `Иконка`,
   },
 ];

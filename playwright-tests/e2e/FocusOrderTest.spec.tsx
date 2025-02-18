@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { gotoPage, hideTextAndMedia, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
@@ -42,7 +43,7 @@ async function mobileTest({
     `hero-tickets-popup-button`,
     `services-phone-link`,
     `services-email-link`,
-    `contact-zoo-btn`,
+    `image-grid-btn`,
     `ticket-card-link`,
     `ticket-card-link`,
     `ticket-card-link`,
@@ -50,7 +51,6 @@ async function mobileTest({
     `tickets-all-discounts`,
     `map-address-link`,
     `footer-tickets-popup-button`,
-    `footer-nav-link`,
     `footer-nav-link`,
     `footer-nav-link`,
     `footer-nav-link`,
@@ -134,14 +134,13 @@ async function desktopTest({
     `header-tickets-popup-button`,
     `services-phone-link`,
     `services-email-link`,
-    `contact-zoo-btn`,
+    `image-grid-btn`,
     `ticket-card-link`,
     `ticket-card-link`,
     `ticket-card-link`,
     `tickets-discounts-link`,
     `map-address-link`,
     `footer-tickets-popup-button`,
-    `footer-nav-link`,
     `footer-nav-link`,
     `footer-nav-link`,
     `footer-nav-link`,

@@ -120,4 +120,123 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       id: 1,
     },
   },
+  {
+    id: 6,
+    date: `2025-01-17`,
+    showDate: false,
+    title: `Протокол закупки  №7136268618317`,
+    files: [
+      {
+        id: 1,
+        name: `Протокол закупки №7136268618317`,
+        url: `/public/documents/Protocol.pdf`,
+        ext: `.pdf`,
+      },
+    ],
+    category: {
+      id: 2,
+    },
+  },
+  {
+    id: 7,
+    date: `2019-01-17`,
+    showDate: true,
+    title: `Протокол закупки  №8143788742`,
+    files: [
+      {
+        id: 1,
+        name: `Протокол закупки №8143788742`,
+        url: `/public/documents/Protocol.pdf`,
+        ext: `.pdf`,
+      },
+    ],
+    category: {
+      id: 3,
+    },
+  },
+  {
+    id: 8,
+    date: `2025-01-17`,
+    showDate: false,
+    title: `Протокол закупки  №9183298193`,
+    files: [
+      {
+        id: 1,
+        name: `Протокол закупки №9183298193`,
+        url: `/public/documents/Protocol.pdf`,
+        ext: `.pdf`,
+      },
+    ],
+    category: {
+      id: 4,
+    },
+  },
+  {
+    id: 9,
+    date: `2025-01-17`,
+    showDate: false,
+    title: `Протокол закупки  №928194129847218`,
+    files: [
+      {
+        id: 1,
+        name: `Протокол закупки №928194129847218`,
+        url: `/public/documents/Protocol.pdf`,
+        ext: `.pdf`,
+      },
+    ],
+    category: {
+      id: 5,
+    },
+  },
+  {
+    id: 10,
+    date: `2025-01-17`,
+    showDate: false,
+    title: `Протокол закупки  №8719479174917`,
+    files: [
+      {
+        id: 1,
+        name: `Протокол закупки №8719479174917`,
+        url: `/public/documents/Protocol.pdf`,
+        ext: `.pdf`,
+      },
+    ],
+    category: {
+      id: 6,
+    },
+  },
+  {
+    id: 11,
+    date: `2025-01-17`,
+    showDate: false,
+    title: `Протокол закупки  №94193049184`,
+    files: [
+      {
+        id: 1,
+        name: `Протокол закупки №94193049184`,
+        url: `/public/documents/Protocol.pdf`,
+        ext: `.pdf`,
+      },
+    ],
+    category: {
+      id: 7,
+    },
+  },
+  {
+    id: 12,
+    date: `2025-01-17`,
+    showDate: false,
+    title: `Протокол закупки  №948913849`,
+    files: [
+      {
+        id: 1,
+        name: `Протокол закупки №948913849`,
+        url: `/public/documents/Protocol.pdf`,
+        ext: `.pdf`,
+      },
+    ],
+    category: {
+      id: 8,
+    },
+  },
 ];

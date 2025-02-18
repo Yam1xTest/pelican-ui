@@ -1,5 +1,6 @@
 import { StaticImageData } from "next/image";
 import { BlockTypes } from "./enum";
+import { HomeServicesComponent, SharedHeroComponent, SharedSeoComponent } from "./api-types";
 
 export type GlobalComponentProps = {
   navigationLinks: {
@@ -49,17 +50,16 @@ export type GlobalComponentProps = {
 
 export type HeroComponentProps = {
   id: number
-  __component: BlockTypes.HERO | BlockTypes.CONTACT_ZOO_HERO,
+  __component: BlockTypes.SHARED_HERO,
   title: string,
   image: Image,
   scheduleTitle: string,
   scheduleTimetables: Timetable[],
   infoCardTitle?: string,
   infoCardDescription: string,
-
   // todo move to component level?
-  isContactZoo?: boolean
-};
+  isInteralPage?: boolean
+} & BlockPosition;
 
 export type Timetable = {
   id: number,
@@ -70,28 +70,29 @@ export type Timetable = {
 
 export type TextAndMediaComponentProps = {
   id: number
-  __component: BlockTypes.TEXT_AND_MEDIA,
+  __component: BlockTypes.SHARED_TEXT_AND_MEDIA,
   title: string,
   description: string,
-  video: {
-    alt: string,
+  media: {
+    alternativeText: string,
     url: string,
     mime: string,
   },
+  contentOrder: "Текст слева" | "Текст справа",
+  viewFootsteps: boolean,
+} & BlockPosition;
+
+export type ServicesComponentProps = Omit<CardsComponentProps, '__component'> & {
+  __component: BlockTypes.HOME_SERVICES
+  phone: string,
+  email: string,
 };
 
-export type ServicesComponentProps = {
+export type CardsComponentProps = {
   id: number,
-  __component: BlockTypes.SERVICES,
+  __component: BlockTypes.SHARED_CARDS,
   title: string,
-  cards: ServicesCardProps[],
-  phoneText: string,
-  emailText: string,
-};
-
-export type ServicesCardProps = CardProps & {
-  description: string,
-  labels: string[],
+  cards: CardProps[],
 };
 
 export type CardProps = {
@@ -99,16 +100,23 @@ export type CardProps = {
   image: Image,
   title: string,
   description?: string,
+  link?: string,
+  labels?: {
+    id: number,
+    text: string
+  }[]
 };
 
-export type ContactZooPreviewComponentProps = {
+export type ImageWithButtonGridComponentProps = {
   id: number
-  __component: BlockTypes.CONTACT_ZOO_PREVIEW,
+  __component: BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID,
   title: string,
   description: string,
   largeImage: Image,
-  smallImage?: Image
-};
+  smallImage?: Image,
+  url: string,
+  isInternalPage?: boolean
+} & BlockPosition;
 
 export type MapComponentProps = {
   id: number
@@ -120,24 +128,28 @@ export type MapComponentProps = {
 };
 
 export type HomePageProps = {
-  id: number,
-  title: string;
+  seo: {
+    metaTitle: string,
+    metaDescription: string,
+  },
   blocks: (
     HeroComponentProps
     | TextAndMediaComponentProps
     | ServicesComponentProps
-    | ContactZooPreviewComponentProps
+    | ImageWithButtonGridComponentProps
     | MapComponentProps
     | TicketsComponentProps
-  )[];
+  )[],
 };
 
-export type ContactZooProps = {
-  id: number,
-  title: string;
+export type ContactZooPageProps = {
+  seo: {
+    metaTitle: string,
+    metaDescription: string,
+  },
   blocks: (
     HeroComponentProps
-    | TicketsComponentProps
+    | SharedTicketsComponentProps
   )[];
 };
 
@@ -146,17 +158,27 @@ export type NotFoundComponentProps = {
   __component: BlockTypes.NOT_FOUND,
 };
 
+export type SharedTicketsComponentProps = {
+  id: number
+  __component: BlockTypes.SHARED_TICKETS,
+  title: string,
+  subtitle?: string,
+  link?: string,
+  tickets: Ticket[],
+  note?: string,
+} & BlockPosition;
+
 export type TicketsComponentProps = {
   id: number
-  __component: BlockTypes.TICKETS | BlockTypes.CONTACT_ZOO_TICKETS,
+  __component: BlockTypes.TICKETS,
   generalTicketsTitle: string,
   generalTicketsSubtitle?: string,
-  generalTicketsLink: string,
+  generalTicketsLink?: string,
   subsidizedTicketsTitle?: string,
   subsidizedTicketsSubtitle?: string,
   generalTickets: Ticket[],
   subsidizedTickets?: Ticket[],
-  isContactZoo?: boolean,
+  isInteralPage?: boolean,
   contactZooNote?: string,
 };
 
@@ -166,10 +188,10 @@ export type Ticket = {
   description?: string,
   price: string,
   frequency?: string,
+  theme?: `Зелёный` | `Коричневый`,
 };
 
 export type NewsPageProps = {
-  id: number,
   title: string;
   newsTitle: string;
 };
@@ -180,7 +202,6 @@ export type NewsProps = CardProps & {
 };
 
 export type DocumentsPageProps = {
-  id: number,
   title: string,
   documentsTitle: string;
 };
@@ -193,6 +214,7 @@ export type DocumentsTabsProps = {
 export type DocumentsCategoriesProps = {
   id: number,
   title: string,
+  hasTabs: boolean,
 };
 
 export type DocumentFileProps = {
@@ -213,6 +235,22 @@ export type DocumentsProps = {
   category: {
     id: number,
   }
+};
+
+export type Block = SharedHeroComponent | HomeServicesComponent;
+
+export type PageData = {
+  data: {
+    attributes: {
+      blocks: Block[];
+      seo?: SharedSeoComponent
+    }
+  }
+};
+
+export type BlockPosition = {
+  isFirstBlock?: boolean,
+  isLastBlock?: boolean
 };
 
 type Image = {
