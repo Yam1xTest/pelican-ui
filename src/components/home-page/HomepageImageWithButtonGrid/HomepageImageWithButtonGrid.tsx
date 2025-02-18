@@ -6,7 +6,8 @@ export function HomepageImageWithButtonGrid({
   description,
   largeImage,
   smallImage,
-  url,
+  link,
+  label,
 }: Omit<ImageWithButtonGridComponentProps, 'id' | '__component'>) {
   return (
     <ImageWithButtonGrid
@@ -14,7 +15,8 @@ export function HomepageImageWithButtonGrid({
       description={description}
       largeImage={largeImage}
       smallImage={smallImage}
-      url={url}
+      link={link}
+      label={label}
     />
   );
 }

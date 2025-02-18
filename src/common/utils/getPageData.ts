@@ -2,7 +2,6 @@ import qs from "qs";
 import { AppRoute } from "../enum";
 import { api } from "./HttpClient";
 import { mapContractByBlock } from "./mapContractByBlock";
-import { MOCK_IMAGE_WITH_BUTTON_GRID } from "../mocks/home-page-mock/blocks/image-with-button-grid-mock";
 import { MOCK_MAP } from "../mocks/home-page-mock/blocks/map-mock";
 import { MOCK_TICKETS } from "../mocks/home-page-mock/blocks/tickets-mock";
 import { MOCK_NOT_FOUND_PAGE } from "../mocks/not-found-page-mock/not-found-page-mock";
@@ -28,13 +27,12 @@ export async function getPageData({
           `blocks.cards.cards`,
           `blocks.cards.cards.image`,
           `blocks.cards.cards.labels`,
+          `blocks.button`,
+          `blocks.largeImage`,
+          `blocks.smallImage`,
           `seo`,
         ],
-        staticBlocks: [
-          MOCK_IMAGE_WITH_BUTTON_GRID,
-          MOCK_TICKETS,
-          MOCK_MAP,
-        ],
+        staticBlocks: [MOCK_TICKETS, MOCK_MAP],
       });
 
     case AppRoute.CONTACT_ZOO:
