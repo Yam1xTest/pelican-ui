@@ -17,6 +17,8 @@ export function Hero({
   image,
   isInteralPage,
   email,
+  isFirstBlock,
+  isLastBlock,
 }: Omit<HeroComponentProps, 'id' | '__component'> & Partial<Pick<GlobalComponentProps, 'email'>>) {
   const {
     isMobile,
@@ -34,6 +36,8 @@ export function Hero({
         `hero container`,
         {
           'hero--internal-page': isInteralPage,
+          'first-block': isFirstBlock,
+          'last-block': isLastBlock,
         },
       )}
       data-testid="hero"

@@ -17,12 +17,12 @@ export enum Breakpoint {
 export enum BlockTypes {
   SHARED_HERO = `shared.hero`,
   SHARED_CARDS = `shared.cards`,
+  SHARED_TICKETS = `shared.tickets`,
   HOME_SERVICES = `home.services`,
   SHARED_IMAGE_WITH_BUTTON_GRID = `shared.image-with-button-grid`,
   TICKETS = `home.tickets`,
   MAP = `home.map`,
-  TEXT_AND_MEDIA = `home.text-and-media`,
+  SHARED_TEXT_AND_MEDIA = `shared.text-and-media`,
   NOT_FOUND = `not-found.not-found`,
-  CONTACT_ZOO_TICKETS = `contact-zoo.tickets`,
   SHARED_CATEGORIES = `shared.categories`,
 }

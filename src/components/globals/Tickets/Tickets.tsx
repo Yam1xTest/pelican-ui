@@ -1,4 +1,5 @@
-import { Ticket } from "@/src/common/types";
+import clsx from "clsx";
+import { SharedTicketsComponentProps } from "@/src/common/types";
 import { TicketCard } from "../TicketCard/TicketCard";
 import { MarkdownText } from "../MarkdownText/MarkdownText";
 
@@ -8,16 +9,15 @@ export function Tickets({
   link,
   tickets,
   note,
-}: {
-  title: string,
-  subtitle?: string,
-  link?: string,
-  tickets: Ticket[],
-  note?: string,
-}) {
+  isFirstBlock,
+  isLastBlock,
+}: Omit<SharedTicketsComponentProps, 'id' | '__component'>) {
   return (
     <div
-      className="tickets tickets--internal-page"
+      className={clsx(`tickets tickets--internal-page`, {
+        'first-block': isFirstBlock,
+        'last-block': isLastBlock,
+      })}
       data-testid="tickets"
     >
       <div className="tickets__inner container">

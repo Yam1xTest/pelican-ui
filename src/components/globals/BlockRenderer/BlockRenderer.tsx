@@ -10,6 +10,7 @@ import {
   NotFoundComponentProps,
   ServicesComponentProps,
   ImageWithButtonGridComponentProps,
+  SharedTicketsComponentProps,
   CategoriesComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
@@ -31,7 +32,7 @@ const HomepageHero = dynamic(
 );
 
 const TextAndMedia = dynamic(
-  () => import(`../../home-page/TextAndMedia/TextAndMedia`).then((component) => component.TextAndMedia),
+  () => import(`../TextAndMedia/TextAndMedia`).then((component) => component.TextAndMedia),
   {
     ssr: false,
   },
@@ -87,6 +88,7 @@ const Categories = dynamic(
 );
 
 type Block = HeroComponentProps
+  | SharedTicketsComponentProps
   | TextAndMediaComponentProps
   | CardsComponentProps
   | ServicesComponentProps
@@ -129,16 +131,22 @@ export const BlockRenderer = ({
         scheduleTimetables={block.scheduleTimetables}
         infoCardTitle={block.infoCardTitle}
         infoCardDescription={block.infoCardDescription}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
       />
     );
   }
 
-  if (block.__component === BlockTypes.TEXT_AND_MEDIA) {
+  if (block.__component === BlockTypes.SHARED_TEXT_AND_MEDIA) {
     return (
       <TextAndMedia
         title={block.title}
         description={block.description}
-        video={block.video}
+        media={block.media}
+        contentOrder={block.contentOrder}
+        viewFootsteps={block.viewFootsteps}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
       />
     );
   }
@@ -199,14 +207,16 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.CONTACT_ZOO_TICKETS) {
+  if (block.__component === BlockTypes.SHARED_TICKETS) {
     return (
       <Tickets
-        title={block.generalTicketsTitle}
-        subtitle={block.generalTicketsSubtitle}
-        link={block.generalTicketsLink}
-        tickets={block.generalTickets}
-        note={block.contactZooNote}
+        title={block.title}
+        subtitle={block.subtitle}
+        link={block.link}
+        tickets={block.tickets}
+        note={block.note}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
       />
     );
   }
@@ -223,6 +233,8 @@ export const BlockRenderer = ({
         largeImage={block.largeImage}
         smallImage={block.smallImage}
         url={block.url}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
         isInternalPage
       />
     );

@@ -563,6 +563,66 @@ export interface SharedHeroComponent {
   scheduleCard?: HeroScheduleCardComponent;
 }
 
+export interface SharedTextAndMediaComponent {
+  id?: number;
+  __component?: string;
+  title?: string;
+  description?: string;
+  media?: {
+    data?: {
+      id?: number;
+      attributes?: {
+        name?: string;
+        alternativeText?: string;
+        caption?: string;
+        width?: number;
+        height?: number;
+        formats?: any;
+        hash?: string;
+        ext?: string;
+        mime?: string;
+        /** @format float */
+        size?: number;
+        url?: string;
+        previewUrl?: string;
+        provider?: string;
+        provider_metadata?: any;
+        related?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          }[];
+        };
+        folder?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        folderPath?: string;
+        /** @format date-time */
+        createdAt?: string;
+        /** @format date-time */
+        updatedAt?: string;
+        createdBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        updatedBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+      };
+    };
+  };
+  contentOrder?: "Текст слева" | "Текст справа";
+  viewFootsteps?: boolean;
+}
+
 export interface SharedSeoComponent {
   id?: number;
   metaTitle?: string;
@@ -1160,7 +1220,7 @@ export interface DocumentsCategoryResponse {
 
 export interface HomeRequest {
   data: {
-    blocks?: (SharedHeroComponent | HomeServicesComponent)[];
+    blocks?: (SharedHeroComponent | SharedTextAndMediaComponent | HomeServicesComponent)[];
     seo?: SharedSeoComponent;
     versions?: (number | string)[];
     vuid?: string;
@@ -1190,7 +1250,7 @@ export interface HomeListResponse {
 }
 
 export interface Home {
-  blocks?: (SharedHeroComponent | HomeServicesComponent)[];
+  blocks?: (SharedHeroComponent | SharedTextAndMediaComponent | HomeServicesComponent)[];
   seo?: SharedSeoComponent;
   /** @format date-time */
   createdAt?: string;

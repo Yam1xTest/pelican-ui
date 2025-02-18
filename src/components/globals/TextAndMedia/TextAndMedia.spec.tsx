@@ -1,4 +1,4 @@
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, BlockTypes, Breakpoint } from '@/src/common/enum';
 import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
@@ -8,7 +8,7 @@ test.describe(`TextAndMediaComponentTests`, () => {
   }) => {
     await gotoPage({
       page,
-      url: AppRoute.HOME,
+      url: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_TEXT_AND_MEDIA}`,
       useNetworkidle: false,
     });
 
