@@ -1,5 +1,10 @@
 import { Breakpoint } from '@/src/common/enum';
-import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
+import {
+  gotoPage,
+  hideFooter,
+  hideHeader,
+  setViewportSize,
+} from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`NotFoundComponentTests`, () => {
@@ -11,7 +16,11 @@ test.describe(`NotFoundComponentTests`, () => {
       url: `/notfound`,
     });
 
-    hideHeader({
+    await hideHeader({
+      page,
+    });
+
+    await hideFooter({
       page,
     });
   });
