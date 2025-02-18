@@ -17,8 +17,8 @@ import dynamic from 'next/dynamic';
 import { Cards } from '../Cards/Cards';
 import { ImageWithButtonGrid } from '../ImageWithButtonGrid/ImageWithButtonGrid';
 
-const ContactZooHero = dynamic(
-  () => import(`../../contact-zoo-page/ContactZooHero/ContactZooHero`).then((component) => component.ContactZooHero),
+const Hero = dynamic(
+  () => import(`../../globals/Hero/Hero`).then((component) => component.Hero),
   {
     ssr: false,
   },
@@ -121,16 +121,15 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.SHARED_HERO && slug === AppRoute.CONTACT_ZOO) {
+  if (block.__component === BlockTypes.SHARED_HERO && slug !== AppRoute.HOME) {
     return (
-      <ContactZooHero
-        isInteralPage
+      <Hero
         title={block.title}
         image={block.image}
         scheduleTitle={block.scheduleTitle}
         scheduleTimetables={block.scheduleTimetables}
-        infoCardTitle={block.infoCardTitle}
         infoCardDescription={block.infoCardDescription}
+        isInteralPage
         isFirstBlock={block.isFirstBlock}
         isLastBlock={block.isLastBlock}
       />

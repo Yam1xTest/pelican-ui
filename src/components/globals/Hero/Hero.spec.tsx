@@ -1,17 +1,31 @@
-import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
+import { AppRoute, BlockTypes, Breakpoint } from '@/src/common/enum';
+import {
+  gotoPage,
+  hideFooter,
+  hideHeader,
+  hideSkipLink,
+  setViewportSize,
+} from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`ContactZooHeroComponentTests`, () => {
+test.describe(`HeroComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
     await gotoPage({
       page,
-      url: AppRoute.CONTACT_ZOO,
+      url: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_HERO}`,
     });
 
     await hideHeader({
+      page,
+    });
+
+    await hideFooter({
+      page,
+    });
+
+    await hideSkipLink({
       page,
     });
   });
@@ -41,7 +55,7 @@ async function mobileTest({
   await expect(getHeroByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-hero-mobile.png`);
+    .toHaveScreenshot(`hero-mobile.png`);
 }
 
 async function tabletTest({
@@ -58,7 +72,7 @@ async function tabletTest({
   await expect(getHeroByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-hero-tablet.png`);
+    .toHaveScreenshot(`hero-tablet.png`);
 }
 
 async function tabletXlTest({
@@ -75,7 +89,7 @@ async function tabletXlTest({
   await expect(getHeroByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-hero-tablet-xl.png`);
+    .toHaveScreenshot(`hero-tablet-xl.png`);
 }
 
 async function desktopTest({
@@ -92,7 +106,7 @@ async function desktopTest({
   await expect(getHeroByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-hero-desktop.png`);
+    .toHaveScreenshot(`hero-desktop.png`);
 }
 
 async function desktopXlTest({
@@ -109,7 +123,7 @@ async function desktopXlTest({
   await expect(getHeroByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-hero-desktop-xl.png`);
+    .toHaveScreenshot(`hero-desktop-xl.png`);
 }
 
 function getHeroByTestId({
