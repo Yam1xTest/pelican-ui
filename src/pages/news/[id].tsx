@@ -1,7 +1,7 @@
 import qs from 'qs';
 import { MOCK_NEWS } from "@/src/common/mocks/collections-mock/news-collection-mock";
 import { api } from "@/src/common/utils/HttpClient";
-import { Article } from "@/src/components/news-page/NewsArticle/Article";
+import { Article } from "@/src/components/globals/Article/Article";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
 import { NewsCollectionListResponse, NewsCollectionListResponseDataItem } from '@/src/common/api-types';

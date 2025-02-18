@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { NewsProps } from "@/src/common/types";
-import { MarkdownText } from "../../globals/MarkdownText/MarkdownText";
+import { MarkdownText } from "../MarkdownText/MarkdownText";
 
 export function Article({
   title,
