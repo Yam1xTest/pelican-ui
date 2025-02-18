@@ -19,6 +19,8 @@ export function HomepageHero({
       infoCardTitle={infoCardTitle}
       infoCardDescription={infoCardDescription}
       email={email}
+      isFirstBlock={false}
+      isLastBlock={false}
     />
   );
 }

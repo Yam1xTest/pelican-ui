@@ -11,6 +11,8 @@ export function ImageWithButtonGrid({
   link,
   label,
   isInternalPage,
+  isFirstBlock,
+  isLastBlock,
 }: Omit<ImageWithButtonGridComponentProps, 'id' | '__component'>) {
   return (
     <section
@@ -18,6 +20,8 @@ export function ImageWithButtonGrid({
         `image-with-button-grid`,
         {
           'image-with-button-grid--internal-page': isInternalPage,
+          'first-block': isFirstBlock,
+          'last-block': isLastBlock,
         },
       )}
       data-testid="image-with-button-grid"

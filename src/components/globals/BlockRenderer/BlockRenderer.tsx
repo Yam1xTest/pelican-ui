@@ -10,6 +10,7 @@ import {
   NotFoundComponentProps,
   ServicesComponentProps,
   ImageWithButtonGridComponentProps,
+  SharedTicketsComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 import { Cards } from '../Cards/Cards';
@@ -79,6 +80,7 @@ const NotFound = dynamic(
 );
 
 type Block = HeroComponentProps
+  | SharedTicketsComponentProps
   | TextAndMediaComponentProps
   | CardsComponentProps
   | ServicesComponentProps
@@ -120,6 +122,8 @@ export const BlockRenderer = ({
         scheduleTimetables={block.scheduleTimetables}
         infoCardTitle={block.infoCardTitle}
         infoCardDescription={block.infoCardDescription}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
       />
     );
   }
@@ -132,6 +136,8 @@ export const BlockRenderer = ({
         media={block.media}
         contentOrder={block.contentOrder}
         viewFootsteps={block.viewFootsteps}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
       />
     );
   }
@@ -193,14 +199,16 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.CONTACT_ZOO_TICKETS) {
+  if (block.__component === BlockTypes.SHARED_TICKETS) {
     return (
       <Tickets
-        title={block.generalTicketsTitle}
-        subtitle={block.generalTicketsSubtitle}
-        link={block.generalTicketsLink}
-        tickets={block.generalTickets}
-        note={block.contactZooNote}
+        title={block.title}
+        subtitle={block.subtitle}
+        link={block.link}
+        tickets={block.tickets}
+        note={block.note}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
       />
     );
   }
@@ -218,6 +226,8 @@ export const BlockRenderer = ({
         smallImage={block.smallImage}
         link={block.link}
         label={block.label}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
         isInternalPage
       />
     );

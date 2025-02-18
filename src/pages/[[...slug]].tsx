@@ -58,22 +58,37 @@ export async function getServerSideProps({
     slug: string,
   },
 }) {
+  let pageData;
   if (process.env.APP_ENV === `static`) {
+    pageData = getMockPageData({
+      slug: query.slug,
+    });
+
+    setBlockPosition({
+      slug: query.slug,
+      blocks: pageData.blocks,
+    });
+
     return {
       props: {
-        pageData: getMockPageData({
-          slug: query.slug,
-        }),
+        pageData,
       },
     };
   }
 
   try {
+    pageData = await getPageData({
+      slug: query.slug,
+    });
+
+    setBlockPosition({
+      slug: query.slug,
+      blocks: pageData.blocks,
+    });
+
     return {
       props: {
-        pageData: await getPageData({
-          slug: query.slug,
-        }),
+        pageData,
       },
     };
   } catch {
@@ -82,5 +97,18 @@ export async function getServerSideProps({
         pageData: null,
       },
     };
+  }
+}
+
+function setBlockPosition({
+  slug,
+  blocks,
+}: {
+  slug: string;
+  blocks: any
+}) {
+  if (slug && blocks.length) {
+    blocks[0].isFirstBlock = true;
+    blocks[blocks.length - 1].isLastBlock = true;
   }
 }
