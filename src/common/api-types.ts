@@ -21,7 +21,11 @@ export interface Error {
 
 export interface ContactZooRequest {
   data: {
-    blocks?: SharedHeroComponent[];
+    blocks?: (
+      | SharedHeroComponent 
+      | SharedTextAndMediaComponent 
+      | SharedImageWithButtonGridComponent
+    )[];
     seo?: SharedSeoComponent;
     versions?: (number | string)[];
     vuid?: string;
@@ -51,7 +55,11 @@ export interface ContactZooListResponse {
 }
 
 export interface ContactZoo {
-  blocks?: SharedHeroComponent[];
+  blocks?: (
+    | SharedHeroComponent 
+    | SharedTextAndMediaComponent 
+    | SharedImageWithButtonGridComponent
+  )[];
   seo?: SharedSeoComponent;
   /** @format date-time */
   createdAt?: string;
