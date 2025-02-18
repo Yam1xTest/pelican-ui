@@ -64,7 +64,7 @@ export async function getServerSideProps({
       slug: query.slug,
     });
 
-    setBlockPosition({
+    pageData.blocks = setBlockPosition({
       slug: query.slug,
       blocks: pageData.blocks,
     });
@@ -81,7 +81,7 @@ export async function getServerSideProps({
       slug: query.slug,
     });
 
-    setBlockPosition({
+    pageData.blocks = setBlockPosition({
       slug: query.slug,
       blocks: pageData.blocks,
     });
@@ -108,7 +108,35 @@ function setBlockPosition({
   blocks: any
 }) {
   if (slug && blocks.length) {
-    blocks[0].isFirstBlock = true;
-    blocks[blocks.length - 1].isLastBlock = true;
+    return blocks.map((block: any, index: number) => {
+      const isFirst = index === 0;
+      const isLast = index === blocks.length - 1;
+
+      if (isFirst && isLast) {
+        return {
+          ...block,
+          isFirstBlock: true,
+          isLastBlock: true,
+        };
+      }
+
+      if (isFirst) {
+        return {
+          ...block,
+          isFirstBlock: true,
+        };
+      }
+
+      if (isLast) {
+        return {
+          ...block,
+          isLastBlock: true,
+        };
+      }
+
+      return block;
+    });
   }
+
+  return blocks;
 }
