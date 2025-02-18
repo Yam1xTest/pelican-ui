@@ -16,12 +16,14 @@ export function Article({
       className="article"
       data-testid="article"
     >
-      <span className="article__date">
+      { date &&
+        <span className="article__date">
         {
           dayjs(date)
             .format(`DD.MM.YYYY`)
         }
-      </span>
+        </span>
+      }
       <h1 className="article__title">{title}</h1>
       <MarkdownText className="article__content">
         {innerContent}
