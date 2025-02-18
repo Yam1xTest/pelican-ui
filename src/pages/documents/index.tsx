@@ -104,6 +104,7 @@ export async function getServerSideProps() {
             return ({
               id: documentsCategoriesItem.id!,
               title: documentsCategoriesItem.attributes!.title,
+              pageUrl: `documents`,
             });
           }
           return null;
@@ -113,13 +114,13 @@ export async function getServerSideProps() {
     return {
       props: {
         pageData: MOCK_DOCUMENTS_PAGE,
-        documentCategories: documentsCategories,
+        categories: documentsCategories,
       },
     };
   } catch {
     return {
       props: {
-        documentCategories: null,
+        categories: null,
       },
     };
   }
