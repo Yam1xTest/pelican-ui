@@ -169,7 +169,8 @@ export const BlockRenderer = ({
         description={block.description}
         largeImage={block.largeImage}
         smallImage={block.smallImage}
-        url={block.url}
+        link={block.link}
+        label={block.label}
       />
     );
   }
@@ -223,7 +224,8 @@ export const BlockRenderer = ({
         description={block.description}
         largeImage={block.largeImage}
         smallImage={block.smallImage}
-        url={block.url}
+        link={block.link}
+        label={block.label}
         isFirstBlock={block.isFirstBlock}
         isLastBlock={block.isLastBlock}
         isInternalPage

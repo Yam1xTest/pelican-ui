@@ -1,5 +1,10 @@
 /* eslint-disable no-case-declarations */
-import { HomeServicesComponent, SharedTextAndMediaComponent, SharedHeroComponent } from "../api-types";
+import {
+  HomeServicesComponent,
+  SharedTextAndMediaComponent,
+  SharedHeroComponent,
+  SharedImageWithButtonGridComponent,
+} from "../api-types";
 import { BlockTypes } from "../enum";
 import { Block } from "../types";
 
@@ -25,6 +30,7 @@ export function mapContractByBlock({
         infoCardTitle: sharedHeroBlock?.infoCard?.title,
         infoCardDescription: sharedHeroBlock?.infoCard?.description,
       };
+
     case BlockTypes.SHARED_TEXT_AND_MEDIA:
       const sharedTextAndMediaBlock = block as SharedTextAndMediaComponent;
 
@@ -58,6 +64,26 @@ export function mapContractByBlock({
             alternativeText: card.image?.data?.attributes?.alternativeText || ``,
           },
         })),
+      };
+
+    case BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID:
+      const sharedImageWithButtonGrid = block as SharedImageWithButtonGridComponent;
+
+      return {
+        id: sharedImageWithButtonGrid?.id,
+        __component: sharedImageWithButtonGrid.__component,
+        title: sharedImageWithButtonGrid?.title,
+        description: sharedImageWithButtonGrid?.description,
+        link: sharedImageWithButtonGrid?.button?.link,
+        label: sharedImageWithButtonGrid?.button?.label,
+        largeImage: {
+          url: sharedImageWithButtonGrid?.largeImage?.data?.attributes?.url,
+          alternativeText: sharedImageWithButtonGrid?.largeImage?.data?.attributes?.alternativeText || ``,
+        },
+        smallImage: {
+          url: sharedImageWithButtonGrid?.smallImage?.data?.attributes?.url || null,
+          alternativeText: sharedImageWithButtonGrid?.smallImage?.data?.attributes?.alternativeText || ``,
+        },
       };
 
     default:

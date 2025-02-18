@@ -21,7 +21,11 @@ export interface Error {
 
 export interface ContactZooRequest {
   data: {
-    blocks?: SharedHeroComponent[];
+    blocks?: (
+      | SharedHeroComponent 
+      | SharedTextAndMediaComponent 
+      | SharedImageWithButtonGridComponent
+    )[];
     seo?: SharedSeoComponent;
     versions?: (number | string)[];
     vuid?: string;
@@ -51,7 +55,11 @@ export interface ContactZooListResponse {
 }
 
 export interface ContactZoo {
-  blocks?: SharedHeroComponent[];
+  blocks?: (
+    | SharedHeroComponent 
+    | SharedTextAndMediaComponent 
+    | SharedImageWithButtonGridComponent
+  )[];
   seo?: SharedSeoComponent;
   /** @format date-time */
   createdAt?: string;
@@ -1220,7 +1228,12 @@ export interface DocumentsCategoryResponse {
 
 export interface HomeRequest {
   data: {
-    blocks?: (SharedHeroComponent | SharedTextAndMediaComponent | HomeServicesComponent)[];
+    blocks?: (
+      | SharedHeroComponent 
+      | SharedTextAndMediaComponent 
+      | HomeServicesComponent
+      | SharedImageWithButtonGridComponent
+  )[];
     seo?: SharedSeoComponent;
     versions?: (number | string)[];
     vuid?: string;
@@ -1250,7 +1263,12 @@ export interface HomeListResponse {
 }
 
 export interface Home {
-  blocks?: (SharedHeroComponent | SharedTextAndMediaComponent | HomeServicesComponent)[];
+  blocks?: (
+    | SharedHeroComponent
+    | SharedTextAndMediaComponent
+    | HomeServicesComponent
+    | SharedImageWithButtonGridComponent
+  )[];
   seo?: SharedSeoComponent;
   /** @format date-time */
   createdAt?: string;
@@ -1655,6 +1673,122 @@ export interface HomeServicesComponent {
   cards?: SharedCardsComponent;
   phone?: string;
   email?: string;
+}
+
+export interface ButtonButtonComponent {
+  id?: number;
+  label?: string;
+  link?: string;
+}
+
+export interface SharedImageWithButtonGridComponent {
+  id?: number;
+  __component?: string;
+  title?: string;
+  description?: string;
+  button?: ButtonButtonComponent;
+  largeImage?: {
+    data?: {
+      id?: number;
+      attributes?: {
+        name?: string;
+        alternativeText?: string;
+        caption?: string;
+        width?: number;
+        height?: number;
+        formats?: any;
+        hash?: string;
+        ext?: string;
+        mime?: string;
+        /** @format float */
+        size?: number;
+        url?: string;
+        previewUrl?: string;
+        provider?: string;
+        provider_metadata?: any;
+        related?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          }[];
+        };
+        folder?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        folderPath?: string;
+        /** @format date-time */
+        createdAt?: string;
+        /** @format date-time */
+        updatedAt?: string;
+        createdBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        updatedBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+      };
+    };
+  };
+  smallImage?: {
+    data?: {
+      id?: number;
+      attributes?: {
+        name?: string;
+        alternativeText?: string;
+        caption?: string;
+        width?: number;
+        height?: number;
+        formats?: any;
+        hash?: string;
+        ext?: string;
+        mime?: string;
+        /** @format float */
+        size?: number;
+        url?: string;
+        previewUrl?: string;
+        provider?: string;
+        provider_metadata?: any;
+        related?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          }[];
+        };
+        folder?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        folderPath?: string;
+        /** @format date-time */
+        createdAt?: string;
+        /** @format date-time */
+        updatedAt?: string;
+        createdBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        updatedBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+      };
+    };
+  };
 }
 
 export interface NewsCollectionRequest {

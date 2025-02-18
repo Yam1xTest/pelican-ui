@@ -8,7 +8,8 @@ export function ImageWithButtonGrid({
   description,
   largeImage,
   smallImage,
-  url,
+  link,
+  label,
   isInternalPage,
   isFirstBlock,
   isLastBlock,
@@ -36,12 +37,12 @@ export function ImageWithButtonGrid({
           smallImage={smallImage}
         />
         <Link
-          href={url}
+          href={link}
           className="image-with-button-grid__btn button button--primary"
           aria-label="Подробнее на отдельной странице"
           data-testid="image-grid-btn"
         >
-          Подробнее
+          {label}
         </Link>
       </div>
     </section>

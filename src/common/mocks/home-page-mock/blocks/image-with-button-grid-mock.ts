@@ -16,5 +16,6 @@ export const MOCK_IMAGE_WITH_BUTTON_GRID: ImageWithButtonGridComponentProps = {
     url: SmallImageSrc,
     alternativeText: `Изображение кролика`,
   },
-  url: AppRoute.CONTACT_ZOO,
+  link: AppRoute.CONTACT_ZOO,
+  label: `Подробнее`,
 };
