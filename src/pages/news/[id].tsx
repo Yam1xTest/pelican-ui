@@ -6,12 +6,12 @@ import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
 import { NewsCollectionListResponse, NewsCollectionListResponseDataItem } from '@/src/common/api-types';
 import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
-import { NewsProps } from '@/src/common/types';
+import { ArticleProps } from '@/src/common/types';
 
 const NEWS_SLIDER_LIMIT = 4;
 
-type SingleNewsProps = Pick<NewsProps, 'innerContent' | 'publishedAt' | 'title'>;
-type OtherNewsProps = Pick<NewsProps, 'id' | 'description' | 'title'>[];
+type SingleNewsProps = Pick<ArticleProps, 'innerContent' | 'publishedAt' | 'title'>;
+type OtherNewsProps = Pick<ArticleProps, 'id' | 'description' | 'title'>[];
 
 export default function News({
   news,

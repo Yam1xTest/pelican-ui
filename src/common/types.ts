@@ -196,7 +196,7 @@ export type NewsPageProps = {
   newsTitle: string;
 };
 
-export type NewsProps = CardProps & {
+export type ArticleProps = CardProps & {
   publishedAt?: string;
   innerContent: string;
 };

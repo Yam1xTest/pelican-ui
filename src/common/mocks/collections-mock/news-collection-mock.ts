@@ -6,12 +6,12 @@ import winterModeImage from "@/public/images/news/winter-mode.png";
 import vacancyImage from "@/public/images/news/vacancy.png";
 import zooDayImage from "@/public/images/news/zoo-day.png";
 import alpacaDayImage from "@/public/images/news/alpaca-day.png";
-import { NewsProps } from "../../types";
+import { ArticleProps } from "../../types";
 
 const STATIC_DATE = new Date(`03.10.24`)
   .toJSON();
 
-export const MOCK_NEWS: NewsProps[] = [
+export const MOCK_NEWS: ArticleProps[] = [
   {
     id: 0,
     image: {

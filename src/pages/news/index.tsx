@@ -6,7 +6,7 @@ import { MOCK_NEWS } from '@/src/common/mocks/collections-mock/news-collection-m
 import { NEWS_LIMIT, NewsList } from '@/src/components/news-page/NewsList/NewsList';
 import { api } from '@/src/common/utils/HttpClient';
 import { NewsCollectionListResponse } from '@/src/common/api-types';
-import { NewsPageProps, NewsProps } from '@/src/common/types';
+import { NewsPageProps, ArticleProps } from '@/src/common/types';
 
 export default function NewsPage({
   pageData,
@@ -14,7 +14,7 @@ export default function NewsPage({
   totalNews,
 }: {
   pageData: NewsPageProps,
-  news: Omit<NewsProps, 'innerContent' | 'publishedAt'>[],
+  news: Omit<ArticleProps, 'innerContent' | 'publishedAt'>[],
   totalNews: number,
 }) {
   if (!pageData || !news) {
@@ -75,7 +75,7 @@ export async function getServerSideProps({
   try {
     const newsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
 
-    const news: Omit<NewsProps, 'innerContent' | 'publishedAt'>[] = newsResponse.data!.map((newsItem) => ({
+    const news: Omit<ArticleProps, 'innerContent' | 'publishedAt'>[] = newsResponse.data!.map((newsItem) => ({
       id: newsItem.id!,
       image: {
         url: newsItem?.attributes?.image.data?.attributes?.url!,

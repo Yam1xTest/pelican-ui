@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { NewsProps } from "@/src/common/types";
+import { ArticleProps } from "@/src/common/types";
 import { MarkdownText } from "../MarkdownText/MarkdownText";
 
 export function Article({
@@ -7,9 +7,9 @@ export function Article({
   date,
   innerContent,
 }: {
-  title: NewsProps['title'],
-  date: NewsProps['publishedAt'],
-  innerContent: NewsProps['innerContent']
+  title: ArticleProps['title'],
+  date: ArticleProps['publishedAt'],
+  innerContent: ArticleProps['innerContent']
 }) {
   return (
     <div
