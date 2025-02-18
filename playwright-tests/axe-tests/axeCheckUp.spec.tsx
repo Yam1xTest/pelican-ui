@@ -72,8 +72,8 @@ async function axeCheckAndWriteReport({
   page: Page,
   viewport: string
 }) {
-  const windowAnyType = window as any;
-  const results = await page.evaluate(() => windowAnyType.axe.run());
+  // @ts-expect-error
+  const results = await page.evaluate(() => window.axe.run());
 
   const {
     violations,
