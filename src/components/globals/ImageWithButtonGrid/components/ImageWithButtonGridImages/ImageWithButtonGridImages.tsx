@@ -26,7 +26,7 @@ export function ImageWithButtonGridImages({
           sizes="(min-width: 768px) 50vw, (min-width: 1366px) 33vw, 100vw"
         />
       </div>
-      {isDesktop && smallImage && (
+      {isDesktop && smallImage?.url && (
         <div className="grid-images__wrapper">
           <Image
             className="grid-images__image"
