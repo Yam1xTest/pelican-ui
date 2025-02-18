@@ -1,7 +1,7 @@
 import qs from 'qs';
 import { MOCK_NEWS } from "@/src/common/mocks/collections-mock/news-collection-mock";
 import { api } from "@/src/common/utils/HttpClient";
-import { NewsArticle } from "@/src/components/news-page/NewsArticle/NewsArticle";
+import { Article } from "@/src/components/news-page/NewsArticle/Article";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
 import { NewsCollectionListResponse, NewsCollectionListResponseDataItem } from '@/src/common/api-types';
@@ -33,7 +33,7 @@ export default function News({
         />
         <title>{news.title}</title>
       </Head>
-      <NewsArticle
+      <Article
         title={news.title}
         date={news.publishedAt}
         innerContent={news.innerContent}

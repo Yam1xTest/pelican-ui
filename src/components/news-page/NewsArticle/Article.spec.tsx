@@ -2,7 +2,7 @@ import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`NewsArticleComponentTest`, () => {
+test.describe(`ArticleComponentTest`, () => {
   test.beforeEach(async ({
     page,
   }) => {
@@ -37,10 +37,10 @@ async function mobileTest({
     height: 1236,
   });
 
-  await expect(getNewsArticleByTestId({
+  await expect(getArticleByTestId({
     page,
   }))
-    .toHaveScreenshot(`news-article-mobile.png`);
+    .toHaveScreenshot(`article-mobile.png`);
 }
 
 async function tabletTest({
@@ -54,10 +54,10 @@ async function tabletTest({
     height: 1085,
   });
 
-  await expect(getNewsArticleByTestId({
+  await expect(getArticleByTestId({
     page,
   }))
-    .toHaveScreenshot(`news-article-tablet.png`);
+    .toHaveScreenshot(`article-tablet.png`);
 }
 
 async function tabletXlTest({
@@ -71,10 +71,10 @@ async function tabletXlTest({
     height: 1423,
   });
 
-  await expect(getNewsArticleByTestId({
+  await expect(getArticleByTestId({
     page,
   }))
-    .toHaveScreenshot(`news-article-tablet-xl.png`);
+    .toHaveScreenshot(`article-tablet-xl.png`);
 }
 
 async function desktopTest({
@@ -88,10 +88,10 @@ async function desktopTest({
     height: 1470,
   });
 
-  await expect(getNewsArticleByTestId({
+  await expect(getArticleByTestId({
     page,
   }))
-    .toHaveScreenshot(`news-article-desktop.png`);
+    .toHaveScreenshot(`article-desktop.png`);
 }
 
 async function desktopXlTest({
@@ -105,16 +105,16 @@ async function desktopXlTest({
     height: 1932,
   });
 
-  await expect(getNewsArticleByTestId({
+  await expect(getArticleByTestId({
     page,
   }))
-    .toHaveScreenshot(`news-article-desktop-xl.png`);
+    .toHaveScreenshot(`article-desktop-xl.png`);
 }
 
-function getNewsArticleByTestId({
+function getArticleByTestId({
   page,
 }: {
   page: Page
 }) {
-  return page.getByTestId(`news-article`);
+  return page.getByTestId(`article`);
 }

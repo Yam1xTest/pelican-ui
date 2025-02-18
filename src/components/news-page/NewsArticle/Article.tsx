@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { NewsProps } from "@/src/common/types";
 import { MarkdownText } from "../../globals/MarkdownText/MarkdownText";
 
-export function NewsArticle({
+export function Article({
   title,
   date,
   innerContent,
@@ -13,17 +13,17 @@ export function NewsArticle({
 }) {
   return (
     <div
-      className="news-article"
-      data-testid="news-article"
+      className="article"
+      data-testid="article"
     >
-      <span className="news-article__date">
+      <span className="article__date">
         {
           dayjs(date)
             .format(`DD.MM.YYYY`)
         }
       </span>
-      <h1 className="news-article__title">{title}</h1>
-      <MarkdownText className="news-article__content">
+      <h1 className="article__title">{title}</h1>
+      <MarkdownText className="article__content">
         {innerContent}
       </MarkdownText>
     </div>
