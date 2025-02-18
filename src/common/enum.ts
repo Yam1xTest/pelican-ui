@@ -24,4 +24,5 @@ export enum BlockTypes {
   MAP = `home.map`,
   SHARED_TEXT_AND_MEDIA = `shared.text-and-media`,
   NOT_FOUND = `not-found.not-found`,
+  SHARED_CATEGORIES = `shared.categories`,
 }

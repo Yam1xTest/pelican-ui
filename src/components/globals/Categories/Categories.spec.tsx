@@ -1,15 +1,15 @@
 /* eslint-disable no-await-in-loop */
 import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, BlockTypes, Breakpoint } from '@/src/common/enum';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`DocumentsCategoriesListComponentTests`, () => {
+test.describe(`CategoriesListComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
     await gotoPage({
       page,
-      url: AppRoute.DOCUMENTS,
+      url: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_CATEGORIES}`,
     });
 
     await hideHeader({
@@ -39,7 +39,7 @@ async function routeTest({
     page,
   });
 
-  await page.getByTestId(`documents-category`)
+  await page.getByTestId(`category`)
     .nth(0)
     .click();
 
@@ -141,5 +141,5 @@ function getDocumentsCategoriesListByTestId({
 }: {
   page: Page
 }) {
-  return page.getByTestId(`documents-categories`);
+  return page.getByTestId(`categories`);
 }

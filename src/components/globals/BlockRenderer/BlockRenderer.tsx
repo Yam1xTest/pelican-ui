@@ -11,6 +11,7 @@ import {
   ServicesComponentProps,
   ImageWithButtonGridComponentProps,
   SharedTicketsComponentProps,
+  CategoriesComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 import { Cards } from '../Cards/Cards';
@@ -79,6 +80,13 @@ const NotFound = dynamic(
   },
 );
 
+const Categories = dynamic(
+  () => import(`../Categories/Categories`).then((component) => component.Categories),
+  {
+    ssr: false,
+  },
+);
+
 type Block = HeroComponentProps
   | SharedTicketsComponentProps
   | TextAndMediaComponentProps
@@ -87,7 +95,8 @@ type Block = HeroComponentProps
   | ImageWithButtonGridComponentProps
   | MapComponentProps
   | TicketsComponentProps
-  | NotFoundComponentProps;
+  | NotFoundComponentProps
+  | CategoriesComponentProps;
 
 export const BlockRenderer = ({
   slug,
@@ -229,6 +238,15 @@ export const BlockRenderer = ({
         isFirstBlock={block.isFirstBlock}
         isLastBlock={block.isLastBlock}
         isInternalPage
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.SHARED_CATEGORIES) {
+    return (
+      <Categories
+        categoriesTitle={block.categoriesTitle}
+        categories={block.categories}
       />
     );
   }

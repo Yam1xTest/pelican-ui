@@ -4,26 +4,26 @@ import { MOCK_DOCUMENTS_PAGE } from '@/src/common/mocks/documents-page-mock/docu
 import { api } from '@/src/common/utils/HttpClient';
 import { DocumentListResponse, DocumentsCategoryListResponse } from '@/src/common/api-types';
 import qs from 'qs';
-import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
+import { Categories } from '@/src/components/globals/Categories/Categories';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
-import { DocumentsCategoriesProps, DocumentsPageProps } from '@/src/common/types';
+import { CategoryProps, DocumentsPageProps } from '@/src/common/types';
 import { getDocumentsQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
 import { MOCK_DOCUMENTS } from '@/src/common/mocks/collections-mock/documents-collection-mock';
 import dayjs from 'dayjs';
 
 export default function DocumentsPage({
   pageData,
-  documentCategories,
+  categories,
 }: {
   pageData: DocumentsPageProps,
-  documentCategories: DocumentsCategoriesProps[],
+  categories: CategoryProps[],
 }) {
-  if (!pageData || !documentCategories) {
+  if (!pageData || !categories) {
     return <NotFound />;
   }
 
   const {
-    title,
+    pageTitle,
     documentsTitle,
   } = pageData;
 
@@ -34,11 +34,11 @@ export default function DocumentsPage({
           name="description"
           content="Сайт зоопарка"
         />
-        <title>{title}</title>
+        <title>{pageTitle}</title>
       </Head>
-      <DocumentsCategories
-        documentsTitle={documentsTitle}
-        documentsCategories={documentCategories}
+      <Categories
+        categoriesTitle={documentsTitle}
+        categories={categories}
       />
     </>
   );
@@ -80,7 +80,7 @@ export async function getServerSideProps() {
     return {
       props: {
         pageData: MOCK_DOCUMENTS_PAGE,
-        documentCategories: documentsCategories,
+        categories: documentsCategories,
       },
     };
   }
@@ -88,7 +88,7 @@ export async function getServerSideProps() {
   try {
     const documentsCategoriesResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories`);
 
-    const documentsCategories: DocumentsCategoriesProps[] = (await Promise.all(
+    const documentsCategories: CategoryProps[] = (await Promise.all(
       documentsCategoriesResponse.data!
         .map(async (documentsCategoriesItem) => {
           const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
@@ -104,22 +104,23 @@ export async function getServerSideProps() {
             return ({
               id: documentsCategoriesItem.id!,
               title: documentsCategoriesItem.attributes!.title,
+              pageUrl: `documents`,
             });
           }
           return null;
         }),
-    )).filter((item): item is DocumentsCategoriesProps => item !== null);
+    )).filter((item): item is CategoryProps => item !== null);
 
     return {
       props: {
         pageData: MOCK_DOCUMENTS_PAGE,
-        documentCategories: documentsCategories,
+        categories: documentsCategories,
       },
     };
   } catch {
     return {
       props: {
-        documentCategories: null,
+        categories: null,
       },
     };
   }

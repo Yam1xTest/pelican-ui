@@ -203,7 +203,7 @@ export type NewsProps = CardProps & {
 };
 
 export type DocumentsPageProps = {
-  title: string,
+  pageTitle: string,
   documentsTitle: string;
 };
 
@@ -212,10 +212,18 @@ export type DocumentsTabsProps = {
   availableYears: number[],
 };
 
-export type DocumentsCategoriesProps = {
+export type CategoryProps = {
   id: number,
   title: string,
+  pageUrl: string,
   hasTabs: boolean,
+};
+
+export type CategoriesComponentProps = {
+  id: number,
+  __component: BlockTypes.SHARED_CATEGORIES,
+  categoriesTitle: string,
+  categories: CategoryProps[],
 };
 
 export type DocumentFileProps = {
