@@ -264,7 +264,7 @@ export const BlockRenderer = ({
     return (
       <Article
         title={block.title}
-        date={block.date}
+        date={block.publishedAt}
         innerContent={block.innerContent}
       />
     );
