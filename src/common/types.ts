@@ -57,10 +57,9 @@ export type HeroComponentProps = {
   scheduleTimetables: Timetable[],
   infoCardTitle?: string,
   infoCardDescription: string,
-
   // todo move to component level?
   isInteralPage?: boolean
-};
+} & BlockPosition;
 
 export type Timetable = {
   id: number,
@@ -81,7 +80,7 @@ export type TextAndMediaComponentProps = {
   },
   contentOrder: "Текст слева" | "Текст справа",
   viewFootsteps: boolean,
-};
+} & BlockPosition;
 
 export type ServicesComponentProps = Omit<CardsComponentProps, '__component'> & {
   __component: BlockTypes.HOME_SERVICES
@@ -117,7 +116,7 @@ export type ImageWithButtonGridComponentProps = {
   smallImage?: Image,
   url: string,
   isInternalPage?: boolean
-};
+} & BlockPosition;
 
 export type MapComponentProps = {
   id: number
@@ -150,7 +149,7 @@ export type ContactZooPageProps = {
   },
   blocks: (
     HeroComponentProps
-    | TicketsComponentProps
+    | SharedTicketsComponentProps
   )[];
 };
 
@@ -159,9 +158,19 @@ export type NotFoundComponentProps = {
   __component: BlockTypes.NOT_FOUND,
 };
 
+export type SharedTicketsComponentProps = {
+  id: number
+  __component: BlockTypes.SHARED_TICKETS,
+  title: string,
+  subtitle?: string,
+  link?: string,
+  tickets: Ticket[],
+  note?: string,
+} & BlockPosition;
+
 export type TicketsComponentProps = {
   id: number
-  __component: BlockTypes.TICKETS | BlockTypes.CONTACT_ZOO_TICKETS,
+  __component: BlockTypes.TICKETS,
   generalTicketsTitle: string,
   generalTicketsSubtitle?: string,
   generalTicketsLink?: string,
@@ -237,6 +246,11 @@ export type PageData = {
       seo?: SharedSeoComponent
     }
   }
+};
+
+export type BlockPosition = {
+  isFirstBlock?: boolean,
+  isLastBlock?: boolean
 };
 
 type Image = {

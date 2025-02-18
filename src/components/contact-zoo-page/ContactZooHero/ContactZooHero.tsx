@@ -7,6 +7,8 @@ export function ContactZooHero({
   scheduleTitle,
   scheduleTimetables,
   infoCardDescription,
+  isFirstBlock,
+  isLastBlock,
 }: Omit<HeroComponentProps, 'id' | '__component'>) {
   return (
     <Hero
@@ -16,6 +18,8 @@ export function ContactZooHero({
       scheduleTimetables={scheduleTimetables}
       infoCardDescription={infoCardDescription}
       isInteralPage
+      isFirstBlock={isFirstBlock}
+      isLastBlock={isLastBlock}
     />
   );
 }
