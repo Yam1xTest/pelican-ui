@@ -37,6 +37,9 @@ export default function News({
         title={news.title}
         date={news.publishedAt}
         innerContent={news.innerContent}
+        isInteralPage={false}
+        isFirstBlock={false}
+        isLastBlock={false}
       />
       {otherNews.length > 0 && <NewsSlider news={otherNews} />}
     </>
