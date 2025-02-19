@@ -1,5 +1,5 @@
 .article {
-  padding: 24px 16px 56px;
+  padding: 24px 16px 40px;
 
   &__date {
     @include body-2-medium;
@@ -95,22 +95,25 @@
   }
 
   @include tablet {
-    padding: 32px 16px 40px;
+    padding: 32px 16px 52px;
   }
 
   @include tablet-xl {
     margin: 0 auto;
-    padding: 40px 0 48px;
     max-width: 798px;
   }
 
   @include desktop {
-    padding: 40px 0 80px;
+    padding: 40px 0 64px;
     max-width: 850px;
   }
 
   @include desktop-xl {
-    padding: 64px 0 96px;
+    padding: 64px 0 88px;
     max-width: 1184px;
+  }
+
+  &--internal-page {
+    @include shared-paddings;
   }
 }

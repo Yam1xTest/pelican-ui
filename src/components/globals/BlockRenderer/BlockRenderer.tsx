@@ -266,6 +266,9 @@ export const BlockRenderer = ({
         title={block.title}
         date={block.publishedAt}
         innerContent={block.innerContent}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
+        isInteralPage={block.isInteralPage}
       />
     );
   }
