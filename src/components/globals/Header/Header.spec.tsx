@@ -8,7 +8,7 @@ test.describe(`HeaderComponentTests`, () => {
   }) => {
     await gotoPage({
       page,
-      url: AppRoute.HOME,
+      url: AppRoute.INTERNAL_TEST_PAGE,
     });
   });
 
