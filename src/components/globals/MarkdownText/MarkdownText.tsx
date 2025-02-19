@@ -16,6 +16,18 @@ export function MarkdownText({
       rehypePlugins={[rehypeRaw]}
       className={className}
       components={{
+        a(props: any) {
+          return (
+            <a
+              href={props.href}
+              className="text-link"
+              target={props.target}
+              rel={props.rel}
+            >
+              {props.children}
+            </a>
+          );
+        },
         img(props: any) {
           return (
             <Image

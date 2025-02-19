@@ -108,6 +108,7 @@
   &__image-wrapper {
     position: relative;
     width: 36.77%;
+    min-height: 202px;
 
     img {
       border-radius: 12px;
@@ -127,14 +128,17 @@
 
     @include tablet-xl {
       width: 37.6%;
+      min-height: 269px;
     }
 
     @include desktop {
       width: 39.93%;
+      min-height: 331px;
     }
 
     @include desktop-xl {
       width: 40%;
+      min-height: 474px;
     }
   }
 

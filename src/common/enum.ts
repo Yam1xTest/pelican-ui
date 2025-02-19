@@ -21,7 +21,7 @@ export enum BlockTypes {
   HOME_SERVICES = `home.services`,
   SHARED_IMAGE_WITH_BUTTON_GRID = `shared.image-with-button-grid`,
   TICKETS = `home.tickets`,
-  MAP = `home.map`,
+  HOME_MAP = `home.map-card`,
   SHARED_TEXT_AND_MEDIA = `shared.text-and-media`,
   NOT_FOUND = `not-found.not-found`,
   SHARED_CATEGORIES = `shared.categories`,

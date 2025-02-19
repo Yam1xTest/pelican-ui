@@ -15,7 +15,7 @@ export function Hero({
   infoCardTitle,
   infoCardDescription,
   image,
-  isInteralPage,
+  isInternalPage,
   email,
   isFirstBlock,
   isLastBlock,
@@ -35,7 +35,7 @@ export function Hero({
       className={clsx(
         `hero container`,
         {
-          'hero--internal-page': isInteralPage,
+          'hero--internal-page': isInternalPage,
           'first-block': isFirstBlock,
           'last-block': isLastBlock,
         },
@@ -47,7 +47,7 @@ export function Hero({
           className={clsx(
             `hero__title hero__title--internal-page`,
             {
-              'visually-hidden': !isInteralPage,
+              'visually-hidden': !isInternalPage,
             },
           )}
         >
@@ -70,16 +70,16 @@ export function Hero({
           className="hero__schedule-card"
           scheduleTitle={scheduleTitle}
           scheduleTimetables={scheduleTimetables}
-          isInteralPage={isInteralPage}
+          isInternalPage={isInternalPage}
         />
         <HeroInfoCard
           className="hero__info-card"
           infoCardTitle={infoCardTitle}
           infoCardDescription={infoCardDescription}
-          isInteralPage={isInteralPage}
+          isInternalPage={isInternalPage}
         />
       </div>
-      {(!isDesktop && !isInteralPage)
+      {(!isDesktop && !isInternalPage)
         && (
           <div className="hero__buttons">
             <Link

@@ -21,11 +21,7 @@ export interface Error {
 
 export interface ContactZooRequest {
   data: {
-    blocks?: (
-      | SharedHeroComponent 
-      | SharedTextAndMediaComponent 
-      | SharedImageWithButtonGridComponent
-    )[];
+    blocks?: (SharedHeroComponent | SharedTextAndMediaComponent | SharedImageWithButtonGridComponent)[];
     seo?: SharedSeoComponent;
     versions?: (number | string)[];
     vuid?: string;
@@ -55,11 +51,7 @@ export interface ContactZooListResponse {
 }
 
 export interface ContactZoo {
-  blocks?: (
-    | SharedHeroComponent 
-    | SharedTextAndMediaComponent 
-    | SharedImageWithButtonGridComponent
-  )[];
+  blocks?: (SharedHeroComponent | SharedTextAndMediaComponent | SharedImageWithButtonGridComponent)[];
   seo?: SharedSeoComponent;
   /** @format date-time */
   createdAt?: string;
@@ -83,77 +75,251 @@ export interface ContactZoo {
     data?: {
       id?: number;
       attributes?: {
-        blocks?: {
-          id?: number;
-          __component?: string;
-          title?: string;
-          image?: {
-            data?: {
+        blocks?: (
+          | {
               id?: number;
-              attributes?: {
-                name?: string;
-                alternativeText?: string;
-                caption?: string;
-                width?: number;
-                height?: number;
-                formats?: any;
-                hash?: string;
-                ext?: string;
-                mime?: string;
-                /** @format float */
-                size?: number;
-                url?: string;
-                previewUrl?: string;
-                provider?: string;
-                provider_metadata?: any;
-                related?: {
-                  data?: {
-                    id?: number;
-                    attributes?: object;
-                  }[];
-                };
-                folder?: {
-                  data?: {
-                    id?: number;
-                    attributes?: object;
-                  };
-                };
-                folderPath?: string;
-                /** @format date-time */
-                createdAt?: string;
-                /** @format date-time */
-                updatedAt?: string;
-                createdBy?: {
-                  data?: {
-                    id?: number;
-                    attributes?: object;
-                  };
-                };
-                updatedBy?: {
-                  data?: {
-                    id?: number;
-                    attributes?: object;
+              __component?: string;
+              title?: string;
+              image?: {
+                data?: {
+                  id?: number;
+                  attributes?: {
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: any;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    /** @format float */
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: any;
+                    related?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      }[];
+                    };
+                    folder?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    folderPath?: string;
+                    /** @format date-time */
+                    createdAt?: string;
+                    /** @format date-time */
+                    updatedAt?: string;
+                    createdBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    updatedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
                   };
                 };
               };
-            };
-          };
-          infoCard?: {
-            id?: number;
-            title?: string;
-            description?: string;
-          };
-          scheduleCard?: {
-            id?: number;
-            title?: string;
-            timetable?: {
+              infoCard?: {
+                id?: number;
+                title?: string;
+                description?: string;
+              };
+              scheduleCard?: {
+                id?: number;
+                title?: string;
+                timetable?: {
+                  id?: number;
+                  days?: string;
+                  time?: string;
+                  ticketsOfficeTime?: string;
+                }[];
+              };
+            }
+          | {
               id?: number;
-              days?: string;
-              time?: string;
-              ticketsOfficeTime?: string;
-            }[];
-          };
-        }[];
+              __component?: string;
+              description?: string;
+              media?: {
+                data?: {
+                  id?: number;
+                  attributes?: {
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: any;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    /** @format float */
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: any;
+                    related?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      }[];
+                    };
+                    folder?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    folderPath?: string;
+                    /** @format date-time */
+                    createdAt?: string;
+                    /** @format date-time */
+                    updatedAt?: string;
+                    createdBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    updatedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                  };
+                };
+              };
+              contentOrder?: "Текст слева" | "Текст справа";
+              viewFootsteps?: boolean;
+              title?: string;
+            }
+          | {
+              id?: number;
+              __component?: string;
+              title?: string;
+              description?: string;
+              button?: {
+                id?: number;
+                label?: string;
+                link?: string;
+              };
+              largeImage?: {
+                data?: {
+                  id?: number;
+                  attributes?: {
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: any;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    /** @format float */
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: any;
+                    related?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      }[];
+                    };
+                    folder?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    folderPath?: string;
+                    /** @format date-time */
+                    createdAt?: string;
+                    /** @format date-time */
+                    updatedAt?: string;
+                    createdBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    updatedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                  };
+                };
+              };
+              smallImage?: {
+                data?: {
+                  id?: number;
+                  attributes?: {
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: any;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    /** @format float */
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: any;
+                    related?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      }[];
+                    };
+                    folder?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    folderPath?: string;
+                    /** @format date-time */
+                    createdAt?: string;
+                    /** @format date-time */
+                    updatedAt?: string;
+                    createdBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    updatedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                  };
+                };
+              };
+            }
+        )[];
         seo?: {
           id?: number;
           metaTitle?: string;
@@ -574,7 +740,6 @@ export interface SharedHeroComponent {
 export interface SharedTextAndMediaComponent {
   id?: number;
   __component?: string;
-  title?: string;
   description?: string;
   media?: {
     data?: {
@@ -629,6 +794,123 @@ export interface SharedTextAndMediaComponent {
   };
   contentOrder?: "Текст слева" | "Текст справа";
   viewFootsteps?: boolean;
+  title?: string;
+}
+
+export interface ButtonButtonComponent {
+  id?: number;
+  label?: string;
+  link?: string;
+}
+
+export interface SharedImageWithButtonGridComponent {
+  id?: number;
+  __component?: string;
+  title?: string;
+  description?: string;
+  button?: ButtonButtonComponent;
+  largeImage?: {
+    data?: {
+      id?: number;
+      attributes?: {
+        name?: string;
+        alternativeText?: string;
+        caption?: string;
+        width?: number;
+        height?: number;
+        formats?: any;
+        hash?: string;
+        ext?: string;
+        mime?: string;
+        /** @format float */
+        size?: number;
+        url?: string;
+        previewUrl?: string;
+        provider?: string;
+        provider_metadata?: any;
+        related?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          }[];
+        };
+        folder?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        folderPath?: string;
+        /** @format date-time */
+        createdAt?: string;
+        /** @format date-time */
+        updatedAt?: string;
+        createdBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        updatedBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+      };
+    };
+  };
+  smallImage?: {
+    data?: {
+      id?: number;
+      attributes?: {
+        name?: string;
+        alternativeText?: string;
+        caption?: string;
+        width?: number;
+        height?: number;
+        formats?: any;
+        hash?: string;
+        ext?: string;
+        mime?: string;
+        /** @format float */
+        size?: number;
+        url?: string;
+        previewUrl?: string;
+        provider?: string;
+        provider_metadata?: any;
+        related?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          }[];
+        };
+        folder?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        folderPath?: string;
+        /** @format date-time */
+        createdAt?: string;
+        /** @format date-time */
+        updatedAt?: string;
+        createdBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        updatedBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+      };
+    };
+  };
 }
 
 export interface SharedSeoComponent {
@@ -1229,11 +1511,12 @@ export interface DocumentsCategoryResponse {
 export interface HomeRequest {
   data: {
     blocks?: (
-      | SharedHeroComponent 
-      | SharedTextAndMediaComponent 
+      | SharedHeroComponent
+      | SharedTextAndMediaComponent
       | HomeServicesComponent
       | SharedImageWithButtonGridComponent
-  )[];
+      | HomeMapCardComponent
+    )[];
     seo?: SharedSeoComponent;
     versions?: (number | string)[];
     vuid?: string;
@@ -1268,6 +1551,7 @@ export interface Home {
     | SharedTextAndMediaComponent
     | HomeServicesComponent
     | SharedImageWithButtonGridComponent
+    | HomeMapCardComponent
   )[];
   seo?: SharedSeoComponent;
   /** @format date-time */
@@ -1367,6 +1651,65 @@ export interface Home {
           | {
               id?: number;
               __component?: string;
+              description?: string;
+              media?: {
+                data?: {
+                  id?: number;
+                  attributes?: {
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: any;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    /** @format float */
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: any;
+                    related?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      }[];
+                    };
+                    folder?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    folderPath?: string;
+                    /** @format date-time */
+                    createdAt?: string;
+                    /** @format date-time */
+                    updatedAt?: string;
+                    createdBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    updatedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                  };
+                };
+              };
+              contentOrder?: "Текст слева" | "Текст справа";
+              viewFootsteps?: boolean;
+              title?: string;
+            }
+          | {
+              id?: number;
+              __component?: string;
               cards?: {
                 id?: number;
                 title?: string;
@@ -1434,6 +1777,177 @@ export interface Home {
               };
               phone?: string;
               email?: string;
+            }
+          | {
+              id?: number;
+              __component?: string;
+              title?: string;
+              description?: string;
+              button?: {
+                id?: number;
+                label?: string;
+                link?: string;
+              };
+              largeImage?: {
+                data?: {
+                  id?: number;
+                  attributes?: {
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: any;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    /** @format float */
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: any;
+                    related?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      }[];
+                    };
+                    folder?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    folderPath?: string;
+                    /** @format date-time */
+                    createdAt?: string;
+                    /** @format date-time */
+                    updatedAt?: string;
+                    createdBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    updatedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                  };
+                };
+              };
+              smallImage?: {
+                data?: {
+                  id?: number;
+                  attributes?: {
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: any;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    /** @format float */
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: any;
+                    related?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      }[];
+                    };
+                    folder?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    folderPath?: string;
+                    /** @format date-time */
+                    createdAt?: string;
+                    /** @format date-time */
+                    updatedAt?: string;
+                    createdBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    updatedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                  };
+                };
+              };
+            }
+          | {
+              id?: number;
+              __component?: string;
+              title?: string;
+              description?: string;
+              image?: {
+                data?: {
+                  id?: number;
+                  attributes?: {
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: any;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    /** @format float */
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: any;
+                    related?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      }[];
+                    };
+                    folder?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    folderPath?: string;
+                    /** @format date-time */
+                    createdAt?: string;
+                    /** @format date-time */
+                    updatedAt?: string;
+                    createdBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    updatedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                  };
+                };
+              };
+              note?: string;
             }
         )[];
         seo?: {
@@ -1675,19 +2189,12 @@ export interface HomeServicesComponent {
   email?: string;
 }
 
-export interface ButtonButtonComponent {
-  id?: number;
-  label?: string;
-  link?: string;
-}
-
-export interface SharedImageWithButtonGridComponent {
+export interface HomeMapCardComponent {
   id?: number;
   __component?: string;
   title?: string;
   description?: string;
-  button?: ButtonButtonComponent;
-  largeImage?: {
+  image?: {
     data?: {
       id?: number;
       attributes?: {
@@ -1738,57 +2245,7 @@ export interface SharedImageWithButtonGridComponent {
       };
     };
   };
-  smallImage?: {
-    data?: {
-      id?: number;
-      attributes?: {
-        name?: string;
-        alternativeText?: string;
-        caption?: string;
-        width?: number;
-        height?: number;
-        formats?: any;
-        hash?: string;
-        ext?: string;
-        mime?: string;
-        /** @format float */
-        size?: number;
-        url?: string;
-        previewUrl?: string;
-        provider?: string;
-        provider_metadata?: any;
-        related?: {
-          data?: {
-            id?: number;
-            attributes?: object;
-          }[];
-        };
-        folder?: {
-          data?: {
-            id?: number;
-            attributes?: object;
-          };
-        };
-        folderPath?: string;
-        /** @format date-time */
-        createdAt?: string;
-        /** @format date-time */
-        updatedAt?: string;
-        createdBy?: {
-          data?: {
-            id?: number;
-            attributes?: object;
-          };
-        };
-        updatedBy?: {
-          data?: {
-            id?: number;
-            attributes?: object;
-          };
-        };
-      };
-    };
-  };
+  note?: string;
 }
 
 export interface NewsCollectionRequest {

@@ -107,6 +107,7 @@ export const BlockRenderer = ({
   block: Block,
   email: GlobalComponentProps['email']
 }) => {
+  console.log(slug);
   if (block.__component === BlockTypes.SHARED_HERO && slug === AppRoute.HOME) {
     return (
       <HomepageHero
@@ -129,7 +130,7 @@ export const BlockRenderer = ({
         scheduleTitle={block.scheduleTitle}
         scheduleTimetables={block.scheduleTimetables}
         infoCardDescription={block.infoCardDescription}
-        isInteralPage
+        isInternalPage
         isFirstBlock={block.isFirstBlock}
         isLastBlock={block.isLastBlock}
       />
@@ -183,7 +184,7 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.MAP) {
+  if (block.__component === BlockTypes.HOME_MAP) {
     return (
       <Map
         title={block.title}

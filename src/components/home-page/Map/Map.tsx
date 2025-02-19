@@ -17,7 +17,7 @@ export function Map({
     >
       <Image
         loading="lazy"
-        className="map__backgound-image"
+        className="map__background-image"
         data-testid="map-image"
         src={mapBackgroundImage}
         alt="Карта"
