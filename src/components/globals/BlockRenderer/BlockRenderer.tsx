@@ -107,7 +107,6 @@ export const BlockRenderer = ({
   block: Block,
   email: GlobalComponentProps['email']
 }) => {
-  console.log(slug);
   if (block.__component === BlockTypes.SHARED_HERO && slug === AppRoute.HOME) {
     return (
       <HomepageHero
