@@ -202,7 +202,7 @@ export type ArticleProps = CardProps & {
   publishedAt?: string;
   innerContent: string;
   date?: string;
-  isInteralPage: boolean;
+  isInteralPage?: boolean;
 } & BlockPosition;
 
 export type DocumentsPageProps = {
