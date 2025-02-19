@@ -2,6 +2,7 @@
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import Image from 'next/image';
+import clsx from 'clsx';
 import { Video } from '../Video/Video';
 
 export function MarkdownText({
@@ -20,9 +21,10 @@ export function MarkdownText({
           return (
             <a
               href={props.href}
-              className="text-link"
+              className={clsx(`text-link`, props.className)}
               target={props.target}
               rel={props.rel}
+              data-testid="text-link"
             >
               {props.children}
             </a>
