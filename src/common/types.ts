@@ -121,7 +121,7 @@ export type ImageWithButtonGridComponentProps = {
 
 export type MapComponentProps = {
   id: number
-  __component: BlockTypes.MAP,
+  __component: BlockTypes.HOME_MAP,
   title: string,
   subtitle: string,
   note: string,

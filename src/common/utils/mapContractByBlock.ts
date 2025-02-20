@@ -4,6 +4,7 @@ import {
   SharedTextAndMediaComponent,
   SharedHeroComponent,
   SharedImageWithButtonGridComponent,
+  HomeMapCardComponent,
 } from "../api-types";
 import { BlockTypes } from "../enum";
 import { Block } from "../types";
@@ -18,7 +19,7 @@ export function mapContractByBlock({
       const sharedHeroBlock = block as SharedHeroComponent;
 
       return {
-        id: sharedHeroBlock?.id,
+        id: crypto.randomUUID(),
         title: sharedHeroBlock?.title,
         __component: sharedHeroBlock.__component,
         image: {
@@ -35,7 +36,7 @@ export function mapContractByBlock({
       const sharedTextAndMediaBlock = block as SharedTextAndMediaComponent;
 
       return {
-        id: sharedTextAndMediaBlock?.id,
+        id: crypto.randomUUID(),
         __component: sharedTextAndMediaBlock.__component,
         title: sharedTextAndMediaBlock?.title,
         description: sharedTextAndMediaBlock?.description,
@@ -52,7 +53,7 @@ export function mapContractByBlock({
       const servicesBlock = block as HomeServicesComponent;
 
       return {
-        id: servicesBlock?.id,
+        id: crypto.randomUUID(),
         __component: servicesBlock.__component,
         title: servicesBlock.cards?.title,
         phone: servicesBlock.phone,
@@ -70,7 +71,7 @@ export function mapContractByBlock({
       const sharedImageWithButtonGrid = block as SharedImageWithButtonGridComponent;
 
       return {
-        id: sharedImageWithButtonGrid?.id,
+        id: crypto.randomUUID(),
         __component: sharedImageWithButtonGrid.__component,
         title: sharedImageWithButtonGrid?.title,
         description: sharedImageWithButtonGrid?.description,
@@ -83,6 +84,21 @@ export function mapContractByBlock({
         smallImage: {
           url: sharedImageWithButtonGrid?.smallImage?.data?.attributes?.url || null,
           alternativeText: sharedImageWithButtonGrid?.smallImage?.data?.attributes?.alternativeText || ``,
+        },
+      };
+
+    case BlockTypes.HOME_MAP:
+      const homeMapCard = block as HomeMapCardComponent;
+
+      return {
+        id: crypto.randomUUID(),
+        __component: homeMapCard.__component,
+        title: homeMapCard?.title,
+        subtitle: homeMapCard?.description,
+        note: homeMapCard?.note,
+        image: {
+          url: homeMapCard?.image?.data?.attributes?.url,
+          alternativeText: homeMapCard?.image?.data?.attributes?.alternativeText || ``,
         },
       };
 

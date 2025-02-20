@@ -20,29 +20,31 @@ export function Tickets({
       })}
       data-testid="tickets"
     >
-      <div className="tickets__inner container">
-        <div className="tickets__group">
-          <div className="tickets__head">
-            <h2 className="tickets__title">{title}</h2>
-            {subtitle && <p className="tickets__subtitle">{subtitle}</p>}
+      <div className="tickets__wrapper">
+        <div className="tickets__inner container">
+          <div className="tickets__group">
+            <div className="tickets__head">
+              <h2 className="tickets__title">{title}</h2>
+              {subtitle && <p className="tickets__subtitle">{subtitle}</p>}
+            </div>
+            <ul className="tickets__list">
+              {tickets.map((el) => (
+                <TicketCard
+                  className="tickets__item"
+                  key={el.id}
+                  ticket={el}
+                  link={link}
+                />
+              ))}
+              {note && (
+                <li className="tickets__item tickets__item--info">
+                  <MarkdownText>
+                    {note}
+                  </MarkdownText>
+                </li>
+              )}
+            </ul>
           </div>
-          <ul className="tickets__list">
-            {tickets.map((el) => (
-              <TicketCard
-                className="tickets__item"
-                key={el.id}
-                ticket={el}
-                link={link}
-              />
-            ))}
-            {note && (
-              <li className="tickets__item tickets__item--info">
-                <MarkdownText>
-                  {note}
-                </MarkdownText>
-              </li>
-            )}
-          </ul>
         </div>
       </div>
     </div>

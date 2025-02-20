@@ -22,9 +22,9 @@ export function MapAddressCard({
       <div className="map-address-card__inner">
         <div className="map-address-card__info">
           {isTablet && (
-            <p className="map-address-card__note">
+            <MarkdownText className="map-address-card__note">
               {note}
-            </p>
+            </MarkdownText>
           )}
           <div className="map-address-card__description">
             <h2 className="map-address-card__title">
@@ -42,6 +42,7 @@ export function MapAddressCard({
               loading="lazy"
               src={image.url}
               alt={image.alternativeText}
+              fill
             />
             {isTablet && (
               <Image

@@ -192,7 +192,7 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.MAP) {
+  if (block.__component === BlockTypes.HOME_MAP) {
     return (
       <Map
         title={block.title}
