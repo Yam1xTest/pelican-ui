@@ -1,5 +1,5 @@
 import { AppRoute } from "@/src/common/enum";
-import { NewsProps } from "@/src/common/types";
+import { NewsArticleProps } from "@/src/common/types";
 import Link from "next/link";
 
 export function NewsSliderCard({
@@ -7,9 +7,9 @@ export function NewsSliderCard({
   title,
   description,
 }: {
-  id: NewsProps['id']
-  title: NewsProps['title'],
-  description: NewsProps['description']
+  id: NewsArticleProps['id']
+  title: NewsArticleProps['title'],
+  description: NewsArticleProps['description']
 }) {
   return (
     <Link

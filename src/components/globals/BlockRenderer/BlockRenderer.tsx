@@ -12,6 +12,7 @@ import {
   ImageWithButtonGridComponentProps,
   SharedTicketsComponentProps,
   CategoriesComponentProps,
+  ArticleComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 import { Cards } from '../Cards/Cards';
@@ -87,6 +88,13 @@ const Categories = dynamic(
   },
 );
 
+const Article = dynamic(
+  () => import(`../Article/Article`).then((component) => component.Article),
+  {
+    ssr: false,
+  },
+);
+
 type Block = HeroComponentProps
   | SharedTicketsComponentProps
   | TextAndMediaComponentProps
@@ -96,7 +104,8 @@ type Block = HeroComponentProps
   | MapComponentProps
   | TicketsComponentProps
   | NotFoundComponentProps
-  | CategoriesComponentProps;
+  | CategoriesComponentProps
+  | ArticleComponentProps;
 
 export const BlockRenderer = ({
   slug,
@@ -129,7 +138,7 @@ export const BlockRenderer = ({
         scheduleTitle={block.scheduleTitle}
         scheduleTimetables={block.scheduleTimetables}
         infoCardDescription={block.infoCardDescription}
-        isInteralPage
+        isInternalPage
         isFirstBlock={block.isFirstBlock}
         isLastBlock={block.isLastBlock}
       />
@@ -246,6 +255,18 @@ export const BlockRenderer = ({
       <Categories
         categoriesTitle={block.categoriesTitle}
         categories={block.categories}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.SHARED_ARTICLE) {
+    return (
+      <Article
+        title={block.title}
+        date={block.publishedAt}
+        innerContent={block.innerContent}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
       />
     );
   }
