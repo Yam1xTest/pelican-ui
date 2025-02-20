@@ -1,66 +1,101 @@
-import { test } from '@playwright/test';
-import AxePuppeteer from '@axe-core/playwright';
+/* eslint-disable no-console */
+import { Page, test } from '@playwright/test';
 import { writeFileSync, mkdirSync } from 'fs';
 import { dirname } from 'path';
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage } from '../helpers';
+import { setViewportSize } from '../helpers';
 
-test(`axeCheckUp`, async ({
+test(`axeCheckUp Desktop XL`, async ({
   page,
 }) => {
-  await page.setViewportSize({
+  await setViewportSize({
+    page,
     width: Breakpoint.DESKTOP_XL,
-    height: 1080,
   });
 
-  await gotoPage({
-    page,
-    url: AppRoute.HOME,
+  await page.goto(AppRoute.HOME);
+
+  await page.addScriptTag({
+    path: require.resolve(`axe-core/axe.min.js`),
   });
 
-  const results = await new AxePuppeteer({
+  await axeCheckAndWriteReport({
     page,
-  } as any)
-    .analyze();
+    viewport: `desktop-xl`,
+  });
+});
 
-  const violationIdsToCheck = [
-    `color-contrast`,
-    `area-alt`,
-    `image-alt`,
-    `image-redundant-alt`,
-    `input-image-alt`,
-    `duplicate-img-label`,
-    `non-empty-alt`,
-    `aria-label`,
-    `aria-labelledby`,
-    `color-contrast-enhanced`,
-    `focusable-no-name`,
-    `focusable-content`,
-    `focusable-element`,
-  ];
+test(`axeCheckUp Tablet XL`, async ({
+  page,
+}) => {
+  await setViewportSize({
+    page,
+    width: Breakpoint.TABLET_XL,
+  });
 
-  const violationsToCheck = results.violations.filter((violation) => violationIdsToCheck
-    .includes(violation.id));
+  await page.goto(AppRoute.HOME);
 
-  if (violationsToCheck.length > 0) {
-    // eslint-disable-next-line no-console
-    console.table(violationsToCheck.map((violation) => ({
+  await page.addScriptTag({
+    path: require.resolve(`axe-core/axe.min.js`),
+  });
+
+  await axeCheckAndWriteReport({
+    page,
+    viewport: `tablet-xl`,
+  });
+});
+
+test(`axeCheckUp Mobile`, async ({
+  page,
+}) => {
+  await setViewportSize({
+    page,
+    width: Breakpoint.MOBILE,
+  });
+
+  await page.goto(AppRoute.HOME);
+
+  await page.addScriptTag({
+    path: require.resolve(`axe-core/axe.min.js`),
+  });
+
+  await axeCheckAndWriteReport({
+    page,
+    viewport: `mobile`,
+  });
+});
+
+async function axeCheckAndWriteReport({
+  page,
+  viewport,
+}: {
+  page: Page,
+  viewport: string
+}) {
+  // @ts-expect-error
+  const results = await page.evaluate(() => window.axe.run());
+
+  const {
+    violations,
+  } = results;
+
+  if (violations.length > 0) {
+    console.table(violations.map((violation: any) => ({
       id: violation.id,
       impact: violation.impact,
       description: violation.description,
       nodes: violation.nodes.length,
     })));
+    const filePath = `./playwright-tests/axe-reports/axe-report-${viewport}.json`;
 
-    throw new Error(`Accessibility violations found: ${violationsToCheck.length}`);
+    mkdirSync(dirname(filePath), {
+      recursive: true,
+    });
+
+    writeFileSync(filePath, JSON.stringify(violations, null, 2));
+
+    throw new Error(`Accessibility violations found: ${violations.length}`);
   } else {
-    // eslint-disable-next-line no-console
     console.log(`No accessibility violations found.`);
   }
-
-  const filePath = `./playwright-tests/axeReport/axe-report.json`;
-  mkdirSync(dirname(filePath), {
-    recursive: true,
-  });
-
-  writeFileSync(filePath, JSON.stringify(violationsToCheck, null, 2));
-});
+}
