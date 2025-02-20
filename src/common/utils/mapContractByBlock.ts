@@ -19,16 +19,16 @@ export function mapContractByBlock({
       const sharedHeroBlock = block as SharedHeroComponent;
       return {
         id: crypto.randomUUID(),
-        title: sharedHeroBlock?.title,
+        title: sharedHeroBlock.title,
         __component: sharedHeroBlock.__component,
         image: {
-          url: sharedHeroBlock?.image?.url,
-          alternativeText: sharedHeroBlock?.image?.alternativeText || ``,
+          url: sharedHeroBlock.image?.url,
+          alternativeText: sharedHeroBlock.image?.alternativeText || ``,
         },
-        scheduleTitle: sharedHeroBlock?.scheduleCard?.title,
-        scheduleTimetables: sharedHeroBlock?.scheduleCard?.timetable,
-        infoCardTitle: sharedHeroBlock?.infoCard?.title,
-        infoCardDescription: sharedHeroBlock?.infoCard?.description,
+        scheduleTitle: sharedHeroBlock.scheduleCard?.title,
+        scheduleTimetables: sharedHeroBlock.scheduleCard?.timetable,
+        infoCardTitle: sharedHeroBlock.infoCard?.title,
+        infoCardDescription: sharedHeroBlock.infoCard?.description,
       };
 
     case BlockTypes.SHARED_TEXT_AND_MEDIA:
@@ -37,15 +37,15 @@ export function mapContractByBlock({
       return {
         id: crypto.randomUUID(),
         __component: sharedTextAndMediaBlock.__component,
-        title: sharedTextAndMediaBlock?.title,
-        description: sharedTextAndMediaBlock?.description,
+        title: sharedTextAndMediaBlock.title,
+        description: sharedTextAndMediaBlock.description,
         media: {
-          url: sharedTextAndMediaBlock?.media?.url,
+          url: sharedTextAndMediaBlock.media?.url,
           alternativeText: sharedTextAndMediaBlock?.media?.alternativeText || ``,
-          mime: sharedTextAndMediaBlock?.media?.mime,
+          mime: sharedTextAndMediaBlock.media?.mime,
         },
-        contentOrder: sharedTextAndMediaBlock?.contentOrder,
-        viewFootsteps: sharedTextAndMediaBlock?.viewFootsteps,
+        contentOrder: sharedTextAndMediaBlock.contentOrder,
+        viewFootsteps: sharedTextAndMediaBlock.viewFootsteps,
       };
 
     case BlockTypes.HOME_SERVICES:
@@ -72,17 +72,17 @@ export function mapContractByBlock({
       return {
         id: crypto.randomUUID(),
         __component: sharedImageWithButtonGrid.__component,
-        title: sharedImageWithButtonGrid?.title,
-        description: sharedImageWithButtonGrid?.description,
-        link: sharedImageWithButtonGrid?.button?.link,
-        label: sharedImageWithButtonGrid?.button?.label,
+        title: sharedImageWithButtonGrid.title,
+        description: sharedImageWithButtonGrid.description,
+        link: sharedImageWithButtonGrid.button?.link,
+        label: sharedImageWithButtonGrid.button?.label,
         largeImage: {
-          url: sharedImageWithButtonGrid?.largeImage?.url,
-          alternativeText: sharedImageWithButtonGrid?.largeImage?.alternativeText || ``,
+          url: sharedImageWithButtonGrid.largeImage?.url,
+          alternativeText: sharedImageWithButtonGrid.largeImage?.alternativeText || ``,
         },
         smallImage: {
-          url: sharedImageWithButtonGrid?.smallImage?.url || null,
-          alternativeText: sharedImageWithButtonGrid?.smallImage?.alternativeText || ``,
+          url: sharedImageWithButtonGrid.smallImage?.url || null,
+          alternativeText: sharedImageWithButtonGrid.smallImage?.alternativeText || ``,
         },
       };
 
@@ -92,12 +92,12 @@ export function mapContractByBlock({
       return {
         id: crypto.randomUUID(),
         __component: homeMapCard.__component,
-        title: homeMapCard?.title,
-        subtitle: homeMapCard?.description,
-        note: homeMapCard?.note,
+        title: homeMapCard.title,
+        subtitle: homeMapCard.description,
+        note: homeMapCard.note,
         image: {
-          url: homeMapCard?.image?.url,
-          alternativeText: homeMapCard?.image?.alternativeText || ``,
+          url: homeMapCard.image?.url,
+          alternativeText: homeMapCard.image?.alternativeText || ``,
         },
       };
 
