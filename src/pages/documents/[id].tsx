@@ -143,7 +143,7 @@ export async function getServerSideProps({
   }
 
   try {
-    const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?filters[id][$eq]=${query.id}`);
+    const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?filters[documentId][$eq]=${query.id}`);
 
     const availableYears: number[] = [];
 
@@ -154,7 +154,7 @@ export async function getServerSideProps({
         .map(async (_, i) => {
           const year = currentYear - i;
           const yearsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
-            id: +query.id,
+            documentId: query.id,
             ...((categoryResponse.data![0]!.hasTabs) && {
               yearLessThanOrEqual: year,
               yearGreaterThanOrEqual: year,
@@ -184,13 +184,13 @@ export async function getServerSideProps({
 
     if (categoryResponse.data![0]!.hasTabs) {
       documentsResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
-        id: +query.id,
+        documentId: query.id,
         yearLessThanOrEqual: +query.year || lastYear,
         yearGreaterThanOrEqual: +query.year || lastYear,
       }))}`);
     } else {
       documentsResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
-        id: +query.id,
+        documentId: query.id,
       }))}`);
     }
 

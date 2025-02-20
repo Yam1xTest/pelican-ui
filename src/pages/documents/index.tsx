@@ -16,7 +16,7 @@ export default function DocumentsPage({
   categories,
 }: {
   pageData: DocumentsPageProps,
-  categories: CategoryProps[],
+  categories: Omit<CategoryProps, 'hasTabs'>[],
 }) {
   if (!pageData || !categories) {
     return <NotFound />;
@@ -88,11 +88,11 @@ export async function getServerSideProps() {
   try {
     const documentsCategoriesResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories`);
 
-    const documentsCategories: CategoryProps[] = (await Promise.all(
+    const documentsCategories: Omit<CategoryProps, 'hasTabs'>[] = (await Promise.all(
       documentsCategoriesResponse.data!
         .map(async (documentsCategoriesItem) => {
           const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
-            id: documentsCategoriesItem.id!,
+            documentId: documentsCategoriesItem.documentId!,
             ...((documentsCategoriesItem?.hasTabs) && {
               yearLessThanOrEqual: currentYear,
               yearGreaterThanOrEqual: currentYear - 2,
@@ -102,14 +102,14 @@ export async function getServerSideProps() {
 
           if (documentsResponse.meta?.pagination?.total) {
             return ({
-              id: documentsCategoriesItem.id!,
+              id: documentsCategoriesItem.documentId!,
               title: documentsCategoriesItem!.title,
               pageUrl: `documents`,
             });
           }
           return null;
         }),
-    )).filter((item): item is CategoryProps => item !== null);
+    )).filter((item) => item !== null);
 
     return {
       props: {

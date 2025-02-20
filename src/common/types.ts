@@ -218,7 +218,7 @@ export type DocumentsTabsProps = {
 };
 
 export type CategoryProps = {
-  id: number,
+  id: string | number,
   title: string,
   pageUrl: string,
   hasTabs: boolean,
@@ -228,7 +228,7 @@ export type CategoriesComponentProps = {
   id: number,
   __component: BlockTypes.SHARED_CATEGORIES,
   categoriesTitle: string,
-  categories: CategoryProps[],
+  categories: Omit<CategoryProps, 'hasTabs'>[],
 };
 
 export type DocumentFileProps = {
