@@ -200,10 +200,10 @@ export type NewsPageProps = {
 export type NewsArticleProps = CardProps & {
   publishedAt?: string;
   innerContent: string;
-  date?: string;
+  date: string;
 };
 
-export type ArticleComponentProps = NewsArticleProps & {
+export type ArticleComponentProps = Omit<NewsArticleProps, 'id' | 'date'> & {
   __component: BlockTypes.SHARED_ARTICLE;
 } & BlockPosition;
 

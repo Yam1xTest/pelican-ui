@@ -14,7 +14,7 @@ export default function NewsPage({
   totalNews,
 }: {
   pageData: NewsPageProps,
-  news: NewsArticleProps[],
+  news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[],
   totalNews: number,
 }) {
   if (!pageData || !news) {
