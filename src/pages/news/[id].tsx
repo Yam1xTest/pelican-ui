@@ -39,7 +39,7 @@ export default function News({
         innerContent={news.innerContent}
         isFirstBlock={false}
         isLastBlock={false}
-        className='article--news'
+        className="article--news"
       />
       {otherNews.length > 0 && <NewsSlider news={otherNews} />}
     </>
