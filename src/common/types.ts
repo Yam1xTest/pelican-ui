@@ -197,11 +197,14 @@ export type NewsPageProps = {
   newsTitle: string;
 };
 
-export type ArticleProps = CardProps & {
-  __component: BlockTypes.SHARED_ARTICLE,
+export type NewsArticleProps = CardProps & {
   publishedAt?: string;
   innerContent: string;
   date?: string;
+};
+
+export type ArticleComponentProps = NewsArticleProps & {
+  __component: BlockTypes.SHARED_ARTICLE;
 } & BlockPosition;
 
 export type DocumentsPageProps = {

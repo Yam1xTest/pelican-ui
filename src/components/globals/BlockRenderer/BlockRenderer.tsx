@@ -12,7 +12,7 @@ import {
   ImageWithButtonGridComponentProps,
   SharedTicketsComponentProps,
   CategoriesComponentProps,
-  ArticleProps,
+  ArticleComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 import { Cards } from '../Cards/Cards';
@@ -105,7 +105,7 @@ type Block = HeroComponentProps
   | TicketsComponentProps
   | NotFoundComponentProps
   | CategoriesComponentProps
-  | ArticleProps;
+  | ArticleComponentProps;
 
 export const BlockRenderer = ({
   slug,

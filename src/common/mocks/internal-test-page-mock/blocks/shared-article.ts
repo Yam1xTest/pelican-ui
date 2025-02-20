@@ -1,10 +1,10 @@
 
 /* eslint-disable @stylistic/max-len */
 import { BlockTypes } from "@/src/common/enum";
-import { ArticleProps } from "@/src/common/types";
+import { ArticleComponentProps } from "@/src/common/types";
 import employeeImage from "@/public/images/news/employee.png";
 
-export const MOCK_SHARED_ARTICLE: ArticleProps = {
+export const MOCK_SHARED_ARTICLE: ArticleComponentProps = {
   id: 1,
   __component: BlockTypes.SHARED_ARTICLE,
   image: {

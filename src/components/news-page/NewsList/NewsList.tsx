@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { ArticleProps } from "@/src/common/types";
+import { NewsArticleProps } from "@/src/common/types";
 import { AppRoute } from "@/src/common/enum";
 import { Cards } from "../../globals/Cards/Cards";
 import { Button } from "../../globals/Button/Button";
@@ -13,7 +13,7 @@ export function NewsList({
   total,
 }: {
   newsTitle: string,
-  news: Omit<ArticleProps, 'innerContent' | 'publishedAt'>[]
+  news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[]
   total: number;
 }) {
   const [pageSize, setPageSize] = useState(NEWS_LIMIT);

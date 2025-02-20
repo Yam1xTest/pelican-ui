@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import clsx from "clsx";
-import { ArticleProps } from "@/src/common/types";
+import { ArticleComponentProps } from "@/src/common/types";
 import { MarkdownText } from "../MarkdownText/MarkdownText";
 
 export function Article({
@@ -11,11 +11,11 @@ export function Article({
   isLastBlock,
   className,
 }: {
-  title: ArticleProps['title'],
-  date: ArticleProps['publishedAt'],
-  innerContent: ArticleProps['innerContent']
-  isFirstBlock: ArticleProps['isFirstBlock']
-  isLastBlock: ArticleProps['isLastBlock']
+  title: ArticleComponentProps['title'],
+  date: ArticleComponentProps['publishedAt'],
+  innerContent: ArticleComponentProps['innerContent']
+  isFirstBlock: ArticleComponentProps['isFirstBlock']
+  isLastBlock: ArticleComponentProps['isLastBlock']
   className?: string
 }) {
   return (
