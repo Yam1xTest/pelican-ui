@@ -5,7 +5,6 @@ import { ArticleProps } from "@/src/common/types";
 import employeeImage from "@/public/images/news/employee.png";
 
 export const MOCK_SHARED_ARTICLE: ArticleProps = {
-  isInteralPage: true,
   id: 1,
   __component: BlockTypes.SHARED_ARTICLE,
   image: {

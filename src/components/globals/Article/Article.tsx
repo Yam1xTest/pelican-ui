@@ -9,21 +9,21 @@ export function Article({
   innerContent,
   isFirstBlock,
   isLastBlock,
-  isInteralPage,
+  className,
 }: {
   title: ArticleProps['title'],
   date: ArticleProps['publishedAt'],
   innerContent: ArticleProps['innerContent']
   isFirstBlock: ArticleProps['isFirstBlock']
   isLastBlock: ArticleProps['isLastBlock']
-  isInteralPage: ArticleProps['isInteralPage']
+  className?: string
 }) {
   return (
     <div
       className={clsx(
         `article`,
+        className,
         {
-          'article--internal-page': isInteralPage,
           'first-block': isFirstBlock,
           'last-block': isLastBlock,
         },

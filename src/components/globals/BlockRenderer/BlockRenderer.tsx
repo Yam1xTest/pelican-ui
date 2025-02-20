@@ -268,7 +268,6 @@ export const BlockRenderer = ({
         innerContent={block.innerContent}
         isFirstBlock={block.isFirstBlock}
         isLastBlock={block.isLastBlock}
-        isInteralPage={block.isInteralPage}
       />
     );
   }
