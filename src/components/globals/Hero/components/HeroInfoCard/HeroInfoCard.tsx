@@ -5,19 +5,19 @@ export function HeroInfoCard({
   className,
   infoCardTitle,
   infoCardDescription,
-  isInteralPage,
+  isInternalPage,
 }: {
   className: string,
   infoCardTitle?: HeroComponentProps['infoCardTitle'],
   infoCardDescription: HeroComponentProps['infoCardDescription'],
-  isInteralPage: HeroComponentProps['isInteralPage'],
+  isInternalPage: HeroComponentProps['isInternalPage'],
 }) {
   return (
     <div className={clsx(
       `hero-info-card`,
       className,
       {
-        'hero-info-card--internal-page': isInteralPage,
+        'hero-info-card--internal-page': isInternalPage,
       },
     )}
     >

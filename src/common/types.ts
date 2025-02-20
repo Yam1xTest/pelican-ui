@@ -58,7 +58,7 @@ export type HeroComponentProps = {
   infoCardTitle?: string,
   infoCardDescription: string,
   // todo move to component level?
-  isInteralPage?: boolean
+  isInternalPage?: boolean
 } & BlockPosition;
 
 export type Timetable = {
@@ -179,7 +179,7 @@ export type TicketsComponentProps = {
   subsidizedTicketsSubtitle?: string,
   generalTickets: Ticket[],
   subsidizedTickets?: Ticket[],
-  isInteralPage?: boolean,
+  isInternalPage?: boolean,
   contactZooNote?: string,
 };
 
