@@ -2,6 +2,7 @@
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import Image from 'next/image';
+import clsx from 'clsx';
 import { Video } from '../Video/Video';
 
 export function MarkdownText({
@@ -16,6 +17,19 @@ export function MarkdownText({
       rehypePlugins={[rehypeRaw]}
       className={className}
       components={{
+        a(props: any) {
+          return (
+            <a
+              href={props.href}
+              className={clsx(`text-link`, props.className)}
+              target={props.target}
+              rel={props.rel}
+              data-testid="text-link"
+            >
+              {props.children}
+            </a>
+          );
+        },
         img(props: any) {
           return (
             <Image

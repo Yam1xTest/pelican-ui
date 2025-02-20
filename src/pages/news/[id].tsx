@@ -1,17 +1,17 @@
 import qs from 'qs';
 import { MOCK_NEWS } from "@/src/common/mocks/collections-mock/news-collection-mock";
 import { api } from "@/src/common/utils/HttpClient";
-import { NewsArticle } from "@/src/components/news-page/NewsArticle/NewsArticle";
+import { Article } from "@/src/components/globals/Article/Article";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
 import { NewsCollectionListResponse, NewsCollection } from '@/src/common/api-types';
 import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
-import { NewsProps } from '@/src/common/types';
+import { NewsArticleProps } from '@/src/common/types';
 
 const NEWS_SLIDER_LIMIT = 4;
 
-type SingleNewsProps = Pick<NewsProps, 'innerContent' | 'publishedAt' | 'title'>;
-type OtherNewsProps = Pick<NewsProps, 'id' | 'description' | 'title'>[];
+type SingleNewsProps = Pick<NewsArticleProps, 'innerContent' | 'publishedAt' | 'title'>;
+type OtherNewsProps = Pick<NewsArticleProps, 'id' | 'description' | 'title'>[];
 
 export default function News({
   news,
@@ -33,10 +33,13 @@ export default function News({
         />
         <title>{news.title}</title>
       </Head>
-      <NewsArticle
+      <Article
         title={news.title}
         date={news.publishedAt}
         innerContent={news.innerContent}
+        isFirstBlock={false}
+        isLastBlock={false}
+        className="article--news"
       />
       {otherNews.length > 0 && <NewsSlider news={otherNews} />}
     </>

@@ -6,92 +6,96 @@
 
   @include medium-font;
 
-  position: relative;
-  z-index: $tickets;
-  overflow: hidden;
+  &__wrapper {
+    position: relative;
+    z-index: $tickets;
+    overflow: hidden;
+    border-radius: 32px;
+    background-color: $color-white;
 
-  &::before,
-  &::after {
-    @include tablet {
-      content: "";
-      position: absolute;
-      background-repeat: no-repeat;
-    }
-  }
-
-  &::before {
-    @include tablet {
-      right: 47px;
-      bottom: 0;
-      width: 65px;
-      height: 65px;
-      background-image: url("../../../../public/images/tickets/pink-paw-left.svg");
+    &::before,
+    &::after {
+      @include tablet {
+        content: "";
+        position: absolute;
+        background-repeat: no-repeat;
+      }
     }
 
-    @include tablet-xl {
-      right: 38px;
-      bottom: -16px;
+    &::before {
+      @include tablet {
+        right: 47px;
+        bottom: 0;
+        width: 65px;
+        height: 65px;
+        background-image: url("../../../../public/images/tickets/pink-paw-left.svg");
+      }
+
+      @include tablet-xl {
+        right: 38px;
+        bottom: -16px;
+      }
+
+      @include desktop {
+        right: 72px;
+        bottom: 0;
+        width: 95px;
+        height: 113px;
+        background-image: url("../../../../public/images/tickets/pink-paw-left-desktop.svg");
+      }
+
+      @include desktop-xl {
+        right: 110px;
+        bottom: -27px;
+        width: 182px;
+        height: 195px;
+      }
+    }
+
+    &::after {
+      @include tablet {
+        right: -10px;
+        bottom: 70px;
+        width: 65px;
+        height: 90px;
+        background-image: url("../../../../public/images/tickets/pink-paw-right.svg");
+      }
+
+      @include tablet-xl {
+        right: -20px;
+        bottom: 52px;
+      }
+
+      @include desktop {
+        bottom: 120px;
+        width: 110px;
+        height: 120px;
+        background-image: url("../../../../public/images/tickets/pink-paw-right-desktop.svg");
+      }
+
+      @include desktop-xl {
+        right: -51px;
+        bottom: 154px;
+        width: 191px;
+        height: 215px;
+      }
     }
 
     @include desktop {
-      right: 72px;
-      bottom: 0;
-      width: 95px;
-      height: 113px;
-      background-image: url("../../../../public/images/tickets/pink-paw-left-desktop.svg");
-    }
-
-    @include desktop-xl {
-      right: 110px;
-      bottom: -27px;
-      width: 182px;
-      height: 195px;
-    }
-  }
-
-  &::after {
-    @include tablet {
-      right: -10px;
-      bottom: 70px;
-      width: 65px;
-      height: 90px;
-      background-image: url("../../../../public/images/tickets/pink-paw-right.svg");
-    }
-
-    @include tablet-xl {
-      right: -20px;
-      bottom: 52px;
-    }
-
-    @include desktop {
-      bottom: 120px;
-      width: 110px;
-      height: 120px;
-      background-image: url("../../../../public/images/tickets/pink-paw-right-desktop.svg");
-    }
-
-    @include desktop-xl {
-      right: -51px;
-      bottom: 154px;
-      width: 191px;
-      height: 215px;
+      border-radius: 64px;
     }
   }
 
   &__inner {
-    border-radius: 32px;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: $color-white;
 
     @include desktop {
-      border-radius: 64px;
       padding-top: 64px;
       padding-bottom: 64px;
     }
 
     @include desktop-xl {
-      border-radius: 64px;
       padding-top: 80px;
       padding-bottom: 80px;
     }
@@ -310,12 +314,15 @@
   &--internal-page {
     @include shared-paddings;
 
-    &::before,
-    &::after {
-      @include tablet {
-        content: none;
+    #{$this}__wrapper {
+      &::before,
+      &::after {
+        @include tablet {
+          content: none;
+        }
       }
     }
+
     #{$this}__inner {
       @include shared-paddings;
     }

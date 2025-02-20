@@ -4,6 +4,7 @@ import {
   SharedTextAndMediaComponent,
   SharedHeroComponent,
   SharedImageWithButtonGridComponent,
+  HomeMapCardComponent,
 } from "../api-types";
 import { BlockTypes } from "../enum";
 import { Block } from "../types";
@@ -82,6 +83,21 @@ export function mapContractByBlock({
         smallImage: {
           url: sharedImageWithButtonGrid?.smallImage?.url || null,
           alternativeText: sharedImageWithButtonGrid?.smallImage?.alternativeText || ``,
+        },
+      };
+
+    case BlockTypes.HOME_MAP:
+      const homeMapCard = block as HomeMapCardComponent;
+
+      return {
+        id: crypto.randomUUID(),
+        __component: homeMapCard.__component,
+        title: homeMapCard?.title,
+        subtitle: homeMapCard?.description,
+        note: homeMapCard?.note,
+        image: {
+          url: homeMapCard?.image?.url,
+          alternativeText: homeMapCard?.image?.alternativeText || ``,
         },
       };
 
