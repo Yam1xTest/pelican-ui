@@ -155,7 +155,7 @@ export async function getServerSideProps({
           const year = currentYear - i;
           const yearsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
             id: +query.id,
-            ...((categoryResponse.data![0].attributes!.hasTabs) && {
+            ...((categoryResponse.data![0]!.hasTabs) && {
               yearLessThanOrEqual: year,
               yearGreaterThanOrEqual: year,
             }),
@@ -182,7 +182,7 @@ export async function getServerSideProps({
 
     let documentsResponse: DocumentListResponse;
 
-    if (categoryResponse.data![0].attributes!.hasTabs) {
+    if (categoryResponse.data![0]!.hasTabs) {
       documentsResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
         id: +query.id,
         yearLessThanOrEqual: +query.year || lastYear,
@@ -197,19 +197,19 @@ export async function getServerSideProps({
     const documents: DocumentsProps[] = documentsResponse.data!
       .map((documentsItem) => ({
         id: documentsItem.id!,
-        date: documentsItem.attributes!.date!,
-        showDate: documentsItem.attributes!.showDate!,
-        title: documentsItem.attributes!.title!,
-        subtitle: documentsItem.attributes!.subtitle,
-        description: documentsItem.attributes!.description,
-        files: documentsItem.attributes!.files!.data!.map((file) => ({
+        date: documentsItem!.date!,
+        showDate: documentsItem!.showDate!,
+        title: documentsItem!.title!,
+        subtitle: documentsItem!.subtitle,
+        description: documentsItem!.description,
+        files: documentsItem!.files.map((file) => ({
           id: file.id!,
-          name: file.attributes!.name!,
-          url: file.attributes!.url!,
-          ext: file.attributes!.ext!,
+          name: file.name!,
+          url: file.url!,
+          ext: file.ext!,
         })),
         category: {
-          id: documentsItem.attributes!.category!.data!.id!,
+          id: documentsItem!.category.id!,
         },
       }));
 
@@ -217,8 +217,8 @@ export async function getServerSideProps({
       props: {
         category: {
           id: categoryResponse.data![0].id,
-          title: categoryResponse.data![0].attributes!.title,
-          hasTabs: categoryResponse.data![0].attributes!.hasTabs,
+          title: categoryResponse.data![0].title,
+          hasTabs: categoryResponse.data![0].hasTabs,
         },
         queryYear: query.year || lastYear,
         availableYears,

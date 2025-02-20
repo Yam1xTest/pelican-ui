@@ -96,7 +96,7 @@ export type CardsComponentProps = {
 };
 
 export type CardProps = {
-  id: number,
+  id: number | string,
   image: Image,
   title: string,
   description?: string,
@@ -242,7 +242,7 @@ export type DocumentsProps = {
   description?: string,
   files: DocumentFileProps[],
   category: {
-    id: number,
+    id: CategoryProps['id'],
   }
 };
 
@@ -250,10 +250,8 @@ export type Block = SharedHeroComponent | HomeServicesComponent;
 
 export type PageData = {
   data: {
-    attributes: {
-      blocks: Block[];
-      seo?: SharedSeoComponent
-    }
+    blocks: Block[];
+    seo?: SharedSeoComponent
   }
 };
 

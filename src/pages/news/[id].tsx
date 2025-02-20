@@ -4,7 +4,7 @@ import { api } from "@/src/common/utils/HttpClient";
 import { NewsArticle } from "@/src/components/news-page/NewsArticle/NewsArticle";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
-import { NewsCollectionListResponse, NewsCollectionListResponseDataItem } from '@/src/common/api-types';
+import { NewsCollectionListResponse, NewsCollection } from '@/src/common/api-types';
 import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
 import { NewsProps } from '@/src/common/types';
 
@@ -83,7 +83,7 @@ export async function getServerSideProps({
       publishedAt: `desc`,
     },
     filters: {
-      id: {
+      documentId: {
         $ne: query.id,
       },
     },
@@ -93,20 +93,20 @@ export async function getServerSideProps({
   };
 
   try {
-    const newsResponse = await api.get<NewsCollectionListResponseDataItem>(`/news/${query.id}?${qs.stringify(newsQueryParams)}`);
+    const newsResponse = await api.get<NewsCollection>(`/news/${query.id}?${qs.stringify(newsQueryParams)}`);
 
     const news: SingleNewsProps = {
-      title: newsResponse.data.attributes!.title!,
-      innerContent: newsResponse.data.attributes!.innerContent!,
-      publishedAt: newsResponse.data.attributes?.publishedAt,
+      title: newsResponse.data.title!,
+      innerContent: newsResponse.data.innerContent!,
+      publishedAt: newsResponse.data?.publishedAt,
     };
 
     const otherNewsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(otherNewsQueryParams)}`);
 
     const otherNews: OtherNewsProps = otherNewsResponse.data!.map((otherNewsItem) => ({
-      id: otherNewsItem.id!,
-      title: otherNewsItem?.attributes!.title,
-      description: otherNewsItem?.attributes?.description,
+      id: otherNewsItem.documentId!,
+      title: otherNewsItem!.title,
+      description: otherNewsItem?.description,
     }));
 
     return {
