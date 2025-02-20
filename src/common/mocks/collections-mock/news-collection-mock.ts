@@ -16,7 +16,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
     id: 0,
     image: {
       url: amurTigerImage,
-      alternativeText: `Фотография амурского тигра`,
+      alternativeText: ``,
     },
     title: `Амурский тигр\u00A0и\u00A0какие у\u00A0него есть проблемы`,
     publishedAt: new Date(`09.29.2024`)
@@ -44,7 +44,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
     id: 1,
     image: {
       url: employeeImage,
-      alternativeText: `Фотография рычащего льва`,
+      alternativeText: ``,
     },
     title: `Приглашаем на встречу с\u00A0сотрудником зоопарка`,
     description: `Завтра празднуется два замечательных праздника, которые напрямую связаны с зоопарком...`,
@@ -62,7 +62,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
     id: 2,
     image: {
       url: sanitaryDayImage,
-      alternativeText: `Фотография леопарда`,
+      alternativeText: ``,
     },
     title: `30 сентября — санитарный день`,
     description: `Завтра, 30 сентября, Челябинский зоопарк ЗАКРЫТ на санитарный день.`,
@@ -73,7 +73,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
     id: 3,
     image: {
       url: winterModeImage,
-      alternativeText: `Фотография лося`,
+      alternativeText: ``,
     },
     title: `Переходим на зимний режим`,
     description: `Внимание! С 1 октября зоопарк переходит на зимний режим работы!`,
@@ -84,7 +84,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
     id: 4,
     image: {
       url: vacancyImage,
-      alternativeText: `Фотография убирающегося сотрудника`,
+      alternativeText: ``,
     },
     title: `Вакансия`,
     description: `Открыта вакансия уборщика территории.`,
@@ -95,7 +95,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
     id: 5,
     image: {
       url: zooDayImage,
-      alternativeText: `Фотография рычащего льва`,
+      alternativeText: ``,
     },
     title: `Приглашаем на День рождения зоопарка`,
     description: `14 сентября будем праздновать День рождения зоопарка.Приглашаем...`,
@@ -106,7 +106,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
     id: 6,
     image: {
       url: alpacaDayImage,
-      alternativeText: `Фотография женщины с альпакой`,
+      alternativeText: ``,
     },
     title: `Всемирный день альпака`,
     description: `10 сентября отмечается день альпака.`,
