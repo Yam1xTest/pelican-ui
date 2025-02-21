@@ -9,7 +9,7 @@ test.describe(`NewsSliderComponentTest`, () => {
   }) => {
     await gotoPage({
       page,
-      url: `${AppRoute.NEWS}/${MOCK_NEWS[0].slug}`,
+      url: `${AppRoute.NEWS}/${MOCK_NEWS[1].slug}`,
     });
 
     await hideHeader({
@@ -40,7 +40,7 @@ async function navigationTest({
     .click();
 
   await expect(page)
-    .toHaveURL(`${AppRoute.NEWS}/0`);
+    .toHaveURL(`${AppRoute.NEWS}/${MOCK_NEWS[0].slug}`);
 }
 
 async function mobileTest({
