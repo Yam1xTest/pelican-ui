@@ -1,6 +1,7 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
+import { MOCK_NEWS } from '@/src/common/mocks/collections-mock/news-collection-mock';
 
 test.describe(`NewsSliderComponentTest`, () => {
   test.beforeEach(async ({
@@ -8,7 +9,7 @@ test.describe(`NewsSliderComponentTest`, () => {
   }) => {
     await gotoPage({
       page,
-      url: `${AppRoute.NEWS}/1`,
+      url: `${AppRoute.NEWS}/${MOCK_NEWS[0].slug}`,
     });
 
     await hideHeader({
