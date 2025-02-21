@@ -67,16 +67,16 @@ async function getData({
     populate,
   })}`);
 
-  const blocks = pageResponse.data?.attributes?.blocks?.map((block) => (mapContractByBlock({
+  const blocks = pageResponse.data?.blocks?.map((block) => (mapContractByBlock({
     block,
   })));
 
   return {
     blocks: [...blocks, ...staticBlocks],
-    ...(pageResponse.data.attributes.seo && {
+    ...(pageResponse.data.seo && {
       seo: {
-        metaTitle: pageResponse.data?.attributes?.seo.metaTitle,
-        metaDescription: pageResponse.data?.attributes?.seo.metaDescription,
+        metaTitle: pageResponse.data?.seo.metaTitle,
+        metaDescription: pageResponse.data?.seo.metaDescription,
       },
     }),
   };

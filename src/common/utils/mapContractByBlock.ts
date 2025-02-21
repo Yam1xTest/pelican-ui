@@ -17,19 +17,18 @@ export function mapContractByBlock({
   switch (`${block.__component}`) {
     case BlockTypes.SHARED_HERO:
       const sharedHeroBlock = block as SharedHeroComponent;
-
       return {
         id: crypto.randomUUID(),
-        title: sharedHeroBlock?.title,
+        title: sharedHeroBlock.title,
         __component: sharedHeroBlock.__component,
         image: {
-          url: sharedHeroBlock?.image?.data?.attributes?.url,
-          alternativeText: sharedHeroBlock?.image?.data?.attributes?.alternativeText || ``,
+          url: sharedHeroBlock.image?.url,
+          alternativeText: sharedHeroBlock.image?.alternativeText || ``,
         },
-        scheduleTitle: sharedHeroBlock?.scheduleCard?.title,
-        scheduleTimetables: sharedHeroBlock?.scheduleCard?.timetable,
-        infoCardTitle: sharedHeroBlock?.infoCard?.title,
-        infoCardDescription: sharedHeroBlock?.infoCard?.description,
+        scheduleTitle: sharedHeroBlock.scheduleCard?.title,
+        scheduleTimetables: sharedHeroBlock.scheduleCard?.timetable,
+        infoCardTitle: sharedHeroBlock.infoCard?.title,
+        infoCardDescription: sharedHeroBlock.infoCard?.description,
       };
 
     case BlockTypes.SHARED_TEXT_AND_MEDIA:
@@ -38,15 +37,15 @@ export function mapContractByBlock({
       return {
         id: crypto.randomUUID(),
         __component: sharedTextAndMediaBlock.__component,
-        title: sharedTextAndMediaBlock?.title,
-        description: sharedTextAndMediaBlock?.description,
+        title: sharedTextAndMediaBlock.title,
+        description: sharedTextAndMediaBlock.description,
         media: {
-          url: sharedTextAndMediaBlock?.media?.data?.attributes?.url,
-          alternativeText: sharedTextAndMediaBlock?.media?.data?.attributes?.alternativeText || ``,
-          mime: sharedTextAndMediaBlock?.media?.data?.attributes?.mime,
+          url: sharedTextAndMediaBlock.media?.url,
+          alternativeText: sharedTextAndMediaBlock?.media?.alternativeText || ``,
+          mime: sharedTextAndMediaBlock.media?.mime,
         },
-        contentOrder: sharedTextAndMediaBlock?.contentOrder,
-        viewFootsteps: sharedTextAndMediaBlock?.viewFootsteps,
+        contentOrder: sharedTextAndMediaBlock.contentOrder,
+        viewFootsteps: sharedTextAndMediaBlock.viewFootsteps,
       };
 
     case BlockTypes.HOME_SERVICES:
@@ -61,8 +60,8 @@ export function mapContractByBlock({
         cards: servicesBlock.cards?.cards?.map((card) => ({
           ...card,
           image: {
-            url: card.image?.data?.attributes?.url,
-            alternativeText: card.image?.data?.attributes?.alternativeText || ``,
+            url: card.image?.url,
+            alternativeText: card.image?.alternativeText || ``,
           },
         })),
       };
@@ -73,17 +72,17 @@ export function mapContractByBlock({
       return {
         id: crypto.randomUUID(),
         __component: sharedImageWithButtonGrid.__component,
-        title: sharedImageWithButtonGrid?.title,
-        description: sharedImageWithButtonGrid?.description,
-        link: sharedImageWithButtonGrid?.button?.link,
-        label: sharedImageWithButtonGrid?.button?.label,
+        title: sharedImageWithButtonGrid.title,
+        description: sharedImageWithButtonGrid.description,
+        link: sharedImageWithButtonGrid.button?.link,
+        label: sharedImageWithButtonGrid.button?.label,
         largeImage: {
-          url: sharedImageWithButtonGrid?.largeImage?.data?.attributes?.url,
-          alternativeText: sharedImageWithButtonGrid?.largeImage?.data?.attributes?.alternativeText || ``,
+          url: sharedImageWithButtonGrid.largeImage?.url,
+          alternativeText: sharedImageWithButtonGrid.largeImage?.alternativeText || ``,
         },
         smallImage: {
-          url: sharedImageWithButtonGrid?.smallImage?.data?.attributes?.url || null,
-          alternativeText: sharedImageWithButtonGrid?.smallImage?.data?.attributes?.alternativeText || ``,
+          url: sharedImageWithButtonGrid.smallImage?.url || null,
+          alternativeText: sharedImageWithButtonGrid.smallImage?.alternativeText || ``,
         },
       };
 
@@ -93,12 +92,12 @@ export function mapContractByBlock({
       return {
         id: crypto.randomUUID(),
         __component: homeMapCard.__component,
-        title: homeMapCard?.title,
-        subtitle: homeMapCard?.description,
-        note: homeMapCard?.note,
+        title: homeMapCard.title,
+        subtitle: homeMapCard.description,
+        note: homeMapCard.note,
         image: {
-          url: homeMapCard?.image?.data?.attributes?.url,
-          alternativeText: homeMapCard?.image?.data?.attributes?.alternativeText || ``,
+          url: homeMapCard.image?.url,
+          alternativeText: homeMapCard.image?.alternativeText || ``,
         },
       };
 

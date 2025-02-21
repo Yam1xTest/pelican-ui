@@ -76,13 +76,13 @@ export async function getServerSideProps({
     const newsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
 
     const news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[] = newsResponse.data!.map((newsItem) => ({
-      id: newsItem.id!,
+      id: newsItem.documentId!,
       image: {
-        url: newsItem?.attributes?.image.data?.attributes?.url!,
-        alternativeText: newsItem?.attributes?.image.data?.attributes?.alternativeText || ``,
+        url: newsItem.image.url!,
+        alternativeText: newsItem.image.alternativeText || ``,
       },
-      title: newsItem?.attributes!.title,
-      description: newsItem?.attributes?.description,
+      title: newsItem.title,
+      description: newsItem.description,
     }));
 
     return {
