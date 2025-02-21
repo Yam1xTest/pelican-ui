@@ -366,6 +366,7 @@ export interface SharedTicketsComponent {
   description?: string;
   subsidizedTickets?: TicketsTicketComponent[];
   note?: string;
+  link?: string;
 }
 
 export interface SharedMetaSocialComponent {

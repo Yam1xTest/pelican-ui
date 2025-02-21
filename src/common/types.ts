@@ -163,7 +163,7 @@ export type SharedTicketsComponentProps = {
   id: number
   __component: BlockTypes.SHARED_TICKETS,
   title: string,
-  subtitle?: string,
+  description?: string,
   link?: string,
   tickets: Ticket[],
   note?: string,

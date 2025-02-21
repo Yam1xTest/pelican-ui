@@ -221,7 +221,7 @@ export const BlockRenderer = ({
     return (
       <Tickets
         title={block.title}
-        subtitle={block.subtitle}
+        description={block.description}
         link={block.link}
         tickets={block.tickets}
         note={block.note}
