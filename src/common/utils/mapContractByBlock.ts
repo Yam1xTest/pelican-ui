@@ -5,6 +5,7 @@ import {
   SharedHeroComponent,
   SharedImageWithButtonGridComponent,
   HomeMapCardComponent,
+  HomeTicketsComponent,
 } from "../api-types";
 import { BlockTypes } from "../enum";
 import { Block } from "../types";
@@ -99,6 +100,21 @@ export function mapContractByBlock({
           url: homeMapCard.image?.url,
           alternativeText: homeMapCard.image?.alternativeText || ``,
         },
+      };
+
+    case BlockTypes.HOME_TICKETS:
+      const ticketsBlock = block as HomeTicketsComponent;
+
+      return {
+        id: crypto.randomUUID(),
+        __component: ticketsBlock.__component,
+        generalTicketsTitle: ticketsBlock.title,
+        generalTickets: ticketsBlock.generalTickets,
+        generalTicketsLink: ticketsBlock.generalTicketsLink,
+        subsidizedTicketsTitle: ticketsBlock.subsidizedTickets?.title,
+        subsidizedTicketsDescription: ticketsBlock.subsidizedTickets?.description,
+        subsidizedTickets: ticketsBlock.subsidizedTickets?.ticketsList,
+        subsidizedTicketsLink: ticketsBlock.subsidizedTickets?.link,
       };
 
     default:

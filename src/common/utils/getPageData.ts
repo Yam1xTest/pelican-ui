@@ -2,7 +2,6 @@ import qs from "qs";
 import { AppRoute } from "../enum";
 import { api } from "./HttpClient";
 import { mapContractByBlock } from "./mapContractByBlock";
-import { MOCK_TICKETS } from "../mocks/home-page-mock/blocks/tickets-mock";
 import { MOCK_NOT_FOUND_PAGE } from "../mocks/not-found-page-mock/not-found-page-mock";
 import { MOCK_CONTACT_ZOO_TICKETS } from "../mocks/contact-zoo-page-mock/blocks/tickets-mock";
 import { PageData } from "../types";
@@ -29,9 +28,11 @@ export async function getPageData({
           `blocks.button`,
           `blocks.largeImage`,
           `blocks.smallImage`,
+          `blocks.generalTickets`,
+          `blocks.subsidizedTickets.ticketsList`,
           `seo`,
         ],
-        staticBlocks: [MOCK_TICKETS],
+        staticBlocks: [],
       });
 
     case AppRoute.CONTACT_ZOO:
