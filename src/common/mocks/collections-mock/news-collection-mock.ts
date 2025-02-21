@@ -1,6 +1,6 @@
 /* eslint-disable @stylistic/max-len */
-import amurTigerImage from "@/public/images/news/amur-tiger.png";
 import employeeImage from "@/public/images/news/employee.png";
+import amurTigerImage from "@/public/images/news/amur-tiger.png";
 import sanitaryDayImage from "@/public/images/news/sanitary-day.png";
 import winterModeImage from "@/public/images/news/winter-mode.png";
 import vacancyImage from "@/public/images/news/vacancy.png";
