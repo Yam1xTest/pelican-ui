@@ -7,7 +7,7 @@ export function useTicketPopup() {
   } = useContext(TicketPopupContext);
 
   return {
-    isActive,
+    isTicketPopupActive: isActive,
     handleTicketPopupToggle,
   };
 }
