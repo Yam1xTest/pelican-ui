@@ -19,12 +19,13 @@ export function mapContractByBlock({
   switch (`${block.__component}`) {
     case BlockTypes.SHARED_HERO:
       const sharedHeroBlock = block as SharedHeroComponent;
+
       return {
         id: crypto.randomUUID(),
         title: sharedHeroBlock.title,
         __component: sharedHeroBlock.__component,
         image: {
-          url: sharedHeroBlock.image?.url,
+          url: sharedHeroBlock.image?.url || ``,
           alternativeText: sharedHeroBlock.image?.alternativeText || ``,
         },
         scheduleTitle: sharedHeroBlock.scheduleCard?.title,
@@ -42,9 +43,9 @@ export function mapContractByBlock({
         title: sharedTextAndMediaBlock.title,
         description: sharedTextAndMediaBlock.description,
         media: {
-          url: sharedTextAndMediaBlock.media?.url,
+          url: sharedTextAndMediaBlock.media?.url || ``,
           alternativeText: sharedTextAndMediaBlock?.media?.alternativeText || ``,
-          mime: sharedTextAndMediaBlock.media?.mime,
+          mime: sharedTextAndMediaBlock.media?.mime || null,
         },
         contentOrder: sharedTextAndMediaBlock.contentOrder,
         viewFootsteps: sharedTextAndMediaBlock.viewFootsteps,
@@ -62,7 +63,7 @@ export function mapContractByBlock({
         cards: servicesBlock.cards?.cards?.map((card) => ({
           ...card,
           image: {
-            url: card.image?.url,
+            url: card.image?.url || ``,
             alternativeText: card.image?.alternativeText || ``,
           },
         })),
@@ -79,11 +80,11 @@ export function mapContractByBlock({
         link: sharedImageWithButtonGrid.button?.link,
         label: sharedImageWithButtonGrid.button?.label,
         largeImage: {
-          url: sharedImageWithButtonGrid.largeImage?.url,
+          url: sharedImageWithButtonGrid.largeImage?.url || ``,
           alternativeText: sharedImageWithButtonGrid.largeImage?.alternativeText || ``,
         },
         smallImage: {
-          url: sharedImageWithButtonGrid.smallImage?.url || null,
+          url: sharedImageWithButtonGrid.smallImage?.url || ``,
           alternativeText: sharedImageWithButtonGrid.smallImage?.alternativeText || ``,
         },
       };
@@ -98,7 +99,7 @@ export function mapContractByBlock({
         subtitle: homeMapCard.description,
         note: homeMapCard.note,
         image: {
-          url: homeMapCard.image?.url,
+          url: homeMapCard.image?.url || ``,
           alternativeText: homeMapCard.image?.alternativeText || ``,
         },
       };
