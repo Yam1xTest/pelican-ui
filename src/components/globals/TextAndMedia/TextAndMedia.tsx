@@ -32,7 +32,7 @@ export function TextAndMedia({
         <MarkdownText className="text-and-media__title">{title}</MarkdownText>
         <p className="text-and-media__description">{description}</p>
       </div>
-      {media.mime.startsWith(`video`) && (
+      {media?.mime?.startsWith(`video`) && (
         <Video
           className="text-and-media__media"
           dataTestid="text-and-media-video"
@@ -56,7 +56,7 @@ export function TextAndMedia({
           }}
         />
       )}
-      {media.mime.startsWith(`image`) && (
+      {media?.mime?.startsWith(`image`) && (
         <div className="text-and-media__media">
           <Image
             src={media.url}
