@@ -23,6 +23,7 @@ import {
   MOCK_TICKETS_POPUP_RULES_IMAGES,
   MOCK_TICKETS_POPUP_REFUND_REASONS,
 } from '../common/mocks/globals-mock';
+import { TicketPopupProvider } from '../common/providers/TicketPopupProvider';
 
 const inter = localFont({
   src: [
@@ -94,26 +95,28 @@ export default function App({
 
   return (
     <WindowWidthProvider>
-      <div className={inter.variable}>
-        <Layout
-          navigationLinks={navigationLinks}
-          officialLinks={officialLinks}
-          footerAboutLinks={footerAboutLinks}
-          footerUserLinks={footerUserLinks}
-          email={email}
-          phone={phone}
-          popupTicketBuyText={popupTicketBuyText}
-          ticketBuyLink={ticketBuyLink}
-          footerNavTitleLeft={footerNavTitleLeft}
-          footerNavTitleRight={footerNavTitleRight}
-          ticketsPopupGeneral={ticketsPopupGeneral}
-          ticketsPopupSubsidized={ticketsPopupSubsidized}
-          ticketsPopupRulesImages={ticketsPopupRulesImages}
-          ticketsPopupRefundReasons={ticketsPopupRefundReasons}
-        >
-          <Component {...pageProps} />
-        </Layout>
-      </div>
+      <TicketPopupProvider>
+        <div className={inter.variable}>
+          <Layout
+            navigationLinks={navigationLinks}
+            officialLinks={officialLinks}
+            footerAboutLinks={footerAboutLinks}
+            footerUserLinks={footerUserLinks}
+            email={email}
+            phone={phone}
+            popupTicketBuyText={popupTicketBuyText}
+            ticketBuyLink={ticketBuyLink}
+            footerNavTitleLeft={footerNavTitleLeft}
+            footerNavTitleRight={footerNavTitleRight}
+            ticketsPopupGeneral={ticketsPopupGeneral}
+            ticketsPopupSubsidized={ticketsPopupSubsidized}
+            ticketsPopupRulesImages={ticketsPopupRulesImages}
+            ticketsPopupRefundReasons={ticketsPopupRefundReasons}
+          >
+            <Component {...pageProps} />
+          </Layout>
+        </div>
+      </TicketPopupProvider>
     </WindowWidthProvider>
   );
 }

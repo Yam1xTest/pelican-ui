@@ -9,9 +9,9 @@ import {
   useState,
 } from 'react';
 import { GlobalComponentProps } from '@/src/common/types';
-import { TicketPopupProvider } from '@/src/common/providers/TicketPopupProvider';
 import { WindowWidthContext } from '@/src/common/providers/WindowWidthProvider';
 import { useRouter } from 'next/router';
+import { useTicketPopup } from '@/src/common/hooks/useTicketPopup';
 import { Header } from '../Header/Header';
 import { TicketsPopup } from '../TicketsPopup/TicketsPopup';
 import { Footer } from '../Footer/Footer';
@@ -50,6 +50,10 @@ export function Layout({
   } = useContext(WindowWidthContext);
 
   const [isMobileMenuOpen, setIsMobileMenuActive] = useState(false);
+  const {
+    isTicketPopupActive,
+    handleTicketPopupToggle,
+  } = useTicketPopup();
 
   useEffect(() => {
     if (windowWidth === 0) {
@@ -80,59 +84,61 @@ export function Layout({
   }
 
   return (
-    <TicketPopupProvider>
-      <div className="layout">
-        <SkipLink
-          mainElementRef={mainElementRef}
-        />
-        <Header
-          navigationLinks={navigationLinks}
-          email={email}
-          phone={phone}
-          popupTicketBuyText={popupTicketBuyText}
-          overlayElementRef={overlayElementRef}
-          mainElementRef={mainElementRef}
-          footerElementRef={footerElementRef}
-          handleMobileMenuToggle={handleMobileMenuToggle}
-          isMobileMenuOpen={isMobileMenuOpen}
-        />
-        <TicketsPopup
-          ticketsPopupGeneral={ticketsPopupGeneral}
-          ticketsPopupSubsidized={ticketsPopupSubsidized}
-          ticketsPopupRulesImages={ticketsPopupRulesImages}
-          ticketsPopupRefundReasons={ticketsPopupRefundReasons}
-          overlayElementRef={overlayElementRef}
-        />
-        <main
-          id="main-content"
-          ref={mainElementRef}
-          className="main"
-          tabIndex={-1}
-          data-testid="main-content"
-        >
-          {children}
-        </main>
-        <div
-          ref={overlayElementRef}
-          className="overlay"
-          onClick={() => {
-            if (isMobileMenuOpen) {
-              handleMobileMenuToggle();
-            }
-          }}
-        />
-        <Footer
-          footerElementRef={footerElementRef}
-          officialLinks={officialLinks}
-          footerUserLinks={footerUserLinks}
-          footerAboutLinks={footerAboutLinks}
-          email={email}
-          phone={phone}
-          footerNavTitleLeft={footerNavTitleLeft}
-          footerNavTitleRight={footerNavTitleRight}
-          popupTicketBuyText={popupTicketBuyText}
-        />
-      </div>
-    </TicketPopupProvider>
+    <div className="layout">
+      <SkipLink
+        mainElementRef={mainElementRef}
+      />
+      <Header
+        navigationLinks={navigationLinks}
+        email={email}
+        phone={phone}
+        popupTicketBuyText={popupTicketBuyText}
+        overlayElementRef={overlayElementRef}
+        mainElementRef={mainElementRef}
+        footerElementRef={footerElementRef}
+        handleMobileMenuToggle={handleMobileMenuToggle}
+        isMobileMenuOpen={isMobileMenuOpen}
+      />
+      <TicketsPopup
+        ticketsPopupGeneral={ticketsPopupGeneral}
+        ticketsPopupSubsidized={ticketsPopupSubsidized}
+        ticketsPopupRulesImages={ticketsPopupRulesImages}
+        ticketsPopupRefundReasons={ticketsPopupRefundReasons}
+        overlayElementRef={overlayElementRef}
+      />
+      <main
+        id="main-content"
+        ref={mainElementRef}
+        className="main"
+        tabIndex={-1}
+        data-testid="main-content"
+      >
+        {children}
+      </main>
+      <div
+        ref={overlayElementRef}
+        className="overlay"
+        onClick={() => {
+          if (isMobileMenuOpen) {
+            handleMobileMenuToggle();
+          }
+
+          if (isTicketPopupActive) {
+            handleTicketPopupToggle();
+          }
+        }}
+      />
+      <Footer
+        footerElementRef={footerElementRef}
+        officialLinks={officialLinks}
+        footerUserLinks={footerUserLinks}
+        footerAboutLinks={footerAboutLinks}
+        email={email}
+        phone={phone}
+        footerNavTitleLeft={footerNavTitleLeft}
+        footerNavTitleRight={footerNavTitleRight}
+        popupTicketBuyText={popupTicketBuyText}
+      />
+    </div>
   );
 }
