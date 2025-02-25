@@ -3,15 +3,15 @@ import { test } from '@playwright/test';
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { axeCheckAndWriteReport, setViewportSize } from '../helpers';
 
-test(`axeCheckUp Documents Page Desktop XL`, async ({
+test(`axeCheckUp Documents Page Desktop`, async ({
   page,
 }) => {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP_XL,
+    width: Breakpoint.DESKTOP,
   });
 
-  await page.goto(`${AppRoute.DOCUMENTS}`);
+  await page.goto(`${AppRoute.DOCUMENTS}/1?year=2025`);
 
   await page.addScriptTag({
     path: require.resolve(`axe-core/axe.min.js`),
@@ -19,19 +19,19 @@ test(`axeCheckUp Documents Page Desktop XL`, async ({
 
   await axeCheckAndWriteReport({
     page,
-    viewport: `desktop-xl`,
+    viewport: `desktop`,
   });
 });
 
-test(`axeCheckUp Documents Page Tablet XL`, async ({
+test(`axeCheckUp Documents Page Tablet`, async ({
   page,
 }) => {
   await setViewportSize({
     page,
-    width: Breakpoint.TABLET_XL,
+    width: Breakpoint.TABLET,
   });
 
-  await page.goto(`${AppRoute.DOCUMENTS}`);
+  await page.goto(`${AppRoute.DOCUMENTS}/1?year=2025`);
 
   await page.addScriptTag({
     path: require.resolve(`axe-core/axe.min.js`),
@@ -39,7 +39,7 @@ test(`axeCheckUp Documents Page Tablet XL`, async ({
 
   await axeCheckAndWriteReport({
     page,
-    viewport: `tablet-xl`,
+    viewport: `tablet`,
   });
 });
 
@@ -51,7 +51,7 @@ test(`axeCheckUp Documents Page Mobile`, async ({
     width: Breakpoint.MOBILE,
   });
 
-  await page.goto(`${AppRoute.DOCUMENTS}`);
+  await page.goto(`${AppRoute.DOCUMENTS}/1?year=2025`);
 
   await page.addScriptTag({
     path: require.resolve(`axe-core/axe.min.js`),

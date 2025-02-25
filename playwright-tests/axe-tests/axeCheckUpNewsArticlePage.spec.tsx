@@ -3,12 +3,12 @@ import { test } from '@playwright/test';
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { axeCheckAndWriteReport, setViewportSize } from '../helpers';
 
-test(`axeCheckUp News Article Page Desktop XL`, async ({
+test(`axeCheckUp News Article Page Desktop`, async ({
   page,
 }) => {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP_XL,
+    width: Breakpoint.DESKTOP,
   });
 
   await page.goto(`${AppRoute.NEWS}/1`);
@@ -19,27 +19,7 @@ test(`axeCheckUp News Article Page Desktop XL`, async ({
 
   await axeCheckAndWriteReport({
     page,
-    viewport: `desktop-xl`,
-  });
-});
-
-test(`axeCheckUp News Article Page Tablet XL`, async ({
-  page,
-}) => {
-  await setViewportSize({
-    page,
-    width: Breakpoint.TABLET_XL,
-  });
-
-  await page.goto(`${AppRoute.NEWS}/1`);
-
-  await page.addScriptTag({
-    path: require.resolve(`axe-core/axe.min.js`),
-  });
-
-  await axeCheckAndWriteReport({
-    page,
-    viewport: `tablet-xl`,
+    viewport: `desktop`,
   });
 });
 

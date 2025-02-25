@@ -3,12 +3,12 @@ import { test } from '@playwright/test';
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { axeCheckAndWriteReport, setViewportSize } from '../helpers';
 
-test(`axeCheckUp News Page Desktop XL`, async ({
+test(`axeCheckUp News Page Desktop`, async ({
   page,
 }) => {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP_XL,
+    width: Breakpoint.DESKTOP,
   });
 
   await page.goto(`${AppRoute.NEWS}`);
@@ -19,16 +19,16 @@ test(`axeCheckUp News Page Desktop XL`, async ({
 
   await axeCheckAndWriteReport({
     page,
-    viewport: `desktop-xl`,
+    viewport: `desktop`,
   });
 });
 
-test(`axeCheckUp News Page Tablet XL`, async ({
+test(`axeCheckUp News Page Tablet`, async ({
   page,
 }) => {
   await setViewportSize({
     page,
-    width: Breakpoint.TABLET_XL,
+    width: Breakpoint.TABLET,
   });
 
   await page.goto(`${AppRoute.NEWS}`);
@@ -39,7 +39,7 @@ test(`axeCheckUp News Page Tablet XL`, async ({
 
   await axeCheckAndWriteReport({
     page,
-    viewport: `tablet-xl`,
+    viewport: `tablet`,
   });
 });
 
