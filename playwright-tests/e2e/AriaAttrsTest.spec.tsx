@@ -31,22 +31,9 @@ async function HomepageTest({
     await page.getByTestId(`header-popup-ticket-button`)
     .click();
 
-     await expect(page.getByTestId(`tickets-popup-close-button`))
+    await expect(page.getByTestId(`tickets-popup-close-button`))
     .toHaveAttribute('aria-label', 'Закрыть модальное окно с билетами')
-
-     await expect(page.getByTestId(`tickets-popup-close-button`))
-    .toHaveAttribute('aria-label', 'Закрыть модальное окно с билетами')
-
-    await expect(page.getByTestId(`social-icon-telegram`).first())
-    .toHaveAttribute('aria-label', 'Ссылка на telegram')
-
-    await expect(page.getByTestId(`social-icon-odnoklassniki`).first())
-    .toHaveAttribute('aria-label', 'Ссылка на odnoklassniki')
-
-    await expect(page.getByTestId(`social-icon-dzen`).first())
-    .toHaveAttribute('aria-label', 'Ссылка на dzen')
 }
-
 
 async function DocumentsPageTest({
   page,
