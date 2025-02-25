@@ -2,9 +2,10 @@ import { AppRoute } from '@/src/common/enum';
 import { gotoPage } from '@/playwright-tests/helpers';
 import { test, Page, expect } from '@playwright/test';
 
-test.describe(`ARIA Attributes`, () => {
+test.describe(`ARIA Labels`, () => {
   test(`HomePageTest`, HomepageTest);
   test(`DocumentsPageTest`, DocumentsPageTest);
+  test(`NewsPageTest`, NewsPageTest);
 });
 
 async function HomepageTest({
@@ -64,4 +65,22 @@ async function DocumentsPageTest({
   await expect(page.getByTestId(`document-file-link`).first())
     .toHaveAttribute('aria-label', 'Открыть файл с документом Протокол закупки №31907985526 в новой вкладке')
 }
+async function NewsPageTest({
+  page,
+}: {
+  page: Page,
+}) {
+
+  await gotoPage({
+    page,
+    url: `${AppRoute.NEWS}/1`,
+  });
+
+  await expect(page.getByTestId(`scroll-to-prev-item`))
+    .toHaveAttribute('aria-label', 'Пролистнуть новости влево')
+
+  await expect(page.getByTestId(`scroll-to-next-item`))
+    .toHaveAttribute('aria-label', 'Пролистнуть новости вправо')
+}
+
 
