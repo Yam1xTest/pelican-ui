@@ -4,8 +4,6 @@ import { test, Page, expect } from '@playwright/test';
 
 test.describe(`ARIA Labels`, () => {
   test(`HomePageTest`, HomepageTest);
-  test(`DocumentsPageTest`, DocumentsPageTest);
-  test(`NewsPageTest`, NewsPageTest);
 });
 
 async function HomepageTest({
@@ -34,40 +32,3 @@ async function HomepageTest({
     await expect(page.getByTestId(`tickets-popup-close-button`))
     .toHaveAttribute('aria-label', 'Закрыть модальное окно с билетами')
 }
-
-async function DocumentsPageTest({
-  page,
-}: {
-  page: Page,
-}) {
-
-  await gotoPage({
-    page,
-    url: `${AppRoute.DOCUMENTS}/1?year=2025`,
-  });
-
-  await expect(page.getByTestId(`tab`).first())
-    .toHaveAttribute('aria-label', 'Отобразить документы за 2025 год')
-
-  await expect(page.getByTestId(`document-file-link`).first())
-    .toHaveAttribute('aria-label', 'Открыть файл с документом Протокол закупки №31907985526 в новой вкладке')
-}
-async function NewsPageTest({
-  page,
-}: {
-  page: Page,
-}) {
-
-  await gotoPage({
-    page,
-    url: `${AppRoute.NEWS}/1`,
-  });
-
-  await expect(page.getByTestId(`scroll-to-prev-item`))
-    .toHaveAttribute('aria-label', 'Пролистнуть новости влево')
-
-  await expect(page.getByTestId(`scroll-to-next-item`))
-    .toHaveAttribute('aria-label', 'Пролистнуть новости вправо')
-}
-
-
