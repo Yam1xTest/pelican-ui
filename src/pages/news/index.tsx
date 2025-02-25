@@ -83,8 +83,8 @@ export async function getServerSideProps({
       id: newsItem.id!,
       slug: newsItem.slug!,
       image: {
-        url: newsItem.image.url!,
-        alternativeText: newsItem.image.alternativeText || ``,
+        url: newsItem.image?.url || ``,
+        alternativeText: newsItem.image?.alternativeText || ``,
       },
       title: newsItem.title,
       description: newsItem.description,

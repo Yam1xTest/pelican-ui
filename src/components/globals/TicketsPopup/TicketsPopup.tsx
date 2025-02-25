@@ -27,14 +27,14 @@ export function TicketsPopup({
   overlayElementRef: MutableRefObject<null | HTMLElement>
 }) {
   const {
-    isActive,
+    isTicketPopupActive,
     handleTicketPopupToggle,
   } = useTicketPopup();
 
   useEffect(() => {
     const overlayElement = overlayElementRef.current!;
 
-    if (isActive) {
+    if (isTicketPopupActive) {
       overlayElement.classList.add(`is-visible`);
       overlayElement.classList.add(`is-header-hidden`);
     }
@@ -44,11 +44,11 @@ export function TicketsPopup({
       overlayElement.classList.remove(`is-header-hidden`);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isActive]);
+  }, [isTicketPopupActive]);
 
   return (
     <div className="tickets-popup">
-      {isActive && (
+      {isTicketPopupActive && (
         <FocusLock
           returnFocus
         >
