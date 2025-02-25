@@ -77,7 +77,7 @@ export function NewsSlider({
             type="button"
             className="news-slider__button button"
             onClick={scrollToNextItem}
-            aria-label="Пролистнуть новости вправо"
+            // aria-label="Пролистнуть новости вправо"
             data-testid="scroll-to-next-item"
           >
             <IconArrow />
