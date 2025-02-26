@@ -59,7 +59,7 @@ export async function getServerSideProps({
       props: {
         pageData: MOCK_NEWS_PAGE,
         news: MOCK_NEWS.slice(0, query.pageSize || NEWS_LIMIT),
-        pageSize: query.pageSize || NEWS_LIMIT,
+        pageSize: +query.pageSize || NEWS_LIMIT,
         totalNews: MOCK_NEWS.length,
       },
     };
