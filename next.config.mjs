@@ -17,7 +17,7 @@ const nextConfig = {
       },
       {
         protocol: 'http',
-        hostname: 'minio-s3.pelican.local.tourmalinecore.internal',
+        hostname: 'minio-s3.localhost',
       },
       {
         protocol: 'https',
