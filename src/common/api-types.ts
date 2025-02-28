@@ -1095,14 +1095,14 @@ export interface Home {
   localizations?: {
     id?: number;
     documentId?: string;
-    blocks?: DiscriminatorNull1 &
+    blocks?: BaseNull1 &
       (
-        | DiscriminatorNull1ComponentMapping<"shared.hero", SharedHeroComponent>
-        | DiscriminatorNull1ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
-        | DiscriminatorNull1ComponentMapping<"home.services", HomeServicesComponent>
-        | DiscriminatorNull1ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
-        | DiscriminatorNull1ComponentMapping<"home.map-card", HomeMapCardComponent>
-        | DiscriminatorNull1ComponentMapping<"home.tickets", HomeTicketsComponent>
+        | BaseNull1ComponentMapping<"shared.hero", SharedHeroComponent>
+        | BaseNull1ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
+        | BaseNull1ComponentMapping<"home.services", HomeServicesComponent>
+        | BaseNull1ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
+        | BaseNull1ComponentMapping<"home.map-card", HomeMapCardComponent>
+        | BaseNull1ComponentMapping<"home.tickets", HomeTicketsComponent>
       );
     seo?: SharedSeoComponent;
     /** @format date-time */
@@ -1286,6 +1286,7 @@ export interface NewsCollectionRequest {
     image: number | string;
     innerContent: string;
     slug?: string;
+    seo?: SharedSeoComponent;
     locale?: string;
     localizations?: (number | string)[];
   };
@@ -1527,6 +1528,7 @@ export interface NewsCollection {
   };
   innerContent: string;
   slug?: string;
+  seo?: SharedSeoComponent;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */
@@ -1596,6 +1598,7 @@ export interface NewsCollection {
     };
     innerContent?: string;
     slug?: string;
+    seo?: SharedSeoComponent;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -1757,7 +1760,7 @@ type PolymorphNullComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
-type DiscriminatorNull1 = (
+type BaseNull1 = (
   | SharedHeroComponent
   | SharedTextAndMediaComponent
   | HomeServicesComponent
@@ -1766,6 +1769,6 @@ type DiscriminatorNull1 = (
   | HomeTicketsComponent
 )[];
 
-type DiscriminatorNull1ComponentMapping<Key, Type> = {
+type BaseNull1ComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;

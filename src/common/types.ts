@@ -188,7 +188,7 @@ export type Ticket = {
 
 export type NewsPageProps = {
   newsTitle: string;
-  seo: Seo,
+  seo?: Seo,
 };
 
 export type NewsArticleProps = CardProps & {
@@ -196,6 +196,7 @@ export type NewsArticleProps = CardProps & {
   publishedAt?: string;
   innerContent: string;
   date?: string;
+  seo?: Seo;
 };
 
 export type ArticleComponentProps = Omit<NewsArticleProps, 'id' | 'date' | 'link' | 'labels'> & {
@@ -267,7 +268,7 @@ type Image = {
 };
 
 export type Seo = {
-  metaTitle: string,
-  metaDescription: string,
+  metaTitle?: string,
+  metaDescription?: string,
   metaKeywords?: string,
 };
