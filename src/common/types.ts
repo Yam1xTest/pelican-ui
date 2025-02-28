@@ -129,10 +129,7 @@ export type MapComponentProps = {
 };
 
 export type HomePageProps = {
-  seo: {
-    metaTitle: string,
-    metaDescription: string,
-  },
+  seo: Seo,
   blocks: (
     HeroComponentProps
     | TextAndMediaComponentProps
@@ -144,10 +141,7 @@ export type HomePageProps = {
 };
 
 export type ContactZooPageProps = {
-  seo: {
-    metaTitle: string,
-    metaDescription: string,
-  },
+  seo: Seo,
   blocks: (
     HeroComponentProps
     | SharedTicketsComponentProps
@@ -193,8 +187,8 @@ export type Ticket = {
 };
 
 export type NewsPageProps = {
-  title: string;
   newsTitle: string;
+  seo: Seo,
 };
 
 export type NewsArticleProps = CardProps & {
@@ -270,4 +264,10 @@ export type BlockPosition = {
 type Image = {
   url: StaticImageData | string;
   alternativeText: string;
+};
+
+export type Seo = {
+  metaTitle: string,
+  metaDescription: string,
+  metaKeywords?: string,
 };

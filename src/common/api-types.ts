@@ -357,7 +357,6 @@ export interface TicketsTicketComponent {
   price?: string;
   frequency?: string;
   theme?: "Зелёный" | "Коричневый";
-  link?: string;
 }
 
 export interface SharedTicketsComponent {
@@ -367,6 +366,7 @@ export interface SharedTicketsComponent {
   description?: string;
   subsidizedTickets?: TicketsTicketComponent[];
   note?: string;
+  link?: string;
 }
 
 export interface SharedMetaSocialComponent {
@@ -492,7 +492,7 @@ export interface DocumentRequest {
     subtitle?: string;
     description?: string;
     /** @format date */
-    date: string;
+    date?: string;
     locale?: string;
     localizations?: (number | string)[];
   };
@@ -761,7 +761,7 @@ export interface Document {
   subtitle?: string;
   description?: string;
   /** @format date */
-  date: string;
+  date?: string;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */
@@ -1095,14 +1095,14 @@ export interface Home {
   localizations?: {
     id?: number;
     documentId?: string;
-    blocks?: InternalNull1 &
+    blocks?: DiscriminatorNull1 &
       (
-        | InternalNull1ComponentMapping<"shared.hero", SharedHeroComponent>
-        | InternalNull1ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
-        | InternalNull1ComponentMapping<"home.services", HomeServicesComponent>
-        | InternalNull1ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
-        | InternalNull1ComponentMapping<"home.map-card", HomeMapCardComponent>
-        | InternalNull1ComponentMapping<"home.tickets", HomeTicketsComponent>
+        | DiscriminatorNull1ComponentMapping<"shared.hero", SharedHeroComponent>
+        | DiscriminatorNull1ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
+        | DiscriminatorNull1ComponentMapping<"home.services", HomeServicesComponent>
+        | DiscriminatorNull1ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
+        | DiscriminatorNull1ComponentMapping<"home.map-card", HomeMapCardComponent>
+        | DiscriminatorNull1ComponentMapping<"home.tickets", HomeTicketsComponent>
       );
     seo?: SharedSeoComponent;
     /** @format date-time */
@@ -1274,6 +1274,7 @@ export interface HomeTicketsComponent {
   __component?: "home.tickets";
   title?: string;
   generalTickets?: TicketsTicketComponent[];
+  generalTicketsLink?: string;
   subsidizedTickets?: TicketsTicketsComponent;
 }
 
@@ -1622,6 +1623,81 @@ export interface NewsCollectionResponse {
   meta?: object;
 }
 
+export interface NewsPageRequest {
+  data: {
+    seo?: SharedSeoComponent;
+    title: string;
+    locale?: string;
+    localizations?: (number | string)[];
+  };
+}
+
+export interface NewsPageListResponse {
+  data?: NewsPage[];
+  meta?: {
+    pagination?: {
+      page?: number;
+      /** @min 25 */
+      pageSize?: number;
+      /** @max 1 */
+      pageCount?: number;
+      total?: number;
+    };
+  };
+}
+
+export interface NewsPage {
+  id?: number;
+  documentId?: string;
+  seo?: SharedSeoComponent;
+  title: string;
+  /** @format date-time */
+  createdAt?: string;
+  /** @format date-time */
+  updatedAt?: string;
+  /** @format date-time */
+  publishedAt?: string;
+  createdBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  updatedBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  locale?: string;
+  localizations?: {
+    id?: number;
+    documentId?: string;
+    seo?: SharedSeoComponent;
+    title?: string;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  }[];
+}
+
+export interface NewsPageResponse {
+  data?: NewsPage;
+  meta?: object;
+}
+
 type BaseNull = (
   | SharedHeroComponent
   | SharedTextAndMediaComponent
@@ -1681,7 +1757,7 @@ type PolymorphNullComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
-type InternalNull1 = (
+type DiscriminatorNull1 = (
   | SharedHeroComponent
   | SharedTextAndMediaComponent
   | HomeServicesComponent
@@ -1690,6 +1766,6 @@ type InternalNull1 = (
   | HomeTicketsComponent
 )[];
 
-type InternalNull1ComponentMapping<Key, Type> = {
+type DiscriminatorNull1ComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;

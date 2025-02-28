@@ -77,6 +77,7 @@ async function getData({
       seo: {
         metaTitle: pageResponse.data?.seo.metaTitle,
         metaDescription: pageResponse.data?.seo.metaDescription,
+        metaKeywords: pageResponse.data?.seo.keywords,
       },
     }),
   };
