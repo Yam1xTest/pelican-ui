@@ -24,7 +24,7 @@ export default function NewsPage({
   return (
     <>
       <SeoHead
-        metaTitle={pageData?.seo?.metaTitle || `Новости Челябинского зоопарка`}
+        metaTitle={pageData?.seo?.metaTitle || `Новости`}
         metaDescription={pageData?.seo?.metaDescription}
         metaKeywords={pageData?.seo?.metaKeywords}
       />

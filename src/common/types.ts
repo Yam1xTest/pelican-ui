@@ -204,8 +204,8 @@ export type ArticleComponentProps = Omit<NewsArticleProps, 'id' | 'date' | 'link
 } & BlockPosition;
 
 export type DocumentsPageProps = {
-  pageTitle: string,
   documentsTitle: string;
+  seo?: Seo,
 };
 
 export type DocumentsTabsProps = {

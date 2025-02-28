@@ -1033,6 +1033,81 @@ export interface DocumentsCategoryResponse {
   meta?: object;
 }
 
+export interface DocumentsPageRequest {
+  data: {
+    title: string;
+    seo?: SharedSeoComponent;
+    locale?: string;
+    localizations?: (number | string)[];
+  };
+}
+
+export interface DocumentsPageListResponse {
+  data?: DocumentsPage[];
+  meta?: {
+    pagination?: {
+      page?: number;
+      /** @min 25 */
+      pageSize?: number;
+      /** @max 1 */
+      pageCount?: number;
+      total?: number;
+    };
+  };
+}
+
+export interface DocumentsPage {
+  id?: number;
+  documentId?: string;
+  title: string;
+  seo?: SharedSeoComponent;
+  /** @format date-time */
+  createdAt?: string;
+  /** @format date-time */
+  updatedAt?: string;
+  /** @format date-time */
+  publishedAt?: string;
+  createdBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  updatedBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  locale?: string;
+  localizations?: {
+    id?: number;
+    documentId?: string;
+    title?: string;
+    seo?: SharedSeoComponent;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  }[];
+}
+
+export interface DocumentsPageResponse {
+  data?: DocumentsPage;
+  meta?: object;
+}
+
 export interface HomeRequest {
   data: {
     blocks?: InternalNull &
