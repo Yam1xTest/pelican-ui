@@ -219,6 +219,7 @@ export type CategoryProps = {
   title: string,
   pageUrl: string,
   hasTabs: boolean,
+  seo?: Seo,
 };
 
 export type CategoriesComponentProps = {
