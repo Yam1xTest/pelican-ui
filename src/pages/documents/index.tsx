@@ -22,15 +22,20 @@ export default function DocumentsPage({
     return <NotFound />;
   }
 
+  const {
+    seo,
+    documentsTitle,
+  } = pageData;
+
   return (
     <>
       <SeoHead
-        metaTitle={pageData.seo?.metaTitle || `Документы`}
-        metaDescription={pageData.seo?.metaDescription}
-        metaKeywords={pageData.seo?.metaKeywords}
+        metaTitle={seo?.metaTitle || `Документы`}
+        metaDescription={seo?.metaDescription}
+        metaKeywords={seo?.metaKeywords}
       />
       <Categories
-        categoriesTitle={pageData.documentsTitle}
+        categoriesTitle={documentsTitle}
         categories={categories}
       />
     </>

@@ -21,15 +21,20 @@ export default function NewsPage({
     return <NotFound />;
   }
 
+  const {
+    seo,
+    newsTitle,
+  } = pageData;
+
   return (
     <>
       <SeoHead
-        metaTitle={pageData?.seo?.metaTitle || `Новости`}
-        metaDescription={pageData?.seo?.metaDescription}
-        metaKeywords={pageData?.seo?.metaKeywords}
+        metaTitle={seo?.metaTitle || `Новости`}
+        metaDescription={seo?.metaDescription}
+        metaKeywords={seo?.metaKeywords}
       />
       <NewsList
-        newsTitle={pageData.newsTitle}
+        newsTitle={newsTitle}
         news={news}
         total={totalNews}
       />

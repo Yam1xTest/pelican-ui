@@ -269,7 +269,7 @@ type Image = {
 };
 
 export type Seo = {
-  metaTitle?: string,
+  metaTitle: string,
   metaDescription?: string,
   metaKeywords?: string,
 };

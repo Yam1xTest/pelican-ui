@@ -113,8 +113,8 @@ export async function getServerSideProps({
       publishedAt: newsResponse.data![0]?.publishedAt,
       ...(newsResponse.data![0]?.seo && {
         seo: {
-          metaTitle: newsResponse.data![0].seo.metaTitle,
-          metaDescription: newsResponse.data![0].seo.metaDescription,
+          metaTitle: newsResponse.data![0].seo.metaTitle!,
+          metaDescription: newsResponse.data![0].seo?.metaDescription,
           metaKeywords: newsResponse.data![0].seo?.keywords,
         },
       }),
