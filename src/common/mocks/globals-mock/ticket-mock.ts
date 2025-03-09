@@ -7,13 +7,13 @@ export const MOCK_TICKET_BUY_LINK = `https://widget.afisha.yandex.ru/w/sessions/
 export const MOCK_TICKETS_POPUP_GENERAL: GlobalComponentProps['ticketsPopup']['generalTickets'] = [
   {
     id: 0,
-    category: `Взрослые, дети\u00A0от\u00A014\u00A0лет`,
+    category: `Взрослые,\nдети от 14 лет`,
     price: `400  ₽ / чел`,
   },
   {
     id: 1,
     category: `Дети от 5 до 13 лет`,
-    description: ` Требуется оригинал документа`,
+    description: `Требуется оригинал документа`,
     price: `200  ₽ / чел`,
   },
   {
@@ -94,7 +94,7 @@ export const MOCK_TICKETS_POPUP_REFUND_REASONS: GlobalComponentProps['ticketsPop
   },
   {
     id: 1,
-    refundReason: `отказа от оказания услуг посетителем по уважительным причинам (болезнь, смерть члена 
+    refundReason: `отказа от оказания услуг посетителем по уважительным причинам (болезнь, смерть члена \
     семьи или близкого родственника, и т.п.), при предъявлении подтверждающих документов;`,
   },
   {
