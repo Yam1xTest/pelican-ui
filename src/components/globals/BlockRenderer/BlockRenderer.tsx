@@ -179,7 +179,7 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID && slug === AppRoute.HOME) {
+  if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID && (slug === AppRoute.HOME || slug?.startsWith(`${AppRoute.HOME}#`))) {
     return (
       <HomepageImageWithButtonGrid
         title={block.title}

@@ -492,7 +492,7 @@ export interface DocumentRequest {
     subtitle?: string;
     description?: string;
     /** @format date */
-    date: string;
+    date?: string;
     locale?: string;
     localizations?: (number | string)[];
   };
@@ -738,6 +738,7 @@ export interface Document {
     title?: string;
     hasTabs?: boolean;
     slug?: string;
+    seo?: SharedSeoComponent;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -761,7 +762,7 @@ export interface Document {
   subtitle?: string;
   description?: string;
   /** @format date */
-  date: string;
+  date?: string;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */
@@ -869,6 +870,7 @@ export interface DocumentsCategoryRequest {
     title: string;
     hasTabs?: boolean;
     slug?: string;
+    seo?: SharedSeoComponent;
     locale?: string;
     localizations?: (number | string)[];
   };
@@ -894,6 +896,7 @@ export interface DocumentsCategory {
   title: string;
   hasTabs?: boolean;
   slug?: string;
+  seo?: SharedSeoComponent;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */
@@ -903,97 +906,6 @@ export interface DocumentsCategory {
   createdBy?: {
     id?: number;
     documentId?: string;
-    firstname?: string;
-    lastname?: string;
-    username?: string;
-    /** @format email */
-    email?: string;
-    resetPasswordToken?: string;
-    registrationToken?: string;
-    isActive?: boolean;
-    roles?: {
-      id?: number;
-      documentId?: string;
-      name?: string;
-      code?: string;
-      description?: string;
-      users?: {
-        id?: number;
-        documentId?: string;
-      }[];
-      permissions?: {
-        id?: number;
-        documentId?: string;
-        action?: string;
-        actionParameters?: any;
-        subject?: string;
-        properties?: any;
-        conditions?: any;
-        role?: {
-          id?: number;
-          documentId?: string;
-        };
-        /** @format date-time */
-        createdAt?: string;
-        /** @format date-time */
-        updatedAt?: string;
-        /** @format date-time */
-        publishedAt?: string;
-        createdBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        updatedBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        locale?: string;
-        localizations?: {
-          id?: number;
-          documentId?: string;
-        }[];
-      }[];
-      /** @format date-time */
-      createdAt?: string;
-      /** @format date-time */
-      updatedAt?: string;
-      /** @format date-time */
-      publishedAt?: string;
-      createdBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      updatedBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      locale?: string;
-      localizations?: {
-        id?: number;
-        documentId?: string;
-      }[];
-    }[];
-    blocked?: boolean;
-    preferedLanguage?: string;
-    /** @format date-time */
-    createdAt?: string;
-    /** @format date-time */
-    updatedAt?: string;
-    /** @format date-time */
-    publishedAt?: string;
-    createdBy?: {
-      id?: number;
-      documentId?: string;
-    };
-    updatedBy?: {
-      id?: number;
-      documentId?: string;
-    };
-    locale?: string;
-    localizations?: {
-      id?: number;
-      documentId?: string;
-    }[];
   };
   updatedBy?: {
     id?: number;
@@ -1006,6 +918,7 @@ export interface DocumentsCategory {
     title?: string;
     hasTabs?: boolean;
     slug?: string;
+    seo?: SharedSeoComponent;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -1033,11 +946,34 @@ export interface DocumentsCategoryResponse {
   meta?: object;
 }
 
+export interface DocumentsPageRequest {
+  data: {
+    title: string;
+    seo?: SharedSeoComponent;
+    locale?: string;
+    localizations?: (number | string)[];
+  };
+}
+
 export interface HeaderRequest {
   data: {
     ticketsPopup: TicketsPopupTicketsPopupComponent;
     locale?: string;
     localizations?: (number | string)[];
+  };
+}
+
+export interface DocumentsPageListResponse {
+  data?: DocumentsPage[];
+  meta?: {
+    pagination?: {
+      page?: number;
+      /** @min 25 */
+      pageSize?: number;
+      /** @max 1 */
+      pageCount?: number;
+      total?: number;
+    };
   };
 }
 
@@ -1053,6 +989,53 @@ export interface HeaderListResponse {
       total?: number;
     };
   };
+}
+
+export interface DocumentsPage {
+  id?: number;
+  documentId?: string;
+  title: string;
+  seo?: SharedSeoComponent;
+  /** @format date-time */
+  createdAt?: string;
+  /** @format date-time */
+  updatedAt?: string;
+  /** @format date-time */
+  publishedAt?: string;
+  createdBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  updatedBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  locale?: string;
+  localizations?: {
+    id?: number;
+    documentId?: string;
+    title?: string;
+    seo?: SharedSeoComponent;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  }[];
 }
 
 export interface Header {
@@ -1077,6 +1060,8 @@ export interface Header {
   localizations?: {
     id?: number;
     documentId?: string;
+    title?: string;
+    seo?: SharedSeoComponent;
     ticketsPopup?: TicketsPopupTicketsPopupComponent;
     /** @format date-time */
     createdAt?: string;
@@ -1098,6 +1083,11 @@ export interface Header {
       documentId?: string;
     }[];
   }[];
+}
+
+export interface DocumentsPageResponse {
+  data?: DocumentsPage;
+  meta?: object;
 }
 
 export interface HeaderResponse {
@@ -1263,14 +1253,14 @@ export interface Home {
   localizations?: {
     id?: number;
     documentId?: string;
-    blocks?: InternalNull1 &
+    blocks?: AbstractNull1 &
       (
-        | InternalNull1ComponentMapping<"shared.hero", SharedHeroComponent>
-        | InternalNull1ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
-        | InternalNull1ComponentMapping<"home.services", HomeServicesComponent>
-        | InternalNull1ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
-        | InternalNull1ComponentMapping<"home.map-card", HomeMapCardComponent>
-        | InternalNull1ComponentMapping<"home.tickets", HomeTicketsComponent>
+        | AbstractNull1ComponentMapping<"shared.hero", SharedHeroComponent>
+        | AbstractNull1ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
+        | AbstractNull1ComponentMapping<"home.services", HomeServicesComponent>
+        | AbstractNull1ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
+        | AbstractNull1ComponentMapping<"home.map-card", HomeMapCardComponent>
+        | AbstractNull1ComponentMapping<"home.tickets", HomeTicketsComponent>
       );
     seo?: SharedSeoComponent;
     /** @format date-time */
@@ -1454,6 +1444,7 @@ export interface NewsCollectionRequest {
     image: number | string;
     innerContent: string;
     slug?: string;
+    seo?: SharedSeoComponent;
     locale?: string;
     localizations?: (number | string)[];
   };
@@ -1695,6 +1686,7 @@ export interface NewsCollection {
   };
   innerContent: string;
   slug?: string;
+  seo?: SharedSeoComponent;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */
@@ -1764,6 +1756,7 @@ export interface NewsCollection {
     };
     innerContent?: string;
     slug?: string;
+    seo?: SharedSeoComponent;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -1788,6 +1781,81 @@ export interface NewsCollection {
 
 export interface NewsCollectionResponse {
   data?: NewsCollection;
+  meta?: object;
+}
+
+export interface NewsPageRequest {
+  data: {
+    seo?: SharedSeoComponent;
+    title: string;
+    locale?: string;
+    localizations?: (number | string)[];
+  };
+}
+
+export interface NewsPageListResponse {
+  data?: NewsPage[];
+  meta?: {
+    pagination?: {
+      page?: number;
+      /** @min 25 */
+      pageSize?: number;
+      /** @max 1 */
+      pageCount?: number;
+      total?: number;
+    };
+  };
+}
+
+export interface NewsPage {
+  id?: number;
+  documentId?: string;
+  seo?: SharedSeoComponent;
+  title: string;
+  /** @format date-time */
+  createdAt?: string;
+  /** @format date-time */
+  updatedAt?: string;
+  /** @format date-time */
+  publishedAt?: string;
+  createdBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  updatedBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  locale?: string;
+  localizations?: {
+    id?: number;
+    documentId?: string;
+    seo?: SharedSeoComponent;
+    title?: string;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  }[];
+}
+
+export interface NewsPageResponse {
+  data?: NewsPage;
   meta?: object;
 }
 
@@ -1850,7 +1918,7 @@ type PolymorphNullComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
-type InternalNull1 = (
+type AbstractNull1 = (
   | SharedHeroComponent
   | SharedTextAndMediaComponent
   | HomeServicesComponent
@@ -1859,6 +1927,6 @@ type InternalNull1 = (
   | HomeTicketsComponent
 )[];
 
-type InternalNull1ComponentMapping<Key, Type> = {
+type AbstractNull1ComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;

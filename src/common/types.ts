@@ -169,10 +169,7 @@ export type MapComponentProps = {
 };
 
 export type HomePageProps = {
-  seo: {
-    metaTitle: string,
-    metaDescription: string,
-  },
+  seo: Seo,
   blocks: (
     HeroComponentProps
     | TextAndMediaComponentProps
@@ -184,10 +181,7 @@ export type HomePageProps = {
 };
 
 export type ContactZooPageProps = {
-  seo: {
-    metaTitle: string,
-    metaDescription: string,
-  },
+  seo: Seo,
   blocks: (
     HeroComponentProps
     | SharedTicketsComponentProps
@@ -233,8 +227,8 @@ export type Ticket = {
 };
 
 export type NewsPageProps = {
-  title: string;
   newsTitle: string;
+  seo?: Seo,
 };
 
 export type NewsArticleProps = CardProps & {
@@ -242,6 +236,7 @@ export type NewsArticleProps = CardProps & {
   publishedAt?: string;
   innerContent: string;
   date?: string;
+  seo?: Seo;
 };
 
 export type ArticleComponentProps = Omit<NewsArticleProps, 'id' | 'date' | 'link' | 'labels'> & {
@@ -249,8 +244,8 @@ export type ArticleComponentProps = Omit<NewsArticleProps, 'id' | 'date' | 'link
 } & BlockPosition;
 
 export type DocumentsPageProps = {
-  pageTitle: string,
   documentsTitle: string;
+  seo?: Seo,
 };
 
 export type DocumentsTabsProps = {
@@ -264,6 +259,7 @@ export type CategoryProps = {
   title: string,
   pageUrl: string,
   hasTabs: boolean,
+  seo?: Seo,
 };
 
 export type CategoriesComponentProps = {
@@ -310,4 +306,10 @@ export type BlockPosition = {
 type Image = {
   url: StaticImageData | string;
   alternativeText: string;
+};
+
+export type Seo = {
+  metaTitle: string,
+  metaDescription?: string,
+  metaKeywords?: string,
 };
