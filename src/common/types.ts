@@ -59,7 +59,7 @@ export type GlobalComponentProps = {
         link: string,
       },
     },
-    accordionVisitingRules: {
+    visitingRulesAccordion: {
       images: {
         url: string,
         alternativeText: string,
@@ -69,7 +69,7 @@ export type GlobalComponentProps = {
         link: string,
       },
     },
-    accordionTicketRefund: {
+    ticketRefundAccordion: {
       refundHead: string,
       refundBody: {
         id: number,

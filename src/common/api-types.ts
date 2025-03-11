@@ -977,20 +977,6 @@ export interface DocumentsPageListResponse {
   };
 }
 
-export interface HeaderListResponse {
-  data?: Header[];
-  meta?: {
-    pagination?: {
-      page?: number;
-      /** @min 25 */
-      pageSize?: number;
-      /** @max 1 */
-      pageCount?: number;
-      total?: number;
-    };
-  };
-}
-
 export interface DocumentsPage {
   id?: number;
   documentId?: string;
@@ -1038,6 +1024,28 @@ export interface DocumentsPage {
   }[];
 }
 
+export interface HeaderRequest {
+  data: {
+    ticketsPopup: TicketsPopupTicketsPopupComponent;
+    locale?: string;
+    localizations?: (number | string)[];
+  };
+}
+
+export interface HeaderListResponse {
+  data?: Header[];
+  meta?: {
+    pagination?: {
+      page?: number;
+      /** @min 25 */
+      pageSize?: number;
+      /** @max 1 */
+      pageCount?: number;
+      total?: number;
+    };
+  };
+}
+
 export interface Header {
   id?: number;
   documentId?: string;
@@ -1060,8 +1068,6 @@ export interface Header {
   localizations?: {
     id?: number;
     documentId?: string;
-    title?: string;
-    seo?: SharedSeoComponent;
     ticketsPopup?: TicketsPopupTicketsPopupComponent;
     /** @format date-time */
     createdAt?: string;
@@ -1083,11 +1089,6 @@ export interface Header {
       documentId?: string;
     }[];
   }[];
-}
-
-export interface DocumentsPageResponse {
-  data?: DocumentsPage;
-  meta?: object;
 }
 
 export interface HeaderResponse {
@@ -1116,7 +1117,7 @@ export interface TicketsPopupAccordionTicketComponent {
   button?: ButtonButtonComponent;
 }
 
-export interface TicketsPopupAccordionVisitingRulesComponent {
+export interface TicketsPopupVisitingRulesAccordionComponent {
   id?: number;
   images?: {
     id?: number;
@@ -1173,7 +1174,7 @@ export interface TicketsPopupRefundListItemComponent {
   refundReason?: string;
 }
 
-export interface TicketsPopupAccordionTicketRefundComponent {
+export interface TicketsPopupTicketRefundAccordionComponent {
   id?: number;
   refundHead?: string;
   refundBody?: TicketsPopupRefundListItemComponent[];
@@ -1184,11 +1185,11 @@ export interface TicketsPopupTicketsPopupComponent {
   id?: number;
   generalTicketsLink?: string;
   generalTickets?: TicketsPopupShortenedTicketComponent[];
-  subsidizedTickets?: TicketsPopupAccordionTicketComponent;
-  accordionVisitingRules?: TicketsPopupAccordionVisitingRulesComponent;
-  accordionTicketRefund?: TicketsPopupAccordionTicketRefundComponent;
+  subsidizedTicket?: TicketsPopupAccordionTicketComponent;
   buyTicketsButton?: ButtonButtonComponent;
   note?: string;
+  visitingRulesAccordion?: TicketsPopupVisitingRulesAccordionComponent;
+  ticketRefundAccordion?: TicketsPopupTicketRefundAccordionComponent;
 }
 
 export interface HomeRequest {
