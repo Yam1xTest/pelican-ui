@@ -11,24 +11,23 @@ async function HomepageTest({
 }: {
   page: Page,
 }) {
-
   await gotoPage({
     page,
     url: AppRoute.HOME,
   });
-  
+
   await expect(page.getByTestId(`header-popup-button`))
-    .toHaveAttribute('aria-label', 'Открыть меню')
+    .toHaveAttribute(`aria-label`, `Открыть меню`);
 
-    await page.getByTestId(`header-popup-button`)
+  await page.getByTestId(`header-popup-button`)
     .click();
 
-    await expect(page.getByTestId(`header-popup-button`))
-    .toHaveAttribute('aria-label', 'Закрыть меню')
+  await expect(page.getByTestId(`header-popup-button`))
+    .toHaveAttribute(`aria-label`, `Закрыть меню`);
 
-    await page.getByTestId(`header-popup-ticket-button`)
+  await page.getByTestId(`header-popup-ticket-button`)
     .click();
 
-    await expect(page.getByTestId(`tickets-popup-close-button`))
-    .toHaveAttribute('aria-label', 'Закрыть модальное окно с билетами')
+  await expect(page.getByTestId(`tickets-popup-close-button`))
+    .toHaveAttribute(`aria-label`, `Закрыть модальное окно с билетами`);
 }
