@@ -20,6 +20,7 @@ test(`axeCheckUp News Article Page Desktop`, async ({
   await axeCheckAndWriteReport({
     page,
     viewport: `desktop`,
+    pageName: `news-article`,
   });
 });
 
@@ -40,5 +41,6 @@ test(`axeCheckUp News Article Page Mobile`, async ({
   await axeCheckAndWriteReport({
     page,
     viewport: `mobile`,
+    pageName: `news-article`,
   });
 });

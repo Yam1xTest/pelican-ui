@@ -20,6 +20,7 @@ test(`axeCheckUp Documents Categories Page Desktop`, async ({
   await axeCheckAndWriteReport({
     page,
     viewport: `desktop`,
+    pageName: `document-categories`,
   });
 });
 
@@ -40,6 +41,7 @@ test(`axeCheckUp Documents Categories Page Tablet`, async ({
   await axeCheckAndWriteReport({
     page,
     viewport: `tablet`,
+    pageName: `document-categories`,
   });
 });
 
@@ -60,5 +62,6 @@ test(`axeCheckUp Documents Categories Page Mobile`, async ({
   await axeCheckAndWriteReport({
     page,
     viewport: `mobile`,
+    pageName: `document-categories`,
   });
 });

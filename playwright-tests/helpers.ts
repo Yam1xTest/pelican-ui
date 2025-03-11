@@ -94,13 +94,14 @@ export async function hideTextAndMedia({
     .evaluate((element) => element.style.visibility = `hidden`);
 }
 
-
 export async function axeCheckAndWriteReport({
   page,
   viewport,
+  pageName,
 }: {
   page: Page,
-  viewport: string
+  viewport: string,
+  pageName: string,
 }) {
   // @ts-expect-error
   const results = await page.evaluate(() => window.axe.run());
@@ -116,7 +117,7 @@ export async function axeCheckAndWriteReport({
       description: violation.description,
       nodes: violation.nodes.length,
     })));
-    const filePath = `./playwright-tests/axe-reports/axe-report-${viewport}.json`;
+    const filePath = `./playwright-tests/axe-reports/axe-report-${pageName}-${viewport}.json`;
 
     mkdirSync(dirname(filePath), {
       recursive: true,
