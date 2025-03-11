@@ -7,10 +7,10 @@ export async function getGlobalData() {
     `ticketsPopup.generalTickets`,
     `ticketsPopup.subsidizedTicket.categories`,
     `ticketsPopup.subsidizedTicket.button`,
-    `ticketsPopup.accordionVisitingRules.images`,
-    `ticketsPopup.accordionVisitingRules.button`,
-    `ticketsPopup.accordionTicketRefund.refundBody`,
-    `ticketsPopup.accordionTicketRefund.button`,
+    `ticketsPopup.visitingRulesAccordion.images`,
+    `ticketsPopup.visitingRulesAccordion.button`,
+    `ticketsPopup.ticketRefundAccordion.refundBody`,
+    `ticketsPopup.ticketRefundAccordion.button`,
     `ticketsPopup.buyTicketsButton`,
   ];
 

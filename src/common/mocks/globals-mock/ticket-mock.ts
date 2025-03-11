@@ -52,7 +52,7 @@ export const MOCK_TICKETS_POPUP_SUBSIDIZED: GlobalComponentProps['ticketsPopup']
   },
 ];
 
-export const MOCK_TICKETS_POPUP_RULES_IMAGES: GlobalComponentProps['ticketsPopup']['accordionVisitingRules']['images'] = [
+export const MOCK_TICKETS_POPUP_RULES_IMAGES: GlobalComponentProps['ticketsPopup']['visitingRulesAccordion']['images'] = [
   {
     url: `/images/tickets-popup/no-food.png`,
     alternativeText: `Нельзя кормить животных`,
@@ -87,7 +87,7 @@ export const MOCK_TICKETS_POPUP_RULES_IMAGES: GlobalComponentProps['ticketsPopup
   },
 ];
 
-export const MOCK_TICKETS_POPUP_REFUND_REASONS: GlobalComponentProps['ticketsPopup']['accordionTicketRefund']['refundBody'] = [
+export const MOCK_TICKETS_POPUP_REFUND_REASONS: GlobalComponentProps['ticketsPopup']['ticketRefundAccordion']['refundBody'] = [
   {
     id: 0,
     refundReason: `отмены, замены либо переноса оказания услуги по инициативе Зоопарка;`,
@@ -115,14 +115,14 @@ export const MOCK_TICKETS_POPUP: GlobalComponentProps['ticketsPopup'] = {
       link: `https://vk.com/topic-71671982_48253263`,
     },
   },
-  accordionVisitingRules: {
+  visitingRulesAccordion: {
     images: MOCK_TICKETS_POPUP_RULES_IMAGES,
     button: {
       label: `Подробнее о правилах посещения`,
       link: `http://chelzoo.ru/media/articles/2022/05/06/prikaz-221-ot-050522-o-pravilah-posescheniya-2.pdf`,
     },
   },
-  accordionTicketRefund: {
+  ticketRefundAccordion: {
     refundHead: `Возврат билета осуществляется в следующих случаях:`,
     refundBody: MOCK_TICKETS_POPUP_REFUND_REASONS,
     button: {

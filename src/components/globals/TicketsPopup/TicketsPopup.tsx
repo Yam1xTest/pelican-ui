@@ -23,8 +23,8 @@ export function TicketsPopup({
     generalTicketsLink,
     generalTickets,
     subsidizedTicket,
-    accordionVisitingRules,
-    accordionTicketRefund,
+    visitingRulesAccordion,
+    ticketRefundAccordion,
     buyTicketsButton,
     note,
   } = ticketsPopup;
@@ -139,17 +139,17 @@ export function TicketsPopup({
               >
                 <TicketsPopupRulesList
                   className="tickets-popup__rules-list"
-                  ticketsPopupRulesImages={accordionVisitingRules.images}
+                  ticketsPopupRulesImages={visitingRulesAccordion.images}
                 />
                 <Link
                   className="tickets-popup__more-link button button--secondary"
                   // TODO: Change path when the page appears
-                  href={accordionVisitingRules.button.link}
+                  href={visitingRulesAccordion.button.link}
                   // TODO: Remove when the page appears
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {accordionVisitingRules.button.label}
+                  {visitingRulesAccordion.button.label}
                 </Link>
               </Accordion>
               <Accordion
@@ -159,20 +159,20 @@ export function TicketsPopup({
               >
                 <div className="tickets-popup__refund">
                   <div className="tickets-popup__refund-head">
-                    {accordionTicketRefund.refundHead}
+                    {ticketRefundAccordion.refundHead}
                   </div>
                   <TicketsPopupRefundReasons
-                    ticketsPopupRefundReasons={accordionTicketRefund.refundBody}
+                    ticketsPopupRefundReasons={ticketRefundAccordion.refundBody}
                     className="tickets-popup__refund-reasons"
                   />
                   <Link
                     className="tickets-popup__more-link button button--secondary"
-                    href={accordionTicketRefund.button.link}
+                    href={ticketRefundAccordion.button.link}
                     // TODO: Remove when the page appears
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {accordionTicketRefund.button.label}
+                    {ticketRefundAccordion.button.label}
                   </Link>
                 </div>
               </Accordion>
