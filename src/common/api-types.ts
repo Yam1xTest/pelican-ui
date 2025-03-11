@@ -955,6 +955,11 @@ export interface DocumentsPageRequest {
   };
 }
 
+export interface DocumentsPageResponse {
+  data?: DocumentsPage;
+  meta?: object;
+}
+
 export interface HeaderRequest {
   data: {
     ticketsPopup: TicketsPopupTicketsPopupComponent;
