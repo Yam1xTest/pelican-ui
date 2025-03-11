@@ -3,7 +3,7 @@ import clsx from "clsx";
 import Image from 'next/image';
 
 type TicketsPopupRulesListProps = {
-  ticketsPopupRulesImages: GlobalComponentProps['ticketsPopup']['accordionVisitingRules']['images'];
+  ticketsPopupRulesImages: GlobalComponentProps['ticketsPopup']['visitingRulesAccordion']['images'];
   className?: string;
 };
 

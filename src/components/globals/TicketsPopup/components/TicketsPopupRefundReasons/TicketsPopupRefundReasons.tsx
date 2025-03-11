@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { PropsWithChildren } from "react";
 
 type TicketsPopupCardProps = PropsWithChildren & {
-  ticketsPopupRefundReasons: GlobalComponentProps['ticketsPopup']['accordionTicketRefund']['refundBody'];
+  ticketsPopupRefundReasons: GlobalComponentProps['ticketsPopup']['ticketRefundAccordion']['refundBody'];
   className?: string;
 };
 
