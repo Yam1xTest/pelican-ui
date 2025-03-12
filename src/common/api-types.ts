@@ -955,6 +955,19 @@ export interface DocumentsPageRequest {
   };
 }
 
+export interface DocumentsPageResponse {
+  data?: DocumentsPage;
+  meta?: object;
+}
+
+export interface HeaderRequest {
+  data: {
+    ticketsPopup: TicketsPopupTicketsPopupComponent;
+    locale?: string;
+    localizations?: (number | string)[];
+  };
+}
+
 export interface DocumentsPageListResponse {
   data?: DocumentsPage[];
   meta?: {
@@ -1016,9 +1029,172 @@ export interface DocumentsPage {
   }[];
 }
 
-export interface DocumentsPageResponse {
-  data?: DocumentsPage;
+export interface HeaderRequest {
+  data: {
+    ticketsPopup: TicketsPopupTicketsPopupComponent;
+    locale?: string;
+    localizations?: (number | string)[];
+  };
+}
+
+export interface HeaderListResponse {
+  data?: Header[];
+  meta?: {
+    pagination?: {
+      page?: number;
+      /** @min 25 */
+      pageSize?: number;
+      /** @max 1 */
+      pageCount?: number;
+      total?: number;
+    };
+  };
+}
+
+export interface Header {
+  id?: number;
+  documentId?: string;
+  ticketsPopup: TicketsPopupTicketsPopupComponent;
+  /** @format date-time */
+  createdAt?: string;
+  /** @format date-time */
+  updatedAt?: string;
+  /** @format date-time */
+  publishedAt?: string;
+  createdBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  updatedBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  locale?: string;
+  localizations?: {
+    id?: number;
+    documentId?: string;
+    ticketsPopup?: TicketsPopupTicketsPopupComponent;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  }[];
+}
+
+export interface HeaderResponse {
+  data?: Header;
   meta?: object;
+}
+
+export interface TicketsPopupShortenedTicketComponent {
+  id?: number;
+  category?: string;
+  price?: string;
+  description?: string;
+}
+
+export interface TicketsPopupCategoryComponent {
+  id?: number;
+  category?: string;
+  price?: string;
+}
+
+export interface TicketsPopupAccordionTicketComponent {
+  id?: number;
+  category?: string;
+  description?: string;
+  categories?: TicketsPopupCategoryComponent[];
+  button?: ButtonButtonComponent;
+}
+
+export interface TicketsPopupVisitingRulesAccordionComponent {
+  id?: number;
+  images?: {
+    id?: number;
+    documentId?: string;
+    name?: string;
+    alternativeText?: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+    formats?: any;
+    hash?: string;
+    ext?: string;
+    mime?: string;
+    /** @format float */
+    size?: number;
+    url?: string;
+    previewUrl?: string;
+    provider?: string;
+    provider_metadata?: any;
+    related?: {
+      id?: number;
+      documentId?: string;
+    }[];
+    folder?: {
+      id?: number;
+      documentId?: string;
+    };
+    folderPath?: string;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  }[];
+  button?: ButtonButtonComponent;
+}
+
+export interface TicketsPopupRefundListItemComponent {
+  id?: number;
+  refundReason?: string;
+}
+
+export interface TicketsPopupTicketRefundAccordionComponent {
+  id?: number;
+  refundHead?: string;
+  refundBody?: TicketsPopupRefundListItemComponent[];
+  button?: ButtonButtonComponent;
+}
+
+export interface TicketsPopupTicketsPopupComponent {
+  id?: number;
+  generalTicketsLink?: string;
+  generalTickets?: TicketsPopupShortenedTicketComponent[];
+  subsidizedTicket?: TicketsPopupAccordionTicketComponent;
+  buyTicketsButton?: ButtonButtonComponent;
+  note?: string;
+  visitingRulesAccordion?: TicketsPopupVisitingRulesAccordionComponent;
+  ticketRefundAccordion?: TicketsPopupTicketRefundAccordionComponent;
 }
 
 export interface HomeRequest {
