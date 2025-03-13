@@ -43,7 +43,6 @@ async function mobileTest({
 }) {
   await setViewportSize({
     page,
-    height: 196,
   });
 
   await expect(getCookieByTestId({
@@ -60,7 +59,6 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
-    height: 92,
   });
 
   await expect(getCookieByTestId({
@@ -77,7 +75,6 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
-    height: 123,
   });
 
   await expect(getCookieByTestId({
@@ -94,7 +91,6 @@ async function desktopTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
-    height: 98,
   });
 
   await expect(getCookieByTestId({
@@ -111,7 +107,6 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 136,
   });
 
   await expect(getCookieByTestId({
