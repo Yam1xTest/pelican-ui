@@ -1,0 +1,129 @@
+import { AppRoute, Breakpoint } from '@/src/common/enum';
+import {
+  gotoPage,
+  hideHeader,
+  hideSkipLink,
+  setViewportSize,
+} from '@/playwright-tests/helpers';
+import { test, expect, Page } from '@playwright/test';
+
+test.describe(`CookieTests`, () => {
+  test.beforeEach(async ({
+    page,
+  }) => {
+    await gotoPage({
+      page,
+      url: AppRoute.INTERNAL_TEST_PAGE,
+    });
+
+    await hideHeader({
+      page,
+    });
+
+    await hideSkipLink({
+      page,
+    });
+  });
+
+  test(`MobileTest`, mobileTest);
+
+  test(`TabletTest`, tabletTest);
+
+  test(`TabletXlTest`, tabletXlTest);
+
+  test(`DesktopTest`, desktopTest);
+
+  test(`DesktopXlTest`, desktopXlTest);
+});
+
+async function mobileTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    height: 196,
+  });
+
+  await expect(getCookieByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`cookie-mobile.png`);
+}
+
+async function tabletTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.TABLET,
+    height: 92,
+  });
+
+  await expect(getCookieByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`cookie-tablet.png`);
+}
+
+async function tabletXlTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.TABLET_XL,
+    height: 123,
+  });
+
+  await expect(getCookieByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`cookie-tablet-xl.png`);
+}
+
+async function desktopTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP,
+    height: 98,
+  });
+
+  await expect(getCookieByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`cookie-desktop.png`);
+}
+
+async function desktopXlTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP_XL,
+    height: 136,
+  });
+
+  await expect(getCookieByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`cookie-desktop-xl.png`);
+}
+
+function getCookieByTestId({
+  page,
+}: {
+  page: Page
+}) {
+  return page.getByTestId(`cookie`);
+}
