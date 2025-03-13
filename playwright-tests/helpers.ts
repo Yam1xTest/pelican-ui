@@ -111,6 +111,7 @@ export async function axeCheckAndWriteReport({
   } = results;
 
   if (violations.length > 0) {
+    // eslint-disable-next-line no-console
     console.table(violations.map((violation: any) => ({
       id: violation.id,
       impact: violation.impact,
@@ -127,6 +128,7 @@ export async function axeCheckAndWriteReport({
 
     throw new Error(`Accessibility violations found: ${violations.length}`);
   } else {
+    // eslint-disable-next-line no-console
     console.log(`No accessibility violations found.`);
   }
 }
