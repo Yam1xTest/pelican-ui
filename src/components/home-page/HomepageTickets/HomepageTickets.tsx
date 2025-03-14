@@ -1,5 +1,5 @@
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
-import { TicketsComponentProps } from "@/src/common/types";
+import { HomeTicketsComponentProps } from "@/src/common/types";
 import Link from "next/link";
 import { TicketCard } from "../../globals/TicketCard/TicketCard";
 
@@ -11,7 +11,7 @@ export function HomepageTickets({
   subsidizedTicketsDescription,
   subsidizedTickets,
   subsidizedTicketsLink,
-}: Omit<TicketsComponentProps, 'id' | '__component'>) {
+}: Omit<HomeTicketsComponentProps, 'id' | '__component'>) {
   const {
     isTablet,
     isMobile,

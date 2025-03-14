@@ -12,7 +12,7 @@ export function HeroSchedule({
   className: string,
   scheduleTitle: HeroComponentProps['scheduleTitle'],
   scheduleTimetables: HeroComponentProps['scheduleTimetables'],
-  isInternalPage: HeroComponentProps['isInternalPage'],
+  isInternalPage?: boolean,
 }) {
   const {
     isTablet,

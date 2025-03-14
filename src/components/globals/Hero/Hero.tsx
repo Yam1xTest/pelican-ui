@@ -8,6 +8,10 @@ import Link from "next/link";
 import { HeroSchedule } from "./components/HeroSchedule/HeroSchedule";
 import { HeroInfoCard } from "./components/HeroInfoCard/HeroInfoCard";
 
+type HeroProps = Omit<HeroComponentProps, 'id' | '__component'> & Partial<Pick<GlobalComponentProps, 'email'>> & {
+  isInternalPage?: boolean
+};
+
 export function Hero({
   title,
   scheduleTitle,
@@ -19,7 +23,7 @@ export function Hero({
   email,
   isFirstBlock,
   isLastBlock,
-}: Omit<HeroComponentProps, 'id' | '__component'> & Partial<Pick<GlobalComponentProps, 'email'>>) {
+}: HeroProps) {
   const {
     isMobile,
     isTablet,

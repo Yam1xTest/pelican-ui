@@ -2,6 +2,40 @@ import { StaticImageData } from "next/image";
 import { BlockTypes } from "./enum";
 import { HomeServicesComponent, SharedHeroComponent, SharedSeoComponent } from "./api-types";
 
+// Page
+
+export type HomePageProps = {
+  seo: Seo,
+  blocks: (
+    HeroComponentProps
+    | TextAndMediaComponentProps
+    | ServicesComponentProps
+    | ImageWithButtonGridComponentProps
+    | MapComponentProps
+    | HomeTicketsComponentProps
+  )[],
+};
+
+export type ContactZooPageProps = {
+  seo: Seo,
+  blocks: (
+    HeroComponentProps
+    | SharedTicketsComponentProps
+  )[];
+};
+
+export type NewsPageProps = {
+  newsTitle: string;
+  seo?: Seo,
+};
+
+export type DocumentsPageProps = {
+  documentsTitle: string;
+  seo?: Seo,
+};
+
+// Component
+
 export type GlobalComponentProps = {
   navigationLinks: {
     id: number;
@@ -97,8 +131,6 @@ export type HeroComponentProps = {
   scheduleTimetables: Timetable[],
   infoCardTitle?: string,
   infoCardDescription: string,
-  // todo move to component level?
-  isInternalPage?: boolean
 } & BlockPosition;
 
 export type Timetable = {
@@ -122,8 +154,23 @@ export type TextAndMediaComponentProps = {
   viewFootsteps: boolean,
 } & BlockPosition;
 
-export type ServicesComponentProps = Omit<CardsComponentProps, '__component'> & {
+export type ArticleComponentProps = Omit<NewsArticleProps, 'id' | 'date' | 'link' | 'labels'> & {
+  __component: BlockTypes.SHARED_ARTICLE;
+} & BlockPosition;
+
+export type NewsArticleProps = CardProps & {
+  slug: string;
+  innerContent: string;
+  publishedAt?: string;
+  date?: string;
+  seo?: Seo;
+};
+
+export type ServicesComponentProps = {
+  id: number,
   __component: BlockTypes.HOME_SERVICES
+  title: string,
+  cards: CardProps[],
   phone: string,
   email: string,
 };
@@ -168,26 +215,6 @@ export type MapComponentProps = {
   image: Image,
 };
 
-export type HomePageProps = {
-  seo: Seo,
-  blocks: (
-    HeroComponentProps
-    | TextAndMediaComponentProps
-    | ServicesComponentProps
-    | ImageWithButtonGridComponentProps
-    | MapComponentProps
-    | TicketsComponentProps
-  )[],
-};
-
-export type ContactZooPageProps = {
-  seo: Seo,
-  blocks: (
-    HeroComponentProps
-    | SharedTicketsComponentProps
-  )[];
-};
-
 export type NotFoundComponentProps = {
   id: number,
   __component: BlockTypes.NOT_FOUND,
@@ -203,16 +230,16 @@ export type SharedTicketsComponentProps = {
   note?: string,
 } & BlockPosition;
 
-export type TicketsComponentProps = {
+export type HomeTicketsComponentProps = {
   id: number
   __component: BlockTypes.HOME_TICKETS,
   generalTicketsTitle: string,
   generalTickets: Ticket[],
   generalTicketsLink: string,
-  subsidizedTicketsTitle: string,
-  subsidizedTicketsDescription?: string,
   subsidizedTickets: Ticket[],
   subsidizedTicketsLink: string,
+  subsidizedTicketsTitle: string,
+  subsidizedTicketsDescription?: string,
   isInternalPage?: boolean,
   contactZooNote?: string,
 };
@@ -220,32 +247,10 @@ export type TicketsComponentProps = {
 export type Ticket = {
   id: number,
   category: string,
-  description?: string,
   price: string,
+  description?: string,
   frequency?: string,
   theme?: `Зелёный` | `Коричневый`,
-};
-
-export type NewsPageProps = {
-  newsTitle: string;
-  seo?: Seo,
-};
-
-export type NewsArticleProps = CardProps & {
-  slug: string;
-  publishedAt?: string;
-  innerContent: string;
-  date?: string;
-  seo?: Seo;
-};
-
-export type ArticleComponentProps = Omit<NewsArticleProps, 'id' | 'date' | 'link' | 'labels'> & {
-  __component: BlockTypes.SHARED_ARTICLE;
-} & BlockPosition;
-
-export type DocumentsPageProps = {
-  documentsTitle: string;
-  seo?: Seo,
 };
 
 export type DocumentsTabsProps = {
@@ -253,27 +258,11 @@ export type DocumentsTabsProps = {
   availableYears: number[],
 };
 
-export type CategoryProps = {
-  id: string | number,
-  slug: string,
-  title: string,
-  pageUrl: string,
-  hasTabs: boolean,
-  seo?: Seo,
-};
-
 export type CategoriesComponentProps = {
   id: number,
   __component: BlockTypes.SHARED_CATEGORIES,
   categoriesTitle: string,
   categories: Omit<CategoryProps, 'hasTabs'>[],
-};
-
-export type DocumentFileProps = {
-  id: number,
-  name: string,
-  url: string,
-  ext: string,
 };
 
 export type DocumentsProps = {
@@ -289,6 +278,24 @@ export type DocumentsProps = {
   }
 };
 
+export type DocumentFileProps = {
+  id: number,
+  name: string,
+  url: string,
+  ext: string,
+};
+
+export type CategoryProps = {
+  id: string | number,
+  slug: string,
+  title: string,
+  pageUrl: string,
+  hasTabs: boolean,
+  seo?: Seo,
+};
+
+// Shared
+
 export type Block = SharedHeroComponent | HomeServicesComponent;
 
 export type PageData = {
@@ -298,7 +305,13 @@ export type PageData = {
   }
 };
 
-export type BlockPosition = {
+export type Seo = {
+  metaTitle: string,
+  metaDescription?: string,
+  metaKeywords?: string,
+};
+
+type BlockPosition = {
   isFirstBlock?: boolean,
   isLastBlock?: boolean
 };
@@ -306,10 +319,4 @@ export type BlockPosition = {
 type Image = {
   url: StaticImageData | string;
   alternativeText: string;
-};
-
-export type Seo = {
-  metaTitle: string,
-  metaDescription?: string,
-  metaKeywords?: string,
 };
