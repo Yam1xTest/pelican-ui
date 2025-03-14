@@ -1,5 +1,7 @@
 import { Breakpoint } from "@/src/common/enum";
 import { Page } from "@playwright/test";
+import { mkdirSync, writeFileSync } from "fs";
+import { dirname } from "path";
 
 export async function gotoPage({
   page,
@@ -90,4 +92,43 @@ export async function hideTextAndMedia({
 }) {
   await page.getByTestId(`text-and-media`)
     .evaluate((element) => element.style.visibility = `hidden`);
+}
+
+export async function axeCheckAndWriteReport({
+  page,
+  viewport,
+  pageName,
+}: {
+  page: Page,
+  viewport: string,
+  pageName: string,
+}) {
+  // @ts-expect-error
+  const results = await page.evaluate(() => window.axe.run());
+
+  const {
+    violations,
+  } = results;
+
+  if (violations.length > 0) {
+    // eslint-disable-next-line no-console
+    console.table(violations.map((violation: any) => ({
+      id: violation.id,
+      impact: violation.impact,
+      description: violation.description,
+      nodes: violation.nodes.length,
+    })));
+    const filePath = `./playwright-tests/axe-reports/axe-report-${pageName}-${viewport}.json`;
+
+    mkdirSync(dirname(filePath), {
+      recursive: true,
+    });
+
+    writeFileSync(filePath, JSON.stringify(violations, null, 2));
+
+    throw new Error(`Accessibility violations found: ${violations.length}`);
+  } else {
+    // eslint-disable-next-line no-console
+    console.log(`No accessibility violations found.`);
+  }
 }

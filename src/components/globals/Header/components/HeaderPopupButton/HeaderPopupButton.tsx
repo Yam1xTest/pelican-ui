@@ -17,7 +17,7 @@ export function HeaderPopupButton({
       })}
       data-testid="header-popup-button"
       onClick={handleToggle}
-      aria-label={`${isActive ? `Закрыть меню` : `Открыть меню`} `}
+      aria-label={`${isActive ? `Закрыть меню` : `Открыть меню`}`}
     >
       <span />
     </button>
