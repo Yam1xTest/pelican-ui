@@ -253,11 +253,6 @@ export type Ticket = {
   theme?: `Зелёный` | `Коричневый`,
 };
 
-export type DocumentsTabsProps = {
-  queryYear: string,
-  availableYears: number[],
-};
-
 export type CategoriesComponentProps = {
   id: number,
   __component: BlockTypes.SHARED_CATEGORIES,
@@ -294,7 +289,10 @@ export type CategoryProps = {
   seo?: Seo,
 };
 
-// Shared
+export type DocumentsTabsProps = {
+  queryYear: string,
+  availableYears: number[],
+};
 
 export type Block = SharedHeroComponent | HomeServicesComponent;
 
