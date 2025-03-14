@@ -25,6 +25,8 @@ test.describe(`CookieTests`, () => {
     });
   });
 
+  test(`ActionTest`, actionTest);
+
   test(`MobileTest`, mobileTest);
 
   test(`TabletTest`, tabletTest);
@@ -35,6 +37,27 @@ test.describe(`CookieTests`, () => {
 
   test(`DesktopXlTest`, desktopXlTest);
 });
+
+async function actionTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+  });
+
+  await page.getByTestId(`cookie-button`)
+    .click();
+
+  await expect(page.getByTestId(`cookie`))
+    .toBeHidden;
+
+  await page.reload();
+
+  await expect(page.getByTestId(`cookie`))
+    .toBeHidden;
+}
 
 async function mobileTest({
   page,

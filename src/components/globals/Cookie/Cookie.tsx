@@ -47,6 +47,7 @@ function Cookie() {
           className="cookie__accept"
           theme="primary"
           onClick={acceptCookie}
+          data-testid="cookie-button"
         >
           {MOCK_COOKIE_BUTTON_TEXT}
         </Button>
