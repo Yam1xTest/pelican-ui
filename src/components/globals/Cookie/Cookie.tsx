@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getCookie, setCookie } from 'cookies-next';
 import Link from 'next/link';
+import {
+  MOCK_COOKIE_BUTTON_TEXT,
+  MOCK_COOKIE_LINK,
+  MOCK_COOKIE_LINK_TEXT,
+  MOCK_COOKIE_TEXT,
+} from '@/src/common/mocks/globals-mock/cookies-mock';
 import { Button } from '../Button/Button';
 
 const cookieAccept = `cookieAccept`;
@@ -27,21 +33,22 @@ function Cookie() {
     >
       <div className="cookie__inner">
         <div className="cookie__text">
-          Мы обрабатываем Cookies для аналитики и маркетинга, чтобы вам было удобно пользоваться нашим веб-сайтом. Пожалуйста, ознакомьтесь с
+          {MOCK_COOKIE_TEXT}
           <Link
-            href="#"
+            href={MOCK_COOKIE_LINK}
             className="cookie__link text-link"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Политикой использования Cookies
+            {MOCK_COOKIE_LINK_TEXT}
           </Link>
         </div>
-
         <Button
           className="cookie__accept"
           theme="primary"
           onClick={acceptCookie}
         >
-          Хорошо
+          {MOCK_COOKIE_BUTTON_TEXT}
         </Button>
       </div>
     </div>
