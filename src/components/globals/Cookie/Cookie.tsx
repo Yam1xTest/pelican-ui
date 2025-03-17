@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 import { getCookie, setCookie } from 'cookies-next';
-import { MOCK_COOKIE_BUTTON_TEXT, MOCK_COOKIE_TEXT } from '@/src/common/mocks/globals-mock/cookies-mock';
 import { Button } from '../Button/Button';
 
-const cookieAccept = `cookieAccept`;
+const COOKIE_ACCEPT = `cookieAccept`;
+const MOCK_COOKIE_TEXT = `Мы обрабатываем Cookies для аналитики и маркетинга, чтобы вам было удобно пользоваться нашим веб-сайтом.`;
+const MOCK_COOKIE_BUTTON_TEXT = `Хорошо`;
 
 function Cookie() {
   const [isCookie, setIsCookie] = useState(true);
 
   useEffect(() => {
-    if (getCookie(cookieAccept) === `true`) {
+    if (getCookie(COOKIE_ACCEPT) === `true`) {
       setIsCookie(true);
     } else {
       setIsCookie(false);
@@ -47,7 +48,7 @@ function Cookie() {
   );
 
   function acceptCookie() {
-    setCookie(cookieAccept, true);
+    setCookie(COOKIE_ACCEPT, true);
     setIsCookie(true);
   }
 }
