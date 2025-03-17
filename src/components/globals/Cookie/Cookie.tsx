@@ -30,9 +30,14 @@ function Cookie() {
     <div
       className="cookie"
       data-testid="cookie"
+      role="region"
+      aria-labelledby="cookie-text"
     >
       <div className="cookie__inner">
-        <div className="cookie__text">
+        <div
+          className="cookie__text"
+          id="cookie-text"
+        >
           {MOCK_COOKIE_TEXT}
           <Link
             href={MOCK_COOKIE_LINK}
