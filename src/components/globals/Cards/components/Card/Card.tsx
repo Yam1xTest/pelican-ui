@@ -13,10 +13,12 @@ export function Card({
   description,
   dataTestId,
   firstCardRef,
+  isNews,
 }: Omit<CardProps, 'id'> & {
   className: string;
   dataTestId?: string;
   firstCardRef?: Ref<HTMLAnchorElement>
+  isNews: boolean,
 }) {
   return (
     <li
@@ -38,6 +40,7 @@ export function Card({
             image,
             labels,
             isLink: true,
+            isNews,
           })}
         </Link>
       ) : renderCardMarkup({
@@ -45,6 +48,7 @@ export function Card({
         description,
         image,
         labels,
+        isNews,
       })}
     </li>
   );
@@ -56,12 +60,14 @@ function renderCardMarkup({
   image,
   isLink,
   labels,
+  isNews,
 }: {
   title: CardProps['title'],
   description: CardProps['description'],
   image: CardProps['image']
   isLink?: boolean,
-  labels: CardProps['labels']
+  labels: CardProps['labels'],
+  isNews?: boolean,
 }) {
   return (
     <div className={clsx(`card__wrapper`, {
@@ -69,9 +75,19 @@ function renderCardMarkup({
     })}
     >
       <div className="card__info">
-        <h2 className="card__title">
-          {title}
-        </h2>
+        {
+          isNews
+            ? (
+              <h2 className="card__title">
+                {title}
+              </h2>
+            )
+            : (
+              <h3 className="card__title">
+                {title}
+              </h3>
+            )
+        }
         {description && (
           <p className="card__description">
             {description}
