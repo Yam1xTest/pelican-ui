@@ -63,6 +63,8 @@ a {
   transform: translateZ(0);
   transition: opacity 0.3s linear, visibility 0.3s linear;
   backdrop-filter: blur(4px);
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-backdrop-filter: blur(4px);
   inset: 0;
   will-change: transform;
 
