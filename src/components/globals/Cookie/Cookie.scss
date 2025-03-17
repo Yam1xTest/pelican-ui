@@ -50,12 +50,6 @@
     }
   }
 
-  &__link {
-    margin-left: 5px;
-    font-family: inherit;
-    font-size: inherit;
-  }
-
   &__accept {
     @include medium-font;
 
@@ -86,15 +80,15 @@
   }
 
   @include desktop {
-    margin: 0 40px;
+    left: 50%;
+    margin: 0;
+    width: 100%;
+    max-width: 1286px;
+    transform: translate(-50%, 0);
   }
 
   @include desktop-xl {
-    left: 50%;
-    margin: 0 auto;
     padding: 32px 40px;
-    width: 100%;
     max-width: 1792px;
-    transform: translate(-50%, -50%);
   }
 }
