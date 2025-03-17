@@ -10,7 +10,7 @@ export function HeroInfoCard({
   className: string,
   infoCardTitle?: HeroComponentProps['infoCardTitle'],
   infoCardDescription: HeroComponentProps['infoCardDescription'],
-  isInternalPage: HeroComponentProps['isInternalPage'],
+  isInternalPage?: boolean,
 }) {
   return (
     <div className={clsx(

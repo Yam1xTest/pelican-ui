@@ -1,4 +1,4 @@
-import { HeroComponentProps, Timetable } from "@/src/common/types";
+import { Timetable } from "@/src/common/types";
 import clsx from "clsx";
 
 export function ScheduleTimetable({
@@ -8,7 +8,7 @@ export function ScheduleTimetable({
 }: {
   className: string,
   scheduleTimetable: Timetable,
-  isInternalPage: HeroComponentProps['isInternalPage'],
+  isInternalPage?: boolean,
 }) {
   return (
     <li className={clsx(
