@@ -6,7 +6,7 @@ import {
   TextAndMediaComponentProps,
   CardsComponentProps,
   MapComponentProps,
-  TicketsComponentProps,
+  HomeTicketsComponentProps,
   NotFoundComponentProps,
   ServicesComponentProps,
   ImageWithButtonGridComponentProps,
@@ -102,7 +102,7 @@ type Block = HeroComponentProps
   | ServicesComponentProps
   | ImageWithButtonGridComponentProps
   | MapComponentProps
-  | TicketsComponentProps
+  | HomeTicketsComponentProps
   | NotFoundComponentProps
   | CategoriesComponentProps
   | ArticleComponentProps;

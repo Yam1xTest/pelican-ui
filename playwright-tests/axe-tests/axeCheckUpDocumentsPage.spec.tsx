@@ -11,7 +11,7 @@ test(`axeCheckUp Documents Page Desktop`, async ({
     width: Breakpoint.DESKTOP,
   });
 
-  await page.goto(`${AppRoute.DOCUMENTS}/1?year=2025`);
+  await page.goto(`${AppRoute.DOCUMENTS}/otchety?year=2025`);
 
   await page.addScriptTag({
     path: require.resolve(`axe-core/axe.min.js`),
@@ -32,7 +32,7 @@ test(`axeCheckUp Documents Page Tablet`, async ({
     width: Breakpoint.TABLET,
   });
 
-  await page.goto(`${AppRoute.DOCUMENTS}/1?year=2025`);
+  await page.goto(`${AppRoute.DOCUMENTS}/otchety?year=2025`);
 
   await page.addScriptTag({
     path: require.resolve(`axe-core/axe.min.js`),
@@ -53,7 +53,7 @@ test(`axeCheckUp Documents Page Mobile`, async ({
     width: Breakpoint.MOBILE,
   });
 
-  await page.goto(`${AppRoute.DOCUMENTS}/1?year=2025`);
+  await page.goto(`${AppRoute.DOCUMENTS}/otchety?year=2025`);
 
   await page.addScriptTag({
     path: require.resolve(`axe-core/axe.min.js`),

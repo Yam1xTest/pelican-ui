@@ -1,7 +1,7 @@
 import { BlockTypes } from "../../../enum";
-import { TicketsComponentProps } from '../../../types';
+import { HomeTicketsComponentProps } from '../../../types';
 
-export const MOCK_TICKETS: TicketsComponentProps = {
+export const MOCK_HOME_TICKETS: HomeTicketsComponentProps = {
   id: 5,
   __component: BlockTypes.HOME_TICKETS,
   generalTicketsTitle: `Входные билеты`,
