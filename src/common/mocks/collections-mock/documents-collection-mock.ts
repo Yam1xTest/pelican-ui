@@ -10,7 +10,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       {
         id: 1,
         name: `Протокол закупки №31907985526`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
     ],
@@ -31,7 +31,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       {
         id: 2,
         name: `Договор №350474`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
     ],
@@ -49,7 +49,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       {
         id: 3,
         name: `Отчёт о выполнении муниципального задания за 2022г.`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
     ],
@@ -66,19 +66,19 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       {
         id: 4,
         name: `Протокол 1.pdf`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
       {
         id: 5,
         name: `Протокол закупки (копия).pdf`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
       {
         id: 6,
         name: `Скрин.pdf`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
     ],
@@ -95,7 +95,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       {
         id: 7,
         name: `Протокол закупки №7731263`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
     ],
@@ -112,7 +112,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       {
         id: 8,
         name: `Протокол закупки №55667788`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
     ],
@@ -129,7 +129,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       {
         id: 1,
         name: `Протокол закупки №7136268618317`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
     ],
@@ -146,7 +146,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       {
         id: 1,
         name: `Протокол закупки №8143788742`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
     ],
@@ -163,7 +163,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       {
         id: 1,
         name: `Протокол закупки №9183298193`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
     ],
@@ -180,7 +180,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       {
         id: 1,
         name: `Протокол закупки №928194129847218`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
     ],
@@ -197,7 +197,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       {
         id: 1,
         name: `Протокол закупки №8719479174917`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
     ],
@@ -214,7 +214,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       {
         id: 1,
         name: `Протокол закупки №94193049184`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
     ],
@@ -231,7 +231,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       {
         id: 1,
         name: `Протокол закупки №948913849`,
-        url: `/public/documents/Protocol.pdf`,
+        url: `/documents/Protocol.pdf`,
         ext: `.pdf`,
       },
     ],
