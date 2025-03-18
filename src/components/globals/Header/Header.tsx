@@ -18,6 +18,7 @@ const HeaderPopup = dynamic(
 );
 
 type HeaderProps = Pick<GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
+  layoutElementRef: MutableRefObject<null | HTMLElement>,
   overlayElementRef: MutableRefObject<null | HTMLElement>,
   mainElementRef: MutableRefObject<null | HTMLElement>,
   footerElementRef: MutableRefObject<null | HTMLElement>,
@@ -31,6 +32,7 @@ export function Header({
   phone,
   popupTicketBuyText,
   overlayElementRef,
+  layoutElementRef,
   mainElementRef,
   footerElementRef,
   isMobileMenuOpen,
@@ -45,6 +47,7 @@ export function Header({
 
   useEffect(() => {
     const overlayElement = overlayElementRef.current!;
+    const layoutElement = layoutElementRef.current!;
     const mainElement = mainElementRef.current!;
     const footerElement = footerElementRef.current!;
 
@@ -52,12 +55,14 @@ export function Header({
       overlayElement.classList.add(`is-visible`);
       mainElement.setAttribute(`inert`, `true`);
       footerElement.setAttribute(`inert`, `true`);
+      layoutElement.classList.add(`is-modal-open`);
     }
 
     return () => {
       overlayElement.classList.remove(`is-visible`);
       mainElement.removeAttribute(`inert`);
       footerElement.removeAttribute(`inert`);
+      layoutElement.classList.remove(`is-modal-open`);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobileMenuOpen]);

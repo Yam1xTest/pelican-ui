@@ -3,7 +3,7 @@ import '../styles/index.scss';
 import type { AppProps } from 'next/app';
 import localFont from "next/font/local";
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Layout } from '../components/globals/Layout/Layout';
 import { NotFound } from '../components/not-found-page/NotFound/NotFound';
 import { WindowWidthProvider } from '../common/providers/WindowWidthProvider';
@@ -57,6 +57,8 @@ export default function App({
     query,
   } = useRouter();
 
+  const layoutElementRef = useRef<null | HTMLDivElement>(null);
+
   useEffect(() => {
     if (!query?.pageSize) {
       document.body.scroll({
@@ -91,6 +93,7 @@ export default function App({
       <TicketPopupProvider>
         <div className={inter.variable}>
           <Layout
+            layoutElementRef={layoutElementRef}
             navigationLinks={navigationLinks}
             officialLinks={officialLinks}
             footerAboutLinks={footerAboutLinks}

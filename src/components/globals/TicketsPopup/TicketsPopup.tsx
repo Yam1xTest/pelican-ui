@@ -16,8 +16,11 @@ import { TicketsPopupRefundReasons } from './components/TicketsPopupRefundReason
 export function TicketsPopup({
   ticketsPopup,
   overlayElementRef,
+  layoutElementRef,
 }: Pick<GlobalComponentProps, "ticketsPopup"> & {
   overlayElementRef: MutableRefObject<null | HTMLElement>
+} & {
+  layoutElementRef: MutableRefObject<null | HTMLElement>
 }) {
   const {
     generalTicketsLink,
@@ -36,15 +39,18 @@ export function TicketsPopup({
 
   useEffect(() => {
     const overlayElement = overlayElementRef.current!;
+    const layoutElement = layoutElementRef.current!;
 
     if (isTicketPopupActive) {
       overlayElement.classList.add(`is-visible`);
       overlayElement.classList.add(`is-header-hidden`);
+      layoutElement.classList.add(`is-modal-open`);
     }
 
     return () => {
       overlayElement.classList.remove(`is-visible`);
       overlayElement.classList.remove(`is-header-hidden`);
+      layoutElement.classList.remove(`is-modal-open`);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTicketPopupActive]);
