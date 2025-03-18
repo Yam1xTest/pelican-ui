@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import {
-  MutableRefObject,
   PropsWithChildren,
   useCallback,
   useContext,
@@ -21,7 +20,6 @@ import { SkipLink } from '../SkipLink/SkipLink';
 type LayoutProps = GlobalComponentProps & PropsWithChildren;
 
 export function Layout({
-  layoutElementRef,
   children,
   email,
   phone,
@@ -34,10 +32,7 @@ export function Layout({
   footerNavTitleRight,
   ticketsPopup,
 }: {
-} & LayoutProps
-& {
-  layoutElementRef: MutableRefObject<null | HTMLDivElement>
-}) {
+} & LayoutProps) {
   const {
     pathname,
   } = useRouter();
@@ -88,7 +83,6 @@ export function Layout({
   return (
     <div
       className="layout"
-      ref={layoutElementRef}
     >
       <SkipLink
         mainElementRef={mainElementRef}
@@ -98,7 +92,6 @@ export function Layout({
         email={email}
         phone={phone}
         popupTicketBuyText={popupTicketBuyText}
-        layoutElementRef={layoutElementRef}
         overlayElementRef={overlayElementRef}
         mainElementRef={mainElementRef}
         footerElementRef={footerElementRef}
@@ -107,7 +100,6 @@ export function Layout({
       />
       <TicketsPopup
         ticketsPopup={ticketsPopup}
-        layoutElementRef={layoutElementRef}
         overlayElementRef={overlayElementRef}
       />
       <main

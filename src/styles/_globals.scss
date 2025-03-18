@@ -6,6 +6,10 @@ body {
   box-sizing: border-box;
   background-color: $color-background-page;
   overflow-wrap: break-word;
+
+  &.is-modal-open {
+    overflow: hidden;
+  }
 }
 
 .main {
