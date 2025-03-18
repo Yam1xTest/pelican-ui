@@ -42,6 +42,7 @@ export function NewsList({
       className="news-list"
       dataTestId="news-list"
       title={newsTitle}
+      isNews
       cards={news.map((newsItem) => ({
         ...newsItem,
         link: `${AppRoute.NEWS}/${newsItem.slug}`,

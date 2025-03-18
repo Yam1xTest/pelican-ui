@@ -12,13 +12,15 @@ export function Cards({
   childrenList,
   firstCardRef,
   currentPageSize,
+  isNews,
 }: Omit<CardsComponentProps, 'id' | '__component'> & {
   children?: ReactNode
   childrenList?: ReactNode
   className?: string;
   dataTestId?: string;
   firstCardRef?: Ref<HTMLAnchorElement>;
-  currentPageSize?: number
+  currentPageSize?: number,
+  isNews?: boolean;
 }) {
   return (
     <section
@@ -28,7 +30,9 @@ export function Cards({
       )}
       data-testid={dataTestId || `cards`}
     >
-      <h1 className="cards__title">{title}</h1>
+      {isNews
+        ? (<h1 className="cards__title">{title}</h1>)
+        : (<h2 className="cards__title">{title}</h2>)}
       <ul className="cards__list">
         {cards.map((card, index) => (
           <Card
@@ -41,6 +45,7 @@ export function Cards({
             labels={card.labels}
             link={card.link}
             firstCardRef={currentPageSize === index ? firstCardRef : null}
+            isNews
           />
         ))}
         {childrenList}
