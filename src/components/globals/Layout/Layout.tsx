@@ -100,7 +100,6 @@ export function Layout({
         footerElementRef={footerElementRef}
         handleMobileMenuToggle={handleMobileMenuToggle}
         isMobileMenuOpen={isMobileMenuOpen}
-        isPreview={isPreview}
       />
       <TicketsPopup
         ticketsPopup={ticketsPopup}
