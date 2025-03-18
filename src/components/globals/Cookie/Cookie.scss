@@ -4,9 +4,8 @@
   position: fixed;
   left: 0;
   bottom: 32px;
-  z-index: 1000;
+  z-index: $cookie-banner;
   margin: 0 16px;
-  border-radius: 6px;
   border-radius: 24px;
   padding: 16px;
   box-shadow: 0 0 16px 0 rgb(53 53 53 / 10%);
