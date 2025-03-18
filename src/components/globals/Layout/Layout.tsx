@@ -16,8 +16,11 @@ import { Header } from '../Header/Header';
 import { TicketsPopup } from '../TicketsPopup/TicketsPopup';
 import { Footer } from '../Footer/Footer';
 import { SkipLink } from '../SkipLink/SkipLink';
+import { ExitPreviewLink } from '../ExitPreviewLink/ExitPreviewLink';
 
-type LayoutProps = GlobalComponentProps & PropsWithChildren;
+type LayoutProps = GlobalComponentProps & PropsWithChildren & {
+  isPreview: boolean;
+};
 
 export function Layout({
   children,
@@ -31,6 +34,7 @@ export function Layout({
   footerNavTitleLeft,
   footerNavTitleRight,
   ticketsPopup,
+  isPreview,
 }: {
 } & LayoutProps) {
   const {
@@ -85,6 +89,7 @@ export function Layout({
       <SkipLink
         mainElementRef={mainElementRef}
       />
+      {isPreview && <ExitPreviewLink />}
       <Header
         navigationLinks={navigationLinks}
         email={email}
@@ -95,6 +100,7 @@ export function Layout({
         footerElementRef={footerElementRef}
         handleMobileMenuToggle={handleMobileMenuToggle}
         isMobileMenuOpen={isMobileMenuOpen}
+        isPreview={isPreview}
       />
       <TicketsPopup
         ticketsPopup={ticketsPopup}

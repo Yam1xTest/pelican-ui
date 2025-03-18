@@ -46,10 +46,12 @@ export default function News({
 
 export async function getServerSideProps({
   query,
+  preview = false,
 }: {
   query: {
     slug: string
   }
+  preview: boolean
 }) {
   if (process.env.APP_ENV === `static`) {
     const otherNews = MOCK_NEWS.filter((news) => news.slug !== query.slug)
@@ -83,6 +85,7 @@ export async function getServerSideProps({
         $eq: query.slug,
       },
     },
+    status: preview ? `draft` : `published`,
   };
 
   const otherNewsQueryParams = {
@@ -102,6 +105,7 @@ export async function getServerSideProps({
     pagination: {
       pageSize: NEWS_SLIDER_LIMIT,
     },
+    status: preview ? `draft` : `published`,
   };
 
   try {

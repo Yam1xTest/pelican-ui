@@ -47,7 +47,9 @@ export default function NewsPage({
 
 export async function getServerSideProps({
   query,
+  preview = false,
 }: {
+  preview: boolean,
   query: {
     pageSize: number
   }
@@ -63,7 +65,9 @@ export async function getServerSideProps({
     };
   }
 
-  const queryParams = {
+  const previewMode = preview ? `draft` : `published`;
+
+  const newsQueryParams = {
     populate: [`image`],
     fields: [
       `title`,
@@ -76,11 +80,12 @@ export async function getServerSideProps({
     pagination: {
       pageSize: query.pageSize || NEWS_LIMIT,
     },
+    status: previewMode,
   };
 
   try {
-    const newsPageResponse: NewsPageResponse = await api.get(`/news-page?populate=*`);
-    const newsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
+    const newsPageResponse: NewsPageResponse = await api.get(`/news-page?populate=*&status=${previewMode}`);
+    const newsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(newsQueryParams)}`);
 
     const news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[] = newsResponse.data!.map((newsItem) => ({
       id: newsItem.id!,
