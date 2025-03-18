@@ -52,7 +52,9 @@ export default function App({
   Component,
   pageProps,
   isPreview,
-}: AppProps) {
+}: AppProps & {
+  isPreview: boolean;
+}) {
   const {
     pathname,
     query,
