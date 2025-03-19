@@ -89,7 +89,7 @@
 
   &--ticket-card {
     #{$this}__trigger {
-      color: $color-green;
+      color: $color-green-dark;
 
       @include tablet {
         font-size: 18px;

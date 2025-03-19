@@ -52,7 +52,10 @@ export function TicketsPopup({
   }, [isTicketPopupActive]);
 
   return (
-    <div className="tickets-popup">
+    <div
+      className="tickets-popup"
+      role="complementary"
+    >
       {isTicketPopupActive && (
         <FocusLock
           returnFocus
