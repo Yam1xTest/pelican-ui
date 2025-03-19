@@ -6,6 +6,10 @@ body {
   box-sizing: border-box;
   background-color: $color-background-page;
   overflow-wrap: break-word;
+
+  &.is-modal-open {
+    overflow: hidden;
+  }
 }
 
 .main {
@@ -62,6 +66,8 @@ a {
   visibility: hidden;
   transform: translateZ(0);
   transition: opacity 0.3s linear, visibility 0.3s linear;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   inset: 0;
   will-change: transform;

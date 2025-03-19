@@ -7,13 +7,11 @@ const MOCK_COOKIE_TEXT = `Мы обрабатываем Cookies для анал�
 const MOCK_COOKIE_BUTTON_TEXT = `Хорошо`;
 
 function Cookie() {
-  const [isCookie, setIsCookie] = useState(true);
+  const [isCookie, setIsCookie] = useState(false);
 
   useEffect(() => {
     if (getCookie(COOKIE_ACCEPT) === `true`) {
       setIsCookie(true);
-    } else {
-      setIsCookie(false);
     }
   }, []);
 

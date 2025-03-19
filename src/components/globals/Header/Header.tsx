@@ -52,12 +52,14 @@ export function Header({
       overlayElement.classList.add(`is-visible`);
       mainElement.setAttribute(`inert`, `true`);
       footerElement.setAttribute(`inert`, `true`);
+      document.querySelector(`body`)!.classList.add(`is-modal-open`);
     }
 
     return () => {
       overlayElement.classList.remove(`is-visible`);
       mainElement.removeAttribute(`inert`);
       footerElement.removeAttribute(`inert`);
+      document.querySelector(`body`)!.classList.remove(`is-modal-open`);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobileMenuOpen]);

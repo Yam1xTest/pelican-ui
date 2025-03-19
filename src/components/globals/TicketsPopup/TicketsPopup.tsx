@@ -40,11 +40,13 @@ export function TicketsPopup({
     if (isTicketPopupActive) {
       overlayElement.classList.add(`is-visible`);
       overlayElement.classList.add(`is-header-hidden`);
+      document.querySelector(`body`)!.classList.add(`is-modal-open`);
     }
 
     return () => {
       overlayElement.classList.remove(`is-visible`);
       overlayElement.classList.remove(`is-header-hidden`);
+      document.querySelector(`body`)!.classList.remove(`is-modal-open`);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTicketPopupActive]);
