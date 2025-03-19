@@ -141,3 +141,38 @@ export async function axeCheckAndWriteReport({
     console.log(`No accessibility violations found.`);
   }
 }
+
+export async function openTicketsPopupAccordions({
+  page,
+}: {
+  page: Page
+}) {
+  await clickAccordionTriggerByText({
+    page,
+    text: `Подробнее`,
+  });
+
+  await clickAccordionTriggerByText({
+    page,
+    text: `Правила посещения`,
+  });
+
+  await clickAccordionTriggerByText({
+    page,
+    text: `Возврат билетов`,
+  });
+}
+
+async function clickAccordionTriggerByText({
+  page,
+  text,
+}: {
+  page: Page,
+  text: string,
+}) {
+  await page.getByTestId(`accordion-trigger`)
+    .filter({
+      hasText: text,
+    })
+    .click();
+}

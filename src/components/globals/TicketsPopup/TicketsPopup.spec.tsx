@@ -1,5 +1,10 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, hideCookie, setViewportSize } from '@/playwright-tests/helpers';
+import {
+  gotoPage,
+  hideCookie,
+  openTicketsPopupAccordions,
+  setViewportSize,
+} from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`TicketsPopupComponentTests`, () => {
@@ -259,39 +264,4 @@ function getTicketsPopupByTestId({
   page: Page
 }) {
   return page.getByTestId(`tickets-popup`);
-}
-
-async function openTicketsPopupAccordions({
-  page,
-}: {
-  page: Page
-}) {
-  await clickAccordionTriggerByText({
-    page,
-    text: `Подробнее`,
-  });
-
-  await clickAccordionTriggerByText({
-    page,
-    text: `Правила посещения`,
-  });
-
-  await clickAccordionTriggerByText({
-    page,
-    text: `Возврат билетов`,
-  });
-}
-
-async function clickAccordionTriggerByText({
-  page,
-  text,
-}: {
-  page: Page,
-  text: string,
-}) {
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: text,
-    })
-    .click();
 }
