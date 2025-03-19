@@ -61,8 +61,10 @@ export default function DocumentsCategories({
 }
 
 export async function getServerSideProps({
+  preview = false,
   query,
 }: {
+  preview: boolean,
   query: {
     slug: string,
     year: string,
@@ -141,7 +143,8 @@ export async function getServerSideProps({
   }
 
   try {
-    const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?populate=*&filters[slug][$eq]=${query.slug}`);
+    const previewMode = preview ? `draft` : `published`;
+    const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?populate=*&status=${previewMode}&filters[slug][$eq]=${query.slug}`);
     const availableYears: number[] = [];
 
     await Promise.all(
@@ -157,6 +160,7 @@ export async function getServerSideProps({
               yearGreaterThanOrEqual: year,
             }),
             pageSize: 1,
+            previewMode,
           }))}`);
 
           if (yearsResponse.meta?.pagination?.total) {
@@ -184,10 +188,12 @@ export async function getServerSideProps({
         categoryDocumentId: categoryResponse.data![0].documentId!,
         yearLessThanOrEqual: +query.year || lastYear,
         yearGreaterThanOrEqual: +query.year || lastYear,
+        previewMode,
       }))}`);
     } else {
       documentsResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
         categoryDocumentId: categoryResponse.data![0].documentId!,
+        previewMode,
       }))}`);
     }
 

@@ -3,11 +3,13 @@ export function getDocumentsQueryParams({
   yearLessThanOrEqual,
   yearGreaterThanOrEqual,
   pageSize = 100,
+  previewMode,
 }: {
   categoryDocumentId: string,
   yearLessThanOrEqual?: number,
   yearGreaterThanOrEqual?: number,
   pageSize?: number,
+  previewMode: string
 }) {
   return {
     populate: [`files`, `category`],
@@ -27,5 +29,6 @@ export function getDocumentsQueryParams({
     pagination: {
       pageSize,
     },
+    status: previewMode,
   };
 }

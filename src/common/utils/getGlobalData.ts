@@ -2,7 +2,11 @@ import qs from 'qs';
 import { HeaderResponse } from '../api-types';
 import { api } from './HttpClient';
 
-export async function getGlobalData() {
+export async function getGlobalData({
+  isPreview,
+}: {
+  isPreview: boolean
+}) {
   const headerPopulateList = [
     `ticketsPopup.generalTickets`,
     `ticketsPopup.subsidizedTicket.categories`,
@@ -16,6 +20,7 @@ export async function getGlobalData() {
 
   const headerResponse: HeaderResponse = await api.get(`/header?${qs.stringify({
     populate: headerPopulateList,
+    status: isPreview ? `draft` : `published`,
   })}`);
 
   return {

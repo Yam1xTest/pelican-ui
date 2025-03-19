@@ -7,6 +7,7 @@
 @import "grid";
 
 // Component
+@import "../components/globals/Button/Button";
 @import "../components/globals/Video/Video";
 @import "../components/globals/SocialNetwork/SocialMedia";
 @import "../components/globals/Layout/Layout";
@@ -18,7 +19,6 @@
 @import "../components/globals/Header/components/HeaderPopup/HeaderPopup";
 @import "../components/globals/Cards/Cards";
 @import "../components/globals/Cards/components/Card/Card";
-@import "../components/globals/Button/Button";
 @import "../components/globals/Footer/Footer";
 @import "../components/globals/Hero/components/HeroSchedule/components/ScheduleTimetable/ScheduleTimetable";
 @import "../components/globals/Hero/components/HeroSchedule/HeroSchedule";
@@ -49,3 +49,4 @@
 @import "../components/globals/Accordion/Accordion";
 @import "../components/globals/Tab/Tab";
 @import "../components/globals/SkipLink/SkipLink";
+@import "../components/globals/ExitPreviewLink/ExitPreviewLink";

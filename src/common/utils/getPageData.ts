@@ -7,8 +7,10 @@ import { PageData } from "../types";
 
 export async function getPageData({
   slug = ``,
+  preview,
 }: {
-  slug: string
+  slug: string,
+  preview: boolean
 }) {
   switch (`/${slug}`) {
     case AppRoute.HOME:
@@ -31,6 +33,7 @@ export async function getPageData({
           `blocks.subsidizedTickets.ticketsList`,
           `seo`,
         ],
+        preview,
       });
 
     case AppRoute.CONTACT_ZOO:
@@ -45,6 +48,7 @@ export async function getPageData({
           `blocks.subsidizedTickets`,
           `seo`,
         ],
+        preview,
       });
 
     default:
@@ -55,12 +59,15 @@ export async function getPageData({
 async function getData({
   slug,
   populate,
+  preview,
 }: {
   slug: string,
   populate: string[],
+  preview: boolean
 }) {
   const pageResponse: PageData = await api.get(`/${slug}?${qs.stringify({
     populate,
+    status: preview ? `draft` : `published`,
   })}`);
 
   const blocks = pageResponse.data?.blocks?.map((block) => (mapContractByBlock({

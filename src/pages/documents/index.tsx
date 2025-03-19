@@ -42,7 +42,11 @@ export default function DocumentsPage({
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({
+  preview = false,
+}: {
+  preview: boolean,
+}) {
   const currentYear = dayjs()
     .year();
 
@@ -83,10 +87,12 @@ export async function getServerSideProps() {
     };
   }
 
-  try {
-    const documentsPageResponse: DocumentsPageResponse = await api.get(`/documents-page?populate=*`);
+  const previewMode = preview ? `draft` : `published`;
 
-    const documentsCategoriesResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories`);
+  try {
+    const documentsPageResponse: DocumentsPageResponse = await api.get(`/documents-page?populate=*&status=${previewMode}`);
+
+    const documentsCategoriesResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?status=${previewMode}`);
 
     const documentsCategories: Omit<CategoryProps, 'hasTabs'>[] = (await Promise.all(
       documentsCategoriesResponse.data!
@@ -98,6 +104,7 @@ export async function getServerSideProps() {
               yearGreaterThanOrEqual: currentYear - 2,
             }),
             pageSize: 1,
+            previewMode,
           }))}`);
 
           if (documentsResponse.meta?.pagination?.total) {

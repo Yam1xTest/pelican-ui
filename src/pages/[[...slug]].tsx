@@ -16,7 +16,6 @@ export default function UniversalPage({
   pageData,
 }: UniversalProps) {
   const route = useRouter();
-
   if (!pageData) {
     return <NotFound />;
   }
@@ -51,7 +50,9 @@ export default function UniversalPage({
 
 export async function getServerSideProps({
   query,
+  preview = false,
 }: {
+  preview: boolean,
   query: {
     slug: string,
   },
@@ -78,6 +79,7 @@ export async function getServerSideProps({
   try {
     pageData = await getPageData({
       slug: query.slug,
+      preview,
     });
 
     pageData.blocks = setBlockPosition({

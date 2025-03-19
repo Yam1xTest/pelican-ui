@@ -51,7 +51,10 @@ const inter = localFont({
 export default function App({
   Component,
   pageProps,
-}: AppProps) {
+  isPreview,
+}: AppProps & {
+  isPreview: boolean;
+}) {
   const {
     pathname,
     query,
@@ -101,6 +104,7 @@ export default function App({
             footerNavTitleLeft={footerNavTitleLeft}
             footerNavTitleRight={footerNavTitleRight}
             ticketsPopup={ticketsPopup}
+            isPreview={isPreview}
           >
             <Component {...pageProps} />
           </Layout>
@@ -110,7 +114,13 @@ export default function App({
   );
 }
 
-App.getInitialProps = async () => {
+App.getInitialProps = async ({
+  router,
+}: {
+  router: {
+    isPreview: boolean
+  }
+}) => {
   if (process.env.APP_ENV === `static`) {
     return {
       pageProps: {
@@ -131,9 +141,12 @@ App.getInitialProps = async () => {
   }
 
   try {
-    const globalResponse = await getGlobalData();
+    const globalResponse = await getGlobalData({
+      isPreview: router.isPreview,
+    });
 
     return {
+      isPreview: router.isPreview,
       pageProps: {
         globalData: {
           popupTicketBuyText: MOCK_POPUP_TICKET_BUY_TEXT,
