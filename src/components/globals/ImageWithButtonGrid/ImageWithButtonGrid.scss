@@ -146,8 +146,8 @@
     &::before {
       content: "";
       position: absolute;
-      left: 0;
-      top: -72px;
+      left: 5px;
+      top: -66px;
       width: 139px;
       height: 81px;
       background-image: url("../../../../public/images/contact-zoo/contact-zoo-geese.svg");
@@ -155,18 +155,19 @@
       background-repeat: no-repeat;
 
       @include tablet {
+        top: -72px;
         width: 140px;
         height: 93px;
       }
 
       @include tablet-xl {
-        top: -110px;
+        top: -108px;
         width: 209px;
         height: 135px;
       }
 
       @include desktop-xl {
-        top: -147px;
+        top: -145px;
         width: 281px;
         height: 181px;
       }
