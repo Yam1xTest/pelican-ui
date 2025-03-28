@@ -112,6 +112,7 @@
 
     img {
       border-radius: 12px;
+      object-fit: cover;
 
       @include tablet-xl {
         border-radius: 16px;
