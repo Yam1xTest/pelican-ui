@@ -196,7 +196,15 @@
 }
 
 .visiting-rules-emergency-card {
-  align-items: center;
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    @include desktop {
+      gap: 16px;
+    }
+  }
 
   &__phone {
     @include h1-text;

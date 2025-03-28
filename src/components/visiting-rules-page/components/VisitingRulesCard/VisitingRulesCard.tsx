@@ -1,6 +1,7 @@
 import { VisitingRulesCardProps } from '@/src/common/types';
 import Image from 'next/image';
 import clsx from 'clsx';
+import Link from 'next/link';
 
 export function VisitingRulesCard({
   label,
@@ -38,17 +39,28 @@ export function VisitingRulesCard({
       )}
 
       {phone && (
-        <div className="visiting-rules-emergency-card__phone">
-          {phone}
-        </div>
+        <Link
+          href={`tel:${phone}`}
+          aria-label={`Позвонить по телефону ${phone}`}
+          className="visiting-rules-emergency-card__link"
+        >
+          <div className="visiting-rules-emergency-card__phone">
+            {phone}
+          </div>
+          <div className={clsx(`visiting-rules-card__label ${className}__label`)}>
+            {label}
+          </div>
+        </Link>
       )}
 
-      <div className={clsx(`visiting-rules-card__label ${className}__label`, {
-        'visiting-rules-hero-card__label--first': isFirst,
-      })}
-      >
-        {label}
-      </div>
+      {!phone && (
+        <div className={clsx(`visiting-rules-card__label ${className}__label`, {
+          'visiting-rules-hero-card__label--first': isFirst,
+        })}
+        >
+          {label}
+        </div>
+      )}
     </li>
   );
 }
