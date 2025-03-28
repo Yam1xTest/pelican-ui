@@ -30,9 +30,6 @@
       @include caption-1-medium;
 
       display: none;
-      text-decoration: underline;
-      color: $color-green-dark;
-      text-underline-offset: 5px;
 
       @include tablet {
         display: block;

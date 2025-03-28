@@ -17,7 +17,7 @@ export function VisitingRulesInfo({
           {title}
         </div>
         <Link
-          className="visiting-rules-info__header--link"
+          className="text-link visiting-rules-info__header--link"
           href={path}
           target="_blank"
           rel="noopener noreferrer"
