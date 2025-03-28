@@ -6,6 +6,31 @@ const COOKIE_ACCEPT = `cookieAccept`;
 const MOCK_COOKIE_TEXT = `Мы обрабатываем Cookies для аналитики и маркетинга, чтобы вам было удобно пользоваться нашим веб-сайтом.`;
 const MOCK_COOKIE_BUTTON_TEXT = `Хорошо`;
 
+declare global {
+  interface Window {
+    ym: (id: number, operationName: string, option: OptionYM | string) => unknown;
+    gtag: (operationName: string, ...arg: any) => unknown;
+  }
+}
+
+const yandexId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
+
+export type OptionYM = {
+  clickmap: boolean;
+  trackLinks: boolean;
+  accurateTrackBounce: boolean;
+  webvisor: boolean;
+};
+
+export const optionYandexMetrika: OptionYM = {
+  clickmap: true,
+  trackLinks: true,
+  accurateTrackBounce: true,
+  webvisor: true,
+};
+
+const isMetricsEnabled = process.env.METRICS_ENABLED === `true`;
+
 function Cookie() {
   const [isCookie, setIsCookie] = useState(false);
 
@@ -48,6 +73,10 @@ function Cookie() {
   function acceptCookie() {
     setCookie(COOKIE_ACCEPT, true);
     setIsCookie(true);
+
+    if (isMetricsEnabled) {
+      window.ym(Number(yandexId), `init`, optionYandexMetrika);
+    }
   }
 }
 
