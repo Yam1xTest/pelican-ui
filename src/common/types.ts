@@ -40,7 +40,7 @@ export type VisitingRulesPageProps = {
     VisitingRulesHeroComponentProps
     | VisitingRulesWarningsComponentProps
     | VisitingRulesPhotosComponentProps
-    | VisitingRulesEmergencyComponentProps
+    | VisitingRulesEmergencyPhonesComponentProps
   )[];
 };
 
@@ -337,8 +337,8 @@ export type VisitingRulesPhotosComponentProps = Pick<VisitingRulesComponentProps
   cards: Omit<VisitingRulesCardProps, 'iconUrl' | 'phone'>[],
 };
 
-export type VisitingRulesEmergencyComponentProps = Pick<VisitingRulesComponentProps, 'id' | 'cardsTitle'> & {
-  __component: BlockTypes.VISITING_RULES_EMERGENCY,
+export type VisitingRulesEmergencyPhonesComponentProps = Pick<VisitingRulesComponentProps, 'id' | 'cardsTitle'> & {
+  __component: BlockTypes.VISITING_RULES_EMERGENCY_PHONES,
   cards: Omit<VisitingRulesCardProps, 'iconUrl'>[],
 };
 

@@ -1,9 +1,9 @@
-import { VisitingRulesEmergencyComponentProps } from "@/src/common/types";
+import { VisitingRulesEmergencyPhonesComponentProps } from "@/src/common/types";
 import { BlockTypes } from "../../../enum";
 
-export const MOCK_VISITING_RULES_EMERGENCY: VisitingRulesEmergencyComponentProps = {
+export const MOCK_VISITING_RULES_EMERGENCY_PHONES: VisitingRulesEmergencyPhonesComponentProps = {
   id: 4,
-  __component: BlockTypes.VISITING_RULES_EMERGENCY,
+  __component: BlockTypes.VISITING_RULES_EMERGENCY_PHONES,
   cardsTitle: `Экстренные службы`,
   cards: [
     {

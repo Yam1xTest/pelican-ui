@@ -33,5 +33,5 @@ export enum BlockTypes {
   VISITING_RULES_HERO = `visiting-rules.hero`,
   VISITING_RULES_WARNINGS = `visiting-rules.warnings`,
   VISITING_RULES_PHOTOS = `visiting-rules.photos`,
-  VISITING_RULES_EMERGENCY = `visiting-rules.emergency`,
+  VISITING_RULES_EMERGENCY_PHONES = `visiting-rules.emergency-phones`,
 }

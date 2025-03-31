@@ -16,7 +16,7 @@ import {
   VisitingRulesHeroComponentProps,
   VisitingRulesWarningsComponentProps,
   VisitingRulesPhotosComponentProps,
-  VisitingRulesEmergencyComponentProps,
+  VisitingRulesEmergencyPhonesComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 import { Cards } from '../Cards/Cards';
@@ -120,8 +120,8 @@ const VisitingRulesPhotos = dynamic(
   },
 );
 
-const VisitingRulesEmergency = dynamic(
-  () => import(`../../visiting-rules-page/VisitingRulesEmergency/VisitingRulesEmergency`).then((component) => component.VisitingRulesEmergency),
+const VisitingRulesEmergencyPhones = dynamic(
+  () => import(`../../visiting-rules-page/VisitingRulesEmergencyPhones/VisitingRulesEmergencyPhones`).then((component) => component.VisitingRulesEmergencyPhones),
   {
     ssr: false,
   },
@@ -141,7 +141,7 @@ type Block = HeroComponentProps
   | VisitingRulesHeroComponentProps
   | VisitingRulesWarningsComponentProps
   | VisitingRulesPhotosComponentProps
-  | VisitingRulesEmergencyComponentProps;
+  | VisitingRulesEmergencyPhonesComponentProps;
 
 export const BlockRenderer = ({
   slug,
@@ -337,9 +337,9 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.VISITING_RULES_EMERGENCY) {
+  if (block.__component === BlockTypes.VISITING_RULES_EMERGENCY_PHONES) {
     return (
-      <VisitingRulesEmergency
+      <VisitingRulesEmergencyPhones
         cardsTitle={block.cardsTitle}
         cards={block.cards}
       />
