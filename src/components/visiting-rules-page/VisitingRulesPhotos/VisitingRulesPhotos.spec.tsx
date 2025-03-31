@@ -8,9 +8,9 @@ import {
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-const PAGE_ID = `visiting-rules-photo`;
+const PAGE_ID = `visiting-rules-photos`;
 
-test.describe(`VisitingRulesPhotoComponentTest`, () => {
+test.describe(`VisitingRulesPhotosComponentTest`, () => {
   test.beforeEach(async ({
     page,
   }) => {

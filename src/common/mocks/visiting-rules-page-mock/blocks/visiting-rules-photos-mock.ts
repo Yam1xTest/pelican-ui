@@ -1,9 +1,9 @@
-import { VisitingRulesPhotoComponentProps } from "@/src/common/types";
+import { VisitingRulesPhotosComponentProps } from "@/src/common/types";
 import { BlockTypes } from "../../../enum";
 
-export const MOCK_VISITING_RULES_PHOTO: VisitingRulesPhotoComponentProps = {
+export const MOCK_VISITING_RULES_PHOTOS: VisitingRulesPhotosComponentProps = {
   id: 3,
-  __component: BlockTypes.VISITING_RULES_PHOTO,
+  __component: BlockTypes.VISITING_RULES_PHOTOS,
   cardsTitle: `Правила фото и видео съемки на\u00A0территории зоопарка:`,
   cards: [
     {
