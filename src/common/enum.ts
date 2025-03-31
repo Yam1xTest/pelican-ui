@@ -30,8 +30,8 @@ export enum BlockTypes {
 
   NOT_FOUND = `not-found.not-found`,
 
-  VISITING_RULES_HERO = `visiting-rules.visiting-rules-hero`,
-  VISITING_RULES_WARNINGS = `visiting-rules.visiting-rules-warnings`,
-  VISITING_RULES_PHOTO = `visiting-rules.visiting-rules-photo`,
-  VISITING_RULES_EMERGENCY = `visiting-rules.visiting-rules-emergency`,
+  VISITING_RULES_HERO = `visiting-rules.hero`,
+  VISITING_RULES_WARNINGS = `visiting-rules.warnings`,
+  VISITING_RULES_PHOTO = `visiting-rules.photo`,
+  VISITING_RULES_EMERGENCY = `visiting-rules.emergency`,
 }
