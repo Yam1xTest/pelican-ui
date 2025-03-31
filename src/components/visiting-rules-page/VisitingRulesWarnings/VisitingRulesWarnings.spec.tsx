@@ -67,7 +67,7 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
-    height: 414,
+    height: 391,
   });
 
   await expect(getVisitingRulesByTestId({
@@ -84,7 +84,7 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
-    height: 415,
+    height: 441,
   });
 
   await expect(getVisitingRulesByTestId({
@@ -101,7 +101,7 @@ async function desktopTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
-    height: 476,
+    height: 520,
   });
 
   await expect(getVisitingRulesByTestId({
@@ -118,7 +118,7 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 675,
+    height: 643,
   });
 
   await expect(getVisitingRulesByTestId({

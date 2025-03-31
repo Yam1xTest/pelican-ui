@@ -19,7 +19,7 @@ export function VisitingRulesList({
             label={card.label}
             iconUrl={card.iconUrl}
             isFirst={index === 0}
-            className="visiting-rules-hero-card"
+            className="visiting-rules-list__card"
           />
         ))}
       </ul>

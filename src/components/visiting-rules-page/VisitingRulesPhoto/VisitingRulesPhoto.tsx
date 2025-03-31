@@ -19,7 +19,6 @@ export function VisitingRulesPhoto({
             <VisitingRulesCard
               key={card.id}
               label={card.label}
-              className="visiting-rules-photo-card"
             />
           ))}
         </ul>

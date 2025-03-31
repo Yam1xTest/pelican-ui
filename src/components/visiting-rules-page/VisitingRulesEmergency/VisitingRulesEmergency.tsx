@@ -20,7 +20,7 @@ export function VisitingRulesEmergency({
               key={card.id}
               label={card.label}
               phone={card.phone}
-              className="visiting-rules-emergency-card"
+              className="visiting-rules-emergency__card"
             />
           ))}
         </ul>

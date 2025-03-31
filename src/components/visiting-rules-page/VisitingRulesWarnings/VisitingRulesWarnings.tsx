@@ -15,7 +15,7 @@ export function VisitingRulesWarnings({
             key={card.id}
             label={card.label}
             isWarning
-            className="visiting-rules-warnings-card"
+            className="visiting-rules-warnings__card"
           />
         ))}
       </ul>

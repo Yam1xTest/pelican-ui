@@ -45,7 +45,7 @@ async function mobileTest({
 }) {
   await setViewportSize({
     page,
-    height: 1305,
+    height: 1389,
   });
 
   await expect(getVisitingRulesByTestId({
@@ -62,7 +62,7 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
-    height: 800,
+    height: 844,
   });
 
   await expect(getVisitingRulesByTestId({
@@ -79,7 +79,7 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
-    height: 848,
+    height: 939,
   });
 
   await expect(getVisitingRulesByTestId({
@@ -96,7 +96,7 @@ async function desktopTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
-    height: 822,
+    height: 1074,
   });
 
   await expect(getVisitingRulesByTestId({
@@ -113,7 +113,7 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 1142,
+    height: 1195,
   });
 
   await expect(getVisitingRulesByTestId({

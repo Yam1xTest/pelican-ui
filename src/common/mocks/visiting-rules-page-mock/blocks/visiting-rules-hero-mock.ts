@@ -10,7 +10,7 @@ export const MOCK_VISITING_RULES_HERO: VisitingRulesHeroComponentProps = {
     path: `/documents/Visiting-rules.pdf`,
   },
   description: `Соблюдайте эти простые правила, чтобы посещение зоопарка прошло безопасно для\u00A0Вас и для питомцев зоопарка.`,
-  cardsTitle: `Приобретая билет, вы соглашаетесь с\u00A0правилами\u00A0посещения\u00A0зоопарка:`,
+  cardsTitle: `Приобретая билет, вы соглашаетесь с\u00A0правилами посещения зоопарка:`,
   cards: [
     {
       id: 0,

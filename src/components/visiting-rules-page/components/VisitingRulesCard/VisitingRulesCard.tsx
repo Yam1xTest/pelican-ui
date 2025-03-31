@@ -2,6 +2,7 @@ import { VisitingRulesCardProps } from '@/src/common/types';
 import Image from 'next/image';
 import clsx from 'clsx';
 import Link from 'next/link';
+import IconWarning from "@/public/images/visiting-rules/exclamation-mark.svg";
 
 export function VisitingRulesCard({
   label,
@@ -17,12 +18,12 @@ export function VisitingRulesCard({
 }) {
   return (
     <li className={clsx(`visiting-rules-card ${className}`, {
-      'visiting-rules-hero-card--first': isFirst,
+      'visiting-rules-card--first': isFirst,
     })}
     >
 
       {iconUrl && (
-        <span className="visiting-rules-hero-card__icon">
+        <span className="visiting-rules-card__hero-icon">
           <Image
             src={iconUrl}
             fill
@@ -31,36 +32,49 @@ export function VisitingRulesCard({
         </span>
       )}
 
-      {/* TODO: it will need to be change on svg icon */}
       {isWarning && (
-        <div className="visiting-rules-warnings-card__icon">
-          ❗
-        </div>
+        <span className="visiting-rules-card__warnings-icon">
+          <Image
+            src={IconWarning}
+            fill
+            alt="Warning icon"
+          />
+        </span>
       )}
 
-      {phone && (
+      {phone ? (
         <Link
           href={`tel:${phone}`}
           aria-label={`Позвонить по телефону ${phone}`}
-          className="visiting-rules-emergency-card__link"
+          className="visiting-rules-card__link"
         >
-          <div className="visiting-rules-emergency-card__phone">
-            {phone}
-          </div>
-          <div className={clsx(`visiting-rules-card__label ${className}__label`)}>
-            {label}
-          </div>
+          {renderCardLabel({
+            label,
+            phone,
+          })}
         </Link>
-      )}
+      ) : renderCardLabel({
+        label,
+      })}
+    </li>
+  );
+}
 
-      {!phone && (
-        <div className={clsx(`visiting-rules-card__label ${className}__label`, {
-          'visiting-rules-hero-card__label--first': isFirst,
-        })}
-        >
-          {label}
+function renderCardLabel({
+  label,
+  phone,
+}: Pick<VisitingRulesCardProps, 'label' | 'phone'>) {
+  return (
+    <>
+      {phone && (
+        <div className="visiting-rules-card__phone">
+          {phone}
         </div>
       )}
-    </li>
+
+      <div className="visiting-rules-card__label">
+        {label}
+      </div>
+    </>
   );
 }
