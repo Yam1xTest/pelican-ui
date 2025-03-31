@@ -1,26 +1,13 @@
 import { useState, useEffect } from 'react';
 import { getCookie, setCookie } from 'cookies-next';
+import { OptionYM } from '@/src/common/types';
 import { Button } from '../Button/Button';
 
 const COOKIE_ACCEPT = `cookieAccept`;
 const MOCK_COOKIE_TEXT = `Мы обрабатываем Cookies для аналитики и маркетинга, чтобы вам было удобно пользоваться нашим веб-сайтом.`;
 const MOCK_COOKIE_BUTTON_TEXT = `Хорошо`;
 
-declare global {
-  interface Window {
-    ym: (id: number, operationName: string, option: OptionYM | string) => unknown;
-    gtag: (operationName: string, ...arg: any) => unknown;
-  }
-}
-
 const yandexId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
-
-export type OptionYM = {
-  clickmap: boolean;
-  trackLinks: boolean;
-  accurateTrackBounce: boolean;
-  webvisor: boolean;
-};
 
 export const optionYandexMetrika: OptionYM = {
   clickmap: true,
