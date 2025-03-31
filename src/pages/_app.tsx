@@ -133,6 +133,7 @@ export default function App({
 }
 
 App.getInitialProps = async ({
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   router,
 }: {
   router: {
