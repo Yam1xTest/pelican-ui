@@ -17,10 +17,6 @@ const nextConfig = {
       },
       {
         protocol: 'http',
-        hostname: 'localhost',
-      },
-      {
-        protocol: 'http',
         hostname: 'minio-s3',
       },
       {
