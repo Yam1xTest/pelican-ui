@@ -13,11 +13,11 @@ export function VisitingRulesInfo({
   return (
     <div className="visiting-rules-info container">
       <div className="visiting-rules-info__header">
-        <div className="visiting-rules-info__header--title">
+        <h1 className="visiting-rules-info__title">
           {title}
-        </div>
+        </h1>
         <Link
-          className="text-link visiting-rules-info__header--link"
+          className="text-link visiting-rules-info__link"
           href={path}
           target="_blank"
           rel="noopener noreferrer"

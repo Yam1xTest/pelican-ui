@@ -11,33 +11,33 @@
     @include tablet {
       gap: 16px;
     }
+  }
 
-    &--title {
-      @include h1-text;
+  &__title {
+    @include h1-text;
 
-      white-space: nowrap;
+    white-space: nowrap;
 
-      @include tablet-xl {
-        @include h2-text;
-      }
-
-      @include desktop {
-        @include h1-text;
-      }
+    @include tablet-xl {
+      @include h2-text;
     }
 
-    &--link {
-      @include caption-1-medium;
+    @include desktop {
+      @include h1-text;
+    }
+  }
 
-      display: none;
+  &__link {
+    @include caption-1-medium;
 
-      @include tablet {
-        display: block;
-      }
+    display: none;
 
-      @include tablet-xl {
-        @include caption-2-medium;
-      }
+    @include tablet {
+      display: block;
+    }
+
+    @include tablet-xl {
+      @include caption-2-medium;
     }
   }
 

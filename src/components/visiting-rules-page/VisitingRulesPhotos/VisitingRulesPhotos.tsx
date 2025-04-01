@@ -10,10 +10,10 @@ export function VisitingRulesPhotos({
       className="visiting-rules-photos"
       data-testid="visiting-rules-photos"
     >
-      <div className="visiting-rules-photos__inner">
-        <div className="visiting-rules-photos__header">
+      <div className="visiting-rules-photos__inner container">
+        <h2 className="visiting-rules-photos__header">
           {cardsTitle}
-        </div>
+        </h2>
         <ul className="visiting-rules-photos__cards">
           {cards.map((card) => (
             <VisitingRulesCard

@@ -23,7 +23,7 @@ export function VisitingRulesCard({
     >
 
       {iconUrl && (
-        <span className="visiting-rules-card__hero-icon">
+        <span className="visiting-rules-card__image">
           <Image
             src={iconUrl}
             fill
@@ -33,7 +33,7 @@ export function VisitingRulesCard({
       )}
 
       {isWarning && (
-        <span className="visiting-rules-card__warnings-icon">
+        <span className="visiting-rules-card__icon">
           <Image
             src={IconWarning}
             fill

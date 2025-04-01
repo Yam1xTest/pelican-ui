@@ -42,11 +42,11 @@
   &__header {
     @include h2-text;
 
-    padding-bottom: 16px;
+    margin-bottom: 16px;
     color: $color-black-75;
 
     @include tablet-xl {
-      padding-bottom: 32px;
+      margin-bottom: 32px;
       max-width: 482px;
     }
 

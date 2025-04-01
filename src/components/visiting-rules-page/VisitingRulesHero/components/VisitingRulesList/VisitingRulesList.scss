@@ -7,14 +7,14 @@
   &__header {
     @include body-2-medium;
 
-    padding-bottom: 16px;
+    margin-bottom: 16px;
 
     @include tablet-xl {
-      padding-bottom: 24px;
+      margin-bottom: 24px;
     }
 
     @include desktop-xl {
-      padding-bottom: 32px;
+      margin-bottom: 32px;
     }
   }
 

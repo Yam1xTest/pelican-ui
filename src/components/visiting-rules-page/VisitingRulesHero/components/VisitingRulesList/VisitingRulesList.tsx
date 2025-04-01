@@ -8,10 +8,10 @@ export function VisitingRulesList({
   link,
 } : Pick<VisitingRulesHeroComponentProps, 'cardsTitle' | 'cards' | 'link'>) {
   return (
-    <div className="visiting-rules-list">
-      <div className="visiting-rules-list__header">
+    <div className="visiting-rules-list container">
+      <h2 className="visiting-rules-list__header">
         {cardsTitle}
-      </div>
+      </h2>
       <ul className="visiting-rules-list__cards">
         {cards.map((card, index) => (
           <VisitingRulesCard

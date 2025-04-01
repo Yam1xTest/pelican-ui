@@ -9,7 +9,7 @@ export function VisitingRulesWarnings({
       className="visiting-rules-warnings"
       data-testid="visiting-rules-warnings"
     >
-      <ul className="visiting-rules-warnings__cards">
+      <ul className="visiting-rules-warnings__cards container">
         {cards.map((card) => (
           <VisitingRulesCard
             key={card.id}
