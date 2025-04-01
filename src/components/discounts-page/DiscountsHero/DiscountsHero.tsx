@@ -10,7 +10,7 @@ export function DiscountsHero({
 }) {
   return (
     <section
-      className="discounts-hero"
+      className="discounts-hero container"
       data-testid="discounts-hero"
     >
       <h1 className="discounts-hero__title">{title}</h1>

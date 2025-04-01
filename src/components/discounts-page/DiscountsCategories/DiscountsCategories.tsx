@@ -16,7 +16,7 @@ export function DiscountsCategories({
 }) {
   return (
     <section
-      className="discounts-categories"
+      className="discounts-categories container"
       data-testid="discounts-categories"
     >
       <h1 className="discounts-categories__title">{title}</h1>
