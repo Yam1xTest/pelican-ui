@@ -148,11 +148,7 @@ export function TicketsPopup({
                 />
                 <Link
                   className="tickets-popup__more-link button button--secondary"
-                  // TODO: Change path when the page appears
                   href={visitingRulesAccordion.button.link}
-                  // TODO: Remove when the page appears
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   {visitingRulesAccordion.button.label}
                 </Link>
