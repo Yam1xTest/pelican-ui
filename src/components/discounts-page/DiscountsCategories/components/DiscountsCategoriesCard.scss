@@ -25,9 +25,12 @@
     margin-bottom: 32px;
     color: $color-black-75;
 
+    @include desktop {
+      width: 1044px;
+    }
+
     @include desktop-xl {
       margin-bottom: 40px;
-      width: 1044px;
     }
   }
 
@@ -60,7 +63,7 @@
     }
 
     @include desktop-xl {
-      gap: 40px;
+      gap: 34px;
     }
   }
 
@@ -113,7 +116,7 @@
       }
 
       @include desktop-xl {
-        width: 976px;
+        width: 840px;
       }
     }
 
@@ -207,7 +210,7 @@
     @include desktop-xl {
       border-radius: 32px;
       padding: 48px 40px;
-      gap: 32px;
+      gap: 168px;
     }
   }
 

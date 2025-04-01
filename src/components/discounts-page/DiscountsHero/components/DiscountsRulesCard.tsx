@@ -6,9 +6,7 @@ export function DiscountsRulesCard({
   number: number
 }) {
   return (
-    <li
-      className="discounts-rules-card"
-    >
+    <li className="discounts-rules-card">
       <div className="discounts-rules-card__number">
         {number}
       </div>
