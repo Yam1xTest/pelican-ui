@@ -13,6 +13,8 @@ import {
   SharedTicketsComponentProps,
   CategoriesComponentProps,
   ArticleComponentProps,
+  DiscountsHeroComponentProps,
+  DiscountsCategoriesComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 import { Cards } from '../Cards/Cards';
@@ -95,6 +97,20 @@ const Article = dynamic(
   },
 );
 
+const DiscountsHero = dynamic(
+  () => import(`../../discounts-page/DiscountsHero/DiscountsHero`).then((component) => component.DiscountsHero),
+  {
+    ssr: false,
+  },
+);
+
+const DiscountsCategories = dynamic(
+  () => import(`../../discounts-page/DiscountsCategories/DiscountsCategories`).then((component) => component.DiscountsCategories),
+  {
+    ssr: false,
+  },
+);
+
 type Block = HeroComponentProps
   | SharedTicketsComponentProps
   | TextAndMediaComponentProps
@@ -105,6 +121,8 @@ type Block = HeroComponentProps
   | HomeTicketsComponentProps
   | NotFoundComponentProps
   | CategoriesComponentProps
+  | DiscountsHeroComponentProps
+  | DiscountsCategoriesComponentProps
   | ArticleComponentProps;
 
 export const BlockRenderer = ({
@@ -268,6 +286,25 @@ export const BlockRenderer = ({
         innerContent={block.innerContent}
         isFirstBlock={block.isFirstBlock}
         isLastBlock={block.isLastBlock}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.DISCOUNTS_HERO) {
+    return (
+      <DiscountsHero
+        title={block.title}
+        rulesCards={block.rulesCards}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.DISCOUNTS_CATEGORIES) {
+    return (
+      <DiscountsCategories
+        title={block.title}
+        categoriesCards={block.categoriesCards}
+        remark={block.remark}
       />
     );
   }

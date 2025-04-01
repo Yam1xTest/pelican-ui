@@ -4,6 +4,7 @@ export enum AppRoute {
   DOCUMENTS = `/documents`,
   CONTACT_ZOO = `/contact-zoo`,
   INTERNAL_TEST_PAGE = `/internal-test-page`,
+  DISCOUNTS = `/discounts`,
 }
 
 export enum Breakpoint {
@@ -29,4 +30,6 @@ export enum BlockTypes {
 
   NOT_FOUND = `not-found.not-found`,
 
+  DISCOUNTS_HERO = `discounts.hero`,
+  DISCOUNTS_CATEGORIES = `discounts.categories`,
 }
