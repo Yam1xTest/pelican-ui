@@ -18,7 +18,7 @@ export function TicketsPopupRulesList({
         className,
       )}
     >
-      {ticketsPopupRulesImages.map(({
+      {ticketsPopupRulesImages?.map(({
         url,
         alternativeText,
       }) => (
