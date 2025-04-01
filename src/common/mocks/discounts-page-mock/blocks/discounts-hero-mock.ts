@@ -2,6 +2,7 @@ import { DiscountsHeroComponentProps } from '@/src/common/types';
 import { BlockTypes } from "../../../enum";
 
 export const MOCK_DISCOUNTS_HERO: DiscountsHeroComponentProps = {
+  id: 1,
   __component: BlockTypes.DISCOUNTS_HERO,
   title: `Льготное посещение зоопарка`,
   rulesCards: [

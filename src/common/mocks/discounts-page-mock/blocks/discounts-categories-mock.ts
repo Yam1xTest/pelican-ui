@@ -3,6 +3,7 @@ import { DiscountsCategoriesComponentProps } from "@/src/common/types";
 import { BlockTypes } from "../../../enum";
 
 export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
+  id: 2,
   __component: BlockTypes.DISCOUNTS_CATEGORIES,
   title: `Категории льгот`,
   categoriesCards: [

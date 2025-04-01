@@ -130,6 +130,7 @@ export type GlobalComponentProps = {
 };
 
 export type DiscountsCategoriesComponentProps = {
+  id: number,
   __component: BlockTypes.DISCOUNTS_CATEGORIES,
   title: string,
   categoriesCards: CategoriesCards[]
@@ -156,6 +157,7 @@ export type CategoriesCards = {
 };
 
 export type DiscountsHeroComponentProps = {
+  id: number,
   __component: BlockTypes.DISCOUNTS_HERO,
   title: string,
   rulesCards: Rules[]
