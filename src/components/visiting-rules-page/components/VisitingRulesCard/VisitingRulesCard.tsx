@@ -17,7 +17,7 @@ export function VisitingRulesCard({
   className?: string,
 }) {
   return (
-    <li className={clsx(`visiting-rules-card ${className}`, {
+    <li className={clsx(`visiting-rules-card`, className, {
       'visiting-rules-card--first': isFirst,
     })}
     >
