@@ -36,7 +36,9 @@ export type DocumentsPageProps = {
 
 export type DiscountsPageProps = {
   seo?: Seo,
-  blocks:(DiscountsHeroComponentProps)[];
+  blocks:(DiscountsHeroComponentProps
+  | DiscountsCategoriesComponentProps
+  )[];
 };
 
 // Component
