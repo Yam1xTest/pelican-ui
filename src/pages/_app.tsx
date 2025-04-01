@@ -48,7 +48,7 @@ const inter = localFont({
   variable: '--font-inter',
 });
 
-const isMetricsEnabled = process.env.METRICS_ENABLED === 'true';
+const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === 'true';
 
 const yandexId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
 

@@ -8,7 +8,7 @@ import {
 import { optionYandexMetrika } from '../components/globals/Cookie/Cookie';
 
 export default function Document() {
-  const isMetricsEnabled = process.env.METRICS_ENABLED === `true`;
+  const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
 
   const yandexId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
 

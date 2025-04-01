@@ -5,7 +5,6 @@ const nextConfig = {
 
   env: {
     APP_ENV: process.env.APP_ENV,
-    METRICS_ENABLED: process.env.METRICS_ENABLED,
   },
 
   images: {

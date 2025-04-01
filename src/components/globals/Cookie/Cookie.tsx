@@ -16,7 +16,7 @@ export const optionYandexMetrika: OptionYM = {
   webvisor: true,
 };
 
-const isMetricsEnabled = process.env.METRICS_ENABLED === `true`;
+const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
 
 function Cookie() {
   const [isCookie, setIsCookie] = useState(false);
