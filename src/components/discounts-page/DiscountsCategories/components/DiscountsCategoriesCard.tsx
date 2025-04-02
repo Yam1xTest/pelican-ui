@@ -33,13 +33,13 @@ export function DiscountsCategoriesCard({
         {price}
       </p>
 
-      <section className="discounts-categories-card__rules">
+      <div className="discounts-categories-card__rules">
         <div className="discounts-categories-card__container">
           {rules.terms && (
             <div>
-              <h3 className="discounts-categories-card__rules__title">
+              <h4 className="discounts-categories-card__rules__title">
                 Условия:
-              </h3>
+              </h4>
               <div className="discounts-categories-card__rules__text">
                 {rules.terms?.length > 1 ? (
                   <ol className="discounts-categories-card__rules__list">
@@ -51,7 +51,7 @@ export function DiscountsCategoriesCard({
                   <span>{rules.terms[0]}</span>
                 )}
                 {rules.info && (
-                  <h4 className="discounts-categories-card__rules__info">{rules.info}</h4>
+                  <p className="discounts-categories-card__rules__info">{rules.info}</p>
                 )}
               </div>
             </div>
@@ -59,9 +59,9 @@ export function DiscountsCategoriesCard({
 
           {rules.docs && (
             <div>
-              <h3 className="discounts-categories-card__rules__title">
+              <h4 className="discounts-categories-card__rules__title">
                 Подтверждающие документы:
-              </h3>
+              </h4>
               <div className="discounts-categories-card__rules__text">
                 {rules.docs?.length > 1 ? (
                   <ol className="discounts-categories-card__rules__list">
@@ -78,9 +78,9 @@ export function DiscountsCategoriesCard({
         </div>
         {rules.basis && (
           <div>
-            <h3 className="discounts-categories-card__rules__title">
+            <h4 className="discounts-categories-card__rules__title">
               Основание льготы:
-            </h3>
+            </h4>
             <ul className="discounts-categories-card__rules__basis">
               {rules.basis.map((basis) => (
                 <li key={basis.title}>
@@ -97,7 +97,7 @@ export function DiscountsCategoriesCard({
             </ul>
           </div>
         )}
-      </section>
+      </div>
     </li>
   );
 }
