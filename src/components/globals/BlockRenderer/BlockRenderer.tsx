@@ -13,8 +13,8 @@ import {
   SharedTicketsComponentProps,
   CategoriesComponentProps,
   ArticleComponentProps,
-  DiscountsHeroComponentProps,
   DiscountsCategoriesComponentProps,
+  DiscountsTermsComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 import { Cards } from '../Cards/Cards';
@@ -97,8 +97,8 @@ const Article = dynamic(
   },
 );
 
-const DiscountsHero = dynamic(
-  () => import(`../../discounts-page/DiscountsHero/DiscountsHero`).then((component) => component.DiscountsHero),
+const DiscountsTerms = dynamic(
+  () => import(`../../discounts-page/DiscountsTerms/DiscountsTerms`).then((component) => component.DiscountsTerms),
   {
     ssr: false,
   },
@@ -121,7 +121,7 @@ type Block = HeroComponentProps
   | HomeTicketsComponentProps
   | NotFoundComponentProps
   | CategoriesComponentProps
-  | DiscountsHeroComponentProps
+  | DiscountsTermsComponentProps
   | DiscountsCategoriesComponentProps
   | ArticleComponentProps;
 
@@ -290,9 +290,9 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.DISCOUNTS_HERO) {
+  if (block.__component === BlockTypes.DISCOUNTS_TERMS) {
     return (
-      <DiscountsHero
+      <DiscountsTerms
         title={block.title}
         rulesCards={block.rulesCards}
       />

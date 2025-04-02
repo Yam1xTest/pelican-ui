@@ -30,6 +30,6 @@ export enum BlockTypes {
 
   NOT_FOUND = `not-found.not-found`,
 
-  DISCOUNTS_HERO = `discounts.hero`,
+  DISCOUNTS_TERMS = `discounts.terms`,
   DISCOUNTS_CATEGORIES = `discounts.categories`,
 }

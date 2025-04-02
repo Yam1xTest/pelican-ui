@@ -1,7 +1,7 @@
 import { Rules } from "@/src/common/types";
 import { DiscountsRulesCard } from "./components/DiscountsRulesCard";
 
-export function DiscountsHero({
+export function DiscountsTerms({
   title,
   rulesCards,
 }: {
@@ -10,13 +10,13 @@ export function DiscountsHero({
 }) {
   return (
     <section
-      className="discounts-hero"
-      data-testid="discounts-hero"
+      className="discounts-terms"
+      data-testid="discounts-terms"
     >
-      <h1 className="discounts-hero__title container">{title}</h1>
-      <div className="discounts-hero__rules">
-        <p className="discounts-hero__rules-title container">Чтобы приобрести льготный билет, нужно</p>
-        <ol className="discounts-hero__rules-list container">
+      <h1 className="discounts-terms__title container">{title}</h1>
+      <div className="discounts-terms__rules">
+        <p className="discounts-terms__rules-title container">Чтобы приобрести льготный билет, нужно</p>
+        <ol className="discounts-terms__rules-list container">
           {rulesCards.map((card) => (
             <DiscountsRulesCard
               key={card.id}

@@ -36,7 +36,7 @@ export type DocumentsPageProps = {
 
 export type DiscountsPageProps = {
   seo?: Seo,
-  blocks:(DiscountsHeroComponentProps
+  blocks:(DiscountsTermsComponentProps
   | DiscountsCategoriesComponentProps
   )[];
 };
@@ -156,9 +156,9 @@ export type CategoriesCards = {
   },
 };
 
-export type DiscountsHeroComponentProps = {
+export type DiscountsTermsComponentProps = {
   id: number,
-  __component: BlockTypes.DISCOUNTS_HERO,
+  __component: BlockTypes.DISCOUNTS_TERMS,
   title: string,
   rulesCards: Rules[]
 };

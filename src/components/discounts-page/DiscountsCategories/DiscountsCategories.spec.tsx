@@ -46,7 +46,7 @@ async function mobileTest({
     height: 14604,
   });
 
-  await expect(getDiscountsHeroByTestId({
+  await expect(getDiscountsCategoriesByTestId({
     page,
   }))
     .toHaveScreenshot(`discounts-categories-mobile.png`);
@@ -63,7 +63,7 @@ async function tabletTest({
     height: 9623,
   });
 
-  await expect(getDiscountsHeroByTestId({
+  await expect(getDiscountsCategoriesByTestId({
     page,
   }))
     .toHaveScreenshot(`discounts-categories-tablet.png`);
@@ -80,7 +80,7 @@ async function tabletXlTest({
     height: 13073,
   });
 
-  await expect(getDiscountsHeroByTestId({
+  await expect(getDiscountsCategoriesByTestId({
     page,
   }))
     .toHaveScreenshot(`discounts-categories-tablet-xl.png`);
@@ -97,7 +97,7 @@ async function desktopTest({
     height: 12259,
   });
 
-  await expect(getDiscountsHeroByTestId({
+  await expect(getDiscountsCategoriesByTestId({
     page,
   }))
     .toHaveScreenshot(`discounts-categories-desktop.png`);
@@ -114,13 +114,13 @@ async function desktopXlTest({
     height: 9335,
   });
 
-  await expect(getDiscountsHeroByTestId({
+  await expect(getDiscountsCategoriesByTestId({
     page,
   }))
     .toHaveScreenshot(`discounts-categories-desktop-xl.png`);
 }
 
-function getDiscountsHeroByTestId({
+function getDiscountsCategoriesByTestId({
   page,
 }: {
   page: Page

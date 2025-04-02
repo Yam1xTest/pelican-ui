@@ -7,7 +7,7 @@ import {
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`DiscountsHeroTests`, () => {
+test.describe(`DiscountsTermsTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
@@ -46,10 +46,10 @@ async function mobileTest({
     height: 850,
   });
 
-  await expect(getDiscountsHeroByTestId({
+  await expect(getDiscountsTermsByTestId({
     page,
   }))
-    .toHaveScreenshot(`discounts-hero-mobile.png`);
+    .toHaveScreenshot(`discounts-terms-mobile.png`);
 }
 
 async function tabletTest({
@@ -63,10 +63,10 @@ async function tabletTest({
     height: 822,
   });
 
-  await expect(getDiscountsHeroByTestId({
+  await expect(getDiscountsTermsByTestId({
     page,
   }))
-    .toHaveScreenshot(`discounts-hero-tablet.png`);
+    .toHaveScreenshot(`discounts-terms-tablet.png`);
 }
 
 async function tabletXlTest({
@@ -80,10 +80,10 @@ async function tabletXlTest({
     height: 1040,
   });
 
-  await expect(getDiscountsHeroByTestId({
+  await expect(getDiscountsTermsByTestId({
     page,
   }))
-    .toHaveScreenshot(`discounts-hero-tablet-xl.png`);
+    .toHaveScreenshot(`discounts-terms-tablet-xl.png`);
 }
 
 async function desktopTest({
@@ -97,10 +97,10 @@ async function desktopTest({
     height: 999,
   });
 
-  await expect(getDiscountsHeroByTestId({
+  await expect(getDiscountsTermsByTestId({
     page,
   }))
-    .toHaveScreenshot(`discounts-hero-desktop.png`);
+    .toHaveScreenshot(`discounts-terms-desktop.png`);
 }
 
 async function desktopXlTest({
@@ -114,16 +114,16 @@ async function desktopXlTest({
     height: 1408,
   });
 
-  await expect(getDiscountsHeroByTestId({
+  await expect(getDiscountsTermsByTestId({
     page,
   }))
-    .toHaveScreenshot(`discounts-hero-desktop-xl.png`);
+    .toHaveScreenshot(`discounts-terms-desktop-xl.png`);
 }
 
-function getDiscountsHeroByTestId({
+function getDiscountsTermsByTestId({
   page,
 }: {
   page: Page
 }) {
-  return page.getByTestId(`discounts-hero`);
+  return page.getByTestId(`discounts-terms`);
 }
