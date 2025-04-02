@@ -9,7 +9,7 @@ export function VisitingRulesList({
 } : Pick<VisitingRulesHeroComponentProps, 'cardsTitle' | 'cards' | 'link'>) {
   return (
     <div className="visiting-rules-list">
-      <div className="container">
+      <div className="visiting-rules-list__inner container">
         <h2 className="visiting-rules-list__header">
           {cardsTitle}
         </h2>

@@ -2,13 +2,19 @@
   padding-top: 40px;
   padding-bottom: 40px;
 
-  &__inner {
+  &__wrapper {
     border-radius: 32px;
-    padding: 28px 16px;
     background-color: $color-yellow;
 
     @include tablet-xl {
       border-radius: 64px;
+    }
+  }
+
+  &__inner {
+    padding: 28px 16px;
+
+    @include tablet-xl {
       padding: 40px 32px;
     }
 

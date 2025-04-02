@@ -10,8 +10,8 @@ export function VisitingRulesEmergencyPhones({
       className="visiting-rules-emergency-phones"
       data-testid="visiting-rules-emergency-phones"
     >
-      <div className="visiting-rules-emergency-phones__inner">
-        <div className="container">
+      <div className="visiting-rules-emergency-phones__wrapper">
+        <div className="visiting-rules-emergency-phones__inner container">
           <h2 className="visiting-rules-emergency-phones__header">
             {cardsTitle}
           </h2>

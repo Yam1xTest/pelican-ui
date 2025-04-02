@@ -2,17 +2,20 @@
   padding-top: 40px;
   padding-bottom: 56px;
 
-  &__inner {
-    display: grid;
+  &__wrapper {
     border-radius: 32px;
-    padding: 28px 16px;
     background-color: $color-blue;
-    gap: 16px;
 
     @include tablet-xl {
       border-radius: 64px;
+    }
+  }
+
+  &__inner {
+    padding: 28px 16px;
+
+    @include tablet-xl {
       padding: 40px 32px;
-      gap: 32px;
     }
 
     @include desktop {
@@ -27,7 +30,12 @@
   &__header {
     @include h2-text;
 
+    margin-bottom: 16px;
     color: $color-black-75;
+
+    @include tablet-xl {
+      margin-bottom: 32px;
+    }
 
     @include desktop {
       @include h1-text;

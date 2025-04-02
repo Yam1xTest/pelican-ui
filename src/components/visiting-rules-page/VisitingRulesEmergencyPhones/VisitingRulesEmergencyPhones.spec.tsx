@@ -3,6 +3,7 @@ import {
   gotoPage,
   hideCookie,
   hideHeader,
+  hideSkipLink,
   setViewportSize,
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
@@ -23,6 +24,10 @@ test.describe(`VisitingRulesEmergencyPhonesComponentTest`, () => {
     });
 
     await hideCookie({
+      page,
+    });
+
+    await hideSkipLink({
       page,
     });
   });
