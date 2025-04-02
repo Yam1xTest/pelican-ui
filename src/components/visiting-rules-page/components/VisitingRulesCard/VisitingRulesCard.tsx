@@ -47,6 +47,7 @@ export function VisitingRulesCard({
           href={`tel:${phone}`}
           aria-label={`Позвонить по телефону ${phone}`}
           className="visiting-rules-card__link"
+          data-testid="visiting-rules-emergency-phone-link"
         >
           {renderCardLabel({
             label,

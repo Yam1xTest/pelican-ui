@@ -28,6 +28,7 @@ export function VisitingRulesInfo({
             aria-label="Открыть документ с правилами посещения"
             target="_blank"
             rel="noopener noreferrer"
+            data-testid="visiting-rules-document-link"
           >
             {label}
           </Link>
