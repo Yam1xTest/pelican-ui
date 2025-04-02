@@ -50,7 +50,9 @@ export function DiscountsCategoriesCard({
                 ) : (
                   <span>{rules.terms[0]}</span>
                 )}
-                <h4 className="discounts-categories-card__rules__info">{rules.info}</h4>
+                {rules.info && (
+                  <h4 className="discounts-categories-card__rules__info">{rules.info}</h4>
+                )}
               </div>
             </div>
           )}

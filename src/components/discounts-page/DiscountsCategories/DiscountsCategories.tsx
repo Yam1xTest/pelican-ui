@@ -19,7 +19,7 @@ export function DiscountsCategories({
       className="discounts-categories container"
       data-testid="discounts-categories"
     >
-      <h1 className="discounts-categories__title">{title}</h1>
+      <h2 className="discounts-categories__title">{title}</h2>
       <ul className="discounts-categories__list">
         {categoriesCards.map((card) => (
           <DiscountsCategoriesCard
