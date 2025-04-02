@@ -21,24 +21,24 @@
   }
 
   &__list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    > * {
+      margin-top: 20px;
 
-    @include tablet {
-      gap: 16px;
-    }
+      @include tablet {
+        margin-top: 17px;
+      }
 
-    @include tablet-xl {
-      gap: 20px;
-    }
+      @include tablet-xl {
+        margin-top: 20px;
+      }
 
-    @include desktop {
-      gap: 24px;
-    }
+      @include desktop {
+        margin-top: 24px;
+      }
 
-    @include desktop-xl {
-      gap: 48px;
+      @include desktop-xl {
+        margin-top: 49px;
+      }
     }
   }
 
@@ -54,7 +54,7 @@
     background-size: cover;
     background-repeat: no-repeat;
 
-    &__link {
+    &-link {
       text-decoration: underline;
       text-underline-offset: 4px;
 

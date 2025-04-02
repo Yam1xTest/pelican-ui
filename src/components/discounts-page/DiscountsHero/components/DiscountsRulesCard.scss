@@ -22,6 +22,10 @@
     color: $color-black-75;
     background-color: $color-green-10;
 
+    @include tablet {
+      color: $color-black;
+    }
+
     @include tablet-xl {
       @include text-medium;
     }

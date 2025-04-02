@@ -10,13 +10,13 @@ export function DiscountsHero({
 }) {
   return (
     <section
-      className="discounts-hero container"
+      className="discounts-hero"
       data-testid="discounts-hero"
     >
-      <h1 className="discounts-hero__title">{title}</h1>
+      <h1 className="discounts-hero__title container">{title}</h1>
       <div className="discounts-hero__rules">
-        <p className="discounts-hero__rules__title">Чтобы приобрести льготный билет, нужно</p>
-        <ol className="discounts-hero__rules__list">
+        <p className="discounts-hero__rules-title container">Чтобы приобрести льготный билет, нужно</p>
+        <ol className="discounts-hero__rules-list container">
           {rulesCards.map((card) => (
             <DiscountsRulesCard
               key={card.id}

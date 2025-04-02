@@ -37,12 +37,12 @@ export function DiscountsCategoriesCard({
         <div className="discounts-categories-card__container">
           {rules.terms && (
             <div>
-              <h4 className="discounts-categories-card__rules__title">
+              <h4 className="discounts-categories-card__rules-title">
                 Условия:
               </h4>
-              <div className="discounts-categories-card__rules__text">
+              <div className="discounts-categories-card__rules-text">
                 {rules.terms?.length > 1 ? (
-                  <ol className="discounts-categories-card__rules__list">
+                  <ol className="discounts-categories-card__rules-list">
                     {rules.terms.map((terms) => (
                       <li key={terms}>{terms}</li>
                     ))}
@@ -51,7 +51,7 @@ export function DiscountsCategoriesCard({
                   <span>{rules.terms[0]}</span>
                 )}
                 {rules.info && (
-                  <p className="discounts-categories-card__rules__info">{rules.info}</p>
+                  <p className="discounts-categories-card__rules-info">{rules.info}</p>
                 )}
               </div>
             </div>
@@ -59,12 +59,12 @@ export function DiscountsCategoriesCard({
 
           {rules.docs && (
             <div>
-              <h4 className="discounts-categories-card__rules__title">
+              <h4 className="discounts-categories-card__rules-title">
                 Подтверждающие документы:
               </h4>
-              <div className="discounts-categories-card__rules__text">
+              <div className="discounts-categories-card__rules-text">
                 {rules.docs?.length > 1 ? (
-                  <ol className="discounts-categories-card__rules__list">
+                  <ol className="discounts-categories-card__rules-list">
                     {rules.docs.map((doc) => (
                       <li key={doc}>{doc}</li>
                     ))}
@@ -78,14 +78,14 @@ export function DiscountsCategoriesCard({
         </div>
         {rules.basis && (
           <div>
-            <h4 className="discounts-categories-card__rules__title">
+            <h4 className="discounts-categories-card__rules-title">
               Основание льготы:
             </h4>
-            <ul className="discounts-categories-card__rules__basis">
+            <ul className="discounts-categories-card__rules-basis">
               {rules.basis.map((basis) => (
                 <li key={basis.title}>
                   <Link
-                    className="discounts-categories-card__rules__basis__link"
+                    className="discounts-categories-card__rules-basis--link"
                     href={basis.link}
                     target="_blank"
                     rel="noopener noreferrer"

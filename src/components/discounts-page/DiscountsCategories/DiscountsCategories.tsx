@@ -35,7 +35,7 @@ export function DiscountsCategories({
         Данный перечень составлен в соответствии с
         {` `}
         <Link
-          className="discounts-categories__remark__link"
+          className="discounts-categories__remark-link"
           href={remark.link}
           target="_blank"
           rel="noopener noreferrer"
