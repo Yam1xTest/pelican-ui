@@ -15,7 +15,7 @@ import {
   ArticleComponentProps,
   VisitingRulesHeroComponentProps,
   VisitingRulesWarningsComponentProps,
-  VisitingRulesPhotosComponentProps,
+  VisitingRulesPhotosPolicyComponentProps,
   VisitingRulesEmergencyPhonesComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
@@ -113,8 +113,8 @@ const VisitingRulesWarnings = dynamic(
   },
 );
 
-const VisitingRulesPhotos = dynamic(
-  () => import(`../../visiting-rules-page/VisitingRulesPhotos/VisitingRulesPhotos`).then((component) => component.VisitingRulesPhotos),
+const VisitingRulesPhotosPolicy = dynamic(
+  () => import(`../../visiting-rules-page/VisitingRulesPhotosPolicy/VisitingRulesPhotosPolicy`).then((component) => component.VisitingRulesPhotosPolicy),
   {
     ssr: false,
   },
@@ -140,7 +140,7 @@ type Block = HeroComponentProps
   | ArticleComponentProps
   | VisitingRulesHeroComponentProps
   | VisitingRulesWarningsComponentProps
-  | VisitingRulesPhotosComponentProps
+  | VisitingRulesPhotosPolicyComponentProps
   | VisitingRulesEmergencyPhonesComponentProps;
 
 export const BlockRenderer = ({
@@ -328,9 +328,9 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.VISITING_RULES_PHOTOS) {
+  if (block.__component === BlockTypes.VISITING_RULES_PHOTOS_POLICY) {
     return (
-      <VisitingRulesPhotos
+      <VisitingRulesPhotosPolicy
         cardsTitle={block.cardsTitle}
         cards={block.cards}
       />
