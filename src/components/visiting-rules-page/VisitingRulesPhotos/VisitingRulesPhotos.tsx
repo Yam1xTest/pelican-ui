@@ -10,19 +10,21 @@ export function VisitingRulesPhotos({
       className="visiting-rules-photos"
       data-testid="visiting-rules-photos"
     >
-      <div className="visiting-rules-photos__inner container">
-        <h2 className="visiting-rules-photos__header">
-          {cardsTitle}
-        </h2>
-        <ul className="visiting-rules-photos__cards">
-          {cards.map((card) => (
-            <VisitingRulesCard
-              key={card.id}
-              label={card.label}
-              className="visiting-rules-photos__card"
-            />
-          ))}
-        </ul>
+      <div className="visiting-rules-photos__inner">
+        <div className="container">
+          <h2 className="visiting-rules-photos__header">
+            {cardsTitle}
+          </h2>
+          <ul className="visiting-rules-photos__cards">
+            {cards.map((card) => (
+              <VisitingRulesCard
+                key={card.id}
+                label={card.label}
+                className="visiting-rules-photos__card"
+              />
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

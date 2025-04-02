@@ -8,29 +8,31 @@ export function VisitingRulesList({
   link,
 } : Pick<VisitingRulesHeroComponentProps, 'cardsTitle' | 'cards' | 'link'>) {
   return (
-    <div className="visiting-rules-list container">
-      <h2 className="visiting-rules-list__header">
-        {cardsTitle}
-      </h2>
-      <ul className="visiting-rules-list__cards">
-        {cards.map((card, index) => (
-          <VisitingRulesCard
-            key={card.id}
-            label={card.label}
-            iconUrl={card.iconUrl}
-            isFirst={index === 0}
-            className="visiting-rules-list__card"
-          />
-        ))}
-      </ul>
-      <Link
-        className="visiting-rules-list__link button button--secondary"
-        href={link.path}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Приказ о правилах посещения
-      </Link>
+    <div className="visiting-rules-list">
+      <div className="container">
+        <h2 className="visiting-rules-list__header">
+          {cardsTitle}
+        </h2>
+        <ul className="visiting-rules-list__cards">
+          {cards.map((card, index) => (
+            <VisitingRulesCard
+              key={card.id}
+              label={card.label}
+              iconUrl={card.iconUrl}
+              isFirst={index === 0}
+              className="visiting-rules-list__card"
+            />
+          ))}
+        </ul>
+        <Link
+          className="visiting-rules-list__link button button--secondary"
+          href={link.path}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Приказ о правилах посещения
+        </Link>
+      </div>
     </div>
   );
 }
