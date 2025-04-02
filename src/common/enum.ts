@@ -15,6 +15,14 @@ export enum Breakpoint {
   DESKTOP_XL = 1920,
 }
 
+export enum BreakpointName {
+  MOBILE = `mobile`,
+  TABLET = `tablet`,
+  TABLET_XL = `tablet-xl`,
+  DESKTOP = `desktop`,
+  DESKTOP_XL = `desktop-xl`,
+}
+
 export enum BlockTypes {
   SHARED_HERO = `shared.hero`,
   SHARED_CARDS = `shared.cards`,

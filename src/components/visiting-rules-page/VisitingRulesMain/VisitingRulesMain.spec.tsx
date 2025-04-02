@@ -1,4 +1,4 @@
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import {
   gotoPage,
   hideCookie,
@@ -51,7 +51,7 @@ async function mobileTest({
   await expect(getVisitingRulesByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-mobile.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.MOBILE}.png`);
 }
 
 async function tabletTest({
@@ -68,7 +68,7 @@ async function tabletTest({
   await expect(getVisitingRulesByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-tablet.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletXlTest({
@@ -85,7 +85,7 @@ async function tabletXlTest({
   await expect(getVisitingRulesByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-tablet-xl.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function desktopTest({
@@ -102,7 +102,7 @@ async function desktopTest({
   await expect(getVisitingRulesByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-desktop.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP}.png`);
 }
 
 async function desktopXlTest({
@@ -119,7 +119,7 @@ async function desktopXlTest({
   await expect(getVisitingRulesByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-desktop-xl.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP_XL}.png`);
 }
 
 function getVisitingRulesByTestId({
