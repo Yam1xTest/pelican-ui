@@ -27,7 +27,7 @@ export function VisitingRulesCard({
           <Image
             src={iconUrl}
             fill
-            alt={label}
+            alt=""
           />
         </span>
       )}
@@ -37,7 +37,7 @@ export function VisitingRulesCard({
           <Image
             src={IconWarning}
             fill
-            alt="Warning icon"
+            alt=""
           />
         </span>
       )}
