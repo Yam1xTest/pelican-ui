@@ -37,7 +37,7 @@ export type DocumentsPageProps = {
 export type VisitingRulesPageProps = {
   seo: Seo,
   blocks: (
-    VisitingRulesHeroComponentProps
+    VisitingRulesMainComponentProps
     | VisitingRulesWarningsComponentProps
     | VisitingRulesPhotosPolicyComponentProps
     | VisitingRulesEmergencyPhonesComponentProps
@@ -322,8 +322,8 @@ export type VisitingRulesCardProps = {
   iconUrl?: string,
 };
 
-export type VisitingRulesHeroComponentProps = VisitingRulesComponentProps & {
-  __component: BlockTypes.VISITING_RULES_HERO,
+export type VisitingRulesMainComponentProps = VisitingRulesComponentProps & {
+  __component: BlockTypes.VISITING_RULES_MAIN,
   cards: Omit<VisitingRulesCardProps, 'phone'>[],
 };
 

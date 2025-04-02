@@ -1,9 +1,9 @@
-import { VisitingRulesHeroComponentProps } from "@/src/common/types";
+import { VisitingRulesMainComponentProps } from "@/src/common/types";
 import { BlockTypes } from "../../../enum";
 
-export const MOCK_VISITING_RULES_HERO: VisitingRulesHeroComponentProps = {
+export const MOCK_VISITING_RULES_MAIN: VisitingRulesMainComponentProps = {
   id: 1,
-  __component: BlockTypes.VISITING_RULES_HERO,
+  __component: BlockTypes.VISITING_RULES_MAIN,
   title: `Правила посещения`,
   link: {
     label: `(Открыть документ с правилами посещения)`,

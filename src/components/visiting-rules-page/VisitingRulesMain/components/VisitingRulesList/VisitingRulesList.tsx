@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { VisitingRulesHeroComponentProps } from "@/src/common/types";
+import { VisitingRulesMainComponentProps } from "@/src/common/types";
 import { VisitingRulesCard } from "../../../components/VisitingRulesCard/VisitingRulesCard";
 
 export function VisitingRulesList({
   cardsTitle,
   cards,
   link,
-} : Pick<VisitingRulesHeroComponentProps, 'cardsTitle' | 'cards' | 'link'>) {
+} : Pick<VisitingRulesMainComponentProps, 'cardsTitle' | 'cards' | 'link'>) {
   return (
     <div className="visiting-rules-list">
       <div className="visiting-rules-list__inner container">

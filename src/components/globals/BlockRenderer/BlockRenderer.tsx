@@ -13,7 +13,7 @@ import {
   SharedTicketsComponentProps,
   CategoriesComponentProps,
   ArticleComponentProps,
-  VisitingRulesHeroComponentProps,
+  VisitingRulesMainComponentProps,
   VisitingRulesWarningsComponentProps,
   VisitingRulesPhotosPolicyComponentProps,
   VisitingRulesEmergencyPhonesComponentProps,
@@ -99,8 +99,8 @@ const Article = dynamic(
   },
 );
 
-const VisitingRulesHero = dynamic(
-  () => import(`../../visiting-rules-page/VisitingRulesHero/VisitingRulesHero`).then((component) => component.VisitingRulesHero),
+const VisitingRulesMain = dynamic(
+  () => import(`../../visiting-rules-page/VisitingRulesMain/VisitingRulesMain`).then((component) => component.VisitingRulesMain),
   {
     ssr: false,
   },
@@ -138,7 +138,7 @@ type Block = HeroComponentProps
   | NotFoundComponentProps
   | CategoriesComponentProps
   | ArticleComponentProps
-  | VisitingRulesHeroComponentProps
+  | VisitingRulesMainComponentProps
   | VisitingRulesWarningsComponentProps
   | VisitingRulesPhotosPolicyComponentProps
   | VisitingRulesEmergencyPhonesComponentProps;
@@ -308,9 +308,9 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.VISITING_RULES_HERO) {
+  if (block.__component === BlockTypes.VISITING_RULES_MAIN) {
     return (
-      <VisitingRulesHero
+      <VisitingRulesMain
         title={block.title}
         link={block.link}
         description={block.description}

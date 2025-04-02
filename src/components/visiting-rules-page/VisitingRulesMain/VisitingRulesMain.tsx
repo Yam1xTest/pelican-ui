@@ -1,18 +1,18 @@
-import { VisitingRulesHeroComponentProps } from "@/src/common/types";
+import { VisitingRulesMainComponentProps } from "@/src/common/types";
 import { VisitingRulesInfo } from "./components/VisitingRulesInfo/VisitingRulesInfo";
 import { VisitingRulesList } from "./components/VisitingRulesList/VisitingRulesList";
 
-export function VisitingRulesHero({
+export function VisitingRulesMain({
   title,
   link,
   description,
   cardsTitle,
   cards,
-}: Omit<VisitingRulesHeroComponentProps, 'id' | '__component'>) {
+}: Omit<VisitingRulesMainComponentProps, 'id' | '__component'>) {
   return (
     <section
-      className="visiting-rules-hero"
-      data-testid="visiting-rules-hero"
+      className="visiting-rules-main"
+      data-testid="visiting-rules-main"
     >
       <VisitingRulesInfo
         title={title}

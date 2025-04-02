@@ -1,11 +1,11 @@
-import { VisitingRulesHeroComponentProps } from "@/src/common/types";
+import { VisitingRulesMainComponentProps } from "@/src/common/types";
 import Link from "next/link";
 
 export function VisitingRulesInfo({
   title,
   link,
   description,
-}: Pick<VisitingRulesHeroComponentProps, 'title' | 'link' | 'description'>) {
+}: Pick<VisitingRulesMainComponentProps, 'title' | 'link' | 'description'>) {
   const {
     path, label,
   } = link;
