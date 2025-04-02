@@ -30,12 +30,6 @@
   &__link {
     @include caption-1-medium;
 
-    display: none;
-
-    @include tablet {
-      display: block;
-    }
-
     @include tablet-xl {
       @include caption-2-medium;
     }

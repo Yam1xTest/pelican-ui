@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { VisitingRulesMainComponentProps } from "@/src/common/types";
+import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { VisitingRulesCard } from "../../../components/VisitingRulesCard/VisitingRulesCard";
 
 export function VisitingRulesList({
@@ -7,6 +8,10 @@ export function VisitingRulesList({
   cards,
   link,
 } : Pick<VisitingRulesMainComponentProps, 'cardsTitle' | 'cards' | 'link'>) {
+  const {
+    isMobile,
+  } = useWindowWidth();
+
   return (
     <div className="visiting-rules-list">
       <div className="visiting-rules-list__inner container">
@@ -24,14 +29,17 @@ export function VisitingRulesList({
             />
           ))}
         </ul>
-        <Link
-          className="visiting-rules-list__link button button--secondary"
-          href={link.path}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Приказ о правилах посещения
-        </Link>
+        {isMobile && (
+          <Link
+            className="visiting-rules-list__link button button--secondary"
+            href={link.path}
+            aria-label="Открыть документ с правилами посещения"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Приказ о правилах посещения
+          </Link>
+        )}
       </div>
     </div>
   );
