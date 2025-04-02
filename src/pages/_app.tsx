@@ -2,7 +2,7 @@
 import '../styles/index.scss';
 import type { AppProps } from 'next/app';
 import localFont from "next/font/local";
-import { useRouter } from 'next/router';
+import router, { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { Layout } from '../components/globals/Layout/Layout';
 import { NotFound } from '../components/not-found-page/NotFound/NotFound';
@@ -48,6 +48,10 @@ const inter = localFont({
   variable: '--font-inter',
 });
 
+const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === 'true';
+
+const yandexId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
+
 export default function App({
   Component,
   pageProps,
@@ -59,6 +63,20 @@ export default function App({
     pathname,
     query,
   } = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      if (document.cookie.includes('cookieAccept=true') && typeof window !== 'undefined' && isMetricsEnabled) {
+        window.ym(Number(yandexId), 'hit', url);
+      }
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
 
   useEffect(() => {
     if (!query?.pageSize) {
@@ -115,6 +133,7 @@ export default function App({
 }
 
 App.getInitialProps = async ({
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   router,
 }: {
   router: {

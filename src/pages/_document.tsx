@@ -1,11 +1,17 @@
+/* eslint-disable @next/next/no-img-element */
 import {
   Html,
   Head,
   Main,
   NextScript,
 } from 'next/document';
+import { optionYandexMetrika } from '../components/globals/Cookie/Cookie';
 
 export default function Document() {
+  const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
+
+  const yandexId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
+
   return (
     <Html lang="ru">
       <Head>
@@ -37,6 +43,39 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+
+        <script
+          type="text/javascript"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+              var z = null;m[i].l=1*new Date();
+              for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+              k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+              (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+              var isCookieAccept = document.cookie.includes('cookieAccept=true');
+
+              if (${isMetricsEnabled} && isCookieAccept) {
+                ym(${yandexId}, "init", ${JSON.stringify(optionYandexMetrika)})
+              }
+            `,
+          }}
+        />
+        <noscript>
+          <div>
+            <img
+              src={`https://mc.yandex.ru/watch/${yandexId}`}
+              style={{
+                position: `absolute`,
+                left: `-9999px`,
+              }}
+              alt=""
+            />
+          </div>
+        </noscript>
+
       </body>
     </Html>
   );
