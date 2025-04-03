@@ -116,6 +116,21 @@ test.describe(`Logical focus order verification`, () => {
 
     test(`DocumentsPageDesktopTest`, documentsPageDesktopTest);
   });
+
+  test.describe(`Discounts page check`, () => {
+    test.beforeEach(async ({
+      page,
+    }) => {
+      await gotoPage({
+        page,
+        url: AppRoute.DISCOUNTS,
+      });
+    });
+
+    test(`DiscountsPageMobileTest`, discountsPageMobileTest);
+
+    test(`DiscountsPageDesktopTest`, discountsPageDesktopTest);
+  });
 });
 
 async function homePageMobileTest({
@@ -347,6 +362,90 @@ async function documentsPageDesktopTest({
     `category`,
     `category`,
     `category`,
+    ...expectedDesktopFooterFocusOrder,
+  ];
+
+  await checkNavigationUsingTab({
+    page,
+    expectedFocusOrder,
+  });
+}
+async function discountsPageMobileTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+  });
+
+  const expectedFocusOrder = [
+    ...expectedMobileHeaderFocusOrder,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-remark-link`,
+    ...expectedMobileFooterFocusOrder,
+  ];
+
+  await checkNavigationUsingTab({
+    page,
+    expectedFocusOrder,
+  });
+}
+
+async function discountsPageDesktopTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP,
+  });
+
+  const expectedFocusOrder = [
+    ...expectedDesktopHeaderFocusOrder,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-link`,
+    `discounts-remark-link`,
     ...expectedDesktopFooterFocusOrder,
   ];
 

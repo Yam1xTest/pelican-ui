@@ -86,6 +86,7 @@ export function DiscountsCategoriesCard({
                 <li key={basis.title}>
                   <Link
                     className="discounts-categories-card__rules-basis--link"
+                    data-testid="discounts-link"
                     href={basis.link}
                     target="_blank"
                     rel="noopener noreferrer"

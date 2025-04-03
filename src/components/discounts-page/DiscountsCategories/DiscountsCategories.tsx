@@ -36,6 +36,7 @@ export function DiscountsCategories({
         {` `}
         <Link
           className="discounts-categories__remark-link"
+          data-testid="discounts-remark-link"
           href={remark.link}
           target="_blank"
           rel="noopener noreferrer"
