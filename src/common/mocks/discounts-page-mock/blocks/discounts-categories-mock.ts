@@ -35,7 +35,7 @@ export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
         basis: [
           {
             title: `Закон РФ от 09.10.1992 года №3612-1`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_1870/`,
           },
         ],
       },
@@ -55,11 +55,11 @@ export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
         basis: [
           {
             title: `Указом Президента РФ от 23 января 2024 г. №\u00A063`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_467710/`,
           },
           {
             title: `Закон Челябинской области от 31.03.2010 г. №548`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://uszn-miass.ru/images/1698320253-zakon_chel_obl_548_zo_ot_31_03_2010_s_izm.pdf`,
           },
         ],
       },
@@ -74,7 +74,7 @@ export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
         basis: [
           {
             title: `Закон РФ от 09.10.1992 года №\u00A03612-1`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_1870/`,
           },
         ],
       },
@@ -94,7 +94,7 @@ export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
         basis: [
           {
             title: `Закон РФ от\u00A009.10.1992 года №\u00A03612-1`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_1870/`,
           },
         ],
       },
@@ -109,11 +109,11 @@ export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
         basis: [
           {
             title: `Закон РФ от 09.10.1992 года №\u00A03612-1`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_1870/`,
           },
           {
             title: `Федеральный закон от 24.11.1995 года №\u00A0181-ФЗ`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_8559/`,
           },
         ],
       },
@@ -127,11 +127,11 @@ export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
         basis: [
           {
             title: `Закон РФ от 09.10.1992 года №\u00A03612-1`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_1870/`,
           },
           {
             title: `Федеральный закон от\u00A024.11.1995\u00A0года №\u00A0181-ФЗ`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_8559/`,
           },
         ],
       },
@@ -146,11 +146,11 @@ export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
         basis: [
           {
             title: `Закон РФ от\u00A009.10.1992 года №\u00A03612-1`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_1870/`,
           },
           {
             title: `Федеральный закон от\u00A024.11.1995 года №\u00A0181-ФЗ`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_8559/`,
           },
         ],
       },
@@ -164,15 +164,15 @@ export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
         basis: [
           {
             title: `Закон РФ от\u00A009.10.1992 года №\u00A03612-1`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_1870/`,
           },
           {
             title: `Федеральный закон от\u00A021.12.1996 №\u00A0159-ФЗ`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_12778/`,
           },
           {
             title: `Приказ №188 от\u00A019.06.2020 г`,
-            link: `https://base.garant.ru/104540/`,
+            link: `/documents/Prikaz-ob-ustanovlenii-tsen-na-uslugi-mbuk-zoopark.pdf`,
           },
         ],
       },
@@ -186,11 +186,11 @@ export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
         basis: [
           {
             title: `Приказ №188 от\u00A019.06.2020 г`,
-            link: `https://base.garant.ru/104540/`,
+            link: `/documents/Prikaz-ob-ustanovlenii-tsen-na-uslugi-mbuk-zoopark.pdf`,
           },
           {
             title: `Федеральный закон от\u00A024.11.1995 года №\u00A0181-ФЗ`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_8559/`,
           },
         ],
       },
@@ -205,11 +205,11 @@ export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
         basis: [
           {
             title: `Закон РФ от 09.10.1992 года №\u00A03612-1`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_1870/`,
           },
           {
             title: `Федеральный закон от 27.05.1998 N 76-ФЗ (ред. от 01.03.2020)`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://www.consultant.ru/document/cons_doc_LAW_18853/`,
           },
         ],
       },
@@ -259,7 +259,7 @@ export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
         basis: [
           {
             title: `Решение Челябинской городской Думы от 29.06.2021 №20/11`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://chelduma.ru/upload/iblock/33a/z9u7c7tn2018rlc2fxcemiu1dg52ddm5/2d21r13.pdf`,
           },
         ],
       },
@@ -276,7 +276,7 @@ export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
         basis: [
           {
             title: `Решение Челябинской городской Думы от 29.06.2021 №20/11`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://chelduma.ru/upload/iblock/33a/z9u7c7tn2018rlc2fxcemiu1dg52ddm5/2d21r13.pdf`,
           },
         ],
       },
@@ -293,7 +293,7 @@ export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
         basis: [
           {
             title: `Решение Челябинской городской Думы от 29.06.2021 №20/11`,
-            link: `https://base.garant.ru/104540/`,
+            link: `https://chelduma.ru/upload/iblock/33a/z9u7c7tn2018rlc2fxcemiu1dg52ddm5/2d21r13.pdf`,
           },
         ],
       },
@@ -301,6 +301,6 @@ export const MOCK_DISCOUNTS_CATEGORIES: DiscountsCategoriesComponentProps = {
   ],
   remark: {
     title: `Приказом №188 от 19.06.2020 г. "Об установлении категорий граждан без оплаты входных билетов МБУК "Зоопарк" (с изм. №1 от 31.08.2021 г.)`,
-    link: `https://base.garant.ru/104540`,
+    link: `/documents/Dopolnenie-prikaz-ob-ustanovlenii-tsen-na-uslugi-mbuk-zoopark.pdf`,
   },
 };
