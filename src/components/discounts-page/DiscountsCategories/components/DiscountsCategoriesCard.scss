@@ -180,6 +180,7 @@
       &:hover,
       &:focus {
         color: $color-green-dark;
+        transition: color ease-out 0.2s;
       }
 
       @include desktop {
@@ -213,7 +214,6 @@
     }
 
     @include desktop-xl {
-      font-weight: 600;
       font-size: 30px;
       gap: 16px;
     }

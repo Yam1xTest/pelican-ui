@@ -61,6 +61,7 @@
       &:hover,
       &:focus {
         color: $color-pink-bright;
+        transition: color ease-out 0.2s;
       }
     }
 
