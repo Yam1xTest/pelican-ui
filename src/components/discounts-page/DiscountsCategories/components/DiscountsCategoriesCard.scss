@@ -175,16 +175,12 @@
       @include link-text;
 
       color: $color-black-75;
-      text-underline-offset: 3px;
+      text-underline-offset: 4px;
 
       &:hover,
       &:focus {
         color: $color-green-dark;
         transition: color ease-out 0.2s;
-      }
-
-      @include desktop {
-        text-underline-offset: 4px;
       }
 
       @include desktop {
