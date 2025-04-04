@@ -80,7 +80,6 @@ export function Footer({
                         className="footer__nav-link"
                         aria-label={`Перейти на страницу ${name}`}
                         data-testid="footer-nav-link"
-                        rel="noopener noreferrer" // TODO: maybe need to be removed
                       >
                         {name}
                       </Link>
