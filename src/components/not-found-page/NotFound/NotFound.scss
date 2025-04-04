@@ -124,8 +124,9 @@
       }
 
       @include desktop-xl {
-        left: -385px;
-        top: 66px;
+        position: fixed;
+        left: -20%;
+        top: 200px;
         width: 42vw;
         height: auto;
         max-width: 100%;
@@ -137,6 +138,7 @@
       position: absolute;
       right: 16px;
       bottom: 36px;
+      z-index: 1;
       width: 209px;
       height: 135px;
       transform: scaleX(-1);
@@ -224,8 +226,8 @@
   }
 
   @include desktop-xl {
-    padding-top: 78px;
-    padding-bottom: 152px;
+    justify-content: center;
+    padding: 0;
     height: calc(100vh - 135px);
     min-height: 1041px;
   }

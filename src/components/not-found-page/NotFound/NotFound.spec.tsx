@@ -117,7 +117,7 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 1105,
+    height: 1176,
   });
 
   await expect(getNotFoundByTestId({

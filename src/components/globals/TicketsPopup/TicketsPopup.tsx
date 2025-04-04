@@ -130,6 +130,7 @@ export function TicketsPopup({
                     // TODO: Remove when the page appears
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={handleTicketPopupToggle}
                   >
                     {subsidizedTicket.button.label}
                   </Link>
@@ -149,6 +150,7 @@ export function TicketsPopup({
                 <Link
                   className="tickets-popup__more-link button button--secondary"
                   href={visitingRulesAccordion.button.link}
+                  onClick={handleTicketPopupToggle}
                 >
                   {visitingRulesAccordion.button.label}
                 </Link>
@@ -172,6 +174,7 @@ export function TicketsPopup({
                     // TODO: Remove when the page appears
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={handleTicketPopupToggle}
                   >
                     {ticketRefundAccordion.button.label}
                   </Link>
