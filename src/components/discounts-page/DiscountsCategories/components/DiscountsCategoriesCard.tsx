@@ -85,7 +85,7 @@ export function DiscountsCategoriesCard({
               {rules.basis.map((basis) => (
                 <li key={basis.title}>
                   <Link
-                    className="discounts-categories-card__rules-basis--link"
+                    className="discounts-categories-card__link"
                     data-testid="discounts-link"
                     href={basis.link}
                     target="_blank"

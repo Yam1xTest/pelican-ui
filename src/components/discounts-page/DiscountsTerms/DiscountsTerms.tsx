@@ -15,8 +15,8 @@ export function DiscountsTerms({
     >
       <h1 className="discounts-terms__title container">{title}</h1>
       <div className="discounts-terms__rules">
-        <p className="discounts-terms__rules-title container">Чтобы приобрести льготный билет, нужно</p>
-        <ol className="discounts-terms__rules-list container">
+        <h2 className="discounts-terms__rules-title container">Чтобы приобрести льготный билет, нужно</h2>
+        <ol className="discounts-terms__list container">
           {rulesCards.map((card) => (
             <DiscountsRulesCard
               key={card.id}
