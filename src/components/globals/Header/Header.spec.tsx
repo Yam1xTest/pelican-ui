@@ -1,5 +1,5 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, setViewportSize } from '@/playwright-tests/helpers';
+import { gotoPage, SCROLLBAR_WIDTH, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`HeaderComponentTests`, () => {
@@ -59,7 +59,7 @@ async function desktopTest({
 }) {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP,
+    width: Breakpoint.DESKTOP + SCROLLBAR_WIDTH,
   });
 
   await expect(getHeaderByTestId({
@@ -75,7 +75,7 @@ async function desktopXlTest({
 }) {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP_XL,
+    width: Breakpoint.DESKTOP_XL + SCROLLBAR_WIDTH,
   });
 
   await expect(getHeaderByTestId({

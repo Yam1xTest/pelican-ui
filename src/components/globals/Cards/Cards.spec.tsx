@@ -5,6 +5,7 @@ import {
   hideFooter,
   hideHeader,
   hideSkipLink,
+  SCROLLBAR_WIDTH,
   setViewportSize,
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
@@ -103,7 +104,7 @@ async function desktopTest({
 }) {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP,
+    width: Breakpoint.DESKTOP + SCROLLBAR_WIDTH,
     height: 1220,
   });
 
@@ -120,7 +121,7 @@ async function desktopXlTest({
 }) {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP_XL,
+    width: Breakpoint.DESKTOP_XL + SCROLLBAR_WIDTH,
     height: 1520,
   });
 

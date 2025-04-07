@@ -176,3 +176,5 @@ async function clickAccordionTriggerByText({
     })
     .click();
 }
+
+export const SCROLLBAR_WIDTH = 30;

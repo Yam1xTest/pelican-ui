@@ -3,6 +3,7 @@ import {
   gotoPage,
   hideCookie,
   hideHeader,
+  SCROLLBAR_WIDTH,
   setViewportSize,
 } from '@/playwright-tests/helpers';
 import { AppRoute, BlockTypes, Breakpoint } from '@/src/common/enum';
@@ -121,7 +122,7 @@ async function desktopTest({
 }) {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP,
+    width: Breakpoint.DESKTOP + SCROLLBAR_WIDTH,
   });
 
   await expect(getDocumentsCategoriesListByTestId({
@@ -137,7 +138,7 @@ async function desktopXlTest({
 }) {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP_XL,
+    width: Breakpoint.DESKTOP_XL + SCROLLBAR_WIDTH,
   });
 
   await expect(getDocumentsCategoriesListByTestId({
