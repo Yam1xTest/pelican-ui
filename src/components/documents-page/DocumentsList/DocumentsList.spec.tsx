@@ -5,7 +5,7 @@ import {
   SCROLLBAR_WIDTH,
   setViewportSize,
 } from '@/playwright-tests/helpers';
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { test, expect, Page } from '@playwright/test';
 
@@ -79,7 +79,7 @@ async function mobileTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-mobile.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.MOBILE}.png`);
 }
 
 async function mobileClickedTest({
@@ -99,7 +99,7 @@ async function mobileClickedTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-mobile-clicked.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.MOBILE}-clicked.png`);
 }
 
 async function tabletTest({
@@ -116,7 +116,7 @@ async function tabletTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-tablet.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletClickedTest({
@@ -137,7 +137,7 @@ async function tabletClickedTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-tablet-clicked.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.TABLET}-clicked.png`);
 }
 
 async function tabletXlTest({
@@ -154,7 +154,7 @@ async function tabletXlTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-tablet-xl.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function tabletXlClickedTest({
@@ -175,7 +175,7 @@ async function tabletXlClickedTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-tablet-xl-clicked.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.TABLET_XL}-clicked.png`);
 }
 
 async function desktopTest({
@@ -192,7 +192,7 @@ async function desktopTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-desktop.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.DESKTOP}.png`);
 }
 
 async function desktopClickedTest({
@@ -213,7 +213,7 @@ async function desktopClickedTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-desktop-clicked.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.DESKTOP}-clicked.png`);
 }
 
 async function desktopXlTest({
@@ -230,7 +230,7 @@ async function desktopXlTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-desktop-xl.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.DESKTOP_XL}.png`);
 }
 
 async function desktopXlClickedTest({
@@ -251,7 +251,7 @@ async function desktopXlClickedTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-desktop-xl-clicked.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.DESKTOP_XL}-clicked.png`);
 }
 
 function getDocumentsListByTestId({

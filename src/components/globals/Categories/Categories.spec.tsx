@@ -6,7 +6,12 @@ import {
   SCROLLBAR_WIDTH,
   setViewportSize,
 } from '@/playwright-tests/helpers';
-import { AppRoute, BlockTypes, Breakpoint } from '@/src/common/enum';
+import {
+  AppRoute,
+  BlockTypes,
+  Breakpoint,
+  BreakpointName,
+} from '@/src/common/enum';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { test, expect, Page } from '@playwright/test';
 
@@ -80,7 +85,7 @@ async function mobileTest({
   await expect(getDocumentsCategoriesListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-categories-mobile.png`);
+    .toHaveScreenshot(`documents-categories-${BreakpointName.MOBILE}.png`);
 }
 
 async function tabletTest({
@@ -96,7 +101,7 @@ async function tabletTest({
   await expect(getDocumentsCategoriesListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-categories-tablet.png`);
+    .toHaveScreenshot(`documents-categories-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletXlTest({
@@ -112,7 +117,7 @@ async function tabletXlTest({
   await expect(getDocumentsCategoriesListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-categories-tablet-xl.png`);
+    .toHaveScreenshot(`documents-categories-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function desktopTest({
@@ -128,7 +133,7 @@ async function desktopTest({
   await expect(getDocumentsCategoriesListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-categories-desktop.png`);
+    .toHaveScreenshot(`documents-categories-${BreakpointName.DESKTOP}.png`);
 }
 
 async function desktopXlTest({
@@ -144,7 +149,7 @@ async function desktopXlTest({
   await expect(getDocumentsCategoriesListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-categories-desktop-xl.png`);
+    .toHaveScreenshot(`documents-categories-${BreakpointName.DESKTOP_XL}.png`);
 }
 
 function getDocumentsCategoriesListByTestId({

@@ -1,4 +1,4 @@
-import { Breakpoint } from '@/src/common/enum';
+import { Breakpoint, BreakpointName } from '@/src/common/enum';
 import {
   gotoPage,
   hideCookie,
@@ -8,6 +8,8 @@ import {
   setViewportSize,
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
+
+const PAGE_ID = `not-found`;
 
 test.describe(`NotFoundComponentTests`, () => {
   test.beforeEach(async ({
@@ -54,7 +56,7 @@ async function mobileTest({
   await expect(getNotFoundByTestId({
     page,
   }))
-    .toHaveScreenshot(`not-found-mobile.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.MOBILE}.png`);
 }
 
 async function tabletTest({
@@ -71,7 +73,7 @@ async function tabletTest({
   await expect(getNotFoundByTestId({
     page,
   }))
-    .toHaveScreenshot(`not-found-tablet.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletXlTest({
@@ -88,7 +90,7 @@ async function tabletXlTest({
   await expect(getNotFoundByTestId({
     page,
   }))
-    .toHaveScreenshot(`not-found-tablet-xl.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function desktopTest({
@@ -105,7 +107,7 @@ async function desktopTest({
   await expect(getNotFoundByTestId({
     page,
   }))
-    .toHaveScreenshot(`not-found-desktop.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP}.png`);
 }
 
 async function desktopXlTest({
@@ -122,7 +124,7 @@ async function desktopXlTest({
   await expect(getNotFoundByTestId({
     page,
   }))
-    .toHaveScreenshot(`not-found-desktop-xl.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP_XL}.png`);
 }
 
 function getNotFoundByTestId({
@@ -130,5 +132,5 @@ function getNotFoundByTestId({
 }: {
   page: Page
 }) {
-  return page.getByTestId(`not-found`);
+  return page.getByTestId(PAGE_ID);
 }
