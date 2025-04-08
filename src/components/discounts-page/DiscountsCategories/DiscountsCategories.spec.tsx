@@ -4,8 +4,10 @@ import {
   hideHeader,
   setViewportSize,
 } from '@/playwright-tests/helpers';
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import { test, expect, Page } from '@playwright/test';
+
+const TEST_ID = `discounts-categories`;
 
 test.describe(`DiscountsCategoriesTests`, () => {
   test.beforeEach(async ({
@@ -49,7 +51,7 @@ async function mobileTest({
   await expect(getDiscountsCategoriesByTestId({
     page,
   }))
-    .toHaveScreenshot(`discounts-categories-mobile.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}.png`);
 }
 
 async function tabletTest({
@@ -66,7 +68,7 @@ async function tabletTest({
   await expect(getDiscountsCategoriesByTestId({
     page,
   }))
-    .toHaveScreenshot(`discounts-categories-tablet.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletXlTest({
@@ -83,7 +85,7 @@ async function tabletXlTest({
   await expect(getDiscountsCategoriesByTestId({
     page,
   }))
-    .toHaveScreenshot(`discounts-categories-tablet-xl.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function desktopTest({
@@ -100,7 +102,7 @@ async function desktopTest({
   await expect(getDiscountsCategoriesByTestId({
     page,
   }))
-    .toHaveScreenshot(`discounts-categories-desktop.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}.png`);
 }
 
 async function desktopXlTest({
@@ -117,7 +119,7 @@ async function desktopXlTest({
   await expect(getDiscountsCategoriesByTestId({
     page,
   }))
-    .toHaveScreenshot(`discounts-categories-desktop-xl.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP_XL}.png`);
 }
 
 function getDiscountsCategoriesByTestId({
@@ -125,5 +127,5 @@ function getDiscountsCategoriesByTestId({
 }: {
   page: Page
 }) {
-  return page.getByTestId(`discounts-categories`);
+  return page.getByTestId(TEST_ID);
 }
