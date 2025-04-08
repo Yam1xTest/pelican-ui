@@ -68,37 +68,39 @@
   }
 
   &.enter {
-    height: 0;
+    max-height: 0;
   }
 
   &.enter-active {
-    height: 356px;
-    transition: all 0.2s ease-in;
+    max-height: 356px;
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
 
     @include tablet {
-      height: 396px;
+      max-height: 396px;
     }
 
     @include tablet-xl {
-      height: 408px;
+      max-height: 408px;
     }
   }
 
   &.exit {
-    height: 356px;
+    max-height: 356px;
 
     @include tablet {
-      height: 396px;
+      max-height: 396px;
     }
 
     @include tablet-xl {
-      height: 408px;
+      max-height: 408px;
     }
   }
 
   &.exit-active {
-    height: 0;
-    transition: all 0.2s ease-in;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.2s ease-in;
   }
 
   &__phone,
