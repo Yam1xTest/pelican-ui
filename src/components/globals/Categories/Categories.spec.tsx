@@ -3,7 +3,7 @@ import {
   gotoPage,
   hideCookie,
   hideHeader,
-  setViewportSize
+  setViewportSize,
 } from '@/playwright-tests/helpers';
 import {
   AppRoute,

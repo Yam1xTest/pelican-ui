@@ -6,7 +6,7 @@ import {
   hideHeader,
   hideMap,
   hideSkipLink,
-  setViewportSize
+  setViewportSize,
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
