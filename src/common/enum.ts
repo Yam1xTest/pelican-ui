@@ -5,6 +5,7 @@ export enum AppRoute {
   CONTACT_ZOO = `/contact-zoo`,
   INTERNAL_TEST_PAGE = `/internal-test-page`,
   DISCOUNTS = `/discounts`,
+  VISITING_RULES = `/visiting-rules`,
 }
 
 export enum Breakpoint {
@@ -40,4 +41,9 @@ export enum BlockTypes {
 
   DISCOUNTS_TERMS = `discounts.terms`,
   DISCOUNTS_CATEGORIES = `discounts.categories`,
+
+  VISITING_RULES_MAIN = `visiting-rules.main`,
+  VISITING_RULES_WARNINGS = `visiting-rules.warnings`,
+  VISITING_RULES_PHOTOS_POLICY = `visiting-rules.photos-policy`,
+  VISITING_RULES_EMERGENCY_PHONES = `visiting-rules.emergency-phones`,
 }

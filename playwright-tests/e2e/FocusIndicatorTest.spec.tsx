@@ -65,6 +65,21 @@ test.describe(`Visible focus indicator verification`, () => {
   });
 });
 
+test(`VisitingRulesPageCheckTest`, async ({
+  page,
+}: {
+  page: Page
+}) => {
+  await gotoPage({
+    page,
+    url: AppRoute.VISITING_RULES,
+  });
+
+  await checkFocusVisibility({
+    page,
+  });
+});
+
 async function checkFocusVisibility({
   page,
 }: {

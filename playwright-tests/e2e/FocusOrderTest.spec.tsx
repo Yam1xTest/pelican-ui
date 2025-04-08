@@ -118,6 +118,21 @@ test.describe(`Logical focus order verification`, () => {
 
     test(`DiscountsPageDesktopTest`, discountsPageDesktopTest);
   });
+
+  test.describe(`Visiting rules page check`, () => {
+    test.beforeEach(async ({
+      page,
+    }) => {
+      await gotoPage({
+        page,
+        url: AppRoute.VISITING_RULES,
+      });
+    });
+
+    test(`VisitingRulesPageMobileTest`, visitingRulesPageMobileTest);
+
+    test(`VisitingRulesPageDesktopTest`, visitingRulesPageDesktopTest);
+  });
 });
 
 async function homePageMobileTest({
@@ -370,6 +385,57 @@ async function discountsPageDesktopTest({
 function generateDuplicates(count: number, string: string): string[] {
   return Array(count)
     .fill(string);
+}
+
+async function visitingRulesPageMobileTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+  });
+
+  const expectedFocusOrder = [
+    ...expectedMobileHeaderFocusOrder,
+    `visiting-rules-document-link`,
+    `visiting-rules-emergency-phone-link`,
+    `visiting-rules-emergency-phone-link`,
+    `visiting-rules-emergency-phone-link`,
+    `visiting-rules-emergency-phone-link`,
+    ...expectedMobileFooterFocusOrder,
+  ];
+
+  await checkNavigationUsingTab({
+    page,
+    expectedFocusOrder,
+  });
+}
+
+async function visitingRulesPageDesktopTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP,
+  });
+
+  const expectedFocusOrder = [
+    ...expectedDesktopHeaderFocusOrder,
+    `visiting-rules-document-link`,
+    `visiting-rules-emergency-phone-link`,
+    `visiting-rules-emergency-phone-link`,
+    `visiting-rules-emergency-phone-link`,
+    `visiting-rules-emergency-phone-link`,
+    ...expectedDesktopFooterFocusOrder,
+  ];
+
+  await checkNavigationUsingTab({
+    page,
+    expectedFocusOrder,
+  });
 }
 
 async function checkNavigationUsingTab({
