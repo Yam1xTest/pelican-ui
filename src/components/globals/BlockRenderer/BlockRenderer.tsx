@@ -156,7 +156,6 @@ type Block = HeroComponentProps
   | DiscountsTermsComponentProps
   | DiscountsCategoriesComponentProps
   | ArticleComponentProps
-  | ArticleComponentProps
   | VisitingRulesMainComponentProps
   | VisitingRulesWarningsComponentProps
   | VisitingRulesPhotosPolicyComponentProps
