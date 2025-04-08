@@ -29,13 +29,16 @@ export async function setViewportSize({
   page,
   width = Breakpoint.MOBILE,
   height = 768,
+  withScroll = false,
 }: {
   page: Page,
   width?: number,
   height?: number,
+  withScroll?: boolean,
 }) {
+  const scrollbarWidth = 30;
   await page.setViewportSize({
-    width,
+    width: withScroll ? width + scrollbarWidth : width,
     height,
   });
 }
@@ -176,5 +179,3 @@ async function clickAccordionTriggerByText({
     })
     .click();
 }
-
-export const SCROLLBAR_WIDTH = 30;

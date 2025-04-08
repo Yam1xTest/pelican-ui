@@ -10,8 +10,7 @@ import {
   hideFooter,
   hideHeader,
   hideSkipLink,
-  SCROLLBAR_WIDTH,
-  setViewportSize,
+  setViewportSize
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
@@ -106,7 +105,8 @@ async function desktopTest({
 }) {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP + SCROLLBAR_WIDTH,
+    withScroll: true,
+    width: Breakpoint.DESKTOP,
   });
 
   await expect(getImageWithButtonGridByTestId({

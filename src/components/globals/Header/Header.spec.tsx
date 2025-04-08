@@ -1,5 +1,5 @@
 import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
-import { gotoPage, SCROLLBAR_WIDTH, setViewportSize } from '@/playwright-tests/helpers';
+import { gotoPage, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 const PAGE_ID = `header`;
@@ -61,7 +61,8 @@ async function desktopTest({
 }) {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP + SCROLLBAR_WIDTH,
+    withScroll: true,
+    width: Breakpoint.DESKTOP,
   });
 
   await expect(getHeaderByTestId({
@@ -77,7 +78,8 @@ async function desktopXlTest({
 }) {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP_XL + SCROLLBAR_WIDTH,
+    withScroll: true,
+    width: Breakpoint.DESKTOP_XL,
   });
 
   await expect(getHeaderByTestId({

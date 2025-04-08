@@ -2,8 +2,7 @@ import {
   gotoPage,
   hideCookie,
   hideHeader,
-  SCROLLBAR_WIDTH,
-  setViewportSize,
+  setViewportSize
 } from '@/playwright-tests/helpers';
 import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
@@ -185,7 +184,8 @@ async function desktopTest({
 }) {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP + SCROLLBAR_WIDTH,
+    withScroll: true,
+    width: Breakpoint.DESKTOP,
     height: 999,
   });
 
@@ -202,7 +202,8 @@ async function desktopClickedTest({
 }) {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP + SCROLLBAR_WIDTH,
+    withScroll: true,
+    width: Breakpoint.DESKTOP,
     height: 1767,
   });
 
@@ -223,7 +224,8 @@ async function desktopXlTest({
 }) {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP_XL + SCROLLBAR_WIDTH,
+    withScroll: true,
+    width: Breakpoint.DESKTOP_XL,
     height: 1408,
   });
 
@@ -240,7 +242,8 @@ async function desktopXlClickedTest({
 }) {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP_XL + SCROLLBAR_WIDTH,
+    withScroll: true,
+    width: Breakpoint.DESKTOP_XL,
     height: 2452,
   });
 
