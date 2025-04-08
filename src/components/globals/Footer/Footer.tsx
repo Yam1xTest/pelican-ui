@@ -192,7 +192,7 @@ export function Footer({
                 <div className="footer__copyright col-tablet-4">
                   Сайт разработан
                   <Link
-                    href="https://www.tourmalinecore.com/"
+                    href="https://www.tourmalinecore.com/ru/"
                     className="footer__copyright-link"
                     target="_blank"
                     aria-label="Перейти на сайт компании Tourmaline Core"
@@ -219,7 +219,7 @@ export function Footer({
                 <div className="footer__copyright">
                   Сайт разработан
                   <Link
-                    href="https://www.tourmalinecore.com/"
+                    href="https://www.tourmalinecore.com/ru/"
                     className="footer__copyright-link"
                     target="_blank"
                     rel="noopener noreferrer"
