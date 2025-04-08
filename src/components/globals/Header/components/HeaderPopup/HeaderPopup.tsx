@@ -1,7 +1,7 @@
 import { GlobalComponentProps } from "@/src/common/types";
 import { CSSTransition } from 'react-transition-group';
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useRef } from "react";
 import { SocialMedia } from "../../../SocialNetwork/SocialMedia";
 import { HeaderNavigation } from "../HeaderNavigation/HeaderNavigation";
 
@@ -22,8 +22,11 @@ export function HeaderPopup({
     handleTicketPopupToggle,
   } = useTicketPopup();
 
+  const nodeRef = useRef(null);
+
   return (
     <CSSTransition
+      nodeRef={nodeRef}
       in={isActive}
       timeout={{
         enter: 300,
@@ -34,6 +37,7 @@ export function HeaderPopup({
       <div
         className={`${className} container header-popup`}
         data-testid="header-popup"
+        ref={nodeRef}
       >
         {isActive && (
           <>
