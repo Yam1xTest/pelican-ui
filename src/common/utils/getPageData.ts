@@ -4,6 +4,8 @@ import { api } from "./HttpClient";
 import { mapContractByBlock } from "./mapContractByBlock";
 import { MOCK_NOT_FOUND_PAGE } from "../mocks/not-found-page-mock/not-found-page-mock";
 import { PageData } from "../types";
+import { MOCK_DISCOUNTS_PAGE } from "../mocks/discounts-page-mock/discounts-page-mock";
+import { MOCK_VISITING_RULES_PAGE } from "../mocks/visiting-rules-page-mock/visiting-rules-page-mock";
 
 export async function getPageData({
   slug = ``,
@@ -53,6 +55,14 @@ export async function getPageData({
         ],
         preview,
       });
+
+    // Todo: remove after integration with CMS
+    case AppRoute.DISCOUNTS:
+      return MOCK_DISCOUNTS_PAGE;
+
+      // Todo: remove after integration with CMS
+    case AppRoute.VISITING_RULES:
+      return MOCK_VISITING_RULES_PAGE;
 
     default:
       return MOCK_NOT_FOUND_PAGE;
