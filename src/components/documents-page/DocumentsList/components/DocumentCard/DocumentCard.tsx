@@ -18,6 +18,8 @@ export function DocumentCard({
 }) {
   const isFilesEmpty = files.length === 0;
   const isSingleDocument = files.length === 1;
+  const hasMultipleFiles = !isSingleDocument && !isFilesEmpty;
+
   return (
     <li className={`${className} document-card`}>
       <div className="document-card__header">
@@ -43,7 +45,7 @@ export function DocumentCard({
           />
         )}
       </div>
-      {subtitle && (
+      {(subtitle || hasMultipleFiles) && (
         <Accordion
           triggerText="Подробнее"
           triggerHideText="Скрыть"
@@ -61,27 +63,26 @@ export function DocumentCard({
                 {description}
               </MarkdownText>
             )}
-            {!isFilesEmpty && !isSingleDocument
-              && (
-                <ul className="document-card__list">
-                  {(files.map((file) => (
-                    <li
-                      className="document-card__item"
-                      key={file.id}
-                    >
-                      <DocumentFile
-                        className="document-card__document-file"
-                        numberOfFiles={files.length}
-                        buttonTheme="secondary"
-                        name={file.name}
-                        url={file.url}
-                        extension={file.ext}
-                      />
-                    </li>
-                  ))
-                  )}
-                </ul>
-              )}
+            {hasMultipleFiles && (
+              <ul className="document-card__list">
+                {(files.map((file) => (
+                  <li
+                    className="document-card__item"
+                    key={file.id}
+                  >
+                    <DocumentFile
+                      className="document-card__document-file"
+                      numberOfFiles={files.length}
+                      buttonTheme="secondary"
+                      name={file.name}
+                      url={file.url}
+                      extension={file.ext}
+                    />
+                  </li>
+                ))
+                )}
+              </ul>
+            )}
           </div>
         </Accordion>
       )}
