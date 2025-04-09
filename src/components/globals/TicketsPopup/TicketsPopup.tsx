@@ -50,7 +50,7 @@ export function TicketsPopup({
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTicketPopupActive]);
-  console.log(ticketsPopup);
+
   return (
     <div
       className="tickets-popup"
