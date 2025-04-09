@@ -8,6 +8,8 @@ import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MutableRefObject } from "react";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 
+const TOURMALINE_CORE_LINK = `https://www.tourmalinecore.com/ru/`;
+
 type FooterProps =
   Omit<GlobalComponentProps,
   "navigationLinks"
@@ -192,7 +194,7 @@ export function Footer({
                 <div className="footer__copyright col-tablet-4">
                   Сайт разработан
                   <Link
-                    href="https://www.tourmalinecore.com/ru/"
+                    href={TOURMALINE_CORE_LINK}
                     className="footer__copyright-link"
                     target="_blank"
                     aria-label="Перейти на сайт компании Tourmaline Core"
@@ -219,7 +221,7 @@ export function Footer({
                 <div className="footer__copyright">
                   Сайт разработан
                   <Link
-                    href="https://www.tourmalinecore.com/ru/"
+                    href={TOURMALINE_CORE_LINK}
                     className="footer__copyright-link"
                     target="_blank"
                     rel="noopener noreferrer"
