@@ -184,7 +184,6 @@ async function desktopTest({
 }) {
   await setViewportSize({
     page,
-    withScroll: true,
     width: Breakpoint.DESKTOP,
     height: 999,
   });
@@ -202,7 +201,6 @@ async function desktopClickedTest({
 }) {
   await setViewportSize({
     page,
-    withScroll: true,
     width: Breakpoint.DESKTOP,
     height: 1767,
   });
@@ -224,7 +222,6 @@ async function desktopXlTest({
 }) {
   await setViewportSize({
     page,
-    withScroll: true,
     width: Breakpoint.DESKTOP_XL,
     height: 1408,
   });
@@ -242,7 +239,6 @@ async function desktopXlClickedTest({
 }) {
   await setViewportSize({
     page,
-    withScroll: true,
     width: Breakpoint.DESKTOP_XL,
     height: 2452,
   });

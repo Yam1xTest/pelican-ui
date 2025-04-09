@@ -29,16 +29,14 @@ export async function setViewportSize({
   page,
   width = Breakpoint.MOBILE,
   height = 768,
-  withScroll = false,
 }: {
   page: Page,
   width?: number,
   height?: number,
-  withScroll?: boolean,
 }) {
   const scrollbarWidth = 30;
   await page.setViewportSize({
-    width: withScroll ? width + scrollbarWidth : width,
+    width,
     height,
   });
 }

@@ -95,7 +95,6 @@ async function desktopTest({
 }) {
   await setViewportSize({
     page,
-    withScroll: true,
     width: Breakpoint.DESKTOP,
   });
 
