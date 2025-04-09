@@ -200,11 +200,11 @@ export async function getServerSideProps({
         title: documentsItem!.title!,
         subtitle: documentsItem!.subtitle,
         description: documentsItem!.description,
-        files: documentsItem.files ? documentsItem?.files.map((file) => ({
-          id: file?.id,
-          name: file?.name,
-          url: file?.url,
-          ext: file?.ext,
+        files: documentsItem.files ? documentsItem.files.map((file) => ({
+          id: file.id!,
+          name: file.name!,
+          url: file.url!,
+          ext: file.ext!,
         })) : [],
         category: {
           id: documentsItem!.category.documentId!,

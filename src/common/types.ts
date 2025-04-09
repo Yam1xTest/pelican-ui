@@ -277,17 +277,17 @@ export type DocumentsProps = {
   title: string,
   subtitle?: string,
   description?: string,
-  files: DocumentFileProps[],
+  files: DocumentFileProps[] | [],
   category: {
     id: CategoryProps['id'],
   }
 };
 
 export type DocumentFileProps = {
-  id?: number,
-  name?: string,
-  url?: string,
-  ext?: string,
+  id: number,
+  name: string,
+  url: string,
+  ext: string,
 };
 
 export type CategoryProps = {

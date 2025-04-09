@@ -140,33 +140,34 @@ export function TicketsPopup({
               )}
             </ul>
             <div className="tickets-popup__accordions">
-              <Accordion
-                triggerText="Правила посещения"
-                className="tickets-popup__accordion accordion--ticket-rules"
-                icon={iconChevron}
-              >
-                {ticketsPopup?.visitingRulesAccordion && (
-                  <>
-                    <TicketsPopupRulesList
-                      className="tickets-popup__rules-list"
-                      ticketsPopupRulesImages={visitingRulesAccordion.images}
-                    />
-                    <Link
-                      className="tickets-popup__more-link button button--secondary"
-                      href={visitingRulesAccordion.button.link}
-                      onClick={handleTicketPopupToggle}
-                    >
-                      {visitingRulesAccordion.button.label}
-                    </Link>
-                  </>
-                )}
-              </Accordion>
-              <Accordion
-                triggerText="Возврат билетов"
-                className="tickets-popup__accordion tickets-popup__accordion--refund accordion--ticket-rules"
-                icon={iconChevron}
-              >
-                {ticketsPopup?.ticketRefundAccordion && (
+              {ticketsPopup?.visitingRulesAccordion && (
+                <Accordion
+                  triggerText="Правила посещения"
+                  className="tickets-popup__accordion accordion--ticket-rules"
+                  icon={iconChevron}
+                >
+
+                  <TicketsPopupRulesList
+                    className="tickets-popup__rules-list"
+                    ticketsPopupRulesImages={visitingRulesAccordion.images}
+                  />
+                  <Link
+                    className="tickets-popup__more-link button button--secondary"
+                    href={visitingRulesAccordion.button.link}
+                    onClick={handleTicketPopupToggle}
+                  >
+                    {visitingRulesAccordion.button.label}
+                  </Link>
+
+                </Accordion>
+              )}
+              {ticketsPopup?.ticketRefundAccordion && (
+                <Accordion
+                  triggerText="Возврат билетов"
+                  className="tickets-popup__accordion tickets-popup__accordion--refund accordion--ticket-rules"
+                  icon={iconChevron}
+                >
+
                   <div className="tickets-popup__refund">
                     <div className="tickets-popup__refund-head">
                       {ticketRefundAccordion.refundHead}
@@ -186,8 +187,9 @@ export function TicketsPopup({
                       {ticketRefundAccordion.button.label}
                     </Link>
                   </div>
-                )}
-              </Accordion>
+
+                </Accordion>
+              )}
             </div>
             {ticketsPopup?.buyTicketsButton && (
               <Link
