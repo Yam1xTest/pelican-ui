@@ -34,6 +34,13 @@ export type DocumentsPageProps = {
   seo?: Seo,
 };
 
+export type DiscountsPageProps = {
+  seo?: Seo,
+  blocks:(DiscountsTermsComponentProps
+  | DiscountsCategoriesComponentProps
+  )[];
+};
+
 export type VisitingRulesPageProps = {
   seo: Seo,
   blocks: (
@@ -130,6 +137,45 @@ export type GlobalComponentProps = {
     },
     note: string,
   },
+};
+
+export type DiscountsCategoriesComponentProps = {
+  id: number,
+  __component: BlockTypes.DISCOUNTS_CATEGORIES,
+  title: string,
+  categoriesCards: CategoriesCards[]
+  remark: {
+    title:string,
+    link: string,
+  }
+};
+
+export type CategoriesCards = {
+  id: number,
+  title: string,
+  note?: string,
+  price: string,
+  rules: {
+    terms?: string[],
+    info?: string,
+    docs?: string[],
+    basis?: {
+      title:string,
+      link: string,
+    }[]
+  },
+};
+
+export type DiscountsTermsComponentProps = {
+  id: number,
+  __component: BlockTypes.DISCOUNTS_TERMS,
+  title: string,
+  rulesCards: Rules[]
+};
+
+export type Rules = {
+  id: number,
+  text: string,
 };
 
 export type HeroComponentProps = {

@@ -49,19 +49,34 @@ test.describe(`Visible focus indicator verification`, () => {
     });
   });
 
-  test(`VisitingRulesPageCheckTest`, async ({
+  test(`DiscountsPageCheckTest`, async ({
     page,
   }: {
     page: Page
   }) => {
     await gotoPage({
       page,
-      url: AppRoute.VISITING_RULES,
+      url: AppRoute.DISCOUNTS,
     });
 
     await checkFocusVisibility({
       page,
     });
+  });
+});
+
+test(`VisitingRulesPageCheckTest`, async ({
+  page,
+}: {
+  page: Page
+}) => {
+  await gotoPage({
+    page,
+    url: AppRoute.VISITING_RULES,
+  });
+
+  await checkFocusVisibility({
+    page,
   });
 });
 
