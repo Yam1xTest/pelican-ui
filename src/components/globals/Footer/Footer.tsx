@@ -8,8 +8,6 @@ import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MutableRefObject } from "react";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 
-const TOURMALINE_CORE_LINK = `https://www.tourmalinecore.com/ru/`;
-
 type FooterProps =
   Omit<GlobalComponentProps,
   "navigationLinks"
@@ -191,25 +189,10 @@ export function Footer({
             }
             {
               isTablet && (
-                <div className="footer__copyright col-tablet-4">
-                  Сайт разработан
-                  <Link
-                    href={TOURMALINE_CORE_LINK}
-                    className="footer__copyright-link"
-                    target="_blank"
-                    aria-label="Перейти на сайт компании Tourmaline Core"
-                    data-testid="footer-copyright-link"
-                  >
-                    Tourmaline Core
-                    <span
-                      className="footer__heart"
-                      aria-hidden="true"
-                    >
-                      ❤
-                    </span>
-                  </Link>
-                </div>
-              )
+                renderCopyright({
+                  className: `footer__copyright col-tablet-4`,
+                  isTablet,
+                }))
             }
             <div className="footer__social-media col-tablet-4">
               <SocialMedia
@@ -218,20 +201,9 @@ export function Footer({
             </div>
             {
               isMobile && (
-                <div className="footer__copyright">
-                  Сайт разработан
-                  <Link
-                    href={TOURMALINE_CORE_LINK}
-                    className="footer__copyright-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Перейти на сайт компании Tourmaline Core"
-                    data-testid="footer-copyright-link"
-                  >
-                    Tourmaline Core
-                    <span className="footer__heart">❤</span>
-                  </Link>
-                </div>
+                renderCopyright({
+                  className: `footer__copyright`,
+                })
               )
             }
           </div>
@@ -271,5 +243,39 @@ export function Footer({
         </ul>
       </div>
     </footer>
+  );
+}
+
+function renderCopyright({
+  className,
+  isTablet = false,
+} : {
+  className: string,
+  isTablet?: boolean,
+}) {
+  return (
+    <div className={className}>
+      Сайт разработан
+      <Link
+        href="https://www.tourmalinecore.com/ru/"
+        className="footer__copyright-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Перейти на сайт компании Tourmaline Core"
+        data-testid="footer-copyright-link"
+      >
+        Tourmaline Core
+        {isTablet ? (
+          <span
+            className="footer__heart"
+            aria-hidden="true"
+          >
+            ❤
+          </span>
+        ) : (
+          <span className="footer__heart">❤</span>
+        )}
+      </Link>
+    </div>
   );
 }
