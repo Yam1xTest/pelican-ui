@@ -12,14 +12,20 @@ const expectedMobileHeaderFocusOrder = [
 const expectedDesktopHeaderFocusOrder = [
   `skip-link`,
   `header-logo`,
-  ...generateDuplicates(4, `header-navigation-link`),
+  ...generateTestIdDuplicates({
+    count: 4,
+    string: `header-navigation-link`,
+  }),
   `header-contact-button`,
   `header-tickets-popup-button`,
 ];
 
 const expectedMobileFooterFocusOrder = [
   `footer-tickets-popup-button`,
-  ...generateDuplicates(4, `footer-nav-link`),
+  ...generateTestIdDuplicates({
+    count: 4,
+    string: `footer-nav-link`,
+  }),
   `footer-tel-link`,
   `footer-email-link`,
   `social-icon-vkontakte`,
@@ -27,12 +33,18 @@ const expectedMobileFooterFocusOrder = [
   `social-icon-odnoklassniki`,
   `social-icon-dzen`,
   `footer-copyright-link`,
-  ...generateDuplicates(3, `footer-official-link`),
+  ...generateTestIdDuplicates({
+    count: 3,
+    string: `footer-official-link`,
+  }),
 ];
 
 const expectedDesktopFooterFocusOrder = [
   `footer-tickets-popup-button`,
-  ...generateDuplicates(4, `footer-nav-link`),
+  ...generateTestIdDuplicates({
+    count: 4,
+    string: `footer-nav-link`,
+  }),
   `footer-tel-link`,
   `footer-email-link`,
   `footer-copyright-link`,
@@ -40,7 +52,10 @@ const expectedDesktopFooterFocusOrder = [
   `social-icon-telegram`,
   `social-icon-odnoklassniki`,
   `social-icon-dzen`,
-  ...generateDuplicates(3, `footer-official-link`),
+  ...generateTestIdDuplicates({
+    count: 3,
+    string: `footer-official-link`,
+  }),
 ];
 
 test.describe(`Logical focus order verification`, () => {
@@ -151,7 +166,10 @@ async function homePageMobileTest({
     `services-phone-link`,
     `services-email-link`,
     `image-grid-btn`,
-    ...generateDuplicates(3, `ticket-card-link`),
+    ...generateTestIdDuplicates({
+      count: 3,
+      string: `ticket-card-link`,
+    }),
     `tickets-buy-button`,
     `tickets-all-discounts`,
     `text-link`,
@@ -183,7 +201,10 @@ async function homePageDesktopTest({
     `services-phone-link`,
     `services-email-link`,
     `image-grid-btn`,
-    ...generateDuplicates(3, `ticket-card-link`),
+    ...generateTestIdDuplicates({
+      count: 3,
+      string: `ticket-card-link`,
+    }),
     `tickets-discounts-link`,
     `text-link`,
     ...expectedDesktopFooterFocusOrder,
@@ -209,7 +230,10 @@ async function mobileMenuOpenTest({
 
   const expectedFocusOrder = [
     `header-popup-ticket-button`,
-    ...generateDuplicates(4, `header-navigation-link`),
+    ...generateTestIdDuplicates({
+      count: 4,
+      string: `header-navigation-link`,
+    }),
     `header-popup-phone`,
     `header-popup-email`,
     `social-icon-vkontakte`,
@@ -238,8 +262,14 @@ async function ticketsPopupOpenTest({
     .click();
 
   const expectedFocusOrder = [
-    ...generateDuplicates(3, `tickets-popup-card-link`),
-    ...generateDuplicates(3, `accordion-trigger`),
+    ...generateTestIdDuplicates({
+      count: 3,
+      string: `tickets-popup-card-link`,
+    }),
+    ...generateTestIdDuplicates({
+      count: 3,
+      string: `accordion-trigger`,
+    }),
     `tickets-popup-buy-button`,
     `tickets-popup-close-button`,
   ];
@@ -261,7 +291,10 @@ async function newsPageMobileTest({
 
   const expectedFocusOrder = [
     ...expectedMobileHeaderFocusOrder,
-    ...generateDuplicates(6, `cards-card`),
+    ...generateTestIdDuplicates({
+      count: 6,
+      string: `cards-card`,
+    }),
     `news-list-button`,
     ...expectedMobileFooterFocusOrder,
   ];
@@ -284,7 +317,10 @@ async function newsPageDesktopTest({
 
   const expectedFocusOrder = [
     ...expectedDesktopHeaderFocusOrder,
-    ...generateDuplicates(6, `cards-card`),
+    ...generateTestIdDuplicates({
+      count: 6,
+      string: `cards-card`,
+    }),
     `news-list-button`,
     ...expectedDesktopFooterFocusOrder,
   ];
@@ -306,7 +342,10 @@ async function documentsPageMobileTest({
 
   const expectedFocusOrder = [
     ...expectedMobileHeaderFocusOrder,
-    ...generateDuplicates(8, `category`),
+    ...generateTestIdDuplicates({
+      count: 8,
+      string: `category`,
+    }),
     ...expectedMobileFooterFocusOrder,
   ];
 
@@ -328,7 +367,10 @@ async function documentsPageDesktopTest({
 
   const expectedFocusOrder = [
     ...expectedDesktopHeaderFocusOrder,
-    ...generateDuplicates(8, `category`),
+    ...generateTestIdDuplicates({
+      count: 8,
+      string: `category`,
+    }),
     ...expectedDesktopFooterFocusOrder,
   ];
 
@@ -337,6 +379,7 @@ async function documentsPageDesktopTest({
     expectedFocusOrder,
   });
 }
+
 async function discountsPageMobileTest({
   page,
 }: {
@@ -348,7 +391,10 @@ async function discountsPageMobileTest({
 
   const expectedFocusOrder = [
     ...expectedMobileHeaderFocusOrder,
-    ...generateDuplicates(21, `discounts-link`),
+    ...generateTestIdDuplicates({
+      count: 21,
+      string: `discounts-link`,
+    }),
     `discounts-remark-link`,
     ...expectedMobileFooterFocusOrder,
   ];
@@ -371,7 +417,10 @@ async function discountsPageDesktopTest({
 
   const expectedFocusOrder = [
     ...expectedDesktopHeaderFocusOrder,
-    ...generateDuplicates(21, `discounts-link`),
+    ...generateTestIdDuplicates({
+      count: 21,
+      string: `discounts-link`,
+    }),
     `discounts-remark-link`,
     ...expectedDesktopFooterFocusOrder,
   ];
@@ -380,11 +429,6 @@ async function discountsPageDesktopTest({
     page,
     expectedFocusOrder,
   });
-}
-
-function generateDuplicates(count: number, string: string): string[] {
-  return Array(count)
-    .fill(string);
 }
 
 async function visitingRulesPageMobileTest({
@@ -399,10 +443,10 @@ async function visitingRulesPageMobileTest({
   const expectedFocusOrder = [
     ...expectedMobileHeaderFocusOrder,
     `visiting-rules-document-link`,
-    `visiting-rules-emergency-phone-link`,
-    `visiting-rules-emergency-phone-link`,
-    `visiting-rules-emergency-phone-link`,
-    `visiting-rules-emergency-phone-link`,
+    ...generateTestIdDuplicates({
+      count: 4,
+      string: `visiting-rules-emergency-phone-link`,
+    }),
     ...expectedMobileFooterFocusOrder,
   ];
 
@@ -425,10 +469,10 @@ async function visitingRulesPageDesktopTest({
   const expectedFocusOrder = [
     ...expectedDesktopHeaderFocusOrder,
     `visiting-rules-document-link`,
-    `visiting-rules-emergency-phone-link`,
-    `visiting-rules-emergency-phone-link`,
-    `visiting-rules-emergency-phone-link`,
-    `visiting-rules-emergency-phone-link`,
+    ...generateTestIdDuplicates({
+      count: 4,
+      string: `visiting-rules-emergency-phone-link`,
+    }),
     ...expectedDesktopFooterFocusOrder,
   ];
 
@@ -436,6 +480,17 @@ async function visitingRulesPageDesktopTest({
     page,
     expectedFocusOrder,
   });
+}
+
+function generateTestIdDuplicates({
+  count,
+  string,
+}: {
+  count: number,
+  string: string
+}) : string[] {
+  return Array(count)
+    .fill(string);
 }
 
 async function checkNavigationUsingTab({
