@@ -75,6 +75,8 @@ export default function App({
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
+  // ToDo: check warning
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.events]);
 
   useEffect(() => {
