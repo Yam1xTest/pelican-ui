@@ -284,10 +284,10 @@ export type DocumentsProps = {
 };
 
 export type DocumentFileProps = {
-  id: number,
-  name: string,
-  url: string,
-  ext: string,
+  id?: number,
+  name?: string,
+  url?: string,
+  ext?: string,
 };
 
 export type CategoryProps = {

@@ -50,7 +50,7 @@ export function TicketsPopup({
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTicketPopupActive]);
-
+  console.log(ticketsPopup);
   return (
     <div
       className="tickets-popup"
@@ -81,7 +81,7 @@ export function TicketsPopup({
               </button>
             </div>
             <ul className="tickets-popup__cards">
-              {generalTickets.map(({
+              {generalTickets?.map(({
                 category,
                 price,
                 description,
@@ -95,47 +95,49 @@ export function TicketsPopup({
                   link={generalTicketsLink}
                 />
               ))}
-              <TicketsPopupCard
-                key="tickets-popup-card-with-accodion"
-                className="tickets-popup__card tickets-popup-card--with-accordion"
-                category={subsidizedTicket.category}
-                description={subsidizedTicket.description}
-              >
-                <Accordion
-                  triggerText="Подробнее"
-                  triggerHideText="Скрыть"
-                  className="accordion--ticket-card"
-                  icon={iconChevronGreen}
-                  ariaLabel="Подробнее о льготных категориях"
+              {ticketsPopup?.subsidizedTicket && (
+                <TicketsPopupCard
+                  key="tickets-popup-card-with-accordion"
+                  className="tickets-popup__card tickets-popup-card--with-accordion"
+                  category={subsidizedTicket.category}
+                  description={subsidizedTicket.description}
                 >
-                  <ul className="tickets-popup__prices-table">
-                    {subsidizedTicket.categories.map(({
-                      id,
-                      category,
-                      price,
-                    }) => (
-                      <li
-                        className="tickets-popup__prices-table-row"
-                        key={id}
-                      >
-                        <span className="tickets-popup__prices-table-category">{category}</span>
-                        <span className="tickets-popup__prices-table-price">{price}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    className="tickets-popup__link button button--secondary"
-                    // TODO: Change path when the page appears
-                    href={subsidizedTicket.button.link}
-                    // TODO: Remove when the page appears
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={handleTicketPopupToggle}
+                  <Accordion
+                    triggerText="Подробнее"
+                    triggerHideText="Скрыть"
+                    className="accordion--ticket-card"
+                    icon={iconChevronGreen}
+                    ariaLabel="Подробнее о льготных категориях"
                   >
-                    {subsidizedTicket.button.label}
-                  </Link>
-                </Accordion>
-              </TicketsPopupCard>
+                    <ul className="tickets-popup__prices-table">
+                      {subsidizedTicket.categories.map(({
+                        id,
+                        category,
+                        price,
+                      }) => (
+                        <li
+                          className="tickets-popup__prices-table-row"
+                          key={id}
+                        >
+                          <span className="tickets-popup__prices-table-category">{category}</span>
+                          <span className="tickets-popup__prices-table-price">{price}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      className="tickets-popup__link button button--secondary"
+                      // TODO: Change path when the page appears
+                      href={subsidizedTicket.button.link}
+                      // TODO: Remove when the page appears
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={handleTicketPopupToggle}
+                    >
+                      {subsidizedTicket.button.label}
+                    </Link>
+                  </Accordion>
+                </TicketsPopupCard>
+              )}
             </ul>
             <div className="tickets-popup__accordions">
               <Accordion
@@ -143,53 +145,61 @@ export function TicketsPopup({
                 className="tickets-popup__accordion accordion--ticket-rules"
                 icon={iconChevron}
               >
-                <TicketsPopupRulesList
-                  className="tickets-popup__rules-list"
-                  ticketsPopupRulesImages={visitingRulesAccordion.images}
-                />
-                <Link
-                  className="tickets-popup__more-link button button--secondary"
-                  href={visitingRulesAccordion.button.link}
-                  onClick={handleTicketPopupToggle}
-                >
-                  {visitingRulesAccordion.button.label}
-                </Link>
+                {ticketsPopup?.visitingRulesAccordion && (
+                  <>
+                    <TicketsPopupRulesList
+                      className="tickets-popup__rules-list"
+                      ticketsPopupRulesImages={visitingRulesAccordion.images}
+                    />
+                    <Link
+                      className="tickets-popup__more-link button button--secondary"
+                      href={visitingRulesAccordion.button.link}
+                      onClick={handleTicketPopupToggle}
+                    >
+                      {visitingRulesAccordion.button.label}
+                    </Link>
+                  </>
+                )}
               </Accordion>
               <Accordion
                 triggerText="Возврат билетов"
                 className="tickets-popup__accordion tickets-popup__accordion--refund accordion--ticket-rules"
                 icon={iconChevron}
               >
-                <div className="tickets-popup__refund">
-                  <div className="tickets-popup__refund-head">
-                    {ticketRefundAccordion.refundHead}
+                {ticketsPopup?.ticketRefundAccordion && (
+                  <div className="tickets-popup__refund">
+                    <div className="tickets-popup__refund-head">
+                      {ticketRefundAccordion.refundHead}
+                    </div>
+                    <TicketsPopupRefundReasons
+                      ticketsPopupRefundReasons={ticketRefundAccordion.refundBody}
+                      className="tickets-popup__refund-reasons"
+                    />
+                    <Link
+                      className="tickets-popup__more-link button button--secondary"
+                      href={ticketRefundAccordion.button.link}
+                      // TODO: Remove when the page appears
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={handleTicketPopupToggle}
+                    >
+                      {ticketRefundAccordion.button.label}
+                    </Link>
                   </div>
-                  <TicketsPopupRefundReasons
-                    ticketsPopupRefundReasons={ticketRefundAccordion.refundBody}
-                    className="tickets-popup__refund-reasons"
-                  />
-                  <Link
-                    className="tickets-popup__more-link button button--secondary"
-                    href={ticketRefundAccordion.button.link}
-                    // TODO: Remove when the page appears
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={handleTicketPopupToggle}
-                  >
-                    {ticketRefundAccordion.button.label}
-                  </Link>
-                </div>
+                )}
               </Accordion>
             </div>
-            <Link
-              className="tickets-popup__buy-button button button--primary button--featured"
-              href={buyTicketsButton.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="tickets-popup-buy-button"
-            >
-              {buyTicketsButton.label}
-            </Link>
+            {ticketsPopup?.buyTicketsButton && (
+              <Link
+                className="tickets-popup__buy-button button button--primary button--featured"
+                href={buyTicketsButton.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="tickets-popup-buy-button"
+              >
+                {buyTicketsButton.label}
+              </Link>
+            )}
             <p className="tickets-popup__disclaimer">
               {note}
             </p>

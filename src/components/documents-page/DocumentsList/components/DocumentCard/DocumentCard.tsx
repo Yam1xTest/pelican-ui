@@ -16,6 +16,7 @@ export function DocumentCard({
 }: Omit<DocumentsProps, 'id' | 'category'> & {
   className: string,
 }) {
+  const isFilesEmpty = files.length === 0;
   const isSingleDocument = files.length === 1;
   return (
     <li className={`${className} document-card`}>
@@ -31,7 +32,7 @@ export function DocumentCard({
           )}
           <h2 className="document-card__title">{title}</h2>
         </div>
-        {isSingleDocument && (
+        {!isFilesEmpty && isSingleDocument && (
           <DocumentFile
             className="document-card__document-file"
             numberOfFiles={files.length}
@@ -42,26 +43,25 @@ export function DocumentCard({
           />
         )}
       </div>
-      {(subtitle || !isSingleDocument)
-        && (
-          <Accordion
-            triggerText="Подробнее"
-            triggerHideText="Скрыть"
-            className="document-card__accordion accordion--document-card"
-            icon={iconChevronBlack}
-          >
-            <div className="document-card__accordion-inner">
-              {subtitle && (
-                <MarkdownText className="document-card__subtitle">
-                  {subtitle}
-                </MarkdownText>
-              )}
-              {description && (
-                <MarkdownText className="document-card__description">
-                  {description}
-                </MarkdownText>
-              )}
-              {!isSingleDocument
+      {subtitle && (
+        <Accordion
+          triggerText="Подробнее"
+          triggerHideText="Скрыть"
+          className="document-card__accordion accordion--document-card"
+          icon={iconChevronBlack}
+        >
+          <div className="document-card__accordion-inner">
+            {subtitle && (
+              <MarkdownText className="document-card__subtitle">
+                {subtitle}
+              </MarkdownText>
+            )}
+            {description && (
+              <MarkdownText className="document-card__description">
+                {description}
+              </MarkdownText>
+            )}
+            {!isFilesEmpty && !isSingleDocument
               && (
                 <ul className="document-card__list">
                   {(files.map((file) => (
@@ -82,9 +82,9 @@ export function DocumentCard({
                   )}
                 </ul>
               )}
-            </div>
-          </Accordion>
-        )}
+          </div>
+        </Accordion>
+      )}
     </li>
   );
 }

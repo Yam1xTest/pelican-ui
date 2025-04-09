@@ -6,7 +6,6 @@ import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryPar
 import { api } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
 import { SeoHead } from "@/src/components/globals/SeoHead/SeoHead";
-import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import qs from "qs";
@@ -38,10 +37,6 @@ export default function DocumentsCategories({
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  if (!category) {
-    return <NotFound />;
-  }
 
   return (
     <>
@@ -176,7 +171,7 @@ export async function getServerSideProps({
     if (query.year && !availableYears.includes(+query.year)) {
       return {
         props: {
-          category: null,
+          category: {},
         },
       };
     }
@@ -205,12 +200,12 @@ export async function getServerSideProps({
         title: documentsItem!.title!,
         subtitle: documentsItem!.subtitle,
         description: documentsItem!.description,
-        files: documentsItem!.files.map((file) => ({
-          id: file.id!,
-          name: file.name!,
-          url: file.url!,
-          ext: file.ext!,
-        })),
+        files: documentsItem.files ? documentsItem?.files.map((file) => ({
+          id: file?.id,
+          name: file?.name,
+          url: file?.url,
+          ext: file?.ext,
+        })) : [],
         category: {
           id: documentsItem!.category.documentId!,
         },
@@ -238,7 +233,8 @@ export async function getServerSideProps({
   } catch {
     return {
       props: {
-        category: null,
+        category: {},
+        documents: [],
       },
     };
   }
