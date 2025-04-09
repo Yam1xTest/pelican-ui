@@ -113,7 +113,7 @@ export const MOCK_TICKETS_POPUP: GlobalComponentProps['ticketsPopup'] = {
     categories: MOCK_TICKETS_POPUP_SUBSIDIZED,
     button: {
       label: `Остальные льготные категории`,
-      link: `https://vk.com/topic-71671982_48253263`,
+      link: AppRoute.DISCOUNTS,
     },
   },
   visitingRulesAccordion: {

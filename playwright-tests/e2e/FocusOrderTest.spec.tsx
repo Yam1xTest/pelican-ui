@@ -12,20 +12,20 @@ const expectedMobileHeaderFocusOrder = [
 const expectedDesktopHeaderFocusOrder = [
   `skip-link`,
   `header-logo`,
-  `header-navigation-link`,
-  `header-navigation-link`,
-  `header-navigation-link`,
-  `header-navigation-link`,
+  ...generateTestIdDuplicates({
+    count: 4,
+    string: `header-navigation-link`,
+  }),
   `header-contact-button`,
   `header-tickets-popup-button`,
 ];
 
 const expectedMobileFooterFocusOrder = [
   `footer-tickets-popup-button`,
-  `footer-nav-link`,
-  `footer-nav-link`,
-  `footer-nav-link`,
-  `footer-nav-link`,
+  ...generateTestIdDuplicates({
+    count: 4,
+    string: `footer-nav-link`,
+  }),
   `footer-tel-link`,
   `footer-email-link`,
   `social-icon-vkontakte`,
@@ -33,17 +33,18 @@ const expectedMobileFooterFocusOrder = [
   `social-icon-odnoklassniki`,
   `social-icon-dzen`,
   `footer-copyright-link`,
-  `footer-official-link`,
-  `footer-official-link`,
-  `footer-official-link`,
+  ...generateTestIdDuplicates({
+    count: 3,
+    string: `footer-official-link`,
+  }),
 ];
 
 const expectedDesktopFooterFocusOrder = [
   `footer-tickets-popup-button`,
-  `footer-nav-link`,
-  `footer-nav-link`,
-  `footer-nav-link`,
-  `footer-nav-link`,
+  ...generateTestIdDuplicates({
+    count: 4,
+    string: `footer-nav-link`,
+  }),
   `footer-tel-link`,
   `footer-email-link`,
   `footer-copyright-link`,
@@ -51,9 +52,10 @@ const expectedDesktopFooterFocusOrder = [
   `social-icon-telegram`,
   `social-icon-odnoklassniki`,
   `social-icon-dzen`,
-  `footer-official-link`,
-  `footer-official-link`,
-  `footer-official-link`,
+  ...generateTestIdDuplicates({
+    count: 3,
+    string: `footer-official-link`,
+  }),
 ];
 
 test.describe(`Logical focus order verification`, () => {
@@ -117,6 +119,21 @@ test.describe(`Logical focus order verification`, () => {
     test(`DocumentsPageDesktopTest`, documentsPageDesktopTest);
   });
 
+  test.describe(`Discounts page check`, () => {
+    test.beforeEach(async ({
+      page,
+    }) => {
+      await gotoPage({
+        page,
+        url: AppRoute.DISCOUNTS,
+      });
+    });
+
+    test(`DiscountsPageMobileTest`, discountsPageMobileTest);
+
+    test(`DiscountsPageDesktopTest`, discountsPageDesktopTest);
+  });
+
   test.describe(`Visiting rules page check`, () => {
     test.beforeEach(async ({
       page,
@@ -149,9 +166,10 @@ async function homePageMobileTest({
     `services-phone-link`,
     `services-email-link`,
     `image-grid-btn`,
-    `ticket-card-link`,
-    `ticket-card-link`,
-    `ticket-card-link`,
+    ...generateTestIdDuplicates({
+      count: 3,
+      string: `ticket-card-link`,
+    }),
     `tickets-buy-button`,
     `tickets-all-discounts`,
     `text-link`,
@@ -183,9 +201,10 @@ async function homePageDesktopTest({
     `services-phone-link`,
     `services-email-link`,
     `image-grid-btn`,
-    `ticket-card-link`,
-    `ticket-card-link`,
-    `ticket-card-link`,
+    ...generateTestIdDuplicates({
+      count: 3,
+      string: `ticket-card-link`,
+    }),
     `tickets-discounts-link`,
     `text-link`,
     ...expectedDesktopFooterFocusOrder,
@@ -211,10 +230,10 @@ async function mobileMenuOpenTest({
 
   const expectedFocusOrder = [
     `header-popup-ticket-button`,
-    `header-navigation-link`,
-    `header-navigation-link`,
-    `header-navigation-link`,
-    `header-navigation-link`,
+    ...generateTestIdDuplicates({
+      count: 4,
+      string: `header-navigation-link`,
+    }),
     `header-popup-phone`,
     `header-popup-email`,
     `social-icon-vkontakte`,
@@ -243,12 +262,14 @@ async function ticketsPopupOpenTest({
     .click();
 
   const expectedFocusOrder = [
-    `tickets-popup-card-link`,
-    `tickets-popup-card-link`,
-    `tickets-popup-card-link`,
-    `accordion-trigger`,
-    `accordion-trigger`,
-    `accordion-trigger`,
+    ...generateTestIdDuplicates({
+      count: 3,
+      string: `tickets-popup-card-link`,
+    }),
+    ...generateTestIdDuplicates({
+      count: 3,
+      string: `accordion-trigger`,
+    }),
     `tickets-popup-buy-button`,
     `tickets-popup-close-button`,
   ];
@@ -270,12 +291,10 @@ async function newsPageMobileTest({
 
   const expectedFocusOrder = [
     ...expectedMobileHeaderFocusOrder,
-    `cards-card`,
-    `cards-card`,
-    `cards-card`,
-    `cards-card`,
-    `cards-card`,
-    `cards-card`,
+    ...generateTestIdDuplicates({
+      count: 6,
+      string: `cards-card`,
+    }),
     `news-list-button`,
     ...expectedMobileFooterFocusOrder,
   ];
@@ -298,12 +317,10 @@ async function newsPageDesktopTest({
 
   const expectedFocusOrder = [
     ...expectedDesktopHeaderFocusOrder,
-    `cards-card`,
-    `cards-card`,
-    `cards-card`,
-    `cards-card`,
-    `cards-card`,
-    `cards-card`,
+    ...generateTestIdDuplicates({
+      count: 6,
+      string: `cards-card`,
+    }),
     `news-list-button`,
     ...expectedDesktopFooterFocusOrder,
   ];
@@ -325,14 +342,10 @@ async function documentsPageMobileTest({
 
   const expectedFocusOrder = [
     ...expectedMobileHeaderFocusOrder,
-    `category`,
-    `category`,
-    `category`,
-    `category`,
-    `category`,
-    `category`,
-    `category`,
-    `category`,
+    ...generateTestIdDuplicates({
+      count: 8,
+      string: `category`,
+    }),
     ...expectedMobileFooterFocusOrder,
   ];
 
@@ -354,14 +367,61 @@ async function documentsPageDesktopTest({
 
   const expectedFocusOrder = [
     ...expectedDesktopHeaderFocusOrder,
-    `category`,
-    `category`,
-    `category`,
-    `category`,
-    `category`,
-    `category`,
-    `category`,
-    `category`,
+    ...generateTestIdDuplicates({
+      count: 8,
+      string: `category`,
+    }),
+    ...expectedDesktopFooterFocusOrder,
+  ];
+
+  await checkNavigationUsingTab({
+    page,
+    expectedFocusOrder,
+  });
+}
+
+async function discountsPageMobileTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+  });
+
+  const expectedFocusOrder = [
+    ...expectedMobileHeaderFocusOrder,
+    ...generateTestIdDuplicates({
+      count: 21,
+      string: `discounts-link`,
+    }),
+    `discounts-remark-link`,
+    ...expectedMobileFooterFocusOrder,
+  ];
+
+  await checkNavigationUsingTab({
+    page,
+    expectedFocusOrder,
+  });
+}
+
+async function discountsPageDesktopTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP,
+  });
+
+  const expectedFocusOrder = [
+    ...expectedDesktopHeaderFocusOrder,
+    ...generateTestIdDuplicates({
+      count: 21,
+      string: `discounts-link`,
+    }),
+    `discounts-remark-link`,
     ...expectedDesktopFooterFocusOrder,
   ];
 
@@ -383,10 +443,10 @@ async function visitingRulesPageMobileTest({
   const expectedFocusOrder = [
     ...expectedMobileHeaderFocusOrder,
     `visiting-rules-document-link`,
-    `visiting-rules-emergency-phone-link`,
-    `visiting-rules-emergency-phone-link`,
-    `visiting-rules-emergency-phone-link`,
-    `visiting-rules-emergency-phone-link`,
+    ...generateTestIdDuplicates({
+      count: 4,
+      string: `visiting-rules-emergency-phone-link`,
+    }),
     ...expectedMobileFooterFocusOrder,
   ];
 
@@ -409,10 +469,10 @@ async function visitingRulesPageDesktopTest({
   const expectedFocusOrder = [
     ...expectedDesktopHeaderFocusOrder,
     `visiting-rules-document-link`,
-    `visiting-rules-emergency-phone-link`,
-    `visiting-rules-emergency-phone-link`,
-    `visiting-rules-emergency-phone-link`,
-    `visiting-rules-emergency-phone-link`,
+    ...generateTestIdDuplicates({
+      count: 4,
+      string: `visiting-rules-emergency-phone-link`,
+    }),
     ...expectedDesktopFooterFocusOrder,
   ];
 
@@ -420,6 +480,17 @@ async function visitingRulesPageDesktopTest({
     page,
     expectedFocusOrder,
   });
+}
+
+function generateTestIdDuplicates({
+  count,
+  string,
+}: {
+  count: number,
+  string: string
+}) : string[] {
+  return Array(count)
+    .fill(string);
 }
 
 async function checkNavigationUsingTab({

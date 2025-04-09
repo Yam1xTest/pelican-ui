@@ -4,6 +4,7 @@ export enum AppRoute {
   DOCUMENTS = `/documents`,
   CONTACT_ZOO = `/contact-zoo`,
   INTERNAL_TEST_PAGE = `/internal-test-page`,
+  DISCOUNTS = `/discounts`,
   VISITING_RULES = `/visiting-rules`,
 }
 
@@ -37,6 +38,9 @@ export enum BlockTypes {
   HOME_MAP = `home.map-card`,
 
   NOT_FOUND = `not-found.not-found`,
+
+  DISCOUNTS_TERMS = `discounts.terms`,
+  DISCOUNTS_CATEGORIES = `discounts.categories`,
 
   VISITING_RULES_MAIN = `visiting-rules.main`,
   VISITING_RULES_WARNINGS = `visiting-rules.warnings`,
