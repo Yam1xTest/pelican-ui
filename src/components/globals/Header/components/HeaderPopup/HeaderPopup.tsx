@@ -68,7 +68,9 @@ export function HeaderPopup({
         </div>
 
         <div className="header-popup__social-media">
-          <SocialMedia className="header-popup__social-icon" />
+          <SocialMedia
+            className="header-popup__social-icon"
+          />
         </div>
       </div>
     </div>
