@@ -1,4 +1,3 @@
-import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 import { MOCK_DOCUMENTS_PAGE } from '@/src/common/mocks/documents-page-mock/documents-page-mock';
 import { api } from '@/src/common/utils/HttpClient';
 import { DocumentListResponse, DocumentsCategoryListResponse, DocumentsPageResponse } from '@/src/common/api-types';
@@ -18,10 +17,6 @@ export default function DocumentsPage({
   pageData: DocumentsPageProps,
   categories: Omit<CategoryProps, 'hasTabs'>[],
 }) {
-  if (!pageData || !categories) {
-    return <NotFound />;
-  }
-
   const {
     seo,
     documentsTitle,
@@ -137,7 +132,8 @@ export async function getServerSideProps({
   } catch {
     return {
       props: {
-        categories: null,
+        pageData: {},
+        categories: [],
       },
     };
   }

@@ -10,24 +10,26 @@ export function Categories({
       className="categories container"
       data-testid="categories"
     >
-      <h1 className="categories__title">{categoriesTitle}</h1>
-      <ul className="categories__list">
-        {categories.map(({
-          id,
-          slug,
-          pageUrl,
-          title,
-        }) => (
-          <Category
-            key={id}
-            slug={slug}
-            className="categories__item"
-            data-testid="category"
-            pageUrl={pageUrl}
-            title={title}
-          />
-        ))}
-      </ul>
+      {categoriesTitle && <h1 className="categories__title">{categoriesTitle}</h1>}
+      {categories.length > 0 && (
+        <ul className="categories__list">
+          {categories.map(({
+            id,
+            slug,
+            pageUrl,
+            title,
+          }) => (
+            <Category
+              key={id}
+              slug={slug}
+              className="categories__item"
+              data-testid="category"
+              pageUrl={pageUrl}
+              title={title}
+            />
+          ))}
+        </ul>
+      )}
     </section>
   );
 }

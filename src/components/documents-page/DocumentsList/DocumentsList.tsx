@@ -45,30 +45,32 @@ export function DocumentsList({
           ))}
         </ul>
       )}
-      <ul
-        className="documents__list"
-      >
-        {documents?.map(({
-          id,
-          date,
-          showDate,
-          title,
-          subtitle,
-          description,
-          files,
-        }) => (
-          <DocumentCard
-            className="documents__item"
-            key={id}
-            date={date}
-            showDate={showDate}
-            title={title}
-            subtitle={subtitle}
-            description={description}
-            files={files}
-          />
-        ))}
-      </ul>
+      {documents.length > 0 && (
+        <ul
+          className="documents__list"
+        >
+          {documents.map(({
+            id,
+            date,
+            showDate,
+            title,
+            subtitle,
+            description,
+            files,
+          }) => (
+            <DocumentCard
+              className="documents__item"
+              key={id}
+              date={date}
+              showDate={showDate}
+              title={title}
+              subtitle={subtitle}
+              description={description}
+              files={files}
+            />
+          ))}
+        </ul>
+      )}
     </section>
   );
 }

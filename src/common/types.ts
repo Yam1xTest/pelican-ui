@@ -323,7 +323,7 @@ export type DocumentsProps = {
   title: string,
   subtitle?: string,
   description?: string,
-  files: DocumentFileProps[],
+  files: DocumentFileProps[] | [],
   category: {
     id: CategoryProps['id'],
   }
