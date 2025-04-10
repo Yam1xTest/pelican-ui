@@ -6,6 +6,7 @@ import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useRouter } from "next/router";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MutableRefObject } from "react";
+import clsx from "clsx";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 
 type FooterProps =
@@ -190,7 +191,7 @@ export function Footer({
             {
               isTablet && (
                 renderCopyright({
-                  className: `footer__copyright col-tablet-4`,
+                  className: `col-tablet-4`,
                   isTablet,
                 }))
             }
@@ -201,9 +202,7 @@ export function Footer({
             </div>
             {
               isMobile && (
-                renderCopyright({
-                  className: `footer__copyright`,
-                })
+                renderCopyright()
               )
             }
           </div>
@@ -250,11 +249,15 @@ function renderCopyright({
   className,
   isTablet = false,
 } : {
-  className: string,
+  className?: string,
   isTablet?: boolean,
-}) {
+} = {}) {
   return (
-    <div className={className}>
+    <div className={clsx(
+      `footer__copyright`,
+      className,
+    )}
+    >
       Сайт разработан
       <Link
         href="https://www.tourmalinecore.com/ru/"
@@ -265,16 +268,14 @@ function renderCopyright({
         data-testid="footer-copyright-link"
       >
         Tourmaline Core
-        {isTablet ? (
-          <span
-            className="footer__heart"
-            aria-hidden="true"
-          >
-            ❤
-          </span>
-        ) : (
-          <span className="footer__heart">❤</span>
-        )}
+        <span
+          className="footer__heart"
+          {...(isTablet && {
+            "aria-hidden": `true`,
+          })}
+        >
+          ❤
+        </span>
       </Link>
     </div>
   );
