@@ -34,7 +34,6 @@ export async function setViewportSize({
   width?: number,
   height?: number,
 }) {
-  const scrollbarWidth = 30;
   await page.setViewportSize({
     width,
     height,
