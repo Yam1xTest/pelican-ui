@@ -1,7 +1,6 @@
 import { MutableRefObject, useEffect } from "react";
 import { GlobalComponentProps } from "@/src/common/types";
 import dynamic from "next/dynamic";
-import clsx from "clsx";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import Link from "next/link";
@@ -66,9 +65,7 @@ export function Header({
 
   return (
     <header
-      className={clsx(`header`, {
-        active: isMobileMenuOpen,
-      })}
+      className="header"
       data-testid="header"
     >
       <div className="container header__wrapper">
