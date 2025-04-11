@@ -8,7 +8,7 @@ import {
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-const PAGE_ID = `tickets`;
+const TEST_ID = `tickets`;
 
 test.describe(`TicketsComponentTests`, () => {
   test.beforeEach(async ({
@@ -56,7 +56,7 @@ async function mobileTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.MOBILE}.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}.png`);
 }
 
 async function tabletTest({
@@ -73,7 +73,7 @@ async function tabletTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET}.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletXlTest({
@@ -90,7 +90,7 @@ async function tabletXlTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET_XL}.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function desktopTest({
@@ -107,7 +107,7 @@ async function desktopTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP}.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}.png`);
 }
 
 async function desktopXlTest({
@@ -124,7 +124,7 @@ async function desktopXlTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP_XL}.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP_XL}.png`);
 }
 
 function getTicketsByTestId({
@@ -132,5 +132,5 @@ function getTicketsByTestId({
 }: {
   page: Page
 }) {
-  return page.getByTestId(PAGE_ID);
+  return page.getByTestId(TEST_ID);
 }
