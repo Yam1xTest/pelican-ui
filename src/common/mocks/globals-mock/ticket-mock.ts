@@ -55,35 +55,35 @@ export const MOCK_TICKETS_POPUP_SUBSIDIZED: GlobalComponentProps['ticketsPopup']
 
 export const MOCK_TICKETS_POPUP_RULES_IMAGES: GlobalComponentProps['ticketsPopup']['visitingRulesAccordion']['images'] = [
   {
-    url: `/images/svg/not-feed-animals.svg`,
+    url: `/images/svg/no-food.svg`,
     alternativeText: `Нельзя кормить животных`,
   },
   {
-    url: `/images/svg/not-bring-animals.svg`,
+    url: `/images/svg/no-pets.svg`,
     alternativeText: `Нельзя с домашними животными`,
   },
   {
-    url: `/images/svg/not-smoke.svg`,
+    url: `/images/svg/no-smoking.svg`,
     alternativeText: `Нельзя курить`,
   },
   {
-    url: `/images/svg/no-wheeled-gadgets.svg`,
+    url: `/images/svg/no-scooter.svg`,
     alternativeText: `Нельзя ездить на самокате`,
   },
   {
-    url: `/images/svg/not-climb-barriers.svg`,
+    url: `/images/svg/no-climbing.svg`,
     alternativeText: `Нельзя перелезать через ограждение`,
   },
   {
-    url: `/images/svg/not-touch-animals.svg`,
+    url: `/images/svg/no-touching.svg`,
     alternativeText: `Нельзя трогать животных`,
   },
   {
-    url: `/images/svg/not-tease-animals.svg`,
+    url: `/images/svg/no-teasing.svg`,
     alternativeText: `Нельзя дразнить животных`,
   },
   {
-    url: `/images/svg/kids-only-with-adults.svg`,
+    url: `/images/svg/no-breaking.svg`,
     alternativeText: `Нельзя ломать деревья`,
   },
 ];
