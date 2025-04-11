@@ -52,7 +52,7 @@ test.describe(`TicketsPopupComponentTests`, () => {
 async function actionTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -75,7 +75,7 @@ async function actionTest({
 async function mobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -91,7 +91,7 @@ async function mobileTest({
 async function mobileClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -111,7 +111,7 @@ async function mobileClickedTest({
 async function tabletTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -128,7 +128,7 @@ async function tabletTest({
 async function tabletClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -149,7 +149,7 @@ async function tabletClickedTest({
 async function tabletXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -166,7 +166,7 @@ async function tabletXlTest({
 async function tabletXlClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -187,7 +187,7 @@ async function tabletXlClickedTest({
 async function desktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -204,7 +204,7 @@ async function desktopTest({
 async function desktopClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -225,7 +225,7 @@ async function desktopClickedTest({
 async function desktopXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -242,7 +242,7 @@ async function desktopXlTest({
 async function desktopXlClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -263,7 +263,7 @@ async function desktopXlClickedTest({
 function getTicketsPopupByTestId({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
   return page.getByTestId(TEST_ID);
 }

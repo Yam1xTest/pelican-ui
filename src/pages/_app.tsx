@@ -130,8 +130,8 @@ App.getInitialProps = async ({
   router,
 }: {
   router: {
-    isPreview: boolean
-  }
+    isPreview: boolean;
+  };
 }) => {
   const globalMock = {
     popupTicketBuyText: MOCK_POPUP_TICKET_BUY_TEXT,

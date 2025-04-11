@@ -43,7 +43,7 @@ test.describe(`NewsSliderComponentTest`, () => {
 async function navigationTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await page.getByTestId(`slider-card`)
     .first()
@@ -56,7 +56,7 @@ async function navigationTest({
 async function mobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -71,7 +71,7 @@ async function mobileTest({
 async function tabletTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -87,7 +87,7 @@ async function tabletTest({
 async function tabletXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -103,7 +103,7 @@ async function tabletXlTest({
 async function desktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -119,7 +119,7 @@ async function desktopTest({
 async function desktopXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -135,7 +135,7 @@ async function desktopXlTest({
 function getNewsSliderByTestId({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
   return page.getByTestId(TEST_ID);
 }

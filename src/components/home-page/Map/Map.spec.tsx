@@ -51,7 +51,7 @@ test.describe(`MapComponentTests`, () => {
 async function mobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -66,7 +66,7 @@ async function mobileTest({
 async function tabletTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -82,7 +82,7 @@ async function tabletTest({
 async function tabletXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -99,7 +99,7 @@ async function tabletXlTest({
 async function desktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -116,7 +116,7 @@ async function desktopTest({
 async function desktopXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -133,7 +133,7 @@ async function desktopXlTest({
 function getMapByTestId({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
   return page.getByTestId(TEST_ID);
 }
