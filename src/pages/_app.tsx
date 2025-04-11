@@ -59,7 +59,7 @@ export default function App({
   isPreview: boolean;
 }) {
   const {
-    pathname,
+    asPath,
     query,
   } = useRouter();
 
@@ -85,7 +85,7 @@ export default function App({
         top: 0,
       });
     }
-  }, [pathname, query]);
+  }, [asPath, query]);
 
   const {
     navigationLinks,
