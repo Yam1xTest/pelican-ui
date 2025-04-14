@@ -6,7 +6,7 @@ import { api } from '@/src/common/utils/HttpClient';
 import { NewsCollectionListResponse, NewsPageResponse } from '@/src/common/api-types';
 import { NewsPageProps, NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
-import DefaultBackground from '@/public/images/news/default-background.png';
+import defaultBackground from '@/public/images/news/default-background.png';
 
 export default function NewsPage({
   pageData,
@@ -140,7 +140,7 @@ async function getNewsData({
         id: newsItem.id!,
         slug: newsItem.slug!,
         image: {
-          url: newsItem.image?.url || DefaultBackground,
+          url: newsItem.image?.url || defaultBackground,
           alternativeText: newsItem.image?.alternativeText || ``,
         },
         title: newsItem.title,
