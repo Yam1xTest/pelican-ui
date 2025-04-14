@@ -1,7 +1,8 @@
 import { MapComponentProps } from "@/src/common/types";
 import Image from "next/image";
-import mapBackgroundImage from '../../../../public/images/map/map.png';
+import mapBackgroundImage from "../../../../public/images/map/map.png";
 import { MapAddressCard } from "./components/MapAddressCard/MapAddressCard";
+import MapLogo from "../../../../public/images/map/map-logo.svg";
 
 export function Map({
   title,
@@ -23,12 +24,20 @@ export function Map({
       />
       <div className="map__inner container">
         <MapAddressCard
-          className="map__address-card"
           title={title}
           subtitle={subtitle}
           note={note}
           image={image}
         />
+      </div>
+      <div className="map__logo-container">
+        <div className="map__logo">
+          <Image
+            src={MapLogo}
+            alt="Логотип карты"
+            fill
+          />
+        </div>
       </div>
     </section>
   );
