@@ -72,7 +72,7 @@ export function DocumentsList({
         </ul>
       ) : (
         <h2 className="documents__warning">
-          Документов за
+          Документы за
           {` `}
           {router.query.year}
           {` `}
