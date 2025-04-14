@@ -14,11 +14,12 @@
     "lint:fix": "npm run lint:ts:fix && npm run lint:scss:fix",
     "lint:ts": "next lint",
     "lint:scss": "npx stylelint \"**/*.{css,scss}\"",
-    "lint:ts:fix": "next lint -- --fix",
-    "lint:scss:fix": "npm run lint:scss -- --fix",
+    "lint:ts:fix": "next lint --fix",
+    "lint:scss:fix": "npm run lint:scss --fix",
     "prepare": "husky",
-    "test-e2e": "npx playwright test",
-    "test-e2e:ui": "npx playwright test --ui",
+    "playwright-test": "npx playwright test",
+    "playwright-test:ui": "npx playwright test --ui",
+    "update-snapshots": "npx playwright test --update-snapshots",
     "generate-api-types": "docker-compose -f ./api-types/docker-compose.yml up --build ts_generator"
   },
   "dependencies": {
@@ -37,7 +38,6 @@
     "react-focus-lock": "^2.13.2",
     "react-glider": "^4.0.2",
     "react-markdown": "^9.0.1",
-    "react-transition-group": "^4.4.5",
     "rehype-raw": "^7.0.0",
     "sharp": "^0.33.3"
   },
@@ -52,7 +52,6 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-plyr": "^2.1.4",
-    "@types/react-transition-group": "^4.4.11",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "autoprefixer": "^10.4.19",

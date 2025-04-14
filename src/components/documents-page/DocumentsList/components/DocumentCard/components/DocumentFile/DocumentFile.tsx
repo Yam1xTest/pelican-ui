@@ -10,14 +10,15 @@ export function DocumentFile({
   url,
   extension,
 } : {
-  className: string,
-  numberOfFiles: number,
-  buttonTheme: "primary" | "secondary",
-  name: DocumentFileProps['name'],
-  url: DocumentFileProps['url'],
-  extension: DocumentFileProps['ext'],
+  className: string;
+  numberOfFiles: number;
+  buttonTheme: "primary" | "secondary";
+  name: DocumentFileProps['name'];
+  url: DocumentFileProps['url'];
+  extension: DocumentFileProps['ext'];
 }) {
   const numberOfFilesStyle = numberOfFiles === 1 ? `single-document` : `several-documents`;
+  const replaceDocumentName = name.replace(`${extension}`, ``);
   return (
     <div className={`${className} document-file`}>
       <Link
@@ -25,12 +26,12 @@ export function DocumentFile({
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Открыть файл с документом ${name.replace(`${extension}`, ``)} в новой вкладке`}
+        aria-label={`Открыть файл с документом ${replaceDocumentName} в новой вкладке`}
         data-testid="document-file-link"
       >
         {numberOfFiles > 1 && (
           <p className={`document-file__name document-file__name--${numberOfFilesStyle}`}>
-            {name.replace(`${extension}`, ``)}
+            {replaceDocumentName}
           </p>
         )}
         <span className={`document-file__open-document document-file__open-document--${buttonTheme}`}>

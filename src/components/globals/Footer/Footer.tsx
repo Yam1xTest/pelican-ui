@@ -6,6 +6,7 @@ import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useRouter } from "next/router";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MutableRefObject } from "react";
+import clsx from "clsx";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 
 type FooterProps =
@@ -13,7 +14,7 @@ type FooterProps =
   "navigationLinks"
   | "ticketsPopup"
   > & {
-    footerElementRef: MutableRefObject<HTMLDivElement | null>
+    footerElementRef: MutableRefObject<HTMLDivElement | null>;
   };
 
 export function Footer({
@@ -103,12 +104,7 @@ export function Footer({
                         href={link}
                         className="footer__nav-link"
                         data-testid="footer-nav-link"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          if (router.pathname !== link) {
-                            router.push(link);
-                          }
-                        }}
+                        onClick={(e) => router.pathname === link && e.preventDefault()}
                         aria-label={`Перейти на страницу ${name}`}
                       >
                         {name}
@@ -117,55 +113,23 @@ export function Footer({
                   ))}
                 </ul>
               </div>
-              {isTablet && (
-                <ul className="footer__col col-tablet-4">
-                  <li className="footer__contact">
-                    <Link
-                      href={`tel:${phone}`}
-                      className="footer__contact-link"
-                      aria-label={`Связаться с нами по телефону ${phone}`}
-                      data-testid="footer-tel-link"
-                    >
-                      {phone}
-                    </Link>
-                  </li>
-                  <li className="footer__contact">
-                    <Link
-                      href={`mailto:${email}`}
-                      className="footer__contact-link"
-                      aria-label={`Связаться с нами по почте ${email}`}
-                      data-testid="footer-email-link"
-                    >
-                      {email}
-                    </Link>
-                  </li>
-                </ul>
-              )}
+              {
+                isTablet && (
+                  renderContacts({
+                    className: `footer__col col-tablet-4`,
+                    phone,
+                    email,
+                  }))
+              }
             </div>
-            {!isTablet && (
-              <ul className="footer__contacts">
-                <li className="footer__contact">
-                  <Link
-                    href={`tel:${phone}`}
-                    className="footer__contact-link"
-                    aria-label={`Связаться с нами по телефону ${phone}`}
-                    data-testid="footer-tel-link"
-                  >
-                    {phone}
-                  </Link>
-                </li>
-                <li className="footer__contact">
-                  <Link
-                    href={`mailto:${email}`}
-                    className="footer__contact-link"
-                    aria-label={`Связаться с нами по почте ${email}`}
-                    data-testid="footer-email-link"
-                  >
-                    {email}
-                  </Link>
-                </li>
-              </ul>
-            )}
+            {
+              !isTablet && (
+                renderContacts({
+                  className: `footer__contacts`,
+                  phone,
+                  email,
+                }))
+            }
           </div>
           <div className="footer__middle grid">
             {
@@ -189,25 +153,10 @@ export function Footer({
             }
             {
               isTablet && (
-                <div className="footer__copyright col-tablet-4">
-                  Сайт разработан
-                  <Link
-                    href="https://www.tourmalinecore.com/"
-                    className="footer__copyright-link"
-                    target="_blank"
-                    aria-label="Перейти на сайт компании Tourmaline Core"
-                    data-testid="footer-copyright-link"
-                  >
-                    Tourmaline Core
-                    <span
-                      className="footer__heart"
-                      aria-hidden="true"
-                    >
-                      ❤
-                    </span>
-                  </Link>
-                </div>
-              )
+                renderCopyright({
+                  className: `col-tablet-4`,
+                  isTablet,
+                }))
             }
             <div className="footer__social-media col-tablet-4">
               <SocialMedia
@@ -216,20 +165,7 @@ export function Footer({
             </div>
             {
               isMobile && (
-                <div className="footer__copyright">
-                  Сайт разработан
-                  <Link
-                    href="https://www.tourmalinecore.com/"
-                    className="footer__copyright-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Перейти на сайт компании Tourmaline Core"
-                    data-testid="footer-copyright-link"
-                  >
-                    Tourmaline Core
-                    <span className="footer__heart">❤</span>
-                  </Link>
-                </div>
+                renderCopyright()
               )
             }
           </div>
@@ -269,5 +205,76 @@ export function Footer({
         </ul>
       </div>
     </footer>
+  );
+}
+
+function renderCopyright({
+  className,
+  isTablet = false,
+} : {
+  className?: string;
+  isTablet?: boolean;
+} = {}) {
+  return (
+    <div className={clsx(
+      `footer__copyright`,
+      className,
+    )}
+    >
+      Сайт разработан
+      <Link
+        href="https://www.tourmalinecore.com/ru/"
+        className="footer__copyright-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Перейти на сайт компании Tourmaline Core"
+        data-testid="footer-copyright-link"
+      >
+        Tourmaline Core
+        <span
+          className="footer__heart"
+          {...(isTablet && {
+            "aria-hidden": `true`,
+          })}
+        >
+          ❤
+        </span>
+      </Link>
+    </div>
+  );
+}
+
+function renderContacts({
+  className,
+  phone,
+  email,
+} : {
+  className: string,
+  phone: string,
+  email: string,
+}) {
+  return (
+    <ul className={className}>
+      <li className="footer__contact">
+        <a
+          href={`tel:${phone}`}
+          className="footer__contact-link"
+          aria-label={`Связаться с нами по телефону ${phone}`}
+          data-testid="footer-tel-link"
+        >
+          {phone}
+        </a>
+      </li>
+      <li className="footer__contact">
+        <a
+          href={`mailto:${email}`}
+          className="footer__contact-link"
+          aria-label={`Связаться с нами по почте ${email}`}
+          data-testid="footer-email-link"
+        >
+          {email}
+        </a>
+      </li>
+    </ul>
   );
 }

@@ -2,7 +2,7 @@ import { VisitingRulesCardProps } from '@/src/common/types';
 import Image from 'next/image';
 import clsx from 'clsx';
 import Link from 'next/link';
-import IconWarning from "@/public/images/visiting-rules/exclamation-mark.svg";
+import IconWarning from "@/public/images/svg/exclamation-mark.svg";
 
 export function VisitingRulesCard({
   label,
@@ -12,9 +12,9 @@ export function VisitingRulesCard({
   isFirst,
   className,
 } : VisitingRulesCardProps & {
-  isWarning?: boolean,
-  isFirst?: boolean,
-  className?: string,
+  isWarning?: boolean;
+  isFirst?: boolean;
+  className?: string;
 }) {
   return (
     <li className={clsx(`visiting-rules-card`, className, {

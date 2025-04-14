@@ -2,7 +2,6 @@ import qs from 'qs';
 import { MOCK_NEWS } from "@/src/common/mocks/collections-mock/news-collection-mock";
 import { api } from "@/src/common/utils/HttpClient";
 import { Article } from "@/src/components/globals/Article/Article";
-import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import { NewsCollectionListResponse } from '@/src/common/api-types';
 import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
 import { NewsArticleProps } from '@/src/common/types';
@@ -17,13 +16,9 @@ export default function News({
   news,
   otherNews,
 }: {
-  news: SingleNewsProps
-  otherNews: OtherNewsProps
+  news: SingleNewsProps;
+  otherNews: OtherNewsProps;
 }) {
-  if (!news) {
-    return <NotFound />;
-  }
-
   return (
     <>
       <SeoHead
@@ -49,9 +44,9 @@ export async function getServerSideProps({
   preview = false,
 }: {
   query: {
-    slug: string
-  }
-  preview: boolean
+    slug: string;
+  };
+  preview: boolean;
 }) {
   if (process.env.APP_ENV === `static`) {
     const otherNews = MOCK_NEWS.filter((news) => news.slug !== query.slug)
@@ -142,7 +137,8 @@ export async function getServerSideProps({
   } catch {
     return {
       props: {
-        news: null,
+        news: {},
+        otherNews: [],
       },
     };
   }

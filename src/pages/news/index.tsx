@@ -1,5 +1,4 @@
 import qs from 'qs';
-import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 import { MOCK_NEWS_PAGE } from '@/src/common/mocks/news-page-mock/news-page-mock';
 import { MOCK_NEWS } from '@/src/common/mocks/collections-mock/news-collection-mock';
 import { NEWS_LIMIT, NewsList } from '@/src/components/news-page/NewsList/NewsList';
@@ -14,15 +13,11 @@ export default function NewsPage({
   totalNews,
   pageSize,
 }: {
-  pageData: NewsPageProps,
-  news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[],
-  pageSize: number,
-  totalNews: number,
+  pageData: NewsPageProps;
+  news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[];
+  pageSize: number;
+  totalNews: number;
 }) {
-  if (!pageData || !news) {
-    return <NotFound />;
-  }
-
   const {
     seo,
     newsTitle,
@@ -49,10 +44,10 @@ export async function getServerSideProps({
   query,
   preview = false,
 }: {
-  preview: boolean,
+  preview: boolean;
   query: {
-    pageSize: number
-  }
+    pageSize: number;
+  };
 }) {
   if (process.env.APP_ENV === `static`) {
     return {
@@ -118,7 +113,8 @@ export async function getServerSideProps({
   } catch {
     return {
       props: {
-        news: null,
+        pageData: {},
+        news: [],
       },
     };
   }

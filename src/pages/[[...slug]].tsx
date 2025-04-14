@@ -1,14 +1,13 @@
 import { getMockPageData } from '@/src/common/utils/getMockPageData';
 import { useRouter } from 'next/router';
 import { ContactZooPageProps, GlobalComponentProps, HomePageProps } from '../common/types';
-import { NotFound } from '../components/not-found-page/NotFound/NotFound';
 import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
 import { getPageData } from '../common/utils/getPageData';
 import { SeoHead } from '../components/globals/SeoHead/SeoHead';
 
 type UniversalProps = {
-  globalData: GlobalComponentProps,
-  pageData: HomePageProps | ContactZooPageProps,
+  globalData: GlobalComponentProps;
+  pageData: HomePageProps | ContactZooPageProps;
 };
 
 export default function UniversalPage({
@@ -16,9 +15,6 @@ export default function UniversalPage({
   pageData,
 }: UniversalProps) {
   const route = useRouter();
-  if (!pageData) {
-    return <NotFound />;
-  }
 
   const {
     email,
@@ -36,7 +32,7 @@ export default function UniversalPage({
         metaDescription={seo?.metaDescription}
         metaKeywords={seo?.metaKeywords}
       />
-      {blocks.map((block) => (
+      {blocks?.map((block) => (
         <BlockRenderer
           slug={route.asPath}
           key={block.id}
@@ -52,10 +48,10 @@ export async function getServerSideProps({
   query,
   preview = false,
 }: {
-  preview: boolean,
+  preview: boolean;
   query: {
-    slug: string,
-  },
+    slug: string;
+  };
 }) {
   let pageData;
 
@@ -95,7 +91,7 @@ export async function getServerSideProps({
   } catch {
     return {
       props: {
-        pageData: null,
+        pageData: {},
       },
     };
   }
@@ -106,7 +102,7 @@ function setBlockPosition({
   blocks,
 }: {
   slug: string;
-  blocks: any
+  blocks: any;
 }) {
   if (slug && blocks.length) {
     return blocks.map((block: any, index: number) => {
