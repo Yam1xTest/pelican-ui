@@ -20,7 +20,7 @@ import {
 } from '../common/mocks/globals-mock';
 import { TicketPopupProvider } from '../common/providers/TicketPopupProvider';
 import { getGlobalData } from '../common/utils/getGlobalData';
-import { Loading } from '../components/globals/Loader/Loader';
+import { Loader } from '../components/globals/Loader/Loader';
 
 const inter = localFont({
   src: [
@@ -105,7 +105,7 @@ export default function App({
     <WindowWidthProvider>
       <TicketPopupProvider>
         <div className={inter.variable}>
-          <Loading />
+          <Loader />
           <Layout
             navigationLinks={navigationLinks}
             officialLinks={officialLinks}
