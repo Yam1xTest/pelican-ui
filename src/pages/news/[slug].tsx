@@ -6,6 +6,7 @@ import { NewsCollectionListResponse } from '@/src/common/api-types';
 import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
 import { NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
+import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 
 const NEWS_SLIDER_LIMIT = 4;
 
@@ -19,6 +20,10 @@ export default function News({
   news: SingleNewsProps;
   otherNews: OtherNewsProps;
 }) {
+  if (!news) {
+    return <NotFound />;
+  }
+
   return (
     <>
       <SeoHead
@@ -137,7 +142,7 @@ export async function getServerSideProps({
   } catch {
     return {
       props: {
-        news: {},
+        news: null,
         otherNews: [],
       },
     };

@@ -6,6 +6,7 @@ import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryPar
 import { api } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
 import { SeoHead } from "@/src/components/globals/SeoHead/SeoHead";
+import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import qs from "qs";
@@ -37,6 +38,10 @@ export default function DocumentsCategories({
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (!category) {
+    return <NotFound />;
+  }
 
   return (
     <>
@@ -171,7 +176,20 @@ export async function getServerSideProps({
     if (query.year && !availableYears.includes(+query.year)) {
       return {
         props: {
-          category: {},
+          category: {
+            id: categoryResponse.data![0].documentId,
+            title: categoryResponse.data![0].title,
+            hasTabs: categoryResponse.data![0].hasTabs,
+            ...(categoryResponse.data![0]?.seo && {
+              seo: {
+                metaTitle: categoryResponse.data![0].seo.metaTitle,
+                metaDescription: categoryResponse.data![0].seo.metaDescription,
+                metaKeywords: categoryResponse.data![0]?.seo?.keywords,
+              },
+            }),
+          },
+          availableYears,
+          documents: [],
         },
       };
     }
@@ -233,7 +251,7 @@ export async function getServerSideProps({
   } catch {
     return {
       props: {
-        category: {},
+        category: null,
         documents: [],
       },
     };
