@@ -114,7 +114,6 @@ export interface ContactZooResponse {
 
 export interface HeroInfoCardComponent {
   id?: number;
-  title?: string;
   description?: string;
 }
 
