@@ -249,9 +249,9 @@ function renderContacts({
   phone,
   email,
 } : {
-  className: string,
-  phone: string,
-  email: string,
+  className: string;
+  phone: string;
+  email: string;
 }) {
   return (
     <ul className={className}>
