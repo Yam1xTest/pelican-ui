@@ -34,7 +34,7 @@ export function Map({
         <div className="map__logo">
           <Image
             src={mapLogo}
-            alt="Логотип карты"
+            alt=""
             fill
           />
         </div>
