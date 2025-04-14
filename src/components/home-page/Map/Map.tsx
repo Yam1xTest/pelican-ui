@@ -1,8 +1,8 @@
 import { MapComponentProps } from "@/src/common/types";
 import Image from "next/image";
-import mapBackgroundImage from "../../../../public/images/map/map.png";
+import mapBackgroundImage from "@/public/images/map/map.png";
+import mapLogo from "@/public/images/map/map-logo.svg";
 import { MapAddressCard } from "./components/MapAddressCard/MapAddressCard";
-import MapLogo from "../../../../public/images/map/map-logo.svg";
 
 export function Map({
   title,
@@ -33,7 +33,7 @@ export function Map({
       <div className="map__logo-container">
         <div className="map__logo">
           <Image
-            src={MapLogo}
+            src={mapLogo}
             alt="Логотип карты"
             fill
           />
