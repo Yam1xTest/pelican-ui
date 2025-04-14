@@ -2,7 +2,7 @@ import qs from 'qs';
 import { MOCK_NEWS } from "@/src/common/mocks/collections-mock/news-collection-mock";
 import { api } from "@/src/common/utils/HttpClient";
 import { Article } from "@/src/components/globals/Article/Article";
-import { NewsCollectionListResponse } from '@/src/common/api-types';
+import { NewsCollection, NewsCollectionListResponse } from '@/src/common/api-types';
 import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
 import { NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
@@ -10,31 +10,31 @@ import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 
 const NEWS_SLIDER_LIMIT = 4;
 
-type SingleNewsProps = Pick<NewsArticleProps, 'innerContent' | 'publishedAt' | 'title' | 'seo'>;
+// type SingleNewsProps = Pick<NewsArticleProps, 'innerContent' | 'publishedAt' | 'title' | 'seo'>;
 type OtherNewsProps = Pick<NewsArticleProps, 'id' | 'description' | 'title' | 'slug'>[];
 
 export default function News({
-  news,
+  selectNews,
   otherNews,
 }: {
-  news: SingleNewsProps;
+  selectNews: NewsArticleProps;
   otherNews: OtherNewsProps;
 }) {
-  if (!news) {
+  if (!selectNews) {
     return <NotFound />;
   }
 
   return (
     <>
       <SeoHead
-        metaTitle={news?.seo?.metaTitle || news.title}
-        metaDescription={news?.seo?.metaDescription}
-        metaKeywords={news?.seo?.metaKeywords}
+        metaTitle={selectNews?.seo?.metaTitle || selectNews.title}
+        metaDescription={selectNews?.seo?.metaDescription}
+        metaKeywords={selectNews?.seo?.metaKeywords}
       />
       <Article
-        title={news.title}
-        date={news.publishedAt}
-        innerContent={news.innerContent}
+        title={selectNews.title}
+        date={selectNews.publishedAt}
+        innerContent={selectNews.innerContent}
         isFirstBlock={false}
         isLastBlock={false}
         className="article--news"
@@ -73,78 +73,132 @@ export async function getServerSideProps({
     };
   }
 
-  const newsQueryParams = {
-    fields: [
-      `title`,
-      `innerContent`,
-      `publishedAt`,
-    ],
-    populate: [`seo`],
-    filters: {
-      slug: {
-        $eq: query.slug,
-      },
-    },
-    status: preview ? `draft` : `published`,
-  };
+  const selectNews = await getNews({
+    preview,
+    slug: query.slug,
+  });
 
-  const otherNewsQueryParams = {
-    fields: [
-      `title`,
-      `description`,
-      `slug`,
-    ],
-    sort: {
-      publishedAt: `desc`,
-    },
-    filters: {
-      slug: {
-        $ne: query.slug,
-      },
-    },
-    pagination: {
-      pageSize: NEWS_SLIDER_LIMIT,
-    },
-    status: preview ? `draft` : `published`,
-  };
+  const otherNews = await getOtherNews({
+    preview,
+    slug: query.slug,
+  });
 
+  return {
+    props: {
+      selectNews,
+      otherNews,
+    },
+  };
+}
+
+async function getNews({
+  preview,
+  slug,
+}: {
+  preview: boolean;
+  slug: string;
+}) {
   try {
-    const newsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(newsQueryParams)}`);
-
-    const news: SingleNewsProps = {
-      title: newsResponse.data![0].title!,
-      innerContent: newsResponse.data![0].innerContent!,
-      publishedAt: newsResponse.data![0]?.publishedAt,
-      ...(newsResponse.data![0]?.seo && {
-        seo: {
-          metaTitle: newsResponse.data![0].seo.metaTitle!,
-          metaDescription: newsResponse.data![0].seo?.metaDescription,
-          metaKeywords: newsResponse.data![0].seo?.keywords,
+    const queryParams = {
+      fields: [
+        `title`,
+        `innerContent`,
+        `publishedAt`,
+      ],
+      populate: [`seo`],
+      filters: {
+        slug: {
+          $eq: slug,
         },
-      }),
-    };
-
-    const otherNewsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(otherNewsQueryParams)}`);
-
-    const otherNews: OtherNewsProps = otherNewsResponse.data!.map((otherNewsItem) => ({
-      id: otherNewsItem.id!,
-      slug: otherNewsItem.slug!,
-      title: otherNewsItem!.title,
-      description: otherNewsItem?.description,
-    }));
-
-    return {
-      props: {
-        news,
-        otherNews,
       },
+      status: preview ? `draft` : `published`,
     };
+
+    const response: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
+
+    return mapSelectNews({
+      news: response.data![0],
+    });
   } catch {
-    return {
-      props: {
-        news: null,
-        otherNews: [],
-      },
-    };
+    return null;
   }
+}
+
+function mapSelectNews({
+  news,
+}: {
+  news: NewsCollection;
+}) {
+  if (!news) return null;
+
+  return {
+    title: news.title,
+    innerContent: news!.innerContent,
+    publishedAt: news!.publishedAt,
+    ...(news?.seo && {
+      seo: {
+        metaTitle: news.seo.metaTitle!,
+        metaDescription: news.seo?.metaDescription,
+        metaKeywords: news.seo?.keywords,
+      },
+    }),
+  };
+}
+
+async function getOtherNews({
+  preview,
+  slug,
+}: {
+  preview: boolean;
+  slug: string;
+}) {
+  try {
+    const queryParams = {
+      fields: [
+        `title`,
+        `description`,
+        `slug`,
+      ],
+      sort: {
+        publishedAt: `desc`,
+      },
+      filters: {
+        slug: {
+          $ne: slug,
+        },
+      },
+      pagination: {
+        pageSize: NEWS_SLIDER_LIMIT,
+      },
+      status: preview ? `draft` : `published`,
+    };
+
+    const otherNewsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
+
+    return mapOtherNews({
+      news: otherNewsResponse.data!,
+      slug,
+    });
+  } catch {
+    return [];
+  }
+}
+
+function mapOtherNews({
+  news,
+  slug,
+}: {
+  news: NewsCollection[];
+  slug: string;
+}) {
+  if (!news.length) return [];
+
+  return news
+    .filter((item) => item.slug !== slug)
+    .map((item) => ({
+      id: item.id!,
+      slug: item.slug!,
+      title: item!.title,
+      description: item?.description,
+    }));
 }
