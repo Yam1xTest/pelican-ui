@@ -83,13 +83,57 @@ export async function getServerSideProps({
   }
 
   const previewMode = preview ? `draft` : `published`;
+  const documentPageData = await getDocumentsPageData({
+    previewMode,
+  });
 
+  const documentsCategories = await getDocumentsCategories({
+    previewMode,
+    currentYear,
+  });
+
+  return {
+    props: {
+      pageData: documentPageData,
+      categories: documentsCategories,
+    },
+  };
+}
+
+async function getDocumentsPageData({
+  previewMode,
+}: {
+  previewMode: string;
+}) {
   try {
     const documentsPageResponse: DocumentsPageResponse = await api.get(`/documents-page?populate=*&status=${previewMode}`);
 
+    return {
+      documentsTitle: documentsPageResponse.data?.title,
+      ...(documentsPageResponse.data?.seo && {
+        seo: {
+          metaTitle: documentsPageResponse.data?.seo?.metaTitle,
+          metaDescription: documentsPageResponse.data?.seo?.metaDescription,
+          metaKeywords: documentsPageResponse.data?.seo?.keywords,
+        },
+      }),
+    };
+  } catch {
+    return {};
+  }
+}
+
+async function getDocumentsCategories({
+  previewMode,
+  currentYear,
+}: {
+  previewMode: string;
+  currentYear: number;
+}) {
+  try {
     const documentsCategoriesResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?status=${previewMode}`);
 
-    const documentsCategories: Omit<CategoryProps, 'hasTabs'>[] = (await Promise.all(
+    return (await Promise.all(
       documentsCategoriesResponse.data!
         .map(async (documentsCategoriesItem) => {
           const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
@@ -113,28 +157,7 @@ export async function getServerSideProps({
           return null;
         }),
     )).filter((item) => item !== null);
-
-    return {
-      props: {
-        pageData: {
-          documentsTitle: documentsPageResponse.data?.title,
-          ...(documentsPageResponse.data?.seo && {
-            seo: {
-              metaTitle: documentsPageResponse.data?.seo?.metaTitle,
-              metaDescription: documentsPageResponse.data?.seo?.metaDescription,
-              metaKeywords: documentsPageResponse.data?.seo?.keywords,
-            },
-          }),
-        },
-        categories: documentsCategories,
-      },
-    };
   } catch {
-    return {
-      props: {
-        pageData: {},
-        categories: [],
-      },
-    };
+    return [];
   }
 }
