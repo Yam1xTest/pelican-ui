@@ -3,6 +3,7 @@
   overflow: hidden;
   border-radius: 0 0 32px 32px;
   background-color: $color-white;
+  visibility: hidden;
   transition: all 0.3s ease-in;
 
   &__ticket-button {
@@ -89,5 +90,9 @@
     @include tablet-xl {
       @include h2-text;
     }
+  }
+
+  &--visible {
+    visibility: visible;
   }
 }

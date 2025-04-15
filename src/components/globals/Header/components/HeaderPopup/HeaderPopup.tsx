@@ -1,6 +1,7 @@
 import { GlobalComponentProps } from "@/src/common/types";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MouseEventHandler, useEffect, useRef } from "react";
+import clsx from "clsx";
 import { SocialMedia } from "../../../SocialNetwork/SocialMedia";
 import { HeaderNavigation } from "../HeaderNavigation/HeaderNavigation";
 
@@ -33,7 +34,9 @@ export function HeaderPopup({
 
   return (
     <div
-      className={`${className} container header-popup`}
+      className={clsx(`${className} container header-popup`, {
+        'header-popup--visible': isActive,
+      })}
       data-testid="header-popup"
       ref={popupRef}
     >
