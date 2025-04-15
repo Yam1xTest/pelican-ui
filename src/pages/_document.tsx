@@ -29,7 +29,7 @@ export default function Document() {
             justify-content: center;
             width: 100%;
             height: 100%;
-            background-color: white;
+            background-color: #f6f5f5;
             opacity: 1;
             transition: opacity 0.5s ease-in-out;
           }
