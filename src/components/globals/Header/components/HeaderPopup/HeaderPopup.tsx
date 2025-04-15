@@ -25,10 +25,10 @@ export function HeaderPopup({
   const popupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isActive && popupRef.current) {
-      popupRef.current.style.maxHeight = `${popupRef.current.scrollHeight}px`;
-    } else if (popupRef.current) {
-      popupRef.current.style.maxHeight = `0`;
+    if (popupRef.current) {
+      popupRef.current.style.maxHeight = isActive
+        ? `${popupRef.current.scrollHeight}px`
+        : `0`;
     }
   }, [isActive]);
 
