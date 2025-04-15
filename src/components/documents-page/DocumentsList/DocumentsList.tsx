@@ -76,9 +76,7 @@ export function DocumentsList({
           {` `}
           {router.query.year}
           {` `}
-          год
-          {` `}
-          не найдены
+          год не найдены
         </h2>
       )}
     </section>
