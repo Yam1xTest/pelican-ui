@@ -88,6 +88,11 @@ export default function App({
     }
   }, [asPath, query]);
 
+  useEffect(() => {
+    const el = document.getElementById('static-loader');
+    if (el) el.remove();
+  }, []);
+
   const {
     navigationLinks,
     email,

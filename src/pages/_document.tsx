@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+/* eslint-disable react/no-danger */
 import {
   Html,
   Head,
@@ -16,6 +17,40 @@ export default function Document() {
   return (
     <Html lang="ru">
       <Head>
+        <style>
+          {`
+          #static-loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+          }
+
+          #static-loader .spinner {
+            position: absolute;
+            left: calc(50% - 50px);
+            top: 50%;
+            margin: 0 auto;
+            border: 6px solid green;
+            width: 100px;
+            height: 100px;
+            animation: rotation 0.5s infinite linear;
+          }
+
+          @keyframes rotation {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(359deg); }
+          }
+          `}
+        </style>
         <link
           rel="icon"
           type="image/png"
@@ -42,6 +77,22 @@ export default function Document() {
         />
       </Head>
       <body>
+        <div id="static-loader">
+          <div className="spinner" />
+          <style
+            type="text/css"
+            dangerouslySetInnerHTML={{
+              __html: `
+                  html {
+                    overflow-y: scroll !important;
+                  }
+                  body {
+                    display: block !important;
+                  }
+              `,
+            }}
+          />
+        </div>
         <Main />
         <NextScript />
 
