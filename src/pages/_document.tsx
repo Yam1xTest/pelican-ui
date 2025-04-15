@@ -34,10 +34,10 @@ export default function Document() {
             transition: opacity 0.5s ease-in-out;
           }
 
-          #static-loader .spinner {
+          #static-loader .static-spinner {
             position: absolute;
             left: calc(50% - 50px);
-            top: 50%;
+            top: calc(50% - 50px);
             margin: 0 auto;
             border: 6px solid green;
             width: 100px;
@@ -78,7 +78,7 @@ export default function Document() {
       </Head>
       <body>
         <div id="static-loader">
-          <div className="spinner" />
+          <div className="static-spinner" />
           <style
             type="text/css"
             dangerouslySetInnerHTML={{
