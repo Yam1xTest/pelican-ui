@@ -1,6 +1,11 @@
 /* eslint-disable no-await-in-loop */
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, hideTextAndMedia, setViewportSize } from '@/playwright-tests/helpers';
+import {
+  gotoPage,
+  hideCookie,
+  hideTextAndMedia,
+  setViewportSize,
+} from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 const expectedMobileHeaderFocusOrder = [
@@ -67,6 +72,10 @@ test.describe(`Logical focus order verification`, () => {
         page,
         url: AppRoute.HOME,
       });
+
+      await hideCookie({
+        page,
+      });
     });
 
     test(`HomePageMobileTest`, homePageMobileTest);
@@ -81,6 +90,10 @@ test.describe(`Logical focus order verification`, () => {
       await gotoPage({
         page,
         url: AppRoute.HOME,
+      });
+
+      await hideCookie({
+        page,
       });
     });
 
@@ -153,7 +166,7 @@ test.describe(`Logical focus order verification`, () => {
 async function homePageMobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -185,7 +198,7 @@ async function homePageMobileTest({
 async function homePageDesktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -219,7 +232,7 @@ async function homePageDesktopTest({
 async function mobileMenuOpenTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -251,7 +264,7 @@ async function mobileMenuOpenTest({
 async function ticketsPopupOpenTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -283,7 +296,7 @@ async function ticketsPopupOpenTest({
 async function newsPageMobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -308,7 +321,7 @@ async function newsPageMobileTest({
 async function newsPageDesktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -334,7 +347,7 @@ async function newsPageDesktopTest({
 async function documentsPageMobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -358,7 +371,7 @@ async function documentsPageMobileTest({
 async function documentsPageDesktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -383,7 +396,7 @@ async function documentsPageDesktopTest({
 async function discountsPageMobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -408,7 +421,7 @@ async function discountsPageMobileTest({
 async function discountsPageDesktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -434,7 +447,7 @@ async function discountsPageDesktopTest({
 async function visitingRulesPageMobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -459,7 +472,7 @@ async function visitingRulesPageMobileTest({
 async function visitingRulesPageDesktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -486,8 +499,8 @@ function generateTestIdDuplicates({
   count,
   string,
 }: {
-  count: number,
-  string: string
+  count: number;
+  string: string;
 }) : string[] {
   return Array(count)
     .fill(string);
@@ -497,8 +510,8 @@ async function checkNavigationUsingTab({
   page,
   expectedFocusOrder,
 }: {
-  page: Page,
-  expectedFocusOrder: string[]
+  page: Page;
+  expectedFocusOrder: string[];
 }) {
   for (const element of expectedFocusOrder) {
     await page.keyboard.press(`Tab`);

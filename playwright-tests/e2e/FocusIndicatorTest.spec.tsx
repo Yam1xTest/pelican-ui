@@ -7,7 +7,7 @@ test.describe(`Visible focus indicator verification`, () => {
   test(`HomePageCheckTest`, async ({
     page,
   }: {
-    page: Page
+    page: Page;
   }) => {
     await gotoPage({
       page,
@@ -22,7 +22,7 @@ test.describe(`Visible focus indicator verification`, () => {
   test(`NewsPageCheckTest`, async ({
     page,
   }: {
-    page: Page
+    page: Page;
   }) => {
     await gotoPage({
       page,
@@ -37,7 +37,7 @@ test.describe(`Visible focus indicator verification`, () => {
   test(`DocumentsPageCheckTest`, async ({
     page,
   }: {
-    page: Page
+    page: Page;
   }) => {
     await gotoPage({
       page,
@@ -52,7 +52,7 @@ test.describe(`Visible focus indicator verification`, () => {
   test(`DiscountsPageCheckTest`, async ({
     page,
   }: {
-    page: Page
+    page: Page;
   }) => {
     await gotoPage({
       page,
@@ -68,7 +68,7 @@ test.describe(`Visible focus indicator verification`, () => {
 test(`VisitingRulesPageCheckTest`, async ({
   page,
 }: {
-  page: Page
+  page: Page;
 }) => {
   await gotoPage({
     page,
@@ -83,7 +83,7 @@ test(`VisitingRulesPageCheckTest`, async ({
 async function checkFocusVisibility({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -117,8 +117,8 @@ async function checkFocusIndicator({
   page,
   element,
 }:{
-  page: Page,
-  element: any
+  page: Page;
+  element: any;
 }) {
   await element.focus();
   await page.waitForTimeout(200);

@@ -133,10 +133,10 @@ async function getNewsData({
       status: previewMode,
     };
 
-    const newsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
+    const response: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
 
     return {
-      news: newsResponse.data!.map((newsItem) => ({
+      news: response.data!.map((newsItem) => ({
         id: newsItem.id!,
         slug: newsItem.slug!,
         image: {
@@ -146,8 +146,8 @@ async function getNewsData({
         title: newsItem.title,
         description: newsItem.description,
       })),
-      pageSize: newsResponse.meta!.pagination!.pageSize,
-      totalNews: newsResponse.meta!.pagination!.total!,
+      pageSize: response.meta!.pagination!.pageSize,
+      totalNews: response.meta!.pagination!.total!,
     };
   } catch {
     return {

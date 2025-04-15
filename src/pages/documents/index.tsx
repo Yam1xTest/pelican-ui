@@ -3,12 +3,13 @@ import { api } from '@/src/common/utils/HttpClient';
 import { DocumentListResponse, DocumentsCategoryListResponse, DocumentsPageResponse } from '@/src/common/api-types';
 import qs from 'qs';
 import { Categories } from '@/src/components/globals/Categories/Categories';
-import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { CategoryProps, DocumentsPageProps } from '@/src/common/types';
 import { getDocumentsQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
 import { MOCK_DOCUMENTS } from '@/src/common/mocks/collections-mock/documents-collection-mock';
 import dayjs from 'dayjs';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
+import { AppRoute } from '@/src/common/enum';
+import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 
 export default function DocumentsPage({
   pageData,
@@ -131,10 +132,10 @@ async function getDocumentsCategories({
   currentYear: number;
 }) {
   try {
-    const documentsCategoriesResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?status=${previewMode}`);
+    const response: DocumentsCategoryListResponse = await api.get(`/documents-categories?status=${previewMode}`);
 
     return (await Promise.all(
-      documentsCategoriesResponse.data!
+      response.data!
         .map(async (documentsCategoriesItem) => {
           const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
             categoryDocumentId: documentsCategoriesItem.documentId!,
@@ -151,7 +152,7 @@ async function getDocumentsCategories({
               id: documentsCategoriesItem.id!,
               slug: documentsCategoriesItem.slug!,
               title: documentsCategoriesItem!.title,
-              pageUrl: `documents`,
+              pageUrl: `${AppRoute.DOCUMENTS}`,
             });
           }
           return null;

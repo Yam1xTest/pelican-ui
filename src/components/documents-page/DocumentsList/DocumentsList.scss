@@ -50,6 +50,12 @@
     }
   }
 
+  &__warning {
+    @include h2-text;
+
+    color: $color-black-75;
+  }
+
   @include tablet {
     padding-top: 32px;
     padding-bottom: 32px;
