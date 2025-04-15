@@ -23,7 +23,7 @@ export default function Document() {
             position: fixed;
             left: 0;
             top: 0;
-            z-index: 9999;
+            z-index: 99;
             display: flex;
             align-items: center;
             justify-content: center;
