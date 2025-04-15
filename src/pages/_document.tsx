@@ -39,7 +39,7 @@ export default function Document() {
             left: calc(50% - 50px);
             top: calc(50% - 50px);
             margin: 0 auto;
-            border: 6px solid green;
+            border: 6px solid #0e6e34;
             width: 100px;
             height: 100px;
             animation: rotation 0.5s infinite linear;
