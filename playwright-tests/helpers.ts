@@ -1,16 +1,20 @@
 import { Breakpoint } from "@/src/common/enum";
+import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
 import { Page } from "@playwright/test";
+import axios from "axios";
 import { mkdirSync, writeFileSync } from "fs";
 import { dirname } from "path";
+
+export const E2E_UI_NAME_PREFIX = `[E2E-UI]`;
 
 export async function gotoPage({
   page,
   url,
   useNetworkidle = true,
 }: {
-  page: Page,
-  url: string
-  useNetworkidle?: boolean
+  page: Page;
+  url: string;
+  useNetworkidle?: boolean;
 }) {
   // Allows you to accurately wait for content on the site to load.
   /* Do not use networkidle it for sections where requests take a long time,
@@ -30,9 +34,9 @@ export async function setViewportSize({
   width = Breakpoint.MOBILE,
   height = 768,
 }: {
-  page: Page,
-  width?: number,
-  height?: number,
+  page: Page;
+  width?: number;
+  height?: number;
 }) {
   await page.setViewportSize({
     width,
@@ -43,7 +47,7 @@ export async function setViewportSize({
 export async function hideHeader({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await page.getByTestId(`header`)
     .evaluate((element) => element.style.visibility = `hidden`);
@@ -52,7 +56,7 @@ export async function hideHeader({
 export async function hideCookie({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await page.getByTestId(`cookie`)
     .evaluate((element) => element.style.visibility = `hidden`);
@@ -61,7 +65,7 @@ export async function hideCookie({
 export async function hideSkipLink({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await page.getByTestId(`skip-link`)
     .evaluate((element) => element.style.visibility = `hidden`);
@@ -70,7 +74,7 @@ export async function hideSkipLink({
 export async function hideFooter({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await page.getByTestId(`footer`)
     .evaluate((element) => element.style.visibility = `hidden`);
@@ -79,7 +83,7 @@ export async function hideFooter({
 export async function hideTickets({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await page.getByTestId(`tickets`)
     .evaluate((element) => element.style.visibility = `hidden`);
@@ -88,7 +92,7 @@ export async function hideTickets({
 export async function hideMap({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await page.getByTestId(`map`)
     .evaluate((element) => element.style.visibility = `hidden`);
@@ -97,7 +101,7 @@ export async function hideMap({
 export async function hideTextAndMedia({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await page.getByTestId(`text-and-media`)
     .evaluate((element) => element.style.visibility = `hidden`);
@@ -108,9 +112,9 @@ export async function axeCheckAndWriteReport({
   viewport,
   pageName,
 }: {
-  page: Page,
-  viewport: string,
-  pageName: string,
+  page: Page;
+  viewport: string;
+  pageName: string;
 }) {
   // @ts-expect-error
   const results = await page.evaluate(() => window.axe.run());
@@ -145,7 +149,7 @@ export async function axeCheckAndWriteReport({
 export async function openTicketsPopupAccordions({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
   await clickAccordionTriggerByText({
     page,
@@ -167,12 +171,22 @@ async function clickAccordionTriggerByText({
   page,
   text,
 }: {
-  page: Page,
-  text: string,
+  page: Page;
+  text: string;
 }) {
   await page.getByTestId(`accordion-trigger`)
     .filter({
       hasText: text,
     })
     .click();
+}
+
+export async function getFileIdByName({
+  name = `[E2E-SMOKE]-tiger.png`,
+}: {
+  name?: string;
+} = {}) {
+  const filesResponse: any[] = (await axios.get(`${getStrapiURL()}/upload/files`)).data;
+
+  return filesResponse.find((file) => file.name === name).id;
 }
