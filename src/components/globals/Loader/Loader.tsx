@@ -22,9 +22,9 @@ export function Loader() {
   return isLoading && (
     <div
       data-testid="loader"
-      className="spinner-wrapper"
+      id="static-loader"
     >
-      <div className="spinner" />
+      <div className="static-spinner" />
     </div>
   );
 }
