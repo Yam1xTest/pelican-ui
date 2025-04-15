@@ -20,128 +20,25 @@ import {
   VisitingRulesPhotosPolicyComponentProps,
   VisitingRulesEmergencyPhonesComponentProps,
 } from '@/src/common/types';
-import dynamic from 'next/dynamic';
 import { Cards } from '../Cards/Cards';
 import { ImageWithButtonGrid } from '../ImageWithButtonGrid/ImageWithButtonGrid';
-
-const Hero = dynamic(
-  () => import(`../../globals/Hero/Hero`).then((component) => component.Hero),
-  {
-    ssr: false,
-  },
-);
-
-const HomepageHero = dynamic(
-  () => import(`../../home-page/HomepageHero/HomepageHero`).then((component) => component.HomepageHero),
-  {
-    ssr: false,
-  },
-);
-
-const TextAndMedia = dynamic(
-  () => import(`../TextAndMedia/TextAndMedia`).then((component) => component.TextAndMedia),
-  {
-    ssr: false,
-  },
-);
-
-const Services = dynamic(
-  () => import(`../../home-page/Services/Services`).then((component) => component.Services),
-  {
-    ssr: false,
-  },
-);
-
-const HomepageImageWithButtonGrid = dynamic(
-  () => import(`../../home-page/HomepageImageWithButtonGrid/HomepageImageWithButtonGrid`).then((component) => component.HomepageImageWithButtonGrid),
-  {
-    ssr: false,
-  },
-);
-
-const Map = dynamic(
-  () => import(`../../home-page/Map/Map`).then((Component) => Component.Map),
-  {
-    ssr: false,
-  },
-);
-
-const HomepageTickets = dynamic(
-  () => import(`../../home-page/HomepageTickets/HomepageTickets`).then((component) => component.HomepageTickets),
-  {
-    ssr: false,
-  },
-);
-
-const Tickets = dynamic(
-  () => import(`../../globals/Tickets/Tickets`).then((component) => component.Tickets),
-  {
-    ssr: false,
-  },
-);
-
-const NotFound = dynamic(
-  () => import(`../../not-found-page/NotFound/NotFound`).then((component) => component.NotFound),
-  {
-    ssr: false,
-  },
-);
-
-const Categories = dynamic(
-  () => import(`../Categories/Categories`).then((component) => component.Categories),
-  {
-    ssr: false,
-  },
-);
-
-const Article = dynamic(
-  () => import(`../Article/Article`).then((component) => component.Article),
-  {
-    ssr: false,
-  },
-);
-
-const DiscountsTerms = dynamic(
-  () => import(`../../discounts-page/DiscountsTerms/DiscountsTerms`).then((component) => component.DiscountsTerms),
-  {
-    ssr: false,
-  },
-);
-
-const DiscountsCategories = dynamic(
-  () => import(`../../discounts-page/DiscountsCategories/DiscountsCategories`).then((component) => component.DiscountsCategories),
-  {
-    ssr: false,
-  },
-);
-
-const VisitingRulesMain = dynamic(
-  () => import(`../../visiting-rules-page/VisitingRulesMain/VisitingRulesMain`).then((component) => component.VisitingRulesMain),
-  {
-    ssr: false,
-  },
-);
-
-const VisitingRulesWarnings = dynamic(
-  () => import(`../../visiting-rules-page/VisitingRulesWarnings/VisitingRulesWarnings`).then((component) => component.VisitingRulesWarnings),
-  {
-    ssr: false,
-  },
-);
-
-const VisitingRulesPhotosPolicy = dynamic(
-  () => import(`../../visiting-rules-page/VisitingRulesPhotosPolicy/VisitingRulesPhotosPolicy`).then((component) => component.VisitingRulesPhotosPolicy),
-  {
-    ssr: false,
-  },
-);
-
-const VisitingRulesEmergencyPhones = dynamic(
-  () => import(`../../visiting-rules-page/VisitingRulesEmergencyPhones/VisitingRulesEmergencyPhones`).then((component) => component.VisitingRulesEmergencyPhones),
-  {
-    ssr: false,
-  },
-);
+import { DiscountsCategories } from '../../discounts-page/DiscountsCategories/DiscountsCategories';
+import { DiscountsTerms } from '../../discounts-page/DiscountsTerms/DiscountsTerms';
+import { HomepageHero } from '../../home-page/HomepageHero/HomepageHero';
+import { HomepageImageWithButtonGrid } from '../../home-page/HomepageImageWithButtonGrid/HomepageImageWithButtonGrid';
+import { HomepageTickets } from '../../home-page/HomepageTickets/HomepageTickets';
+import { Services } from '../../home-page/Services/Services';
+import { NotFound } from '../../not-found-page/NotFound/NotFound';
+import { VisitingRulesEmergencyPhones } from '../../visiting-rules-page/VisitingRulesEmergencyPhones/VisitingRulesEmergencyPhones';
+import { VisitingRulesMain } from '../../visiting-rules-page/VisitingRulesMain/VisitingRulesMain';
+import { VisitingRulesPhotosPolicy } from '../../visiting-rules-page/VisitingRulesPhotosPolicy/VisitingRulesPhotosPolicy';
+import { VisitingRulesWarnings } from '../../visiting-rules-page/VisitingRulesWarnings/VisitingRulesWarnings';
+import { Article } from '../Article/Article';
+import { Categories } from '../Categories/Categories';
+import { Hero } from '../Hero/Hero';
+import { TextAndMedia } from '../TextAndMedia/TextAndMedia';
+import { Tickets } from '../Tickets/Tickets';
+import { Map } from '../../home-page/Map/Map';
 
 type Block = HeroComponentProps
   | SharedTicketsComponentProps
