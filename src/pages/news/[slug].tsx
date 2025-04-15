@@ -10,14 +10,14 @@ import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 
 const NEWS_SLIDER_LIMIT = 4;
 
-// type SingleNewsProps = Pick<NewsArticleProps, 'innerContent' | 'publishedAt' | 'title' | 'seo'>;
+type SelectedNewsProps = Pick<NewsArticleProps, 'innerContent' | 'publishedAt' | 'title' | 'seo'>;
 type OtherNewsProps = Pick<NewsArticleProps, 'id' | 'description' | 'title' | 'slug'>[];
 
 export default function News({
   selectedNews,
   otherNews,
 }: {
-  selectedNews: NewsArticleProps;
+  selectedNews: SelectedNewsProps;
   otherNews: OtherNewsProps;
 }) {
   if (!selectedNews) {
@@ -97,7 +97,7 @@ async function getNews({
 }: {
   preview: boolean;
   slug: string;
-}) {
+}): Promise<SelectedNewsProps | null> {
   try {
     const queryParams = {
       fields: [
@@ -151,7 +151,7 @@ async function getOtherNews({
 }: {
   preview: boolean;
   slug: string;
-}) {
+}): Promise<OtherNewsProps | []> {
   try {
     const queryParams = {
       fields: [
