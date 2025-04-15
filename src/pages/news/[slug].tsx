@@ -173,10 +173,10 @@ async function getOtherNews({
       status: preview ? `draft` : `published`,
     };
 
-    const otherNewsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
+    const response: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
 
     return mapOtherNews({
-      news: otherNewsResponse.data!,
+      news: response.data!,
       slug,
     });
   } catch {
