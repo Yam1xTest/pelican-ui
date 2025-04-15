@@ -14,27 +14,27 @@ const NEWS_SLIDER_LIMIT = 4;
 type OtherNewsProps = Pick<NewsArticleProps, 'id' | 'description' | 'title' | 'slug'>[];
 
 export default function News({
-  selectNews,
+  selectedNews,
   otherNews,
 }: {
-  selectNews: NewsArticleProps;
+  selectedNews: NewsArticleProps;
   otherNews: OtherNewsProps;
 }) {
-  if (!selectNews) {
+  if (!selectedNews) {
     return <NotFound />;
   }
 
   return (
     <>
       <SeoHead
-        metaTitle={selectNews?.seo?.metaTitle || selectNews.title}
-        metaDescription={selectNews?.seo?.metaDescription}
-        metaKeywords={selectNews?.seo?.metaKeywords}
+        metaTitle={selectedNews?.seo?.metaTitle || selectedNews.title}
+        metaDescription={selectedNews?.seo?.metaDescription}
+        metaKeywords={selectedNews?.seo?.metaKeywords}
       />
       <Article
-        title={selectNews.title}
-        date={selectNews.publishedAt}
-        innerContent={selectNews.innerContent}
+        title={selectedNews.title}
+        date={selectedNews.publishedAt}
+        innerContent={selectedNews.innerContent}
         isFirstBlock={false}
         isLastBlock={false}
         className="article--news"
@@ -65,7 +65,7 @@ export async function getServerSideProps({
 
     return {
       props: {
-        news: MOCK_NEWS.find(({
+        selectedNews: MOCK_NEWS.find(({
           slug,
         }) => slug === query.slug) || null,
         otherNews,
@@ -73,7 +73,7 @@ export async function getServerSideProps({
     };
   }
 
-  const selectNews = await getNews({
+  const selectedNews = await getNews({
     preview,
     slug: query.slug,
   });
@@ -85,7 +85,7 @@ export async function getServerSideProps({
 
   return {
     props: {
-      selectNews,
+      selectedNews,
       otherNews,
     },
   };
@@ -116,7 +116,7 @@ async function getNews({
 
     const response: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
 
-    return mapSelectNews({
+    return mapSelectedNews({
       news: response.data![0],
     });
   } catch {
@@ -124,7 +124,7 @@ async function getNews({
   }
 }
 
-function mapSelectNews({
+function mapSelectedNews({
   news,
 }: {
   news: NewsCollection;
