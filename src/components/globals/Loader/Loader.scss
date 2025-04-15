@@ -14,7 +14,7 @@
 .spinner {
   position: absolute;
   left: calc(50% - 50px);
-  top: 50%;
+  top: calc(50% - 50px);
   margin: 0 auto;
   border: 6px solid $color-green-dark;
   width: 100px;

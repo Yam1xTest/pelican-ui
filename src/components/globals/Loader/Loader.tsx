@@ -20,7 +20,10 @@ export function Loader() {
     };
   });
   return isLoading && (
-    <div className="spinner-wrapper">
+    <div
+      data-testid="loader"
+      className="spinner-wrapper"
+    >
       <div className="spinner" />
     </div>
   );
