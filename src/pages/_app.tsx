@@ -89,8 +89,8 @@ export default function App({
   }, [asPath, query]);
 
   useEffect(() => {
-    const el = document.getElementById('static-loader');
-    if (el) el.remove();
+    const loaderElement = document.getElementById('static-loader');
+    if (loaderElement) loaderElement.remove();
   }, []);
 
   const {

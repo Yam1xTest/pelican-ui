@@ -7,8 +7,7 @@ export function Loader() {
 
   useEffect(() => {
     const handleStart = (url: string) => (url !== route.asPath) && setIsLoading(true);
-    // eslint-disable-next-line max-len
-    const handleComplete = (url: string) => (url === route.asPath) && setTimeout(() => { setIsLoading(false); }, 5000);
+    const handleComplete = (url: string) => (url === route.asPath) && setIsLoading(false);
 
     route.events.on(`routeChangeStart`, handleStart);
     route.events.on(`routeChangeComplete`, handleComplete);
