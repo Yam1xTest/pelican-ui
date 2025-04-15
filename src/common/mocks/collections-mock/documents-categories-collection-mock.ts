@@ -1,6 +1,7 @@
+import { AppRoute } from "../../enum";
 import { CategoryProps } from "../../types";
 
-export const MOCK_DOCUMENTS_CATEGORIES: Omit<CategoryProps, 'pageUrl'>[] = [
+export const MOCK_DOCUMENTS_CATEGORIES: CategoryProps[] = [
   {
     id: 1,
     title: `Отчеты`,
@@ -49,4 +50,7 @@ export const MOCK_DOCUMENTS_CATEGORIES: Omit<CategoryProps, 'pageUrl'>[] = [
     slug: `plani-finansovo-khozyaistvennoi-deyatelnosti`,
     hasTabs: true,
   },
-];
+].map((item) => ({
+  ...item,
+  pageUrl: AppRoute.DOCUMENTS,
+}));

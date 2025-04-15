@@ -3,13 +3,13 @@ import { api } from '@/src/common/utils/HttpClient';
 import { DocumentListResponse, DocumentsCategoryListResponse, DocumentsPageResponse } from '@/src/common/api-types';
 import qs from 'qs';
 import { Categories } from '@/src/components/globals/Categories/Categories';
-import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { CategoryProps, DocumentsPageProps } from '@/src/common/types';
 import { getDocumentsQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
 import { MOCK_DOCUMENTS } from '@/src/common/mocks/collections-mock/documents-collection-mock';
 import dayjs from 'dayjs';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
 import { AppRoute } from '@/src/common/enum';
+import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 
 export default function DocumentsPage({
   pageData,
@@ -78,10 +78,7 @@ export async function getServerSideProps({
     return {
       props: {
         pageData: MOCK_DOCUMENTS_PAGE,
-        categories: documentsCategories.map((category) => ({
-          ...category,
-          pageUrl: `${AppRoute.DOCUMENTS}`,
-        })),
+        categories: documentsCategories,
       },
     };
   }
