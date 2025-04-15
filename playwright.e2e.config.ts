@@ -12,10 +12,8 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: `./`,
-  testIgnore: [`**/cms-integration/**`],
-  outputDir: `./playwright-tests/playwright-test-results/e2e-tests`,
-  snapshotDir: `./playwright-tests/screenshots/e2e-tests/base`,
+  testDir: `./playwright-tests/e2e/cms-integration`,
+  outputDir: `./playwright-tests/playwright-test-results/cms-integration`,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -29,57 +27,26 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: `http://localhost:3000`,
+    baseURL: process.env.CI ? process.env.API_URL : `http://localhost:3000`,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: `on-first-retry`,
   },
-  expect: {
-    // Maximum time expect() should wait for the condition to be met.
-    timeout: 10000,
-
-    toHaveScreenshot: {
-      maxDiffPixels: 50,
-    },
-  },
-  /* Configure projects for major browsers */
   projects: [
     {
-      name: `chromium`,
+      name: `cmsIntegrationSetup`,
+      testMatch: /cms-integration\.setup\.ts/,
+      teardown: `cmsIntegrationRemoveFiles`,
+    },
+    {
+      name: `cmsIntegrationRemoveFiles`,
+      testMatch: /cms-integration\.teardown\.ts/,
+    },
+    {
+      name: `cmsIntegration`,
       use: {
         ...devices[`Desktop Chrome`],
       },
+      dependencies: [`cmsIntegrationSetup`],
     },
-    // {
-    //   name: `firefox`,
-    //   use: {
-    //     ...devices[`Desktop Firefox`],
-    //   },
-    // },
-    // {
-    //   name: `webkit`,
-    //   use: {
-    //     ...devices[`Desktop Safari`],
-    //   },
-    // },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
   ],
 });
