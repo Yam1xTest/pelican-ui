@@ -78,7 +78,7 @@ export function DocumentsList({
           {` `}
           год
           {` `}
-          не найдено
+          не найдены
         </h2>
       )}
     </section>

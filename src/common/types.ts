@@ -331,7 +331,7 @@ export type CategoryProps = {
   id: string | number;
   slug: string;
   title: string;
-  pageUrl: string;
+  pageUrl?: string;
   hasTabs: boolean;
   seo?: Seo;
 };

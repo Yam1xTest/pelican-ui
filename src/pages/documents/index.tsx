@@ -9,6 +9,7 @@ import { getDocumentsQueryParams } from '@/src/common/utils/getDocumentsQueryPar
 import { MOCK_DOCUMENTS } from '@/src/common/mocks/collections-mock/documents-collection-mock';
 import dayjs from 'dayjs';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
+import { AppRoute } from '@/src/common/enum';
 
 export default function DocumentsPage({
   pageData,
@@ -77,7 +78,10 @@ export async function getServerSideProps({
     return {
       props: {
         pageData: MOCK_DOCUMENTS_PAGE,
-        categories: documentsCategories,
+        categories: documentsCategories.map((category) => ({
+          ...category,
+          pageUrl: `${AppRoute.DOCUMENTS}`,
+        })),
       },
     };
   }
@@ -131,10 +135,10 @@ async function getDocumentsCategories({
   currentYear: number;
 }) {
   try {
-    const documentsCategoriesResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?status=${previewMode}`);
+    const response: DocumentsCategoryListResponse = await api.get(`/documents-categories?status=${previewMode}`);
 
     return (await Promise.all(
-      documentsCategoriesResponse.data!
+      response.data!
         .map(async (documentsCategoriesItem) => {
           const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
             categoryDocumentId: documentsCategoriesItem.documentId!,
@@ -151,7 +155,7 @@ async function getDocumentsCategories({
               id: documentsCategoriesItem.id!,
               slug: documentsCategoriesItem.slug!,
               title: documentsCategoriesItem!.title,
-              pageUrl: `documents`,
+              pageUrl: `${AppRoute.DOCUMENTS}`,
             });
           }
           return null;
