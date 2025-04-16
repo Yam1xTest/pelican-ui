@@ -1,6 +1,11 @@
 /* eslint-disable no-await-in-loop */
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, hideTextAndMedia, setViewportSize } from '@/playwright-tests/helpers';
+import {
+  gotoPage,
+  hideCookie,
+  hideTextAndMedia,
+  setViewportSize,
+} from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 const expectedMobileHeaderFocusOrder = [
@@ -67,6 +72,10 @@ test.describe(`Logical focus order verification`, () => {
         page,
         url: AppRoute.HOME,
       });
+
+      await hideCookie({
+        page,
+      });
     });
 
     test(`HomePageMobileTest`, homePageMobileTest);
@@ -81,6 +90,10 @@ test.describe(`Logical focus order verification`, () => {
       await gotoPage({
         page,
         url: AppRoute.HOME,
+      });
+
+      await hideCookie({
+        page,
       });
     });
 
