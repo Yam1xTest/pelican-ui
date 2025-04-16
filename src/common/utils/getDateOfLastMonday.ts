@@ -12,7 +12,7 @@ export function getLastMondayOfMonth(year: number, month: number): string {
     `сентября`,
     `октября`,
     `ноября`,
-    `декабрь`,
+    `декабря`,
   ];
 
   const lastDay = new Date(year, month + 1, 0);
