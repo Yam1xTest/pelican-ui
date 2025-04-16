@@ -19,10 +19,10 @@ test.describe(`Home page CMS integration tests`, () => {
 
   test(
     `
-      GIVEN news page without content
-      WHEN call method PUT /api/news-page
-      AND goto news page
-      SHOULD news page content is displayed correctly
+      GIVEN home page without content
+      WHEN call method PUT /api/home
+      AND go to home page
+      SHOULD home page content is displayed correctly
       `,
     checkHomePageOnUiTest,
   );

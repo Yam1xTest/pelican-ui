@@ -21,7 +21,7 @@ test.describe(`News page CMS integration tests`, () => {
     `
       GIVEN news page without content
       WHEN call method PUT /api/news-page
-      AND goto news page
+      AND go to news page
       SHOULD news page content is displayed correctly
       `,
     checkNewsPageOnUiTest,
