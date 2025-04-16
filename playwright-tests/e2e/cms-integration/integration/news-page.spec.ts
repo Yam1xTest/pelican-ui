@@ -8,8 +8,8 @@ import { E2E_UI_NAME_PREFIX, getFileIdByName } from "../helpers/cms-integration-
 
 const NEWS_PAGE_TITLE = `${E2E_UI_NAME_PREFIX} Новости`;
 const NEWS_TITLE = `${E2E_UI_NAME_PREFIX} В зоопарке появился амурский тигр`;
-const DESCRIPTION = `На фотографии изображен амурский тигр!`;
-const INNER_CONTENT = `В зоопарке появился амурский тигр, приходите посмотреть!`;
+const NEWS_DESCRIPTION = `На фотографии изображен амурский тигр!`;
+const NEWS_INNER_CONTENT = `В зоопарке появился амурский тигр, приходите посмотреть!`;
 const NEWS_API_ENDPOINT = `${getStrapiURL()}/news`;
 const NEWS_PAGE_API_ENDPOINT = `${getStrapiURL()}/news-page`;
 
@@ -26,6 +26,10 @@ test.describe(`News page CMS integration tests`, () => {
 
   test.afterEach(async () => {
     await cleanupTestNewsPage();
+
+    await cleanupTestNewsByTitle({
+      title: NEWS_TITLE,
+    });
   });
 
   test(
@@ -34,8 +38,8 @@ test.describe(`News page CMS integration tests`, () => {
       WHEN call method PUT /api/news-page
       AND call method POST /api/news
       AND go to news page
-      SHOULD news page content is displayed correctly
-      AND news is displayed correctly
+      SHOULD display news page content correctly
+      AND display news correctly
       `,
     checkNewsPageOnUiTest,
   );
@@ -57,7 +61,7 @@ async function checkNewsPageOnUiTest({
   expect(page.getByText(NEWS_TITLE), `News title should be visible`)
     .toBeVisible();
 
-  expect(page.getByText(DESCRIPTION), `News description should be visible`)
+  expect(page.getByText(NEWS_DESCRIPTION), `News description should be visible`)
     .toBeVisible();
 
   await page.getByText(NEWS_TITLE)
@@ -65,7 +69,7 @@ async function checkNewsPageOnUiTest({
 
   await page.waitForURL(`${AppRoute.NEWS}/**`);
 
-  expect(page.getByText(INNER_CONTENT), `News content should be visible`)
+  expect(page.getByText(NEWS_INNER_CONTENT), `News content should be visible`)
     .toBeVisible();
 }
 
@@ -77,7 +81,7 @@ async function updateTestNewsPage() {
       },
     });
 
-    await expect(response.status, `News page should be updating with status 200`)
+    await expect(response.status, `News page should be updated with status 200`)
       .toEqual(HttpStatusCode.Ok);
   } catch (error) {
     throw new Error(`Failed to update test news page: ${(error as AxiosError).message}`);
@@ -100,9 +104,9 @@ async function createTestNews() {
     const response = await axios.post(NEWS_API_ENDPOINT, {
       data: {
         title: NEWS_TITLE,
-        description: DESCRIPTION,
+        description: NEWS_DESCRIPTION,
         image: await getFileIdByName(),
-        innerContent: INNER_CONTENT,
+        innerContent: NEWS_INNER_CONTENT,
       },
     });
 

@@ -4,7 +4,7 @@ import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
 import test, { expect, Page } from "@playwright/test";
 import axios, { AxiosError, HttpStatusCode } from "axios";
 import { getFileIdByName } from "../helpers/cms-integration-helpers";
-import { TEST_MOCK_HERO } from "../mocks";
+import { TEST_MOCK_HERO } from "../cms-integration-mocks";
 
 const CONTACT_ZOO_PAGE_API_ENDPOINT = `${getStrapiURL()}/contact-zoo`;
 
@@ -22,7 +22,7 @@ test.describe(`Contact zoo page CMS integration tests`, () => {
       GIVEN contact zoo page without content
       WHEN call method PUT /api/contact-zoo
       AND go to contact zoo page
-      SHOULD contact zoo page content is displayed correctly
+      SHOULD display contact zoo page content correctly
       `,
     checkContactZooPageOnUiTest,
   );
@@ -66,7 +66,7 @@ async function updateTestContactZooPage() {
       },
     });
 
-    await expect(response.status, `Contact zoo page should be updating with status 200`)
+    await expect(response.status, `Contact zoo page should be updated with status 200`)
       .toEqual(HttpStatusCode.Ok);
   } catch (error) {
     throw new Error(`Failed to update test contact zoo page: ${(error as AxiosError).message}`);

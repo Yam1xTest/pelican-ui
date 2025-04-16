@@ -4,7 +4,7 @@ import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
 import test, { expect, Page } from "@playwright/test";
 import axios, { AxiosError, HttpStatusCode } from "axios";
 import { getFileIdByName } from "../helpers/cms-integration-helpers";
-import { TEST_MOCK_HERO } from "../mocks";
+import { TEST_MOCK_HERO } from "../cms-integration-mocks";
 
 const HOME_PAGE_API_ENDPOINT = `${getStrapiURL()}/home`;
 
@@ -22,7 +22,7 @@ test.describe(`Home page CMS integration tests`, () => {
       GIVEN home page without content
       WHEN call method PUT /api/home
       AND go to home page
-      SHOULD home page content is displayed correctly
+      SHOULD display home page content correctly
       `,
     checkHomePageOnUiTest,
   );
@@ -66,7 +66,7 @@ async function updateTestHomePage() {
       },
     });
 
-    await expect(response.status, `Home page should be updating with status 200`)
+    await expect(response.status, `Home page should be updated with status 200`)
       .toEqual(HttpStatusCode.Ok);
   } catch (error) {
     throw new Error(`Failed to update test home page: ${(error as AxiosError).message}`);

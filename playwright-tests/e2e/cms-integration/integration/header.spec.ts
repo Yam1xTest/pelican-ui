@@ -4,7 +4,7 @@ import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
 import test, { expect, Page } from "@playwright/test";
 import axios, { AxiosError, HttpStatusCode } from "axios";
 import { getFileIdByName } from "../helpers/cms-integration-helpers";
-import { TEST_MOCK_HEADER } from "../mocks";
+import { TEST_MOCK_HEADER } from "../cms-integration-mocks";
 
 const HEADER_API_ENDPOINT = `${getStrapiURL()}/header`;
 
@@ -21,14 +21,14 @@ test.describe(`Header CMS integration tests`, () => {
     `
       GIVEN ticket popup without content
       WHEN call method PUT /api/header
-      AND click by ticket button
-      SHOULD ticket popup content is displayed correctly
+      AND click on ticket button
+      SHOULD display ticket popup content correctly
       `,
-    checkTicketPopupOnUiTest,
+    checkTicketsPopupOnUiTest,
   );
 });
 
-async function checkTicketPopupOnUiTest({
+async function checkTicketsPopupOnUiTest({
   page,
 }: {
   page: Page;
@@ -74,7 +74,7 @@ async function updateTestHeader() {
       },
     });
 
-    await expect(response.status, `Header content should be updating with status 200`)
+    await expect(response.status, `Header content should be updated with status 200`)
       .toEqual(HttpStatusCode.Ok);
   } catch (error) {
     throw new Error(`Failed to update test header: ${(error as AxiosError).message}`);
