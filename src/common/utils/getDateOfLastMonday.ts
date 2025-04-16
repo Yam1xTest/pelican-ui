@@ -1,6 +1,12 @@
 /* eslint-disable no-nested-ternary */
-export function getLastMondayOfMonth(year: number, month: number): string {
-  const namesOfMonths = [
+export function getLastMondayOfMonth({
+  year,
+  month,
+}: {
+  year: number;
+  month: number;
+}): string {
+  const months = [
     `января`,
     `февраля`,
     `марта`,
@@ -19,5 +25,5 @@ export function getLastMondayOfMonth(year: number, month: number): string {
   const dayOfWeek = lastDay.getDay();
   const offset = dayOfWeek === 1 ? 0 : (dayOfWeek === 0 ? -6 : 1 - dayOfWeek);
 
-  return `${lastDay.getDate() + offset} ${namesOfMonths[month]} зоопарк не работает`;
+  return `${lastDay.getDate() + offset} ${months[month]} зоопарк не работает`;
 }
