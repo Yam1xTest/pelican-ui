@@ -19,3 +19,52 @@ export const TEST_MOCK_HERO = {
     ],
   },
 };
+
+export const TEST_MOCK_HEADER = {
+  ticketsPopup: {
+    generalTicketsLink: `#`,
+    generalTickets: [
+      {
+        category: `Взрослые,\nдети от 14 лет`,
+        price: `400  ₽ / чел`,
+        description: `Требуется подтверждающий документ.`,
+      },
+    ],
+    subsidizedTicket: {
+      category: `Льготный`,
+      description: `Требуется подтверждающий льготу оригинал документа, покупка только на кассе`,
+      categories: [
+        {
+          category: `Студенты`,
+          price: `200  ₽ / чел`,
+        },
+      ],
+      button: {
+        label: `Остальные льготные категории`,
+      },
+    },
+    buyTicketsButton: {
+      label: `Купить билет`,
+      link: `#`,
+    },
+    note: `Покупая билет, вы соглашаетесь с правилами посещения`,
+    visitingRulesAccordion: {
+      button: {
+        label: `Подробнее о правилах посещения`,
+        link: `#`,
+      },
+    },
+    ticketRefundAccordion: {
+      refundHead: `Возврат билета осуществляется в следующих случаях:`,
+      refundBody: [
+        {
+          refundReason: `отмены, замены либо переноса оказания услуги по инициативе Зоопарка;`,
+        },
+      ],
+      button: {
+        label: `Подробнее о возврате билетов`,
+        link: `#`,
+      },
+    },
+  },
+};
