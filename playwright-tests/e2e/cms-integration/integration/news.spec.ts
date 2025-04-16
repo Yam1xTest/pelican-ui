@@ -4,7 +4,7 @@ import { AppRoute } from "@/src/common/enum";
 import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
 import test, { expect, Page } from "@playwright/test";
 import axios, { AxiosError, HttpStatusCode } from "axios";
-import { E2E_UI_NAME_PREFIX } from "../helpers/cms-integration-helpers";
+import { E2E_UI_NAME_PREFIX, getFileIdByName } from "../helpers/cms-integration-helpers";
 
 const NEWS_TITLE = `${E2E_UI_NAME_PREFIX} В зоопарке появился амурский тигр`;
 const DESCRIPTION = `На фотографии изображен амурский тигр!`;
