@@ -12,7 +12,7 @@ const NEWS_API_ENDPOINT = `${getStrapiURL()}/news`;
 
 test.describe(`News CMS integration tests`, () => {
   test.beforeEach(async () => {
-    await cleanupTestNews({
+    await cleanupTestNewsByTitle({
       title: NEWS_TITLE,
     });
 
@@ -20,7 +20,7 @@ test.describe(`News CMS integration tests`, () => {
   });
 
   test.afterEach(async () => {
-    await cleanupTestNews({
+    await cleanupTestNewsByTitle({
       title: NEWS_TITLE,
     });
   });
@@ -79,7 +79,7 @@ async function createTestNews() {
   }
 }
 
-async function cleanupTestNews({
+async function cleanupTestNewsByTitle({
   title,
 }: {
   title: string;
