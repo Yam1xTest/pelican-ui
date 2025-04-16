@@ -1,11 +1,7 @@
 import { Breakpoint } from "@/src/common/enum";
-import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
 import { Page } from "@playwright/test";
-import axios from "axios";
 import { mkdirSync, writeFileSync } from "fs";
 import { dirname } from "path";
-
-export const E2E_UI_NAME_PREFIX = `[E2E-UI]`;
 
 export async function gotoPage({
   page,
@@ -179,14 +175,4 @@ async function clickAccordionTriggerByText({
       hasText: text,
     })
     .click();
-}
-
-export async function getFileIdByName({
-  name = `[E2E-SMOKE]-tiger.png`,
-}: {
-  name?: string;
-} = {}) {
-  const filesResponse: any[] = (await axios.get(`${getStrapiURL()}/upload/files`)).data;
-
-  return filesResponse.find((file) => file.name === name).id;
 }

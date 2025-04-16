@@ -1,7 +1,7 @@
 import { test as teardown } from '@playwright/test';
 import { getStrapiURL } from '@/src/common/utils/getStrapiURL';
 import axios from 'axios';
-import { E2E_UI_NAME_PREFIX } from '../../helpers';
+import { E2E_UI_NAME_PREFIX } from './helpers/cms-integration-helpers';
 
 const UPLOAD_API_ENDPOINT = `${getStrapiURL()}/upload/files`;
 
