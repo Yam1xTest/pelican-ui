@@ -161,6 +161,7 @@ export type DiscountsTermsComponentProps = {
   id: number;
   __component: BlockTypes.DISCOUNTS_TERMS;
   title: string;
+  subtitle: string;
   rulesCards: Rules[];
 };
 
