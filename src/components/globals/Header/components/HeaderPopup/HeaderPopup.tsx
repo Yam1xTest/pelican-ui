@@ -1,6 +1,6 @@
 import { GlobalComponentProps } from "@/src/common/types";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useEffect, useRef } from "react";
 import clsx from "clsx";
 import { SocialMedia } from "../../../SocialNetwork/SocialMedia";
 import { HeaderNavigation } from "../HeaderNavigation/HeaderNavigation";
@@ -22,12 +22,23 @@ export function HeaderPopup({
     handleTicketPopupToggle,
   } = useTicketPopup();
 
+  const popupRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (popupRef.current) {
+      popupRef.current.style.maxHeight = isActive
+        ? `${popupRef.current.scrollHeight}px`
+        : `0`;
+    }
+  }, [isActive]);
+
   return (
     <div
       className={clsx(`${className} container header-popup`, {
         'header-popup--visible': isActive,
       })}
       data-testid="header-popup"
+      ref={popupRef}
     >
       <button
         type="button"
