@@ -3,24 +3,33 @@ import { AppRoute, Breakpoint } from "@/src/common/enum";
 import test, { expect, Page } from "@playwright/test";
 import { TEST_MOCK_HERO } from "../cms-integration-mocks";
 import { updateTestHomePage } from "../helpers/home-page-helpers";
+import { enableDraftPreviewMode } from "../helpers/cms-integration-helpers";
 
-test.describe(`Home page CMS integration tests`, () => {
-  test.beforeEach(async () => {
-    await updateTestHomePage();
+test.describe(`Home page draft preview tests`, () => {
+  test.beforeEach(async ({
+    page,
+  }) => {
+    await updateTestHomePage({
+      isDraft: true,
+    });
+
+    await enableDraftPreviewMode({
+      page,
+    });
   });
 
   test(
     `
       GIVEN home page without content
-      WHEN call method PUT /api/home
+      WHEN call method PUT /api/home?status=draft
       AND go to home page
-      SHOULD display home page content correctly
+      SHOULD display home page content correctly in draft preview
       `,
-    checkHomePageOnUiTest,
+    checkHomePageDraftPreviewOnUiTest,
   );
 });
 
-async function checkHomePageOnUiTest({
+async function checkHomePageDraftPreviewOnUiTest({
   page,
 }: {
   page: Page;
