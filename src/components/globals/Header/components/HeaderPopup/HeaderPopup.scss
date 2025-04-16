@@ -2,7 +2,6 @@
   position: relative;
   overflow: hidden;
   border-radius: 0 0 32px 32px;
-  max-height: 0;
   background-color: $color-white;
   visibility: hidden;
   transition: all 0.3s ease-in;
@@ -94,15 +93,6 @@
   }
 
   &--visible {
-    max-height: 356px;
     visibility: visible;
-
-    @include tablet {
-      max-height: 396px;
-    }
-
-    @include tablet-xl {
-      max-height: 408px;
-    }
   }
 }
