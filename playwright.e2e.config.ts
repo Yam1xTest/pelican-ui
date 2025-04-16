@@ -33,12 +33,12 @@ export default defineConfig({
   },
   projects: [
     {
-      name: `cmsIntegrationSetup`,
+      name: `setup`,
       testMatch: /cms-integration\.setup\.ts/,
-      teardown: `cmsIntegrationRemoveFiles`,
+      teardown: `teardown`,
     },
     {
-      name: `cmsIntegrationRemoveFiles`,
+      name: `teardown`,
       testMatch: /cms-integration\.teardown\.ts/,
     },
     {
@@ -46,7 +46,7 @@ export default defineConfig({
       use: {
         ...devices[`Desktop Chrome`],
       },
-      dependencies: [`cmsIntegrationSetup`],
+      dependencies: [`setup`],
     },
   ],
 });

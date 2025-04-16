@@ -3,8 +3,10 @@ import { getStrapiURL } from '@/src/common/utils/getStrapiURL';
 import axios from 'axios';
 import { E2E_UI_NAME_PREFIX } from '../../helpers';
 
-teardown(`Remove test files`, async () => {
-  const filesResponse = (await axios.get(`${getStrapiURL()}/upload/files`)).data;
+const UPLOAD_API_ENDPOINT = `${getStrapiURL()}/upload/files`;
+
+teardown(`Cleanup test files`, async () => {
+  const filesResponse = (await axios.get(`${UPLOAD_API_ENDPOINT}`)).data;
 
   const filesDelete: any[] = filesResponse
     .filter((file: any) => file.name?.startsWith(E2E_UI_NAME_PREFIX));
@@ -13,7 +15,7 @@ teardown(`Remove test files`, async () => {
     filesDelete.forEach(async ({
       id,
     }) => {
-      await axios.delete(`${getStrapiURL()}/upload/files/${id}`);
+      await axios.delete(`${UPLOAD_API_ENDPOINT}/${id}`);
     });
   }
 });
