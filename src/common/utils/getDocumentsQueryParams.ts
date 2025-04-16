@@ -5,7 +5,7 @@ export function getDocumentsQueryParams({
   pageSize = 100,
   previewMode,
 }: {
-  categoryDocumentId: string;
+  categoryDocumentId: string | number;
   yearLessThanOrEqual?: number;
   yearGreaterThanOrEqual?: number;
   pageSize?: number;

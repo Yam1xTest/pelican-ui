@@ -45,7 +45,7 @@ export function DocumentsList({
           ))}
         </ul>
       )}
-      {documents.length > 0 && (
+      {documents.length > 0 ? (
         <ul
           className="documents__list"
         >
@@ -70,6 +70,14 @@ export function DocumentsList({
             />
           ))}
         </ul>
+      ) : (
+        <h2 className="documents__warning">
+          Документы за
+          {` `}
+          {router.query.year}
+          {` `}
+          год не найдены
+        </h2>
       )}
     </section>
   );

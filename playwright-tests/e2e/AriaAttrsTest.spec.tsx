@@ -9,7 +9,7 @@ test.describe(`ARIA Labels`, () => {
 async function HomepageTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await gotoPage({
     page,
