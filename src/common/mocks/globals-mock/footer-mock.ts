@@ -1,8 +1,8 @@
-import iconAdministration1 from '@/public/images/footer/adm1.png';
-import iconAdministration2 from '@/public/images/footer/adm2.png';
-import iconAdministration3 from '@/public/images/footer/adm3.png';
-import iconAdministration4 from '@/public/images/footer/adm4.png';
-import iconAdministration5 from '@/public/images/footer/adm5.png';
+import iconAdministration1 from '@/public/images/footer/chelyabinsk-coat-of-arms.png';
+import iconAdministration2 from '@/public/images/footer/chelyabinsk-coat-of-arms-2.png';
+import iconAdministration3 from '@/public/images/footer/chelyabinsk-coat-of-arms-3.png';
+import iconAdministration4 from '@/public/images/footer/russia-coat-of-arms.png';
+import iconAdministration5 from '@/public/images/footer/default-icon.png';
 import { AppRoute } from '../../enum';
 import { GlobalComponentProps } from '../../types';
 
