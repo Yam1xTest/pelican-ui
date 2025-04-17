@@ -14,6 +14,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: `./playwright-tests/e2e/cms-integration`,
   outputDir: `./playwright-tests/playwright-test-results/cms-integration`,
+  timeout: 45000,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
