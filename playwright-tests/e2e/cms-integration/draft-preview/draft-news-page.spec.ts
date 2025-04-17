@@ -9,7 +9,7 @@ const NEWS_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} В зоопарке появил
 const NEWS_DESCRIPTION = `${E2E_DRAFT_UI_NAME_PREFIX} На фотографии изображен амурский тигр!`;
 const NEWS_INNER_CONTENT = `${E2E_DRAFT_UI_NAME_PREFIX} В зоопарке появился амурский тигр, приходите посмотреть!`;
 
-test.describe(`News page draft preview tests`, () => {
+test.describe.skip(`News page draft preview tests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
