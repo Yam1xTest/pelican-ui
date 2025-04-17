@@ -11,14 +11,14 @@ jobs:
   # this is needed to wait for the new docker image to be build and published to the registry
   # so that we can use the image to run ui of the needed commit related version as part of local-env
   # the idea is taken from here https://stackoverflow.com/a/71489231
-  push_to_registry:
-    uses: ./.github/workflows/docker-build-and-push.yml
-    # without this it cannot login to the registry
-    secrets: inherit
+  # push_to_registry:
+  #   uses: ./.github/workflows/docker-build-and-push.yml
+  #   # without this it cannot login to the registry
+  #   secrets: inherit
 
   e2e-tests:
     runs-on: ubuntu-24.04
-    needs: push_to_registry
+    # needs: push_to_registry
 
     strategy:
       fail-fast: false
@@ -36,7 +36,7 @@ jobs:
         with:
           runCmd: |
             # we need to override "latest" image tag of ui inside local-env to run e2e against the current commit ui version and not against latest from master
-            yq -i '.image.tag = "sha-${{ github.sha }}"' deploy/values-ui.yaml.gotmpl
+            yq -i '.image.tag = "sha-41d46868f143fd13115a50da34d1ab030dfa8acd"' deploy/values-ui.yaml.gotmpl
 
             kind create cluster --name pelican --config kind-local-config.yaml --kubeconfig ./.pelican-cluster-kubeconfig
             
@@ -89,7 +89,7 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Playwright run
-        run: npx playwright test --trace on --reporter=html --config=playwright.e2e.config.ts
+        run: npx playwright test --reporter=html --config=playwright.e2e.config.ts
     
         env:
           FRONTEND_URL: http://localhost:40110 
