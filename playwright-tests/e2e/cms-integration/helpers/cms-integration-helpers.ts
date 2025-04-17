@@ -24,5 +24,6 @@ export async function enableDraftPreviewMode({
   await gotoPage({
     page,
     url: `/api/preview?secret=secret`,
+    useNetworkidle: false,
   });
 }
