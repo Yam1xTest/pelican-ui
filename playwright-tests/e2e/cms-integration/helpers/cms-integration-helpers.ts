@@ -16,14 +16,16 @@ export async function getFileIdByName({
   return filesResponse.find((file) => file.name === name).id;
 }
 
-export async function enableDraftPreviewMode({
+export async function goToWithDraftPreviewMode({
   page,
+  slug,
 }: {
   page: Page;
+  slug: string;
 }) {
   await gotoPage({
     page,
-    url: `/api/preview?secret=secret`,
+    url: `/api/preview?secret=secret&slug=${slug}`,
     useNetworkidle: false,
   });
 }

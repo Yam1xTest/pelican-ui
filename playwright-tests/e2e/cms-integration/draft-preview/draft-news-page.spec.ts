@@ -1,7 +1,6 @@
-import { gotoPage } from "@/playwright-tests/global-helpers";
 import { AppRoute } from "@/src/common/enum";
 import test, { expect, Page } from "@playwright/test";
-import { E2E_DRAFT_UI_NAME_PREFIX, enableDraftPreviewMode } from "../helpers/cms-integration-helpers";
+import { E2E_DRAFT_UI_NAME_PREFIX, goToWithDraftPreviewMode } from "../helpers/cms-integration-helpers";
 import { cleanupTestNewsByTitle, createTestNews, updateTestNewsPage } from "../helpers/news-page-helpers";
 
 const NEWS_PAGE_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Новости`;
@@ -27,10 +26,6 @@ test.describe(`News page draft preview tests`, () => {
     await updateTestNewsPage({
       title: NEWS_PAGE_TITLE,
       isDraft: true,
-    });
-
-    await enableDraftPreviewMode({
-      page,
     });
   });
 
@@ -58,9 +53,9 @@ async function checkNewsPageDraftPreviewOnUiTest({
 }: {
   page: Page;
 }) {
-  await gotoPage({
+  await goToWithDraftPreviewMode({
     page,
-    url: AppRoute.NEWS,
+    slug: AppRoute.NEWS.slice(1),
   });
 
   expect(page.getByText(NEWS_PAGE_TITLE), `News page title should be visible`)

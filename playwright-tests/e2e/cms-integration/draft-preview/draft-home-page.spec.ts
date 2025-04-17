@@ -1,9 +1,9 @@
-import { gotoPage, setViewportSize } from "@/playwright-tests/global-helpers";
+import { setViewportSize } from "@/playwright-tests/global-helpers";
 import { AppRoute, Breakpoint } from "@/src/common/enum";
 import test, { expect, Page } from "@playwright/test";
 import { TEST_MOCK_HERO } from "../cms-integration-mocks";
 import { updateTestHomePage } from "../helpers/home-page-helpers";
-import { enableDraftPreviewMode } from "../helpers/cms-integration-helpers";
+import { goToWithDraftPreviewMode } from "../helpers/cms-integration-helpers";
 
 test.describe(`Home page draft preview tests`, () => {
   test.beforeEach(async ({
@@ -11,10 +11,6 @@ test.describe(`Home page draft preview tests`, () => {
   }) => {
     await updateTestHomePage({
       isDraft: true,
-    });
-
-    await enableDraftPreviewMode({
-      page,
     });
   });
 
@@ -34,9 +30,9 @@ async function checkHomePageDraftPreviewOnUiTest({
 }: {
   page: Page;
 }) {
-  await gotoPage({
+  await goToWithDraftPreviewMode({
     page,
-    url: AppRoute.HOME,
+    slug: AppRoute.HOME.slice(1),
   });
 
   await setViewportSize({
