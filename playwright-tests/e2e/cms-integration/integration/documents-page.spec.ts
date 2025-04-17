@@ -67,7 +67,6 @@ async function checkDocumentsPageOnUiTest({
   await gotoPage({
     page,
     url: AppRoute.DOCUMENTS,
-    useNetworkidle: false,
   });
 
   expect(page.getByText(DOCUMENTS_PAGE_TITLE), `Documents page title should be visible`)

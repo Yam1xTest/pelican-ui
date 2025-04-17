@@ -53,7 +53,6 @@ async function checkNewsPageOnUiTest({
   await gotoPage({
     page,
     url: AppRoute.NEWS,
-    useNetworkidle: false,
   });
 
   expect(page.getByText(NEWS_PAGE_TITLE), `News page title should be visible`)
