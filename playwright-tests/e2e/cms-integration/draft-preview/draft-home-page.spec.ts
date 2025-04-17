@@ -37,6 +37,7 @@ async function checkHomePageDraftPreviewOnUiTest({
   await gotoPage({
     page,
     url: AppRoute.HOME,
+    useNetworkidle: false,
   });
 
   await setViewportSize({

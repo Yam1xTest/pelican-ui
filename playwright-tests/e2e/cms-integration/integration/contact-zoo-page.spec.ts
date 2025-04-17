@@ -36,6 +36,7 @@ async function checkContactZooPageOnUiTest({
   await gotoPage({
     page,
     url: AppRoute.CONTACT_ZOO,
+    useNetworkidle: false,
   });
 
   await setViewportSize({
