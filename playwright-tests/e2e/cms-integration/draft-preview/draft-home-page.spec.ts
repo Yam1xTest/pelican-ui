@@ -5,7 +5,7 @@ import { TEST_MOCK_HERO } from "../cms-integration-mocks";
 import { updateTestHomePage } from "../helpers/home-page-helpers";
 import { enableDraftPreviewMode } from "../helpers/cms-integration-helpers";
 
-test.describe.skip(`Home page draft preview tests`, () => {
+test.describe(`Home page draft preview tests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
