@@ -11,7 +11,7 @@ export function DiscountsCategories({
   categoriesCards: CategoriesCards[];
   remark: {
     title:string;
-    link: string;
+    file: string;
   };
 }) {
   return (
@@ -37,7 +37,7 @@ export function DiscountsCategories({
         <Link
           className="discounts-categories__remark-link"
           data-testid="discounts-remark-link"
-          href={remark.link}
+          href={remark.file}
           target="_blank"
           rel="noopener noreferrer"
         >

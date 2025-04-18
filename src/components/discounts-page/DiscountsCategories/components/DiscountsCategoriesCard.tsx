@@ -15,7 +15,7 @@ export function DiscountsCategoriesCard({
     docs?: string[];
     basis?: {
       title:string;
-      link: string;
+      file: string;
     }[];
   };
 }) {
@@ -87,7 +87,7 @@ export function DiscountsCategoriesCard({
                   <Link
                     className="discounts-categories-card__link"
                     data-testid="discounts-link"
-                    href={basis.link}
+                    href={basis.file}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
