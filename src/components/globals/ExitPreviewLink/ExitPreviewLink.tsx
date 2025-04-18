@@ -1,12 +1,21 @@
-import Link from "next/link";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 export function ExitPreviewLink() {
+  const router = useRouter()
+  
+  const handleExit = async () => {
+      await axios.post('/api/exit-preview');
+      router.reload();
+  };
+  
   return (
-    <Link
+    <button
       className="button button--secondary exit-preview-link"
-      href="/api/exit-preview"
+      onClick={handleExit}
+
     >
       Выйти из режима черновика
-    </Link>
+    </button>
   );
 }
