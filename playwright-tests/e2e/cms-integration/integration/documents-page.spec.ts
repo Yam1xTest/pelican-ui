@@ -69,10 +69,10 @@ async function checkDocumentsPageOnUiTest({
     url: AppRoute.DOCUMENTS,
   });
 
-  expect(page.getByText(DOCUMENTS_PAGE_TITLE), `Documents page title should be visible`)
+  await expect(page.getByText(DOCUMENTS_PAGE_TITLE), `Documents page title should be visible`)
     .toBeVisible();
 
-  expect(page.getByText(DOCUMENTS_CATEGORY_TITLE), `Documents category title should be visible`)
+  await expect(page.getByText(DOCUMENTS_CATEGORY_TITLE), `Documents category title should be visible`)
     .toBeVisible();
 
   await page.getByText(DOCUMENTS_CATEGORY_TITLE)
@@ -80,7 +80,7 @@ async function checkDocumentsPageOnUiTest({
 
   await page.waitForURL(`${AppRoute.DOCUMENTS}/**`);
 
-  expect(page.getByText(DOCUMENT_TITLE), `Document title should be visible`)
+  await expect(page.getByText(DOCUMENT_TITLE), `Document title should be visible`)
     .toBeVisible();
 }
 

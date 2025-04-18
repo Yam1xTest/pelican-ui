@@ -98,13 +98,13 @@ async function checkHomePageContent({
   page: Page;
   homeHeroTitle: string;
 }) {
-  expect(page.getByText(homeHeroTitle), `Home page hero title should be visible`)
+  await expect(page.getByText(homeHeroTitle), `Home page hero title should be visible`)
     .toBeVisible();
 
-  expect(page.getByText(TEST_MOCK_HERO.infoCard.title), `Home page hero info card title should be visible`)
+  await expect(page.getByText(TEST_MOCK_HERO.infoCard.title), `Home page hero info card title should be visible`)
     .toBeVisible();
 
-  expect(page.getByText(TEST_MOCK_HERO.scheduleCard.title), `Home page hero schedule card title should be visible`)
+  await expect(page.getByText(TEST_MOCK_HERO.scheduleCard.title), `Home page hero schedule card title should be visible`)
     .toBeVisible();
 }
 

@@ -46,13 +46,13 @@ async function checkTicketsPopupOnUiTest({
   await page.getByTestId(`header-tickets-popup-button`)
     .click();
 
-  expect(page.getByText(TEST_MOCK_HEADER.ticketsPopup.generalTickets[0].category), `The general ticket category should be visible in the ticket popup.`)
+  await expect(page.getByText(TEST_MOCK_HEADER.ticketsPopup.generalTickets[0].category), `The general ticket category should be visible in the ticket popup.`)
     .toBeVisible();
 
-  expect(page.getByText(TEST_MOCK_HEADER.ticketsPopup.subsidizedTicket.category), `The subsidized ticket category should be visible in the ticket popup.`)
+  await expect(page.getByText(TEST_MOCK_HEADER.ticketsPopup.subsidizedTicket.category), `The subsidized ticket category should be visible in the ticket popup.`)
     .toBeVisible();
 
-  expect(page.getByText(TEST_MOCK_HEADER.ticketsPopup.buyTicketsButton.label), `The buy ticket button label should be visible in the ticket popup.`)
+  await expect(page.getByText(TEST_MOCK_HEADER.ticketsPopup.buyTicketsButton.label), `The buy ticket button label should be visible in the ticket popup.`)
     .toBeVisible();
 }
 
