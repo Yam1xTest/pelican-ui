@@ -216,6 +216,14 @@
     }
   }
 
+  &__text {
+    @include link-text;
+
+    text-decoration: none;
+    color: $color-black-75;
+    overflow-wrap: anywhere;
+  }
+
   &__rules-title {
     @include body-1-medium;
 
