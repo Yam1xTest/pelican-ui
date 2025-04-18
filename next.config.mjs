@@ -48,6 +48,12 @@ const nextConfig = {
 
           // This is to isolate browsing contexts like a tab or window to protect your site from XSS attacks and data stolen through shared browsing contexts.
           // { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+
+          // You can specify the following environment variables for CORS Headers in your .env file:
+          // ACCESS_CONTROL_ALLOW_CREDENTIALS="true"
+          // ACCESS_CONTROL_ALLOW_ORIGIN="*"
+          // ACCESS_CONTROL_ALLOW_METHODS="GET,OPTIONS,PATCH,DELETE,POST,PUT"
+          // ACCESS_CONTROL_ALLOW_HEADERS="X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
         ],
       },
     ]
