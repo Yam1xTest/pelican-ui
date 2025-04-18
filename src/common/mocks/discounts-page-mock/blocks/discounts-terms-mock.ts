@@ -8,7 +8,7 @@ export const MOCK_DISCOUNTS_TERMS: DiscountsTermsComponentProps = {
   rulesCards: [
     {
       id: 0,
-      text: `Быть гражданином Российский\u00A0Федерации`,
+      text: `Быть гражданином Российской\u00A0Федерации`,
     },
     {
       id: 1,
