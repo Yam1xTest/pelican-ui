@@ -183,13 +183,13 @@ export function mapContractByBlock({
             )),
             basis: card.rules?.basis?.map((item) => ({
               title: item.title,
-              file: item.file?.url || item.link || ``,
+              file: item.file?.url || item.link,
             })),
           },
         })),
         remark: {
           title: categoriesBlock.remark?.title,
-          file: categoriesBlock.remark?.file?.url || categoriesBlock.remark?.link || ``,
+          file: categoriesBlock.remark?.file?.url || categoriesBlock.remark?.link,
         },
       };
 
