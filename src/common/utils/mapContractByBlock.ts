@@ -157,7 +157,7 @@ export function mapContractByBlock({
 
     case BlockTypes.VISITING_RULES_MAIN:
       const visitingRulesMainBlock = block as VisitingRulesVisitingRulesMainComponent;
-
+      
       return {
         id: crypto.randomUUID(),
         __component: visitingRulesMainBlock.__component,
@@ -170,10 +170,7 @@ export function mapContractByBlock({
         cardsTitle: visitingRulesMainBlock.mainRules?.title,
         cards: visitingRulesMainBlock.mainRules?.mainRulesCards?.map((card) => ({
           ...card,
-          image: {
-            url: card.image?.url || ``,
-            alternativeText: card.image?.alternativeText || ``,
-          },
+          iconUrl: card.image?.url || ``
         })),
       };
 
