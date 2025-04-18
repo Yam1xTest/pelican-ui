@@ -8,7 +8,7 @@ import {
   E2E_DRAFT_UI_NAME_PREFIX,
   E2E_UI_NAME_PREFIX,
   getFileIdByName,
-  goToWithDraftPreviewMode,
+  gotoWithDraftPreviewMode,
 } from "../helpers/cms-integration-helpers";
 
 const NEWS_PAGE_TITLE = `${E2E_UI_NAME_PREFIX} Новости`;
@@ -109,7 +109,7 @@ async function checkNewsPageDraftPreviewOnUiTest({
 }: {
   page: Page;
 }) {
-  await goToWithDraftPreviewMode({
+  await gotoWithDraftPreviewMode({
     page,
     slug: AppRoute.NEWS.slice(1),
   });

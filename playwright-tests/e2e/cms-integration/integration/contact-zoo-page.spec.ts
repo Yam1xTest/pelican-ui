@@ -4,7 +4,7 @@ import test, { expect, Page } from "@playwright/test";
 import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
 import axios, { HttpStatusCode, AxiosError } from "axios";
 import { TEST_MOCK_HERO } from "../cms-integration-mocks";
-import { E2E_DRAFT_UI_NAME_PREFIX, getFileIdByName, goToWithDraftPreviewMode } from "../helpers/cms-integration-helpers";
+import { E2E_DRAFT_UI_NAME_PREFIX, getFileIdByName, gotoWithDraftPreviewMode } from "../helpers/cms-integration-helpers";
 
 const CONTACT_ZOO_DRAFT_HERO_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Челябинский зоопарк`;
 const CONTACT_ZOO_PAGE_API_ENDPOINT = `${getStrapiURL()}/contact-zoo`;
@@ -74,7 +74,7 @@ async function checkContactZooPageDraftPreviewOnUiTest({
 }: {
   page: Page;
 }) {
-  await goToWithDraftPreviewMode({
+  await gotoWithDraftPreviewMode({
     page,
     slug: AppRoute.CONTACT_ZOO.slice(1),
   });

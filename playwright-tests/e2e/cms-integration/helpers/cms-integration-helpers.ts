@@ -16,7 +16,7 @@ export async function getFileIdByName({
   return filesResponse.find((file) => file.name === name).id;
 }
 
-export async function goToWithDraftPreviewMode({
+export async function gotoWithDraftPreviewMode({
   page,
   slug,
 }: {

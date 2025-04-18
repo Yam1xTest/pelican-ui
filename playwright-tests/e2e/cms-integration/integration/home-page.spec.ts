@@ -4,7 +4,7 @@ import test, { expect, Page } from "@playwright/test";
 import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
 import axios, { HttpStatusCode, AxiosError } from "axios";
 import { TEST_MOCK_HERO } from "../cms-integration-mocks";
-import { E2E_DRAFT_UI_NAME_PREFIX, getFileIdByName, goToWithDraftPreviewMode } from "../helpers/cms-integration-helpers";
+import { E2E_DRAFT_UI_NAME_PREFIX, getFileIdByName, gotoWithDraftPreviewMode } from "../helpers/cms-integration-helpers";
 
 const HOME_PAGE_DRAFT_HERO_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Челябинский зоопарк`;
 const HOME_PAGE_API_ENDPOINT = `${getStrapiURL()}/home`;
@@ -75,7 +75,7 @@ async function checkHomePageDraftPreviewOnUiTest({
 }: {
   page: Page;
 }) {
-  await goToWithDraftPreviewMode({
+  await gotoWithDraftPreviewMode({
     page,
     slug: AppRoute.HOME.slice(1),
   });
@@ -120,7 +120,7 @@ export async function updateTestHomePage({
           {
             ...TEST_MOCK_HERO,
             ...(isDraft ? {
-              title: `${E2E_DRAFT_UI_NAME_PREFIX} Челябинский зоопарк`,
+              title: HOME_PAGE_DRAFT_HERO_TITLE,
             } : {}),
             image: await getFileIdByName(),
           },

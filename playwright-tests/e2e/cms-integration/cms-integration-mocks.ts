@@ -44,7 +44,7 @@ export const TEST_MOCK_HEADER = {
       },
     },
     buyTicketsButton: {
-      label: `Купить билет`,
+      label: `${E2E_UI_NAME_PREFIX} Купить билет`,
       link: `#`,
     },
     note: `Покупая билет, вы соглашаетесь с правилами посещения`,
