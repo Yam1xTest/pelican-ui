@@ -2,7 +2,6 @@ import { test as teardown } from '@playwright/test';
 import { getStrapiURL } from '@/src/common/utils/getStrapiURL';
 import axios from 'axios';
 import { E2E_UI_NAME_PREFIX } from './helpers/cms-integration-helpers';
-import { cleanupTestHomePage } from './helpers/home-page-helpers';
 
 const UPLOAD_API_ENDPOINT = `${getStrapiURL()}/upload/files`;
 
@@ -19,6 +18,4 @@ teardown(`Cleanup test files and single types`, async () => {
       await axios.delete(`${UPLOAD_API_ENDPOINT}/${id}`);
     });
   }
-
-  await cleanupTestHomePage();
 });

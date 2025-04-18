@@ -16,7 +16,7 @@ export default defineConfig({
   outputDir: `./playwright-tests/playwright-test-results/cms-integration`,
   timeout: 45000,
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  // fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry twice locally and in pipelines to avoid extra flackiness after a retry or two */
