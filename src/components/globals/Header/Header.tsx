@@ -121,7 +121,7 @@ export function Header({
           phone={phone}
           navigationLinks={navigationLinks}
           popupTicketBuyText={popupTicketBuyText}
-          onTicketPopupOpen={() => handleMobileMenuToggle()}
+          handleMobileMenuToggle={handleMobileMenuToggle}
         />
       )}
     </header>
