@@ -7,8 +7,12 @@ import LogoDesktop from '../../../../../../public/images/header/logo-desktop.svg
 
 export function HeaderLogo({
   className,
+  isMobileMenuOpen,
+  handleMobileMenuToggle,
 }: {
   className: string;
+  isMobileMenuOpen: boolean;
+  handleMobileMenuToggle: () => void;
 }) {
   const {
     isDesktop,
@@ -20,6 +24,11 @@ export function HeaderLogo({
       href={AppRoute.HOME}
       aria-label="Ссылка на главную страницу"
       data-testid="header-logo"
+      onClick={() => {
+        if (isMobileMenuOpen) {
+          handleMobileMenuToggle();
+        }
+      }}
     >
       <Image
         src={getLogo({
