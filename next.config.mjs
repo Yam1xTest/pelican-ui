@@ -7,6 +7,8 @@ const nextConfig = {
     APP_ENV: process.env.APP_ENV,
   },
 
+  assetPrefix: 'https://cdn.chelzoo.tech',
+
   // https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports
   experimental: {
     optimizePackageImports: [
