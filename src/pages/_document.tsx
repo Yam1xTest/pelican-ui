@@ -21,7 +21,7 @@ export default function Document() {
       <Head>
         <style>
           {`
-            #static-loader {
+            .paw-container {
               position: fixed;
               left: 0;
               top: 0;
@@ -33,12 +33,6 @@ export default function Document() {
               height: 100%;
               background-color: #f6f5f5;
               opacity: 1;
-            }
-
-            .paw-container {
-              display: flex;
-              justify-content: center;
-              align-items: center;
             }
 
             .paw {
