@@ -20,6 +20,7 @@ import {
 } from '../common/mocks/globals-mock';
 import { TicketPopupProvider } from '../common/providers/TicketPopupProvider';
 import { getGlobalData } from '../common/utils/getGlobalData';
+import { Loader } from '../components/globals/Loader/Loader';
 
 const inter = localFont({
   src: [
@@ -87,6 +88,11 @@ export default function App({
     }
   }, [asPath, query]);
 
+  useEffect(() => {
+    const loaderElement = document.getElementById('static-loader');
+    if (loaderElement) loaderElement.remove();
+  }, []);
+
   const {
     navigationLinks,
     email,
@@ -104,6 +110,7 @@ export default function App({
     <WindowWidthProvider>
       <TicketPopupProvider>
         <div className={inter.variable}>
+          <Loader />
           <Layout
             navigationLinks={navigationLinks}
             officialLinks={officialLinks}
