@@ -72,6 +72,8 @@ export function Header({
         <div className="header__left">
           <HeaderLogo
             className="header__logo"
+            isMobileMenuOpen={isMobileMenuOpen}
+            handleMobileMenuToggle={handleMobileMenuToggle}
           />
           {isDesktop && (
             <HeaderNavigation
@@ -121,7 +123,7 @@ export function Header({
           phone={phone}
           navigationLinks={navigationLinks}
           popupTicketBuyText={popupTicketBuyText}
-          onTicketPopupOpen={() => handleMobileMenuToggle()}
+          handleMobileMenuToggle={handleMobileMenuToggle}
         />
       )}
     </header>

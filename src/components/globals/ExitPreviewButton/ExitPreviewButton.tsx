@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 
-export function ExitPreviewLink() {
+export function ExitPreviewButton() {
   const router = useRouter();
 
   const handleExit = async () => {
@@ -12,7 +12,7 @@ export function ExitPreviewLink() {
   return (
     <button
       type="button"
-      className="button button--secondary exit-preview-link"
+      className="button button--secondary exit-preview-button"
       onClick={handleExit}
     >
       Выйти из режима черновика
