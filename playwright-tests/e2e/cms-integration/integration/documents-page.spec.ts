@@ -90,12 +90,12 @@ test.describe(`Documents page CMS integration tests`, () => {
 
     test(
       `
-        GIVEN documents page without content
+        GIVEN documents page draft without content
         WHEN call method PUT /api/documents-page
         AND call method POST /api/documents-category
         AND call method POST /api/documents
-        AND go to documents page
-        SHOULD display documents page content correctly
+        AND go to documents page draft
+        SHOULD display documents page draft content correctly
         AND document category is displayed correctly
         AND document is displayed correctly
       `,
