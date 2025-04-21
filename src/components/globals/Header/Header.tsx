@@ -72,6 +72,8 @@ export function Header({
         <div className="header__left">
           <HeaderLogo
             className="header__logo"
+            isMobileMenuOpen={isMobileMenuOpen}
+            handleMobileMenuToggle={handleMobileMenuToggle}
           />
           {isDesktop && (
             <HeaderNavigation
