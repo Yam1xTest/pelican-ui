@@ -92,11 +92,11 @@ test.describe(`News page CMS integration tests`, () => {
 
     test(
       `
-        GIVEN news page without content
+        GIVEN news page draft without content
         WHEN call method PUT /api/news-page?status=draft
         AND call method POST /api/news?status=draft
-        AND go to news page
-        SHOULD display news page content correctly
+        AND go to news page draft
+        SHOULD display news page draft content correctly
         AND display news correctly in draft preview
         `,
       checkNewsPageDraftPreviewOnUiTest,

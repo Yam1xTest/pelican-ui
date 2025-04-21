@@ -39,11 +39,11 @@ test.describe(`Contact zoo page CMS integration tests`, () => {
 
     test(
       `
-          GIVEN contact zoo page without content
-          WHEN call method PUT /api/contact-zoo
-          AND go to contact zoo page
-          SHOULD display contact zoo page content correctly
-          `,
+        GIVEN contact zoo page draft without content
+        WHEN call method PUT /api/contact-zoo
+        AND go to contact zoo page draft
+        SHOULD display contact zoo page draft content correctly
+        `,
       checkContactZooPageDraftPreviewOnUiTest,
     );
   });
@@ -141,6 +141,6 @@ async function cleanupTestContactZooPage() {
     await expect(response.status, `Contact zoo page should be deleted with status 204`)
       .toEqual(HttpStatusCode.NoContent);
   } catch (error) {
-    throw new Error(`Failed to delete test home page: ${(error as AxiosError).message}`);
+    throw new Error(`Failed to delete test contact zoo page: ${(error as AxiosError).message}`);
   }
 }
