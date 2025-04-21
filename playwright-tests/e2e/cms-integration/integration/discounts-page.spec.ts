@@ -110,7 +110,7 @@ async function checkDiscountsPageContent({
   await expect(page.getByText(title), `Discounts page title should be visible`)
     .toBeVisible();
 
-  await expect(page.getByText(subtitle), `Discounts page info subtitle title should be visible`)
+  await expect(page.getByText(subtitle), `Discounts page subtitle should be visible`)
     .toBeVisible();
 
   await expect(page.getByText(rulesCards[0].text), `Discounts page rulesCards text should be visible`)
