@@ -10,6 +10,10 @@ import {
   SharedCardsComponent,
   DiscountsTermsComponent,
   DiscountsCategoriesComponent,
+  VisitingRulesVisitingRulesMainComponent,
+  VisitingRulesWarningsComponent,
+  VisitingRulesPhotosPolicyComponent,
+  VisitingRulesEmergencyPhonesComponent,
 } from "../api-types";
 import { BlockTypes } from "../enum";
 import { Block } from "../types";
@@ -191,6 +195,54 @@ export function mapContractByBlock({
           title: categoriesBlock.remark?.title,
           file: categoriesBlock.remark?.file?.url || categoriesBlock.remark?.link,
         },
+      };
+
+    case BlockTypes.VISITING_RULES_MAIN:
+      const visitingRulesMainBlock = block as VisitingRulesVisitingRulesMainComponent;
+
+      return {
+        id: crypto.randomUUID(),
+        __component: visitingRulesMainBlock.__component,
+        title: visitingRulesMainBlock.title,
+        link: {
+          label: visitingRulesMainBlock.documentLink?.label,
+          path: visitingRulesMainBlock.documentLink?.file?.url || ``,
+        },
+        description: visitingRulesMainBlock.description,
+        cardsTitle: visitingRulesMainBlock.mainRules?.title,
+        cards: visitingRulesMainBlock.mainRules?.mainRulesCards?.map((card) => ({
+          ...card,
+          iconUrl: card.image?.url || ``,
+        })),
+      };
+
+    case BlockTypes.VISITING_RULES_WARNINGS:
+      const visitingRulesWarningsBlock = block as VisitingRulesWarningsComponent;
+
+      return {
+        id: crypto.randomUUID(),
+        __component: visitingRulesWarningsBlock.__component,
+        cards: visitingRulesWarningsBlock.warningsCards,
+      };
+
+    case BlockTypes.VISITING_RULES_PHOTOS_POLICY:
+      const visitingRulesPhotosPolicyBlock = block as VisitingRulesPhotosPolicyComponent;
+
+      return {
+        id: crypto.randomUUID(),
+        __component: visitingRulesPhotosPolicyBlock.__component,
+        cardsTitle: visitingRulesPhotosPolicyBlock.title,
+        cards: visitingRulesPhotosPolicyBlock.photosPolicyCards,
+      };
+
+    case BlockTypes.VISITING_RULES_EMERGENCY_PHONES:
+      const visitingRulesEmergencyPhonesBlock = block as VisitingRulesEmergencyPhonesComponent;
+
+      return {
+        id: crypto.randomUUID(),
+        __component: visitingRulesEmergencyPhonesBlock.__component,
+        cardsTitle: visitingRulesEmergencyPhonesBlock.title,
+        cards: visitingRulesEmergencyPhonesBlock.emergencyPhonesCards,
       };
 
     default:
