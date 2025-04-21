@@ -123,12 +123,12 @@ export default function Document() {
           src="https://pos.gosuslugi.ru/bin/script.min.js"
         />
         <Script
-          id="gosBanner"
+          id="gosWidgetScript"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
              (function(){
-          "use strict";
+            "use strict";
              function ownKeys(e, t) {
                   var o = Object.keys(e);
                   if (Object.getOwnPropertySymbols) {
@@ -216,7 +216,7 @@ export default function Document() {
         />
         <Script
           id="gosWidget"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         >
           Widget(`https://pos.gosuslugi.ru/form`, 284230)
         </Script>
