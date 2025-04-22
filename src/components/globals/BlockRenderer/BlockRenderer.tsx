@@ -20,6 +20,7 @@ import {
   VisitingRulesPhotosPolicyComponentProps,
   VisitingRulesEmergencyPhonesComponentProps,
 } from '@/src/common/types';
+import { normalizeSlug } from '@/src/common/utils/normalizeSlug';
 import { Cards } from '../Cards/Cards';
 import { ImageWithButtonGrid } from '../ImageWithButtonGrid/ImageWithButtonGrid';
 import { DiscountsCategories } from '../../discounts-page/DiscountsCategories/DiscountsCategories';
@@ -63,11 +64,15 @@ export const BlockRenderer = ({
   block,
   email,
 }: {
-  slug?: string;
+  slug: string;
   block: Block;
   email: GlobalComponentProps['email'];
 }) => {
-  if (block.__component === BlockTypes.SHARED_HERO && (slug === AppRoute.HOME || slug?.startsWith(`${AppRoute.HOME}#`))) {
+  const normalizedSlug = normalizeSlug({
+    slug,
+  });
+
+  if (block.__component === BlockTypes.SHARED_HERO && normalizedSlug === AppRoute.HOME) {
     return (
       <HomepageHero
         title={block.title}
@@ -81,7 +86,7 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.SHARED_HERO && slug !== AppRoute.HOME) {
+  if (block.__component === BlockTypes.SHARED_HERO && normalizedSlug !== AppRoute.HOME) {
     return (
       <Hero
         title={block.title}
@@ -131,7 +136,8 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID && (slug === AppRoute.HOME || slug?.startsWith(`${AppRoute.HOME}#`))) {
+  // eslint-disable-next-line max-len
+  if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID && normalizedSlug === AppRoute.HOME) {
     return (
       <HomepageImageWithButtonGrid
         title={block.title}
