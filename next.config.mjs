@@ -21,7 +21,9 @@ const nextConfig = {
     APP_ENV: process.env.APP_ENV,
   },
 
-  assetPrefix: 'https://cdn.chelzoo.tech',
+  ...(process.env.CDN_ENABLED === 'true' && {
+    assetPrefix: `https://${process.env.CDN_DOMAIN}`
+  }),
 
   // https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports
   experimental: {
@@ -35,8 +37,10 @@ const nextConfig = {
   },
 
   images: {
-    domains: ['cdn.chelzoo.tech'],
-    path: 'https://cdn.chelzoo.tech/_next/image',
+    ...(process.env.CDN_ENABLED === 'true' && {
+      domains: [process.env.CDN_DOMAIN],
+      path: `https://${process.env.CDN_DOMAIN}/_next/image`
+    }),
 
     unoptimized: process.env.NODE_ENV === 'test',
     formats: ['image/avif', 'image/webp'],
