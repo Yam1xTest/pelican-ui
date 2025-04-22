@@ -21,11 +21,11 @@ test.describe(`Home page CMS integration tests`, () => {
 
     test(
       `
-      GIVEN home page without content
-      WHEN call method PUT /api/home
-      AND go to home page
-      SHOULD display home page content correctly
-      `,
+        GIVEN home page without content
+        WHEN call method PUT /api/home
+        AND go to home page
+        SHOULD display home page content correctly
+        `,
       checkHomePageOnUiTest,
     );
   });
@@ -39,10 +39,10 @@ test.describe(`Home page CMS integration tests`, () => {
 
     test(
       `
-        GIVEN home page without content
+        GIVEN home page draft without content
         WHEN call method PUT /api/home?status=draft
-        AND go to home page
-        SHOULD display home page content correctly in draft preview
+        AND go to home page draft
+        SHOULD display home page draft content correctly in draft preview
         `,
       checkHomePageDraftPreviewOnUiTest,
     );
