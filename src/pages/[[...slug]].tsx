@@ -14,7 +14,9 @@ export default function UniversalPage({
   globalData,
   pageData,
 }: UniversalProps) {
-  const route = useRouter();
+  const {
+    asPath,
+  } = useRouter();
 
   const {
     email,
@@ -34,7 +36,7 @@ export default function UniversalPage({
       />
       {blocks?.map((block) => (
         <BlockRenderer
-          slug={route.asPath}
+          slug={asPath}
           key={block.id}
           block={block}
           email={email}
