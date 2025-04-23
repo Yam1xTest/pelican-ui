@@ -28,7 +28,7 @@ export function GosBanner() {
           <div className="bf-2__btn-wrap">
 
             <button
-              className="pos-banner-btn_2"
+              className="button pos-banner-btn_2"
               type="button"
               data-testid="gos-banner-button"
             >
