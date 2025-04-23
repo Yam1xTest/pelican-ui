@@ -1,7 +1,6 @@
 import { MutableRefObject, useEffect } from "react";
 import { GlobalComponentProps } from "@/src/common/types";
 import dynamic from "next/dynamic";
-import clsx from "clsx";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import Link from "next/link";
@@ -18,11 +17,11 @@ const HeaderPopup = dynamic(
 );
 
 type HeaderProps = Pick<GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
-  overlayElementRef: MutableRefObject<null | HTMLElement>,
-  mainElementRef: MutableRefObject<null | HTMLElement>,
-  footerElementRef: MutableRefObject<null | HTMLElement>,
-  isMobileMenuOpen: boolean,
-  handleMobileMenuToggle: () => void,
+  overlayElementRef: MutableRefObject<null | HTMLElement>;
+  mainElementRef: MutableRefObject<null | HTMLElement>;
+  footerElementRef: MutableRefObject<null | HTMLElement>;
+  isMobileMenuOpen: boolean;
+  handleMobileMenuToggle: () => void;
 };
 
 export function Header({
@@ -66,15 +65,15 @@ export function Header({
 
   return (
     <header
-      className={clsx(`header`, {
-        active: isMobileMenuOpen,
-      })}
+      className="header"
       data-testid="header"
     >
       <div className="container header__wrapper">
         <div className="header__left">
           <HeaderLogo
             className="header__logo"
+            isMobileMenuOpen={isMobileMenuOpen}
+            handleMobileMenuToggle={handleMobileMenuToggle}
           />
           {isDesktop && (
             <HeaderNavigation
@@ -124,7 +123,7 @@ export function Header({
           phone={phone}
           navigationLinks={navigationLinks}
           popupTicketBuyText={popupTicketBuyText}
-          onTicketPopupOpen={() => handleMobileMenuToggle()}
+          handleMobileMenuToggle={handleMobileMenuToggle}
         />
       )}
     </header>

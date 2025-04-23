@@ -2,9 +2,10 @@ import {
   gotoPage,
   hideCookie,
   hideHeader,
+  hideLoader,
   setViewportSize,
-} from '@/playwright-tests/helpers';
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+} from '@/playwright-tests/global-helpers';
+import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { test, expect, Page } from '@playwright/test';
 
@@ -22,6 +23,10 @@ test.describe(`DocumentsListComponentTests`, () => {
     });
 
     await hideCookie({
+      page,
+    });
+
+    await hideLoader({
       page,
     });
   });
@@ -52,7 +57,7 @@ test.describe(`DocumentsListComponentTests`, () => {
 async function tabAction({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await page.locator(`li`, {
     hasText: `2024`,
@@ -68,7 +73,7 @@ async function tabAction({
 async function mobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -78,13 +83,13 @@ async function mobileTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-mobile.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.MOBILE}.png`);
 }
 
 async function mobileClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -98,13 +103,13 @@ async function mobileClickedTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-mobile-clicked.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.MOBILE}-clicked.png`);
 }
 
 async function tabletTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -115,13 +120,13 @@ async function tabletTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-tablet.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -136,13 +141,13 @@ async function tabletClickedTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-tablet-clicked.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.TABLET}-clicked.png`);
 }
 
 async function tabletXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -153,13 +158,13 @@ async function tabletXlTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-tablet-xl.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function tabletXlClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -174,13 +179,13 @@ async function tabletXlClickedTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-tablet-xl-clicked.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.TABLET_XL}-clicked.png`);
 }
 
 async function desktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -191,13 +196,13 @@ async function desktopTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-desktop.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.DESKTOP}.png`);
 }
 
 async function desktopClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -212,13 +217,13 @@ async function desktopClickedTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-desktop-clicked.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.DESKTOP}-clicked.png`);
 }
 
 async function desktopXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -229,13 +234,13 @@ async function desktopXlTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-desktop-xl.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.DESKTOP_XL}.png`);
 }
 
 async function desktopXlClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -250,13 +255,13 @@ async function desktopXlClickedTest({
   await expect(getDocumentsListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-list-desktop-xl-clicked.png`);
+    .toHaveScreenshot(`documents-list-${BreakpointName.DESKTOP_XL}-clicked.png`);
 }
 
 function getDocumentsListByTestId({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
   return page.getByTestId(`documents`);
 }
@@ -264,7 +269,7 @@ function getDocumentsListByTestId({
 async function openDocumentsListPopupAccordions({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
   const allAccordions = await page.getByTestId(`accordion-trigger`)
     .all();

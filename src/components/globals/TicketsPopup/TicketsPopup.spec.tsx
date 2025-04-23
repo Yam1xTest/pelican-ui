@@ -1,11 +1,13 @@
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import {
   gotoPage,
   hideCookie,
   openTicketsPopupAccordions,
   setViewportSize,
-} from '@/playwright-tests/helpers';
+} from '@/playwright-tests/global-helpers';
 import { test, expect, Page } from '@playwright/test';
+
+const TEST_ID = `tickets-popup`;
 
 test.describe(`TicketsPopupComponentTests`, () => {
   test.beforeEach(async ({
@@ -50,7 +52,7 @@ test.describe(`TicketsPopupComponentTests`, () => {
 async function actionTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -73,7 +75,7 @@ async function actionTest({
 async function mobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -83,13 +85,13 @@ async function mobileTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-mobile.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}.png`);
 }
 
 async function mobileClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -103,13 +105,13 @@ async function mobileClickedTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-mobile-clicked.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}-clicked.png`);
 }
 
 async function tabletTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -120,13 +122,13 @@ async function tabletTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-tablet.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -141,13 +143,13 @@ async function tabletClickedTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-tablet-clicked.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}-clicked.png`);
 }
 
 async function tabletXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -158,13 +160,13 @@ async function tabletXlTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-tablet-xl.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function tabletXlClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -179,13 +181,13 @@ async function tabletXlClickedTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-tablet-xl-clicked.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET_XL}-clicked.png`);
 }
 
 async function desktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -196,13 +198,13 @@ async function desktopTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-desktop.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}.png`);
 }
 
 async function desktopClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -217,13 +219,13 @@ async function desktopClickedTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-desktop-clicked.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}-clicked.png`);
 }
 
 async function desktopXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -234,13 +236,13 @@ async function desktopXlTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-desktop-xl.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP_XL}.png`);
 }
 
 async function desktopXlClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -255,13 +257,13 @@ async function desktopXlClickedTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-desktop-xl-clicked.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP_XL}-clicked.png`);
 }
 
 function getTicketsPopupByTestId({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
-  return page.getByTestId(`tickets-popup`);
+  return page.getByTestId(TEST_ID);
 }

@@ -1,6 +1,7 @@
 import { MapComponentProps } from "@/src/common/types";
 import Image from "next/image";
-import mapBackgroundImage from '../../../../public/images/map/map.png';
+import mapBackgroundImage from "@/public/images/map/map.png";
+import mapLogo from "@/public/images/map/map-logo.svg";
 import { MapAddressCard } from "./components/MapAddressCard/MapAddressCard";
 
 export function Map({
@@ -23,12 +24,20 @@ export function Map({
       />
       <div className="map__inner container">
         <MapAddressCard
-          className="map__address-card"
           title={title}
           subtitle={subtitle}
           note={note}
           image={image}
         />
+      </div>
+      <div className="map__logo-container">
+        <div className="map__logo">
+          <Image
+            src={mapLogo}
+            alt=""
+            fill
+          />
+        </div>
       </div>
     </section>
   );

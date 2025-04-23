@@ -1,5 +1,5 @@
 import { AppRoute } from '@/src/common/enum';
-import { gotoPage, setViewportSize } from '@/playwright-tests/helpers';
+import { gotoPage, setViewportSize } from '@/playwright-tests/global-helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`SkipLinkTest`, () => {
@@ -18,7 +18,7 @@ test.describe(`SkipLinkTest`, () => {
 async function mobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,

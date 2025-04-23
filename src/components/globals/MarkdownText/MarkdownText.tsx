@@ -8,9 +8,11 @@ import { Video } from '../Video/Video';
 export function MarkdownText({
   children,
   className,
+  isTargetBlank,
 }: {
-  children: string,
-  className?: string,
+  children: string;
+  className?: string;
+  isTargetBlank?: boolean;
 }) {
   return (
     <ReactMarkdown
@@ -22,9 +24,14 @@ export function MarkdownText({
             <a
               href={props.href}
               className={clsx(`text-link`, props.className)}
-              target={props.target}
-              rel={props.rel}
               data-testid="text-link"
+              {...(isTargetBlank ? {
+                target: `_blank`,
+                rel: `noopener noreferrer`,
+              } : {
+                target: props.target,
+                rel: props.rel,
+              })}
             >
               {props.children}
             </a>
@@ -45,7 +52,7 @@ export function MarkdownText({
           const sourceProps = props.children.find(({
             type,
           }: {
-            type: string
+            type: string;
           }) => type === `source`).props;
 
           return (

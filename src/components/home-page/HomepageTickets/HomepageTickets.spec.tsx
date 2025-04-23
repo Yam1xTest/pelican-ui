@@ -1,5 +1,5 @@
 
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import {
   gotoPage,
   hideCookie,
@@ -7,8 +7,10 @@ import {
   hideMap,
   hideSkipLink,
   setViewportSize,
-} from '@/playwright-tests/helpers';
+} from '@/playwright-tests/global-helpers';
 import { test, expect, Page } from '@playwright/test';
+
+const TEST_ID = `tickets`;
 
 test.describe(`HomepageTicketsComponentTests`, () => {
   test.beforeEach(async ({
@@ -50,7 +52,7 @@ test.describe(`HomepageTicketsComponentTests`, () => {
 async function mobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -60,13 +62,13 @@ async function mobileTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-mobile.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}.png`);
 }
 
 async function tabletTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -77,13 +79,13 @@ async function tabletTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-tablet.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -94,13 +96,13 @@ async function tabletXlTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-tablet-xl.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function desktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -111,13 +113,13 @@ async function desktopTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-desktop.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}.png`);
 }
 
 async function desktopXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -128,13 +130,13 @@ async function desktopXlTest({
   await expect(getTicketsByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-desktop-xl.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP_XL}.png`);
 }
 
 function getTicketsByTestId({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
-  return page.getByTestId(`tickets`);
+  return page.getByTestId(TEST_ID);
 }

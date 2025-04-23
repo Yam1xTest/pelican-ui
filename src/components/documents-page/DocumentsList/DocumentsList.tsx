@@ -9,10 +9,10 @@ export function DocumentsList({
   documents,
   currentYear,
 }: {
-  category: CategoryProps,
-  availableYears: DocumentsTabsProps[`availableYears`],
-  documents: DocumentsProps[],
-  currentYear: number
+  category: CategoryProps;
+  availableYears: DocumentsTabsProps[`availableYears`];
+  documents: DocumentsProps[];
+  currentYear: number;
 }) {
   const router = useRouter();
 
@@ -45,30 +45,40 @@ export function DocumentsList({
           ))}
         </ul>
       )}
-      <ul
-        className="documents__list"
-      >
-        {documents?.map(({
-          id,
-          date,
-          showDate,
-          title,
-          subtitle,
-          description,
-          files,
-        }) => (
-          <DocumentCard
-            className="documents__item"
-            key={id}
-            date={date}
-            showDate={showDate}
-            title={title}
-            subtitle={subtitle}
-            description={description}
-            files={files}
-          />
-        ))}
-      </ul>
+      {documents.length > 0 ? (
+        <ul
+          className="documents__list"
+        >
+          {documents.map(({
+            id,
+            date,
+            showDate,
+            title,
+            subtitle,
+            description,
+            files,
+          }) => (
+            <DocumentCard
+              className="documents__item"
+              key={id}
+              date={date}
+              showDate={showDate}
+              title={title}
+              subtitle={subtitle}
+              description={description}
+              files={files}
+            />
+          ))}
+        </ul>
+      ) : (
+        <h2 className="documents__warning">
+          Документы за
+          {` `}
+          {router.query.year}
+          {` `}
+          год не найдены
+        </h2>
+      )}
     </section>
   );
 }

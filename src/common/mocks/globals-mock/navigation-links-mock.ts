@@ -6,14 +6,9 @@ export const MOCK_NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   {
     id: 1,
     name: `Льготы`,
-    link: `https://vk.com/topic-71671982_48253263`,
+    link: AppRoute.DISCOUNTS,
   },
   // TODO: Uncomment when the page appears
-  // {
-  //   id: 2,
-  //   name: `Правила посещения`,
-  //   link: `#`,
-  // },
   // {
   //   id: 3,
   //   name: `Адрес`,
@@ -25,13 +20,18 @@ export const MOCK_NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   //   link: `#`,
   // },
   {
-    id: 5,
+    id: 4,
     name: `Документы`,
     link: AppRoute.DOCUMENTS,
   },
   {
-    id: 6,
+    id: 5,
     name: `Новости`,
     link: AppRoute.NEWS,
+  },
+  {
+    id: 6,
+    name: `Правила посещения`,
+    link: AppRoute.VISITING_RULES,
   },
 ];

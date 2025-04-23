@@ -1,5 +1,4 @@
 import qs from 'qs';
-import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 import { MOCK_NEWS_PAGE } from '@/src/common/mocks/news-page-mock/news-page-mock';
 import { MOCK_NEWS } from '@/src/common/mocks/collections-mock/news-collection-mock';
 import { NEWS_LIMIT, NewsList } from '@/src/components/news-page/NewsList/NewsList';
@@ -7,6 +6,7 @@ import { api } from '@/src/common/utils/HttpClient';
 import { NewsCollectionListResponse, NewsPageResponse } from '@/src/common/api-types';
 import { NewsPageProps, NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
+import defaultBackground from '@/public/images/news/default-background.png';
 
 export default function NewsPage({
   pageData,
@@ -14,15 +14,11 @@ export default function NewsPage({
   totalNews,
   pageSize,
 }: {
-  pageData: NewsPageProps,
-  news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[],
-  pageSize: number,
-  totalNews: number,
+  pageData: NewsPageProps;
+  news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[];
+  pageSize: number;
+  totalNews: number;
 }) {
-  if (!pageData || !news) {
-    return <NotFound />;
-  }
-
   const {
     seo,
     newsTitle,
@@ -49,10 +45,10 @@ export async function getServerSideProps({
   query,
   preview = false,
 }: {
-  preview: boolean,
+  preview: boolean;
   query: {
-    pageSize: number
-  }
+    pageSize: number;
+  };
 }) {
   if (process.env.APP_ENV === `static`) {
     return {
@@ -67,59 +63,97 @@ export async function getServerSideProps({
 
   const previewMode = preview ? `draft` : `published`;
 
-  const newsQueryParams = {
-    populate: [`image`],
-    fields: [
-      `title`,
-      `description`,
-      `slug`,
-    ],
-    sort: {
-      publishedAt: `desc`,
+  const newsPageData = await getNewsPageData({
+    previewMode,
+  });
+
+  const {
+    news,
+    pageSize,
+    totalNews,
+  } = await getNewsData({
+    previewMode,
+    pageSize: query.pageSize,
+  });
+
+  return {
+    props: {
+      pageData: newsPageData,
+      news,
+      pageSize,
+      totalNews,
     },
-    pagination: {
-      pageSize: query.pageSize || NEWS_LIMIT,
-    },
-    status: previewMode,
   };
+}
 
+async function getNewsPageData({
+  previewMode,
+}: {
+  previewMode: string;
+}) {
   try {
-    const newsPageResponse: NewsPageResponse = await api.get(`/news-page?populate=*&status=${previewMode}`);
-    const newsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(newsQueryParams)}`);
-
-    const news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[] = newsResponse.data!.map((newsItem) => ({
-      id: newsItem.id!,
-      slug: newsItem.slug!,
-      image: {
-        url: newsItem.image?.url || ``,
-        alternativeText: newsItem.image?.alternativeText || ``,
-      },
-      title: newsItem.title,
-      description: newsItem.description,
-    }));
+    const response: NewsPageResponse = await api.get(`/news-page?populate=*&status=${previewMode}`);
 
     return {
-      props: {
-        pageData: {
-          newsTitle: newsPageResponse.data?.title,
-          ...(newsPageResponse.data?.seo && {
-            seo: {
-              metaTitle: newsPageResponse.data?.seo?.metaTitle,
-              metaDescription: newsPageResponse.data?.seo?.metaDescription,
-              metaKeywords: newsPageResponse.data?.seo?.keywords,
-            },
-          }),
+      newsTitle: response.data?.title,
+      ...(response.data?.seo && {
+        seo: {
+          metaTitle: response.data?.seo?.metaTitle,
+          metaDescription: response.data?.seo?.metaDescription,
+          metaKeywords: response.data?.seo?.keywords,
         },
-        news,
-        pageSize: newsResponse.meta!.pagination!.pageSize,
-        totalNews: newsResponse.meta!.pagination!.total!,
+      }),
+    };
+  } catch {
+    return {};
+  }
+}
+
+async function getNewsData({
+  previewMode,
+  pageSize,
+}: {
+  previewMode: string;
+  pageSize: number;
+}) {
+  try {
+    const queryParams = {
+      populate: [`image`],
+      fields: [
+        `title`,
+        `description`,
+        `slug`,
+      ],
+      sort: {
+        publishedAt: `desc`,
       },
+      pagination: {
+        pageSize: pageSize || NEWS_LIMIT,
+      },
+      status: previewMode,
+    };
+
+    const response: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
+
+    return {
+      news: response.data!.map((newsItem) => ({
+        id: newsItem.id!,
+        slug: newsItem.slug!,
+        image: {
+          url: newsItem.image?.url || defaultBackground,
+          alternativeText: newsItem.image?.alternativeText || ``,
+        },
+        title: newsItem.title,
+        description: newsItem.description,
+      })),
+      pageSize: response.meta!.pagination!.pageSize,
+      totalNews: response.meta!.pagination!.total!,
     };
   } catch {
     return {
-      props: {
-        news: null,
-      },
+      news: [],
+      pageSize: NEWS_LIMIT,
+      totalNews: 0,
     };
   }
 }

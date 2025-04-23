@@ -9,6 +9,10 @@ body {
 
   &.is-modal-open {
     overflow: hidden;
+
+    @include desktop {
+      scrollbar-gutter: stable;
+    }
   }
 }
 

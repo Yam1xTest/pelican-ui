@@ -5,7 +5,6 @@ import localFont from "next/font/local";
 import router, { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { Layout } from '../components/globals/Layout/Layout';
-import { NotFound } from '../components/not-found-page/NotFound/NotFound';
 import { WindowWidthProvider } from '../common/providers/WindowWidthProvider';
 import {
   MOCK_POPUP_TICKET_BUY_TEXT,
@@ -21,6 +20,7 @@ import {
 } from '../common/mocks/globals-mock';
 import { TicketPopupProvider } from '../common/providers/TicketPopupProvider';
 import { getGlobalData } from '../common/utils/getGlobalData';
+import { Loader } from '../components/globals/Loader/Loader';
 
 const inter = localFont({
   src: [
@@ -60,7 +60,7 @@ export default function App({
   isPreview: boolean;
 }) {
   const {
-    pathname,
+    asPath,
     query,
   } = useRouter();
 
@@ -76,6 +76,8 @@ export default function App({
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
+  // ToDo: check warning
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.events]);
 
   useEffect(() => {
@@ -84,15 +86,12 @@ export default function App({
         top: 0,
       });
     }
-  }, [pathname, query]);
+  }, [asPath, query]);
 
-  if (!pageProps.globalData) {
-    return (
-      <div className={inter.variable}>
-        <NotFound />
-      </div>
-    );
-  }
+  useEffect(() => {
+    const loaderElement = document.getElementById('static-loader');
+    if (loaderElement) loaderElement.remove();
+  }, []);
 
   const {
     navigationLinks,
@@ -111,6 +110,7 @@ export default function App({
     <WindowWidthProvider>
       <TicketPopupProvider>
         <div className={inter.variable}>
+          <Loader />
           <Layout
             navigationLinks={navigationLinks}
             officialLinks={officialLinks}
@@ -137,23 +137,27 @@ App.getInitialProps = async ({
   router,
 }: {
   router: {
-    isPreview: boolean
-  }
+    isPreview: boolean;
+  };
 }) => {
+  const globalMock = {
+    popupTicketBuyText: MOCK_POPUP_TICKET_BUY_TEXT,
+    email: MOCK_EMAIL,
+    phone: MOCK_PHONE,
+    navigationLinks: MOCK_NAVIGATION_LINKS,
+    footerAboutLinks: MOCK_FOOTER_ABOUT_LINKS,
+    footerUserLinks: MOCK_FOOTER_USER_LINKS,
+    officialLinks: MOCK_OFFICIAL_LINKS,
+    footerNavTitleLeft: MOCK_FOOTER_NAV_TITLE_LEFT,
+    footerNavTitleRight: MOCK_FOOTER_NAV_TITLE_RIGHT,
+    ticketsPopup: MOCK_TICKETS_POPUP,
+  };
+
   if (process.env.APP_ENV === `static`) {
     return {
       pageProps: {
         globalData: {
-          popupTicketBuyText: MOCK_POPUP_TICKET_BUY_TEXT,
-          email: MOCK_EMAIL,
-          phone: MOCK_PHONE,
-          navigationLinks: MOCK_NAVIGATION_LINKS,
-          footerAboutLinks: MOCK_FOOTER_ABOUT_LINKS,
-          footerUserLinks: MOCK_FOOTER_USER_LINKS,
-          officialLinks: MOCK_OFFICIAL_LINKS,
-          footerNavTitleLeft: MOCK_FOOTER_NAV_TITLE_LEFT,
-          footerNavTitleRight: MOCK_FOOTER_NAV_TITLE_RIGHT,
-          ticketsPopup: MOCK_TICKETS_POPUP,
+          ...globalMock,
         },
       },
     };
@@ -168,23 +172,19 @@ App.getInitialProps = async ({
       isPreview: router.isPreview,
       pageProps: {
         globalData: {
-          popupTicketBuyText: MOCK_POPUP_TICKET_BUY_TEXT,
-          email: MOCK_EMAIL,
-          phone: MOCK_PHONE,
-          navigationLinks: MOCK_NAVIGATION_LINKS,
-          footerAboutLinks: MOCK_FOOTER_ABOUT_LINKS,
-          footerUserLinks: MOCK_FOOTER_USER_LINKS,
-          officialLinks: MOCK_OFFICIAL_LINKS,
-          footerNavTitleLeft: MOCK_FOOTER_NAV_TITLE_LEFT,
-          footerNavTitleRight: MOCK_FOOTER_NAV_TITLE_RIGHT,
+          ...globalMock,
           ...globalResponse,
         },
       },
     };
   } catch {
     return {
+      isPreview: router.isPreview,
       pageProps: {
-        globalData: null,
+        globalData: {
+          ...globalMock,
+          ticketsPopup: {},
+        },
       },
     };
   }

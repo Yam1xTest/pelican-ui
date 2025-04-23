@@ -13,87 +13,33 @@ import {
   SharedTicketsComponentProps,
   CategoriesComponentProps,
   ArticleComponentProps,
+  DiscountsCategoriesComponentProps,
+  DiscountsTermsComponentProps,
+  VisitingRulesMainComponentProps,
+  VisitingRulesWarningsComponentProps,
+  VisitingRulesPhotosPolicyComponentProps,
+  VisitingRulesEmergencyPhonesComponentProps,
 } from '@/src/common/types';
-import dynamic from 'next/dynamic';
+import { normalizeSlug } from '@/src/common/utils/normalizeSlug';
 import { Cards } from '../Cards/Cards';
 import { ImageWithButtonGrid } from '../ImageWithButtonGrid/ImageWithButtonGrid';
-
-const Hero = dynamic(
-  () => import(`../../globals/Hero/Hero`).then((component) => component.Hero),
-  {
-    ssr: false,
-  },
-);
-
-const HomepageHero = dynamic(
-  () => import(`../../home-page/HomepageHero/HomepageHero`).then((component) => component.HomepageHero),
-  {
-    ssr: false,
-  },
-);
-
-const TextAndMedia = dynamic(
-  () => import(`../TextAndMedia/TextAndMedia`).then((component) => component.TextAndMedia),
-  {
-    ssr: false,
-  },
-);
-
-const Services = dynamic(
-  () => import(`../../home-page/Services/Services`).then((component) => component.Services),
-  {
-    ssr: false,
-  },
-);
-
-const HomepageImageWithButtonGrid = dynamic(
-  () => import(`../../home-page/HomepageImageWithButtonGrid/HomepageImageWithButtonGrid`).then((component) => component.HomepageImageWithButtonGrid),
-  {
-    ssr: false,
-  },
-);
-
-const Map = dynamic(
-  () => import(`../../home-page/Map/Map`).then((Component) => Component.Map),
-  {
-    ssr: false,
-  },
-);
-
-const HomepageTickets = dynamic(
-  () => import(`../../home-page/HomepageTickets/HomepageTickets`).then((component) => component.HomepageTickets),
-  {
-    ssr: false,
-  },
-);
-
-const Tickets = dynamic(
-  () => import(`../../globals/Tickets/Tickets`).then((component) => component.Tickets),
-  {
-    ssr: false,
-  },
-);
-
-const NotFound = dynamic(
-  () => import(`../../not-found-page/NotFound/NotFound`).then((component) => component.NotFound),
-  {
-    ssr: false,
-  },
-);
-
-const Categories = dynamic(
-  () => import(`../Categories/Categories`).then((component) => component.Categories),
-  {
-    ssr: false,
-  },
-);
-
-const Article = dynamic(
-  () => import(`../Article/Article`).then((component) => component.Article),
-  {
-    ssr: false,
-  },
-);
+import { DiscountsCategories } from '../../discounts-page/DiscountsCategories/DiscountsCategories';
+import { DiscountsTerms } from '../../discounts-page/DiscountsTerms/DiscountsTerms';
+import { HomepageHero } from '../../home-page/HomepageHero/HomepageHero';
+import { HomepageImageWithButtonGrid } from '../../home-page/HomepageImageWithButtonGrid/HomepageImageWithButtonGrid';
+import { HomepageTickets } from '../../home-page/HomepageTickets/HomepageTickets';
+import { Services } from '../../home-page/Services/Services';
+import { NotFound } from '../../not-found-page/NotFound/NotFound';
+import { VisitingRulesEmergencyPhones } from '../../visiting-rules-page/VisitingRulesEmergencyPhones/VisitingRulesEmergencyPhones';
+import { VisitingRulesMain } from '../../visiting-rules-page/VisitingRulesMain/VisitingRulesMain';
+import { VisitingRulesPhotosPolicy } from '../../visiting-rules-page/VisitingRulesPhotosPolicy/VisitingRulesPhotosPolicy';
+import { VisitingRulesWarnings } from '../../visiting-rules-page/VisitingRulesWarnings/VisitingRulesWarnings';
+import { Article } from '../Article/Article';
+import { Categories } from '../Categories/Categories';
+import { Hero } from '../Hero/Hero';
+import { TextAndMedia } from '../TextAndMedia/TextAndMedia';
+import { Tickets } from '../Tickets/Tickets';
+import { Map } from '../../home-page/Map/Map';
 
 type Block = HeroComponentProps
   | SharedTicketsComponentProps
@@ -105,18 +51,28 @@ type Block = HeroComponentProps
   | HomeTicketsComponentProps
   | NotFoundComponentProps
   | CategoriesComponentProps
-  | ArticleComponentProps;
+  | DiscountsTermsComponentProps
+  | DiscountsCategoriesComponentProps
+  | ArticleComponentProps
+  | VisitingRulesMainComponentProps
+  | VisitingRulesWarningsComponentProps
+  | VisitingRulesPhotosPolicyComponentProps
+  | VisitingRulesEmergencyPhonesComponentProps;
 
 export const BlockRenderer = ({
   slug,
   block,
   email,
 }: {
-  slug?: string,
-  block: Block,
-  email: GlobalComponentProps['email']
+  slug: string;
+  block: Block;
+  email: GlobalComponentProps['email'];
 }) => {
-  if (block.__component === BlockTypes.SHARED_HERO && (slug === AppRoute.HOME || slug?.startsWith(`${AppRoute.HOME}#`))) {
+  const normalizedSlug = normalizeSlug({
+    slug,
+  });
+
+  if (block.__component === BlockTypes.SHARED_HERO && normalizedSlug === AppRoute.HOME) {
     return (
       <HomepageHero
         title={block.title}
@@ -130,13 +86,14 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.SHARED_HERO && slug !== AppRoute.HOME) {
+  if (block.__component === BlockTypes.SHARED_HERO && normalizedSlug !== AppRoute.HOME) {
     return (
       <Hero
         title={block.title}
         image={block.image}
         scheduleTitle={block.scheduleTitle}
         scheduleTimetables={block.scheduleTimetables}
+        infoCardTitle={block.infoCardTitle}
         infoCardDescription={block.infoCardDescription}
         isInternalPage
         isFirstBlock={block.isFirstBlock}
@@ -179,7 +136,8 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID && (slug === AppRoute.HOME || slug?.startsWith(`${AppRoute.HOME}#`))) {
+  // eslint-disable-next-line max-len
+  if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID && normalizedSlug === AppRoute.HOME) {
     return (
       <HomepageImageWithButtonGrid
         title={block.title}
@@ -268,6 +226,64 @@ export const BlockRenderer = ({
         innerContent={block.innerContent}
         isFirstBlock={block.isFirstBlock}
         isLastBlock={block.isLastBlock}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.DISCOUNTS_TERMS) {
+    return (
+      <DiscountsTerms
+        title={block.title}
+        subtitle={block.subtitle}
+        rulesCards={block.rulesCards}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.DISCOUNTS_CATEGORIES) {
+    return (
+      <DiscountsCategories
+        title={block.title}
+        categoriesCards={block.categoriesCards}
+        remark={block.remark}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.VISITING_RULES_MAIN) {
+    return (
+      <VisitingRulesMain
+        title={block.title}
+        link={block.link}
+        description={block.description}
+        cardsTitle={block.cardsTitle}
+        cards={block.cards}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.VISITING_RULES_WARNINGS) {
+    return (
+      <VisitingRulesWarnings
+        cards={block.cards}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.VISITING_RULES_PHOTOS_POLICY) {
+    return (
+      <VisitingRulesPhotosPolicy
+        cardsTitle={block.cardsTitle}
+        cards={block.cards}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.VISITING_RULES_EMERGENCY_PHONES) {
+    return (
+      <VisitingRulesEmergencyPhones
+        cardsTitle={block.cardsTitle}
+        cards={block.cards}
       />
     );
   }

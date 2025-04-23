@@ -10,13 +10,12 @@ import {
 } from 'react';
 import { GlobalComponentProps } from '@/src/common/types';
 import { WindowWidthContext } from '@/src/common/providers/WindowWidthProvider';
-import { useRouter } from 'next/router';
 import { useTicketPopup } from '@/src/common/hooks/useTicketPopup';
 import { Header } from '../Header/Header';
 import { TicketsPopup } from '../TicketsPopup/TicketsPopup';
 import { Footer } from '../Footer/Footer';
 import { SkipLink } from '../SkipLink/SkipLink';
-import { ExitPreviewLink } from '../ExitPreviewLink/ExitPreviewLink';
+import { ExitPreviewButton } from '../ExitPreviewButton/ExitPreviewButton';
 import Cookie from '../Cookie/Cookie';
 
 type LayoutProps = GlobalComponentProps & PropsWithChildren & {
@@ -38,10 +37,6 @@ export function Layout({
   isPreview,
 }: {
 } & LayoutProps) {
-  const {
-    pathname,
-  } = useRouter();
-
   const overlayElementRef = useRef<null | HTMLDivElement>(null);
   const mainElementRef = useRef<null | HTMLDivElement>(null);
   const footerElementRef = useRef<null | HTMLDivElement>(null);
@@ -52,6 +47,11 @@ export function Layout({
   } = useContext(WindowWidthContext);
 
   const [isMobileMenuOpen, setIsMobileMenuActive] = useState(false);
+
+  const handleMobileMenuToggle = useCallback(() => {
+    setIsMobileMenuActive((prevState) => !prevState);
+  }, []);
+
   const {
     isTicketPopupActive,
     handleTicketPopupToggle,
@@ -70,17 +70,6 @@ export function Layout({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowWidth]);
 
-  const handleMobileMenuToggle = useCallback(() => {
-    setIsMobileMenuActive((prevState) => !prevState);
-  }, []);
-
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      setIsMobileMenuActive(false);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
-
   if (windowWidth === 0) {
     return null;
   }
@@ -91,7 +80,7 @@ export function Layout({
         <SkipLink
           mainElementRef={mainElementRef}
         />
-        {isPreview && <ExitPreviewLink />}
+        {isPreview && <ExitPreviewButton />}
         <Header
           navigationLinks={navigationLinks}
           email={email}

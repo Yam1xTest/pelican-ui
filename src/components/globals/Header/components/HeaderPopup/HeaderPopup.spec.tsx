@@ -1,5 +1,5 @@
-import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, setViewportSize } from '@/playwright-tests/helpers';
+import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
+import { gotoPage, setViewportSize } from '@/playwright-tests/global-helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`HeaderPopupTests`, () => {
@@ -26,7 +26,7 @@ test.describe(`HeaderPopupTests`, () => {
 async function actionTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -44,7 +44,7 @@ async function actionTest({
 async function navigationTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await gotoPage({
     page,
@@ -71,7 +71,7 @@ async function navigationTest({
 async function mobilePopupTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -85,13 +85,13 @@ async function mobilePopupTest({
   await expect(getHeaderPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`header-mobile-popup.png`);
+    .toHaveScreenshot(`header-${BreakpointName.MOBILE}-popup.png`);
 }
 
 async function tabletPopupTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -106,13 +106,13 @@ async function tabletPopupTest({
   await expect(getHeaderPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`header-tablet-popup.png`);
+    .toHaveScreenshot(`header-${BreakpointName.TABLET}-popup.png`);
 }
 
 async function tabletXlPopupTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -127,13 +127,13 @@ async function tabletXlPopupTest({
   await expect(getHeaderPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`header-tablet-xl-popup.png`);
+    .toHaveScreenshot(`header-${BreakpointName.TABLET_XL}-popup.png`);
 }
 
 async function getHeaderPopupButtonByTestId({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
   return page.getByTestId(`header-popup-button`);
 }
@@ -141,7 +141,7 @@ async function getHeaderPopupButtonByTestId({
 function getHeaderPopupByTestId({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
   return page.getByTestId(`header-popup`);
 }

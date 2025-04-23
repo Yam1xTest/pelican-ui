@@ -1,12 +1,14 @@
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import {
   gotoPage,
   hideCookie,
   hideHeader,
   hideSkipLink,
   setViewportSize,
-} from '@/playwright-tests/helpers';
+} from '@/playwright-tests/global-helpers';
 import { test, expect, Page } from '@playwright/test';
+
+const TEST_ID = `image-with-button-grid`;
 
 test.describe(`HomepageImageWithButtonGridTests`, () => {
   test.beforeEach(async ({
@@ -42,7 +44,7 @@ test.describe(`HomepageImageWithButtonGridTests`, () => {
 async function mobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -51,13 +53,13 @@ async function mobileTest({
   await expect(getImageWithButtonGridByTestId({
     page,
   }))
-    .toHaveScreenshot(`image-with-button-grid-mobile.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}.png`);
 }
 
 async function tabletTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -67,13 +69,13 @@ async function tabletTest({
   await expect(getImageWithButtonGridByTestId({
     page,
   }))
-    .toHaveScreenshot(`image-with-button-grid-tablet.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -83,13 +85,13 @@ async function tabletXlTest({
   await expect(getImageWithButtonGridByTestId({
     page,
   }))
-    .toHaveScreenshot(`image-with-button-grid-tablet-xl.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function desktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -99,13 +101,13 @@ async function desktopTest({
   await expect(getImageWithButtonGridByTestId({
     page,
   }))
-    .toHaveScreenshot(`image-with-button-grid-desktop.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}.png`);
 }
 
 function getImageWithButtonGridByTestId({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
-  return page.getByTestId(`image-with-button-grid`);
+  return page.getByTestId(TEST_ID);
 }

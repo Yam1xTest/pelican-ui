@@ -1,11 +1,18 @@
-import { AppRoute, BlockTypes, Breakpoint } from '@/src/common/enum';
+import {
+  AppRoute,
+  BlockTypes,
+  Breakpoint,
+  BreakpointName,
+} from '@/src/common/enum';
 import {
   gotoPage,
   hideCookie,
   hideHeader,
   setViewportSize,
-} from '@/playwright-tests/helpers';
+} from '@/playwright-tests/global-helpers';
 import { test, expect, Page } from '@playwright/test';
+
+const TEST_ID = `text-and-media`;
 
 test.describe(`TextAndMediaComponentTests`, () => {
   test.beforeEach(async ({
@@ -40,7 +47,7 @@ test.describe(`TextAndMediaComponentTests`, () => {
 async function mobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -49,13 +56,13 @@ async function mobileTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-mobile.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}.png`);
 }
 
 async function tabletTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -65,13 +72,13 @@ async function tabletTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-tablet.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -81,13 +88,13 @@ async function tabletXlTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-tablet-xl.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function desktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -97,13 +104,13 @@ async function desktopTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-desktop.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}.png`);
 }
 
 async function desktopXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -113,13 +120,13 @@ async function desktopXlTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-desktop-xl.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP_XL}.png`);
 }
 
 function getTextAndMediaByTestId({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
-  return page.getByTestId(`text-and-media`);
+  return page.getByTestId(TEST_ID);
 }

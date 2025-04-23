@@ -1,4 +1,5 @@
 
+import { AppRoute } from '../../enum';
 import { GlobalComponentProps } from '../../types';
 
 export const MOCK_POPUP_TICKET_BUY_TEXT = `Билеты`;
@@ -54,35 +55,35 @@ export const MOCK_TICKETS_POPUP_SUBSIDIZED: GlobalComponentProps['ticketsPopup']
 
 export const MOCK_TICKETS_POPUP_RULES_IMAGES: GlobalComponentProps['ticketsPopup']['visitingRulesAccordion']['images'] = [
   {
-    url: `/images/tickets-popup/no-food.png`,
+    url: `/images/svg/no-food.svg`,
     alternativeText: `Нельзя кормить животных`,
   },
   {
-    url: `/images/tickets-popup/no-pets.png`,
+    url: `/images/svg/no-pets.svg`,
     alternativeText: `Нельзя с домашними животными`,
   },
   {
-    url: `/images/tickets-popup/no-smoking.png`,
+    url: `/images/svg/no-smoking.svg`,
     alternativeText: `Нельзя курить`,
   },
   {
-    url: `/images/tickets-popup/no-scooter.png`,
+    url: `/images/svg/no-scooter.svg`,
     alternativeText: `Нельзя ездить на самокате`,
   },
   {
-    url: `/images/tickets-popup/no-climbing.png`,
+    url: `/images/svg/no-climbing.svg`,
     alternativeText: `Нельзя перелезать через ограждение`,
   },
   {
-    url: `/images/tickets-popup/no-touching.png`,
+    url: `/images/svg/no-touching.svg`,
     alternativeText: `Нельзя трогать животных`,
   },
   {
-    url: `/images/tickets-popup/no-teasing.png`,
+    url: `/images/svg/no-teasing.svg`,
     alternativeText: `Нельзя дразнить животных`,
   },
   {
-    url: `/images/tickets-popup/no-breaking.png`,
+    url: `/images/svg/no-breaking.svg`,
     alternativeText: `Нельзя ломать деревья`,
   },
 ];
@@ -112,14 +113,13 @@ export const MOCK_TICKETS_POPUP: GlobalComponentProps['ticketsPopup'] = {
     categories: MOCK_TICKETS_POPUP_SUBSIDIZED,
     button: {
       label: `Остальные льготные категории`,
-      link: `https://vk.com/topic-71671982_48253263`,
     },
   },
   visitingRulesAccordion: {
     images: MOCK_TICKETS_POPUP_RULES_IMAGES,
     button: {
       label: `Подробнее о правилах посещения`,
-      link: `http://chelzoo.ru/media/articles/2022/05/06/prikaz-221-ot-050522-o-pravilah-posescheniya-2.pdf`,
+      link: AppRoute.VISITING_RULES,
     },
   },
   ticketRefundAccordion: {

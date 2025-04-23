@@ -9,8 +9,8 @@ export async function getPageData({
   slug = ``,
   preview,
 }: {
-  slug: string,
-  preview: boolean
+  slug: string;
+  preview: boolean;
 }) {
   switch (`/${slug}`) {
     case AppRoute.HOME:
@@ -54,6 +54,34 @@ export async function getPageData({
         preview,
       });
 
+    case AppRoute.DISCOUNTS:
+      return getData({
+        slug: `discount-page`,
+        populate: [
+          `blocks.remark.file`,
+          `blocks.rulesCards`,
+          `blocks.discountsCards.rules.basis.file`,
+          `blocks.discountsCards.rules.docs`,
+          `blocks.discountsCards.rules.terms`,
+          `seo`,
+        ],
+        preview,
+      });
+
+    case AppRoute.VISITING_RULES:
+      return getData({
+        slug: `visiting-rules-page`,
+        populate: [
+          `blocks.documentLink.file`,
+          `blocks.mainRules.mainRulesCards.image`,
+          `blocks.warningsCards`,
+          `blocks.photosPolicyCards`,
+          `blocks.emergencyPhonesCards`,
+          `seo`,
+        ],
+        preview,
+      });
+
     default:
       return MOCK_NOT_FOUND_PAGE;
   }
@@ -64,9 +92,9 @@ async function getData({
   populate,
   preview,
 }: {
-  slug: string,
-  populate: string[],
-  preview: boolean
+  slug: string;
+  populate: string[];
+  preview: boolean;
 }) {
   const pageResponse: PageData = await api.get(`/${slug}?${qs.stringify({
     populate,

@@ -5,9 +5,11 @@ import { useRouter } from "next/router";
 export function HeaderNavigation({
   className,
   navigationLinks,
+  handleMobileMenuToggle,
 }: {
-  className?: string
-  navigationLinks: GlobalComponentProps['navigationLinks'],
+  className?: string;
+  navigationLinks: GlobalComponentProps['navigationLinks'];
+  handleMobileMenuToggle?: () => void;
 }) {
   const router = useRouter();
 
@@ -27,10 +29,11 @@ export function HeaderNavigation({
               href={link}
               className="header-navigation__link"
               onClick={(e) => {
-                e.preventDefault();
-                if (router.pathname !== link) {
-                  router.push(link);
+                if (router.pathname === link) {
+                  e.preventDefault();
                 }
+
+                handleMobileMenuToggle?.();
               }}
               aria-label={`Перейти на страницу ${name}`}
               data-testid="header-navigation-link"
@@ -39,22 +42,6 @@ export function HeaderNavigation({
             </Link>
           </li>
         ))}
-        {/* TODO: Remove when the page appears */}
-        <li
-          key="2"
-          className="header-navigation__item"
-        >
-          <Link
-            href="/documents/Visiting-rules.pdf"
-            className="header-navigation__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Перейти на страницу Правила посещения"
-            data-testid="header-navigation-link"
-          >
-            Правила посещения
-          </Link>
-        </li>
       </ul>
     </nav>
   );
