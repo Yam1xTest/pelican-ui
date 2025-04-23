@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers
+  // configuring custom HTTP headers
   async headers() {
     return [
       {
         source: "/(.*).(woff|css)",
+        // CORS 
         headers: [
           {
             key: "Access-Control-Allow-Origin",
@@ -22,6 +25,8 @@ const nextConfig = {
   },
 
   ...(process.env.CDN_ENABLED === 'true' && {
+    // https://nextjs.org/docs/app/api-reference/config/next-config-js/assetPrefix
+    // asset prefix for JavaScript and CSS files that it loads from /_next/
     assetPrefix: `https://${process.env.CDN_DOMAIN}`
   }),
 
@@ -38,6 +43,7 @@ const nextConfig = {
 
   images: {
     ...(process.env.CDN_ENABLED === 'true' && {
+      // https://nextjs.org/docs/app/api-reference/components/image#domains
       domains: [process.env.CDN_DOMAIN],
       path: `https://${process.env.CDN_DOMAIN}/_next/image`
     }),
@@ -53,9 +59,14 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'minio-s3',
       },
+      // todo remove for prod
       {
         protocol: 'https',
         hostname: '**'
+      },
+      {
+        protocol: 'https',
+        hostname: `https://${process.env.CDN_DOMAIN}/_next/image`
       },
     ]
   }
