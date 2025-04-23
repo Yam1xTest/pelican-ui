@@ -7,7 +7,10 @@ import { useRouter } from "next/router";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MutableRefObject } from "react";
 import clsx from "clsx";
+import { normalizeSlug } from "@/src/common/utils/normalizeSlug";
+import { AppRoute } from "@/src/common/enum";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
+import { GosBanner } from "../../home-page/GosBanner/GosBanner";
 
 type FooterProps =
   Omit<GlobalComponentProps,
@@ -171,7 +174,9 @@ export function Footer({
           </div>
         </div>
       </div>
-
+      {normalizeSlug({
+        slug: router.asPath,
+      }) === AppRoute.HOME && <GosBanner />}
       <div className="container footer__bottom">
         <ul className="footer__official-links grid">
           {officialLinks.map(({
