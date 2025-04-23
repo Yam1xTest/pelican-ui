@@ -4,7 +4,6 @@ import { api } from "./HttpClient";
 import { mapContractByBlock } from "./mapContractByBlock";
 import { MOCK_NOT_FOUND_PAGE } from "../mocks/not-found-page-mock/not-found-page-mock";
 import { PageData } from "../types";
-import { MOCK_DISCOUNTS_PAGE } from "../mocks/discounts-page-mock/discounts-page-mock";
 
 export async function getPageData({
   slug = ``,
@@ -55,9 +54,19 @@ export async function getPageData({
         preview,
       });
 
-    // Todo: remove after integration with CMS
     case AppRoute.DISCOUNTS:
-      return MOCK_DISCOUNTS_PAGE;
+      return getData({
+        slug: `discount-page`,
+        populate: [
+          `blocks.remark.file`,
+          `blocks.rulesCards`,
+          `blocks.discountsCards.rules.basis.file`,
+          `blocks.discountsCards.rules.docs`,
+          `blocks.discountsCards.rules.terms`,
+          `seo`,
+        ],
+        preview,
+      });
 
     case AppRoute.VISITING_RULES:
       return getData({

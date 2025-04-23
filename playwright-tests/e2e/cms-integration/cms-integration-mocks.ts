@@ -68,3 +68,25 @@ export const TEST_MOCK_HEADER = {
     },
   },
 };
+
+export const TEST_MOCK_DISCOUNTS = {
+  __component: BlockTypes.DISCOUNTS_TERMS,
+  title: `${E2E_UI_NAME_PREFIX} Льготы`,
+  subtitle: `Чтобы приобрести льготный билет, нужно`,
+  rulesCards: [
+    {
+      text: `Быть гражданином Российской\u00A0Федерации`,
+    },
+  ],
+};
+
+export const TEST_MOCK_EMERGENCY_PHONES = {
+  __component: BlockTypes.VISITING_RULES_EMERGENCY_PHONES,
+  title: `${E2E_UI_NAME_PREFIX} Экстренные службы`,
+  emergencyPhonesCards: [
+    {
+      phone: `101`,
+      label: `Пожарная (МЧС)`,
+    },
+  ],
+};

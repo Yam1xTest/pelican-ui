@@ -273,6 +273,8 @@ async function mobileMenuOpenTest({
   await page.getByTestId(`header-popup-button`)
     .click();
 
+  await page.waitForTimeout(350);
+
   const expectedFocusOrder = [
     `header-popup-ticket-button`,
     ...generateTestIdDuplicates({
