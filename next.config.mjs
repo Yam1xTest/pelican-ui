@@ -74,6 +74,18 @@ const nextConfig = {
             key: "Cross-Origin-Opener-Policy",
             value: "same-origin",
           },
+          {
+            key: 'Content-Security-Policy-Report-Only',
+            value: `
+              default-src 'self';
+              script-src 'self' https://mc.yandex.ru https://pos.gosuslugi.ru;
+              style-src 'self' 'unsafe-inline';
+              img-src 'self' https://pos.gosuslugi.ru https://cdn.plyr.io;
+              media-src 'self' https://cdn.plyr.io;
+              connect-src 'self' https://cdn.plyr.io;
+              report-to csp-endpoint;
+            `.replace(/\n/g, ''),
+          },
 
           // You can specify the following environment variables for CORS Headers in your .env file:
           // ACCESS_CONTROL_ALLOW_CREDENTIALS="true"
@@ -90,9 +102,12 @@ const nextConfig = {
 
 const cspHeader = `
 default-src 'self';
-script-src 'self' 'unsafe-eval' 'unsafe-inline' https://mc.yandex.ru;
+script-src 'self' 'unsafe-eval' 'unsafe-inline' https://mc.yandex.ru https://pos.gosuslugi.ru;
 style-src 'self' 'unsafe-inline';
-img-src 'self' blob: data:;
+img-src 'self' blob: data: https://pos.gosuslugi.ru ;
+media-src 'self' https://cdn.plyr.io;
+connect-src 'self' https://cdn.plyr.io;
+frame-src 'self' https://pos.gosuslugi.ru;
 font-src 'self';
 object-src 'none';
 base-uri 'self';
