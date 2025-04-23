@@ -30,6 +30,7 @@ export function GosBanner() {
             <button
               className="pos-banner-btn_2"
               type="button"
+              data-testid="gos-banner-button"
             >
               Сообщить о проблеме
             </button>

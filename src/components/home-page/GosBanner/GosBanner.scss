@@ -1,6 +1,7 @@
 /* stylelint-disable custom-property-pattern */
 #js-show-iframe-wrapper {
   position: relative;
+  z-index: $map + 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,7 +9,7 @@
   min-width: 293px;
   max-width: 100%;
   color: #fff;
-  background: linear-gradient(138.4deg, #38bafe 26.49%, #2d73bc 79.45%);
+  background: $color-green-dark;
   cursor: pointer;
 }
 
@@ -18,7 +19,6 @@
 
 #js-show-iframe-wrapper .pos-banner-fluid .pos-banner-btn_2 {
   display: block;
-  outline: 0;
   border: none;
   border-radius: 8px;
   width: 240px;
@@ -26,12 +26,25 @@
   font-size: 18px;
   line-height: 24px;
   color: #fff;
-  background: #0d4cd3;
+  background: $color-green;
   cursor: pointer;
+  transition: all 0.2s ease-in;
 }
-#js-show-iframe-wrapper .pos-banner-fluid .pos-banner-btn_2:hover { background: #1d5deb; }
-#js-show-iframe-wrapper .pos-banner-fluid .pos-banner-btn_2:focus { background: #2a63ad; }
-#js-show-iframe-wrapper .pos-banner-fluid .pos-banner-btn_2:active { background: #2a63ad; }
+
+#js-show-iframe-wrapper .pos-banner-fluid .pos-banner-btn_2:hover {
+  color: $color-black;
+  background: $color-white;
+}
+
+#js-show-iframe-wrapper .pos-banner-fluid .pos-banner-btn_2:focus {
+  color: $color-black;
+  background: $color-white;
+}
+
+#js-show-iframe-wrapper .pos-banner-fluid .pos-banner-btn_2:active {
+  color: $color-black;
+  background: $color-white;
+}
 
 @keyframes fadeInFromNone {
   0% {
@@ -117,7 +130,7 @@
   flex-direction: column;
   border-radius: var(--pos-banner-fluid-2__logo-wrap-border-radius);
   padding: var(--pos-banner-fluid-2__logo-wrap-padding);
-  background: #2d73bc;
+  background: $color-green;
 }
 #js-show-iframe-wrapper .bf-2__logo { width: 128px; }
 
