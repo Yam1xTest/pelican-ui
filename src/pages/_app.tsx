@@ -61,7 +61,6 @@ export default function App({
 }) {
   const {
     asPath,
-    query,
   } = useRouter();
 
   useEffect(() => {
