@@ -95,26 +95,38 @@ const nextConfig = {
             value: "same-origin",
           },
 
-          // Tells the browser whether you want to allow your site to be framed or not
+          // Prevents the site from being opened in an <iframe> (protection against clickjacking)
           {
             key: 'X-Frame-Options',
             value: 'SAMEORIGIN',
           },
-          // Stops a browser from trying to MIME-sniff the content type and forces it to stick with the declared content-type
+          // Prevents MIME-sniffing (e.g., ensuring HTML is not treated as JS)
           {
             key: 'X-Content-Type-Options',
             value: 'nosniff',
           },
-          // Control how much information the browser includes with navigations away from a document
+          // Controls what data goes into the Referer header
           {
             key: 'Referrer-Policy',
             // value: 'strict-origin-when-cross-origin',
             value: 'no-referrer'
           },
-          // Block features and APIs that can be used in the browser
+          // Block access to browser features and APIs
+          // interest-cohort=() — Disables the "FLoC" feature, which is a way of grouping users for targeted advertising
+          // camera=(), microphone=(), geolocation=() - Disables access to user's camera, microphone, geolocation
+          // fullscreen=() — Disables the ability to enter fullscreen mode
+          // payment=() — Disables access to the Payment Request API
+          // usb=() — Disables access to the user's USB devices
+          // accelerometer=() — Disables access to the accelerometer API, which measures device motion
+          // display-capture=() — Disables access to the screen capture API, preventing the site from capturing the screen
+          // gyroscope=() — Disables access to the gyroscope API, which detects device rotation
+          // magnetometer=() — Disables access to the magnetometer API, which measures magnetic field strength
+          // midi=() — Disables access to the MIDI API
+          // picture-in-picture=() — Restricts the picture-in-picture feature to a specific allowed domain
+          // xr-spatial-tracking=() — Disables access to the spatial tracking API, used for augmented reality (AR) and virtual reality (VR) features
           {
             key: 'Permissions-Policy',
-            value: 'interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), autoplay=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(), xr-spatial-tracking=()',
+            value: 'interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(https://cdn.plyr.io), xr-spatial-tracking=()',
           }
 
 
