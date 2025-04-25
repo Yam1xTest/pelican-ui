@@ -44,7 +44,7 @@ export function NewsList({
       if (firstNewsRef.current) {
         firstNewsRef.current.focus();
       }
-    }, 30);
+    }, 100);
 
     return () => clearTimeout(timer);
   // eslint-disable-next-line react-hooks/exhaustive-deps
