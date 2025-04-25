@@ -6,18 +6,34 @@ export function Loader() {
   const route = useRouter();
 
   useEffect(() => {
-    const handleStart = (url: string) => (url !== route.asPath) && setIsLoading(true);
-    const handleComplete = (url: string) => (url === route.asPath) && setIsLoading(false);
+    let timeoutId: NodeJS.Timeout;
+
+    const handleStart = (url: string) => {
+      if (url !== route.asPath) {
+        timeoutId = setTimeout(() => {
+          setIsLoading(true);
+        }, 300);
+      }
+    };
+
+    const handleComplete = (url: string) => {
+      if (url === route.asPath) {
+        clearTimeout(timeoutId);
+        setIsLoading(false);
+      }
+    };
 
     route.events.on(`routeChangeStart`, handleStart);
     route.events.on(`routeChangeComplete`, handleComplete);
     route.events.on(`routeChangeError`, handleComplete);
     return () => {
+      clearTimeout(timeoutId);
       route.events.off(`routeChangeStart`, handleStart);
       route.events.off(`routeChangeComplete`, handleComplete);
       route.events.off(`routeChangeError`, handleComplete);
     };
   });
+
   return isLoading && (
     <div
       data-testid="loader"
