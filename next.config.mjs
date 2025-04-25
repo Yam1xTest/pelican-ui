@@ -126,7 +126,7 @@ const nextConfig = {
           // xr-spatial-tracking=() — Disables access to the spatial tracking API, used for augmented reality (AR) and virtual reality (VR) features
           {
             key: 'Permissions-Policy',
-            value: 'interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(https://cdn.plyr.io), xr-spatial-tracking=()',
+            value: 'interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=("https://cdn.plyr.io"), xr-spatial-tracking=()',
           }
 
 
