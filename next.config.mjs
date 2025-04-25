@@ -42,22 +42,27 @@ const nextConfig = {
         source: '/(.*)',
         headers: [
           // CORS Headers
+
+          // Indicates whether the browser should include credentials, such as cookies or HTTP authentication, in the cross-origin request
           {
             key: "Access-Control-Allow-Credentials",
-            value: "true",
+            value: "false", // false
           },
+          // Specifies the origin that has access to the resource
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://chelzoo.tech"
+            value: "https://chelzoo.tech"//cdn ya gos
           },
+          // Added to the preflight response to indicate the permitted HTTP methods
           {
             key: "Access-Control-Allow-Methods",
-            value: "GET",
+            value: "GET",// post
           },
-          {
-            key: "Access-Control-Allow-Headers",
-            value: "Accept, Content-Type",
-          },
+          // Returned in response to a preflight request to specify the HTTP headers that are allowed in the current request
+          // {
+          //   key: "Access-Control-Allow-Headers",
+          //   value: "Accept, Content-Type",//remove??
+          // },
           {
             key: "Cross-Origin-Opener-Policy",
             value: "same-origin",
