@@ -1,22 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers
-  // configuring custom HTTP headers
-  async headers() {
-    return [
-      {
-        source: "/(.*).(woff|css)",
-        // CORS 
-        headers: [
-          {
-            key: "Access-Control-Allow-Origin",
-            value: "*",
-          },
-        ],
-      },
-    ];
-  },
-
   reactStrictMode: true,
   output: "standalone",
 
@@ -126,7 +109,7 @@ const nextConfig = {
           // xr-spatial-tracking=() — Disables access to the spatial tracking API, used for augmented reality (AR) and virtual reality (VR) features
           {
             key: 'Permissions-Policy',
-            value: 'interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=("https://cdn.plyr.io"), xr-spatial-tracking=()',
+            value: 'interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()',
           }
 
 
