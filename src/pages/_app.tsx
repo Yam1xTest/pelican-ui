@@ -61,7 +61,6 @@ export default function App({
 }) {
   const {
     asPath,
-    query,
   } = useRouter();
 
   useEffect(() => {
@@ -81,12 +80,10 @@ export default function App({
   }, [router.events]);
 
   useEffect(() => {
-    if (!query?.pageSize) {
-      document.body.scroll({
-        top: 0,
-      });
-    }
-  }, [asPath, query]);
+    document.body.scroll({
+      top: 0,
+    });
+  }, [asPath]);
 
   useEffect(() => {
     const loaderElement = document.getElementById('static-loader');

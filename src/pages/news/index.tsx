@@ -1,23 +1,21 @@
 import qs from 'qs';
-import { MOCK_NEWS_PAGE } from '@/src/common/mocks/news-page-mock/news-page-mock';
-import { MOCK_NEWS } from '@/src/common/mocks/collections-mock/news-collection-mock';
 import { NEWS_LIMIT, NewsList } from '@/src/components/news-page/NewsList/NewsList';
 import { api } from '@/src/common/utils/HttpClient';
 import { NewsCollectionListResponse, NewsPageResponse } from '@/src/common/api-types';
 import { NewsPageProps, NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
 import defaultBackground from '@/public/images/news/default-background.png';
+import { MOCK_NEWS } from '@/src/common/mocks/collections-mock/news-collection-mock';
+import { MOCK_NEWS_PAGE } from '@/src/common/mocks/news-page-mock/news-page-mock';
 
 export default function NewsPage({
   pageData,
   news,
-  totalNews,
-  pageSize,
+  pageCount,
 }: {
   pageData: NewsPageProps;
   news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[];
-  pageSize: number;
-  totalNews: number;
+  pageCount: number;
 }) {
   const {
     seo,
@@ -34,8 +32,7 @@ export default function NewsPage({
       <NewsList
         newsTitle={newsTitle}
         news={news}
-        total={totalNews}
-        pageSize={pageSize}
+        pageCount={pageCount}
       />
     </>
   );
@@ -47,16 +44,17 @@ export async function getServerSideProps({
 }: {
   preview: boolean;
   query: {
-    pageSize: number;
+    page: number;
   };
 }) {
+  const currentPage = query.page || 1;
+
   if (process.env.APP_ENV === `static`) {
     return {
       props: {
         pageData: MOCK_NEWS_PAGE,
-        news: MOCK_NEWS.slice(0, query.pageSize || NEWS_LIMIT),
-        pageSize: +query.pageSize || NEWS_LIMIT,
-        totalNews: MOCK_NEWS.length,
+        news: MOCK_NEWS.slice(0, (currentPage * NEWS_LIMIT)),
+        pageCount: Math.ceil(MOCK_NEWS.length / NEWS_LIMIT),
       },
     };
   }
@@ -69,19 +67,17 @@ export async function getServerSideProps({
 
   const {
     news,
-    pageSize,
-    totalNews,
+    pageCount,
   } = await getNewsData({
     previewMode,
-    pageSize: query.pageSize,
+    page: currentPage,
   });
 
   return {
     props: {
       pageData: newsPageData,
       news,
-      pageSize,
-      totalNews,
+      pageCount,
     },
   };
 }
@@ -111,10 +107,10 @@ async function getNewsPageData({
 
 async function getNewsData({
   previewMode,
-  pageSize,
+  page,
 }: {
   previewMode: string;
-  pageSize: number;
+  page: number;
 }) {
   try {
     const queryParams = {
@@ -128,7 +124,8 @@ async function getNewsData({
         publishedAt: `desc`,
       },
       pagination: {
-        pageSize: pageSize || NEWS_LIMIT,
+        page,
+        pageSize: NEWS_LIMIT,
       },
       status: previewMode,
     };
@@ -146,14 +143,12 @@ async function getNewsData({
         title: newsItem.title,
         description: newsItem.description,
       })),
-      pageSize: response.meta!.pagination!.pageSize,
-      totalNews: response.meta!.pagination!.total!,
+      pageCount: response.meta!.pagination!.pageCount!,
     };
   } catch {
     return {
       news: [],
-      pageSize: NEWS_LIMIT,
-      totalNews: 0,
+      pageCount: 0,
     };
   }
 }

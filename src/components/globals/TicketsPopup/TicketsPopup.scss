@@ -193,7 +193,7 @@
     transition: all ease-out 0.3s;
 
     &:hover,
-    &:active {
+    &:focus {
       color: $color-white;
       background-color: $color-green;
     }
