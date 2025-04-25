@@ -75,32 +75,48 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
-          // CORS Headers
-
           // Indicates whether the browser should include credentials, such as cookies or HTTP authentication, in the cross-origin request
           {
             key: "Access-Control-Allow-Credentials",
-            value: "false", // false
+            value: "false",
           },
           // Specifies the origin that has access to the resource
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://chelzoo.tech"//cdn ya gos
+            value: "https://chelzoo.tech" // cdn ya gos
           },
           // Added to the preflight response to indicate the permitted HTTP methods
           {
             key: "Access-Control-Allow-Methods",
             value: "GET",// post
           },
-          // Returned in response to a preflight request to specify the HTTP headers that are allowed in the current request
-          // {
-          //   key: "Access-Control-Allow-Headers",
-          //   value: "Accept, Content-Type",//remove??
-          // },
           {
             key: "Cross-Origin-Opener-Policy",
             value: "same-origin",
           },
+
+          // Tells the browser whether you want to allow your site to be framed or not
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+          // Stops a browser from trying to MIME-sniff the content type and forces it to stick with the declared content-type
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          // Control how much information the browser includes with navigations away from a document
+          {
+            key: 'Referrer-Policy',
+            // value: 'strict-origin-when-cross-origin',
+            value: 'no-referrer'
+          },
+          // Block features and APIs that can be used in the browser
+          {
+            key: 'Permissions-Policy',
+            value: 'interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), autoplay=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(), xr-spatial-tracking=()',
+          }
+
 
           // You can specify the following environment variables for CORS Headers in your .env file:
           // ACCESS_CONTROL_ALLOW_CREDENTIALS="true"
