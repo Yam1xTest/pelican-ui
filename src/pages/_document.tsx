@@ -119,10 +119,6 @@ export default function Document() {
           }}
         />
         <Script
-          strategy="afterInteractive"
-          src="https://pos.gosuslugi.ru/bin/script.min.js"
-        />
-        <Script
           id="gosWidgetScript"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -214,12 +210,6 @@ export default function Document() {
           `,
           }}
         />
-        <Script
-          id="gosWidget"
-          strategy="lazyOnload"
-        >
-          Widget(`https://pos.gosuslugi.ru/form`, 284230)
-        </Script>
         <noscript>
           <div>
             <img
@@ -232,7 +222,6 @@ export default function Document() {
             />
           </div>
         </noscript>
-
       </body>
     </Html>
   );

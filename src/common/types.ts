@@ -416,5 +416,6 @@ declare global {
   interface Window {
     ym: (id: number, operationName: string, option: OptionYM | string) => unknown;
     gtag: (operationName: string, ...arg: any) => unknown;
+    Widget: (url: string, id: number) => void;
   }
 }

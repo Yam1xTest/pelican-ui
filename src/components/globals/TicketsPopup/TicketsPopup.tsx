@@ -176,9 +176,6 @@ export function TicketsPopup({
                     <Link
                       className="tickets-popup__more-link button button--secondary"
                       href={ticketRefundAccordion.button.link}
-                      // TODO: Remove when the page appears
-                      target="_blank"
-                      rel="noopener noreferrer"
                       onClick={handleTicketPopupToggle}
                     >
                       {ticketRefundAccordion.button.label}
