@@ -76,7 +76,7 @@ export function DiscountsCategoriesCard({
             </div>
           )}
         </div>
-        {rules.basis && (
+        {rules.basis?.length && (
           <div>
             <h4 className="discounts-categories-card__rules-title">
               Основание льготы:
