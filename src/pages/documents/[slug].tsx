@@ -34,7 +34,7 @@ export default function DocumentsCategories({
     document.body.scroll({
       top: 0,
     });
-  }, [router.asPath]);
+  }, []);
 
   useEffect(() => {
     if (queryYear) {

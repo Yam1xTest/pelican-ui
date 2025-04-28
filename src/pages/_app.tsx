@@ -76,12 +76,6 @@ export default function App({
   }, [router.events]);
 
   useEffect(() => {
-    document.body.scroll({
-      top: 0,
-    });
-  }, []);
-
-  useEffect(() => {
     const loaderElement = document.getElementById('static-loader');
     if (loaderElement) loaderElement.remove();
   }, []);
