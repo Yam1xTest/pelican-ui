@@ -1,5 +1,6 @@
 import { getMockPageData } from '@/src/common/utils/getMockPageData';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { ContactZooPageProps, GlobalComponentProps, HomePageProps } from '../common/types';
 import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
 import { getPageData } from '../common/utils/getPageData';
@@ -28,6 +29,12 @@ export default function UniversalPage({
     seo,
     blocks,
   } = pageData;
+
+  useEffect(() => {
+    document.body.scroll({
+      top: 0,
+    });
+  }, [asPath]);
 
   return (
     <>

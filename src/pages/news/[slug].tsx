@@ -7,6 +7,8 @@ import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/Ne
 import { NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const NEWS_SLIDER_LIMIT = 4;
 
@@ -20,6 +22,16 @@ export default function News({
   selectedNews: SelectedNewsProps;
   otherNews: OtherNewsProps;
 }) {
+  const {
+    asPath,
+  } = useRouter();
+
+  useEffect(() => {
+    document.body.scroll({
+      top: 0,
+    });
+  }, [asPath]);
+
   if (!selectedNews) {
     return <NotFound />;
   }

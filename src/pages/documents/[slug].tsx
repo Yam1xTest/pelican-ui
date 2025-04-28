@@ -31,6 +31,12 @@ export default function DocumentsCategories({
   const router = useRouter();
 
   useEffect(() => {
+    document.body.scroll({
+      top: 0,
+    });
+  }, [router.asPath]);
+
+  useEffect(() => {
     if (queryYear) {
       router.replace(
         {
