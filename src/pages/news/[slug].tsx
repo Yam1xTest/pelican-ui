@@ -7,7 +7,7 @@ import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/Ne
 import { NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
-import { useEffect } from 'react';
+import { useScrollTop } from '@/src/common/hooks/useScrollTop';
 
 const NEWS_SLIDER_LIMIT = 4;
 
@@ -21,11 +21,7 @@ export default function News({
   selectedNews: SelectedNewsProps;
   otherNews: OtherNewsProps;
 }) {
-  useEffect(() => {
-    document.body.scroll({
-      top: 0,
-    });
-  }, []);
+  useScrollTop();
 
   if (!selectedNews) {
     return <NotFound />;

@@ -7,7 +7,7 @@ import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
 import defaultBackground from '@/public/images/news/default-background.png';
 import { MOCK_NEWS } from '@/src/common/mocks/collections-mock/news-collection-mock';
 import { MOCK_NEWS_PAGE } from '@/src/common/mocks/news-page-mock/news-page-mock';
-import { useEffect } from 'react';
+import { useScrollTop } from '@/src/common/hooks/useScrollTop';
 
 export default function NewsPage({
   pageData,
@@ -23,11 +23,7 @@ export default function NewsPage({
     newsTitle,
   } = pageData;
 
-  useEffect(() => {
-    document.body.scroll({
-      top: 0,
-    });
-  }, []);
+  useScrollTop();
 
   return (
     <>

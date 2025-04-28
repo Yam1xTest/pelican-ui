@@ -1,11 +1,11 @@
 import { getMockPageData } from '@/src/common/utils/getMockPageData';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import { ContactZooPageProps, GlobalComponentProps, HomePageProps } from '../common/types';
 import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
 import { getPageData } from '../common/utils/getPageData';
 import { SeoHead } from '../components/globals/SeoHead/SeoHead';
 import { useGosBannerWidget } from '../common/hooks/useGosBannerWidget';
+import { useScrollTop } from '../common/hooks/useScrollTop';
 
 type UniversalProps = {
   globalData: GlobalComponentProps;
@@ -30,11 +30,9 @@ export default function UniversalPage({
     blocks,
   } = pageData;
 
-  useEffect(() => {
-    document.body.scroll({
-      top: 0,
-    });
-  }, [asPath]);
+  useScrollTop({
+    depend: [asPath],
+  });
 
   return (
     <>
