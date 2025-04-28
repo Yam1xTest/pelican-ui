@@ -4,6 +4,7 @@ import {
   DocumentsCategory,
   DocumentsCategoryListResponse,
 } from "@/src/common/api-types";
+import { useScrollTop } from "@/src/common/hooks/useScrollTop";
 import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
 import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
 import { CategoryProps, DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
@@ -29,6 +30,8 @@ export default function DocumentsCategories({
   documents: DocumentsProps[];
 }) {
   const router = useRouter();
+
+  useScrollTop();
 
   useEffect(() => {
     if (queryYear) {
