@@ -124,7 +124,7 @@ async function getNewsData({
         `slug`,
       ],
       sort: {
-        publishedAt: `desc`,
+        date: `desc`,
       },
       pagination: {
         page,
