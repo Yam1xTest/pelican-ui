@@ -5,6 +5,7 @@ import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer
 import { getPageData } from '../common/utils/getPageData';
 import { SeoHead } from '../components/globals/SeoHead/SeoHead';
 import { useGosBannerWidget } from '../common/hooks/useGosBannerWidget';
+import { useScrollTop } from '../common/hooks/useScrollTop';
 
 type UniversalProps = {
   globalData: GlobalComponentProps;
@@ -28,6 +29,10 @@ export default function UniversalPage({
     seo,
     blocks,
   } = pageData;
+
+  useScrollTop({
+    depend: [asPath],
+  });
 
   return (
     <>

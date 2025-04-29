@@ -50,7 +50,7 @@ export function Accordion({
             src={icon}
             unoptimized
             aria-hidden="true"
-            alt={isOpen ? `Hide accordion content` : `Open accordion content`}
+            alt={isOpen ? `Свернуть контент` : `Показать скрытый контент`}
           />
         </span>
       </button>
