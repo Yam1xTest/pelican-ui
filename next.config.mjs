@@ -61,38 +61,39 @@ const nextConfig = {
           // Indicates whether the browser should include credentials, such as cookies or HTTP authentication, in the cross-origin request
           {
             key: "Access-Control-Allow-Credentials",
-            value: "false",
+            value: process.env.ACCESS_CONTROL_ALLOW_CREDENTIALS,
           },
           // Specifies the origin that has access to the resource
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://chelzoo.tech" // cdn ya gos
+            value: process.env.ACCESS_CONTROL_ALLOW_ORIGIN,
+            // value: "https://chelzoo.tech" // cdn ya gos
           },
           // Added to the preflight response to indicate the permitted HTTP methods
-          {
-            key: "Access-Control-Allow-Methods",
-            value: "GET",// post
-          },
+          // {
+          //   key: "Access-Control-Allow-Methods",
+          //   value: "GET",// post
+          // },
+          // Indicates how the browser should handle opening new windows and tabs in the context of cross-origin requests
           {
             key: "Cross-Origin-Opener-Policy",
-            value: "same-origin",
+            value: process.env.CROSS_ORIGIN_OPENER_POLICY,
           },
 
           // Prevents the site from being opened in an <iframe> (protection against clickjacking)
           {
             key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
+            value: process.env.X_FRAME_OPTIONS,
           },
           // Prevents MIME-sniffing (e.g., ensuring HTML is not treated as JS)
           {
             key: 'X-Content-Type-Options',
-            value: 'nosniff',
+            value: process.env.X_CONTENT_TYPE_OPTIONS,
           },
           // Controls what data goes into the Referer header
           {
             key: 'Referrer-Policy',
-            // value: 'strict-origin-when-cross-origin',
-            value: 'no-referrer'
+            value: process.env.REFERRER_POLICY,
           },
           // Block access to browser features and APIs
           // interest-cohort=() — Disables the "FLoC" feature, which is a way of grouping users for targeted advertising
@@ -109,15 +110,8 @@ const nextConfig = {
           // xr-spatial-tracking=() — Disables access to the spatial tracking API, used for augmented reality (AR) and virtual reality (VR) features
           {
             key: 'Permissions-Policy',
-            value: 'interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()',
-          }
-
-
-          // You can specify the following environment variables for CORS Headers in your .env file:
-          // ACCESS_CONTROL_ALLOW_CREDENTIALS="true"
-          // ACCESS_CONTROL_ALLOW_ORIGIN="*"
-          // ACCESS_CONTROL_ALLOW_METHODS="GET,OPTIONS,PATCH,DELETE,POST,PUT"
-          // ACCESS_CONTROL_ALLOW_HEADERS="X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+            value: process.env.PERMISSIONS_POLICY,
+          },
         ],
       },
     ]
