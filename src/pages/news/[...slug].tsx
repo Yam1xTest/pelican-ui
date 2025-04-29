@@ -173,7 +173,7 @@ async function getOtherNews({
         `slug`,
       ],
       sort: {
-        publishedAt: `desc`,
+        date: `desc`,
       },
       filters: {
         slug: {
