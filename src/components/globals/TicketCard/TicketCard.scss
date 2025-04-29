@@ -22,6 +22,7 @@
     width: 40px;
     height: calc(100% + 2px);
     background-image: url("../../../../public/images/tickets/ticket-breakline.svg");
+    pointer-events: none;
 
     @include tablet-xl {
       right: 47px;
