@@ -15,7 +15,7 @@ test.describe(`NewsSliderComponentTest`, () => {
   }) => {
     await gotoPage({
       page,
-      url: `${AppRoute.NEWS}/2024/11/14/priglashaem-na-vstrechu-s-sotrudnikom-zooparka`,
+      url: `${AppRoute.NEWS}/2024/03/10/priglashaem-na-vstrechu-s-sotrudnikom-zooparka`,
     });
 
     await hideHeader({

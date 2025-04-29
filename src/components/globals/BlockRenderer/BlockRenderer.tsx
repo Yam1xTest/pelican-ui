@@ -222,7 +222,7 @@ export const BlockRenderer = ({
     return (
       <Article
         title={block.title}
-        date={block.publishedAt}
+        date={block.date}
         innerContent={block.innerContent}
         isFirstBlock={block.isFirstBlock}
         isLastBlock={block.isLastBlock}
