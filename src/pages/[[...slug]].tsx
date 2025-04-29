@@ -31,7 +31,7 @@ export default function UniversalPage({
   } = pageData;
 
   useScrollTop({
-    depend: [asPath],
+    dependencies: [asPath],
   });
 
   return (
