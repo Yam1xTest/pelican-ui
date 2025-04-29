@@ -13,7 +13,7 @@ test(`axeCheckUp News Article Page Desktop`, async ({
     width: Breakpoint.DESKTOP,
   });
 
-  await page.goto(`${AppRoute.NEWS}/priglashaem-na-vstrechu-s-sotrudnikom-zooparka`);
+  await page.goto(`${AppRoute.NEWS}/2024/03/10//priglashaem-na-vstrechu-s-sotrudnikom-zooparka`);
 
   await page.addScriptTag({
     path: require.resolve(`axe-core/axe.min.js`),
@@ -34,7 +34,7 @@ test(`axeCheckUp News Article Page Mobile`, async ({
     width: Breakpoint.MOBILE,
   });
 
-  await page.goto(`${AppRoute.NEWS}/priglashaem-na-vstrechu-s-sotrudnikom-zooparka`);
+  await page.goto(`${AppRoute.NEWS}/2024/03/10//priglashaem-na-vstrechu-s-sotrudnikom-zooparka`);
 
   await page.addScriptTag({
     path: require.resolve(`axe-core/axe.min.js`),
