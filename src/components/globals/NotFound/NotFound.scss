@@ -124,12 +124,11 @@
       }
 
       @include desktop-xl {
-        left: -20%;
-        top: 85px;
-        width: 42vw;
-        height: auto;
-        max-width: 100%;
-        max-height: 100%;
+        position: absolute;
+        left: -385px;
+        top: 145px;
+        width: 806px;
+        height: 936px;
       }
     }
 
@@ -153,11 +152,11 @@
       }
 
       @include desktop-xl {
-        right: 64px;
-        bottom: 78px;
-        width: 14.5vw;
-        height: auto;
-        max-width: 100%;
+        position: absolute;
+        left: 81%;
+        top: 74%;
+        width: 278px;
+        height: 176px;
       }
     }
   }
@@ -229,5 +228,10 @@
     padding: 0;
     height: calc(100vh - 135px);
     min-height: 1041px;
+
+    &.container {
+      margin: 0;
+      max-width: none;
+    }
   }
 }
