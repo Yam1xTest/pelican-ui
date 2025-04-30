@@ -37,8 +37,6 @@ export enum BlockTypes {
   HOME_TICKETS = `home.tickets`,
   HOME_MAP = `home.map-card`,
 
-  NOT_FOUND = `not-found.not-found`,
-
   DISCOUNTS_TERMS = `discounts.terms`,
   DISCOUNTS_CATEGORIES = `discounts.categories`,
 

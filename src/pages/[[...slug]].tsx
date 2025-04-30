@@ -69,6 +69,12 @@ export async function getServerSideProps({
       slug: query.slug,
     });
 
+    if (!pageData) {
+      return {
+        notFound: true,
+      };
+    }
+
     pageData.blocks = setBlockPosition({
       slug: query.slug,
       blocks: pageData.blocks,
@@ -86,6 +92,12 @@ export async function getServerSideProps({
       slug: query.slug,
       preview,
     });
+
+    if (!pageData) {
+      return {
+        notFound: true,
+      };
+    }
 
     pageData.blocks = setBlockPosition({
       slug: query.slug,
