@@ -7,7 +7,6 @@ import {
   CardsComponentProps,
   MapComponentProps,
   HomeTicketsComponentProps,
-  NotFoundComponentProps,
   ServicesComponentProps,
   ImageWithButtonGridComponentProps,
   SharedTicketsComponentProps,
@@ -29,7 +28,6 @@ import { HomepageHero } from '../../home-page/HomepageHero/HomepageHero';
 import { HomepageImageWithButtonGrid } from '../../home-page/HomepageImageWithButtonGrid/HomepageImageWithButtonGrid';
 import { HomepageTickets } from '../../home-page/HomepageTickets/HomepageTickets';
 import { Services } from '../../home-page/Services/Services';
-import { NotFound } from '../../not-found-page/NotFound/NotFound';
 import { VisitingRulesEmergencyPhones } from '../../visiting-rules-page/VisitingRulesEmergencyPhones/VisitingRulesEmergencyPhones';
 import { VisitingRulesMain } from '../../visiting-rules-page/VisitingRulesMain/VisitingRulesMain';
 import { VisitingRulesPhotosPolicy } from '../../visiting-rules-page/VisitingRulesPhotosPolicy/VisitingRulesPhotosPolicy';
@@ -49,7 +47,6 @@ type Block = HeroComponentProps
   | ImageWithButtonGridComponentProps
   | MapComponentProps
   | HomeTicketsComponentProps
-  | NotFoundComponentProps
   | CategoriesComponentProps
   | DiscountsTermsComponentProps
   | DiscountsCategoriesComponentProps
@@ -187,10 +184,6 @@ export const BlockRenderer = ({
         isLastBlock={block.isLastBlock}
       />
     );
-  }
-
-  if (block.__component === BlockTypes.NOT_FOUND) {
-    return <NotFound />;
   }
 
   if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID) {
