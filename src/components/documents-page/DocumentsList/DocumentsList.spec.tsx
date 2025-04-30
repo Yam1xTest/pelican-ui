@@ -1,9 +1,7 @@
 import {
   gotoPage,
   hideCookie,
-  hideHeader,
-  hideLoader,
-  setViewportSize,
+  hideHeader, setViewportSize
 } from '@/playwright-tests/global-helpers';
 import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
@@ -23,10 +21,6 @@ test.describe(`DocumentsListComponentTests`, () => {
     });
 
     await hideCookie({
-      page,
-    });
-
-    await hideLoader({
       page,
     });
   });
