@@ -1,5 +1,59 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    const documentPath = [
+      '/articles/info/documents',
+      '/articles/rekvizity-zooparka',
+      '/articles/info/tasks',
+      '/articles/info/plans',
+      '/articles/info/orders',
+      '/articles/info/activities',
+      '/articles/info/purchases',
+      '/articles/info/trades',
+      '/articles/info/reports'
+    ];
+
+    const documentRedirects = documentPath.map((path) => ({
+      source: path,
+      destination: '/documents',
+      permanent: false,
+    }));
+
+    return [
+      {
+        source: '/news/newsitems',
+        destination: '/news',
+        permanent: false,
+      },
+      {
+        source: '/news/archive',
+        destination: '/news',
+        permanent: false,
+      },
+      {
+        source: '/articles/rules2022',
+        destination: '/visiting-rules',
+        permanent: false,
+      },
+      {
+        source: '/services/zoo/lgoty-na-poseshenie-zooparka',
+        destination: '/discounts',
+        permanent: false,
+      },
+      {
+        source: '/services/zoo/detskij-kontaktnyj-zoopark',
+        destination: '/contact-zoo',
+        permanent: false,
+      },
+      {
+        source: '/services/zoo',
+        destination: '/',
+        permanent: false,
+      },
+      ...documentRedirects
+    ]
+  },
+
   reactStrictMode: true,
   output: "standalone",
 

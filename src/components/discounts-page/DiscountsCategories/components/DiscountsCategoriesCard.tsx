@@ -23,7 +23,7 @@ export function DiscountsCategoriesCard({
 
       <div className="discounts-categories-card__rules">
         <div className="discounts-categories-card__container">
-          {rules.terms && (
+          {rules.terms && rules.terms.length > 0 && (
             <div>
               <h4 className="discounts-categories-card__rules-title">
                 Условия:
@@ -45,7 +45,7 @@ export function DiscountsCategoriesCard({
             </div>
           )}
 
-          {rules.docs && (
+          {rules.docs && rules.docs.length > 0 && (
             <div>
               <h4 className="discounts-categories-card__rules-title">
                 Подтверждающие документы:
