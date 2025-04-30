@@ -124,10 +124,12 @@
       }
 
       @include desktop-xl {
-        left: -430px;
-        top: 110px;
-        width: 910px;
-        height: 900px;
+        left: -20%;
+        top: 85px;
+        width: 42vw;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
       }
     }
 

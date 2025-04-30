@@ -6,7 +6,7 @@ import { NewsCollection, NewsCollectionListResponse } from '@/src/common/api-typ
 import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
 import { NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
-import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
+import { NotFound } from '@/src/components/globals/NotFound/NotFound';
 import { useScrollTop } from '@/src/common/hooks/useScrollTop';
 import { useRouter } from 'next/router';
 

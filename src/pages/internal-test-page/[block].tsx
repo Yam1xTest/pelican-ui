@@ -1,6 +1,6 @@
 import { MOCK_INTERNAL_TEST_PAGE } from "@/src/common/mocks/internal-test-page-mock/internal-test-page-mock";
 import { BlockRenderer } from "@/src/components/globals/BlockRenderer/BlockRenderer";
-import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
+import { NotFound } from "@/src/components/globals/NotFound/NotFound";
 
 export default function InternalTestPage({
   block,

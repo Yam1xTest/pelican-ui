@@ -12,7 +12,7 @@ import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryPar
 import { api } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
 import { SeoHead } from "@/src/components/globals/SeoHead/SeoHead";
-import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
+import { NotFound } from "@/src/components/globals/NotFound/NotFound";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import qs from "qs";
