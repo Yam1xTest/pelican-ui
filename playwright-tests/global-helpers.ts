@@ -72,15 +72,8 @@ export async function hideLoader({
 }: {
   page: Page;
 }) {
-  const loader = await page.getByTestId(`loader`);
-
-  const isVisible = await loader.isVisible();
-
-  if (isVisible) {
-    await loader.evaluate((element) => {
-      element.style.visibility = `hidden`;
-    });
-  }
+  await page.getByTestId(`loader`)
+    .evaluate((element) => element.style.visibility = `hidden`);
 }
 
 export async function hideFooter({

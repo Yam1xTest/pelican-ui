@@ -202,14 +202,13 @@ export type TextAndMediaComponentProps = {
   viewFootsteps: boolean;
 } & BlockPosition;
 
-export type ArticleComponentProps = Omit<NewsArticleProps, 'id' | 'date' | 'link' | 'labels'> & {
+export type ArticleComponentProps = Omit<NewsArticleProps, 'id' | 'link' | 'labels'> & {
   __component: BlockTypes.SHARED_ARTICLE;
 } & BlockPosition;
 
 export type NewsArticleProps = CardProps & {
   slug: string;
   innerContent: string;
-  publishedAt?: string;
   date?: string;
   seo?: Seo;
 };
@@ -416,5 +415,6 @@ declare global {
   interface Window {
     ym: (id: number, operationName: string, option: OptionYM | string) => unknown;
     gtag: (operationName: string, ...arg: any) => unknown;
+    Widget: (url: string, id: number) => void;
   }
 }
