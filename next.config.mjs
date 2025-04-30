@@ -59,7 +59,7 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
-          ...(process.env.CORS_ENABLED === 'true' && [
+          ...(process.env.CORS_ENABLED === 'true' ? [
             // Indicates whether the browser should include credentials, such as cookies or HTTP authentication, in the cross-origin request
             {
               key: "Access-Control-Allow-Credentials",
@@ -78,31 +78,31 @@ const nextConfig = {
               key: "Cross-Origin-Opener-Policy",
               value: process.env.CROSS_ORIGIN_OPENER_POLICY,
             }
-          ]),
+          ] : []),
 
           // Prevents the site from being opened in an <iframe> (protection against clickjacking)
-          ...(process.env.X_FRAME_OPTIONS && {
+          ...(process.env.X_FRAME_OPTIONS ? [{
             key: 'X-Frame-Options',
             value: process.env.X_FRAME_OPTIONS,
-          }),
+          }] : []),
 
           // Prevents MIME-sniffing (e.g., ensuring HTML is not treated as JS)
-          ...(process.env.X_CONTENT_TYPE_OPTIONS && {
+          ...(process.env.X_CONTENT_TYPE_OPTIONS ? [{
             key: 'X-Content-Type-Options',
             value: process.env.X_CONTENT_TYPE_OPTIONS,
-          }),
+          }] : []),
 
           // Controls what data goes into the Referer header
-          ...(process.env.REFERRER_POLICY && {
+          ...(process.env.REFERRER_POLICY ? [{
             key: 'Referrer-Policy',
             value: process.env.REFERRER_POLICY,
-          }),
+          }] : []),
 
           // Block access to browser features and APIs
-          ...(process.env.PERMISSIONS_POLICY && {
+          ...(process.env.PERMISSIONS_POLICY ? [{
             key: 'Permissions-Policy',
             value: process.env.PERMISSIONS_POLICY,
-          }),
+          }] : []),
         ]
       }
     ]
