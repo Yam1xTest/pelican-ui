@@ -109,7 +109,7 @@ const nextConfig = {
   },
 
   async headers() {
-    return [
+    const headers = [
       {
         source: '/(.*)',
         headers: [
@@ -157,9 +157,10 @@ const nextConfig = {
             value: process.env.PERMISSIONS_POLICY,
           }] : []),
         ]
-          .filter(Boolean)
       }
     ]
+
+    return headers[0].headers.length > 0 ? headers : [];
   }
 };
 
