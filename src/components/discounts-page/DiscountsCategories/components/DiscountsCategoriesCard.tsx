@@ -1,3 +1,4 @@
+import { CategoriesCards } from "@/src/common/types";
 import Link from "next/link";
 
 export function DiscountsCategoriesCard({
@@ -5,20 +6,7 @@ export function DiscountsCategoriesCard({
   note,
   price,
   rules,
-}: {
-  title: string;
-  note?: string;
-  price: string;
-  rules: {
-    terms?: string[];
-    info?: string;
-    docs?: string[];
-    basis?: {
-      title:string;
-      file: string;
-    }[];
-  };
-}) {
+}: Omit<CategoriesCards, 'id'>) {
   return (
     <li className="discounts-categories-card">
       {note && (
@@ -76,7 +64,7 @@ export function DiscountsCategoriesCard({
             </div>
           )}
         </div>
-        {rules.basis?.length && (
+        {rules.basis && rules.basis.length > 0 && (
           <div>
             <h4 className="discounts-categories-card__rules-title">
               Основание льготы:
