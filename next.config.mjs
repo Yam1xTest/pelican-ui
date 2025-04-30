@@ -113,49 +113,51 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
-          // Indicates whether the browser should include credentials, such as cookies or HTTP authentication, in the cross-origin request
-          ...(process.env.CORS_ENABLED === 'true' ? [
+          ...(process.env.CORS_HEADERS_ENABLED === 'true' ? [
+            // Indicates whether the browser should include credentials, such as cookies or HTTP authentication, in the cross-origin request
             {
               key: "Access-Control-Allow-Credentials",
-              value: process.env.ACCESS_CONTROL_ALLOW_CREDENTIALS,
+              value: "false",
             },
 
             // Specifies the origin that has access to the resource
             {
               key: "Access-Control-Allow-Origin",
-              value: process.env.ACCESS_CONTROL_ALLOW_ORIGIN,
+              value: "null",
             },
 
             // Indicates how the browser should handle opening new windows and tabs in the context of cross-origin requests
             {
               key: "Cross-Origin-Opener-Policy",
-              value: process.env.CROSS_ORIGIN_OPENER_POLICY,
+              value: "same-origin",
             },
           ] : []),
 
-          // Prevents the site from being opened in an <iframe> (protection against clickjacking)
-          ...(process.env.X_FRAME_OPTIONS ? [{
-            key: 'X-Frame-Options',
-            value: process.env.X_FRAME_OPTIONS,
-          }] : []),
+          ...(process.env.SECURITY_HEADERS_ENABLED === 'true' ? [
+            // Prevents the site from being opened in an <iframe> (protection against clickjacking)
+            {
+              key: 'X-Frame-Options',
+              value: "SAMEORIGIN",
+            },
 
-          // Prevents MIME-sniffing (e.g., ensuring HTML is not treated as JS)
-          ...(process.env.X_CONTENT_TYPE_OPTIONS ? [{
-            key: 'X-Content-Type-Options',
-            value: process.env.X_CONTENT_TYPE_OPTIONS,
-          }] : []),
+            // Prevents MIME-sniffing (e.g., ensuring HTML is not treated as JS)
+            {
+              key: 'X-Content-Type-Options',
+              value: "nosniff",
+            },
 
-          // Controls what data goes into the Referer header
-          ...(process.env.REFERRER_POLICY ? [{
-            key: 'Referrer-Policy',
-            value: process.env.REFERRER_POLICY,
-          }] : []),
+            // Controls what data goes into the Referer header
+            {
+              key: 'Referrer-Policy',
+              value: "no-referrer",
+            },
 
-          // Block access to browser features and APIs
-          ...(process.env.PERMISSIONS_POLICY ? [{
-            key: 'Permissions-Policy',
-            value: process.env.PERMISSIONS_POLICY,
-          }] : []),
+            // Block access to browser features and APIs
+            {
+              key: 'Permissions-Policy',
+              value: "interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()",
+            }
+          ] : []),
         ]
       }
     ]
