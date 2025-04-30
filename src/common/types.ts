@@ -262,11 +262,6 @@ export type MapComponentProps = {
   image: Image;
 };
 
-export type NotFoundComponentProps = {
-  id: number;
-  __component: BlockTypes.NOT_FOUND;
-};
-
 export type SharedTicketsComponentProps = {
   id: number;
   __component: BlockTypes.SHARED_TICKETS;
