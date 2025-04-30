@@ -64,13 +64,13 @@ export function DiscountsCategoriesCard({
             </div>
           )}
         </div>
-        {rules.basis!.length > 0 && (
+        {rules.basis && rules.basis.length > 0 && (
           <div>
             <h4 className="discounts-categories-card__rules-title">
               Основание льготы:
             </h4>
             <ul className="discounts-categories-card__rules-basis">
-              {rules.basis!.map((basis) => (
+              {rules.basis.map((basis) => (
                 <li key={basis.title}>
                   {basis.file ? (
                     <Link
