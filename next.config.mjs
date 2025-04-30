@@ -26,7 +26,8 @@ const nextConfig = {
       '/articles/info/orders',
       '/articles/info/activities',
       '/articles/info/purchases',
-      '/articles/info/trades'
+      '/articles/info/trades',
+      '/articles/info/reports'
     ];
 
     const documentRedirects = documentPath.map((path) => ({
@@ -59,6 +60,11 @@ const nextConfig = {
       {
         source: '/services/zoo/detskij-kontaktnyj-zoopark',
         destination: '/contact-zoo',
+        permanent: false,
+      },
+      {
+        source: '/services/zoo',
+        destination: '/',
         permanent: false,
       },
       ...documentRedirects
