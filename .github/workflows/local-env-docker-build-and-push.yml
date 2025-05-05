@@ -49,8 +49,8 @@ jobs:
           images: ghcr.io/tourmalinecore/${{ github.event.repository.name }}
           tags: |
             type=raw,value=local-env-latest,enable=${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
-            type=sha,prefix=local-env
-            type=sha,format=long,prefix=local-env
+            type=sha,prefix=local-env-sha-
+            type=sha,format=long,prefix=local-env-sha-
 
       - name: Build and push Docker image
         id: push
@@ -62,3 +62,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64,linux/arm64
+          build-args: |
+            CDN_ENABLED=false
+        
