@@ -21,7 +21,9 @@
 	"remoteEnv": {
 		// https://stackoverflow.com/q/65343518
 		// the original host directory which is needed for volume mount commands from inside the container (Docker in Docker)
-		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
+		// to receive data from a locally running Strapi
+		"API_URL": "http://host.docker.internal:1337/api"
 	},
 	"customizations": {
 		"vscode": {
