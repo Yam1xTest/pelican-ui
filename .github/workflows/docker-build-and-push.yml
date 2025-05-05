@@ -18,23 +18,6 @@ on:
       - feature/*
   # to allow to wait for a docker image to be published to proceed in another workflow
   workflow_call:
-    # https://docs.github.com/en/actions/sharing-automations/reusing-workflows#using-inputs-and-secrets-in-a-reusable-workflow
-    inputs:
-      image_tag_prefix:
-        description: "Prefix for image tags (e.g., 'local-env-sha-')"
-        required: false
-        type: string
-        default: "sha-"
-      cdn_enabled:
-        description: "Enable CDN"
-        required: false
-        type: boolean
-        default: true
-      cdn_domain:
-        description: "CDN domain"
-        required: false
-        type: string
-        default: "cdn.chelzoo.tech"
 
 jobs:
   push_to_registry:
@@ -66,12 +49,12 @@ jobs:
           images: ghcr.io/tourmalinecore/${{ github.event.repository.name }}
           tags: |
             # minimal (short sha)
-            type=sha,prefix=${{ inputs.image_tag_prefix }}
+            type=sha
             # full length sha
-            type=sha,format=long,prefix=${{ inputs.image_tag_prefix }}
+            type=sha,format=long
             # set latest tag for default branch
             # https://github.com/docker/metadata-action/issues/171 explains how to tag latest only on default branch
-            type=raw,value=${{ inputs.image_tag_prefix }}latest,enable=${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
+            type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
 
       - name: Build and push Docker image
         id: push
@@ -84,5 +67,5 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64,linux/arm64
           build-args: |
-            CDN_ENABLED=${{ inputs.cdn_enabled }}
-            CDN_DOMAIN=${{ inputs.cdn_domain }}
+            CDN_ENABLED=true
+            CDN_DOMAIN=cdn.chelzoo.tech
