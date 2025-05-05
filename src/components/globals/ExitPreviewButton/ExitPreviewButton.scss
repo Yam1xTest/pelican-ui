@@ -1,6 +1,7 @@
-.exit-preview-link {
+.exit-preview-button {
   @include caption-1-medium;
 
+  z-index: 100;
   border: none;
   border-bottom: 1px solid $color-green-dark;
   border-radius: 0;

@@ -12,7 +12,7 @@ export function Article({
   className,
 }: {
   title: ArticleComponentProps['title'];
-  date: ArticleComponentProps['publishedAt'];
+  date: ArticleComponentProps['date'];
   innerContent: ArticleComponentProps['innerContent'];
   isFirstBlock: ArticleComponentProps['isFirstBlock'];
   isLastBlock: ArticleComponentProps['isLastBlock'];

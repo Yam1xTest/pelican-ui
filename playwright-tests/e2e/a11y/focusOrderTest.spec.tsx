@@ -5,7 +5,7 @@ import {
   hideCookie,
   hideTextAndMedia,
   setViewportSize,
-} from '@/playwright-tests/helpers';
+} from '@/playwright-tests/global-helpers';
 import { test, expect, Page } from '@playwright/test';
 
 const expectedMobileHeaderFocusOrder = [
@@ -186,7 +186,23 @@ async function homePageMobileTest({
     `tickets-buy-button`,
     `tickets-all-discounts`,
     `text-link`,
-    ...expectedMobileFooterFocusOrder,
+    `footer-tickets-popup-button`,
+    ...generateTestIdDuplicates({
+      count: 4,
+      string: `footer-nav-link`,
+    }),
+    `footer-tel-link`,
+    `footer-email-link`,
+    `social-icon-vkontakte`,
+    `social-icon-telegram`,
+    `social-icon-odnoklassniki`,
+    `social-icon-dzen`,
+    `footer-copyright-link`,
+    `gos-banner-button`,
+    ...generateTestIdDuplicates({
+      count: 3,
+      string: `footer-official-link`,
+    }),
   ];
 
   await checkNavigationUsingTab({
@@ -220,7 +236,23 @@ async function homePageDesktopTest({
     }),
     `tickets-discounts-link`,
     `text-link`,
-    ...expectedDesktopFooterFocusOrder,
+    `footer-tickets-popup-button`,
+    ...generateTestIdDuplicates({
+      count: 4,
+      string: `footer-nav-link`,
+    }),
+    `footer-tel-link`,
+    `footer-email-link`,
+    `footer-copyright-link`,
+    `social-icon-vkontakte`,
+    `social-icon-telegram`,
+    `social-icon-odnoklassniki`,
+    `social-icon-dzen`,
+    `gos-banner-button`,
+    ...generateTestIdDuplicates({
+      count: 3,
+      string: `footer-official-link`,
+    }),
   ];
 
   await checkNavigationUsingTab({
@@ -240,6 +272,8 @@ async function mobileMenuOpenTest({
 
   await page.getByTestId(`header-popup-button`)
     .click();
+
+  await page.waitForTimeout(350);
 
   const expectedFocusOrder = [
     `header-popup-ticket-button`,

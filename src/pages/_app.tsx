@@ -2,7 +2,7 @@
 import '../styles/index.scss';
 import type { AppProps } from 'next/app';
 import localFont from "next/font/local";
-import router, { useRouter } from 'next/router';
+import router from 'next/router';
 import { useEffect } from 'react';
 import { Layout } from '../components/globals/Layout/Layout';
 import { WindowWidthProvider } from '../common/providers/WindowWidthProvider';
@@ -20,6 +20,7 @@ import {
 } from '../common/mocks/globals-mock';
 import { TicketPopupProvider } from '../common/providers/TicketPopupProvider';
 import { getGlobalData } from '../common/utils/getGlobalData';
+import { Loader } from '../components/globals/Loader/Loader';
 
 const inter = localFont({
   src: [
@@ -58,11 +59,6 @@ export default function App({
 }: AppProps & {
   isPreview: boolean;
 }) {
-  const {
-    asPath,
-    query,
-  } = useRouter();
-
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       if (document.cookie.includes('cookieAccept=true') && typeof window !== 'undefined' && isMetricsEnabled) {
@@ -80,12 +76,9 @@ export default function App({
   }, [router.events]);
 
   useEffect(() => {
-    if (!query?.pageSize) {
-      document.body.scroll({
-        top: 0,
-      });
-    }
-  }, [asPath, query]);
+    const loaderElement = document.getElementById('static-loader');
+    if (loaderElement) loaderElement.remove();
+  }, []);
 
   const {
     navigationLinks,
@@ -104,6 +97,7 @@ export default function App({
     <WindowWidthProvider>
       <TicketPopupProvider>
         <div className={inter.variable}>
+          <Loader />
           <Layout
             navigationLinks={navigationLinks}
             officialLinks={officialLinks}

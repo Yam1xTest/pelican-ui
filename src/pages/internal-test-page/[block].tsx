@@ -14,6 +14,7 @@ export default function InternalTestPage({
   return (
     <BlockRenderer
       block={block}
+      slug=""
       email=""
     />
   );

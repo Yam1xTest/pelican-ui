@@ -27,7 +27,10 @@ export function MapAddressCard({
             <h2 className="map-address-card__title">
               {title}
             </h2>
-            <MarkdownText className="map-address-card__subtitle">
+            <MarkdownText
+              className="map-address-card__subtitle"
+              isTargetBlank
+            >
               {subtitle}
             </MarkdownText>
           </div>

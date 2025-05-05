@@ -7,10 +7,12 @@ import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/Ne
 import { NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
+import { useScrollTop } from '@/src/common/hooks/useScrollTop';
+import { useRouter } from 'next/router';
 
-const NEWS_SLIDER_LIMIT = 4;
+const NEWS_SLIDER_LIMIT = 6;
 
-type SelectedNewsProps = Pick<NewsArticleProps, 'innerContent' | 'publishedAt' | 'title' | 'seo'>;
+type SelectedNewsProps = Pick<NewsArticleProps, 'innerContent' | 'date' | 'title' | 'seo'>;
 type OtherNewsProps = Pick<NewsArticleProps, 'id' | 'description' | 'title' | 'slug'>[];
 
 export default function News({
@@ -20,6 +22,14 @@ export default function News({
   selectedNews: SelectedNewsProps;
   otherNews: OtherNewsProps;
 }) {
+  const {
+    asPath,
+  } = useRouter();
+
+  useScrollTop({
+    dependencies: [asPath],
+  });
+
   if (!selectedNews) {
     return <NotFound />;
   }
@@ -33,7 +43,7 @@ export default function News({
       />
       <Article
         title={selectedNews.title}
-        date={selectedNews.publishedAt}
+        date={selectedNews.date}
         innerContent={selectedNews.innerContent}
         isFirstBlock={false}
         isLastBlock={false}
@@ -53,8 +63,10 @@ export async function getServerSideProps({
   };
   preview: boolean;
 }) {
+  const concatSlug = `${query.slug[0]}/${query.slug[1]}/${query.slug[2]}/${query.slug[3]}`;
+
   if (process.env.APP_ENV === `static`) {
-    const otherNews = MOCK_NEWS.filter((news) => news.slug !== query.slug)
+    const otherNews = MOCK_NEWS.filter((news) => news.slug !== concatSlug)
       .map((news) => ({
         id: news.id,
         slug: news.slug,
@@ -67,7 +79,7 @@ export async function getServerSideProps({
       props: {
         selectedNews: MOCK_NEWS.find(({
           slug,
-        }) => slug === query.slug) || null,
+        }) => slug === concatSlug) || null,
         otherNews,
       },
     };
@@ -75,16 +87,17 @@ export async function getServerSideProps({
 
   const selectedNews = await getNews({
     preview,
-    slug: query.slug,
+    slug: concatSlug,
   });
 
   const otherNews = await getOtherNews({
     preview,
-    slug: query.slug,
+    slug: concatSlug,
   });
 
   return {
     props: {
+      query,
       selectedNews,
       otherNews,
     },
@@ -103,7 +116,7 @@ async function getNews({
       fields: [
         `title`,
         `innerContent`,
-        `publishedAt`,
+        `date`,
       ],
       populate: [`seo`],
       filters: {
@@ -134,7 +147,7 @@ function mapSelectedNews({
   return {
     title: news.title,
     innerContent: news!.innerContent,
-    publishedAt: news!.publishedAt,
+    date: news!.date,
     ...(news?.seo && {
       seo: {
         metaTitle: news.seo.metaTitle!,
@@ -160,7 +173,7 @@ async function getOtherNews({
         `slug`,
       ],
       sort: {
-        publishedAt: `desc`,
+        date: `desc`,
       },
       filters: {
         slug: {

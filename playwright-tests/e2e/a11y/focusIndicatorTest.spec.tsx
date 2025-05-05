@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, setViewportSize } from '@/playwright-tests/helpers';
+import { gotoPage, setViewportSize } from '@/playwright-tests/global-helpers';
 import { test, Page, expect } from '@playwright/test';
 
 test.describe(`Visible focus indicator verification`, () => {
@@ -63,20 +63,20 @@ test.describe(`Visible focus indicator verification`, () => {
       page,
     });
   });
-});
 
-test(`VisitingRulesPageCheckTest`, async ({
-  page,
-}: {
-  page: Page;
-}) => {
-  await gotoPage({
+  test(`VisitingRulesPageCheckTest`, async ({
     page,
-    url: AppRoute.VISITING_RULES,
-  });
+  }: {
+    page: Page;
+  }) => {
+    await gotoPage({
+      page,
+      url: AppRoute.VISITING_RULES,
+    });
 
-  await checkFocusVisibility({
-    page,
+    await checkFocusVisibility({
+      page,
+    });
   });
 });
 

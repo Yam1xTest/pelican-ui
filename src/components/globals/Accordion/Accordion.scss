@@ -88,6 +88,8 @@
   }
 
   &--ticket-card {
+    width: 100%;
+
     #{$this}__trigger {
       color: $color-green-dark;
 
@@ -99,10 +101,6 @@
       @include desktop-xl {
         font-size: 24px;
       }
-    }
-
-    @include tablet {
-      width: 100%;
     }
   }
 

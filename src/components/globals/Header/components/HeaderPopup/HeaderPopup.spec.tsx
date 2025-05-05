@@ -1,5 +1,5 @@
 import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
-import { gotoPage, setViewportSize } from '@/playwright-tests/helpers';
+import { gotoPage, setViewportSize } from '@/playwright-tests/global-helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`HeaderPopupTests`, () => {
@@ -85,7 +85,7 @@ async function mobilePopupTest({
   await expect(getHeaderPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`header-${BreakpointName.MOBILE}-popup.png`);
+    .toHaveScreenshot(`header-popup-${BreakpointName.MOBILE}.png`);
 }
 
 async function tabletPopupTest({
@@ -106,7 +106,7 @@ async function tabletPopupTest({
   await expect(getHeaderPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`header-${BreakpointName.TABLET}-popup.png`);
+    .toHaveScreenshot(`header-popup-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletXlPopupTest({
@@ -127,7 +127,7 @@ async function tabletXlPopupTest({
   await expect(getHeaderPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`header-${BreakpointName.TABLET_XL}-popup.png`);
+    .toHaveScreenshot(`header-popup-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function getHeaderPopupButtonByTestId({

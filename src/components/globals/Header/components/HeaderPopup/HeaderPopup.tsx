@@ -1,6 +1,6 @@
 import { GlobalComponentProps } from "@/src/common/types";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
-import { MouseEventHandler } from "react";
+import { useEffect, useRef } from "react";
 import clsx from "clsx";
 import { SocialMedia } from "../../../SocialNetwork/SocialMedia";
 import { HeaderNavigation } from "../HeaderNavigation/HeaderNavigation";
@@ -12,15 +12,25 @@ export function HeaderPopup({
   email,
   phone,
   popupTicketBuyText,
-  onTicketPopupOpen,
+  handleMobileMenuToggle,
 }: Pick <GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
   isActive: boolean;
   className: string;
-  onTicketPopupOpen: MouseEventHandler<HTMLButtonElement>;
+  handleMobileMenuToggle: () => void;
 }) {
   const {
     handleTicketPopupToggle,
   } = useTicketPopup();
+
+  const popupRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (popupRef.current) {
+      popupRef.current.style.maxHeight = isActive
+        ? `${popupRef.current.scrollHeight}px`
+        : `0`;
+    }
+  }, [isActive]);
 
   return (
     <div
@@ -28,13 +38,14 @@ export function HeaderPopup({
         'header-popup--visible': isActive,
       })}
       data-testid="header-popup"
+      ref={popupRef}
     >
       <button
         type="button"
         className="header-popup__ticket-button"
-        onClick={(e) => {
+        onClick={() => {
+          handleMobileMenuToggle();
           handleTicketPopupToggle();
-          onTicketPopupOpen(e);
         }}
         aria-label="Открыть модальное окно с билетами"
         data-testid="header-popup-ticket-button"
@@ -45,6 +56,7 @@ export function HeaderPopup({
       <HeaderNavigation
         className="header-popup__nav"
         navigationLinks={navigationLinks}
+        handleMobileMenuToggle={handleMobileMenuToggle}
       />
 
       <div className="header-popup__footer">
