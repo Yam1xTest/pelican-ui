@@ -113,7 +113,8 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
-          // ...(process.env.CORS_HEADERS_ENABLED === 'true' ? [
+          // CORS headers
+
           // Indicates whether the browser should include credentials, such as cookies or HTTP authentication, in the cross-origin request
           {
             key: "Access-Control-Allow-Credentials",
@@ -131,9 +132,9 @@ const nextConfig = {
             key: "Cross-Origin-Opener-Policy",
             value: "same-origin",
           },
-          // ] : []),
 
-          // ...(process.env.SECURITY_HEADERS_ENABLED === 'true' ? [
+          // Security headers
+
           // Prevents the site from being opened in an <iframe> (protection against clickjacking)
           {
             key: 'X-Frame-Options',
@@ -157,7 +158,6 @@ const nextConfig = {
             key: 'Permissions-Policy',
             value: "interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()",
           }
-          // ] : []),
         ]
       }
     ]
