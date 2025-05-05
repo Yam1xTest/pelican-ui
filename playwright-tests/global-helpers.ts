@@ -67,15 +67,6 @@ export async function hideSkipLink({
     .evaluate((element) => element.style.visibility = `hidden`);
 }
 
-export async function hideLoader({
-  page,
-}: {
-  page: Page;
-}) {
-  await page.getByTestId(`loader`)
-    .evaluate((element) => element.style.visibility = `hidden`);
-}
-
 export async function hideFooter({
   page,
 }: {
