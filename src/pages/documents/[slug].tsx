@@ -41,6 +41,10 @@ export default function DocumentsCategories({
             year: queryYear,
           },
         },
+        undefined,
+        {
+          shallow: true,
+        },
       );
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
