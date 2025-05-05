@@ -50,7 +50,7 @@ jobs:
           tags: |
             type=raw,value=local-env
             type=raw,value=local-env-latest,enable=${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
-            type=local-env-sha
+            type=sha
             type=local-env-sha,format=long
 
       - name: Build and push Docker image
