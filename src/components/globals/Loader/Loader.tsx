@@ -9,6 +9,7 @@ export function Loader() {
     let timeoutId: NodeJS.Timeout;
 
     const handleStart = (url: string) => {
+      clearTimeout(timeoutId);
       if (url !== route.asPath) {
         timeoutId = setTimeout(() => {
           setIsLoading(true);
