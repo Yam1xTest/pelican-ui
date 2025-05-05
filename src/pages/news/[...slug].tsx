@@ -6,7 +6,6 @@ import { NewsCollection, NewsCollectionListResponse } from '@/src/common/api-typ
 import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
 import { NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
-import { NotFound } from '@/src/components/globals/NotFound/NotFound';
 import { useScrollTop } from '@/src/common/hooks/useScrollTop';
 import { useRouter } from 'next/router';
 
@@ -29,10 +28,6 @@ export default function News({
   useScrollTop({
     dependencies: [asPath],
   });
-
-  if (!selectedNews) {
-    return <NotFound />;
-  }
 
   return (
     <>
@@ -63,6 +58,12 @@ export async function getServerSideProps({
   };
   preview: boolean;
 }) {
+  if (query.slug.length > 4) {
+    return {
+      notFound: true,
+    };
+  }
+
   const concatSlug = `${query.slug[0]}/${query.slug[1]}/${query.slug[2]}/${query.slug[3]}`;
 
   if (process.env.APP_ENV === `static`) {
@@ -75,11 +76,19 @@ export async function getServerSideProps({
       }))
       .slice(0, NEWS_SLIDER_LIMIT);
 
+    const selectedNews = MOCK_NEWS.find(({
+      slug,
+    }) => slug === concatSlug);
+
+    if (!selectedNews) {
+      return {
+        notFound: true,
+      };
+    }
+
     return {
       props: {
-        selectedNews: MOCK_NEWS.find(({
-          slug,
-        }) => slug === concatSlug) || null,
+        selectedNews,
         otherNews,
       },
     };
@@ -89,6 +98,12 @@ export async function getServerSideProps({
     preview,
     slug: concatSlug,
   });
+
+  if (!selectedNews) {
+    return {
+      notFound: true,
+    };
+  }
 
   const otherNews = await getOtherNews({
     preview,
