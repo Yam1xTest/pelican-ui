@@ -122,12 +122,6 @@ export async function getServerSideProps({
         }
       });
 
-    if (query.year && !availableYears.includes(+query.year)) {
-      return {
-        notFound: true,
-      };
-    }
-
     const lastYear = String(availableYears[0]);
     const filteredDocuments = MOCK_DOCUMENTS.filter(({
       date,
