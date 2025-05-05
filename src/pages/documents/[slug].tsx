@@ -12,7 +12,6 @@ import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryPar
 import { api } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
 import { SeoHead } from "@/src/components/globals/SeoHead/SeoHead";
-import { NotFound } from "@/src/components/globals/NotFound/NotFound";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import qs from "qs";
@@ -46,10 +45,6 @@ export default function DocumentsCategories({
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  if (!category) {
-    return <NotFound />;
-  }
 
   return (
     <>
@@ -85,6 +80,12 @@ export async function getServerSideProps({
     const documentCategory = MOCK_DOCUMENTS_CATEGORIES.find(({
       slug,
     }) => slug === query.slug) || null;
+
+    if (!documentCategory) {
+      return {
+        notFound: true,
+      };
+    }
 
     if (!documentCategory?.hasTabs) {
       return {
@@ -123,9 +124,7 @@ export async function getServerSideProps({
 
     if (query.year && !availableYears.includes(+query.year)) {
       return {
-        props: {
-          category: null,
-        },
+        notFound: true,
       };
     }
 
@@ -158,9 +157,7 @@ export async function getServerSideProps({
 
   if (!category) {
     return {
-      props: {
-        category,
-      },
+      notFound: true,
     };
   }
 
