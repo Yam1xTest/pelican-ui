@@ -18,7 +18,7 @@ const nextConfig = {
           // Specifies the origin that has access to the resource
           {
             key: "Access-Control-Allow-Origin",
-            value: "null",
+            value: "https://chelzoo.tech",
           },
 
           // Indicates how the browser should handle opening new windows and tabs in the context of cross-origin requests
