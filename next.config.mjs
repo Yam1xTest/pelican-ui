@@ -109,7 +109,7 @@ const nextConfig = {
   },
 
   async headers() {
-    const headers = [
+    return [
       {
         source: '/(.*)',
         headers: [
@@ -161,8 +161,6 @@ const nextConfig = {
         ]
       }
     ]
-
-    return headers[0].headers.length > 0 ? headers : [];
   }
 };
 
