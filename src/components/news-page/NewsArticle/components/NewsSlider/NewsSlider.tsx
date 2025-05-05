@@ -46,7 +46,7 @@ export function NewsSlider({
               breakpoint: 1920,
               settings: {
                 slidesToShow: 3,
-                slidesToScroll: 3,
+                slidesToScroll: 6,
                 itemWidth: 576,
               },
             },

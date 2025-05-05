@@ -10,7 +10,7 @@ import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 import { useScrollTop } from '@/src/common/hooks/useScrollTop';
 import { useRouter } from 'next/router';
 
-const NEWS_SLIDER_LIMIT = 4;
+const NEWS_SLIDER_LIMIT = 6;
 
 type SelectedNewsProps = Pick<NewsArticleProps, 'innerContent' | 'date' | 'title' | 'seo'>;
 type OtherNewsProps = Pick<NewsArticleProps, 'id' | 'description' | 'title' | 'slug'>[];
