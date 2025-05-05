@@ -24,7 +24,7 @@ on:
         description: "Prefix for image tags (e.g., 'local-env-sha-')"
         required: false
         type: string
-        default: ""
+        default: "sha-"
       cdn_enabled:
         description: "Enable CDN"
         required: false
