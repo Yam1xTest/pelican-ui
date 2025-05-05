@@ -37,6 +37,7 @@ export function mapContractByBlock({
         },
         scheduleTitle: sharedHeroBlock.scheduleCard?.title,
         scheduleTimetables: sharedHeroBlock.scheduleCard?.timetable,
+        infoCardTitle: sharedHeroBlock.infoCard?.title,
         infoCardDescription: sharedHeroBlock.infoCard?.description,
       };
 
