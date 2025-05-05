@@ -19,10 +19,10 @@ export function HomepageHero({
       image={image}
       scheduleTitle={scheduleTitle}
       scheduleTimetables={scheduleTimetables}
-      infoCardTitle={infoCardTitle || getLastMondayOfMonth(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-      )}
+      infoCardTitle={infoCardTitle || getLastMondayOfMonth({
+        year: currentDate.getFullYear(),
+        month: currentDate.getMonth(),
+      })}
       infoCardDescription={infoCardDescription}
       email={email}
       isFirstBlock={false}
