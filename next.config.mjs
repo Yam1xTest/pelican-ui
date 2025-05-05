@@ -1,22 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers
-  // configuring custom HTTP headers
-  async headers() {
-    return [
-      {
-        source: "/(.*).(woff|css)",
-        // CORS 
-        headers: [
-          {
-            key: "Access-Control-Allow-Origin",
-            value: "*",
-          },
-        ],
-      },
-    ];
-  },
-
   async redirects() {
     const documentPath = [
       '/articles/info/documents',
@@ -122,6 +105,61 @@ const nextConfig = {
         protocol: 'https',
         hostname: `https://${process.env.CDN_DOMAIN}/_next/image`
       },
+    ]
+  },
+
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          // CORS headers
+
+          // Indicates whether the browser should include credentials, such as cookies or HTTP authentication, in the cross-origin request
+          {
+            key: "Access-Control-Allow-Credentials",
+            value: "false",
+          },
+
+          // Specifies the origin that has access to the resource
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "null",
+          },
+
+          // Indicates how the browser should handle opening new windows and tabs in the context of cross-origin requests
+          {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin",
+          },
+
+          // Security headers
+
+          // Prevents the site from being opened in an <iframe> (protection against clickjacking)
+          {
+            key: 'X-Frame-Options',
+            value: "SAMEORIGIN",
+          },
+
+          // Prevents MIME-sniffing (e.g., ensuring HTML is not treated as JS)
+          {
+            key: 'X-Content-Type-Options',
+            value: "nosniff",
+          },
+
+          // Controls what data goes into the Referer header
+          {
+            key: 'Referrer-Policy',
+            value: "no-referrer",
+          },
+
+          // Block access to browser features and APIs
+          {
+            key: 'Permissions-Policy',
+            value: "interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()",
+          }
+        ]
+      }
     ]
   }
 };
