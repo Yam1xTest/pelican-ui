@@ -50,15 +50,15 @@ jobs:
           tags: |
             type=raw,value=local-env
             type=raw,value=local-env-latest,enable=${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
-            type=sha
-            type=sha,format=long
+            type=local-env-sha
+            type=local-env-sha,format=long
 
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
         with:
           context: .
-          file: ./Dockerfile-local-env
+          file: ./Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

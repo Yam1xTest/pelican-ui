@@ -66,3 +66,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64,linux/arm64
+          build-args: |
+            CDN_ENABLED=true
+            CDN_DOMAIN=cdn.chelzoo.tech
