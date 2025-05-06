@@ -58,7 +58,7 @@ const nextConfig = {
   },
 
   async redirects() {
-    const documentPath = [
+    const documentPaths = [
       '/articles/info/documents',
       '/articles/rekvizity-zooparka',
       '/articles/info/tasks',
@@ -70,7 +70,7 @@ const nextConfig = {
       '/articles/info/reports'
     ];
 
-    const documentRedirects = documentPath.map((path) => ({
+    const documentRedirects = documentPaths.map((path) => ({
       source: path,
       destination: '/documents',
       permanent: false,
@@ -118,7 +118,7 @@ const nextConfig = {
     APP_ENV: process.env.APP_ENV,
   },
 
-  ...(process.env.CDN_ENABLED === 'true' && {
+  ...(process.env.CDN_ENABLED === 'true' && process.env.CDN_DOMAIN && {
     // https://nextjs.org/docs/app/api-reference/config/next-config-js/assetPrefix
     // asset prefix for JavaScript and CSS files that it loads from /_next/
     assetPrefix: `https://${process.env.CDN_DOMAIN}`
@@ -136,7 +136,7 @@ const nextConfig = {
   },
 
   images: {
-    ...(process.env.CDN_ENABLED === 'true' && {
+    ...(process.env.CDN_ENABLED === 'true' && process.env.CDN_DOMAIN && {
       // https://nextjs.org/docs/app/api-reference/components/image#domains
       domains: [process.env.CDN_DOMAIN],
       path: `https://${process.env.CDN_DOMAIN}/_next/image`
@@ -153,15 +153,13 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'minio-s3',
       },
-      // todo remove for prod
-      {
-        protocol: 'https',
-        hostname: '**'
-      },
-      {
-        protocol: 'https',
-        hostname: `https://${process.env.CDN_DOMAIN}/_next/image`
-      },
+      ...(process.env.CDN_DOMAIN ? [
+        {
+          protocol: 'https',
+          hostname: process.env.CDN_DOMAIN,
+          pathname: '/_next/**'
+        }
+      ] : [])
     ]
   }
 };
