@@ -23,7 +23,7 @@ jobs:
   push_to_registry:
     uses: ./.github/workflows/docker-build-and-push.yml
     with:
-      image_tag_prefix: "local-env-sha-"
+      image_tag_prefix: "local-env-"
       cdn_enabled: false
       cdn_domain: ""
     # without this it cannot login to the registry
