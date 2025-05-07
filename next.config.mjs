@@ -160,6 +160,11 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'minio-s3',
       },
+
+      {
+        protocol: 'https',
+        hostname: 'storage.yandexcloud.net',
+      },
       ...(process.env.CDN_ENABLED === 'true' && process.env.CDN_DOMAIN ? [
         {
           protocol: 'https',
