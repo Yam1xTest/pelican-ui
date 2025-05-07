@@ -166,10 +166,12 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'minio-s3',
       },
-
       {
         protocol: 'https',
         hostname: 'storage.yandexcloud.net',
+
+        // Todo: need specify production bucket name 
+        // pathname: '/bucketName/**',
       },
       ...(process.env.CDN_ENABLED === 'true' && process.env.CDN_DOMAIN ? [
         {
