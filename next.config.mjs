@@ -145,6 +145,12 @@ const nextConfig = {
   },
 
   images: {
+    ...(process.env.CDN_ENABLED === 'true' && process.env.CDN_DOMAIN && {
+      // https://nextjs.org/docs/app/api-reference/components/image#domains
+      domains: [process.env.CDN_DOMAIN],
+      path: `https://${process.env.CDN_DOMAIN}/_next/image`
+    }),
+
     unoptimized: process.env.NODE_ENV === 'test',
 
     // lifetime in seconds for cached optimized images
