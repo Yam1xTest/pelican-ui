@@ -152,6 +152,10 @@ const nextConfig = {
     }),
 
     unoptimized: process.env.NODE_ENV === 'test',
+
+    // lifetime in seconds for cached optimized images
+    // https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl
+    minimumCacheTTL: 86400,
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
