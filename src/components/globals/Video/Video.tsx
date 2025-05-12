@@ -29,7 +29,7 @@ export function Video({
 
     // turn off downloading https://cdn.plyr.io/static/blank.mp4
     // this issue help to do this https://github.com/sampotts/plyr/issues/1245
-    blankVideo: `/video/text-and-media-video.mp4`,
+    blankVideo: `/video/plyr-blank.mp4`,
   };
 
   return (
