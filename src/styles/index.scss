@@ -38,7 +38,7 @@
 @import "../components/globals/Article/Article";
 @import "../components/news-page/NewsArticle/components/NewsSlider/NewsSlider";
 @import "../components/news-page/NewsArticle/components/NewsSlider/components/NewsSliderCard/NewsSliderCard";
-@import "../components/not-found-page/NotFound/NotFound";
+@import "../components/globals/NotFound/NotFound";
 @import "../components/documents-page/DocumentsList/DocumentsList";
 @import "../components/documents-page/DocumentsList/components/DocumentCard/DocumentCard";
 @import "../components/documents-page/DocumentsList/components/DocumentCard/components/DocumentFile/DocumentFile";
@@ -53,7 +53,7 @@
 @import "../components/globals/Accordion/Accordion";
 @import "../components/globals/Tab/Tab";
 @import "../components/globals/SkipLink/SkipLink";
-@import "../components/globals/ExitPreviewLink/ExitPreviewLink";
+@import "../components/globals/ExitPreviewButton/ExitPreviewButton";
 @import "../components/visiting-rules-page/VisitingRulesMain/VisitingRulesMain";
 @import "../components/visiting-rules-page/VisitingRulesMain/components/VisitingRulesInfo/VisitingRulesInfo";
 @import "../components/visiting-rules-page/VisitingRulesMain/components/VisitingRulesList/VisitingRulesList";
@@ -61,3 +61,4 @@
 @import "../components/visiting-rules-page/VisitingRulesWarnings/VisitingRulesWarnings";
 @import "../components/visiting-rules-page/VisitingRulesPhotosPolicy/VisitingRulesPhotosPolicy";
 @import "../components/visiting-rules-page/VisitingRulesEmergencyPhones/VisitingRulesEmergencyPhones";
+@import "../components/home-page/GosBanner/GosBanner";

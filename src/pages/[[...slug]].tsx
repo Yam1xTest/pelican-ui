@@ -4,6 +4,8 @@ import { ContactZooPageProps, GlobalComponentProps, HomePageProps } from '../com
 import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
 import { getPageData } from '../common/utils/getPageData';
 import { SeoHead } from '../components/globals/SeoHead/SeoHead';
+import { useGosBannerWidget } from '../common/hooks/useGosBannerWidget';
+import { useScrollTop } from '../common/hooks/useScrollTop';
 
 type UniversalProps = {
   globalData: GlobalComponentProps;
@@ -14,7 +16,10 @@ export default function UniversalPage({
   globalData,
   pageData,
 }: UniversalProps) {
-  const route = useRouter();
+  const {
+    asPath,
+  } = useRouter();
+  useGosBannerWidget();
 
   const {
     email,
@@ -25,6 +30,10 @@ export default function UniversalPage({
     blocks,
   } = pageData;
 
+  useScrollTop({
+    dependencies: [asPath],
+  });
+
   return (
     <>
       <SeoHead
@@ -34,7 +43,7 @@ export default function UniversalPage({
       />
       {blocks?.map((block) => (
         <BlockRenderer
-          slug={route.asPath}
+          slug={asPath}
           key={block.id}
           block={block}
           email={email}
@@ -60,6 +69,12 @@ export async function getServerSideProps({
       slug: query.slug,
     });
 
+    if (!pageData) {
+      return {
+        notFound: true,
+      };
+    }
+
     pageData.blocks = setBlockPosition({
       slug: query.slug,
       blocks: pageData.blocks,
@@ -77,6 +92,12 @@ export async function getServerSideProps({
       slug: query.slug,
       preview,
     });
+
+    if (!pageData) {
+      return {
+        notFound: true,
+      };
+    }
 
     pageData.blocks = setBlockPosition({
       slug: query.slug,

@@ -10,32 +10,47 @@ export const NEWS_LIMIT = 6;
 export function NewsList({
   newsTitle,
   news,
-  total,
-  pageSize,
+  pageCount,
 }: {
   newsTitle: string;
   news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[];
-  total: number;
-  pageSize: number;
+  pageCount: number;
 }) {
-  const [currentPageSize, setCurrentPageSize] = useState(pageSize);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [newsList, setNewsList] = useState<Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[]>([]);
   const firstNewsRef = useRef<HTMLAnchorElement>(null);
   const router = useRouter();
 
   useEffect(() => {
-    setCurrentPageSize(pageSize);
-
-    if (firstNewsRef.current) {
-      firstNewsRef.current.focus();
-      firstNewsRef.current.scrollIntoView({
-        behavior: `smooth`,
-        block: `center`,
-      });
+    if (Object.keys(router.query).length > 0) {
+      router.replace(
+        AppRoute.NEWS,
+        undefined,
+        {
+          shallow: true,
+        },
+      );
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageSize]);
+  }, [router]);
 
-  const isPaginationAvailable = pageSize < total;
+  useEffect(() => {
+    setNewsList((prevData) => {
+      const newIds = new Set(news.map((item) => item.id));
+      const filteredPrev = prevData.filter((item) => !newIds.has(item.id));
+      return [...filteredPrev, ...news];
+    });
+
+    const timer = setTimeout(() => {
+      if (firstNewsRef.current) {
+        firstNewsRef.current.focus();
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [news]);
+
+  const isPaginationAvailable = currentPage < pageCount;
 
   return (
     <Cards
@@ -43,12 +58,12 @@ export function NewsList({
       dataTestId="news-list"
       title={newsTitle}
       isNews
-      cards={news.map((newsItem) => ({
+      cards={newsList.map((newsItem) => ({
         ...newsItem,
         link: `${AppRoute.NEWS}/${newsItem.slug}`,
       }))}
       firstCardRef={firstNewsRef}
-      currentPageSize={currentPageSize}
+      currentPageSize={currentPage > 1 ? (currentPage - 1) * NEWS_LIMIT : undefined}
     >
       {isPaginationAvailable && (
         <div className="news-list__button-container">
@@ -68,8 +83,10 @@ export function NewsList({
   function loadMoreNews() {
     router.replace({
       query: {
-        pageSize: currentPageSize + NEWS_LIMIT,
+        page: currentPage + 1,
       },
     });
+
+    setCurrentPage(currentPage + 1);
   }
 }

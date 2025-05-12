@@ -4,7 +4,7 @@ import {
   hideCookie,
   hideHeader,
   setViewportSize,
-} from '@/playwright-tests/helpers';
+} from '@/playwright-tests/global-helpers';
 import { test, expect, Page } from '@playwright/test';
 
 const TEST_ID = `news-slider`;
@@ -15,7 +15,7 @@ test.describe(`NewsSliderComponentTest`, () => {
   }) => {
     await gotoPage({
       page,
-      url: `${AppRoute.NEWS}/priglashaem-na-vstrechu-s-sotrudnikom-zooparka`,
+      url: `${AppRoute.NEWS}/2024/03/10/priglashaem-na-vstrechu-s-sotrudnikom-zooparka`,
     });
 
     await hideHeader({
@@ -50,7 +50,7 @@ async function navigationTest({
     .click();
 
   await expect(page)
-    .toHaveURL(`${AppRoute.NEWS}/amurskii-tigr-i-kakie-u-nego-yest-problemi`);
+    .toHaveURL(`${AppRoute.NEWS}/2024/09/29/amurskii-tigr-i-kakie-u-nego-yest-problemi`);
 }
 
 async function mobileTest({

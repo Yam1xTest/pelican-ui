@@ -6,7 +6,7 @@ import {
   hideMap,
   hideSkipLink,
   setViewportSize,
-} from '@/playwright-tests/helpers';
+} from '@/playwright-tests/global-helpers';
 import { test, expect, Page } from '@playwright/test';
 
 const TEST_ID = `footer`;
@@ -55,7 +55,7 @@ async function mobileTest({
 }) {
   await setViewportSize({
     page,
-    height: 840,
+    height: 1395,
   });
 
   await expect(getFooterByTestId({
@@ -72,7 +72,7 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
-    height: 460,
+    height: 760,
   });
 
   await expect(getFooterByTestId({
@@ -89,7 +89,7 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
-    height: 509,
+    height: 809,
   });
 
   await expect(getFooterByTestId({
@@ -106,7 +106,7 @@ async function desktopTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
-    height: 578,
+    height: 878,
   });
 
   await expect(getFooterByTestId({
@@ -123,7 +123,7 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 898,
+    height: 1198,
   });
 
   await expect(getFooterByTestId({

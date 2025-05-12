@@ -7,7 +7,6 @@ import {
   CardsComponentProps,
   MapComponentProps,
   HomeTicketsComponentProps,
-  NotFoundComponentProps,
   ServicesComponentProps,
   ImageWithButtonGridComponentProps,
   SharedTicketsComponentProps,
@@ -20,6 +19,7 @@ import {
   VisitingRulesPhotosPolicyComponentProps,
   VisitingRulesEmergencyPhonesComponentProps,
 } from '@/src/common/types';
+import { normalizeSlug } from '@/src/common/utils/normalizeSlug';
 import { Cards } from '../Cards/Cards';
 import { ImageWithButtonGrid } from '../ImageWithButtonGrid/ImageWithButtonGrid';
 import { DiscountsCategories } from '../../discounts-page/DiscountsCategories/DiscountsCategories';
@@ -28,7 +28,6 @@ import { HomepageHero } from '../../home-page/HomepageHero/HomepageHero';
 import { HomepageImageWithButtonGrid } from '../../home-page/HomepageImageWithButtonGrid/HomepageImageWithButtonGrid';
 import { HomepageTickets } from '../../home-page/HomepageTickets/HomepageTickets';
 import { Services } from '../../home-page/Services/Services';
-import { NotFound } from '../../not-found-page/NotFound/NotFound';
 import { VisitingRulesEmergencyPhones } from '../../visiting-rules-page/VisitingRulesEmergencyPhones/VisitingRulesEmergencyPhones';
 import { VisitingRulesMain } from '../../visiting-rules-page/VisitingRulesMain/VisitingRulesMain';
 import { VisitingRulesPhotosPolicy } from '../../visiting-rules-page/VisitingRulesPhotosPolicy/VisitingRulesPhotosPolicy';
@@ -48,7 +47,6 @@ type Block = HeroComponentProps
   | ImageWithButtonGridComponentProps
   | MapComponentProps
   | HomeTicketsComponentProps
-  | NotFoundComponentProps
   | CategoriesComponentProps
   | DiscountsTermsComponentProps
   | DiscountsCategoriesComponentProps
@@ -63,11 +61,15 @@ export const BlockRenderer = ({
   block,
   email,
 }: {
-  slug?: string;
+  slug: string;
   block: Block;
   email: GlobalComponentProps['email'];
 }) => {
-  if (block.__component === BlockTypes.SHARED_HERO && (slug === AppRoute.HOME || slug?.startsWith(`${AppRoute.HOME}#`))) {
+  const normalizedSlug = normalizeSlug({
+    slug,
+  });
+
+  if (block.__component === BlockTypes.SHARED_HERO && normalizedSlug === AppRoute.HOME) {
     return (
       <HomepageHero
         title={block.title}
@@ -81,13 +83,14 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.SHARED_HERO && slug !== AppRoute.HOME) {
+  if (block.__component === BlockTypes.SHARED_HERO && normalizedSlug !== AppRoute.HOME) {
     return (
       <Hero
         title={block.title}
         image={block.image}
         scheduleTitle={block.scheduleTitle}
         scheduleTimetables={block.scheduleTimetables}
+        infoCardTitle={block.infoCardTitle}
         infoCardDescription={block.infoCardDescription}
         isInternalPage
         isFirstBlock={block.isFirstBlock}
@@ -130,7 +133,8 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID && (slug === AppRoute.HOME || slug?.startsWith(`${AppRoute.HOME}#`))) {
+  // eslint-disable-next-line max-len
+  if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID && normalizedSlug === AppRoute.HOME) {
     return (
       <HomepageImageWithButtonGrid
         title={block.title}
@@ -182,10 +186,6 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.NOT_FOUND) {
-    return <NotFound />;
-  }
-
   if (block.__component === BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID) {
     return (
       <ImageWithButtonGrid
@@ -215,7 +215,7 @@ export const BlockRenderer = ({
     return (
       <Article
         title={block.title}
-        date={block.publishedAt}
+        date={block.date}
         innerContent={block.innerContent}
         isFirstBlock={block.isFirstBlock}
         isLastBlock={block.isLastBlock}
@@ -227,6 +227,7 @@ export const BlockRenderer = ({
     return (
       <DiscountsTerms
         title={block.title}
+        subtitle={block.subtitle}
         rulesCards={block.rulesCards}
       />
     );

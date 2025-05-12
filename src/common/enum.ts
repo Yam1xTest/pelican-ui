@@ -37,12 +37,10 @@ export enum BlockTypes {
   HOME_TICKETS = `home.tickets`,
   HOME_MAP = `home.map-card`,
 
-  NOT_FOUND = `not-found.not-found`,
-
   DISCOUNTS_TERMS = `discounts.terms`,
   DISCOUNTS_CATEGORIES = `discounts.categories`,
 
-  VISITING_RULES_MAIN = `visiting-rules.main`,
+  VISITING_RULES_MAIN = `visiting-rules.visiting-rules-main`,
   VISITING_RULES_WARNINGS = `visiting-rules.warnings`,
   VISITING_RULES_PHOTOS_POLICY = `visiting-rules.photos-policy`,
   VISITING_RULES_EMERGENCY_PHONES = `visiting-rules.emergency-phones`,

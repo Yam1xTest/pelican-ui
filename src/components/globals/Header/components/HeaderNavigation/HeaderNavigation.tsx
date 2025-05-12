@@ -5,9 +5,11 @@ import { useRouter } from "next/router";
 export function HeaderNavigation({
   className,
   navigationLinks,
+  handleMobileMenuToggle,
 }: {
   className?: string;
   navigationLinks: GlobalComponentProps['navigationLinks'];
+  handleMobileMenuToggle?: () => void;
 }) {
   const router = useRouter();
 
@@ -26,7 +28,13 @@ export function HeaderNavigation({
             <Link
               href={link}
               className="header-navigation__link"
-              onClick={(e) => router.pathname === link && e.preventDefault()}
+              onClick={(e) => {
+                if (router.pathname === link) {
+                  e.preventDefault();
+                }
+
+                handleMobileMenuToggle?.();
+              }}
               aria-label={`Перейти на страницу ${name}`}
               data-testid="header-navigation-link"
             >

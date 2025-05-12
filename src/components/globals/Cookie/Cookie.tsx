@@ -18,16 +18,16 @@ export const optionYandexMetrika: OptionYM = {
 
 const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
 
-function Cookie() {
-  const [isCookie, setIsCookie] = useState(false);
+export function Cookie() {
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (getCookie(COOKIE_ACCEPT) === `true`) {
-      setIsCookie(true);
+    if (getCookie(COOKIE_ACCEPT) !== `true`) {
+      setIsVisible(true);
     }
   }, []);
 
-  if (isCookie) {
+  if (!isVisible) {
     return null;
   }
 
@@ -59,12 +59,10 @@ function Cookie() {
 
   function acceptCookie() {
     setCookie(COOKIE_ACCEPT, true);
-    setIsCookie(true);
+    setIsVisible(false);
 
     if (isMetricsEnabled) {
       window.ym(Number(yandexId), `init`, optionYandexMetrika);
     }
   }
 }
-
-export default Cookie;

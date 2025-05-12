@@ -8,6 +8,7 @@
     height: 100%;
     white-space: pre-line;
     text-align: left;
+    user-select: all;
 
     @include tablet {
       padding: 24px;

@@ -10,6 +10,7 @@ import dayjs from 'dayjs';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
 import { AppRoute } from '@/src/common/enum';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
+import { useScrollTop } from '@/src/common/hooks/useScrollTop';
 
 export default function DocumentsPage({
   pageData,
@@ -22,6 +23,8 @@ export default function DocumentsPage({
     seo,
     documentsTitle,
   } = pageData;
+
+  useScrollTop();
 
   return (
     <>
