@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable @stylistic/max-len */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-danger */
@@ -20,38 +21,34 @@ export default function Document() {
       <Head>
         <style>
           {`
-          #static-loader {
-            position: fixed;
-            left: 0;
-            top: 0;
-            z-index: 99;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            background-color: #f6f5f5;
-            opacity: 1;
-            transition: opacity 0.5s ease-in-out;
-          }
+            .paw-container {
+              position: fixed;
+              z-index: 99;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 100%;
+              background-color: #f6f5f5;
+              opacity: 1;
+            }
 
-          #static-loader .static-spinner {
-            position: absolute;
-            left: calc(50% - 50px);
-            top: calc(50% - 50px);
-            margin: 0 auto;
-            border: 6px solid #0e6e34;
-            width: 100px;
-            height: 100px;
-            animation: rotation 0.5s infinite linear;
-          }
+            .paw {
+              position: absolute;
+              width: 30px;
+              height: 30px;
+              animation: pawStep 2s ease-in-out infinite;
+            }
 
-          @keyframes rotation {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(359deg); }
-          }
+            @keyframes pawStep {
+              0%   { opacity: 0; }
+              30%  { opacity: 1; }
+              60%  { opacity: 1; }
+              100% { opacity: 0; }
+            }
           `}
         </style>
+
         <link
           rel="icon"
           type="image/png"
@@ -77,9 +74,30 @@ export default function Document() {
           href="/favicon/site.webmanifest"
         />
       </Head>
+
       <body>
         <div id="static-loader">
-          <div className="static-spinner" />
+          <div className="paw-container">
+            {Array.from({
+              length: 8,
+            })
+              .map((_, i) => (
+                <div
+                  className="paw"
+                  key={i}
+                  style={{
+                    animationDelay: `${i * 0.25}s`,
+                    transform: `rotate(${i * 45}deg) translateY(-50px) rotate(${i + 140}deg)`,
+                  }}
+                >
+                  <img
+                    src="/images/svg/paw.svg"
+                    alt="paw"
+                  />
+                </div>
+              ))}
+          </div>
+
           <style
             type="text/css"
             dangerouslySetInnerHTML={{
@@ -94,6 +112,7 @@ export default function Document() {
             }}
           />
         </div>
+
         <Main />
         <NextScript />
 
@@ -118,6 +137,7 @@ export default function Document() {
             `,
           }}
         />
+
         <Script
           id="gosWidgetScript"
           strategy="afterInteractive"
@@ -210,6 +230,7 @@ export default function Document() {
           `,
           }}
         />
+
         <noscript>
           <div>
             <img
@@ -222,6 +243,7 @@ export default function Document() {
             />
           </div>
         </noscript>
+
       </body>
     </Html>
   );
