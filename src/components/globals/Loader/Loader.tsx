@@ -1,5 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable @stylistic/max-len */
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { LoaderContainer } from "./components/LoaderContainer";

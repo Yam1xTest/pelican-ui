@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 /* eslint-disable @stylistic/max-len */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-danger */
