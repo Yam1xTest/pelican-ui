@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 /* eslint-disable @stylistic/max-len */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-danger */
@@ -10,6 +9,7 @@ import {
 } from 'next/document';
 import Script from 'next/script';
 import { optionYandexMetrika } from '../components/globals/Cookie/Cookie';
+import { LoaderContainer } from '../components/globals/Loader/components/LoaderContainer';
 
 export default function Document() {
   const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
@@ -21,7 +21,7 @@ export default function Document() {
       <Head>
         <style>
           {`
-            .paw-container {
+            .loader-container {
               position: fixed;
               z-index: 99;
               display: flex;
@@ -33,7 +33,7 @@ export default function Document() {
               opacity: 1;
             }
 
-            .paw {
+            .loader {
               position: absolute;
               width: 30px;
               height: 30px;
@@ -77,26 +77,7 @@ export default function Document() {
 
       <body>
         <div id="static-loader">
-          <div className="paw-container">
-            {Array.from({
-              length: 8,
-            })
-              .map((_, i) => (
-                <div
-                  className="paw"
-                  key={i}
-                  style={{
-                    animationDelay: `${i * 0.25}s`,
-                    transform: `rotate(${i * 45}deg) translateY(-50px) rotate(${i + 140}deg)`,
-                  }}
-                >
-                  <img
-                    src="/images/svg/paw.svg"
-                    alt="paw"
-                  />
-                </div>
-              ))}
-          </div>
+          <LoaderContainer />
 
           <style
             type="text/css"
