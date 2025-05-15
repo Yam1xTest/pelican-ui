@@ -33,7 +33,7 @@ class AppDocument extends Document {
 
     return (
       <Html lang="ru">
-        <Head nonce={nonce}>
+        <Head>
           <script
             nonce={nonce}
             dangerouslySetInnerHTML={{
@@ -43,32 +43,32 @@ class AppDocument extends Document {
 
           <style nonce={nonce}>
             {`
-            .loader-container {
-              position: fixed;
-              z-index: 99;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              width: 100%;
-              height: 100%;
-              background-color: #f6f5f5;
-              opacity: 1;
-            }
+              .loader-container {
+                position: fixed;
+                z-index: 99;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                background-color: #f6f5f5;
+                opacity: 1;
+              }
 
-            .loader {
-              position: absolute;
-              width: 30px;
-              height: 30px;
-              animation: pawStep 2s ease-in-out infinite;
-            }
+              .loader {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                animation: pawStep 2s ease-in-out infinite;
+              }
 
-            @keyframes pawStep {
-              0%   { opacity: 0; }
-              30%  { opacity: 1; }
-              60%  { opacity: 1; }
-              100% { opacity: 0; }
-            }
-          `}
+              @keyframes pawStep {
+                0%   { opacity: 0; }
+                30%  { opacity: 1; }
+                60%  { opacity: 1; }
+                100% { opacity: 0; }
+              }
+            `}
           </style>
 
           <link
@@ -243,7 +243,7 @@ class AppDocument extends Document {
             }}
           />
 
-          <noscript nonce={nonce}>
+          <noscript>
             <div>
               <img
                 src={`https://mc.yandex.ru/watch/${yandexId}`}
