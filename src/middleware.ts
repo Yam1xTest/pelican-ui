@@ -9,7 +9,7 @@ export function middleware(request: NextRequest) {
     default-src 'none';
     script-src 'self' ${isDev ? `'unsafe-eval' 'unsafe-inline'` : `'strict-dynamic' 'nonce-${nonce}'`} https://mc.yandex.ru https://pos.gosuslugi.ru;
     style-src 'self' ${isDev ? `'unsafe-eval' 'unsafe-inline'` : `'strict-dynamic' 'nonce-${nonce}'`};
-    img-src https://pos.gosuslugi.ru https://cdn.chelzoo.tech;
+    img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech;
     font-src https://cdn.chelzoo.tech;
     media-src 'self' https://storage.yandexcloud.net;
     frame-src https://pos.gosuslugi.ru;
