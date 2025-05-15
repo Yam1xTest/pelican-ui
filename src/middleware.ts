@@ -5,11 +5,10 @@ export function middleware(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID())
     .toString(`base64`);
   const cspHeader = `
-    default-src 'self';
+    default-src 'self' https://cdn.chelzoo.tech;
     script-src 'self' ${isDev ? `'unsafe-eval' 'unsafe-inline'` : `'strict-dynamic' 'nonce-${nonce}'`} https://mc.yandex.ru https://pos.gosuslugi.ru;
     style-src 'self' ${isDev ? `'unsafe-eval' 'unsafe-inline'` : `'strict-dynamic' 'nonce-${nonce}'`};
     img-src 'self' https://pos.gosuslugi.ru;
-    font-src 'self';
     frame-src  https://pos.gosuslugi.ru;
     base-uri 'self';
     form-action 'self';
