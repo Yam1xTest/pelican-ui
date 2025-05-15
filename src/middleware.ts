@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
     default-src 'self';
     script-src 'self' ${isDev ? `'unsafe-eval' 'unsafe-inline'` : `'strict-dynamic' 'nonce-${nonce}'`} https://mc.yandex.ru https://pos.gosuslugi.ru;
     style-src 'self' ${isDev ? `'unsafe-eval' 'unsafe-inline'` : `'strict-dynamic' 'nonce-${nonce}'`};
-    img-src 'self' https://pos.gosuslugi.ru https://cdn.plyr.io;
+    img-src 'self' https://pos.gosuslugi.ru;
     font-src 'self';
     frame-src  https://pos.gosuslugi.ru;
     base-uri 'self';
