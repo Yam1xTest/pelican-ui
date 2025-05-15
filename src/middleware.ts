@@ -9,6 +9,7 @@ export function middleware(request: NextRequest) {
     script-src 'self' ${isDev ? `'unsafe-eval' 'unsafe-inline'` : `'strict-dynamic' 'nonce-${nonce}'`} https://mc.yandex.ru https://pos.gosuslugi.ru;
     style-src 'self' ${isDev ? `'unsafe-eval' 'unsafe-inline'` : `'strict-dynamic' 'nonce-${nonce}'`};
     img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech;
+    media-src https://storage.yandexcloud.net;
     frame-src https://pos.gosuslugi.ru;
     base-uri 'self';
     form-action 'self';
