@@ -4,17 +4,21 @@ export function middleware(request: NextRequest) {
   const isDev = process.env.NODE_ENV !== `production`;
   const nonce = Buffer.from(crypto.randomUUID())
     .toString(`base64`);
+
   const cspHeader = `
-    default-src 'self' https://cdn.chelzoo.tech;
+    default-src 'none';
     script-src 'self' ${isDev ? `'unsafe-eval' 'unsafe-inline'` : `'strict-dynamic' 'nonce-${nonce}'`} https://mc.yandex.ru https://pos.gosuslugi.ru;
     style-src 'self' ${isDev ? `'unsafe-eval' 'unsafe-inline'` : `'strict-dynamic' 'nonce-${nonce}'`};
-    img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech;
-    media-src https://storage.yandexcloud.net;
+    img-src https://pos.gosuslugi.ru https://cdn.chelzoo.tech;
+    font-src https://cdn.chelzoo.tech;
+    media-src 'self' https://storage.yandexcloud.net;
     frame-src https://pos.gosuslugi.ru;
+    connect-src https://cdn.chelzoo.tech;
     base-uri 'self';
     form-action 'self';
     upgrade-insecure-requests;
-`;
+  `;
+
   const contentSecurityPolicyHeaderValue = cspHeader
     .replace(/\s{2,}/g, ` `)
     .trim();
@@ -32,6 +36,7 @@ export function middleware(request: NextRequest) {
       headers: requestHeaders,
     },
   });
+
   response.headers.set(
     `Content-Security-Policy`,
     contentSecurityPolicyHeaderValue,
