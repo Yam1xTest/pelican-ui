@@ -12,7 +12,6 @@ export function middleware(request: NextRequest) {
     img-src https://pos.gosuslugi.ru https://cdn.chelzoo.tech;
     font-src https://cdn.chelzoo.tech;
     media-src 'self' https://storage.yandexcloud.net;
-    frame-src https://pos.gosuslugi.ru;
     connect-src https://cdn.chelzoo.tech;
     base-uri 'self';
     form-action 'self';
