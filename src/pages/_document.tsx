@@ -1,26 +1,47 @@
 /* eslint-disable @stylistic/max-len */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-danger */
-import {
+import Document, {
   Html,
   Head,
   Main,
   NextScript,
+  DocumentContext,
 } from 'next/document';
 import Script from 'next/script';
 import { optionYandexMetrika } from '../components/globals/Cookie/Cookie';
 import { LoaderContainer } from '../components/globals/Loader/components/LoaderContainer';
 
-export default function Document() {
-  const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
+class MyDocument extends Document {
+  static async getInitialProps(ctx: DocumentContext) {
+    const initialProps = await Document.getInitialProps(ctx);
+    const nonce = ctx.req?.headers[`x-nonce`] as string | undefined;
+    return {
+      ...initialProps,
+      nonce,
+    };
+  }
 
-  const yandexId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
+  render() {
+    const {
+      nonce,
+    } = (this.props as any);
+    const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
 
-  return (
-    <Html lang="ru">
-      <Head>
-        <style>
-          {`
+    const yandexId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
+
+    return (
+
+      <Html lang="ru">
+        <Head nonce={nonce}>
+          <script
+            nonce={nonce}
+            dangerouslySetInnerHTML={{
+              __html: `window.__NONCE__ = ${JSON.stringify(nonce)};`,
+            }}
+          />
+          <style nonce={nonce}>
+            {`
             .loader-container {
               position: fixed;
               z-index: 99;
@@ -47,42 +68,43 @@ export default function Document() {
               100% { opacity: 0; }
             }
           `}
-        </style>
+          </style>
 
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favicon/favicon-96x96.png"
-          sizes="96x96"
-        />
-        <link
-          rel="icon"
-          type="image/svg+xml"
-          href="/favicon/favicon.svg"
-        />
-        <link
-          rel="shortcut icon"
-          href="/favicon/favicon.ico"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicon/apple-touch-icon.png"
-        />
-        <link
-          rel="manifest"
-          href="/favicon/site.webmanifest"
-        />
-      </Head>
+          <link
+            rel="icon"
+            type="image/png"
+            href="/favicon/favicon-96x96.png"
+            sizes="96x96"
+          />
+          <link
+            rel="icon"
+            type="image/svg+xml"
+            href="/favicon/favicon.svg"
+          />
+          <link
+            rel="shortcut icon"
+            href="/favicon/favicon.ico"
+          />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/favicon/apple-touch-icon.png"
+          />
+          <link
+            rel="manifest"
+            href="/favicon/site.webmanifest"
+          />
+        </Head>
 
-      <body>
-        <div id="static-loader">
-          <LoaderContainer />
+        <body>
+          <div id="static-loader">
+            <LoaderContainer nonce={nonce} />
 
-          <style
-            type="text/css"
-            dangerouslySetInnerHTML={{
-              __html: `
+            <style
+              type="text/css"
+              nonce={nonce}
+              dangerouslySetInnerHTML={{
+                __html: `
                   html {
                     overflow-y: scroll !important;
                   }
@@ -90,18 +112,19 @@ export default function Document() {
                     display: block !important;
                   }
               `,
-            }}
-          />
-        </div>
+              }}
+            />
+          </div>
 
-        <Main />
-        <NextScript />
+          <Main />
+          <NextScript nonce={nonce} />
 
-        <Script
-          id="yandex-metrika"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
+          <Script
+            id="yandex-metrika"
+            strategy="afterInteractive"
+            nonce={nonce}
+            dangerouslySetInnerHTML={{
+              __html: `
               (function(m,e,t,r,i,k,a){
                 m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
                 var z = null;m[i].l=1*new Date();
@@ -116,14 +139,15 @@ export default function Document() {
                 ym(${yandexId}, "init", ${JSON.stringify(optionYandexMetrika)})
               }
             `,
-          }}
-        />
+            }}
+          />
 
-        <Script
-          id="gosWidgetScript"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
+          <Script
+            id="gosWidgetScript"
+            strategy="afterInteractive"
+            nonce={nonce}
+            dangerouslySetInnerHTML={{
+              __html: `
              (function(){
             "use strict";
              function ownKeys(e, t) {
@@ -209,23 +233,26 @@ export default function Document() {
               };
           })()
           `,
-          }}
-        />
+            }}
+          />
 
-        <noscript>
-          <div>
-            <img
-              src={`https://mc.yandex.ru/watch/${yandexId}`}
-              style={{
-                position: `absolute`,
-                left: `-9999px`,
-              }}
-              alt=""
-            />
-          </div>
-        </noscript>
+          <noscript nonce={nonce}>
+            <div>
+              <img
+                src={`https://mc.yandex.ru/watch/${yandexId}`}
+                style={{
+                  position: `absolute`,
+                  left: `-9999px`,
+                }}
+                alt=""
+              />
+            </div>
+          </noscript>
 
-      </body>
-    </Html>
-  );
+        </body>
+      </Html>
+    );
+  }
 }
+
+export default MyDocument;
