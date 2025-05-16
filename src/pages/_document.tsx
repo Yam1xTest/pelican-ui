@@ -234,10 +234,13 @@ class AppDocument extends Document {
                       setStyles(t, e)
                     }
 
-                    changePosBannerOnResize(), window.addEventListener("resize", changePosBannerOnResize), window.onunload = function() {
+                    changePosBannerOnResize();
+                    window.addEventListener("resize", changePosBannerOnResize);
+                    window.addEventListener("pagehide", function () {
                       var e = document.documentElement;
-                      window.removeEventListener("resize", changePosBannerOnResize), removeStyles(posOptionsInitial, e)
-                    };
+                      window.removeEventListener("resize", changePosBannerOnResize);
+                      removeStyles(posOptionsInitial, e);
+                    });
                 })()
               `,
             }}

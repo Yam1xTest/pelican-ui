@@ -19,6 +19,7 @@ export function middleware(request: NextRequest) {
     frame-ancestors 'none';
     form-action 'none';
     upgrade-insecure-requests;
+    require-trusted-types-for 'script';
   `;
 
   const contentSecurityPolicyHeaderValue = cspHeader
