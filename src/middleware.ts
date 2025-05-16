@@ -1,3 +1,6 @@
+// https://gitnation.com/contents/content-security-policy-with-nextjs-leveling-up-your-websites-security/video
+// https://nextjs.org/docs/app/guides/content-security-policy
+
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
