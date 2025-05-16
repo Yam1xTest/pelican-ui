@@ -15,6 +15,8 @@ export function middleware(request: NextRequest) {
     frame-src https://pos.gosuslugi.ru;
     connect-src 'self' https://cdn.chelzoo.tech;
     manifest-src 'self';
+    frame-ancestors 'none';
+    form-action 'none';
     upgrade-insecure-requests;
   `;
 
