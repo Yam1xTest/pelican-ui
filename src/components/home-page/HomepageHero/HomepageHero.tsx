@@ -1,5 +1,5 @@
 import { GlobalComponentProps, HeroComponentProps } from "@/src/common/types";
-import { getLastMondayOfMonth } from "@/src/common/utils/getDateOfLastMonday";
+import { getLastMondayOfMonth } from "@/src/common/utils/getDateOfLastMonday/getDateOfLastMonday";
 import { Hero } from "../../globals/Hero/Hero";
 
 export function HomepageHero({
