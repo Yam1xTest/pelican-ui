@@ -33,7 +33,7 @@ class AppDocument extends Document {
 
     return (
       <Html lang="ru">
-        <Head>
+        <Head nonce={nonce}>
           <script
             nonce={nonce}
             dangerouslySetInnerHTML={{
@@ -243,7 +243,7 @@ class AppDocument extends Document {
             }}
           />
 
-          <noscript>
+          <noscript nonce={nonce}>
             <div>
               <img
                 src={`https://mc.yandex.ru/watch/${yandexId}`}
