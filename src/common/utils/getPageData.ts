@@ -2,7 +2,6 @@ import qs from "qs";
 import { AppRoute } from "../enum";
 import { api } from "./HttpClient";
 import { mapContractByBlock } from "./mapContractByBlock";
-import { MOCK_NOT_FOUND_PAGE } from "../mocks/not-found-page-mock/not-found-page-mock";
 import { PageData } from "../types";
 
 export async function getPageData({
@@ -83,7 +82,7 @@ export async function getPageData({
       });
 
     default:
-      return MOCK_NOT_FOUND_PAGE;
+      return null;
   }
 }
 
