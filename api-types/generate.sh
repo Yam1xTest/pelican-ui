@@ -1,5 +1,5 @@
 swagger-typescript-api \
-  --path 'http://pelican.local.tourmalinecore.internal:40110/cms/documentation/openapi.json' \
+  --path 'http://host.docker.internal:1337/api/documentation/swagger.json' \
   --no-client \
   --name api-types.ts \
   --output /local/out
