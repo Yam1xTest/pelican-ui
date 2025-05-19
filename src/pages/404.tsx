@@ -1,5 +1,10 @@
-import { NotFound } from "../components/globals/NotFound/NotFound";
+import { CustomError } from "../components/globals/CustomError/CustomError";
 
 export default function Custom404() {
-  return <NotFound />;
+  return (
+    <CustomError
+      code={404}
+      message="Страница не найдена или не существует"
+    />
+  );
 }
