@@ -1,8 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @stylistic/max-len */
+
 export function LoaderContainer({
   nonce,
-}: { nonce: string; }) {
+}: {
+  nonce: string;
+}) {
   const styles = Array.from({
     length: 8,
   })
