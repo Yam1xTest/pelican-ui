@@ -7,7 +7,7 @@
 	// https://playwright.dev/docs/docker
 	"image": "mcr.microsoft.com/playwright:v1.49.0-noble",
 	// let's install playwright itself
-	"onCreateCommand": "npm playwright@1.49.0 install",
+	"onCreateCommand": "npm install playwright@1.49.0",
 	"features": {
 		"ghcr.io/devcontainers/features/docker-outside-of-docker:1.6.0": {}
 	},
