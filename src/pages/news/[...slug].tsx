@@ -189,6 +189,7 @@ async function getOtherNews({
       ],
       sort: {
         date: `desc`,
+        id: `desc`,
       },
       filters: {
         slug: {

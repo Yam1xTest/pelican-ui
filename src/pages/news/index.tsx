@@ -125,6 +125,7 @@ async function getNewsData({
       ],
       sort: {
         date: `desc`,
+        id: `desc`,
       },
       pagination: {
         page,
