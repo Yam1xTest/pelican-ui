@@ -7,7 +7,7 @@
 	// https://playwright.dev/docs/docker
 	"image": "mcr.microsoft.com/playwright:v1.49.0-noble",
 	// let's install only playwright itself
-	"onCreateCommand": "mv package.json package.json.bkp && npm install --no-save playwright@1.49.0 && mv package.json.bkp package.json",
+	"onCreateCommand": "mv package.json package.json.bkp && npm install --no-save playwright@1.49.0 && npm install --no-save @playwright/test@1.49.0 && mv package.json.bkp package.json",
 	// it is needed so that our tests can make calls to the parent container network 
 	// it is where our local-env is running
 	"runArgs": [
