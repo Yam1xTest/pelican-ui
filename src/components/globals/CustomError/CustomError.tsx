@@ -39,12 +39,14 @@ export function CustomError({
           alt=""
         />
       )}
-      <Link
-        href={AppRoute.HOME}
-        className="custom-error__button button button--primary"
-      >
-        Главная страница
-      </Link>
+      {statusCode === HttpStatusCode.NotFound && (
+        <Link
+          href={AppRoute.HOME}
+          className="custom-error__button button button--primary"
+        >
+          Главная страница
+        </Link>
+      )}
     </section>
   );
 }
