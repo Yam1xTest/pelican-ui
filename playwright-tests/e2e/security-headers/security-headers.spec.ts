@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/max-len */
 import test, { expect } from "@playwright/test";
 
 test(`Check security headers`, async ({
@@ -12,6 +13,7 @@ test(`Check security headers`, async ({
   const headers = await response.allHeaders();
   const nonce = await page.evaluate(() => (window as any).__NONCE__);
 
+  // CORS headers
   expect(headers[`access-control-allow-credentials`])
     .toBe(`false`);
 
@@ -21,7 +23,7 @@ test(`Check security headers`, async ({
   expect(headers[`cross-origin-opener-policy`])
     .toBe(`same-origin`);
 
-  // security headers
+  // Security headers
   expect(headers[`x-frame-options`])
     .toBe(`SAMEORIGIN`);
 
@@ -32,10 +34,9 @@ test(`Check security headers`, async ({
     .toBe(`no-referrer`);
 
   expect(headers[`permissions-policy`])
-    // eslint-disable-next-line @stylistic/max-len
     .toBe(`interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()`);
 
+  // CSP header
   expect(headers[`content-security-policy`])
-    // eslint-disable-next-line @stylistic/max-len
     .toBe(`default-src 'none'; script-src 'self' ${process.env.NODE_ENV === `production` ? `'strict-dynamic' 'nonce-${nonce}'` : `'unsafe-eval'`} https://mc.yandex.ru https://pos.gosuslugi.ru 'unsafe-inline'; style-src 'self' ${process.env.NODE_ENV === `production` ? `'strict-dynamic' 'nonce-${nonce}'` : `'unsafe-eval' 'unsafe-inline'`}; img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; font-src 'self' https://cdn.chelzoo.tech; media-src 'self' https://storage.yandexcloud.net; frame-src https://pos.gosuslugi.ru; connect-src 'self' https://cdn.chelzoo.tech; manifest-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests;`);
 });
