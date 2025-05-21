@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/max-len */
 import test, { expect, Page } from "@playwright/test";
 
 test.describe(`Check security headers`, () => {
@@ -81,6 +82,9 @@ async function expectSecurityHeaders({
   page: Page;
   headers: Record<string, string>;
 }) {
+  // eslint-disable-next-line no-console
+  console.log(`NODE_ENV:`, process.env.NODE_ENV);
+
   // 1. Expect CORS headers
   expect(headers[`access-control-allow-credentials`])
     .toBe(`false`);
@@ -102,15 +106,14 @@ async function expectSecurityHeaders({
     .toBe(`no-referrer`);
 
   expect(headers[`permissions-policy`])
-  // eslint-disable-next-line @stylistic/max-len
     .toBe(`interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()`);
 
   // 3. Expect CSP headers if exist
   if (headers[`content-security-policy`]) {
+    const isDev = process.env.NODE_ENV === `test`;
     const nonce = await page.evaluate(() => (window as any).__NONCE__);
 
     expect(headers[`content-security-policy`])
-    // eslint-disable-next-line @stylistic/max-len
-      .toBe(`default-src 'none'; script-src 'self' ${process.env.NODE_ENV === `production` ? `'strict-dynamic' 'nonce-${nonce}'` : `'unsafe-eval'`} https://mc.yandex.ru https://pos.gosuslugi.ru 'unsafe-inline'; style-src 'self' ${process.env.NODE_ENV === `production` ? `'strict-dynamic' 'nonce-${nonce}'` : `'unsafe-eval' 'unsafe-inline'`}; img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; font-src 'self' https://cdn.chelzoo.tech; media-src 'self' https://storage.yandexcloud.net; frame-src https://pos.gosuslugi.ru; connect-src 'self' https://cdn.chelzoo.tech; manifest-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests;`);
+      .toBe(`default-src 'none'; script-src 'self' ${isDev ? `'strict-dynamic' 'nonce-${nonce}'` : `'unsafe-eval'`} https://mc.yandex.ru https://pos.gosuslugi.ru 'unsafe-inline'; style-src 'self' ${isDev ? `'strict-dynamic' 'nonce-${nonce}'` : `'unsafe-eval' 'unsafe-inline'`}; img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; font-src 'self' https://cdn.chelzoo.tech; media-src 'self' https://storage.yandexcloud.net; frame-src https://pos.gosuslugi.ru; connect-src 'self' https://cdn.chelzoo.tech; manifest-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests;`);
   }
 }
