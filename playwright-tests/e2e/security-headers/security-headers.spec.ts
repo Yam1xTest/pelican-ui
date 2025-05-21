@@ -4,6 +4,9 @@ import test, { expect } from "@playwright/test";
 test(`Check security headers`, async ({
   page,
 }) => {
+  // eslint-disable-next-line no-console
+  console.log(`NODE_ENV:`, process.env.NODE_ENV);
+
   const response = await page.goto(``);
 
   if (!response) {
