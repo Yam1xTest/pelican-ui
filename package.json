@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:static": "cross-env APP_ENV=static next dev",
-    "dev:static:without-image-optimization": "cross-env IMAGE_OPTIMIZATION_DISABLED=true npm run dev:static",
+    "dev:static:without-image-optimization": "cross-env NODE_ENV=test npm run dev:static",
     "build": "next build",
     "start": "next start",
     "postcss": "postcss src/styles/index.scss --dir build/static/css --parser postcss-scss",
