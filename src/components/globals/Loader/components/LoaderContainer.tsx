@@ -21,6 +21,11 @@ export function LoaderContainer({
 
   return (
     <div className="loader-container">
+      {/*
+        Insert dynamic inline styles into the page.
+        We add the CSP nonce to allow this inline <style> block to be executed
+        without violating Content Security Policy.
+      */}
       <style nonce={nonce}>{styles}</style>
       {Array.from({
         length: 8,
