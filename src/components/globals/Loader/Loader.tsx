@@ -7,6 +7,8 @@ export function Loader() {
   const [nonce, setNonce] = useState<string | null>(null);
   const route = useRouter();
 
+  // Read the nonce from the global window object
+  // This injected on the server side, in _document.tsx
   useEffect(() => {
     setNonce((window as any).__NONCE__ || null);
   }, []);
@@ -41,6 +43,7 @@ export function Loader() {
     };
   });
 
+  // Show loader only when loading AND nonce is available
   return isLoading && nonce ? (
     <div
       data-testid="loader"

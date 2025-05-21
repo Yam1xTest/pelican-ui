@@ -13,6 +13,11 @@ import { optionYandexMetrika } from '../components/globals/Cookie/Cookie';
 import { LoaderContainer } from '../components/globals/Loader/components/LoaderContainer';
 
 class AppDocument extends Document {
+  // Get initial props for the custom Document, including the CSP nonce from request headers.
+  // We need to create a custom Document to access the incoming HTTP request object (ctx.req),
+  // which is not available in other parts of the Next.js rendering process.
+  // This is the only place in a Next.js app where we can safely
+  // extract request-level data (like CSP nonce) and inject it into the server-rendered HTML.
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
     const nonce = ctx.req?.headers[`x-nonce`] as string | undefined;
@@ -34,6 +39,7 @@ class AppDocument extends Document {
     return (
       <Html lang="ru">
         <Head nonce={nonce}>
+          {/* Expose nonce to client-side JavaScript for use in components */}
           <script
             nonce={nonce}
             dangerouslySetInnerHTML={{

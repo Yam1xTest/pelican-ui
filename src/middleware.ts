@@ -1,13 +1,23 @@
 // https://gitnation.com/contents/content-security-policy-with-nextjs-leveling-up-your-websites-security/video
 // https://nextjs.org/docs/app/guides/content-security-policy
+// https://github.com/TourmalineCore/pelican-documentation/pull/19
 
 import { NextRequest, NextResponse } from 'next/server';
 
+// This middleware sets a Content Security Policy (CSP) with a per-request nonce (random string)
+// to enhance security by allowing only specific scripts and styles to run
+
 export function middleware(request: NextRequest) {
   const isDev = process.env.NODE_ENV !== `production`;
+  // Generate a unique random nonce (base64 string) for each request.
   const nonce = Buffer.from(crypto.randomUUID())
     .toString(`base64`);
 
+  // Define the CSP header.
+  // In development, allow 'unsafe-eval' and 'unsafe-inline' for easier debugging.
+  // In production, allow only scripts and styles with the generated nonce and use 'strict-dynamic'.
+  // Note: 'unsafe-inline' is ignored by modern browsers when a 'nonce' is present,
+  // but it is included for compatibility with older browsers that do not support nonces.
   const cspHeader = `
     default-src 'none';
     script-src 'self' ${isDev
@@ -27,25 +37,29 @@ export function middleware(request: NextRequest) {
     form-action 'none';
     upgrade-insecure-requests;
   `;
-
+  // Clean up whitespace in the header string
   const contentSecurityPolicyHeaderValue = cspHeader
-    .replace(/\s{2,}/g, ` `)
-    .trim();
+    .replace(/\s{2,}/g, ` `) // Replace two or more spaces with a single space
+    .trim(); // Remove leading and trailing whitespace
 
+  // Clone original request headers and add the nonce to it
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set(`x-nonce`, nonce);
 
+  // Also add the CSP to request headers (so it can be read inside the app if needed)
   requestHeaders.set(
     `Content-Security-Policy`,
     contentSecurityPolicyHeaderValue,
   );
 
+  // Create the next response with modified request headers
   const response = NextResponse.next({
     request: {
       headers: requestHeaders,
     },
   });
 
+  // Set the final CSP header in the actual HTTP response to the browser
   response.headers.set(
     `Content-Security-Policy`,
     contentSecurityPolicyHeaderValue,
@@ -54,6 +68,7 @@ export function middleware(request: NextRequest) {
   return response;
 }
 
+// Middleware configuration: match all paths EXCEPT specific static and API files
 export const config = {
   matcher: [
     /*
@@ -64,7 +79,10 @@ export const config = {
      * - favicon.ico (favicon file)
      */
     {
+      // Apply the middleware to everything except Next.js API routes and static assets
       source: `/((?!api|_next/static|_next/image|favicon.ico).*)`,
+      // These headers are added by Next.js or browsers when preloading routes or resources
+      // We skip applying middleware to avoid unnecessary work or CSP processing for them
       missing: [
         {
           type: `header`,
