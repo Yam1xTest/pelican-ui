@@ -10,8 +10,12 @@ export function middleware(request: NextRequest) {
 
   const cspHeader = `
     default-src 'none';
-    script-src 'self' ${isDev ? `'unsafe-eval'` : `'strict-dynamic' 'nonce-${nonce}'`} https://mc.yandex.ru https://pos.gosuslugi.ru 'unsafe-inline';
-    style-src 'self' ${isDev ? `'unsafe-eval' 'unsafe-inline'` : `'strict-dynamic' 'nonce-${nonce}'`};
+    script-src 'self' ${isDev
+    ? `'unsafe-eval'`
+    : `'strict-dynamic' 'nonce-${nonce}'`} https://mc.yandex.ru https://pos.gosuslugi.ru 'unsafe-inline';
+    style-src 'self' ${isDev
+    ? `'unsafe-eval' 'unsafe-inline'`
+    : `'strict-dynamic' 'nonce-${nonce}'`};
     img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech;
     font-src 'self' https://cdn.chelzoo.tech;
     media-src 'self' https://storage.yandexcloud.net;
