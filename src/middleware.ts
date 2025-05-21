@@ -6,7 +6,6 @@ import { NextRequest, NextResponse } from 'next/server';
 
 // This middleware sets a Content Security Policy (CSP) with a per-request nonce (random string)
 // to enhance security by allowing only specific scripts and styles to run
-
 export function middleware(request: NextRequest) {
   const isDev = process.env.NODE_ENV !== `production`;
   // Generate a unique random nonce (base64 string) for each request.
@@ -37,6 +36,7 @@ export function middleware(request: NextRequest) {
     form-action 'none';
     upgrade-insecure-requests;
   `;
+
   // Clean up whitespace in the header string
   const contentSecurityPolicyHeaderValue = cspHeader
     .replace(/\s{2,}/g, ` `) // Replace two or more spaces with a single space
