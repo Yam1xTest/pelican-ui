@@ -64,5 +64,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           build-args: |
             CDN_ENABLED=false
-            BASE_URL=https://chelzoo.tech
         
