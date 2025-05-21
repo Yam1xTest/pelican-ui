@@ -110,7 +110,7 @@ async function expectSecurityHeaders({
 
   // 3. Expect CSP headers if exist
   if (headers[`content-security-policy`]) {
-    const isDev = process.env.NODE_ENV === `test`;
+    const isDev = process.env.NODE_ENV === `production`;
     const nonce = await page.evaluate(() => (window as any).__NONCE__);
 
     expect(headers[`content-security-policy`])
