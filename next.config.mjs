@@ -143,7 +143,7 @@ const nextConfig = {
       path: `https://${process.env.CDN_DOMAIN}/_next/image`
     }),
 
-    unoptimized: process.env.DISABLED_IMAGE_OPTIMIZATION === 'true',
+    unoptimized: process.env.IMAGE_OPTIMIZATION_DISABLED === 'true',
 
     // lifetime in seconds for cached optimized images
     // https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl
