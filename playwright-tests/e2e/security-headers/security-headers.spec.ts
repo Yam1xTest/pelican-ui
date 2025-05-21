@@ -82,9 +82,6 @@ async function expectSecurityHeaders({
   page: Page;
   headers: Record<string, string>;
 }) {
-  // eslint-disable-next-line no-console
-  console.log(`NODE_ENV:`, process.env.NODE_ENV);
-
   // 1. Expect CORS headers
   expect(headers[`access-control-allow-credentials`])
     .toBe(`false`);
