@@ -14,8 +14,7 @@ export function NewsSliderCard({
   return (
     <Link
       href={`${AppRoute.NEWS}/${slug}`}
-      className="news-slider-card"
-      data-testid="slider-card"
+      className="news-slider-card__inner"
       aria-label={`Перейти на новость с заголовком ${title}`}
     >
       <h3 className="news-slider-card__title">
