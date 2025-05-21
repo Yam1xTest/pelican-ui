@@ -5,6 +5,7 @@ import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer
 import { getPageData } from '../common/utils/getPageData';
 import { SeoHead } from '../components/globals/SeoHead/SeoHead';
 import { useGosBannerWidget } from '../common/hooks/useGosBannerWidget';
+import { useScrollTop } from '../common/hooks/useScrollTop';
 
 type UniversalProps = {
   globalData: GlobalComponentProps;
@@ -28,6 +29,10 @@ export default function UniversalPage({
     seo,
     blocks,
   } = pageData;
+
+  useScrollTop({
+    dependencies: [asPath],
+  });
 
   return (
     <>
@@ -64,6 +69,12 @@ export async function getServerSideProps({
       slug: query.slug,
     });
 
+    if (!pageData) {
+      return {
+        notFound: true,
+      };
+    }
+
     pageData.blocks = setBlockPosition({
       slug: query.slug,
       blocks: pageData.blocks,
@@ -81,6 +92,12 @@ export async function getServerSideProps({
       slug: query.slug,
       preview,
     });
+
+    if (!pageData) {
+      return {
+        notFound: true,
+      };
+    }
 
     pageData.blocks = setBlockPosition({
       slug: query.slug,

@@ -16,8 +16,6 @@ on:
     branches:
       - master
       - feature/*
-  # to allow to wait for a docker image to be published to proceed in another workflow
-  workflow_call:
 
 jobs:
   push_to_registry:
@@ -66,3 +64,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64,linux/arm64
+          build-args: |
+            CDN_ENABLED=true
+            CDN_DOMAIN=cdn.chelzoo.tech

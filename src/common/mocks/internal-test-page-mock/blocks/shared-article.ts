@@ -13,7 +13,7 @@ export const MOCK_SHARED_ARTICLE: ArticleComponentProps = {
   title: `Приглашаем на встречу с\u00A0сотрудником зоопарка`,
   slug: `priglashaem-na-vstrechu-s-sotrudnikom-zooparka`,
   description: `Завтра празднуется два замечательных праздника, которые напрямую связаны с зоопарком...`,
-  publishedAt: new Date(`10.03.24`)
+  date: new Date(`10.03.24`)
     .toJSON(),
   innerContent: `<p>Завтра празднуется два замечательных праздника, которые напрямую связаны с зоопарком: день защиты животных и день кипера – специалистов, которые как раз-таки оберегают зверей и заботятся о них ежедневно: кормят, развлекают, делают уборку.</p>
     <img src='/images/news/employee.png' />

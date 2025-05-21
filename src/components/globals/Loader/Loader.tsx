@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { LoaderContainer } from "./components/LoaderContainer";
 
 export function Loader() {
   const [isLoading, setIsLoading] = useState(false);
@@ -9,6 +10,7 @@ export function Loader() {
     let timeoutId: NodeJS.Timeout;
 
     const handleStart = (url: string) => {
+      clearTimeout(timeoutId);
       if (url !== route.asPath) {
         timeoutId = setTimeout(() => {
           setIsLoading(true);
@@ -39,7 +41,7 @@ export function Loader() {
       data-testid="loader"
       id="static-loader"
     >
-      <div className="static-spinner" />
+      <LoaderContainer />
     </div>
   );
 }

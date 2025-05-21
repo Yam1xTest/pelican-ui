@@ -16,7 +16,7 @@ import { TicketsPopup } from '../TicketsPopup/TicketsPopup';
 import { Footer } from '../Footer/Footer';
 import { SkipLink } from '../SkipLink/SkipLink';
 import { ExitPreviewButton } from '../ExitPreviewButton/ExitPreviewButton';
-import Cookie from '../Cookie/Cookie';
+import { Cookie } from '../Cookie/Cookie';
 
 type LayoutProps = GlobalComponentProps & PropsWithChildren & {
   isPreview: boolean;

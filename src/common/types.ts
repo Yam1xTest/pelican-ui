@@ -202,14 +202,13 @@ export type TextAndMediaComponentProps = {
   viewFootsteps: boolean;
 } & BlockPosition;
 
-export type ArticleComponentProps = Omit<NewsArticleProps, 'id' | 'date' | 'link' | 'labels'> & {
+export type ArticleComponentProps = Omit<NewsArticleProps, 'id' | 'link' | 'labels'> & {
   __component: BlockTypes.SHARED_ARTICLE;
 } & BlockPosition;
 
 export type NewsArticleProps = CardProps & {
   slug: string;
   innerContent: string;
-  publishedAt?: string;
   date?: string;
   seo?: Seo;
 };
@@ -261,11 +260,6 @@ export type MapComponentProps = {
   subtitle: string;
   note: string;
   image: Image;
-};
-
-export type NotFoundComponentProps = {
-  id: number;
-  __component: BlockTypes.NOT_FOUND;
 };
 
 export type SharedTicketsComponentProps = {

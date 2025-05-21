@@ -4,6 +4,7 @@ import {
   DocumentsCategory,
   DocumentsCategoryListResponse,
 } from "@/src/common/api-types";
+import { useScrollTop } from "@/src/common/hooks/useScrollTop";
 import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
 import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
 import { CategoryProps, DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
@@ -11,7 +12,6 @@ import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryPar
 import { api } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
 import { SeoHead } from "@/src/components/globals/SeoHead/SeoHead";
-import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import qs from "qs";
@@ -30,6 +30,8 @@ export default function DocumentsCategories({
 }) {
   const router = useRouter();
 
+  useScrollTop();
+
   useEffect(() => {
     if (queryYear) {
       router.replace(
@@ -39,14 +41,14 @@ export default function DocumentsCategories({
             year: queryYear,
           },
         },
+        undefined,
+        {
+          shallow: true,
+        },
       );
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  if (!category) {
-    return <NotFound />;
-  }
 
   return (
     <>
@@ -83,6 +85,12 @@ export async function getServerSideProps({
       slug,
     }) => slug === query.slug) || null;
 
+    if (!documentCategory) {
+      return {
+        notFound: true,
+      };
+    }
+
     if (!documentCategory?.hasTabs) {
       return {
         props: {
@@ -118,14 +126,6 @@ export async function getServerSideProps({
         }
       });
 
-    if (query.year && !availableYears.includes(+query.year)) {
-      return {
-        props: {
-          category: null,
-        },
-      };
-    }
-
     const lastYear = String(availableYears[0]);
     const filteredDocuments = MOCK_DOCUMENTS.filter(({
       date,
@@ -155,9 +155,7 @@ export async function getServerSideProps({
 
   if (!category) {
     return {
-      props: {
-        category,
-      },
+      notFound: true,
     };
   }
 

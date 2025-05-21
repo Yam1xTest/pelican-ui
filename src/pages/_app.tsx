@@ -2,7 +2,7 @@
 import '../styles/index.scss';
 import type { AppProps } from 'next/app';
 import localFont from "next/font/local";
-import router, { useRouter } from 'next/router';
+import router from 'next/router';
 import { useEffect } from 'react';
 import { Layout } from '../components/globals/Layout/Layout';
 import { WindowWidthProvider } from '../common/providers/WindowWidthProvider';
@@ -59,10 +59,6 @@ export default function App({
 }: AppProps & {
   isPreview: boolean;
 }) {
-  const {
-    asPath,
-  } = useRouter();
-
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       if (document.cookie.includes('cookieAccept=true') && typeof window !== 'undefined' && isMetricsEnabled) {
@@ -78,12 +74,6 @@ export default function App({
   // ToDo: check warning
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.events]);
-
-  useEffect(() => {
-    document.body.scroll({
-      top: 0,
-    });
-  }, [asPath]);
 
   useEffect(() => {
     const loaderElement = document.getElementById('static-loader');
