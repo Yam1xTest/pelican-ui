@@ -53,8 +53,6 @@ jobs:
 
   run-tests:
     runs-on: ubuntu-24.04
-    env:
-      NODE_ENV: test
 
     strategy:
       fail-fast: false
@@ -112,7 +110,7 @@ jobs:
 
     - name: Run Playwright Tests
       run: |
-        npm run dev:static &
+        npm run dev:static:without-image-optimization &
         npx --yes wait-on http://localhost:3000 & 
         npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
