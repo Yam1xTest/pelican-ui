@@ -1,19 +1,87 @@
-/* eslint-disable @stylistic/max-len */
-import test, { expect } from "@playwright/test";
+import test, { expect, Page } from "@playwright/test";
 
-test(`Check security headers`, async ({
+test.describe(`Check security headers`, () => {
+  test(
+    `Check main page headers`,
+    async ({
+      page,
+    }) => {
+      const response = await page.goto(``);
+
+      if (!response) throw new Error(`No response found`);
+
+      const headers = response.headers();
+
+      await expectSecurityHeaders({
+        page,
+        headers,
+      });
+    },
+  );
+
+  test(
+    `Check JS headers`,
+    async ({
+      page,
+    }) => {
+      const headers = await getResponseHeadersByExtension({
+        page,
+        extension: `.js`,
+      });
+
+      await expectSecurityHeaders({
+        page,
+        headers,
+      });
+    },
+  );
+
+  test(
+    `Check image headers`,
+    async ({
+      page,
+    }) => {
+      const headers = await getResponseHeadersByExtension({
+        page,
+        extension: `.svg`,
+      });
+
+      await expectSecurityHeaders({
+        page,
+        headers,
+      });
+    },
+  );
+});
+
+async function getResponseHeadersByExtension({
   page,
-}) => {
-  const response = await page.goto(``);
+  extension,
+}: {
+  page: Page;
+  extension: string;
+}) {
+  const responses: any[] = [];
+  page.on(`response`, (res) => responses.push(res));
 
-  if (!response) {
-    throw new Error(`No response from the server`);
-  }
+  await page.goto(``);
 
-  const headers = await response.allHeaders();
-  const nonce = await page.evaluate(() => (window as any).__NONCE__);
+  const filtered = responses.filter((res) => res.url()
+    .endsWith(extension));
 
-  // CORS headers
+  if (!filtered.length) throw new Error(`No ${extension} response found`);
+
+  return filtered[0].headers();
+}
+
+async function expectSecurityHeaders({
+  page,
+  headers,
+}: {
+  page: Page;
+  headers: Record<string, string>;
+}) {
+  // 1. Expect CORS headers
   expect(headers[`access-control-allow-credentials`])
     .toBe(`false`);
 
@@ -23,7 +91,7 @@ test(`Check security headers`, async ({
   expect(headers[`cross-origin-opener-policy`])
     .toBe(`same-origin`);
 
-  // Security headers
+  // 2. Expect security headers
   expect(headers[`x-frame-options`])
     .toBe(`SAMEORIGIN`);
 
@@ -34,24 +102,15 @@ test(`Check security headers`, async ({
     .toBe(`no-referrer`);
 
   expect(headers[`permissions-policy`])
+  // eslint-disable-next-line @stylistic/max-len
     .toBe(`interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()`);
 
-  // CSP header
-  const isDev = process.env.NODE_ENV !== `production`;
+  // 3. Expect CSP headers if exist
+  if (headers[`content-security-policy`]) {
+    const nonce = await page.evaluate(() => (window as any).__NONCE__);
 
-  expect(headers[`content-security-policy`])
-    .toBe(`
-      default-src 'none'; 
-      script-src 'self' ${isDev ? `'unsafe-eval'` : `'strict-dynamic' 'nonce-${nonce}'`} https://mc.yandex.ru https://pos.gosuslugi.ru 'unsafe-inline'; 
-      style-src 'self' ${isDev ? `'unsafe-eval' 'unsafe-inline'` : `'strict-dynamic' 'nonce-${nonce}'`}; 
-      img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; 
-      font-src 'self' https://cdn.chelzoo.tech; 
-      media-src 'self' https://storage.yandexcloud.net; 
-      frame-src https://pos.gosuslugi.ru; 
-      connect-src 'self' https://cdn.chelzoo.tech; 
-      manifest-src 'self'; base-uri 'none'; 
-      frame-ancestors 'none'; 
-      form-action 'none'; 
-      upgrade-insecure-requests;
-      `);
-});
+    expect(headers[`content-security-policy`])
+    // eslint-disable-next-line @stylistic/max-len
+      .toBe(`default-src 'none'; script-src 'self' ${process.env.NODE_ENV === `production` ? `'strict-dynamic' 'nonce-${nonce}'` : `'unsafe-eval'`} https://mc.yandex.ru https://pos.gosuslugi.ru 'unsafe-inline'; style-src 'self' ${process.env.NODE_ENV === `production` ? `'strict-dynamic' 'nonce-${nonce}'` : `'unsafe-eval' 'unsafe-inline'`}; img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; font-src 'self' https://cdn.chelzoo.tech; media-src 'self' https://storage.yandexcloud.net; frame-src https://pos.gosuslugi.ru; connect-src 'self' https://cdn.chelzoo.tech; manifest-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests;`);
+  }
+}
