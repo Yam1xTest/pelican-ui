@@ -40,8 +40,8 @@ test(`Check security headers`, async ({
     .toBe(`interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()`);
 
   // CSP header
-  const isDev = process.env.NODE_ENV !== `production`;
+  const isDev = process.env.NODE_ENV === `test`;
 
   expect(headers[`content-security-policy`])
-    .toBe(`default-src 'none'; script-src 'self' ${isDev ? `'unsafe-eval'` : `'strict-dynamic' 'nonce-${nonce}'`} https://mc.yandex.ru https://pos.gosuslugi.ru 'unsafe-inline'; style-src 'self' ${isDev ? `'unsafe-eval' 'unsafe-inline'` : `'strict-dynamic' 'nonce-${nonce}'`}; img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; font-src 'self' https://cdn.chelzoo.tech; media-src 'self' https://storage.yandexcloud.net; frame-src https://pos.gosuslugi.ru; connect-src 'self' https://cdn.chelzoo.tech; manifest-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests;`);
+    .toBe(`default-src 'none'; script-src 'self' ${isDev ? `'strict-dynamic' 'nonce-${nonce}'` : `'unsafe-eval'`} https://mc.yandex.ru https://pos.gosuslugi.ru 'unsafe-inline'; style-src 'self' ${isDev ? `'strict-dynamic' 'nonce-${nonce}'` : `'unsafe-eval' 'unsafe-inline'`}; img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; font-src 'self' https://cdn.chelzoo.tech; media-src 'self' https://storage.yandexcloud.net; frame-src https://pos.gosuslugi.ru; connect-src 'self' https://cdn.chelzoo.tech; manifest-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests;`);
 });
