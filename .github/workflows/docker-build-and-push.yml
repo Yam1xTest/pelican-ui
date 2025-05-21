@@ -67,3 +67,4 @@ jobs:
           build-args: |
             CDN_ENABLED=true
             CDN_DOMAIN=cdn.chelzoo.tech
+            CSP_ENABLED=true
