@@ -67,4 +67,3 @@ jobs:
           build-args: |
             CDN_ENABLED=true
             CDN_DOMAIN=cdn.chelzoo.tech
-            BASE_URL=https://chelzoo.tech
