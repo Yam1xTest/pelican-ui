@@ -9,7 +9,7 @@ import Document, {
 } from 'next/document';
 import Script from 'next/script';
 import { LoaderContainer, loaderStyles } from '../components/globals/Loader/components/LoaderContainer';
-import { gosUslugiScript, yandexId, YMetricScript } from '../common/utils/getScripts';
+import { gosUslugiScript, yandexId, YMetricScript } from '../common/utils/thirdPartyScripts';
 import { getHash } from '../common/utils/getHash';
 
 class AppDocument extends Document {

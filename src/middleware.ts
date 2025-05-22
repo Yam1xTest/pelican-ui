@@ -3,7 +3,7 @@
 // https://github.com/TourmalineCore/pelican-documentation/pull/19
 
 import { NextRequest, NextResponse } from 'next/server';
-import { setCspHeaders } from './setCspHeaders';
+import { setCspHeaders } from './common/middleware/setCspHeaders';
 
 // This middleware sets a Content Security Policy (CSP) with a per-request nonce (random string)
 // to enhance security by allowing only specific scripts and styles to run
