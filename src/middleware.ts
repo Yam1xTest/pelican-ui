@@ -42,6 +42,7 @@ export const config = {
       source: `/((?!api|_next/static|_next/image|favicon.ico).*)`,
       // These headers are added by Next.js or browsers when preloading routes or resources
       // We skip applying middleware to avoid unnecessary work or CSP processing for them
+      // For example, when you hover over the link and Next preloads a preview of a new page
       missing: [
         {
           type: `header`,
