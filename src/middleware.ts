@@ -8,8 +8,6 @@ import { setCspHeaders } from './setCspHeaders';
 // This middleware sets a Content Security Policy (CSP) with a per-request nonce (random string)
 // to enhance security by allowing only specific scripts and styles to run
 export function middleware(request: NextRequest) {
-  const CSPEnabled = process.env.CSP_ENABLED === `true`;
-
   // Clone original request headers
   const requestHeaders = new Headers(request.headers);
 
@@ -20,7 +18,7 @@ export function middleware(request: NextRequest) {
     },
   });
 
-  if (CSPEnabled) {
+  if (process.env.CSP_ENABLED === `true`) {
     // Set the CSP header in the actual HTTP response to the browser
     setCspHeaders(response.headers);
   }
