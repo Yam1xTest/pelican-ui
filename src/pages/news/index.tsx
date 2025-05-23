@@ -1,6 +1,6 @@
 import qs from 'qs';
 import { NEWS_LIMIT, NewsList } from '@/src/components/news-page/NewsList/NewsList';
-import { api } from '@/src/common/utils/HttpClient';
+import { strapiFetch } from '@/src/common/utils/HttpClient';
 import { NewsCollectionListResponse, NewsPageResponse } from '@/src/common/api-types';
 import { NewsPageProps, NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
@@ -91,7 +91,7 @@ async function getNewsPageData({
   previewMode: string;
 }) {
   try {
-    const response: NewsPageResponse = await api.get(`/news-page?populate=*&status=${previewMode}`);
+    const response: NewsPageResponse = await strapiFetch(`/news-page?populate=*&status=${previewMode}`);
 
     return {
       newsTitle: response.data?.title,
@@ -134,7 +134,7 @@ async function getNewsData({
       status: previewMode,
     };
 
-    const response: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
+    const response: NewsCollectionListResponse = await strapiFetch(`/news?${qs.stringify(queryParams)}`);
 
     return {
       news: response.data!.map((newsItem) => ({

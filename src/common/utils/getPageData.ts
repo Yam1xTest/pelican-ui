@@ -1,6 +1,6 @@
 import qs from "qs";
 import { AppRoute } from "../enum";
-import { api } from "./HttpClient";
+import { strapiFetch } from "./HttpClient";
 import { mapContractByBlock } from "./mapContractByBlock";
 import { PageData } from "../types";
 
@@ -95,7 +95,7 @@ async function getData({
   populate: string[];
   preview: boolean;
 }) {
-  const pageResponse: PageData = await api.get(`/${slug}?${qs.stringify({
+  const pageResponse: PageData = await strapiFetch(`/${slug}?${qs.stringify({
     populate,
     status: preview ? `draft` : `published`,
   })}`);

@@ -1,6 +1,6 @@
 import qs from 'qs';
 import { MOCK_NEWS } from "@/src/common/mocks/collections-mock/news-collection-mock";
-import { api } from "@/src/common/utils/HttpClient";
+import { strapiFetch } from "@/src/common/utils/HttpClient";
 import { Article } from "@/src/components/globals/Article/Article";
 import { NewsCollection, NewsCollectionListResponse } from '@/src/common/api-types';
 import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
@@ -142,7 +142,7 @@ async function getNews({
       status: preview ? `draft` : `published`,
     };
 
-    const response: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
+    const response: NewsCollectionListResponse = await strapiFetch(`/news?${qs.stringify(queryParams)}`);
 
     return mapSelectedNews({
       news: response.data![0],
@@ -202,7 +202,7 @@ async function getOtherNews({
       status: preview ? `draft` : `published`,
     };
 
-    const response: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
+    const response: NewsCollectionListResponse = await strapiFetch(`/news?${qs.stringify(queryParams)}`);
 
     return mapOtherNews({
       news: response.data!,

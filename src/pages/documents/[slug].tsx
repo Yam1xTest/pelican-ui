@@ -9,7 +9,7 @@ import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/d
 import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
 import { CategoryProps, DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
 import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryParams";
-import { api } from "@/src/common/utils/HttpClient";
+import { strapiFetch } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
 import { SeoHead } from "@/src/components/globals/SeoHead/SeoHead";
 import dayjs from "dayjs";
@@ -215,7 +215,7 @@ async function getDocumentCategory({
   slug: string;
 }): Promise<Omit<CategoryProps, 'slug' | 'pageUrl'> | null> {
   try {
-    const response: DocumentsCategoryListResponse = await api.get(`/documents-categories?populate=*&status=${previewMode}&filters[slug][$eq]=${slug}`);
+    const response: DocumentsCategoryListResponse = await strapiFetch(`/documents-categories?populate=*&status=${previewMode}&filters[slug][$eq]=${slug}`);
 
     return mapDocumentCategory({
       documentCategory: response.data![0],
@@ -261,7 +261,7 @@ async function checkAvailableYearsForCategory({
     })
       .map(async (_, i) => {
         const year = currentYear - i;
-        const yearsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
+        const yearsResponse: DocumentListResponse = await strapiFetch(`/documents?${qs.stringify(getDocumentsQueryParams({
           categoryDocumentId: category.id!,
           ...((category.hasTabs) && {
             yearLessThanOrEqual: year,
@@ -288,7 +288,7 @@ async function getDocuments({
   year?: number;
 }): Promise<DocumentsProps[] | []> {
   try {
-    const responseData = (await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
+    const responseData = (await strapiFetch(`/documents?${qs.stringify(getDocumentsQueryParams({
       categoryDocumentId,
       ...(year ? {
         yearLessThanOrEqual: year,
