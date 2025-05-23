@@ -31,15 +31,21 @@ export function NewsSlider({
           ref={gliderRef}
           className="container"
           slidesToShow="auto"
-          itemWidth={289}
+          itemWidth={305}
           duration={1}
           exactWidth
           onSlideVisible={handleScroll}
           responsive={[
             {
+              breakpoint: 768,
+              settings: {
+                itemWidth: 301,
+              },
+            },
+            {
               breakpoint: 1024,
               settings: {
-                itemWidth: 402,
+                itemWidth: 426,
               },
             },
             {
@@ -53,12 +59,17 @@ export function NewsSlider({
           ]}
         >
           {news.map((newsItem) => (
-            <NewsSliderCard
+            <div
+              className="news-slider-card"
               key={newsItem.id}
-              slug={newsItem.slug}
-              title={newsItem.title}
-              description={newsItem.description}
-            />
+              data-testid="slider-card"
+            >
+              <NewsSliderCard
+                slug={newsItem.slug}
+                title={newsItem.title}
+                description={newsItem.description}
+              />
+            </div>
           ))}
         </Glider>
         <div className="news-slider__navigation">
