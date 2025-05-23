@@ -51,6 +51,23 @@ test.describe(`Check security headers`, () => {
       });
     },
   );
+
+  test(
+    `Check font headers`,
+    async ({
+      page,
+    }) => {
+      const headers = await getResponseHeadersByExtension({
+        page,
+        extension: `.woff`,
+      });
+
+      await expectSecurityHeaders({
+        page,
+        headers,
+      });
+    },
+  );
 });
 
 async function getResponseHeadersByExtension({
