@@ -1,6 +1,8 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @stylistic/max-len */
 
+// uses in RouteChangeLoader for pages load
+// and in _document.ts on the first page load for speed loading without waiting for other files
 export function LoaderContent({
   nonce,
 }: {
@@ -64,7 +66,7 @@ export function LoaderContent({
   );
 }
 
-// for speed loading styles must be here
+// it must be here for speed loading styles on the first page load
 export const loaderStyles = `
   .loader-container {
     position: fixed;

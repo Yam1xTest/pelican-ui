@@ -109,7 +109,7 @@ class AppDocument extends Document {
             id="yandex-metrika"
             strategy="afterInteractive"
             nonce={nonce}
-            // integrity - check hash of the sctipt
+            // integrity - check hash of the sctipt to be confident that the script has not changed in origin
             integrity={yMetricHash}
             // crossOrigin="anonymous" allows loading resources from other origins without sending credentials (cookies, etc.)
             crossOrigin="anonymous"
