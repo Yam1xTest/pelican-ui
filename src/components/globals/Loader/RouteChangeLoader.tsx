@@ -1,10 +1,17 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { LoaderContainer } from "./components/LoaderContainer";
+import { LoaderContent } from "./components/LoaderContent";
 
-export function Loader() {
+export function RouteChangeLoader() {
   const [isLoading, setIsLoading] = useState(false);
+  const [nonce, setNonce] = useState<string | null>(null);
   const route = useRouter();
+
+  // Read the nonce from the global window object
+  // This injected on the server side, in _document.tsx
+  useEffect(() => {
+    setNonce((window as any).__NONCE__ || null);
+  }, []);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -36,12 +43,17 @@ export function Loader() {
     };
   });
 
-  return isLoading && (
-    <div
-      data-testid="loader"
-      id="static-loader"
-    >
-      <LoaderContainer />
-    </div>
-  );
+  // Show loader only when loading AND nonce is available
+  return isLoading && nonce
+    ? (
+      <div
+        data-testid="loader"
+        id="static-loader"
+      >
+        <LoaderContent
+          nonce={nonce}
+        />
+      </div>
+    )
+    : null;
 }

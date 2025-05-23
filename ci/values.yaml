@@ -3,7 +3,6 @@
 image:
   registry: ghcr.io
   repository: tourmalinecore/pelican-ui
-  tag: "latest"
   pullPolicy: Always
   debug: true
 

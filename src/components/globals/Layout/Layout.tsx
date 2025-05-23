@@ -4,7 +4,6 @@ import {
   PropsWithChildren,
   useCallback,
   useContext,
-  useEffect,
   useRef,
   useState,
 } from 'react';
@@ -43,7 +42,6 @@ export function Layout({
 
   const {
     windowWidth,
-    handleSetWindowWidth,
   } = useContext(WindowWidthContext);
 
   const [isMobileMenuOpen, setIsMobileMenuActive] = useState(false);
@@ -56,19 +54,6 @@ export function Layout({
     isTicketPopupActive,
     handleTicketPopupToggle,
   } = useTicketPopup();
-
-  useEffect(() => {
-    if (windowWidth === 0) {
-      handleSetWindowWidth();
-    }
-
-    window.addEventListener(`resize`, handleSetWindowWidth);
-
-    return () => {
-      window.removeEventListener(`resize`, handleSetWindowWidth);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [windowWidth]);
 
   if (windowWidth === 0) {
     return null;

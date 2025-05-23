@@ -1,6 +1,7 @@
 import {
   PropsWithChildren,
   createContext,
+  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -23,6 +24,19 @@ export function WindowWidthProvider({
   const handleSetWindowWidth = () => {
     setWindowWidth(window.innerWidth);
   };
+
+  useEffect(() => {
+    if (windowWidth === 0) {
+      handleSetWindowWidth();
+    }
+
+    window.addEventListener(`resize`, handleSetWindowWidth);
+
+    return () => {
+      window.removeEventListener(`resize`, handleSetWindowWidth);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [windowWidth]);
 
   const windowWidthState = useMemo(() => ({
     windowWidth,

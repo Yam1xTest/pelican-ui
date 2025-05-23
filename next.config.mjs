@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   // https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers
-  // configuring custom HTTP headers
   async headers() {
     return [
       {
@@ -16,7 +16,7 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
-          // CORS headers
+          // 1. CORS headers:
 
           // Indicates whether the browser should include credentials, such as cookies or HTTP authentication, in the cross-origin request
           {
@@ -36,7 +36,8 @@ const nextConfig = {
             value: "same-origin",
           },
 
-          // Security headers
+
+          // 2. Security headers:
 
           // Prevents the site from being opened in an <iframe> (protection against clickjacking)
           {
@@ -151,7 +152,7 @@ const nextConfig = {
       path: `https://${process.env.CDN_DOMAIN}/_next/image`
     }),
 
-    unoptimized: process.env.NODE_ENV === 'test',
+    unoptimized: process.env.IMAGE_OPTIMIZATION_DISABLED === 'true',
 
     // lifetime in seconds for cached optimized images
     // https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl
