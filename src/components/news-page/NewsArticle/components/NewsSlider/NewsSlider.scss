@@ -127,21 +127,17 @@
 }
 
 .glider-track {
-  margin-right: 48px !important;
   margin-left: -16px !important;
 
   @include tablet {
-    margin-right: 36px !important;
     margin-left: -12px !important;
   }
 
   @include tablet-xl {
-    margin-right: 70px !important;
     margin-left: -24px !important;
   }
 
   @include desktop-xl {
-    margin-right: 92px !important;
     margin-left: 0 !important;
     gap: 32px;
   }
