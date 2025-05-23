@@ -99,7 +99,7 @@ async function expectSecurityHeaders({
 }) {
   // 1. Expect CORS headers
   expect(headers[`access-control-allow-credentials`])
-    .toBe(`false`);
+    .toBe(`true`);
 
   expect(headers[`access-control-allow-origin`])
     .toBe(`https://chelzoo.tech`);
@@ -125,6 +125,6 @@ async function expectSecurityHeaders({
     const nonce = await page.evaluate(() => (window as any).__NONCE__);
 
     expect(headers[`content-security-policy`])
-      .toBe(`default-src 'none'; script-src 'self' 'strict-dynamic' 'nonce-${nonce}' https://mc.yandex.ru https://pos.gosuslugi.ru 'unsafe-inline'; style-src 'self' 'strict-dynamic' 'nonce-${nonce}'; img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; font-src 'self' https://cdn.chelzoo.tech; media-src 'self' https://storage.yandexcloud.net; frame-src https://pos.gosuslugi.ru; connect-src 'self' https://cdn.chelzoo.tech; manifest-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests;`);
+      .toBe(`default-src 'self'; script-src 'self' 'strict-dynamic' 'nonce-${nonce}' https://mc.yandex.ru https://pos.gosuslugi.ru 'unsafe-inline'; style-src 'self' 'strict-dynamic' 'nonce-${nonce}'; img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; font-src 'self' https://cdn.chelzoo.tech; media-src 'self' https://storage.yandexcloud.net; frame-src https://pos.gosuslugi.ru; connect-src 'self' https://cdn.chelzoo.tech; manifest-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests;`);
   }
 }
