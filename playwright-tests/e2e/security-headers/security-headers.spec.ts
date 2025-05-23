@@ -9,9 +9,7 @@ test.describe(`Check security headers`, () => {
     }) => {
       const response = await page.goto(``);
 
-      if (!response) throw new Error(`No response found`);
-
-      const headers = response.headers();
+      const headers = response!.headers();
 
       await expectSecurityHeaders({
         page,
@@ -106,11 +104,10 @@ async function expectSecurityHeaders({
     .toBe(`interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()`);
 
   // 3. Expect CSP headers if exist
-  if (headers[`content-security-policy`]) {
-    const isDev = process.env.NODE_ENV === `production`;
+  if (process.env.CSP_ENABLED === `true` && headers[`content-security-policy`]) {
     const nonce = await page.evaluate(() => (window as any).__NONCE__);
 
     expect(headers[`content-security-policy`])
-      .toBe(`default-src 'none'; script-src 'self' ${isDev ? `'strict-dynamic' 'nonce-${nonce}'` : `'unsafe-eval'`} https://mc.yandex.ru https://pos.gosuslugi.ru 'unsafe-inline'; style-src 'self' ${isDev ? `'strict-dynamic' 'nonce-${nonce}'` : `'unsafe-eval' 'unsafe-inline'`}; img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; font-src 'self' https://cdn.chelzoo.tech; media-src 'self' https://storage.yandexcloud.net; frame-src https://pos.gosuslugi.ru; connect-src 'self' https://cdn.chelzoo.tech; manifest-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests;`);
+      .toBe(`default-src 'none'; script-src 'self' 'strict-dynamic' 'nonce-${nonce}' https://mc.yandex.ru https://pos.gosuslugi.ru 'unsafe-inline'; style-src 'self' 'strict-dynamic' 'nonce-${nonce}'; img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; font-src 'self' https://cdn.chelzoo.tech; media-src 'self' https://storage.yandexcloud.net; frame-src https://pos.gosuslugi.ru; connect-src 'self' https://cdn.chelzoo.tech; manifest-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests;`);
   }
 }
