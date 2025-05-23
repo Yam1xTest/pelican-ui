@@ -69,7 +69,7 @@ class AppDocument extends Document {
           />
           <link
             rel="shortcut icon"
-            href="/favicon/favicon.ico"
+            href="/favicon.ico"
           />
           <link
             rel="apple-touch-icon"
