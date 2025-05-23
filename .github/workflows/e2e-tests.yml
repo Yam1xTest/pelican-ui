@@ -89,7 +89,7 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Playwright run
-        run: CSP_ENABLED=true npx playwright test --reporter=html --config=playwright.e2e.config.ts
+        run: npx playwright test --reporter=html --config=playwright.e2e.config.ts
     
         env:
           FRONTEND_URL: http://localhost:40110 
