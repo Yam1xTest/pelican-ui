@@ -1,7 +1,9 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @stylistic/max-len */
 
-export function LoaderContainer({
+// uses in RouteChangeLoader for pages load
+// and in _document.ts on the first page load for speed loading without waiting for other files
+export function LoaderContent({
   nonce,
 }: {
   nonce: string;
@@ -26,7 +28,11 @@ export function LoaderContainer({
         We add the CSP nonce to allow this inline <style> block to be executed
         without violating Content Security Policy.
       */}
-      <style nonce={nonce}>{styles}</style>
+      <style
+        nonce={nonce}
+      >
+        {styles}
+      </style>
       {Array.from({
         length: 8,
       })
@@ -59,3 +65,32 @@ export function LoaderContainer({
     </div>
   );
 }
+
+// it must be here for speed loading styles on the first page load
+export const loaderStyles = `
+  .loader-container {
+    position: fixed;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #f6f5f5;
+    opacity: 1;
+  }
+
+  .loader {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    animation: pawStep 2s ease-in-out infinite;
+  }
+
+  @keyframes pawStep {
+    0%   { opacity: 0; }
+    30%  { opacity: 1; }
+    60%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
+`;

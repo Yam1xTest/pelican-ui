@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { LoaderContainer } from "./components/LoaderContainer";
+import { LoaderContent } from "./components/LoaderContent";
 
-export function Loader() {
+export function RouteChangeLoader() {
   const [isLoading, setIsLoading] = useState(false);
   const [nonce, setNonce] = useState<string | null>(null);
   const route = useRouter();
@@ -44,12 +44,16 @@ export function Loader() {
   });
 
   // Show loader only when loading AND nonce is available
-  return isLoading && nonce ? (
-    <div
-      data-testid="loader"
-      id="static-loader"
-    >
-      <LoaderContainer nonce={nonce} />
-    </div>
-  ) : null;
+  return isLoading && nonce
+    ? (
+      <div
+        data-testid="loader"
+        id="static-loader"
+      >
+        <LoaderContent
+          nonce={nonce}
+        />
+      </div>
+    )
+    : null;
 }

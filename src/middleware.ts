@@ -3,67 +3,27 @@
 // https://github.com/TourmalineCore/pelican-documentation/pull/19
 
 import { NextRequest, NextResponse } from 'next/server';
+import { setCspHeaders } from './common/middleware/setCspHeaders';
 
 // This middleware sets a Content Security Policy (CSP) with a per-request nonce (random string)
 // to enhance security by allowing only specific scripts and styles to run
 export function middleware(request: NextRequest) {
-  const isDev = process.env.NODE_ENV !== `production`;
-  // Generate a unique random nonce (base64 string) for each request.
-  const nonce = Buffer.from(crypto.randomUUID())
-    .toString(`base64`);
-
-  // Define the CSP header.
-  // In development, allow 'unsafe-eval' and 'unsafe-inline' for easier debugging.
-  // In production, allow only scripts and styles with the generated nonce and use 'strict-dynamic'.
-  // Note: 'unsafe-inline' is ignored by modern browsers when a 'nonce' is present,
-  // but it is included for compatibility with older browsers that do not support nonces.
-  const cspHeader = `
-    default-src 'none';
-    script-src 'self' ${isDev
-    ? `'unsafe-eval'`
-    : `'strict-dynamic' 'nonce-${nonce}'`} https://mc.yandex.ru https://pos.gosuslugi.ru 'unsafe-inline';
-    style-src 'self' ${isDev
-    ? `'unsafe-eval' 'unsafe-inline'`
-    : `'strict-dynamic' 'nonce-${nonce}'`};
-    img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech;
-    font-src 'self' https://cdn.chelzoo.tech;
-    media-src 'self' https://storage.yandexcloud.net;
-    frame-src https://pos.gosuslugi.ru;
-    connect-src 'self' https://cdn.chelzoo.tech;
-    manifest-src 'self';
-    base-uri 'none';
-    frame-ancestors 'none';
-    form-action 'none';
-    upgrade-insecure-requests;
-  `;
-
-  // Clean up whitespace in the header string
-  const contentSecurityPolicyHeaderValue = cspHeader
-    .replace(/\s{2,}/g, ` `) // Replace two or more spaces with a single space
-    .trim(); // Remove leading and trailing whitespace
-
-  // Clone original request headers and add the nonce to it
+  // Clone original request headers
   const requestHeaders = new Headers(request.headers);
-  requestHeaders.set(`x-nonce`, nonce);
 
-  // Also add the CSP to request headers (so it can be read inside the app if needed)
-  requestHeaders.set(
-    `Content-Security-Policy`,
-    contentSecurityPolicyHeaderValue,
-  );
-
-  // Create the next response with modified request headers
+  // Create the next response with request headers
   const response = NextResponse.next({
     request: {
       headers: requestHeaders,
     },
   });
 
-  // Set the final CSP header in the actual HTTP response to the browser
-  response.headers.set(
-    `Content-Security-Policy`,
-    contentSecurityPolicyHeaderValue,
-  );
+  if (process.env.CSP_ENABLED === `true`) {
+    // Set the CSP header in the actual HTTP response to the browser
+    setCspHeaders({
+      headers: response.headers,
+    });
+  }
 
   return response;
 }
@@ -83,6 +43,7 @@ export const config = {
       source: `/((?!api|_next/static|_next/image|favicon.ico).*)`,
       // These headers are added by Next.js or browsers when preloading routes or resources
       // We skip applying middleware to avoid unnecessary work or CSP processing for them
+      // For example, when you hover over the link and Next preloads a preview of a new page
       missing: [
         {
           type: `header`,
