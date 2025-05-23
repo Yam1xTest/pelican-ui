@@ -1,4 +1,8 @@
-export function setCspHeaders(headers: Headers): void {
+export function setCspHeaders({
+  headers,
+}: {
+  headers: Headers;
+}): void {
   // Generate a unique random nonce (base64 string) for each request
   const nonce = Buffer.from(crypto.randomUUID())
     .toString(`base64`);

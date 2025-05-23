@@ -20,7 +20,9 @@ export function middleware(request: NextRequest) {
 
   if (process.env.CSP_ENABLED === `true`) {
     // Set the CSP header in the actual HTTP response to the browser
-    setCspHeaders(response.headers);
+    setCspHeaders({
+      headers: response.headers,
+    });
   }
 
   return response;
