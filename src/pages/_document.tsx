@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-danger */
 import Document, {
@@ -8,8 +9,8 @@ import Document, {
   DocumentContext,
 } from 'next/document';
 import Script from 'next/script';
-import { LoaderContainer, loaderStyles } from '../components/globals/Loader/components/LoaderContainer';
-import { gosUslugiScript, yandexId, YMetricScript } from '../common/thirdPartyScripts';
+import { LoaderContent, loaderStyles } from '../components/globals/Loader/components/LoaderContent';
+import { gosUslugiScript, yandexId, yMetricScript } from '../common/thirdPartyScripts';
 import { getHash } from '../common/utils/getHash';
 
 class AppDocument extends Document {
@@ -32,8 +33,13 @@ class AppDocument extends Document {
       nonce,
     } = (this.props as any);
 
-    const YMetricHash = getHash(YMetricScript);
-    const gosUslugiHash = getHash(gosUslugiScript);
+    const yMetricHash = getHash({
+      content: yMetricScript,
+    });
+
+    const gosUslugiHash = getHash({
+      content: gosUslugiScript,
+    });
 
     return (
       <Html lang="ru">
@@ -78,7 +84,7 @@ class AppDocument extends Document {
 
         <body>
           <div id="static-loader">
-            <LoaderContainer nonce={nonce} />
+            <LoaderContent nonce={nonce} />
 
             <style
               type="text/css"
@@ -99,16 +105,16 @@ class AppDocument extends Document {
           <Main />
           <NextScript nonce={nonce} />
 
-          {/* crossOrigin="anonymous" allows loading resources from other
-          origins without sending credentials (cookies, etc.) */}
           <Script
             id="yandex-metrika"
             strategy="afterInteractive"
             nonce={nonce}
-            integrity={YMetricHash}
+            // integrity - check hash of the sctipt
+            integrity={yMetricHash}
+            // crossOrigin="anonymous" allows loading resources from other origins without sending credentials (cookies, etc.)
             crossOrigin="anonymous"
             dangerouslySetInnerHTML={{
-              __html: YMetricScript,
+              __html: yMetricScript,
             }}
           />
 

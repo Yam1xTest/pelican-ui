@@ -5,7 +5,7 @@ const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
 
 export const yandexId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
 
-export const YMetricScript = `
+export const yMetricScript = `
   (function(m,e,t,r,i,k,a){
     m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
     var z = null;m[i].l=1*new Date();

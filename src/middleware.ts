@@ -22,6 +22,7 @@ export function middleware(request: NextRequest) {
     // Set the CSP header in the actual HTTP response to the browser
     setCspHeaders(response.headers);
   }
+
   return response;
 }
 

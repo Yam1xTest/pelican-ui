@@ -1,6 +1,10 @@
 import { createHash } from "crypto";
 
-export function getHash(content: string) {
+export function getHash({
+  content,
+}: {
+  content: string;
+}) {
   const hash = createHash(`sha256`)
     .update(content)
     .digest(`base64`);

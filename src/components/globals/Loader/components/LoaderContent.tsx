@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @stylistic/max-len */
-export function LoaderContainer({
+
+export function LoaderContent({
   nonce,
 }: {
   nonce: string;
@@ -25,7 +26,11 @@ export function LoaderContainer({
         We add the CSP nonce to allow this inline <style> block to be executed
         without violating Content Security Policy.
       */}
-      <style nonce={nonce}>{styles}</style>
+      <style
+        nonce={nonce}
+      >
+        {styles}
+      </style>
       {Array.from({
         length: 8,
       })
@@ -59,6 +64,7 @@ export function LoaderContainer({
   );
 }
 
+// for speed loading styles must be here
 export const loaderStyles = `
   .loader-container {
     position: fixed;
