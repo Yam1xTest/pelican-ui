@@ -121,7 +121,7 @@ async function expectSecurityHeaders({
     .toBe(`interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()`);
 
   // 3. Expect CSP headers if exist
-  if (process.env.CSP_ENABLED === `true` && headers[`content-security-policy`]) {
+  if (process.env.PELICAN_CSP_ENABLED === `true` && headers[`content-security-policy`]) {
     const nonce = await page.evaluate(() => (window as any).__NONCE__);
 
     expect(headers[`content-security-policy`])

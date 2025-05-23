@@ -14,13 +14,13 @@ export function setCspHeaders({
   // but it is included for compatibility with older browsers that do not support nonces.
   const csp = `
     default-src 'none';
-    script-src 'self' 'unsafe-inline' 'strict-dynamic' 'nonce-${nonce}' ${process.env.CSP_SCRIPT_SRC_URLS};
+    script-src 'self' 'unsafe-inline' 'strict-dynamic' 'nonce-${nonce}' ${process.env.PELICAN_CSP_SCRIPT_SRC_URLS};
     style-src 'self' 'strict-dynamic' 'nonce-${nonce}';
-    img-src 'self' ${process.env.CSP_IMG_SRC_URLS};
-    font-src 'self' ${process.env.CSP_FONT_SRC_URLS};
-    media-src 'self' ${process.env.CSP_MEDIA_SRC_URLS};
-    frame-src ${process.env.CSP_FRAME_SRC_URLS};
-    connect-src 'self' ${process.env.CSP_CONNECT_SRC_URLS};
+    img-src 'self' ${process.env.PELICAN_CSP_IMG_SRC_URLS};
+    font-src 'self' ${process.env.PELICAN_CSP_FONT_SRC_URLS};
+    media-src 'self' ${process.env.PELICAN_CSP_MEDIA_SRC_URLS};
+    frame-src ${process.env.PELICAN_CSP_FRAME_SRC_URLS};
+    connect-src 'self' ${process.env.PELICAN_CSP_CONNECT_SRC_URLS};
     manifest-src 'self';
     base-uri 'none';
     frame-ancestors 'none';

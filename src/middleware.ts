@@ -18,7 +18,7 @@ export function middleware(request: NextRequest) {
     },
   });
 
-  if (process.env.CSP_ENABLED === `true`) {
+  if (process.env.PELICAN_CSP_ENABLED === `true`) {
     // Set the CSP header in the actual HTTP response to the browser
     setCspHeaders({
       headers: response.headers,
