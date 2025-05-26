@@ -86,13 +86,12 @@ export async function getServerSideProps({
     };
   }
 
-  const previewMode = preview ? `draft` : `published`;
   const documentPageData = await getDocumentsPageData({
-    previewMode,
+    isPreview: preview,
   });
 
   const documentsCategories = await getDocumentsCategories({
-    previewMode,
+    isPreview: preview,
     currentYear,
   });
 
@@ -105,11 +104,11 @@ export async function getServerSideProps({
 }
 
 async function getDocumentsPageData({
-  previewMode,
+  isPreview,
 }: {
-  previewMode: string;
+  isPreview: boolean;
 }) {
-  const documentsPageResponse: DocumentsPageResponse = await apiFetch(`/documents-page?populate=*&status=${previewMode}`);
+  const documentsPageResponse: DocumentsPageResponse = await apiFetch(`/documents-page?populate=*&status=${isPreview ? `draft` : `published`}`);
 
   if (!documentsPageResponse) {
     return {};
@@ -128,13 +127,13 @@ async function getDocumentsPageData({
 }
 
 async function getDocumentsCategories({
-  previewMode,
+  isPreview,
   currentYear,
 }: {
-  previewMode: string;
+  isPreview: boolean;
   currentYear: number;
 }) {
-  const response: DocumentsCategoryListResponse = await apiFetch(`/documents-categories?status=${previewMode}`);
+  const response: DocumentsCategoryListResponse = await apiFetch(`/documents-categories?status=${isPreview ? `draft` : `published`}`);
 
   return (await Promise.all(
     response.data!
@@ -146,7 +145,7 @@ async function getDocumentsCategories({
             yearGreaterThanOrEqual: currentYear - 2,
           }),
           pageSize: 1,
-          previewMode,
+          previewMode: isPreview ? `draft` : `published`,
         }))}`);
 
         if (documentsResponse.meta?.pagination?.total) {

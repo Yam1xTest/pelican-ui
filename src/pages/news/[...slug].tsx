@@ -95,7 +95,7 @@ export async function getServerSideProps({
   }
 
   const selectedNews = await getNews({
-    preview,
+    isPreview: preview,
     slug: concatSlug,
   });
 
@@ -106,7 +106,7 @@ export async function getServerSideProps({
   }
 
   const otherNews = await getOtherNews({
-    preview,
+    isPreview: preview,
     slug: concatSlug,
   });
 
@@ -120,10 +120,10 @@ export async function getServerSideProps({
 }
 
 async function getNews({
-  preview,
+  isPreview,
   slug,
 }: {
-  preview: boolean;
+  isPreview: boolean;
   slug: string;
 }) {
   const queryParams = {
@@ -138,10 +138,12 @@ async function getNews({
         $eq: slug,
       },
     },
-    status: preview ? `draft` : `published`,
+    status: isPreview ? `draft` : `published`,
   };
 
-  const response: NewsCollectionListResponse = await apiFetch(`/news?${qs.stringify(queryParams)}`);
+  const response: NewsCollectionListResponse = await apiFetch(`/news?${qs.stringify(queryParams)}`, {
+    isPreview,
+  });
 
   return mapSelectedNews({
     news: response.data![0],
@@ -170,10 +172,10 @@ function mapSelectedNews({
 }
 
 async function getOtherNews({
-  preview,
+  isPreview,
   slug,
 }: {
-  preview: boolean;
+  isPreview: boolean;
   slug: string;
 }) {
   const queryParams = {
@@ -194,10 +196,12 @@ async function getOtherNews({
     pagination: {
       pageSize: NEWS_SLIDER_LIMIT,
     },
-    status: preview ? `draft` : `published`,
+    status: isPreview ? `draft` : `published`,
   };
 
-  const response: NewsCollectionListResponse = await apiFetch(`/news?${qs.stringify(queryParams)}`);
+  const response: NewsCollectionListResponse = await apiFetch(`/news?${qs.stringify(queryParams)}`, {
+    isPreview,
+  });
 
   return mapOtherNews({
     news: response.data!,

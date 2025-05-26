@@ -100,7 +100,9 @@ async function getData({
   const pageResponse: PageData = await apiFetch(`/${slug}?${qs.stringify({
     populate,
     status: preview ? `draft` : `published`,
-  })}`);
+  })}`, {
+    isPreview: preview,
+  });
 
   if (!pageResponse) {
     return pageResponse;
