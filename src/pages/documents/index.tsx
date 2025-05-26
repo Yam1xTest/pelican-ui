@@ -1,5 +1,5 @@
 import { MOCK_DOCUMENTS_PAGE } from '@/src/common/mocks/documents-page-mock/documents-page-mock';
-import { strapiFetch } from '@/src/common/utils/HttpClient';
+import { apiFetch } from '@/src/common/utils/HttpClient';
 import { DocumentListResponse, DocumentsCategoryListResponse, DocumentsPageResponse } from '@/src/common/api-types';
 import qs from 'qs';
 import { Categories } from '@/src/components/globals/Categories/Categories';
@@ -109,22 +109,22 @@ async function getDocumentsPageData({
 }: {
   previewMode: string;
 }) {
-  try {
-    const documentsPageResponse: DocumentsPageResponse = await strapiFetch(`/documents-page?populate=*&status=${previewMode}`);
+  const documentsPageResponse: DocumentsPageResponse = await apiFetch(`/documents-page?populate=*&status=${previewMode}`);
 
-    return {
-      documentsTitle: documentsPageResponse.data?.title,
-      ...(documentsPageResponse.data?.seo && {
-        seo: {
-          metaTitle: documentsPageResponse.data?.seo?.metaTitle,
-          metaDescription: documentsPageResponse.data?.seo?.metaDescription,
-          metaKeywords: documentsPageResponse.data?.seo?.keywords,
-        },
-      }),
-    };
-  } catch {
+  if (!documentsPageResponse) {
     return {};
   }
+
+  return {
+    documentsTitle: documentsPageResponse.data?.title,
+    ...(documentsPageResponse.data?.seo && {
+      seo: {
+        metaTitle: documentsPageResponse.data?.seo?.metaTitle,
+        metaDescription: documentsPageResponse.data?.seo?.metaDescription,
+        metaKeywords: documentsPageResponse.data?.seo?.keywords,
+      },
+    }),
+  };
 }
 
 async function getDocumentsCategories({
@@ -134,34 +134,30 @@ async function getDocumentsCategories({
   previewMode: string;
   currentYear: number;
 }) {
-  try {
-    const response: DocumentsCategoryListResponse = await strapiFetch(`/documents-categories?status=${previewMode}`);
+  const response: DocumentsCategoryListResponse = await apiFetch(`/documents-categories?status=${previewMode}`);
 
-    return (await Promise.all(
-      response.data!
-        .map(async (documentsCategoriesItem) => {
-          const documentsResponse: DocumentListResponse = await strapiFetch(`/documents?${qs.stringify(getDocumentsQueryParams({
-            categoryDocumentId: documentsCategoriesItem.documentId!,
-            ...((documentsCategoriesItem?.hasTabs) && {
-              yearLessThanOrEqual: currentYear,
-              yearGreaterThanOrEqual: currentYear - 2,
-            }),
-            pageSize: 1,
-            previewMode,
-          }))}`);
+  return (await Promise.all(
+    response.data!
+      .map(async (documentsCategoriesItem) => {
+        const documentsResponse: DocumentListResponse = await apiFetch(`/documents?${qs.stringify(getDocumentsQueryParams({
+          categoryDocumentId: documentsCategoriesItem.documentId!,
+          ...((documentsCategoriesItem?.hasTabs) && {
+            yearLessThanOrEqual: currentYear,
+            yearGreaterThanOrEqual: currentYear - 2,
+          }),
+          pageSize: 1,
+          previewMode,
+        }))}`);
 
-          if (documentsResponse.meta?.pagination?.total) {
-            return ({
-              id: documentsCategoriesItem.id!,
-              slug: documentsCategoriesItem.slug!,
-              title: documentsCategoriesItem!.title,
-              pageUrl: `${AppRoute.DOCUMENTS}`,
-            });
-          }
-          return null;
-        }),
-    )).filter((item) => item !== null);
-  } catch {
-    return [];
-  }
+        if (documentsResponse.meta?.pagination?.total) {
+          return ({
+            id: documentsCategoriesItem.id!,
+            slug: documentsCategoriesItem.slug!,
+            title: documentsCategoriesItem!.title,
+            pageUrl: `${AppRoute.DOCUMENTS}`,
+          });
+        }
+        return null;
+      }),
+  )).filter((item) => item !== null);
 }

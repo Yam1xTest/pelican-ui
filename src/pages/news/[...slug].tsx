@@ -1,6 +1,6 @@
 import qs from 'qs';
 import { MOCK_NEWS } from "@/src/common/mocks/collections-mock/news-collection-mock";
-import { strapiFetch } from "@/src/common/utils/HttpClient";
+import { apiFetch } from "@/src/common/utils/HttpClient";
 import { Article } from "@/src/components/globals/Article/Article";
 import { NewsCollection, NewsCollectionListResponse } from '@/src/common/api-types';
 import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
@@ -125,31 +125,27 @@ async function getNews({
 }: {
   preview: boolean;
   slug: string;
-}): Promise<SelectedNewsProps | null> {
-  try {
-    const queryParams = {
-      fields: [
-        `title`,
-        `innerContent`,
-        `date`,
-      ],
-      populate: [`seo`],
-      filters: {
-        slug: {
-          $eq: slug,
-        },
+}) {
+  const queryParams = {
+    fields: [
+      `title`,
+      `innerContent`,
+      `date`,
+    ],
+    populate: [`seo`],
+    filters: {
+      slug: {
+        $eq: slug,
       },
-      status: preview ? `draft` : `published`,
-    };
+    },
+    status: preview ? `draft` : `published`,
+  };
 
-    const response: NewsCollectionListResponse = await strapiFetch(`/news?${qs.stringify(queryParams)}`);
+  const response: NewsCollectionListResponse = await apiFetch(`/news?${qs.stringify(queryParams)}`);
 
-    return mapSelectedNews({
-      news: response.data![0],
-    });
-  } catch {
-    return null;
-  }
+  return mapSelectedNews({
+    news: response.data![0],
+  });
 }
 
 function mapSelectedNews({
@@ -179,38 +175,34 @@ async function getOtherNews({
 }: {
   preview: boolean;
   slug: string;
-}): Promise<OtherNewsProps | []> {
-  try {
-    const queryParams = {
-      fields: [
-        `title`,
-        `description`,
-        `slug`,
-      ],
-      sort: {
-        date: `desc`,
-        id: `desc`,
+}) {
+  const queryParams = {
+    fields: [
+      `title`,
+      `description`,
+      `slug`,
+    ],
+    sort: {
+      date: `desc`,
+      id: `desc`,
+    },
+    filters: {
+      slug: {
+        $ne: slug,
       },
-      filters: {
-        slug: {
-          $ne: slug,
-        },
-      },
-      pagination: {
-        pageSize: NEWS_SLIDER_LIMIT,
-      },
-      status: preview ? `draft` : `published`,
-    };
+    },
+    pagination: {
+      pageSize: NEWS_SLIDER_LIMIT,
+    },
+    status: preview ? `draft` : `published`,
+  };
 
-    const response: NewsCollectionListResponse = await strapiFetch(`/news?${qs.stringify(queryParams)}`);
+  const response: NewsCollectionListResponse = await apiFetch(`/news?${qs.stringify(queryParams)}`);
 
-    return mapOtherNews({
-      news: response.data!,
-      slug,
-    });
-  } catch {
-    return [];
-  }
+  return mapOtherNews({
+    news: response.data!,
+    slug,
+  });
 }
 
 function mapOtherNews({
