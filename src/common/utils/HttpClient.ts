@@ -6,11 +6,11 @@ type CustomRequestInit = RequestInit & { isPreview?: boolean; };
 const getApiFetch = () => {
   const baseUrl = getStrapiURL();
 
-  return async (endpoint: string, options?: CustomRequestInit) => {
+  return async (endpoint: string, options: CustomRequestInit = {}) => {
     const {
       isPreview,
       ...restOptions
-    } = options || {};
+    } = options;
 
     const url = `${baseUrl}${endpoint}`;
     const updatedOptions: CustomRequestInit = {
