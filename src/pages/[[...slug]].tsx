@@ -1,6 +1,5 @@
 import { getMockPageData } from '@/src/common/utils/getMockPageData';
 import { useRouter } from 'next/router';
-import { HttpStatusCode, isAxiosError } from 'axios';
 import { ContactZooPageProps, GlobalComponentProps, HomePageProps } from '../common/types';
 import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
 import { getPageData } from '../common/utils/getPageData';
@@ -63,14 +62,14 @@ export async function getServerSideProps({
     slug: string;
   };
 }) {
-  let pageData;
+  let pageData: any;
 
   if (process.env.APP_ENV === `static`) {
     pageData = getMockPageData({
       slug: query.slug,
     });
 
-    if (!pageData) {
+    if (pageData.notFound) {
       return {
         notFound: true,
       };
@@ -88,41 +87,37 @@ export async function getServerSideProps({
     };
   }
 
-  try {
-    pageData = await getPageData({
-      slug: query.slug,
-      preview,
-    });
+  pageData = await getPageData({
+    slug: query.slug,
+    preview,
+  });
 
-    if (!pageData) {
-      return {
-        notFound: true,
-      };
-    }
+  if (!pageData) {
+    return {
+      props: {
+        pageData: {},
+      },
+    };
+  }
 
+  if (pageData.notFound) {
+    return {
+      notFound: true,
+    };
+  }
+
+  if (pageData.blocks) {
     pageData.blocks = setBlockPosition({
       slug: query.slug,
       blocks: pageData.blocks,
     });
-
-    return {
-      props: {
-        pageData,
-      },
-    };
-  } catch (error) {
-    if (isAxiosError(error)) {
-      if (error.status === HttpStatusCode.NotFound) {
-        return {
-          props: {
-            pageData: {},
-          },
-        };
-      }
-    }
-
-    throw error;
   }
+
+  return {
+    props: {
+      pageData,
+    },
+  };
 }
 
 function setBlockPosition({
@@ -130,7 +125,7 @@ function setBlockPosition({
   blocks,
 }: {
   slug: string;
-  blocks: any;
+  blocks: unknown[];
 }) {
   if (slug && blocks.length) {
     return blocks.map((block: any, index: number) => {

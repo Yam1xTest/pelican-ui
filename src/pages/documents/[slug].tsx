@@ -9,10 +9,9 @@ import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/d
 import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
 import { CategoryProps, DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
 import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryParams";
-import { strapiFetch } from "@/src/common/utils/HttpClient";
+import { apiFetch } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
 import { SeoHead } from "@/src/components/globals/SeoHead/SeoHead";
-import { isAxiosError } from "axios";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import qs from "qs";
@@ -214,27 +213,19 @@ async function getDocumentCategory({
 }: {
   previewMode: string;
   slug: string;
-}): Promise<Omit<CategoryProps, 'slug' | 'pageUrl'> | null> {
-  try {
-    const response: DocumentsCategoryListResponse = await strapiFetch(`/documents-categories?populate=*&status=${previewMode}&filters[slug][$eq]=${slug}`);
+}) {
+  const response: DocumentsCategoryListResponse = await apiFetch(`/documents-categories?populate=*&status=${previewMode}&filters[slug][$eq]=${slug}`);
 
-    return mapDocumentCategory({
-      documentCategory: response.data![0],
-    });
-  } catch (error) {
-    if (isAxiosError(error)) {
-      throw error;
-    }
-
-    return null;
-  }
+  return mapDocumentCategory({
+    documentCategory: response.data![0],
+  });
 }
 
 function mapDocumentCategory({
   documentCategory,
 }: {
   documentCategory: DocumentsCategory;
-}): Omit<CategoryProps, 'slug' | 'pageUrl'> {
+}) {
   return {
     id: documentCategory.documentId!,
     title: documentCategory.title!,
@@ -266,7 +257,7 @@ async function checkAvailableYearsForCategory({
     })
       .map(async (_, i) => {
         const year = currentYear - i;
-        const yearsResponse: DocumentListResponse = await strapiFetch(`/documents?${qs.stringify(getDocumentsQueryParams({
+        const yearsResponse: DocumentListResponse = await apiFetch(`/documents?${qs.stringify(getDocumentsQueryParams({
           categoryDocumentId: category.id!,
           ...((category.hasTabs) && {
             yearLessThanOrEqual: year,
@@ -291,34 +282,26 @@ async function getDocuments({
   categoryDocumentId: CategoryProps['id'];
   previewMode: string;
   year?: number;
-}): Promise<DocumentsProps[] | []> {
-  try {
-    const responseData = (await strapiFetch(`/documents?${qs.stringify(getDocumentsQueryParams({
-      categoryDocumentId,
-      ...(year ? {
-        yearLessThanOrEqual: year,
-        yearGreaterThanOrEqual: year,
-      } : {}),
-      previewMode,
-    }))}`)).data;
+}) {
+  const responseData = (await apiFetch(`/documents?${qs.stringify(getDocumentsQueryParams({
+    categoryDocumentId,
+    ...(year ? {
+      yearLessThanOrEqual: year,
+      yearGreaterThanOrEqual: year,
+    } : {}),
+    previewMode,
+  }))}`)).data;
 
-    return mapDocuments({
-      documents: responseData,
-    });
-  } catch (error) {
-    if (isAxiosError(error)) {
-      throw error;
-    }
-
-    return [];
-  }
+  return mapDocuments({
+    documents: responseData,
+  });
 }
 
 function mapDocuments({
   documents,
 }: {
   documents: Document[] | [];
-}): DocumentsProps[] | [] {
+}) {
   return documents
     .map((document) => ({
       id: document.id!,

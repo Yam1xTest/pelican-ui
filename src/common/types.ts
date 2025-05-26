@@ -1,6 +1,21 @@
 import { StaticImageData } from "next/image";
 import { AppRoute, BlockTypes } from "./enum";
-import { HomeServicesComponent, SharedHeroComponent, SharedSeoComponent } from "./api-types";
+import {
+  DiscountsCategoriesComponent,
+  DiscountsTermsComponent,
+  HomeMapCardComponent,
+  HomeServicesComponent,
+  HomeTicketsComponent,
+  SharedCardsComponent,
+  SharedHeroComponent,
+  SharedImageWithButtonGridComponent,
+  SharedSeoComponent,
+  SharedTextAndMediaComponent,
+  SharedTicketsComponent,
+  VisitingRulesEmergencyPhonesComponent,
+  VisitingRulesPhotosPolicyComponent,
+  VisitingRulesVisitingRulesMainComponent,
+} from "./api-types";
 
 // Page
 
@@ -374,14 +389,29 @@ export type VisitingRulesEmergencyPhonesComponentProps = Pick<VisitingRulesCompo
   cards: Omit<VisitingRulesCardProps, 'iconUrl'>[];
 };
 
-export type Block = SharedHeroComponent | HomeServicesComponent;
+export type Block =
+  SharedHeroComponent
+  | HomeServicesComponent
+  | SharedTextAndMediaComponent
+  | SharedImageWithButtonGridComponent
+  | HomeMapCardComponent
+  | HomeTicketsComponent
+  | SharedTicketsComponent
+  | SharedCardsComponent & {
+    __component: BlockTypes;
+  }
+  | DiscountsTermsComponent
+  | DiscountsCategoriesComponent
+  | VisitingRulesVisitingRulesMainComponent
+  | VisitingRulesPhotosPolicyComponent
+  | VisitingRulesEmergencyPhonesComponent;
 
 export type PageData = {
   data: {
     blocks: Block[];
     seo?: SharedSeoComponent;
   };
-};
+} | null;
 
 export type Seo = {
   metaTitle: string;

@@ -23,6 +23,8 @@ export function getMockPageData({
       return MOCK_VISITING_RULES_PAGE;
 
     default:
-      return null;
+      return {
+        notFound: true,
+      };
   }
 }

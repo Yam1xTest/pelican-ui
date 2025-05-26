@@ -1,6 +1,6 @@
 import qs from "qs";
 import { AppRoute } from "../enum";
-import { strapiFetch } from "./HttpClient";
+import { apiFetch } from "./HttpClient";
 import { mapContractByBlock } from "./mapContractByBlock";
 import { PageData } from "../types";
 
@@ -82,7 +82,9 @@ export async function getPageData({
       });
 
     default:
-      return null;
+      return {
+        notFound: true,
+      };
   }
 }
 
@@ -95,10 +97,14 @@ async function getData({
   populate: string[];
   preview: boolean;
 }) {
-  const pageResponse: PageData = await strapiFetch(`/${slug}?${qs.stringify({
+  const pageResponse: PageData = await apiFetch(`/${slug}?${qs.stringify({
     populate,
     status: preview ? `draft` : `published`,
   })}`);
+
+  if (!pageResponse) {
+    return pageResponse;
+  }
 
   const blocks = pageResponse.data?.blocks?.map((block) => (mapContractByBlock({
     block,
@@ -106,7 +112,7 @@ async function getData({
 
   return {
     blocks,
-    ...(pageResponse.data.seo && {
+    ...(pageResponse.data?.seo && {
       seo: {
         metaTitle: pageResponse.data?.seo.metaTitle,
         metaDescription: pageResponse.data?.seo.metaDescription,

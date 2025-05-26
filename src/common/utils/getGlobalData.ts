@@ -1,6 +1,6 @@
 import qs from 'qs';
 import { HeaderResponse } from '../api-types';
-import { strapiFetch } from './HttpClient';
+import { apiFetch } from './HttpClient';
 
 export async function getGlobalData({
   isPreview,
@@ -18,7 +18,7 @@ export async function getGlobalData({
     `ticketsPopup.buyTicketsButton`,
   ];
 
-  const headerResponse: HeaderResponse = await strapiFetch(`/header?${qs.stringify({
+  const headerResponse: HeaderResponse = await apiFetch(`/header?${qs.stringify({
     populate: headerPopulateList,
     status: isPreview ? `draft` : `published`,
   })}`);
