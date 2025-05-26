@@ -1,5 +1,5 @@
 import { MOCK_DOCUMENTS_PAGE } from '@/src/common/mocks/documents-page-mock/documents-page-mock';
-import { api } from '@/src/common/utils/HttpClient';
+import { strapiFetch } from '@/src/common/utils/HttpClient';
 import { DocumentListResponse, DocumentsCategoryListResponse, DocumentsPageResponse } from '@/src/common/api-types';
 import qs from 'qs';
 import { Categories } from '@/src/components/globals/Categories/Categories';
@@ -111,7 +111,7 @@ async function getDocumentsPageData({
   previewMode: string;
 }) {
   try {
-    const documentsPageResponse: DocumentsPageResponse = await api.get(`/documents-page?populate=*&status=${previewMode}`);
+    const documentsPageResponse: DocumentsPageResponse = await strapiFetch(`/documents-page?populate=*&status=${previewMode}`);
 
     return {
       documentsTitle: documentsPageResponse.data?.title,
@@ -142,12 +142,12 @@ async function getDocumentsCategories({
   currentYear: number;
 }) {
   try {
-    const response: DocumentsCategoryListResponse = await api.get(`/documents-categories?status=${previewMode}`);
+    const response: DocumentsCategoryListResponse = await strapiFetch(`/documents-categories?status=${previewMode}`);
 
     return (await Promise.all(
       response.data!
         .map(async (documentsCategoriesItem) => {
-          const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
+          const documentsResponse: DocumentListResponse = await strapiFetch(`/documents?${qs.stringify(getDocumentsQueryParams({
             categoryDocumentId: documentsCategoriesItem.documentId!,
             ...((documentsCategoriesItem?.hasTabs) && {
               yearLessThanOrEqual: currentYear,

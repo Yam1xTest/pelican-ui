@@ -89,7 +89,16 @@
 					"stylelint-commands"
 				]
 			}
-		],
+		],	
+		"declaration-property-value-disallowed-list":  {
+      "justify-content": ["start", "end"],
+      "align-content": ["start", "end"],
+      "align-items": ["start", "end"],
+      "align-self": ["start", "end"],
+      "place-content": ["start", "end"],
+      "place-items": ["start", "end"],
+      "place-self": ["start", "end"]
+    },
 		"scss/double-slash-comment-whitespace-inside": "always",
 		"scss/declaration-nested-properties": "never",
 		"scss/operator-no-unspaced": true,

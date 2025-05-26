@@ -12,7 +12,8 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: `./playwright-tests/e2e/cms-integration`,
+  testIgnore: [`**/a11y/**`],
+  testDir: `./playwright-tests/e2e`,
   outputDir: `./playwright-tests/playwright-test-results/cms-integration`,
   timeout: 45000,
   /* Run tests in files in parallel */
@@ -44,7 +45,7 @@ export default defineConfig({
       testMatch: /cms-integration\.teardown\.ts/,
     },
     {
-      name: `cmsIntegration`,
+      name: `e2e tests`,
       use: {
         ...devices[`Desktop Chrome`],
       },
