@@ -1,12 +1,27 @@
 import { HttpStatusCode } from "axios";
 import { getStrapiURL } from "./getStrapiURL";
 
+type CustomRequestInit = RequestInit & { isPreview?: boolean; };
+
 const getApiFetch = () => {
   const baseUrl = getStrapiURL();
 
-  return async (endpoint: string, options?: RequestInit) => {
+  return async (endpoint: string, options: CustomRequestInit = {}) => {
+    const {
+      isPreview,
+      ...restOptions
+    } = options;
+
     const url = `${baseUrl}${endpoint}`;
-    const response = await fetch(url, options);
+    const updatedOptions: CustomRequestInit = {
+      ...(isPreview && {
+        headers: {
+          'Cache-Control': `no-cache`,
+        },
+      }),
+      ...restOptions,
+    };
+    const response = await fetch(url, updatedOptions);
 
     if (!response.ok && response.status !== HttpStatusCode.NotFound) {
       throw new Error(`HTTP error! status: ${response.status}`);

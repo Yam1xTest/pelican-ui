@@ -62,17 +62,15 @@ export async function getServerSideProps({
     };
   }
 
-  const previewMode = preview ? `draft` : `published`;
-
   const newsPageData = await getNewsPageData({
-    previewMode,
+    isPreview: preview,
   });
 
   const {
     news,
     pageCount,
   } = await getNewsData({
-    previewMode,
+    isPreview: preview,
     page: currentPage,
   });
 
@@ -86,11 +84,13 @@ export async function getServerSideProps({
 }
 
 async function getNewsPageData({
-  previewMode,
+  isPreview,
 }: {
-  previewMode: string;
+  isPreview: boolean;
 }) {
-  const response: NewsPageResponse = await apiFetch(`/news-page?populate=*&status=${previewMode}`);
+  const response: NewsPageResponse = await apiFetch(`/news-page?populate=*&status=${isPreview ? `draft` : `published`}`, {
+    isPreview,
+  });
 
   if (!response) {
     return {};
@@ -109,10 +109,10 @@ async function getNewsPageData({
 }
 
 async function getNewsData({
-  previewMode,
+  isPreview,
   page,
 }: {
-  previewMode: string;
+  isPreview: boolean;
   page: number;
 }) {
   const queryParams = {
@@ -130,10 +130,12 @@ async function getNewsData({
       page,
       pageSize: NEWS_LIMIT,
     },
-    status: previewMode,
+    status: isPreview ? `draft` : `published`,
   };
 
-  const response: NewsCollectionListResponse = await apiFetch(`/news?${qs.stringify(queryParams)}`);
+  const response: NewsCollectionListResponse = await apiFetch(`/news?${qs.stringify(queryParams)}`, {
+    isPreview,
+  });
 
   return {
     news: response.data!.map((newsItem) => ({

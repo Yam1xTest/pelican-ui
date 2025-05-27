@@ -147,9 +147,8 @@ export async function getServerSideProps({
     };
   }
 
-  const previewMode = preview ? `draft` : `published`;
   const category = await getDocumentCategory({
-    previewMode,
+    isPreview: preview,
     slug: query.slug,
   });
 
@@ -162,7 +161,7 @@ export async function getServerSideProps({
   const availableYears: number[] = [];
 
   await checkAvailableYearsForCategory({
-    previewMode,
+    isPreview: preview,
     availableYears,
     category,
     currentYear,
@@ -187,13 +186,13 @@ export async function getServerSideProps({
   if (category.hasTabs) {
     documents = await getDocuments({
       categoryDocumentId: category.id,
-      previewMode,
+      isPreview: preview,
       year: +query.year || lastYear,
     });
   } else {
     documents = await getDocuments({
       categoryDocumentId: category.id,
-      previewMode,
+      isPreview: preview,
     });
   }
 
@@ -208,13 +207,13 @@ export async function getServerSideProps({
 }
 
 async function getDocumentCategory({
-  previewMode,
+  isPreview,
   slug,
 }: {
-  previewMode: string;
+  isPreview: boolean;
   slug: string;
 }) {
-  const response: DocumentsCategoryListResponse = await apiFetch(`/documents-categories?populate=*&status=${previewMode}&filters[slug][$eq]=${slug}`);
+  const response: DocumentsCategoryListResponse = await apiFetch(`/documents-categories?populate=*&status=${isPreview ? `draft` : `published`}&filters[slug][$eq]=${slug}`);
 
   return mapDocumentCategory({
     documentCategory: response.data![0],
@@ -244,12 +243,12 @@ async function checkAvailableYearsForCategory({
   category,
   currentYear,
   availableYears,
-  previewMode,
+  isPreview,
 }: {
   category: Omit<CategoryProps, 'slug' | 'pageUrl'>;
   currentYear: number;
   availableYears: number[];
-  previewMode: string;
+  isPreview: boolean;
 }) {
   await Promise.all(
     Array.from({
@@ -264,7 +263,7 @@ async function checkAvailableYearsForCategory({
             yearGreaterThanOrEqual: year,
           }),
           pageSize: 1,
-          previewMode,
+          previewMode: isPreview ? `draft` : `published`,
         }))}`);
 
         if (yearsResponse.meta?.pagination?.total) {
@@ -276,11 +275,11 @@ async function checkAvailableYearsForCategory({
 
 async function getDocuments({
   categoryDocumentId,
-  previewMode,
+  isPreview,
   year,
 }: {
   categoryDocumentId: CategoryProps['id'];
-  previewMode: string;
+  isPreview: boolean;
   year?: number;
 }) {
   const responseData = (await apiFetch(`/documents?${qs.stringify(getDocumentsQueryParams({
@@ -289,7 +288,7 @@ async function getDocuments({
       yearLessThanOrEqual: year,
       yearGreaterThanOrEqual: year,
     } : {}),
-    previewMode,
+    previewMode: isPreview ? `draft` : `published`,
   }))}`)).data;
 
   return mapDocuments({
