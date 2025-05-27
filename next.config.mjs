@@ -4,8 +4,9 @@ const nextConfig = {
   // https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers
   async headers() {
     return [
+      // Icons are not cached by default, so we do it manually
       {
-        source: "/favicon/:path*",
+        source: "/(apple-touch-icon|favicon-96x96.png|favicon.ico|favicon.svg|web-app-manifest-192x192.png|web-app-manifest-512x512.png)",
         headers: [
           {
             key: "Cache-Control",
@@ -13,6 +14,7 @@ const nextConfig = {
           }
         ]
       },
+
       {
         source: '/(.*)',
         headers: [
