@@ -9,8 +9,8 @@ const nextConfig = {
         source: "/(apple-touch-icon|favicon-96x96.png|favicon.ico|favicon.svg|web-app-manifest-192x192.png|web-app-manifest-512x512.png)",
         headers: [
           {
-            "key": "Cache-Control",
-            "value": "public, max-age=31536000, immutable"
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable"
           }
         ]
       },
