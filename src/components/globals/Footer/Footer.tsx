@@ -248,10 +248,10 @@ function renderCopyright({
       </Link>
       <Link
         href="https://github.com/TourmalineCore/pelican-documentation"
-        className="footer__github-link"
+        className="footer__github-link github-link"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Ссылка на Github"
+        aria-label="Ссылка на github"
         data-testid="footer-icon-github"
       >
         {React.createElement(IconGit)}
