@@ -38,6 +38,7 @@ const expectedMobileFooterFocusOrder = [
   `social-icon-odnoklassniki`,
   `social-icon-dzen`,
   `footer-copyright-link`,
+  `footer-icon-github`,
   ...generateTestIdDuplicates({
     count: 3,
     string: `footer-official-link`,
@@ -53,6 +54,7 @@ const expectedDesktopFooterFocusOrder = [
   `footer-tel-link`,
   `footer-email-link`,
   `footer-copyright-link`,
+  `footer-icon-github`,
   `social-icon-vkontakte`,
   `social-icon-telegram`,
   `social-icon-odnoklassniki`,
@@ -198,6 +200,7 @@ async function homePageMobileTest({
     `social-icon-odnoklassniki`,
     `social-icon-dzen`,
     `footer-copyright-link`,
+    `footer-icon-github`,
     `gos-banner-button`,
     ...generateTestIdDuplicates({
       count: 3,
@@ -244,6 +247,7 @@ async function homePageDesktopTest({
     `footer-tel-link`,
     `footer-email-link`,
     `footer-copyright-link`,
+    `footer-icon-github`,
     `social-icon-vkontakte`,
     `social-icon-telegram`,
     `social-icon-odnoklassniki`,

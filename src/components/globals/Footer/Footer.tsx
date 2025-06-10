@@ -11,6 +11,7 @@ import { normalizeSlug } from "@/src/common/utils/normalizeSlug";
 import { AppRoute } from "@/src/common/enum";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 import { GosBanner } from "../../home-page/GosBanner/GosBanner";
+import { IconGit } from "./components/IconGit/IconGit";
 
 type FooterProps =
   Omit<GlobalComponentProps,
@@ -226,7 +227,7 @@ function renderCopyright({
       className,
     )}
     >
-      Сайт разработан
+      Открытый код проекта
       <Link
         href="https://www.tourmalinecore.com/ru/"
         className="footer__copyright-link"
@@ -244,6 +245,16 @@ function renderCopyright({
         >
           ❤
         </span>
+      </Link>
+      <Link
+        href="https://github.com/TourmalineCore/pelican-documentation"
+        className="footer__github-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ссылка на github"
+        data-testid="footer-icon-github"
+      >
+        <IconGit />
       </Link>
     </div>
   );
