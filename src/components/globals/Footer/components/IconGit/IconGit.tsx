@@ -8,7 +8,6 @@ export function IconGit() {
       height="65"
       fill="none"
       viewBox="0 0 75 65"
-      className="github-link__icon"
       aria-hidden="true"
     >
       <path

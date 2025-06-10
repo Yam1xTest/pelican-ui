@@ -5,7 +5,7 @@ import { GlobalComponentProps } from "@/src/common/types";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useRouter } from "next/router";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
-import React, { MutableRefObject } from "react";
+import { MutableRefObject } from "react";
 import clsx from "clsx";
 import { normalizeSlug } from "@/src/common/utils/normalizeSlug";
 import { AppRoute } from "@/src/common/enum";
@@ -248,13 +248,13 @@ function renderCopyright({
       </Link>
       <Link
         href="https://github.com/TourmalineCore/pelican-documentation"
-        className="footer__github-link github-link"
+        className="footer__github-link"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Ссылка на github"
         data-testid="footer-icon-github"
       >
-        {React.createElement(IconGit)}
+        <IconGit />
       </Link>
     </div>
   );
