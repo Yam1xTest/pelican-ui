@@ -11,7 +11,7 @@ jobs:
     steps: 
       - name: Trigger Local Env
         run: |
-          curl -X POST https://api.github.com/repos/TourmalineCore/pelican-ui/pelican-local-env/dispatches \
+          curl -X POST https://api.github.com/repos/TourmalineCore/pelican-local-env/dispatches \
           -H "Accept: application/vnd.github.everest-preview+json" \
           -H 'Authorization: Bearer ${{ secrets.PELICAN_ENV_SYNC_TRIGGER_TOKEN }}' \
           -u ${{ secrets.PELICAN_ENV_SYNC_TRIGGER_TOKEN }} \
