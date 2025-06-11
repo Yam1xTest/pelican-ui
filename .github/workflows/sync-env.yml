@@ -22,3 +22,10 @@ jobs:
           -H "Accept: application/vnd.github.everest-preview+json" \
           -u ${{ secrets.PELICAN_ENV_SYNC_TRIGGER_TOKEN }} \
           -d '{"event_type": "latest-ui-image-tag", "client_payload": {"sha": "${{ github.sha }}", "commit_message": "${{ github.event.head_commit.message }}"}}' 
+
+      - name: Trigger Local Env
+        run: |
+          curl -X POST https://api.github.com/orgs/TourmalineCore/repos/pelican-local-env/dispatches \
+          -H "Accept: application/vnd.github.everest-preview+json" \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          -d '{"event_type": "latest-ui-image-tag", "client_payload": {"sha": "${{ github.sha }}", "commit_message": "${{ github.event.head_commit.message }}"}}' 
