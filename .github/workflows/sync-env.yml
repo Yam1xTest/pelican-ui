@@ -3,7 +3,7 @@ name: Trigger Local Env
 on:
   push:
     branches:
-      - master 
+      - feature/* 
 
 jobs:
   Trigger_Local_Env:
