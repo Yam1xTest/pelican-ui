@@ -9,5 +9,9 @@ on:
       
 jobs:
   push_to_registry:
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
     uses: Yam1xTest/pelican-ui/.github/workflows/local-env-docker-build-and-push.yml@feature/test-templates
     secrets: inherit
