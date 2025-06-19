@@ -9,7 +9,7 @@ jobs:
   Trigger_Local_Env:
     runs-on: ubuntu-24.04
     steps: 
-      - name: Checkout 
+      - name: Checkout  
         uses: actions/checkout@v3
         
       - name: Write short-sha to GitHub Env 
