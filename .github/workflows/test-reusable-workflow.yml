@@ -16,6 +16,6 @@ jobs:
     uses: Yam1xTest/workflows/.github/workflows/local-env-docker-build-and-push.yml@main
     with: 
       test-build-args: |
-        CDN_ENABLED=true
-        CDN_DOMAIN=cdn.chelzoo.tech
+        CDN_ENABLED=false
+      prefix: local-env-
     secrets: inherit
