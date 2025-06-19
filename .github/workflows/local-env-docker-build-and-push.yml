@@ -32,6 +32,8 @@ jobs:
       contents: read
       attestations: write
     steps:
+      - name: echo
+        run: echo ${{ github.workflow }}
       - name: Check out the repo
         uses: actions/checkout@v4
       # multi-platform build configured using this https://docs.docker.com/build/ci/github-actions/multi-platform/
