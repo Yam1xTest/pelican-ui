@@ -18,6 +18,10 @@ on:
   #     - feature/*
   # to allow to wait for a docker image to be published to proceed in another workflow
   workflow_call:
+    inputs:
+      test-build-args:
+        required: false
+        type: string
 
 jobs:
   push_to_registry:
@@ -63,4 +67,4 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64,linux/arm64
           build-args: |
-        
+            {{ inputs.test-build-args }}
