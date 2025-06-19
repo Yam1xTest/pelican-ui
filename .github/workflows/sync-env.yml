@@ -15,7 +15,7 @@ jobs:
       - name: Write short-sha to GitHub Env 
         run: |
           echo "SHORT_SHA=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
-         
+          
       - name: Trigger Local Env
         run: |
           curl -X POST https://api.github.com/repos/Yam1xTest/pelican-local-env/dispatches \
