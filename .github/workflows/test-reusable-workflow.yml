@@ -15,7 +15,7 @@ jobs:
       attestations: write
     uses: Yam1xTest/workflows/.github/workflows/local-env-docker-build-and-push.yml@main
     with: 
-      test-build-args: |
+      build-args: |
         CDN_ENABLED=false
       prefix: local-env-
     secrets: inherit
