@@ -14,4 +14,7 @@ jobs:
       contents: read
       attestations: write
     uses: Yam1xTest/pelican-ui/.github/workflows/local-env-docker-build-and-push.yml@feature/test-templates
+    with: 
+      test-build-args: |
+        CDN_ENABLED=false
     secrets: inherit
