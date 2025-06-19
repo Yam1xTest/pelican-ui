@@ -7,10 +7,7 @@ on:
       - feature/*
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - name: bebebe
-      uses: ./.github/workflows/local-env-docker-build-and-push.yml
-      with:
+  push_to_registry:
+    uses: ./.github/workflows/local-env-docker-build-and-push.yml
+    with: 
         test-build-args: CDN_ENABLED=false
