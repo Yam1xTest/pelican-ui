@@ -51,7 +51,7 @@ jobs:
     - name: Check linting
       run: npm run lint
 
-  run-tests:
+  run-playwright-tests:
     runs-on: ubuntu-24.04
 
     strategy:

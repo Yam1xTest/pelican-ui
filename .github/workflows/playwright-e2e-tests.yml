@@ -16,7 +16,7 @@ jobs:
     # without this it cannot login to the registry
     secrets: inherit
 
-  e2e-tests:
+  run-playwright-e2e-tests:
     runs-on: ubuntu-24.04
     needs: push_to_registry
 
