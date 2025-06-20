@@ -1,4 +1,4 @@
-name: Run E2E tests
+name: Run playwright E2E tests
 
 # ToDo should it be triggered only as part of an open PR?
 # currently it triggers for any commit in a FB
@@ -89,7 +89,7 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Playwright run
-        run: npx playwright test --reporter=html --config=playwright.e2e.config.ts
+        run: npm run playwright:run:e2e --reporter=html 
     
         env:
           FRONTEND_URL: http://localhost:40110 
