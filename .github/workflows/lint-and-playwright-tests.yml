@@ -1,4 +1,4 @@
-name: Check linting and run tests
+name: Check linting and run playwright tests
 
 # ToDo should it be triggered only as part of an open PR?
 # currently it triggers for any commit in a FB
@@ -51,7 +51,7 @@ jobs:
     - name: Check linting
       run: npm run lint
 
-  run-tests:
+  run-playwright-tests:
     runs-on: ubuntu-24.04
 
     strategy:
@@ -112,7 +112,7 @@ jobs:
       run: |
         npm run dev:static:without-image-optimization &
         npx --yes wait-on http://localhost:3000 & 
-        npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        npm run playwright:run --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
     - uses: actions/upload-artifact@v4
       # we don't really need successful runs reports

@@ -14,8 +14,8 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: `./`,
   testIgnore: [`**/cms-integration/**`, `**/security-headers/**`],
-  outputDir: `./playwright-tests/playwright-test-results/e2e-tests`,
-  snapshotDir: `./playwright-tests/screenshots/e2e-tests/base`,
+  outputDir: `./playwright-tests/playwright-test-results/test`,
+  snapshotDir: `./playwright-tests/screenshots/base`,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

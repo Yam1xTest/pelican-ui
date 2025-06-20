@@ -14,7 +14,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testIgnore: [`**/a11y/**`],
   testDir: `./playwright-tests/e2e`,
-  outputDir: `./playwright-tests/playwright-test-results/cms-integration`,
+  outputDir: `./playwright-tests/playwright-test-results/e2e-tests`,
   timeout: 45000,
   /* Run tests in files in parallel */
   // fullyParallel: true,
