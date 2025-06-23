@@ -126,7 +126,7 @@ jobs:
     # we don't really need successful runs reports
     if: failure()
     runs-on: ubuntu-24.04 
-    needs: [check-lint,run-tests]
+    needs: [check-lint,run-playwright-tests]
 
     steps:
     - name: Checkout repository
