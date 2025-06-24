@@ -14,9 +14,9 @@ jobs:
       packages: write
       contents: read
       attestations: write
-    uses: Yam1xTest/workflows/.github/workflows/local-env-docker-build-and-push.yml@{{ env.BRANCH_NAME }}
+    uses: Yam1xTest/workflows/.github/workflows/local-env-docker-build-and-push.yml@main
     with: 
       build-args: |
         CDN_ENABLED=false
-      prefix: local-env-
+      prefix: local-env
     secrets: inherit
