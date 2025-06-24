@@ -13,7 +13,7 @@ jobs:
       packages: write
       contents: read
       attestations: write
-    uses: Yam1xTest/workflows/.github/workflows/local-env-docker-build-and-push.yml@${{ github.head_ref || github.ref_name }}
+    uses: Yam1xTest/workflows/.github/workflows/local-env-docker-build-and-push.yml@main
     with: 
       build-args: |
         CDN_ENABLED=false
