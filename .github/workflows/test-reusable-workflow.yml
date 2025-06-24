@@ -18,5 +18,4 @@ jobs:
     with: 
       build-args: |
         CDN_ENABLED=false
-      prefix: local-env
     secrets: inherit
