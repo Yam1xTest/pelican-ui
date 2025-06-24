@@ -112,7 +112,7 @@ jobs:
       run: |
         npm run dev:static:without-image-optimization &
         npx --yes wait-on http://localhost:3000 & 
-        npm run playwright:run --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
     - uses: actions/upload-artifact@v4
       # we don't really need successful runs reports
