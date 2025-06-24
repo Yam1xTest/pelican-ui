@@ -12,7 +12,7 @@ jobs:
   push_to_registry:
     permissions:
       packages: write
-      contents: read
+      contents: read 
       attestations: write 
     uses: Yam1xTest/workflows/.github/workflows/local-env-docker-build-and-push.yml@main
     with: 
