@@ -10,7 +10,7 @@ env:
   BRANCH_NAME: ${{ github.ref_name }}
 jobs: 
   push_to_registry:
-    permissions:
+    permissions: 
       packages: write
       contents: read 
       attestations: write 
