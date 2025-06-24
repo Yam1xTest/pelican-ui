@@ -6,6 +6,8 @@ on:
   push:
     branches:
       - feature/*
+  workflow_call:
+  
 env:
   BRANCH_NAME: ${{ github.ref_name }}
 jobs: 
