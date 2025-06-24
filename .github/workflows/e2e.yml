@@ -1,0 +1,29 @@
+name: Run playwright E2E tests
+
+# ToDo should it be triggered only as part of an open PR?
+# currently it triggers for any commit in a FB
+on: 
+  push:
+    branches:
+      - feature/*
+
+jobs:
+  # this is needed to wait for the new docker image to be build and published to the registry
+  # so that we can use the image to run ui of the needed commit related version as part of local-env
+  # the idea is taken from here https://stackoverflow.com/a/71489231
+  push_to_registry:
+    uses: ./.github/workflows/test-reusable-workflow.yml
+    # without this it cannot login to the registry
+    secrets: inherit
+
+  run-playwright-e2e-tests:
+    needs: push_to_registry
+    uses: Yam1xTest/workflows/.github/workflows/e2e.yml@main
+    with: 
+      prefix: local-env
+      path_to_values: deploy/values-ui.yaml.gotmpl
+      deploy_env: |
+        PELICAN_UI_BRANCH=${{ github.head_ref || github.ref_name }}
+      playwright_env: |
+        FRONTEND_URL: http://localhost:40110 
+        API_URL: 'http://localhost:40110/cms/api'
