@@ -9,6 +9,9 @@ export type CustomTestFixtures = {
     hideHeader?:boolean;
     hideCookie?: boolean;
   }) => void;
+  gotoWithDraftPreviewMode: (options?: {
+    slug: string;
+  }) => void;
   apiImageMock: () => void;
   hideFooter: () => void;
   hideMap: () => void;
@@ -59,6 +62,23 @@ export const test = base.extend<CustomTestFixtures>({
 
     // Use the fixture value in the test
     await use(goto);
+  },
+
+  gotoWithDraftPreviewMode: async ({
+    page,
+    apiImageMock,
+  }, use) => {
+    const gotoWithDraftPreviewMode = async ({
+      slug = ``,
+    }: {
+      slug?: string;
+    } = {}) => {
+      await apiImageMock();
+
+      await page.goto(`/api/preview?secret=secret&slug=${slug}`);
+    };
+
+    await use(gotoWithDraftPreviewMode);
   },
 
   setViewportSize: async ({
