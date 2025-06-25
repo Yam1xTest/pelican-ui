@@ -8,6 +8,7 @@ export type CustomTestFixtures = {
   hideCookie: () => void;
   hideHeader: () => void;
   hideFooter: () => void;
+  hideMap: () => void;
   setViewportSize: (options?: { width?: number; height?: number; }) => void;
 };
 
@@ -111,6 +112,18 @@ export const test = base.extend<CustomTestFixtures>({
 
     await use(hideFooter);
   },
+
+  hideMap: async ({
+    page,
+  }, use) => {
+    const hideMap = async () => {
+      await page.getByTestId(`map`)
+        .evaluate((element) => element.style.visibility = `hidden`);
+    };
+
+    await use(hideMap);
+  },
+
 });
 
 export {
