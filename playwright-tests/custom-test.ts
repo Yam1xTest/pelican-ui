@@ -104,4 +104,5 @@ export const test = base.extend<CustomTestFixtures>({
 
 export {
   expect,
+  type Page,
 } from '@playwright/test';
