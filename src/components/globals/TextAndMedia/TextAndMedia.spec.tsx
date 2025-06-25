@@ -15,7 +15,6 @@ const TEST_ID = `text-and-media`;
 
 test.describe(`TextAndMediaComponentTests`, () => {
   test.beforeEach(async ({
-    page,
     goto,
   }) => {
     await goto({

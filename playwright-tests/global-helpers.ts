@@ -40,48 +40,12 @@ export async function setViewportSize({
   });
 }
 
-export async function hideHeader({
-  page,
-}: {
-  page: Page;
-}) {
-  await page.getByTestId(`header`)
-    .evaluate((element) => element.style.visibility = `hidden`);
-}
-
 export async function hideCookie({
   page,
 }: {
   page: Page;
 }) {
   await page.getByTestId(`cookie`)
-    .evaluate((element) => element.style.visibility = `hidden`);
-}
-
-export async function hideSkipLink({
-  page,
-}: {
-  page: Page;
-}) {
-  await page.getByTestId(`skip-link`)
-    .evaluate((element) => element.style.visibility = `hidden`);
-}
-
-export async function hideFooter({
-  page,
-}: {
-  page: Page;
-}) {
-  await page.getByTestId(`footer`)
-    .evaluate((element) => element.style.visibility = `hidden`);
-}
-
-export async function hideMap({
-  page,
-}: {
-  page: Page;
-}) {
-  await page.getByTestId(`map`)
     .evaluate((element) => element.style.visibility = `hidden`);
 }
 
