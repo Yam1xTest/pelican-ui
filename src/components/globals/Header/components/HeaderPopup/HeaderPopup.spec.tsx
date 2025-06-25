@@ -10,7 +10,7 @@ test.describe(`HeaderPopupTests`, () => {
   test.beforeEach(async ({
     goto,
   }) => {
-    await goto(AppRoute.HOME);
+    await goto();
   });
 
   test(`ActionTest`, actionTest);
