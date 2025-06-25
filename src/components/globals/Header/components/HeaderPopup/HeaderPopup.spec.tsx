@@ -1,15 +1,16 @@
+import {
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from '@/playwright-tests/custom-test';
 import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
-import { gotoPage, setViewportSize } from '@/playwright-tests/global-helpers';
-import { test, expect, Page } from '@playwright/test';
 
 test.describe(`HeaderPopupTests`, () => {
   test.beforeEach(async ({
-    page,
+    goto,
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.HOME,
-    });
+    await goto(AppRoute.HOME);
   });
 
   test(`ActionTest`, actionTest);
@@ -25,12 +26,12 @@ test.describe(`HeaderPopupTests`, () => {
 
 async function actionTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await setViewportSize({
-    page,
-  });
+  await setViewportSize();
 
   await getHeaderPopupButtonByTestId({
     page,
@@ -43,13 +44,12 @@ async function actionTest({
 
 async function navigationTest({
   page,
+  goto,
 }: {
   page: Page;
+  goto: CustomTestFixtures['goto'];
 }) {
-  await gotoPage({
-    page,
-    url: AppRoute.NEWS,
-  });
+  await goto(AppRoute.NEWS);
 
   await getHeaderPopupButtonByTestId({
     page,
@@ -70,12 +70,12 @@ async function navigationTest({
 
 async function mobilePopupTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await setViewportSize({
-    page,
-  });
+  await setViewportSize();
 
   await getHeaderPopupButtonByTestId({
     page,
@@ -90,11 +90,12 @@ async function mobilePopupTest({
 
 async function tabletPopupTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.TABLET,
   });
 
@@ -111,11 +112,12 @@ async function tabletPopupTest({
 
 async function tabletXlPopupTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.TABLET_XL,
   });
 
