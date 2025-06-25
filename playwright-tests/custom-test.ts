@@ -7,6 +7,7 @@ export type CustomTestFixtures = {
   apiImageMock: () => void;
   hideCookie: () => void;
   hideHeader: () => void;
+  hideFooter: () => void;
   setViewportSize: (options?: { width?: number; height?: number; }) => void;
 };
 
@@ -60,10 +61,8 @@ export const test = base.extend<CustomTestFixtures>({
   }, use) => {
     const PNG_STUB_FILE = fs.readFileSync(`./playwright-tests/fixtures/stub.png`);
 
-    const regExp = /https?:\/\/[^/]+\/_next\/image\?([^&]*&)*url=([^&]*%2Fimages%2F[^&]+\.(png|jpg|jpeg|webp|gif|avif))(&[^&]*)*/i;
-
     const apiImageMock = async () => {
-      await page.route(regExp, async (route, request) => {
+      await page.route(`**/_next/image*`, async (route, request) => {
         // Make sure that the browser is waiting for an image
         const accept = await request.headerValue(`accept`);
         const acceptsPng = accept?.includes(`image/*`);
@@ -102,6 +101,16 @@ export const test = base.extend<CustomTestFixtures>({
     await use(hideHeader);
   },
 
+  hideFooter: async ({
+    page,
+  }, use) => {
+    const hideFooter = async () => {
+      await page.getByTestId(`footer`)
+        .evaluate((element) => element.style.visibility = `hidden`);
+    };
+
+    await use(hideFooter);
+  },
 });
 
 export {
