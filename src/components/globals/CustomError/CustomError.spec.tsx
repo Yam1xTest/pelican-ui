@@ -15,7 +15,9 @@ test.describe(`CustomErrorComponentTests`, () => {
     hideCookie,
     hideFooter,
   }) => {
-    await goto(`/notfound`);
+    await goto({
+      path: `/notfound`,
+    });
 
     await hideHeader();
 

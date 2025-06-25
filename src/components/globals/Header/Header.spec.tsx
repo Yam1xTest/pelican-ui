@@ -12,7 +12,9 @@ test.describe(`HeaderComponentTests`, () => {
   test.beforeEach(async ({
     goto,
   }) => {
-    await goto(AppRoute.INTERNAL_TEST_PAGE);
+    await goto({
+      path: AppRoute.INTERNAL_TEST_PAGE,
+    });
   });
 
   test(`MobileTest`, mobileTest);

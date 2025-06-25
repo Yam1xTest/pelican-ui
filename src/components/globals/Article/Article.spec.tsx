@@ -19,7 +19,9 @@ test.describe(`ArticleComponentTest`, () => {
     hideHeader,
     hideCookie,
   }) => {
-    await goto(`${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_ARTICLE}`);
+    await goto({
+      path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_ARTICLE}`,
+    });
 
     await hideHeader();
 

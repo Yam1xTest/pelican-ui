@@ -13,7 +13,9 @@ test.describe(`DocumentsListComponentTests`, () => {
     hideHeader,
     hideCookie,
   }) => {
-    await goto(`${AppRoute.DOCUMENTS}/${MOCK_DOCUMENTS_CATEGORIES[0].slug}`);
+    await goto({
+      path: `${AppRoute.DOCUMENTS}/${MOCK_DOCUMENTS_CATEGORIES[0].slug}`,
+    });
 
     await hideHeader();
 

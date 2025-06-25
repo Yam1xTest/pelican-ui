@@ -13,7 +13,9 @@ test.describe(`CookieTests`, () => {
     goto,
     hideHeader,
   }) => {
-    await goto(AppRoute.INTERNAL_TEST_PAGE);
+    await goto({
+      path: AppRoute.INTERNAL_TEST_PAGE,
+    });
 
     await hideHeader();
   });

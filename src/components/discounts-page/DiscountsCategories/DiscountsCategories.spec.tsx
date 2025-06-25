@@ -14,7 +14,9 @@ test.describe(`DiscountsCategoriesTests`, () => {
     hideCookie,
     hideHeader,
   }) => {
-    await goto(AppRoute.DISCOUNTS);
+    await goto({
+      path: AppRoute.DISCOUNTS,
+    });
 
     await hideHeader();
 

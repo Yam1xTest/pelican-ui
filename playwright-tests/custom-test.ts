@@ -3,7 +3,7 @@ import fs from 'fs';
 import { Breakpoint } from '@/src/common/enum';
 
 export type CustomTestFixtures = {
-  goto: (path?: string) => void;
+  goto: (options?: { path?: string; hideSkipLink?: boolean; }) => void;
   apiImageMock: () => void;
   hideCookie: () => void;
   hideHeader: () => void;
@@ -19,18 +19,24 @@ export const test = base.extend<CustomTestFixtures>({
     page,
     apiImageMock,
   }, use) => {
-    const goto = async (
-      path?: string,
-    ) => {
+    const goto = async ({
+      path = ``,
+      hideSkipLink = true,
+    }: {
+      path?: string;
+      hideSkipLink?: boolean;
+    } = {}) => {
       await apiImageMock();
 
-      await page.goto(path || ``, {
+      await page.goto(path, {
         waitUntil: `networkidle`,
       });
 
-      const skipLink = page.getByTestId(`skip-link`);
-      if (await skipLink.isVisible()) {
-        await skipLink.evaluate((element) => element.style.visibility = `hidden`);
+      if (hideSkipLink) {
+        const skipLink = page.getByTestId(`skip-link`);
+        if (await skipLink.isVisible()) {
+          await skipLink.evaluate((element) => element.style.visibility = `hidden`);
+        }
       }
     };
 

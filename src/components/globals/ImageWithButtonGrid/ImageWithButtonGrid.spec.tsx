@@ -20,7 +20,9 @@ test.describe(`ImageWithButtonGridTests`, () => {
     hideFooter,
     hideCookie,
   }) => {
-    await goto(`${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID}`);
+    await goto({
+      path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID}`,
+    });
 
     await hideHeader();
 

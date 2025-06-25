@@ -49,7 +49,9 @@ async function navigationTest({
   page: Page;
   goto: CustomTestFixtures['goto'];
 }) {
-  await goto(AppRoute.NEWS);
+  await goto({
+    path: AppRoute.NEWS,
+  });
 
   await getHeaderPopupButtonByTestId({
     page,

@@ -20,7 +20,9 @@ test.describe(`CardsComponentTests`, () => {
     hideHeader,
     hideFooter,
   }) => {
-    await goto(`${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_CARDS}`);
+    await goto({
+      path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_CARDS}`,
+    });
 
     await hideHeader();
 

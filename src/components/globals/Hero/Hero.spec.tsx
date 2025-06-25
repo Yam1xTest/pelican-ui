@@ -20,7 +20,9 @@ test.describe(`HeroComponentTests`, () => {
     hideFooter,
     hideCookie,
   }) => {
-    await goto(`${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_HERO}`);
+    await goto({
+      path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_HERO}`,
+    });
 
     await hideHeader();
 

@@ -19,7 +19,9 @@ test.describe(`CategoriesListComponentTests`, () => {
     hideHeader,
     hideCookie,
   }) => {
-    await goto(`${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_CATEGORIES}`);
+    await goto({
+      path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_CATEGORIES}`,
+    });
 
     await hideHeader();
 
@@ -61,7 +63,9 @@ async function routeTest({
 
   await page.goBack();
 
-  await goto(`${AppRoute.DOCUMENTS}/100`);
+  await goto({
+    path: `${AppRoute.DOCUMENTS}/100`,
+  });
 
   await page.getByTestId(`not-found`);
 }
