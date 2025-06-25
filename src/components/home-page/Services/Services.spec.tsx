@@ -4,7 +4,7 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { hideTextAndMedia } from '@/playwright-tests/global-helpers';
+
 import { Breakpoint, BreakpointName } from '@/src/common/enum';
 
 const TEST_ID = `services`;
@@ -16,9 +16,8 @@ test.describe(`ServicesComponentTests`, () => {
   }) => {
     await goto();
 
-    await hideTextAndMedia({
-      page,
-    });
+    await page.getByTestId(`text-and-media`)
+      .evaluate((element) => element.style.visibility = `hidden`);
   });
 
   test(`MobileTest`, mobileTest);

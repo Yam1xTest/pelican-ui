@@ -39,25 +39,6 @@ export async function setViewportSize({
     height,
   });
 }
-
-export async function hideCookie({
-  page,
-}: {
-  page: Page;
-}) {
-  await page.getByTestId(`cookie`)
-    .evaluate((element) => element.style.visibility = `hidden`);
-}
-
-export async function hideTextAndMedia({
-  page,
-}: {
-  page: Page;
-}) {
-  await page.getByTestId(`text-and-media`)
-    .evaluate((element) => element.style.visibility = `hidden`);
-}
-
 export async function axeCheckAndWriteReport({
   page,
   viewport,
