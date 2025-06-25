@@ -11,13 +11,13 @@ jobs:
   # this is needed to wait for the new docker image to be build and published to the registry 
   # so that we can use the image to run ui of the needed commit related version as part of local-env
   # the idea is taken from here https://stackoverflow.com/a/71489231
-  push_to_registry:
-    uses: ./.github/workflows/test-reusable-workflow.yml
-    # without this it cannot login to the registry
-    secrets: inherit
+  # push_to_registry:
+  #   uses: ./.github/workflows/test-reusable-workflow.yml
+  #   # without this it cannot login to the registry
+  #   secrets: inherit
 
   run-playwright-e2e-tests:
-    needs: push_to_registry
+    # needs: push_to_registry
     uses: Yam1xTest/workflows/.github/workflows/e2e.yml@main
     with: 
       prefix: local-env
