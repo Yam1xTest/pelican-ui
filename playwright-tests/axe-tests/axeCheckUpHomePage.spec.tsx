@@ -1,64 +1,41 @@
-/* eslint-disable no-console */
-import { test } from '@playwright/test';
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
-import { axeCheckAndWriteReport, setViewportSize } from '../global-helpers';
+import { Breakpoint, BreakpointName } from '@/src/common/enum';
+import { axeCheckAndWriteReport } from '../global-helpers';
+import { test, CustomTestFixtures, Page } from '../custom-test';
 
 const PAGE_NAME = `home`;
 
-test(`axeCheckUp Desktop XL`, async ({
-  page,
-}) => {
-  await setViewportSize({
+test.describe(`axeCheckUp home page`, () => {
+  test.beforeEach(async ({
     page,
-    width: Breakpoint.DESKTOP_XL,
+    goto,
+  }) => {
+    await goto({
+      hideCookie: false,
+      hideHeader: false,
+      hideSkipLink: false,
+    });
+
+    await page.addScriptTag({
+      path: require.resolve(`axe-core/axe.min.js`),
+    });
   });
 
-  await page.goto(AppRoute.HOME);
+  test(`MobileTest`, mobileTest);
 
-  await page.addScriptTag({
-    path: require.resolve(`axe-core/axe.min.js`),
-  });
+  test(`TabletTest`, tabletTest);
 
-  await axeCheckAndWriteReport({
-    page,
-    viewport: BreakpointName.DESKTOP_XL,
-    pageName: PAGE_NAME,
-  });
+  test(`DesktopTest`, desktopTest);
 });
 
-test(`axeCheckUp Tablet XL`, async ({
+async function mobileTest({
   page,
-}) => {
+  setViewportSize,
+}: {
+  page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
+}) {
   await setViewportSize({
-    page,
-    width: Breakpoint.TABLET_XL,
-  });
-
-  await page.goto(AppRoute.HOME);
-
-  await page.addScriptTag({
-    path: require.resolve(`axe-core/axe.min.js`),
-  });
-
-  await axeCheckAndWriteReport({
-    page,
-    viewport: BreakpointName.TABLET_XL,
-    pageName: PAGE_NAME,
-  });
-});
-
-test(`axeCheckUp Mobile`, async ({
-  page,
-}) => {
-  await setViewportSize({
-    page,
     width: Breakpoint.MOBILE,
-  });
-
-  await page.goto(AppRoute.HOME);
-
-  await page.addScriptTag({
-    path: require.resolve(`axe-core/axe.min.js`),
   });
 
   await axeCheckAndWriteReport({
@@ -66,4 +43,40 @@ test(`axeCheckUp Mobile`, async ({
     viewport: BreakpointName.MOBILE,
     pageName: PAGE_NAME,
   });
-});
+}
+
+async function tabletTest({
+  page,
+  setViewportSize,
+}: {
+  page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
+}) {
+  await setViewportSize({
+    width: Breakpoint.TABLET,
+  });
+
+  await axeCheckAndWriteReport({
+    page,
+    viewport: BreakpointName.TABLET,
+    pageName: PAGE_NAME,
+  });
+}
+
+async function desktopTest({
+  page,
+  setViewportSize,
+}: {
+  page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
+}) {
+  await setViewportSize({
+    width: Breakpoint.DESKTOP,
+  });
+
+  await axeCheckAndWriteReport({
+    page,
+    viewport: BreakpointName.DESKTOP,
+    pageName: PAGE_NAME,
+  });
+}

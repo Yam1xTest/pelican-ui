@@ -1,43 +1,42 @@
-/* eslint-disable no-console */
-import { test } from '@playwright/test';
 import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
-import { axeCheckAndWriteReport, setViewportSize } from '../global-helpers';
+import { axeCheckAndWriteReport } from '../global-helpers';
+import { test, CustomTestFixtures, Page } from '../custom-test';
 
 const PAGE_NAME = `news-article`;
 
-test(`axeCheckUp News Article Page Desktop`, async ({
-  page,
-}) => {
-  await setViewportSize({
+test.describe(`axeCheckUp news article page`, () => {
+  test.beforeEach(async ({
     page,
-    width: Breakpoint.DESKTOP,
+    goto,
+  }) => {
+    await goto({
+      path: `${AppRoute.NEWS}/2024/03/10/priglashaem-na-vstrechu-s-sotrudnikom-zooparka`,
+      hideCookie: false,
+      hideHeader: false,
+      hideSkipLink: false,
+    });
+
+    await page.addScriptTag({
+      path: require.resolve(`axe-core/axe.min.js`),
+    });
   });
 
-  await page.goto(`${AppRoute.NEWS}/2024/03/10/priglashaem-na-vstrechu-s-sotrudnikom-zooparka`);
+  test(`MobileTest`, mobileTest);
 
-  await page.addScriptTag({
-    path: require.resolve(`axe-core/axe.min.js`),
-  });
+  test(`TabletTest`, tabletTest);
 
-  await axeCheckAndWriteReport({
-    page,
-    viewport: BreakpointName.DESKTOP,
-    pageName: PAGE_NAME,
-  });
+  test(`DesktopTest`, desktopTest);
 });
 
-test(`axeCheckUp News Article Page Mobile`, async ({
+async function mobileTest({
   page,
-}) => {
+  setViewportSize,
+}: {
+  page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
+}) {
   await setViewportSize({
-    page,
     width: Breakpoint.MOBILE,
-  });
-
-  await page.goto(`${AppRoute.NEWS}/2024/03/10/priglashaem-na-vstrechu-s-sotrudnikom-zooparka`);
-
-  await page.addScriptTag({
-    path: require.resolve(`axe-core/axe.min.js`),
   });
 
   await axeCheckAndWriteReport({
@@ -45,4 +44,40 @@ test(`axeCheckUp News Article Page Mobile`, async ({
     viewport: BreakpointName.MOBILE,
     pageName: PAGE_NAME,
   });
-});
+}
+
+async function tabletTest({
+  page,
+  setViewportSize,
+}: {
+  page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
+}) {
+  await setViewportSize({
+    width: Breakpoint.TABLET,
+  });
+
+  await axeCheckAndWriteReport({
+    page,
+    viewport: BreakpointName.TABLET,
+    pageName: PAGE_NAME,
+  });
+}
+
+async function desktopTest({
+  page,
+  setViewportSize,
+}: {
+  page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
+}) {
+  await setViewportSize({
+    width: Breakpoint.DESKTOP,
+  });
+
+  await axeCheckAndWriteReport({
+    page,
+    viewport: BreakpointName.DESKTOP,
+    pageName: PAGE_NAME,
+  });
+}
