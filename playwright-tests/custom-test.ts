@@ -26,8 +26,10 @@ export const test = base.extend<CustomTestFixtures>({
         waitUntil: `networkidle`,
       });
 
-      await page.getByTestId(`skip-link`)
-        .evaluate((element) => element.style.visibility = `hidden`);
+      const skipLink = page.getByTestId(`skip-link`);
+      if (await skipLink.isVisible()) {
+        await skipLink.evaluate((element) => element.style.visibility = `hidden`);
+      }
     };
 
     // Use the fixture value in the test
