@@ -53,6 +53,7 @@ async function navigationTest({
 }) {
   await goto({
     path: AppRoute.NEWS,
+    hideHeader: false,
   });
 
   await getHeaderPopupButtonByTestId({
