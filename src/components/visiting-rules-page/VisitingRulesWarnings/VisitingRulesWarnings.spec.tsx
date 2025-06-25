@@ -10,7 +10,6 @@ const TEST_ID = `visiting-rules-warnings`;
 
 test.describe(`VisitingRulesWarningsComponentTest`, () => {
   test.beforeEach(async ({
-    page,
     goto,
   }) => {
     await goto({
