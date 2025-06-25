@@ -3,7 +3,7 @@ import fs from 'fs';
 import { Breakpoint } from '@/src/common/enum';
 
 export type CustomTestFixtures = {
-  goto: (endpoint?: string) => void;
+  goto: (path?: string) => void;
   apiImageMock: () => void;
   hideCookie: () => void;
   hideHeader: () => void;
