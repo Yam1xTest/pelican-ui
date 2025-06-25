@@ -1,12 +1,11 @@
 /* eslint-disable no-await-in-loop */
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { test, expect, Page } from '@playwright/test';
 import {
-  gotoPage,
-  hideCookie,
-  setViewportSize,
-  hideTextAndMedia,
-} from '../global-helpers';
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from '../custom-test';
 
 const expectedMobileHeaderFocusOrder = [
   `skip-link`,
@@ -68,15 +67,11 @@ const expectedDesktopFooterFocusOrder = [
 test.describe(`Logical focus order verification`, () => {
   test.describe(`Home page check`, () => {
     test.beforeEach(async ({
-      page,
+      goto,
     }) => {
-      await gotoPage({
-        page,
-        url: AppRoute.HOME,
-      });
-
-      await hideCookie({
-        page,
+      await goto({
+        hideHeader: false,
+        hideSkipLink: false,
       });
     });
 
@@ -87,15 +82,11 @@ test.describe(`Logical focus order verification`, () => {
 
   test.describe(`Mobile menu and tickets popup check`, () => {
     test.beforeEach(async ({
-      page,
+      goto,
     }) => {
-      await gotoPage({
-        page,
-        url: AppRoute.HOME,
-      });
-
-      await hideCookie({
-        page,
+      await goto({
+        hideHeader: false,
+        hideSkipLink: false,
       });
     });
 
@@ -106,11 +97,12 @@ test.describe(`Logical focus order verification`, () => {
 
   test.describe(`News page check`, () => {
     test.beforeEach(async ({
-      page,
+      goto,
     }) => {
-      await gotoPage({
-        page,
-        url: AppRoute.NEWS,
+      await goto({
+        path: AppRoute.NEWS,
+        hideHeader: false,
+        hideSkipLink: false,
       });
     });
 
@@ -121,11 +113,12 @@ test.describe(`Logical focus order verification`, () => {
 
   test.describe(`Documents page check`, () => {
     test.beforeEach(async ({
-      page,
+      goto,
     }) => {
-      await gotoPage({
-        page,
-        url: AppRoute.DOCUMENTS,
+      await goto({
+        path: AppRoute.DOCUMENTS,
+        hideHeader: false,
+        hideSkipLink: false,
       });
     });
 
@@ -136,11 +129,12 @@ test.describe(`Logical focus order verification`, () => {
 
   test.describe(`Discounts page check`, () => {
     test.beforeEach(async ({
-      page,
+      goto,
     }) => {
-      await gotoPage({
-        page,
-        url: AppRoute.DISCOUNTS,
+      await goto({
+        path: AppRoute.DISCOUNTS,
+        hideHeader: false,
+        hideSkipLink: false,
       });
     });
 
@@ -151,11 +145,12 @@ test.describe(`Logical focus order verification`, () => {
 
   test.describe(`Visiting rules page check`, () => {
     test.beforeEach(async ({
-      page,
+      goto,
     }) => {
-      await gotoPage({
-        page,
-        url: AppRoute.VISITING_RULES,
+      await goto({
+        path: AppRoute.VISITING_RULES,
+        hideHeader: false,
+        hideSkipLink: false,
       });
     });
 
@@ -167,12 +162,12 @@ test.describe(`Logical focus order verification`, () => {
 
 async function homePageMobileTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await setViewportSize({
-    page,
-  });
+  await setViewportSize();
 
   const expectedFocusOrder = [
     ...expectedMobileHeaderFocusOrder,
@@ -216,16 +211,13 @@ async function homePageMobileTest({
 
 async function homePageDesktopTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
-  });
-
-  await hideTextAndMedia({
-    page,
   });
 
   const expectedFocusOrder = [
@@ -267,12 +259,12 @@ async function homePageDesktopTest({
 
 async function mobileMenuOpenTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await setViewportSize({
-    page,
-  });
+  await setViewportSize();
 
   await page.getByTestId(`header-popup-button`)
     .click();
@@ -301,11 +293,12 @@ async function mobileMenuOpenTest({
 
 async function ticketsPopupOpenTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 
@@ -333,12 +326,12 @@ async function ticketsPopupOpenTest({
 
 async function newsPageMobileTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await setViewportSize({
-    page,
-  });
+  await setViewportSize();
 
   const expectedFocusOrder = [
     ...expectedMobileHeaderFocusOrder,
@@ -358,11 +351,12 @@ async function newsPageMobileTest({
 
 async function newsPageDesktopTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 
@@ -384,12 +378,12 @@ async function newsPageDesktopTest({
 
 async function documentsPageMobileTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await setViewportSize({
-    page,
-  });
+  await setViewportSize();
 
   const expectedFocusOrder = [
     ...expectedMobileHeaderFocusOrder,
@@ -408,11 +402,12 @@ async function documentsPageMobileTest({
 
 async function documentsPageDesktopTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 
@@ -433,12 +428,12 @@ async function documentsPageDesktopTest({
 
 async function discountsPageMobileTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await setViewportSize({
-    page,
-  });
+  await setViewportSize();
 
   const expectedFocusOrder = [
     ...expectedMobileHeaderFocusOrder,
@@ -458,11 +453,12 @@ async function discountsPageMobileTest({
 
 async function discountsPageDesktopTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 
@@ -484,12 +480,12 @@ async function discountsPageDesktopTest({
 
 async function visitingRulesPageMobileTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await setViewportSize({
-    page,
-  });
+  await setViewportSize();
 
   const expectedFocusOrder = [
     ...expectedMobileHeaderFocusOrder,
@@ -509,11 +505,12 @@ async function visitingRulesPageMobileTest({
 
 async function visitingRulesPageDesktopTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 
