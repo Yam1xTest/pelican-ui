@@ -13,7 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: `./`,
-  testIgnore: [`**/cms-integration/**`, `**/security-headers/**`],
+  testIgnore: [`**/e2e/**`],
   outputDir: `./playwright-tests/playwright-test-results/test`,
   snapshotDir: `./playwright-tests/screenshots/base`,
   /* Run tests in files in parallel */
