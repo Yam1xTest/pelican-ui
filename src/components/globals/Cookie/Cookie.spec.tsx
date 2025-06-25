@@ -11,13 +11,11 @@ const TEST_ID = `cookie`;
 test.describe(`CookieTests`, () => {
   test.beforeEach(async ({
     goto,
-    hideHeader,
   }) => {
     await goto({
       path: AppRoute.INTERNAL_TEST_PAGE,
+      hideCookie: false,
     });
-
-    await hideHeader();
   });
 
   test(`ActionTest`, actionTest);

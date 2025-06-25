@@ -11,19 +11,13 @@ const TEST_ID = `custom-error`;
 test.describe(`CustomErrorComponentTests`, () => {
   test.beforeEach(async ({
     goto,
-    hideHeader,
-    hideCookie,
     hideFooter,
   }) => {
     await goto({
       path: `/notfound`,
     });
 
-    await hideHeader();
-
     await hideFooter();
-
-    await hideCookie();
   });
 
   test(`MobileTest`, mobileTest);

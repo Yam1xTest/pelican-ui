@@ -16,16 +16,10 @@ import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/d
 test.describe(`CategoriesListComponentTests`, () => {
   test.beforeEach(async ({
     goto,
-    hideHeader,
-    hideCookie,
   }) => {
     await goto({
       path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_CATEGORIES}`,
     });
-
-    await hideHeader();
-
-    await hideCookie();
   });
 
   test(`RouteTest`, routeTest);

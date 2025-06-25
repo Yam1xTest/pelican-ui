@@ -16,19 +16,13 @@ const TEST_ID = `cards`;
 test.describe(`CardsComponentTests`, () => {
   test.beforeEach(async ({
     goto,
-    hideCookie,
-    hideHeader,
     hideFooter,
   }) => {
     await goto({
       path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_CARDS}`,
     });
 
-    await hideHeader();
-
     await hideFooter();
-
-    await hideCookie();
   });
 
   test(`MobileTest`, mobileTest);

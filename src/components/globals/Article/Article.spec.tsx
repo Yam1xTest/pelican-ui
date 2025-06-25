@@ -16,16 +16,10 @@ const TEST_ID = `article`;
 test.describe(`ArticleComponentTest`, () => {
   test.beforeEach(async ({
     goto,
-    hideHeader,
-    hideCookie,
   }) => {
     await goto({
       path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_ARTICLE}`,
     });
-
-    await hideHeader();
-
-    await hideCookie();
   });
 
   test(`MobileTest`, mobileTest);

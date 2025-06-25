@@ -11,17 +11,11 @@ const TEST_ID = `footer`;
 test.describe(`FooterTests`, () => {
   test.beforeEach(async ({
     goto,
-    hideHeader,
-    hideCookie,
     hideMap,
   }) => {
     await goto();
 
-    await hideHeader();
-
     await hideMap();
-
-    await hideCookie();
   });
 
   test(`MobileTest`, mobileTest);

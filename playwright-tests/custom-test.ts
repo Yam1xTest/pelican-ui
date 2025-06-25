@@ -3,10 +3,13 @@ import fs from 'fs';
 import { Breakpoint } from '@/src/common/enum';
 
 export type CustomTestFixtures = {
-  goto: (options?: { path?: string; hideSkipLink?: boolean; }) => void;
+  goto: (options?: {
+    path?: string;
+    hideSkipLink?: boolean;
+    hideHeader?:boolean;
+    hideCookie?: boolean;
+  }) => void;
   apiImageMock: () => void;
-  hideCookie: () => void;
-  hideHeader: () => void;
   hideFooter: () => void;
   hideMap: () => void;
   setViewportSize: (options?: { width?: number; height?: number; }) => void;
@@ -22,15 +25,29 @@ export const test = base.extend<CustomTestFixtures>({
     const goto = async ({
       path = ``,
       hideSkipLink = true,
+      hideHeader = true,
+      hideCookie = true,
     }: {
       path?: string;
       hideSkipLink?: boolean;
+      hideHeader?: boolean;
+      hideCookie?: boolean;
     } = {}) => {
       await apiImageMock();
 
       await page.goto(path, {
         waitUntil: `networkidle`,
       });
+
+      if (hideHeader) {
+        await page.getByTestId(`header`)
+          .evaluate((element) => element.style.visibility = `hidden`);
+      }
+
+      if (hideCookie) {
+        await page.getByTestId(`cookie`)
+          .evaluate((element) => element.style.visibility = `hidden`);
+      }
 
       if (hideSkipLink) {
         const skipLink = page.getByTestId(`skip-link`);
@@ -84,28 +101,6 @@ export const test = base.extend<CustomTestFixtures>({
     };
 
     await use(apiImageMock);
-  },
-
-  hideCookie: async ({
-    page,
-  }, use) => {
-    const hideCookie = async () => {
-      await page.getByTestId(`cookie`)
-        .evaluate((element) => element.style.visibility = `hidden`);
-    };
-
-    await use(hideCookie);
-  },
-
-  hideHeader: async ({
-    page,
-  }, use) => {
-    const hideHeader = async () => {
-      await page.getByTestId(`header`)
-        .evaluate((element) => element.style.visibility = `hidden`);
-    };
-
-    await use(hideHeader);
   },
 
   hideFooter: async ({

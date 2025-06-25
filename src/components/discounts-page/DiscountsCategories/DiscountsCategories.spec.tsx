@@ -11,16 +11,10 @@ const TEST_ID = `discounts-categories`;
 test.describe(`DiscountsCategoriesTests`, () => {
   test.beforeEach(async ({
     goto,
-    hideCookie,
-    hideHeader,
   }) => {
     await goto({
       path: AppRoute.DISCOUNTS,
     });
-
-    await hideHeader();
-
-    await hideCookie();
   });
 
   test(`MobileTest`, mobileTest);

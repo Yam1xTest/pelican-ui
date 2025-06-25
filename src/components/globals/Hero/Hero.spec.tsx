@@ -16,19 +16,13 @@ const TEST_ID = `hero`;
 test.describe(`HeroComponentTests`, () => {
   test.beforeEach(async ({
     goto,
-    hideHeader,
     hideFooter,
-    hideCookie,
   }) => {
     await goto({
       path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_HERO}`,
     });
 
-    await hideHeader();
-
     await hideFooter();
-
-    await hideCookie();
   });
 
   test(`MobileTest`, mobileTest);

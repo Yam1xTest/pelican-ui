@@ -10,16 +10,10 @@ import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/d
 test.describe(`DocumentsListComponentTests`, () => {
   test.beforeEach(async ({
     goto,
-    hideHeader,
-    hideCookie,
   }) => {
     await goto({
       path: `${AppRoute.DOCUMENTS}/${MOCK_DOCUMENTS_CATEGORIES[0].slug}`,
     });
-
-    await hideHeader();
-
-    await hideCookie();
   });
 
   test(`TabActionTest`, tabAction);

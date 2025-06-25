@@ -14,6 +14,7 @@ test.describe(`HeaderComponentTests`, () => {
   }) => {
     await goto({
       path: AppRoute.INTERNAL_TEST_PAGE,
+      hideHeader: false,
     });
   });
 

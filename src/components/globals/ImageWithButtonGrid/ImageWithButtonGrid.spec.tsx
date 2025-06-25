@@ -16,19 +16,13 @@ const TEST_ID = `image-with-button-grid`;
 test.describe(`ImageWithButtonGridTests`, () => {
   test.beforeEach(async ({
     goto,
-    hideHeader,
     hideFooter,
-    hideCookie,
   }) => {
     await goto({
       path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID}`,
     });
 
-    await hideHeader();
-
     await hideFooter();
-
-    await hideCookie();
   });
 
   test(`MobileTest`, mobileTest);
