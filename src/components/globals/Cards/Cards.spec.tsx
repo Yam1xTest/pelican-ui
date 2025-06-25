@@ -19,9 +19,7 @@ test.describe(`CardsComponentTests`, () => {
     hideCookie,
     hideHeader,
     hideFooter,
-    apiImageMock,
   }) => {
-    await apiImageMock();
     await goto(`${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_CARDS}`);
 
     await hideHeader();
