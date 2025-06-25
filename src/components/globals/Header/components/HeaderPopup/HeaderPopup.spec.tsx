@@ -10,7 +10,9 @@ test.describe(`HeaderPopupTests`, () => {
   test.beforeEach(async ({
     goto,
   }) => {
-    await goto();
+    await goto({
+      hideHeader: false,
+    });
   });
 
   test(`ActionTest`, actionTest);
