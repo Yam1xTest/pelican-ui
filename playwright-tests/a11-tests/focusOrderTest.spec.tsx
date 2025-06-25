@@ -1,12 +1,12 @@
 /* eslint-disable no-await-in-loop */
 import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { test, expect, Page } from '@playwright/test';
 import {
   gotoPage,
   hideCookie,
-  hideTextAndMedia,
   setViewportSize,
-} from '@/playwright-tests/global-helpers';
-import { test, expect, Page } from '@playwright/test';
+  hideTextAndMedia,
+} from '../global-helpers';
 
 const expectedMobileHeaderFocusOrder = [
   `skip-link`,

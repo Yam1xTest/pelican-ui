@@ -1,6 +1,6 @@
 import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
-import { axeCheckAndWriteReport } from '../global-helpers';
 import { CustomTestFixtures, Page, test } from '../custom-test';
+import { axeCheckAndWriteReport } from '../global-helpers';
 
 const PAGE_NAME = `documents`;
 

@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, setViewportSize } from '@/playwright-tests/global-helpers';
 import { test, Page, expect } from '@playwright/test';
+import { gotoPage, setViewportSize } from '../global-helpers';
 
 test.describe(`Visible focus indicator verification`, () => {
   test(`HomePageCheckTest`, async ({

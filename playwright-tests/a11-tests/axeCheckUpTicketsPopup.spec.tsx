@@ -1,16 +1,15 @@
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
-import { axeCheckAndWriteReport } from '../global-helpers';
+import { Breakpoint, BreakpointName } from '@/src/common/enum';
 import { test, CustomTestFixtures, Page } from '../custom-test';
+import { axeCheckAndWriteReport } from '../global-helpers';
 
-const PAGE_NAME = `news`;
+const PAGE_NAME = `tickets-popup`;
 
-test.describe(`axeCheckUp news page`, () => {
+test.describe(`axeCheckUp tickets popup`, () => {
   test.beforeEach(async ({
     page,
     goto,
   }) => {
     await goto({
-      path: `${AppRoute.NEWS}`,
       hideCookie: false,
       hideHeader: false,
       hideSkipLink: false,
