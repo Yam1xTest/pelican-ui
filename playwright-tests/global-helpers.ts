@@ -76,15 +76,6 @@ export async function hideFooter({
     .evaluate((element) => element.style.visibility = `hidden`);
 }
 
-export async function hideTickets({
-  page,
-}: {
-  page: Page;
-}) {
-  await page.getByTestId(`tickets`)
-    .evaluate((element) => element.style.visibility = `hidden`);
-}
-
 export async function hideMap({
   page,
 }: {
