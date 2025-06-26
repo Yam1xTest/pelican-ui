@@ -57,4 +57,5 @@ export enum ComponentName {
   COOKIE = `cookie`,
   CUSTOM_ERROR = `custom-error`,
   FOOTER = `footer`,
+  HEADER = `header`,
 }

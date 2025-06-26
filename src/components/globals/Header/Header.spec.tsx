@@ -4,18 +4,15 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `header`;
 
 test.describe(`HeaderComponentTests`, () => {
   test.beforeEach(async ({
-    goto,
+    gotoComponentsPage,
   }) => {
-    await goto({
-      path: AppRoute.INTERNAL_TEST_PAGE,
-      hideHeader: false,
-    });
+    await gotoComponentsPage(ComponentName.HEADER);
   });
 
   test(`MobileTest`, mobileTest);
