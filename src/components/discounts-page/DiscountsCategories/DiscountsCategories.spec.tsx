@@ -4,7 +4,7 @@ import {
   CustomTestFixtures,
   Page,
 } from '@/playwright-tests/custom-test';
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `discounts-categories`;
 
@@ -13,7 +13,7 @@ test.describe(`DiscountsCategoriesTests`, () => {
     goto,
   }) => {
     await goto({
-      path: AppRoute.DISCOUNTS,
+      path: ComponentName.DISCOUNTS_CATEGORIES,
     });
   });
 

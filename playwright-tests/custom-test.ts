@@ -5,9 +5,6 @@ import { Breakpoint } from '@/src/common/enum';
 export type CustomTestFixtures = {
   goto: (options?: {
     path?: string;
-    hideSkipLink?: boolean;
-    hideHeader?:boolean;
-    hideCookie?: boolean;
   }) => void;
   gotoWithDraftPreviewMode: (options?: {
     slug: string;
@@ -27,37 +24,14 @@ export const test = base.extend<CustomTestFixtures>({
   }, use) => {
     const goto = async ({
       path = ``,
-      hideSkipLink = true,
-      hideHeader = true,
-      hideCookie = true,
     }: {
       path?: string;
-      hideSkipLink?: boolean;
-      hideHeader?: boolean;
-      hideCookie?: boolean;
     } = {}) => {
       await apiImageMock();
 
-      await page.goto(path, {
+      await page.goto(`/components/${path}`, {
         waitUntil: `networkidle`,
       });
-
-      if (hideHeader) {
-        await page.getByTestId(`header`)
-          .evaluate((element) => element.style.visibility = `hidden`);
-      }
-
-      if (hideCookie) {
-        await page.getByTestId(`cookie`)
-          .evaluate((element) => element.style.visibility = `hidden`);
-      }
-
-      if (hideSkipLink) {
-        const skipLink = page.getByTestId(`skip-link`);
-        if (await skipLink.isVisible()) {
-          await skipLink.evaluate((element) => element.style.visibility = `hidden`);
-        }
-      }
     };
 
     // Use the fixture value in the test

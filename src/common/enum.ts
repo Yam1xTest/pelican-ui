@@ -45,3 +45,7 @@ export enum BlockTypes {
   VISITING_RULES_PHOTOS_POLICY = `visiting-rules.photos-policy`,
   VISITING_RULES_EMERGENCY_PHONES = `visiting-rules.emergency-phones`,
 }
+
+export enum ComponentName {
+  DISCOUNTS_CATEGORIES = `discounts-categories`,
+}
