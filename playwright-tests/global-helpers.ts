@@ -1,44 +1,7 @@
-import { Breakpoint } from "@/src/common/enum";
 import { Page } from "@playwright/test";
 import { mkdirSync, writeFileSync } from "fs";
 import { dirname } from "path";
 
-export async function gotoPage({
-  page,
-  url,
-  useNetworkidle = true,
-}: {
-  page: Page;
-  url: string;
-  useNetworkidle?: boolean;
-}) {
-  // Allows you to accurately wait for content on the site to load.
-  /* Do not use networkidle it for sections where requests take a long time,
-     otherwise the test may fail due to a timeout.
-  */
-  // networkidle - https://playwright.dev/docs/api/class-frame#frame-goto
-  await page.goto(url, {
-    ...(
-      useNetworkidle && {
-        waitUntil: `networkidle`,
-      }),
-  });
-}
-
-export async function setViewportSize({
-  page,
-  width = Breakpoint.MOBILE,
-  height = 768,
-}: {
-  page: Page;
-  width?: number;
-  height?: number;
-}) {
-  await page.setViewportSize({
-    width,
-    height,
-  });
-}
 export async function axeCheckAndWriteReport({
   page,
   viewport,

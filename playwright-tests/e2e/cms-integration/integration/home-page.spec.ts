@@ -1,7 +1,12 @@
 import { Breakpoint } from "@/src/common/enum";
 import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
 import axios, { HttpStatusCode, AxiosError } from "axios";
-import { CustomTestFixtures, Page, test } from "@/playwright-tests/custom-test";
+import {
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from "@/playwright-tests/custom-test";
 import { TEST_MOCK_HERO } from "../cms-integration-mocks";
 import { E2E_DRAFT_UI_NAME_PREFIX, getFileIdByName } from "../helpers/cms-integration-helpers";
 
