@@ -4,25 +4,15 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import {
-  AppRoute,
-  BlockTypes,
-  Breakpoint,
-  BreakpointName,
-} from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `image-with-button-grid`;
 
 test.describe(`ImageWithButtonGridTests`, () => {
   test.beforeEach(async ({
-    goto,
-    hideFooter,
+    gotoComponentsPage,
   }) => {
-    await goto({
-      path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID}`,
-    });
-
-    await hideFooter();
+    await gotoComponentsPage(ComponentName.IMAGE_WITH_BUTTON_GRID);
   });
 
   test(`MobileTest`, mobileTest);

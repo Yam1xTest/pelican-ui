@@ -18,6 +18,7 @@ import {
   MOCK_POPUP_TICKET_BUY_TEXT,
   MOCK_TICKETS_POPUP,
 } from "@/src/common/mocks/globals-mock";
+import { MOCK_IMAGE_WITH_BUTTON_GRID } from "@/src/common/mocks/home-page-mock/blocks/image-with-button-grid-mock";
 import { MOCK_SHARED_ARTICLE } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-article";
 import { MOCK_SHARED_CARDS } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-cards-mock";
 import { MOCK_SHARED_CATEGORIES } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-categories";
@@ -33,6 +34,7 @@ import { Footer } from "@/src/components/globals/Footer/Footer";
 import { HeaderPopup } from "@/src/components/globals/Header/components/HeaderPopup/HeaderPopup";
 import { Header } from "@/src/components/globals/Header/Header";
 import { Hero } from "@/src/components/globals/Hero/Hero";
+import { ImageWithButtonGrid } from "@/src/components/globals/ImageWithButtonGrid/ImageWithButtonGrid";
 import { TicketsPopup } from "@/src/components/globals/TicketsPopup/TicketsPopup";
 import { HttpStatusCode } from "axios";
 import Link from "next/link";
@@ -187,6 +189,15 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.IMAGE_WITH_BUTTON_GRID) {
+    return (
+      <ImageWithButtonGrid
+        {...MOCK_IMAGE_WITH_BUTTON_GRID}
+        isInternalPage
+      />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -231,6 +242,9 @@ export default function ComponentsPage() {
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.HERO}>Hero</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.IMAGE_WITH_BUTTON_GRID}>Image with button grid</Link>
         </li>
       </ul>
     </div>
