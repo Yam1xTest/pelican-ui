@@ -4,6 +4,7 @@ import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
 import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
 import { MOCK_CONTACT_ZOO_HERO } from "@/src/common/mocks/contact-zoo-page-mock/blocks/hero-mock";
+import { MOCK_CONTACT_ZOO_TICKETS } from "@/src/common/mocks/contact-zoo-page-mock/blocks/tickets-mock";
 import { MOCK_DISCOUNTS_CATEGORIES } from "@/src/common/mocks/discounts-page-mock/blocks/discounts-categories-mock";
 import { MOCK_DISCOUNTS_TERMS } from "@/src/common/mocks/discounts-page-mock/blocks/discounts-terms-mock";
 import {
@@ -38,6 +39,7 @@ import { Hero } from "@/src/components/globals/Hero/Hero";
 import { ImageWithButtonGrid } from "@/src/components/globals/ImageWithButtonGrid/ImageWithButtonGrid";
 import { SkipLink } from "@/src/components/globals/SkipLink/SkipLink";
 import { TextAndMedia } from "@/src/components/globals/TextAndMedia/TextAndMedia";
+import { Tickets } from "@/src/components/globals/Tickets/Tickets";
 import { TicketsPopup } from "@/src/components/globals/TicketsPopup/TicketsPopup";
 import { HttpStatusCode } from "axios";
 import Link from "next/link";
@@ -216,6 +218,12 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.TICKETS) {
+    return (
+      <Tickets {...MOCK_CONTACT_ZOO_TICKETS} />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -269,6 +277,9 @@ export default function ComponentsPage() {
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.TEXT_AND_MEDIA}>Text and media</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.TICKETS}>Tickets</Link>
         </li>
       </ul>
     </div>
