@@ -6,6 +6,7 @@ export enum AppRoute {
   INTERNAL_TEST_PAGE = `/internal-test-page`,
   DISCOUNTS = `/discounts`,
   VISITING_RULES = `/visiting-rules`,
+  COMPONENTS = `/components`,
 }
 
 export enum Breakpoint {
@@ -55,4 +56,5 @@ export enum ComponentName {
   CATEGORIES = `categories`,
   COOKIE = `cookie`,
   CUSTOM_ERROR = `custom-error`,
+  FOOTER = `footer`,
 }

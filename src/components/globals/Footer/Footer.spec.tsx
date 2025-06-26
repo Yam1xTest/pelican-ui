@@ -4,18 +4,15 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { Breakpoint, BreakpointName } from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `footer`;
 
 test.describe(`FooterTests`, () => {
   test.beforeEach(async ({
-    goto,
-    hideMap,
+    gotoComponentsPage,
   }) => {
-    await goto();
-
-    await hideMap();
+    await gotoComponentsPage(ComponentName.FOOTER);
   });
 
   test(`MobileTest`, mobileTest);

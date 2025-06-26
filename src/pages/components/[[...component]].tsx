@@ -4,6 +4,16 @@ import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/d
 import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
 import { MOCK_DISCOUNTS_CATEGORIES } from "@/src/common/mocks/discounts-page-mock/blocks/discounts-categories-mock";
 import { MOCK_DISCOUNTS_TERMS } from "@/src/common/mocks/discounts-page-mock/blocks/discounts-terms-mock";
+import {
+  MOCK_EMAIL,
+  MOCK_FOOTER_ABOUT_LINKS,
+  MOCK_FOOTER_NAV_TITLE_LEFT,
+  MOCK_FOOTER_NAV_TITLE_RIGHT,
+  MOCK_FOOTER_USER_LINKS,
+  MOCK_OFFICIAL_LINKS,
+  MOCK_PHONE,
+  MOCK_POPUP_TICKET_BUY_TEXT,
+} from "@/src/common/mocks/globals-mock";
 import { MOCK_SHARED_ARTICLE } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-article";
 import { MOCK_SHARED_CARDS } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-cards-mock";
 import { MOCK_SHARED_CATEGORIES } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-categories";
@@ -15,6 +25,7 @@ import { Cards } from "@/src/components/globals/Cards/Cards";
 import { Categories } from "@/src/components/globals/Categories/Categories";
 import { Cookie } from "@/src/components/globals/Cookie/Cookie";
 import { CustomError } from "@/src/components/globals/CustomError/CustomError";
+import { Footer } from "@/src/components/globals/Footer/Footer";
 import { HttpStatusCode } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -97,6 +108,22 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.FOOTER) {
+    return (
+      <Footer
+        officialLinks={MOCK_OFFICIAL_LINKS}
+        footerUserLinks={MOCK_FOOTER_USER_LINKS}
+        footerAboutLinks={MOCK_FOOTER_ABOUT_LINKS}
+        email={MOCK_EMAIL}
+        phone={MOCK_PHONE}
+        popupTicketBuyText={MOCK_POPUP_TICKET_BUY_TEXT}
+        footerNavTitleLeft={MOCK_FOOTER_NAV_TITLE_LEFT}
+        footerNavTitleRight={MOCK_FOOTER_NAV_TITLE_RIGHT}
+        footerElementRef={null as any}
+      />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -126,6 +153,9 @@ export default function ComponentsPage() {
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.CUSTOM_ERROR}>Custom Error</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.FOOTER}>Footer</Link>
         </li>
       </ul>
     </div>

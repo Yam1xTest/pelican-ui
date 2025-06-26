@@ -7,8 +7,8 @@ import { useRouter } from "next/router";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MutableRefObject } from "react";
 import clsx from "clsx";
+import { AppRoute, ComponentName } from "@/src/common/enum";
 import { normalizeSlug } from "@/src/common/utils/normalizeSlug";
-import { AppRoute } from "@/src/common/enum";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 import { GosBanner } from "../../home-page/GosBanner/GosBanner";
 import { IconGit } from "./components/IconGit/IconGit";
@@ -44,6 +44,13 @@ export function Footer({
     handleTicketPopupToggle,
   } = useTicketPopup();
 
+  const slugAfterNormalize = normalizeSlug({
+    slug: router.asPath,
+  });
+
+  const gosBannerIsVisible = slugAfterNormalize === AppRoute.HOME
+   || slugAfterNormalize === `${AppRoute.COMPONENTS}/${ComponentName.FOOTER}`;
+
   return (
     <footer
       ref={footerElementRef}
@@ -77,10 +84,10 @@ export function Footer({
                     link,
                   }) => (
                     <li
-                      key={id}
-                      className="footer__nav-item"
-                    >
-                      <Link
+                            key={id}
+                            className="footer__nav-item"
+                          >
+                            <Link
                         href={link}
                         className="footer__nav-link"
                         aria-label={`Перейти на страницу ${name}`}
@@ -88,7 +95,7 @@ export function Footer({
                       >
                         {name}
                       </Link>
-                    </li>
+                          </li>
                   ))}
                 </ul>
               </div>
@@ -101,10 +108,10 @@ export function Footer({
                     link,
                   }) => (
                     <li
-                      key={id}
-                      className="footer__nav-item"
-                    >
-                      <Link
+                            key={id}
+                            className="footer__nav-item"
+                          >
+                            <Link
                         href={link}
                         className="footer__nav-link"
                         data-testid="footer-nav-link"
@@ -113,7 +120,7 @@ export function Footer({
                       >
                         {name}
                       </Link>
-                    </li>
+                          </li>
                   ))}
                 </ul>
               </div>
@@ -175,9 +182,7 @@ export function Footer({
           </div>
         </div>
       </div>
-      {normalizeSlug({
-        slug: router.asPath,
-      }) === AppRoute.HOME && <GosBanner />}
+      {gosBannerIsVisible && <GosBanner />}
       <div className="container footer__bottom">
         <ul className="footer__official-links grid">
           {officialLinks.map(({
