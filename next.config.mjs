@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  devIndicators: {
+    buildActivity: false,
+  },
+
   // https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers
   async headers() {
     return [
@@ -153,8 +157,6 @@ const nextConfig = {
       domains: [process.env.CDN_DOMAIN],
       path: `https://${process.env.CDN_DOMAIN}/_next/image`
     }),
-
-    unoptimized: process.env.IMAGE_OPTIMIZATION_DISABLED === 'true',
 
     // lifetime in seconds for cached optimized images
     // https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl

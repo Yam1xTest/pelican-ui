@@ -1,35 +1,18 @@
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import {
-  gotoPage,
-  hideCookie,
-  hideHeader,
-  hideSkipLink,
-  setViewportSize,
-} from '@/playwright-tests/global-helpers';
-import { test, expect, Page } from '@playwright/test';
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from '@/playwright-tests/custom-test';
+import { Breakpoint, BreakpointName } from '@/src/common/enum';
 
 const TEST_ID = `image-with-button-grid`;
 
 test.describe(`HomepageImageWithButtonGridTests`, () => {
   test.beforeEach(async ({
-    page,
+    goto,
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.HOME,
-    });
-
-    await hideHeader({
-      page,
-    });
-
-    await hideSkipLink({
-      page,
-    });
-
-    await hideCookie({
-      page,
-    });
+    await goto();
   });
 
   test(`MobileTest`, mobileTest);
@@ -43,12 +26,12 @@ test.describe(`HomepageImageWithButtonGridTests`, () => {
 
 async function mobileTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await setViewportSize({
-    page,
-  });
+  await setViewportSize();
 
   await expect(getImageWithButtonGridByTestId({
     page,
@@ -58,11 +41,12 @@ async function mobileTest({
 
 async function tabletTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.TABLET,
   });
 
@@ -74,11 +58,12 @@ async function tabletTest({
 
 async function tabletXlTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.TABLET_XL,
   });
 
@@ -90,11 +75,12 @@ async function tabletXlTest({
 
 async function desktopTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 

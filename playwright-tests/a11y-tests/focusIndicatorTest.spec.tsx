@@ -1,17 +1,32 @@
 /* eslint-disable no-await-in-loop */
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, setViewportSize } from '@/playwright-tests/global-helpers';
-import { test, Page, expect } from '@playwright/test';
+import {
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from '../custom-test';
 
 test.describe(`Visible focus indicator verification`, () => {
+  test.beforeEach(async ({
+    setViewportSize,
+  }) => {
+    await setViewportSize({
+      width: Breakpoint.DESKTOP,
+    });
+  });
+
   test(`HomePageCheckTest`, async ({
     page,
+    goto,
   }: {
     page: Page;
+    goto: CustomTestFixtures['goto'];
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.HOME,
+    await goto({
+      hideCookie: false,
+      hideHeader: false,
+      hideSkipLink: false,
     });
 
     await checkFocusVisibility({
@@ -21,12 +36,16 @@ test.describe(`Visible focus indicator verification`, () => {
 
   test(`NewsPageCheckTest`, async ({
     page,
+    goto,
   }: {
     page: Page;
+    goto: CustomTestFixtures['goto'];
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.NEWS,
+    await goto({
+      path: AppRoute.NEWS,
+      hideCookie: false,
+      hideHeader: false,
+      hideSkipLink: false,
     });
 
     await checkFocusVisibility({
@@ -36,12 +55,16 @@ test.describe(`Visible focus indicator verification`, () => {
 
   test(`DocumentsPageCheckTest`, async ({
     page,
+    goto,
   }: {
     page: Page;
+    goto: CustomTestFixtures['goto'];
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.DOCUMENTS,
+    await goto({
+      path: AppRoute.DOCUMENTS,
+      hideCookie: false,
+      hideHeader: false,
+      hideSkipLink: false,
     });
 
     await checkFocusVisibility({
@@ -51,12 +74,16 @@ test.describe(`Visible focus indicator verification`, () => {
 
   test(`DiscountsPageCheckTest`, async ({
     page,
+    goto,
   }: {
     page: Page;
+    goto: CustomTestFixtures['goto'];
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.DISCOUNTS,
+    await goto({
+      path: AppRoute.DISCOUNTS,
+      hideCookie: false,
+      hideHeader: false,
+      hideSkipLink: false,
     });
 
     await checkFocusVisibility({
@@ -66,12 +93,16 @@ test.describe(`Visible focus indicator verification`, () => {
 
   test(`VisitingRulesPageCheckTest`, async ({
     page,
+    goto,
   }: {
     page: Page;
+    goto: CustomTestFixtures['goto'];
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.VISITING_RULES,
+    await goto({
+      path: AppRoute.VISITING_RULES,
+      hideCookie: false,
+      hideHeader: false,
+      hideSkipLink: false,
     });
 
     await checkFocusVisibility({
@@ -85,11 +116,6 @@ async function checkFocusVisibility({
 }: {
   page: Page;
 }) {
-  await setViewportSize({
-    page,
-    width: Breakpoint.DESKTOP,
-  });
-
   const errors = [];
   const focusableSelectors = [`a`, `button`];
 

@@ -1,41 +1,22 @@
 
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import {
-  gotoPage,
-  hideCookie,
-  hideHeader,
-  hideMap,
-  hideSkipLink,
-  setViewportSize,
-} from '@/playwright-tests/global-helpers';
-import { test, expect, Page } from '@playwright/test';
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from '@/playwright-tests/custom-test';
+import { Breakpoint, BreakpointName } from '@/src/common/enum';
 
 const TEST_ID = `tickets`;
 
 test.describe(`HomepageTicketsComponentTests`, () => {
   test.beforeEach(async ({
-    page,
+    goto,
+    hideMap,
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.HOME,
-    });
+    await goto();
 
-    await hideHeader({
-      page,
-    });
-
-    await hideSkipLink({
-      page,
-    });
-
-    await hideMap({
-      page,
-    });
-
-    await hideCookie({
-      page,
-    });
+    await hideMap();
   });
 
   test(`MobileTest`, mobileTest);
@@ -51,11 +32,12 @@ test.describe(`HomepageTicketsComponentTests`, () => {
 
 async function mobileTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     height: 1270,
   });
 
@@ -67,11 +49,12 @@ async function mobileTest({
 
 async function tabletTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.TABLET,
     height: 948,
   });
@@ -84,11 +67,12 @@ async function tabletTest({
 
 async function tabletXlTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.TABLET_XL,
     height: 572,
   });
@@ -101,11 +85,12 @@ async function tabletXlTest({
 
 async function desktopTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
     height: 774,
   });
@@ -118,11 +103,12 @@ async function desktopTest({
 
 async function desktopXlTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP_XL,
     height: 1056,
   });

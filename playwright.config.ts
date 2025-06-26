@@ -13,7 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: `./`,
-  testIgnore: [`**/cms-integration/**`, `**/security-headers/**`],
+  testIgnore: [`**/e2e/**`],
   outputDir: `./playwright-tests/playwright-test-results/test`,
   snapshotDir: `./playwright-tests/screenshots/base`,
   /* Run tests in files in parallel */
@@ -32,14 +32,6 @@ export default defineConfig({
     baseURL: `http://localhost:3000`,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: `on-first-retry`,
-  },
-  expect: {
-    // Maximum time expect() should wait for the condition to be met.
-    timeout: 10000,
-
-    toHaveScreenshot: {
-      maxDiffPixels: 50,
-    },
   },
   /* Configure projects for major browsers */
   projects: [

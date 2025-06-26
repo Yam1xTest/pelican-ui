@@ -12,7 +12,6 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testIgnore: [`**/a11y/**`],
   testDir: `./playwright-tests/e2e`,
   outputDir: `./playwright-tests/playwright-test-results/e2e-tests`,
   timeout: 45000,

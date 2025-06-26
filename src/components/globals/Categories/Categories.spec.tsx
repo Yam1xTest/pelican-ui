@@ -1,10 +1,10 @@
 /* eslint-disable no-await-in-loop */
 import {
-  gotoPage,
-  hideCookie,
-  hideHeader,
-  setViewportSize,
-} from '@/playwright-tests/global-helpers';
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from '@/playwright-tests/custom-test';
 import {
   AppRoute,
   BlockTypes,
@@ -12,23 +12,13 @@ import {
   BreakpointName,
 } from '@/src/common/enum';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
-import { test, expect, Page } from '@playwright/test';
 
 test.describe(`CategoriesListComponentTests`, () => {
   test.beforeEach(async ({
-    page,
+    goto,
   }) => {
-    await gotoPage({
-      page,
-      url: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_CATEGORIES}`,
-    });
-
-    await hideHeader({
-      page,
-    });
-
-    await hideCookie({
-      page,
+    await goto({
+      path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_CATEGORIES}`,
     });
   });
 
@@ -47,12 +37,14 @@ test.describe(`CategoriesListComponentTests`, () => {
 
 async function routeTest({
   page,
+  goto,
+  setViewportSize,
 }: {
   page: Page;
+  goto: CustomTestFixtures['goto'];
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await setViewportSize({
-    page,
-  });
+  await setViewportSize();
 
   await page.getByTestId(`category`)
     .nth(0)
@@ -65,21 +57,21 @@ async function routeTest({
 
   await page.goBack();
 
-  await gotoPage({
-    page,
-    url: `${AppRoute.DOCUMENTS}/100`,
+  await goto({
+    path: `${AppRoute.DOCUMENTS}/100`,
   });
+
   await page.getByTestId(`not-found`);
 }
 
 async function mobileTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await setViewportSize({
-    page,
-  });
+  await setViewportSize();
 
   await expect(getDocumentsCategoriesListByTestId({
     page,
@@ -89,11 +81,12 @@ async function mobileTest({
 
 async function tabletTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.TABLET,
   });
 
@@ -105,11 +98,12 @@ async function tabletTest({
 
 async function tabletXlTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.TABLET_XL,
   });
 
@@ -121,11 +115,12 @@ async function tabletXlTest({
 
 async function desktopTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 
@@ -137,11 +132,12 @@ async function desktopTest({
 
 async function desktopXlTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP_XL,
   });
 

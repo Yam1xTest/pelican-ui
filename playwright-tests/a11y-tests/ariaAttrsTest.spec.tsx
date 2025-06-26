@@ -1,19 +1,23 @@
-import { AppRoute } from '@/src/common/enum';
-import { gotoPage } from '@/playwright-tests/global-helpers';
-import { test, Page, expect } from '@playwright/test';
+import {
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from '@/playwright-tests/custom-test';
 
 test.describe(`ARIA Labels`, () => {
-  test(`HomePageTest`, HomepageTest);
+  test(`HomePageTest`, homepageTest);
 });
 
-async function HomepageTest({
+async function homepageTest({
   page,
+  goto,
 }: {
   page: Page;
+  goto: CustomTestFixtures['goto'];
 }) {
-  await gotoPage({
-    page,
-    url: AppRoute.HOME,
+  await goto({
+    hideHeader: false,
   });
 
   await expect(page.getByTestId(`header-popup-button`))
