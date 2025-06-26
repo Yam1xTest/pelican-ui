@@ -4,16 +4,13 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { AppRoute } from '@/src/common/enum';
+import { ComponentName } from '@/src/common/enum';
 
 test.describe(`SkipLinkTest`, () => {
   test.beforeEach(async ({
-    goto,
+    gotoComponentsPage,
   }) => {
-    await goto({
-      path: AppRoute.INTERNAL_TEST_PAGE,
-      hideSkipLink: false,
-    });
+    await gotoComponentsPage(ComponentName.SKIP_LINK);
   });
 
   test(`MobileTest`, mobileTest);
@@ -27,8 +24,6 @@ async function mobileTest({
   setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await setViewportSize();
-
-  await page.keyboard.press(`Tab`);
 
   await page.getByTestId(`skip-link`)
     .click();

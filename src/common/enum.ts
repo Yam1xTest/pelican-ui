@@ -62,4 +62,5 @@ export enum ComponentName {
   TICKET_POPUP = `ticket-popup`,
   HERO = `hero`,
   IMAGE_WITH_BUTTON_GRID = `image-with-button-grid`,
+  SKIP_LINK = `skip-link`,
 }

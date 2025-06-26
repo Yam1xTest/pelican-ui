@@ -35,6 +35,7 @@ import { HeaderPopup } from "@/src/components/globals/Header/components/HeaderPo
 import { Header } from "@/src/components/globals/Header/Header";
 import { Hero } from "@/src/components/globals/Hero/Hero";
 import { ImageWithButtonGrid } from "@/src/components/globals/ImageWithButtonGrid/ImageWithButtonGrid";
+import { SkipLink } from "@/src/components/globals/SkipLink/SkipLink";
 import { TicketsPopup } from "@/src/components/globals/TicketsPopup/TicketsPopup";
 import { HttpStatusCode } from "axios";
 import Link from "next/link";
@@ -198,6 +199,15 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.SKIP_LINK) {
+    return (
+      <SkipLink
+        mainElementRef={null as any}
+        isComponentPage
+      />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -245,6 +255,9 @@ export default function ComponentsPage() {
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.IMAGE_WITH_BUTTON_GRID}>Image with button grid</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.SKIP_LINK}>Skip link</Link>
         </li>
       </ul>
     </div>
