@@ -52,4 +52,5 @@ export enum ComponentName {
   DOCUMENTS_LIST = `documents-list`,
   ARTICLE = `article`,
   CARDS = `cards`,
+  CATEGORIES = `categories`,
 }

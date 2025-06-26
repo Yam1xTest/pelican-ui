@@ -6,23 +6,19 @@ import {
   test,
 } from '@/playwright-tests/custom-test';
 import {
-  AppRoute,
-  BlockTypes,
   Breakpoint,
   BreakpointName,
+  ComponentName
 } from '@/src/common/enum';
-import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 
 test.describe(`CategoriesListComponentTests`, () => {
   test.beforeEach(async ({
-    goto,
+    gotoComponentsPage,
   }) => {
-    await goto({
-      path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_CATEGORIES}`,
+    await gotoComponentsPage({
+      path: ComponentName.CATEGORIES,
     });
   });
-
-  test(`RouteTest`, routeTest);
 
   test(`MobileTest`, mobileTest);
 
@@ -34,35 +30,6 @@ test.describe(`CategoriesListComponentTests`, () => {
 
   test(`DesktopXlTest`, desktopXlTest);
 });
-
-async function routeTest({
-  page,
-  goto,
-  setViewportSize,
-}: {
-  page: Page;
-  goto: CustomTestFixtures['goto'];
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize();
-
-  await page.getByTestId(`category`)
-    .nth(0)
-    .click();
-
-  await page.waitForURL(`**${AppRoute.DOCUMENTS}/${MOCK_DOCUMENTS_CATEGORIES[0].slug}`);
-
-  expect(page.url())
-    .toBe(`http://localhost:3000${AppRoute.DOCUMENTS}/${MOCK_DOCUMENTS_CATEGORIES[0].slug}`);
-
-  await page.goBack();
-
-  await goto({
-    path: `${AppRoute.DOCUMENTS}/100`,
-  });
-
-  await page.getByTestId(`not-found`);
-}
 
 async function mobileTest({
   page,

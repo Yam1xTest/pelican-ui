@@ -6,11 +6,13 @@ import { MOCK_DISCOUNTS_CATEGORIES } from "@/src/common/mocks/discounts-page-moc
 import { MOCK_DISCOUNTS_TERMS } from "@/src/common/mocks/discounts-page-mock/blocks/discounts-terms-mock";
 import { MOCK_SHARED_ARTICLE } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-article";
 import { MOCK_SHARED_CARDS } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-cards-mock";
+import { MOCK_SHARED_CATEGORIES } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-categories";
 import { DiscountsCategories } from "@/src/components/discounts-page/DiscountsCategories/DiscountsCategories";
 import { DiscountsTerms } from "@/src/components/discounts-page/DiscountsTerms/DiscountsTerms";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
 import { Article } from "@/src/components/globals/Article/Article";
 import { Cards } from "@/src/components/globals/Cards/Cards";
+import { Categories } from "@/src/components/globals/Categories/Categories";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -71,23 +73,35 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.CATEGORIES) {
+    return (
+      <Categories {...MOCK_SHARED_CATEGORIES} />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
+        <h2 className="components-page__subtitle">Discount page components</h2>
         <li className="components-page__item">
           <Link href={ComponentName.DISCOUNTS_CATEGORIES}>Discounts categories</Link>
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.DISCOUNTS_TERMS}>Discounts terms</Link>
         </li>
+        <h2 className="components-page__subtitle">Documents page components</h2>
         <li className="components-page__item">
           <Link href={ComponentName.DOCUMENTS_LIST}>Documents list</Link>
         </li>
+        <h2 className="components-page__subtitle">Global components</h2>
         <li className="components-page__item">
           <Link href={ComponentName.ARTICLE}>Article</Link>
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.CARDS}>Cards</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.CATEGORIES}>Categories</Link>
         </li>
       </ul>
     </div>
