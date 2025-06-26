@@ -53,4 +53,5 @@ export enum ComponentName {
   ARTICLE = `article`,
   CARDS = `cards`,
   CATEGORIES = `categories`,
+  COOKIE = `cookie`,
 }

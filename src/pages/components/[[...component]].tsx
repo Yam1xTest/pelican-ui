@@ -13,6 +13,7 @@ import { DocumentsList } from "@/src/components/documents-page/DocumentsList/Doc
 import { Article } from "@/src/components/globals/Article/Article";
 import { Cards } from "@/src/components/globals/Cards/Cards";
 import { Categories } from "@/src/components/globals/Categories/Categories";
+import { Cookie } from "@/src/components/globals/Cookie/Cookie";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -79,6 +80,12 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.COOKIE) {
+    return (
+      <Cookie isComponentPage />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -102,6 +109,9 @@ export default function ComponentsPage() {
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.CATEGORIES}>Categories</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.COOKIE}>Cookie</Link>
         </li>
       </ul>
     </div>
