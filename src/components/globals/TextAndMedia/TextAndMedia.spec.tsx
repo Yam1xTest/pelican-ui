@@ -4,22 +4,15 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import {
-  AppRoute,
-  BlockTypes,
-  Breakpoint,
-  BreakpointName,
-} from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `text-and-media`;
 
 test.describe(`TextAndMediaComponentTests`, () => {
   test.beforeEach(async ({
-    goto,
+    gotoComponentsPage,
   }) => {
-    await goto({
-      path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_TEXT_AND_MEDIA}`,
-    });
+    await gotoComponentsPage(ComponentName.TEXT_AND_MEDIA);
   });
 
   test(`MobileTest`, mobileTest);

@@ -63,4 +63,5 @@ export enum ComponentName {
   HERO = `hero`,
   IMAGE_WITH_BUTTON_GRID = `image-with-button-grid`,
   SKIP_LINK = `skip-link`,
+  TEXT_AND_MEDIA = `text-and-media`,
 }
