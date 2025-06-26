@@ -9,9 +9,7 @@ export type CustomTestFixtures = {
     hideHeader?:boolean;
     hideCookie?: boolean;
   }) => void;
-  gotoComponentsPage: (options?: {
-    path?: string;
-  }) => void;
+  gotoComponentsPage: (path: string) => void;
   gotoWithDraftPreviewMode: (options?: {
     slug: string;
   }) => void;
@@ -71,11 +69,7 @@ export const test = base.extend<CustomTestFixtures>({
     page,
     apiImageMock,
   }, use) => {
-    const gotoComponentsPage = async ({
-      path = ``,
-    }: {
-      path?: string;
-    } = {}) => {
+    const gotoComponentsPage = async (path: string) => {
       await apiImageMock();
 
       await page.goto(`/components/${path}`, {

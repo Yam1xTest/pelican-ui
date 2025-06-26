@@ -12,9 +12,7 @@ test.describe(`DiscountsCategoriesTests`, () => {
   test.beforeEach(async ({
     gotoComponentsPage,
   }) => {
-    await gotoComponentsPage({
-      path: ComponentName.DISCOUNTS_CATEGORIES,
-    });
+    await gotoComponentsPage(ComponentName.DISCOUNTS_CATEGORIES);
   });
 
   test(`MobileTest`, mobileTest);

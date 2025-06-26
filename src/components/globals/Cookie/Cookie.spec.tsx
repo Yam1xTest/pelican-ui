@@ -12,9 +12,7 @@ test.describe(`CookieTests`, () => {
   test.beforeEach(async ({
     gotoComponentsPage,
   }) => {
-    await gotoComponentsPage({
-      path: ComponentName.COOKIE,
-    });
+    await gotoComponentsPage(ComponentName.COOKIE);
   });
 
   test(`ActionTest`, actionTest);

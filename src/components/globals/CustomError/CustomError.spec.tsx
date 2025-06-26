@@ -12,9 +12,7 @@ test.describe(`CustomErrorComponentTests`, () => {
   test.beforeEach(async ({
     gotoComponentsPage,
   }) => {
-    await gotoComponentsPage({
-      path: ComponentName.CUSTOM_ERROR,
-    });
+    await gotoComponentsPage(ComponentName.CUSTOM_ERROR);
   });
 
   test(`MobileTest`, mobileTest);

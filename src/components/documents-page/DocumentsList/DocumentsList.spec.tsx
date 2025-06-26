@@ -10,9 +10,7 @@ test.describe(`DocumentsListComponentTests`, () => {
   test.beforeEach(async ({
     gotoComponentsPage,
   }) => {
-    await gotoComponentsPage({
-      path: ComponentName.DOCUMENTS_LIST,
-    });
+    await gotoComponentsPage(ComponentName.DOCUMENTS_LIST);
   });
 
   test(`TabActionTest`, tabAction);

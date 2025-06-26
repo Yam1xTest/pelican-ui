@@ -12,9 +12,7 @@ test.describe(`CardsComponentTests`, () => {
   test.beforeEach(async ({
     gotoComponentsPage,
   }) => {
-    await gotoComponentsPage({
-      path: ComponentName.CARDS,
-    });
+    await gotoComponentsPage(ComponentName.CARDS);
   });
 
   test(`MobileTest`, mobileTest);
