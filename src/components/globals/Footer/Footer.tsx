@@ -84,10 +84,10 @@ export function Footer({
                     link,
                   }) => (
                     <li
-                            key={id}
-                            className="footer__nav-item"
-                          >
-                            <Link
+                      key={id}
+                      className="footer__nav-item"
+                    >
+                      <Link
                         href={link}
                         className="footer__nav-link"
                         aria-label={`Перейти на страницу ${name}`}
@@ -95,7 +95,7 @@ export function Footer({
                       >
                         {name}
                       </Link>
-                          </li>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -108,10 +108,10 @@ export function Footer({
                     link,
                   }) => (
                     <li
-                            key={id}
-                            className="footer__nav-item"
-                          >
-                            <Link
+                      key={id}
+                      className="footer__nav-item"
+                    >
+                      <Link
                         href={link}
                         className="footer__nav-link"
                         data-testid="footer-nav-link"
@@ -120,7 +120,7 @@ export function Footer({
                       >
                         {name}
                       </Link>
-                          </li>
+                    </li>
                   ))}
                 </ul>
               </div>

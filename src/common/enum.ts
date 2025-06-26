@@ -58,4 +58,5 @@ export enum ComponentName {
   CUSTOM_ERROR = `custom-error`,
   FOOTER = `footer`,
   HEADER = `header`,
+  HEADER_POPUP = `header-popup`,
 }

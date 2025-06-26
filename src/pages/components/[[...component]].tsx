@@ -142,6 +142,19 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.HEADER_POPUP) {
+    return (
+      <HeaderPopup
+        navigationLinks={MOCK_NAVIGATION_LINKS}
+        email={MOCK_EMAIL}
+        phone={MOCK_PHONE}
+        popupTicketBuyText={MOCK_POPUP_TICKET_BUY_TEXT}
+        isActive
+        className=""
+        handleMobileMenuToggle={() => {}}
+      />
+    );
+  }
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -177,6 +190,9 @@ export default function ComponentsPage() {
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.HEADER}>Header</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.HEADER_POPUP}>Header popup</Link>
         </li>
       </ul>
     </div>
