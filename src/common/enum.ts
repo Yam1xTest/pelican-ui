@@ -65,4 +65,5 @@ export enum ComponentName {
   SKIP_LINK = `skip-link`,
   TEXT_AND_MEDIA = `text-and-media`,
   TICKETS = `tickets`,
+  HOME_PAGE_HERO = `home-page-hero`,
 }
