@@ -50,4 +50,5 @@ export enum ComponentName {
   DISCOUNTS_CATEGORIES = `discounts-categories`,
   DISCOUNTS_TERMS = `discounts-terms`,
   DOCUMENTS_LIST = `documents-list`,
+  ARTICLE = `article`,
 }
