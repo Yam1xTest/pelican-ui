@@ -3,6 +3,7 @@ import { useSetYearInQuery } from "@/src/common/hooks/useSetYearInQuery";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
 import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
+import { MOCK_CONTACT_ZOO_HERO } from "@/src/common/mocks/contact-zoo-page-mock/blocks/hero-mock";
 import { MOCK_DISCOUNTS_CATEGORIES } from "@/src/common/mocks/discounts-page-mock/blocks/discounts-categories-mock";
 import { MOCK_DISCOUNTS_TERMS } from "@/src/common/mocks/discounts-page-mock/blocks/discounts-terms-mock";
 import {
@@ -31,6 +32,7 @@ import { CustomError } from "@/src/components/globals/CustomError/CustomError";
 import { Footer } from "@/src/components/globals/Footer/Footer";
 import { HeaderPopup } from "@/src/components/globals/Header/components/HeaderPopup/HeaderPopup";
 import { Header } from "@/src/components/globals/Header/Header";
+import { Hero } from "@/src/components/globals/Hero/Hero";
 import { TicketsPopup } from "@/src/components/globals/TicketsPopup/TicketsPopup";
 import { HttpStatusCode } from "axios";
 import Link from "next/link";
@@ -176,6 +178,15 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.HERO) {
+    return (
+      <Hero
+        {...MOCK_CONTACT_ZOO_HERO}
+        isInternalPage
+      />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -217,6 +228,9 @@ export default function ComponentsPage() {
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.TICKET_POPUP}>Ticket popup</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.HERO}>Hero</Link>
         </li>
       </ul>
     </div>

@@ -60,4 +60,5 @@ export enum ComponentName {
   HEADER = `header`,
   HEADER_POPUP = `header-popup`,
   TICKET_POPUP = `ticket-popup`,
+  HERO = `hero`,
 }
