@@ -5,10 +5,12 @@ import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-co
 import { MOCK_DISCOUNTS_CATEGORIES } from "@/src/common/mocks/discounts-page-mock/blocks/discounts-categories-mock";
 import { MOCK_DISCOUNTS_TERMS } from "@/src/common/mocks/discounts-page-mock/blocks/discounts-terms-mock";
 import { MOCK_SHARED_ARTICLE } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-article";
+import { MOCK_SHARED_CARDS } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-cards-mock";
 import { DiscountsCategories } from "@/src/components/discounts-page/DiscountsCategories/DiscountsCategories";
 import { DiscountsTerms } from "@/src/components/discounts-page/DiscountsTerms/DiscountsTerms";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
 import { Article } from "@/src/components/globals/Article/Article";
+import { Cards } from "@/src/components/globals/Cards/Cards";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -63,6 +65,12 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.CARDS) {
+    return (
+      <Cards {...MOCK_SHARED_CARDS} />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -77,6 +85,9 @@ export default function ComponentsPage() {
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.ARTICLE}>Article</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.CARDS}>Cards</Link>
         </li>
       </ul>
     </div>
