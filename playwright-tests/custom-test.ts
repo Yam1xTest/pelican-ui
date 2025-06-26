@@ -9,6 +9,9 @@ export type CustomTestFixtures = {
     hideHeader?:boolean;
     hideCookie?: boolean;
   }) => void;
+  gotoComponentsPage: (options?: {
+    path?: string;
+  }) => void;
   gotoWithDraftPreviewMode: (options?: {
     slug: string;
   }) => void;
@@ -62,6 +65,25 @@ export const test = base.extend<CustomTestFixtures>({
 
     // Use the fixture value in the test
     await use(goto);
+  },
+
+  gotoComponentsPage: async ({
+    page,
+    apiImageMock,
+  }, use) => {
+    const gotoComponentsPage = async ({
+      path = ``,
+    }: {
+      path?: string;
+    } = {}) => {
+      await apiImageMock();
+
+      await page.goto(`/components/${path}`, {
+        waitUntil: `networkidle`,
+      });
+    };
+
+    await use(gotoComponentsPage);
   },
 
   gotoWithDraftPreviewMode: async ({
