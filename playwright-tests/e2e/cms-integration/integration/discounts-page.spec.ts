@@ -64,6 +64,7 @@ async function checkDiscountsPageOnUiTest({
 }) {
   await goto({
     path: AppRoute.DISCOUNTS,
+    hideHeader: false,
   });
 
   await setViewportSize({

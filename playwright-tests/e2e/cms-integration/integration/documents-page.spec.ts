@@ -131,6 +131,7 @@ async function checkDocumentsPageOnUiTest({
 }) {
   await goto({
     path: AppRoute.DOCUMENTS,
+    hideHeader: false,
   });
 
   await checkDocumentPageContent({
