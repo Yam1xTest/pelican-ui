@@ -54,4 +54,5 @@ export enum ComponentName {
   CARDS = `cards`,
   CATEGORIES = `categories`,
   COOKIE = `cookie`,
+  CUSTOM_ERROR = `custom-error`,
 }

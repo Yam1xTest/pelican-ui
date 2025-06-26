@@ -5,11 +5,7 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import {
-  Breakpoint,
-  BreakpointName,
-  ComponentName
-} from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 test.describe(`CategoriesListComponentTests`, () => {
   test.beforeEach(async ({

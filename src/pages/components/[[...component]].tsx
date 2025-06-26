@@ -14,6 +14,8 @@ import { Article } from "@/src/components/globals/Article/Article";
 import { Cards } from "@/src/components/globals/Cards/Cards";
 import { Categories } from "@/src/components/globals/Categories/Categories";
 import { Cookie } from "@/src/components/globals/Cookie/Cookie";
+import { CustomError } from "@/src/components/globals/CustomError/CustomError";
+import { HttpStatusCode } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -86,6 +88,15 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.CUSTOM_ERROR) {
+    return (
+      <CustomError
+        statusCode={HttpStatusCode.NotFound}
+        message="Страница не найдена или не существует"
+      />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -112,6 +123,9 @@ export default function ComponentsPage() {
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.COOKIE}>Cookie</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.CUSTOM_ERROR}>Custom Error</Link>
         </li>
       </ul>
     </div>
