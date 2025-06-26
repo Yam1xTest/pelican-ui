@@ -1,0 +1,11 @@
+.components-page {
+  padding: 40px;
+
+  &__item {
+    @include body-1-medium;
+
+    & + & {
+      margin-top: 20px;
+    }
+  }
+}
