@@ -48,4 +48,5 @@ export enum BlockTypes {
 
 export enum ComponentName {
   DISCOUNTS_CATEGORIES = `discounts-categories`,
+  DISCOUNTS_TERMS = `discounts-terms`,
 }
