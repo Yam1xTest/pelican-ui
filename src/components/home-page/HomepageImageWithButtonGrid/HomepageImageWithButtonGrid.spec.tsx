@@ -4,15 +4,15 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { Breakpoint, BreakpointName } from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `image-with-button-grid`;
 
 test.describe(`HomepageImageWithButtonGridTests`, () => {
   test.beforeEach(async ({
-    goto,
+    gotoComponentsPage,
   }) => {
-    await goto();
+    await gotoComponentsPage(ComponentName.HOME_IMAGE_WITH_BUTTON_GRID);
   });
 
   test(`MobileTest`, mobileTest);

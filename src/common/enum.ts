@@ -66,4 +66,5 @@ export enum ComponentName {
   TEXT_AND_MEDIA = `text-and-media`,
   TICKETS = `tickets`,
   HOME_PAGE_HERO = `home-page-hero`,
+  HOME_IMAGE_WITH_BUTTON_GRID = `home-image-with-button-grid`,
 }

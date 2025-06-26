@@ -43,6 +43,7 @@ import { TextAndMedia } from "@/src/components/globals/TextAndMedia/TextAndMedia
 import { Tickets } from "@/src/components/globals/Tickets/Tickets";
 import { TicketsPopup } from "@/src/components/globals/TicketsPopup/TicketsPopup";
 import { HomepageHero } from "@/src/components/home-page/HomepageHero/HomepageHero";
+import { HomepageImageWithButtonGrid } from "@/src/components/home-page/HomepageImageWithButtonGrid/HomepageImageWithButtonGrid";
 import { HttpStatusCode } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -235,6 +236,14 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.HOME_IMAGE_WITH_BUTTON_GRID) {
+    return (
+      <HomepageImageWithButtonGrid
+        {...MOCK_IMAGE_WITH_BUTTON_GRID}
+      />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -294,7 +303,10 @@ export default function ComponentsPage() {
         </li>
         <h2 className="components-page__subtitle">Home page components</h2>
         <li className="components-page__item">
-          <Link href={ComponentName.HOME_PAGE_HERO}>Home page hero</Link>
+          <Link href={ComponentName.HOME_PAGE_HERO}>Home hero</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.HOME_IMAGE_WITH_BUTTON_GRID}>Home image with button grid</Link>
         </li>
       </ul>
     </div>
