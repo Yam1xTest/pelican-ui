@@ -1,5 +1,6 @@
 import { ComponentName } from "@/src/common/enum";
 import { useSetYearInQuery } from "@/src/common/hooks/useSetYearInQuery";
+import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
 import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
 import { MOCK_DISCOUNTS_CATEGORIES } from "@/src/common/mocks/discounts-page-mock/blocks/discounts-categories-mock";
@@ -14,6 +15,7 @@ import {
   MOCK_OFFICIAL_LINKS,
   MOCK_PHONE,
   MOCK_POPUP_TICKET_BUY_TEXT,
+  MOCK_TICKETS_POPUP,
 } from "@/src/common/mocks/globals-mock";
 import { MOCK_SHARED_ARTICLE } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-article";
 import { MOCK_SHARED_CARDS } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-cards-mock";
@@ -27,7 +29,9 @@ import { Categories } from "@/src/components/globals/Categories/Categories";
 import { Cookie } from "@/src/components/globals/Cookie/Cookie";
 import { CustomError } from "@/src/components/globals/CustomError/CustomError";
 import { Footer } from "@/src/components/globals/Footer/Footer";
+import { HeaderPopup } from "@/src/components/globals/Header/components/HeaderPopup/HeaderPopup";
 import { Header } from "@/src/components/globals/Header/Header";
+import { TicketsPopup } from "@/src/components/globals/TicketsPopup/TicketsPopup";
 import { HttpStatusCode } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -37,6 +41,11 @@ export default function ComponentsPage() {
   const {
     query,
   } = router;
+
+  const {
+    isTicketPopupActive,
+    handleTicketPopupToggle,
+  } = useTicketPopup();
 
   const componentName = query.component?.[0];
 
@@ -155,6 +164,18 @@ export default function ComponentsPage() {
       />
     );
   }
+
+  if (componentName === ComponentName.TICKET_POPUP) {
+    return (
+      <TicketsPopup
+        isActive={!isTicketPopupActive}
+        handleTicketPopupToggle={handleTicketPopupToggle}
+        ticketsPopup={MOCK_TICKETS_POPUP}
+        overlayElementRef={null as any}
+      />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -193,6 +214,9 @@ export default function ComponentsPage() {
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.HEADER_POPUP}>Header popup</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.TICKET_POPUP}>Ticket popup</Link>
         </li>
       </ul>
     </div>
