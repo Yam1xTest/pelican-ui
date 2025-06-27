@@ -5,19 +5,15 @@ import {
   test,
 } from '@/playwright-tests/custom-test';
 
-import { Breakpoint, BreakpointName } from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `services`;
 
 test.describe(`ServicesComponentTests`, () => {
   test.beforeEach(async ({
-    page,
-    goto,
+    gotoComponentsPage,
   }) => {
-    await goto();
-
-    await page.getByTestId(`text-and-media`)
-      .evaluate((element) => element.style.visibility = `hidden`);
+    await gotoComponentsPage(ComponentName.HOME_SERVICES);
   });
 
   test(`MobileTest`, mobileTest);

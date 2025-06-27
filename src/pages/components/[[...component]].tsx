@@ -22,6 +22,7 @@ import {
 import { HOME_MOCK_HERO } from "@/src/common/mocks/home-page-mock/blocks/home-hero-mock";
 import { MOCK_IMAGE_WITH_BUTTON_GRID } from "@/src/common/mocks/home-page-mock/blocks/image-with-button-grid-mock";
 import { MOCK_MAP } from "@/src/common/mocks/home-page-mock/blocks/map-mock";
+import { MOCK_SERVICES } from "@/src/common/mocks/home-page-mock/blocks/services-mock";
 import { MOCK_TEXT_AND_MEDIA } from "@/src/common/mocks/home-page-mock/blocks/text-and-media-mock";
 import { MOCK_HOME_TICKETS } from "@/src/common/mocks/home-page-mock/blocks/tickets-mock";
 import { MOCK_SHARED_ARTICLE } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-article";
@@ -48,6 +49,7 @@ import { HomepageHero } from "@/src/components/home-page/HomepageHero/HomepageHe
 import { HomepageImageWithButtonGrid } from "@/src/components/home-page/HomepageImageWithButtonGrid/HomepageImageWithButtonGrid";
 import { HomepageTickets } from "@/src/components/home-page/HomepageTickets/HomepageTickets";
 import { Map } from "@/src/components/home-page/Map/Map";
+import { Services } from "@/src/components/home-page/Services/Services";
 import { HttpStatusCode } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -260,6 +262,12 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.HOME_SERVICES) {
+    return (
+      <Services {...MOCK_SERVICES} />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -328,7 +336,10 @@ export default function ComponentsPage() {
           <Link href={ComponentName.HOME_TICKETS}>Home tickets</Link>
         </li>
         <li className="components-page__item">
-          <Link href={ComponentName.HOME_MAP}>Map</Link>
+          <Link href={ComponentName.HOME_MAP}>Home map</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.HOME_SERVICES}>Home services</Link>
         </li>
       </ul>
     </div>

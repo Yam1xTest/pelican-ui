@@ -69,4 +69,5 @@ export enum ComponentName {
   HOME_IMAGE_WITH_BUTTON_GRID = `home-image-with-button-grid`,
   HOME_TICKETS = `home-tickets`,
   HOME_MAP = `home-map`,
+  HOME_SERVICES = `home-services`,
 }
