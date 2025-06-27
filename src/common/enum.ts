@@ -75,4 +75,5 @@ export enum ComponentName {
   VISITING_RULES_EMERGENCY_PHONES = `visiting-rules-emergency-phones`,
   VISITING_RULES_MAIN = `visiting-rules-main`,
   VISITING_RULES_PHOTOS_POLICY = `visiting-rules-photo-policy`,
+  VISITING_RULES_WARNINGS = `visiting-rules-warning`,
 }

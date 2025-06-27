@@ -33,6 +33,7 @@ import { MOCK_NEWS_PAGE } from "@/src/common/mocks/news-page-mock/news-page-mock
 import { MOCK_VISITING_RULES_EMERGENCY_PHONES } from "@/src/common/mocks/visiting-rules-page-mock/blocks/visiting-rules-emergency-phones-mock";
 import { MOCK_VISITING_RULES_MAIN } from "@/src/common/mocks/visiting-rules-page-mock/blocks/visiting-rules-main-mock";
 import { MOCK_VISITING_RULES_PHOTOS_POLICY } from "@/src/common/mocks/visiting-rules-page-mock/blocks/visiting-rules-photos-policy-mock";
+import { MOCK_VISITING_RULES_WARNINGS } from "@/src/common/mocks/visiting-rules-page-mock/blocks/visiting-rules-warnings-mock";
 import { DiscountsCategories } from "@/src/components/discounts-page/DiscountsCategories/DiscountsCategories";
 import { DiscountsTerms } from "@/src/components/discounts-page/DiscountsTerms/DiscountsTerms";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
@@ -60,6 +61,7 @@ import { NewsList } from "@/src/components/news-page/NewsList/NewsList";
 import { VisitingRulesEmergencyPhones } from "@/src/components/visiting-rules-page/VisitingRulesEmergencyPhones/VisitingRulesEmergencyPhones";
 import { VisitingRulesMain } from "@/src/components/visiting-rules-page/VisitingRulesMain/VisitingRulesMain";
 import { VisitingRulesPhotosPolicy } from "@/src/components/visiting-rules-page/VisitingRulesPhotosPolicy/VisitingRulesPhotosPolicy";
+import { VisitingRulesWarnings } from "@/src/components/visiting-rules-page/VisitingRulesWarnings/VisitingRulesWarnings";
 import { HttpStatusCode } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -313,6 +315,12 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.VISITING_RULES_WARNINGS) {
+    return (
+      <VisitingRulesWarnings {...MOCK_VISITING_RULES_WARNINGS} />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -418,6 +426,13 @@ export default function ComponentsPage() {
             href={ComponentName.VISITING_RULES_PHOTOS_POLICY}
           >
             Visting rules photo policy
+          </Link>
+        </li>
+        <li className="components-page__item">
+          <Link
+            href={ComponentName.VISITING_RULES_WARNINGS}
+          >
+            Visting rules warning
           </Link>
         </li>
 
