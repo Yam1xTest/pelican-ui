@@ -21,6 +21,7 @@ import {
 } from "@/src/common/mocks/globals-mock";
 import { HOME_MOCK_HERO } from "@/src/common/mocks/home-page-mock/blocks/home-hero-mock";
 import { MOCK_IMAGE_WITH_BUTTON_GRID } from "@/src/common/mocks/home-page-mock/blocks/image-with-button-grid-mock";
+import { MOCK_MAP } from "@/src/common/mocks/home-page-mock/blocks/map-mock";
 import { MOCK_TEXT_AND_MEDIA } from "@/src/common/mocks/home-page-mock/blocks/text-and-media-mock";
 import { MOCK_HOME_TICKETS } from "@/src/common/mocks/home-page-mock/blocks/tickets-mock";
 import { MOCK_SHARED_ARTICLE } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-article";
@@ -46,6 +47,7 @@ import { TicketsPopup } from "@/src/components/globals/TicketsPopup/TicketsPopup
 import { HomepageHero } from "@/src/components/home-page/HomepageHero/HomepageHero";
 import { HomepageImageWithButtonGrid } from "@/src/components/home-page/HomepageImageWithButtonGrid/HomepageImageWithButtonGrid";
 import { HomepageTickets } from "@/src/components/home-page/HomepageTickets/HomepageTickets";
+import { Map } from "@/src/components/home-page/Map/Map";
 import { HttpStatusCode } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -252,6 +254,12 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.HOME_MAP) {
+    return (
+      <Map {...MOCK_MAP} />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -318,6 +326,9 @@ export default function ComponentsPage() {
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.HOME_TICKETS}>Home tickets</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.HOME_MAP}>Map</Link>
         </li>
       </ul>
     </div>
