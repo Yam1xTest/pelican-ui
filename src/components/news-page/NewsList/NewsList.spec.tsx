@@ -4,18 +4,20 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
+import {
+  AppRoute,
+  Breakpoint,
+  BreakpointName,
+  ComponentName,
+} from '@/src/common/enum';
 
 const TEST_ID = `news-list`;
 
 test.describe(`NewsListComponentTest`, () => {
   test.beforeEach(async ({
-    goto,
+    goToComponentsPage,
   }) => {
-    await goto({
-
-      path: AppRoute.NEWS,
-    });
+    await goToComponentsPage(ComponentName.NEWS_LIST);
   });
 
   test(`PaginationTest`, paginationTest);
@@ -34,10 +36,15 @@ test.describe(`NewsListComponentTest`, () => {
 async function paginationTest({
   page,
   setViewportSize,
+  goto,
 }: {
   page: Page;
   setViewportSize: CustomTestFixtures['setViewportSize'];
+  goto: CustomTestFixtures['goto'];
 }) {
+  // We are not testing pagination on a component page because there is no pagination logic on it.
+  await goto(AppRoute.NEWS);
+
   await setViewportSize();
 
   await expect(getNewsCardByTestId({

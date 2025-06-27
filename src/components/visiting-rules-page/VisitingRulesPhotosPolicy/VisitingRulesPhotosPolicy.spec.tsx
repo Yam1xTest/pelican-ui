@@ -4,17 +4,15 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `visiting-rules-photos-policy`;
 
 test.describe(`VisitingRulesPhotosPolicyComponentTest`, () => {
   test.beforeEach(async ({
-    goto,
+    goToComponentsPage,
   }) => {
-    await goto({
-      path: AppRoute.VISITING_RULES,
-    });
+    await goToComponentsPage(ComponentName.VISITING_RULES_PHOTOS_POLICY);
   });
 
   test(`MobileTest`, mobileTest);

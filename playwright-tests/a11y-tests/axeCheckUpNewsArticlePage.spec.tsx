@@ -9,12 +9,7 @@ test.describe(`axeCheckUp news article page`, () => {
     page,
     goto,
   }) => {
-    await goto({
-      path: `${AppRoute.NEWS}/2024/03/10/priglashaem-na-vstrechu-s-sotrudnikom-zooparka`,
-      hideCookie: false,
-      hideHeader: false,
-      hideSkipLink: false,
-    });
+    await goto(`${AppRoute.NEWS}/2024/03/10/priglashaem-na-vstrechu-s-sotrudnikom-zooparka`);
 
     await page.addScriptTag({
       path: require.resolve(`axe-core/axe.min.js`),

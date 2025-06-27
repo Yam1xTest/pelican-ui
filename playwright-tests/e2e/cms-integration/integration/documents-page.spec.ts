@@ -129,10 +129,7 @@ async function checkDocumentsPageOnUiTest({
   page: Page;
   goto: CustomTestFixtures['goto'];
 }) {
-  await goto({
-    path: AppRoute.DOCUMENTS,
-    hideHeader: false,
-  });
+  await goto(AppRoute.DOCUMENTS);
 
   await checkDocumentPageContent({
     page,

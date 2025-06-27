@@ -5,18 +5,15 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { Breakpoint, BreakpointName } from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `tickets`;
 
 test.describe(`HomepageTicketsComponentTests`, () => {
   test.beforeEach(async ({
-    goto,
-    hideMap,
+    goToComponentsPage,
   }) => {
-    await goto();
-
-    await hideMap();
+    await goToComponentsPage(ComponentName.HOME_TICKETS);
   });
 
   test(`MobileTest`, mobileTest);

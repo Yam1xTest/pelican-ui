@@ -4,18 +4,26 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { Breakpoint, BreakpointName } from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `footer`;
 
 test.describe(`FooterTests`, () => {
   test.beforeEach(async ({
-    goto,
-    hideMap,
+    page,
+    goToComponentsPage,
   }) => {
-    await goto();
+    await page.route(`https://pos.gosuslugi.ru/bin/banner-fluid/2/banner-fluid-bg-2.svg`, async (route) => route.fulfill({
+      contentType: `image/svg+xml`,
+      path: `./playwright-tests/fixtures/banner-fluid-bg-2.svg`,
+    }));
 
-    await hideMap();
+    await page.route(`https://pos.gosuslugi.ru/bin/banner-fluid/2/banner-fluid-bg-2-small.svg`, async (route) => route.fulfill({
+      contentType: `image/svg+xml`,
+      path: `./playwright-tests/fixtures/banner-fluid-bg-2-small.svg`,
+    }));
+
+    await goToComponentsPage(ComponentName.FOOTER);
   });
 
   test(`MobileTest`, mobileTest);

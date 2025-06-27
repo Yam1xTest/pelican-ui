@@ -4,25 +4,15 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import {
-  AppRoute,
-  BlockTypes,
-  Breakpoint,
-  BreakpointName,
-} from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `hero`;
 
 test.describe(`HeroComponentTests`, () => {
   test.beforeEach(async ({
-    goto,
-    hideFooter,
+    goToComponentsPage,
   }) => {
-    await goto({
-      path: `${AppRoute.INTERNAL_TEST_PAGE}/${BlockTypes.SHARED_HERO}`,
-    });
-
-    await hideFooter();
+    await goToComponentsPage(ComponentName.HERO);
   });
 
   test(`MobileTest`, mobileTest);

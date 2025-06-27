@@ -4,20 +4,15 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { Breakpoint, BreakpointName } from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `custom-error`;
 
 test.describe(`CustomErrorComponentTests`, () => {
   test.beforeEach(async ({
-    goto,
-    hideFooter,
+    goToComponentsPage,
   }) => {
-    await goto({
-      path: `/notfound`,
-    });
-
-    await hideFooter();
+    await goToComponentsPage(ComponentName.CUSTOM_ERROR);
   });
 
   test(`MobileTest`, mobileTest);

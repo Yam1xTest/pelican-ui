@@ -62,10 +62,7 @@ async function checkContactZooPageOnUiTest({
   goto: CustomTestFixtures['goto'];
   setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await goto({
-    path: AppRoute.CONTACT_ZOO,
-    hideHeader: false,
-  });
+  await goto(AppRoute.CONTACT_ZOO);
 
   await setViewportSize({
     width: Breakpoint.DESKTOP,

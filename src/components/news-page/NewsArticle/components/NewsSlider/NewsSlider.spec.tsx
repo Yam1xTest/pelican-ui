@@ -4,17 +4,20 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
+import {
+  AppRoute,
+  Breakpoint,
+  BreakpointName,
+  ComponentName,
+} from '@/src/common/enum';
 
 const TEST_ID = `news-slider`;
 
 test.describe(`NewsSliderComponentTest`, () => {
   test.beforeEach(async ({
-    goto,
+    goToComponentsPage,
   }) => {
-    await goto({
-      path: `${AppRoute.NEWS}/2024/03/10/priglashaem-na-vstrechu-s-sotrudnikom-zooparka`,
-    });
+    await goToComponentsPage(ComponentName.NEWS_SLIDER);
   });
 
   test(`NavigationTest`, navigationTest);

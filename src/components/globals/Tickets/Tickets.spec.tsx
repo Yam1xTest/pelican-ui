@@ -4,17 +4,15 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `tickets`;
 
 test.describe(`TicketsComponentTests`, () => {
   test.beforeEach(async ({
-    goto,
+    goToComponentsPage,
   }) => {
-    await goto({
-      path: AppRoute.CONTACT_ZOO,
-    });
+    await goToComponentsPage(ComponentName.TICKETS);
   });
 
   test(`MobileTest`, mobileTest);

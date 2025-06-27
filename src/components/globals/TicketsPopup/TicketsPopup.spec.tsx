@@ -5,19 +5,24 @@ import {
   test,
 } from '@/playwright-tests/custom-test';
 import { openTicketsPopupAccordions } from '@/playwright-tests/global-helpers';
-import { Breakpoint, BreakpointName } from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `tickets-popup`;
 
 test.describe(`TicketsPopupComponentTests`, () => {
   test.beforeEach(async ({
     page,
-    goto,
+    goToComponentsPage,
   }) => {
-    await goto();
+    await goToComponentsPage(ComponentName.TICKET_POPUP);
 
-    await page.getByTestId(`footer-tickets-popup-button`)
-      .click();
+    await page.addStyleTag({
+      content: `
+    *:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }`,
+    });
   });
 
   test(`ActionTest`, actionTest);
@@ -63,7 +68,7 @@ async function actionTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toBeHidden;
+    .toBeHidden();
 }
 
 async function mobileTest({

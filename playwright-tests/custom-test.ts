@@ -3,18 +3,12 @@ import fs from 'fs';
 import { Breakpoint } from '@/src/common/enum';
 
 export type CustomTestFixtures = {
-  goto: (options?: {
-    path?: string;
-    hideSkipLink?: boolean;
-    hideHeader?:boolean;
-    hideCookie?: boolean;
-  }) => void;
+  goto: (path?: string) => void;
+  goToComponentsPage: (path: string) => void;
   gotoWithDraftPreviewMode: (options?: {
     slug: string;
   }) => void;
   apiImageMock: () => void;
-  hideFooter: () => void;
-  hideMap: () => void;
   setViewportSize: (options?: { width?: number; height?: number; }) => void;
 };
 
@@ -25,43 +19,31 @@ export const test = base.extend<CustomTestFixtures>({
     page,
     apiImageMock,
   }, use) => {
-    const goto = async ({
-      path = ``,
-      hideSkipLink = true,
-      hideHeader = true,
-      hideCookie = true,
-    }: {
-      path?: string;
-      hideSkipLink?: boolean;
-      hideHeader?: boolean;
-      hideCookie?: boolean;
-    } = {}) => {
+    const goto = async (path: string = ``) => {
       await apiImageMock();
 
       await page.goto(path, {
         waitUntil: `networkidle`,
       });
-
-      if (hideHeader) {
-        await page.getByTestId(`header`)
-          .evaluate((element) => element.style.visibility = `hidden`);
-      }
-
-      if (hideCookie) {
-        await page.getByTestId(`cookie`)
-          .evaluate((element) => element.style.visibility = `hidden`);
-      }
-
-      if (hideSkipLink) {
-        const skipLink = page.getByTestId(`skip-link`);
-        if (await skipLink.isVisible()) {
-          await skipLink.evaluate((element) => element.style.visibility = `hidden`);
-        }
-      }
     };
 
     // Use the fixture value in the test
     await use(goto);
+  },
+
+  goToComponentsPage: async ({
+    page,
+    apiImageMock,
+  }, use) => {
+    const goToComponentsPage = async (path: string) => {
+      await apiImageMock();
+
+      await page.goto(`/components/${path}`, {
+        waitUntil: `networkidle`,
+      });
+    };
+
+    await use(goToComponentsPage);
   },
 
   gotoWithDraftPreviewMode: async ({
@@ -122,29 +104,6 @@ export const test = base.extend<CustomTestFixtures>({
 
     await use(apiImageMock);
   },
-
-  hideFooter: async ({
-    page,
-  }, use) => {
-    const hideFooter = async () => {
-      await page.getByTestId(`footer`)
-        .evaluate((element) => element.style.visibility = `hidden`);
-    };
-
-    await use(hideFooter);
-  },
-
-  hideMap: async ({
-    page,
-  }, use) => {
-    const hideMap = async () => {
-      await page.getByTestId(`map`)
-        .evaluate((element) => element.style.visibility = `hidden`);
-    };
-
-    await use(hideMap);
-  },
-
 });
 
 export {

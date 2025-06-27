@@ -62,10 +62,7 @@ async function checkVisitingRulesPageOnUiTest({
   goto: CustomTestFixtures['goto'];
   setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await goto({
-    path: AppRoute.VISITING_RULES,
-    hideHeader: false,
-  });
+  await goto(AppRoute.VISITING_RULES);
 
   await setViewportSize({
     width: Breakpoint.DESKTOP,

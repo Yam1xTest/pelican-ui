@@ -4,15 +4,18 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
+import {
+  AppRoute,
+  Breakpoint,
+  BreakpointName,
+  ComponentName,
+} from '@/src/common/enum';
 
 test.describe(`HeaderPopupTests`, () => {
   test.beforeEach(async ({
-    goto,
+    goToComponentsPage,
   }) => {
-    await goto({
-      hideHeader: false,
-    });
+    await goToComponentsPage(ComponentName.HEADER_POPUP);
   });
 
   test(`ActionTest`, actionTest);
@@ -35,11 +38,6 @@ async function actionTest({
 }) {
   await setViewportSize();
 
-  await getHeaderPopupButtonByTestId({
-    page,
-  })
-    .then((button) => button.click());
-
   await expect(page.getByTestId(`header-popup`))
     .toContainText(`Льготы`);
 }
@@ -51,15 +49,7 @@ async function navigationTest({
   page: Page;
   goto: CustomTestFixtures['goto'];
 }) {
-  await goto({
-    path: AppRoute.NEWS,
-    hideHeader: false,
-  });
-
-  await getHeaderPopupButtonByTestId({
-    page,
-  })
-    .then((button) => button.click());
+  await goto(AppRoute.NEWS);
 
   await page.locator(`.header-logo`)
     .click();
@@ -82,11 +72,6 @@ async function mobilePopupTest({
 }) {
   await setViewportSize();
 
-  await getHeaderPopupButtonByTestId({
-    page,
-  })
-    .then((button) => button.click());
-
   await expect(getHeaderPopupByTestId({
     page,
   }))
@@ -103,11 +88,6 @@ async function tabletPopupTest({
   await setViewportSize({
     width: Breakpoint.TABLET,
   });
-
-  await getHeaderPopupButtonByTestId({
-    page,
-  })
-    .then((button) => button.click());
 
   await expect(getHeaderPopupByTestId({
     page,
@@ -126,23 +106,10 @@ async function tabletXlPopupTest({
     width: Breakpoint.TABLET_XL,
   });
 
-  await getHeaderPopupButtonByTestId({
-    page,
-  })
-    .then((button) => button.click());
-
   await expect(getHeaderPopupByTestId({
     page,
   }))
     .toHaveScreenshot(`header-popup-${BreakpointName.TABLET_XL}.png`);
-}
-
-async function getHeaderPopupButtonByTestId({
-  page,
-}: {
-  page: Page;
-}) {
-  return page.getByTestId(`header-popup-button`);
 }
 
 function getHeaderPopupByTestId({

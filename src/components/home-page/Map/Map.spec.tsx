@@ -4,19 +4,15 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { Breakpoint, BreakpointName } from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `map`;
 
 test.describe(`MapComponentTests`, () => {
   test.beforeEach(async ({
-    page,
-    goto,
+    goToComponentsPage,
   }) => {
-    await goto();
-
-    await page.getByTestId(`tickets`)
-      .evaluate((element) => element.style.visibility = `hidden`);
+    await goToComponentsPage(ComponentName.HOME_MAP);
   });
 
   test(`MobileTest`, mobileTest);

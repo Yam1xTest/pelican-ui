@@ -4,16 +4,13 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
-import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 test.describe(`DocumentsListComponentTests`, () => {
   test.beforeEach(async ({
-    goto,
+    goToComponentsPage,
   }) => {
-    await goto({
-      path: `${AppRoute.DOCUMENTS}/${MOCK_DOCUMENTS_CATEGORIES[0].slug}`,
-    });
+    await goToComponentsPage(ComponentName.DOCUMENTS_LIST);
   });
 
   test(`TabActionTest`, tabAction);

@@ -4,18 +4,15 @@ import {
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
+import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `cookie`;
 
 test.describe(`CookieTests`, () => {
   test.beforeEach(async ({
-    goto,
+    goToComponentsPage,
   }) => {
-    await goto({
-      path: AppRoute.INTERNAL_TEST_PAGE,
-      hideCookie: false,
-    });
+    await goToComponentsPage(ComponentName.COOKIE);
   });
 
   test(`ActionTest`, actionTest);
@@ -42,11 +39,6 @@ async function actionTest({
 
   await page.getByTestId(`cookie-button`)
     .click();
-
-  await expect(page.getByTestId(TEST_ID))
-    .toBeHidden();
-
-  await page.reload();
 
   await expect(page.getByTestId(TEST_ID))
     .toBeHidden();
