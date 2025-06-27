@@ -1,9 +1,9 @@
 
 import {
-  CustomTestFixtures,
-  expect,
-  Page,
-  test,
+    CustomTestFixtures,
+    expect,
+    Page,
+    test,
 } from '@/playwright-tests/custom-test';
 import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
@@ -11,7 +11,7 @@ const TEST_ID = `tickets`;
 
 test.describe(`HomepageTicketsComponentTests`, () => {
   test.beforeEach(async ({
-    gotoComponentsPage,
+    goToComponentsPage: gotoComponentsPage,
   }) => {
     await gotoComponentsPage(ComponentName.HOME_TICKETS);
   });

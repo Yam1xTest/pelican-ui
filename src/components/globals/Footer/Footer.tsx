@@ -48,7 +48,7 @@ export function Footer({
     slug: router.asPath,
   });
 
-  const gosBannerIsVisible = slugAfterNormalize === AppRoute.HOME
+  const isGosBannerVisible = slugAfterNormalize === AppRoute.HOME
    || slugAfterNormalize === `${AppRoute.COMPONENTS}/${ComponentName.FOOTER}`;
 
   return (
@@ -182,7 +182,7 @@ export function Footer({
           </div>
         </div>
       </div>
-      {gosBannerIsVisible && <GosBanner />}
+      {isGosBannerVisible && <GosBanner />}
       <div className="container footer__bottom">
         <ul className="footer__official-links grid">
           {officialLinks.map(({

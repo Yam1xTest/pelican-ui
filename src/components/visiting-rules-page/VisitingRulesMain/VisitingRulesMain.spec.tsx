@@ -10,7 +10,7 @@ const TEST_ID = `visiting-rules-main`;
 
 test.describe(`VisitingRulesMainComponentTest`, () => {
   test.beforeEach(async ({
-    gotoComponentsPage,
+    goToComponentsPage: gotoComponentsPage,
   }) => {
     await gotoComponentsPage(ComponentName.VISITING_RULES_MAIN);
   });

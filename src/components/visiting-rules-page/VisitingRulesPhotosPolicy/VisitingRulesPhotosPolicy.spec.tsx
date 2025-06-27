@@ -10,7 +10,7 @@ const TEST_ID = `visiting-rules-photos-policy`;
 
 test.describe(`VisitingRulesPhotosPolicyComponentTest`, () => {
   test.beforeEach(async ({
-    gotoComponentsPage,
+    goToComponentsPage: gotoComponentsPage,
   }) => {
     await gotoComponentsPage(ComponentName.VISITING_RULES_PHOTOS_POLICY);
   });

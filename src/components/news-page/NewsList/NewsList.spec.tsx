@@ -15,7 +15,7 @@ const TEST_ID = `news-list`;
 
 test.describe(`NewsListComponentTest`, () => {
   test.beforeEach(async ({
-    gotoComponentsPage,
+    goToComponentsPage: gotoComponentsPage,
   }) => {
     await gotoComponentsPage(ComponentName.NEWS_LIST);
   });

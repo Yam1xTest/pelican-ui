@@ -11,7 +11,7 @@ const TEST_ID = `footer`;
 test.describe(`FooterTests`, () => {
   test.beforeEach(async ({
     page,
-    gotoComponentsPage,
+    goToComponentsPage: gotoComponentsPage,
   }) => {
     await page.route(`https://pos.gosuslugi.ru/bin/banner-fluid/2/banner-fluid-bg-2.svg`, async (route) => route.fulfill({
       contentType: `image/svg+xml`,

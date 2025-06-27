@@ -1,14 +1,14 @@
 import {
-  CustomTestFixtures,
-  expect,
-  Page,
-  test,
+    CustomTestFixtures,
+    expect,
+    Page,
+    test,
 } from '@/playwright-tests/custom-test';
 import { ComponentName } from '@/src/common/enum';
 
 test.describe(`SkipLinkTest`, () => {
   test.beforeEach(async ({
-    gotoComponentsPage,
+    goToComponentsPage: gotoComponentsPage,
   }) => {
     await gotoComponentsPage(ComponentName.SKIP_LINK);
   });

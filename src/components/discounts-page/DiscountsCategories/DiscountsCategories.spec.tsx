@@ -1,8 +1,8 @@
 import {
-  test,
-  expect,
-  CustomTestFixtures,
-  Page,
+    test,
+    expect,
+    CustomTestFixtures,
+    Page,
 } from '@/playwright-tests/custom-test';
 import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
@@ -10,7 +10,7 @@ const TEST_ID = `discounts-categories`;
 
 test.describe(`DiscountsCategoriesTests`, () => {
   test.beforeEach(async ({
-    gotoComponentsPage,
+    goToComponentsPage: gotoComponentsPage,
   }) => {
     await gotoComponentsPage(ComponentName.DISCOUNTS_CATEGORIES);
   });

@@ -315,7 +315,7 @@ export default function ComponentsPage() {
     );
   }
 
-  if (componentName === ComponentName.VISITING_RULES_WARNINGS) {
+  if (componentName === ComponentName.VISITING_RULES_WARNING) {
     return (
       <VisitingRulesWarnings {...MOCK_VISITING_RULES_WARNINGS} />
     );
@@ -430,7 +430,7 @@ export default function ComponentsPage() {
         </li>
         <li className="components-page__item">
           <Link
-            href={ComponentName.VISITING_RULES_WARNINGS}
+            href={ComponentName.VISITING_RULES_WARNING}
           >
             Visting rules warning
           </Link>

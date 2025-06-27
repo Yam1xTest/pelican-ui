@@ -4,7 +4,7 @@ import { Breakpoint } from '@/src/common/enum';
 
 export type CustomTestFixtures = {
   goto: (path?: string) => void;
-  gotoComponentsPage: (path: string) => void;
+  goToComponentsPage: (path: string) => void;
   gotoWithDraftPreviewMode: (options?: {
     slug: string;
   }) => void;
@@ -31,11 +31,11 @@ export const test = base.extend<CustomTestFixtures>({
     await use(goto);
   },
 
-  gotoComponentsPage: async ({
+  goToComponentsPage: async ({
     page,
     apiImageMock,
   }, use) => {
-    const gotoComponentsPage = async (path: string) => {
+    const goToComponentsPage = async (path: string) => {
       await apiImageMock();
 
       await page.goto(`/components/${path}`, {
@@ -43,7 +43,7 @@ export const test = base.extend<CustomTestFixtures>({
       });
     };
 
-    await use(gotoComponentsPage);
+    await use(goToComponentsPage);
   },
 
   gotoWithDraftPreviewMode: async ({

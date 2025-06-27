@@ -10,7 +10,7 @@ const TEST_ID = `visiting-rules-emergency-phones`;
 
 test.describe(`VisitingRulesEmergencyPhonesComponentTest`, () => {
   test.beforeEach(async ({
-    gotoComponentsPage,
+    goToComponentsPage: gotoComponentsPage,
   }) => {
     await gotoComponentsPage(ComponentName.VISITING_RULES_EMERGENCY_PHONES);
   });

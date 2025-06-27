@@ -1,8 +1,8 @@
 import {
-  CustomTestFixtures,
-  expect,
-  Page,
-  test,
+    CustomTestFixtures,
+    expect,
+    Page,
+    test,
 } from '@/playwright-tests/custom-test';
 import { openTicketsPopupAccordions } from '@/playwright-tests/global-helpers';
 import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
@@ -12,7 +12,7 @@ const TEST_ID = `tickets-popup`;
 test.describe(`TicketsPopupComponentTests`, () => {
   test.beforeEach(async ({
     page,
-    gotoComponentsPage,
+    goToComponentsPage: gotoComponentsPage,
   }) => {
     await gotoComponentsPage(ComponentName.TICKET_POPUP);
 

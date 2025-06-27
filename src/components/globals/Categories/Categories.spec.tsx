@@ -1,15 +1,15 @@
 /* eslint-disable no-await-in-loop */
 import {
-  CustomTestFixtures,
-  expect,
-  Page,
-  test,
+    CustomTestFixtures,
+    expect,
+    Page,
+    test,
 } from '@/playwright-tests/custom-test';
 import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 test.describe(`CategoriesListComponentTests`, () => {
   test.beforeEach(async ({
-    gotoComponentsPage,
+    goToComponentsPage: gotoComponentsPage,
   }) => {
     await gotoComponentsPage(ComponentName.CATEGORIES);
   });

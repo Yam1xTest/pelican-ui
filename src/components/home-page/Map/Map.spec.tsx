@@ -10,7 +10,7 @@ const TEST_ID = `map`;
 
 test.describe(`MapComponentTests`, () => {
   test.beforeEach(async ({
-    gotoComponentsPage,
+    goToComponentsPage: gotoComponentsPage,
   }) => {
     await gotoComponentsPage(ComponentName.HOME_MAP);
   });
