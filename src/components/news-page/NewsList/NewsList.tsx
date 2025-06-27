@@ -33,6 +33,7 @@ export function NewsList({
         },
       );
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
   useEffect(() => {

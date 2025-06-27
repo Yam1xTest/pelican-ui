@@ -1,8 +1,8 @@
 import {
-    CustomTestFixtures,
-    expect,
-    Page,
-    test,
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
 } from '@/playwright-tests/custom-test';
 import { ComponentName } from '@/src/common/enum';
 

@@ -1,8 +1,8 @@
 import {
-    test,
-    expect,
-    CustomTestFixtures,
-    Page,
+  test,
+  expect,
+  CustomTestFixtures,
+  Page,
 } from '@/playwright-tests/custom-test';
 import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
