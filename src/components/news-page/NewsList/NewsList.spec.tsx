@@ -43,12 +43,7 @@ async function paginationTest({
   goto: CustomTestFixtures['goto'];
 }) {
   // We are not testing pagination on a component page because there is no pagination logic on it.
-  await goto({
-    path: AppRoute.NEWS,
-    hideHeader: false,
-    hideCookie: false,
-    hideSkipLink: false,
-  });
+  await goto(AppRoute.NEWS);
 
   await setViewportSize();
 

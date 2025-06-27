@@ -62,9 +62,7 @@ async function checkHomePageOnUiTest({
   goto: CustomTestFixtures['goto'];
   setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await goto({
-    hideHeader: false,
-  });
+  await goto();
 
   await setViewportSize({
     width: Breakpoint.DESKTOP,

@@ -9,12 +9,7 @@ test.describe(`axeCheckUp discounts page`, () => {
     page,
     goto,
   }) => {
-    await goto({
-      path: `${AppRoute.DISCOUNTS}`,
-      hideCookie: false,
-      hideHeader: false,
-      hideSkipLink: false,
-    });
+    await goto(AppRoute.DISCOUNTS);
 
     await page.addScriptTag({
       path: require.resolve(`axe-core/axe.min.js`),

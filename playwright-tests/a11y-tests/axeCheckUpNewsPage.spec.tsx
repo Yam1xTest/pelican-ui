@@ -9,12 +9,7 @@ test.describe(`axeCheckUp news page`, () => {
     page,
     goto,
   }) => {
-    await goto({
-      path: `${AppRoute.NEWS}`,
-      hideCookie: false,
-      hideHeader: false,
-      hideSkipLink: false,
-    });
+    await goto(AppRoute.NEWS);
 
     await page.addScriptTag({
       path: require.resolve(`axe-core/axe.min.js`),

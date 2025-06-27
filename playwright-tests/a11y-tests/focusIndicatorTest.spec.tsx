@@ -23,11 +23,7 @@ test.describe(`Visible focus indicator verification`, () => {
     page: Page;
     goto: CustomTestFixtures['goto'];
   }) => {
-    await goto({
-      hideCookie: false,
-      hideHeader: false,
-      hideSkipLink: false,
-    });
+    await goto();
 
     await checkFocusVisibility({
       page,
@@ -41,12 +37,7 @@ test.describe(`Visible focus indicator verification`, () => {
     page: Page;
     goto: CustomTestFixtures['goto'];
   }) => {
-    await goto({
-      path: AppRoute.NEWS,
-      hideCookie: false,
-      hideHeader: false,
-      hideSkipLink: false,
-    });
+    await goto(AppRoute.NEWS);
 
     await checkFocusVisibility({
       page,
@@ -60,12 +51,7 @@ test.describe(`Visible focus indicator verification`, () => {
     page: Page;
     goto: CustomTestFixtures['goto'];
   }) => {
-    await goto({
-      path: AppRoute.DOCUMENTS,
-      hideCookie: false,
-      hideHeader: false,
-      hideSkipLink: false,
-    });
+    await goto(AppRoute.DOCUMENTS);
 
     await checkFocusVisibility({
       page,
@@ -79,12 +65,7 @@ test.describe(`Visible focus indicator verification`, () => {
     page: Page;
     goto: CustomTestFixtures['goto'];
   }) => {
-    await goto({
-      path: AppRoute.DISCOUNTS,
-      hideCookie: false,
-      hideHeader: false,
-      hideSkipLink: false,
-    });
+    await goto(AppRoute.DISCOUNTS);
 
     await checkFocusVisibility({
       page,
@@ -98,12 +79,7 @@ test.describe(`Visible focus indicator verification`, () => {
     page: Page;
     goto: CustomTestFixtures['goto'];
   }) => {
-    await goto({
-      path: AppRoute.VISITING_RULES,
-      hideCookie: false,
-      hideHeader: false,
-      hideSkipLink: false,
-    });
+    await goto(AppRoute.VISITING_RULES);
 
     await checkFocusVisibility({
       page,

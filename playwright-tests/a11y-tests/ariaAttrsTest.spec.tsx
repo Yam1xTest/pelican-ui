@@ -16,9 +16,7 @@ async function homepageTest({
   page: Page;
   goto: CustomTestFixtures['goto'];
 }) {
-  await goto({
-    hideHeader: false,
-  });
+  await goto();
 
   await expect(page.getByTestId(`header-popup-button`))
     .toHaveAttribute(`aria-label`, `Открыть меню`);

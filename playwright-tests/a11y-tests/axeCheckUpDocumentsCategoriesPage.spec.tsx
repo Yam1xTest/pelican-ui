@@ -10,12 +10,7 @@ test.describe(`axeCheckUp documents categories page`, () => {
     page,
     goto,
   }) => {
-    await goto({
-      path: `${AppRoute.DOCUMENTS}`,
-      hideCookie: false,
-      hideHeader: false,
-      hideSkipLink: false,
-    });
+    await goto(AppRoute.DOCUMENTS);
 
     await page.addScriptTag({
       path: require.resolve(`axe-core/axe.min.js`),

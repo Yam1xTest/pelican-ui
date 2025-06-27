@@ -9,12 +9,7 @@ test.describe(`axeCheckUp documents page`, () => {
     page,
     goto,
   }) => {
-    await goto({
-      path: `${AppRoute.DOCUMENTS}/otchety?year=2025`,
-      hideCookie: false,
-      hideHeader: false,
-      hideSkipLink: false,
-    });
+    await goto(`${AppRoute.DOCUMENTS}/otchety?year=2025`);
 
     await page.addScriptTag({
       path: require.resolve(`axe-core/axe.min.js`),

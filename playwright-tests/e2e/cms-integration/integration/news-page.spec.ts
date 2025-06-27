@@ -130,10 +130,7 @@ async function checkNewsPageOnUiTest({
   page: Page;
   goto: CustomTestFixtures['goto'];
 }) {
-  await goto({
-    path: AppRoute.NEWS,
-    hideHeader: false,
-  });
+  await goto(AppRoute.NEWS);
 
   await checkNewsPageContent({
     page,

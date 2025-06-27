@@ -62,10 +62,7 @@ async function checkDiscountsPageOnUiTest({
   goto: CustomTestFixtures['goto'];
   setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await goto({
-    path: AppRoute.DISCOUNTS,
-    hideHeader: false,
-  });
+  await goto(AppRoute.DISCOUNTS);
 
   await setViewportSize({
     width: Breakpoint.DESKTOP,

@@ -9,11 +9,7 @@ test.describe(`axeCheckUp home page`, () => {
     page,
     goto,
   }) => {
-    await goto({
-      hideCookie: false,
-      hideHeader: false,
-      hideSkipLink: false,
-    });
+    await goto();
 
     await page.addScriptTag({
       path: require.resolve(`axe-core/axe.min.js`),

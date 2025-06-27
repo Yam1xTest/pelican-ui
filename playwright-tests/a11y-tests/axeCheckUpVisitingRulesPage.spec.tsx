@@ -9,12 +9,7 @@ test.describe(`axeCheckUp visiting rules page`, () => {
     page,
     goto,
   }) => {
-    await goto({
-      path: AppRoute.VISITING_RULES,
-      hideCookie: false,
-      hideHeader: false,
-      hideSkipLink: false,
-    });
+    await goto(AppRoute.VISITING_RULES);
 
     await page.addScriptTag({
       path: require.resolve(`axe-core/axe.min.js`),

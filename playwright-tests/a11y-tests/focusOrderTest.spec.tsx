@@ -69,10 +69,7 @@ test.describe(`Logical focus order verification`, () => {
     test.beforeEach(async ({
       goto,
     }) => {
-      await goto({
-        hideHeader: false,
-        hideSkipLink: false,
-      });
+      await goto();
     });
 
     test(`HomePageMobileTest`, homePageMobileTest);
@@ -84,10 +81,7 @@ test.describe(`Logical focus order verification`, () => {
     test.beforeEach(async ({
       goto,
     }) => {
-      await goto({
-        hideHeader: false,
-        hideSkipLink: false,
-      });
+      await goto();
     });
 
     test(`MobileMenuOpenTest`, mobileMenuOpenTest);
@@ -99,11 +93,7 @@ test.describe(`Logical focus order verification`, () => {
     test.beforeEach(async ({
       goto,
     }) => {
-      await goto({
-        path: AppRoute.NEWS,
-        hideHeader: false,
-        hideSkipLink: false,
-      });
+      await goto(AppRoute.NEWS);
     });
 
     test(`NewsPageMobileTest`, newsPageMobileTest);
@@ -115,11 +105,7 @@ test.describe(`Logical focus order verification`, () => {
     test.beforeEach(async ({
       goto,
     }) => {
-      await goto({
-        path: AppRoute.DOCUMENTS,
-        hideHeader: false,
-        hideSkipLink: false,
-      });
+      await goto(AppRoute.DOCUMENTS);
     });
 
     test(`DocumentsPageMobileTest`, documentsPageMobileTest);
@@ -131,11 +117,7 @@ test.describe(`Logical focus order verification`, () => {
     test.beforeEach(async ({
       goto,
     }) => {
-      await goto({
-        path: AppRoute.DISCOUNTS,
-        hideHeader: false,
-        hideSkipLink: false,
-      });
+      await goto(AppRoute.DISCOUNTS);
     });
 
     test(`DiscountsPageMobileTest`, discountsPageMobileTest);
@@ -147,11 +129,7 @@ test.describe(`Logical focus order verification`, () => {
     test.beforeEach(async ({
       goto,
     }) => {
-      await goto({
-        path: AppRoute.VISITING_RULES,
-        hideHeader: false,
-        hideSkipLink: false,
-      });
+      await goto(AppRoute.VISITING_RULES);
     });
 
     test(`VisitingRulesPageMobileTest`, visitingRulesPageMobileTest);
