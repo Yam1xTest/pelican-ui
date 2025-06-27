@@ -49,10 +49,7 @@ async function navigationTest({
   page: Page;
   goto: CustomTestFixtures['goto'];
 }) {
-  await goto({
-    path: AppRoute.NEWS,
-    hideHeader: false,
-  });
+  await goto(AppRoute.NEWS);
 
   await page.locator(`.header-logo`)
     .click();
