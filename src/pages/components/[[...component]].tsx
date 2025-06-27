@@ -29,6 +29,7 @@ import { MOCK_HOME_TICKETS } from "@/src/common/mocks/home-page-mock/blocks/tick
 import { MOCK_SHARED_ARTICLE } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-article";
 import { MOCK_SHARED_CARDS } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-cards-mock";
 import { MOCK_SHARED_CATEGORIES } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-categories";
+import { MOCK_NEWS_PAGE } from "@/src/common/mocks/news-page-mock/news-page-mock";
 import { DiscountsCategories } from "@/src/components/discounts-page/DiscountsCategories/DiscountsCategories";
 import { DiscountsTerms } from "@/src/components/discounts-page/DiscountsTerms/DiscountsTerms";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
@@ -52,6 +53,7 @@ import { HomepageTickets } from "@/src/components/home-page/HomepageTickets/Home
 import { Map } from "@/src/components/home-page/Map/Map";
 import { Services } from "@/src/components/home-page/Services/Services";
 import { NewsSlider } from "@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider";
+import { NewsList } from "@/src/components/news-page/NewsList/NewsList";
 import { HttpStatusCode } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -276,6 +278,17 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.NEWS_LIST) {
+    return (
+      <NewsList
+        news={MOCK_NEWS.slice(0, 6)}
+        newsTitle={MOCK_NEWS_PAGE.newsTitle}
+        pageCount={2}
+        isComponentsPage
+      />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -352,6 +365,9 @@ export default function ComponentsPage() {
         <h2 className="components-page__subtitle">News page components</h2>
         <li className="components-page__item">
           <Link href={ComponentName.NEWS_SLIDER}>News slider</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.NEWS_LIST}>News List</Link>
         </li>
       </ul>
     </div>

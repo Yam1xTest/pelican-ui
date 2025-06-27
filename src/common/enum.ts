@@ -71,4 +71,5 @@ export enum ComponentName {
   HOME_MAP = `home-map`,
   HOME_SERVICES = `home-services`,
   NEWS_SLIDER = `news-slider`,
+  NEWS_LIST = `news-list`,
 }
