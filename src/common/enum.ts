@@ -74,4 +74,5 @@ export enum ComponentName {
   NEWS_LIST = `news-list`,
   VISITING_RULES_EMERGENCY_PHONES = `visiting-rules-emergency-phones`,
   VISITING_RULES_MAIN = `visiting-rules-main`,
+  VISITING_RULES_PHOTOS_POLICY = `visiting-rules-photo-policy`,
 }
