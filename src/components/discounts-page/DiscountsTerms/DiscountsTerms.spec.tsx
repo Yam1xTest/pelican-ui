@@ -10,9 +10,9 @@ const TEST_ID = `discounts-terms`;
 
 test.describe(`DiscountsTermsTests`, () => {
   test.beforeEach(async ({
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
-    await gotoComponentsPage(ComponentName.DISCOUNTS_TERMS);
+    await goToComponentsPage(ComponentName.DISCOUNTS_TERMS);
   });
 
   test(`MobileTest`, mobileTest);

@@ -10,9 +10,9 @@ const TEST_ID = `cookie`;
 
 test.describe(`CookieTests`, () => {
   test.beforeEach(async ({
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
-    await gotoComponentsPage(ComponentName.COOKIE);
+    await goToComponentsPage(ComponentName.COOKIE);
   });
 
   test(`ActionTest`, actionTest);

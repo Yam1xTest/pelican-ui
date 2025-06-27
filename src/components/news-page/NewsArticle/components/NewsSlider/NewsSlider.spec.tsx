@@ -15,9 +15,9 @@ const TEST_ID = `news-slider`;
 
 test.describe(`NewsSliderComponentTest`, () => {
   test.beforeEach(async ({
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
-    await gotoComponentsPage(ComponentName.NEWS_SLIDER);
+    await goToComponentsPage(ComponentName.NEWS_SLIDER);
   });
 
   test(`NavigationTest`, navigationTest);

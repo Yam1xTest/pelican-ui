@@ -11,9 +11,9 @@ const TEST_ID = `services`;
 
 test.describe(`ServicesComponentTests`, () => {
   test.beforeEach(async ({
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
-    await gotoComponentsPage(ComponentName.HOME_SERVICES);
+    await goToComponentsPage(ComponentName.HOME_SERVICES);
   });
 
   test(`MobileTest`, mobileTest);

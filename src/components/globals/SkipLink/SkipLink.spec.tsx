@@ -8,9 +8,9 @@ import { ComponentName } from '@/src/common/enum';
 
 test.describe(`SkipLinkTest`, () => {
   test.beforeEach(async ({
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
-    await gotoComponentsPage(ComponentName.SKIP_LINK);
+    await goToComponentsPage(ComponentName.SKIP_LINK);
   });
 
   test(`MobileTest`, mobileTest);

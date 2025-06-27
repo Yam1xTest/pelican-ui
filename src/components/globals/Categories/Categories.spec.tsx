@@ -9,9 +9,9 @@ import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 test.describe(`CategoriesListComponentTests`, () => {
   test.beforeEach(async ({
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
-    await gotoComponentsPage(ComponentName.CATEGORIES);
+    await goToComponentsPage(ComponentName.CATEGORIES);
   });
 
   test(`MobileTest`, mobileTest);

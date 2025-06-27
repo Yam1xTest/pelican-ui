@@ -10,9 +10,9 @@ const TEST_ID = `image-with-button-grid`;
 
 test.describe(`HomepageImageWithButtonGridTests`, () => {
   test.beforeEach(async ({
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
-    await gotoComponentsPage(ComponentName.HOME_IMAGE_WITH_BUTTON_GRID);
+    await goToComponentsPage(ComponentName.HOME_IMAGE_WITH_BUTTON_GRID);
   });
 
   test(`MobileTest`, mobileTest);

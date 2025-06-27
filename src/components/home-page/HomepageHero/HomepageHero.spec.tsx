@@ -10,9 +10,9 @@ const TEST_ID = `hero`;
 
 test.describe(`HomepageHeroComponentTests`, () => {
   test.beforeEach(async ({
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
-    await gotoComponentsPage(ComponentName.HOME_PAGE_HERO);
+    await goToComponentsPage(ComponentName.HOME_PAGE_HERO);
   });
 
   test(`MobileTest`, mobileTest);

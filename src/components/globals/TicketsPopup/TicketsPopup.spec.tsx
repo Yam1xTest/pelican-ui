@@ -12,9 +12,9 @@ const TEST_ID = `tickets-popup`;
 test.describe(`TicketsPopupComponentTests`, () => {
   test.beforeEach(async ({
     page,
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
-    await gotoComponentsPage(ComponentName.TICKET_POPUP);
+    await goToComponentsPage(ComponentName.TICKET_POPUP);
 
     await page.addStyleTag({
       content: `

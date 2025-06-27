@@ -11,7 +11,7 @@ const TEST_ID = `footer`;
 test.describe(`FooterTests`, () => {
   test.beforeEach(async ({
     page,
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
     await page.route(`https://pos.gosuslugi.ru/bin/banner-fluid/2/banner-fluid-bg-2.svg`, async (route) => route.fulfill({
       contentType: `image/svg+xml`,
@@ -23,7 +23,7 @@ test.describe(`FooterTests`, () => {
       path: `./playwright-tests/fixtures/banner-fluid-bg-2-small.svg`,
     }));
 
-    await gotoComponentsPage(ComponentName.FOOTER);
+    await goToComponentsPage(ComponentName.FOOTER);
   });
 
   test(`MobileTest`, mobileTest);

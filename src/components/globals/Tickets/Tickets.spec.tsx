@@ -10,9 +10,9 @@ const TEST_ID = `tickets`;
 
 test.describe(`TicketsComponentTests`, () => {
   test.beforeEach(async ({
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
-    await gotoComponentsPage(ComponentName.TICKETS);
+    await goToComponentsPage(ComponentName.TICKETS);
   });
 
   test(`MobileTest`, mobileTest);

@@ -10,9 +10,9 @@ const TEST_ID = `custom-error`;
 
 test.describe(`CustomErrorComponentTests`, () => {
   test.beforeEach(async ({
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
-    await gotoComponentsPage(ComponentName.CUSTOM_ERROR);
+    await goToComponentsPage(ComponentName.CUSTOM_ERROR);
   });
 
   test(`MobileTest`, mobileTest);

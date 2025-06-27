@@ -10,9 +10,9 @@ const TEST_ID = `text-and-media`;
 
 test.describe(`TextAndMediaComponentTests`, () => {
   test.beforeEach(async ({
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
-    await gotoComponentsPage(ComponentName.TEXT_AND_MEDIA);
+    await goToComponentsPage(ComponentName.TEXT_AND_MEDIA);
   });
 
   test(`MobileTest`, mobileTest);

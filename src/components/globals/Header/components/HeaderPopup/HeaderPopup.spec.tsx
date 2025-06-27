@@ -13,9 +13,9 @@ import {
 
 test.describe(`HeaderPopupTests`, () => {
   test.beforeEach(async ({
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
-    await gotoComponentsPage(ComponentName.HEADER_POPUP);
+    await goToComponentsPage(ComponentName.HEADER_POPUP);
   });
 
   test(`ActionTest`, actionTest);

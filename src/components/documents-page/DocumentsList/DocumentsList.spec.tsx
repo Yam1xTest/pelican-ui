@@ -8,9 +8,9 @@ import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
 
 test.describe(`DocumentsListComponentTests`, () => {
   test.beforeEach(async ({
-    goToComponentsPage: gotoComponentsPage,
+    goToComponentsPage,
   }) => {
-    await gotoComponentsPage(ComponentName.DOCUMENTS_LIST);
+    await goToComponentsPage(ComponentName.DOCUMENTS_LIST);
   });
 
   test(`TabActionTest`, tabAction);
