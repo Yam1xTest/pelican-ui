@@ -3,6 +3,7 @@ import { useSetYearInQuery } from "@/src/common/hooks/useSetYearInQuery";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
 import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
+import { MOCK_NEWS } from "@/src/common/mocks/collections-mock/news-collection-mock";
 import { MOCK_CONTACT_ZOO_HERO } from "@/src/common/mocks/contact-zoo-page-mock/blocks/hero-mock";
 import { MOCK_CONTACT_ZOO_TICKETS } from "@/src/common/mocks/contact-zoo-page-mock/blocks/tickets-mock";
 import { MOCK_DISCOUNTS_CATEGORIES } from "@/src/common/mocks/discounts-page-mock/blocks/discounts-categories-mock";
@@ -50,6 +51,7 @@ import { HomepageImageWithButtonGrid } from "@/src/components/home-page/Homepage
 import { HomepageTickets } from "@/src/components/home-page/HomepageTickets/HomepageTickets";
 import { Map } from "@/src/components/home-page/Map/Map";
 import { Services } from "@/src/components/home-page/Services/Services";
+import { NewsSlider } from "@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider";
 import { HttpStatusCode } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -268,6 +270,12 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.NEWS_SLIDER) {
+    return (
+      <NewsSlider news={MOCK_NEWS} />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -340,6 +348,10 @@ export default function ComponentsPage() {
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.HOME_SERVICES}>Home services</Link>
+        </li>
+        <h2 className="components-page__subtitle">News page components</h2>
+        <li className="components-page__item">
+          <Link href={ComponentName.NEWS_SLIDER}>News slider</Link>
         </li>
       </ul>
     </div>
