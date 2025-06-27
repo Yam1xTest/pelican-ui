@@ -30,6 +30,7 @@ import { MOCK_SHARED_ARTICLE } from "@/src/common/mocks/internal-test-page-mock/
 import { MOCK_SHARED_CARDS } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-cards-mock";
 import { MOCK_SHARED_CATEGORIES } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-categories";
 import { MOCK_NEWS_PAGE } from "@/src/common/mocks/news-page-mock/news-page-mock";
+import { MOCK_VISITING_RULES_EMERGENCY_PHONES } from "@/src/common/mocks/visiting-rules-page-mock/blocks/visiting-rules-emergency-phones-mock";
 import { DiscountsCategories } from "@/src/components/discounts-page/DiscountsCategories/DiscountsCategories";
 import { DiscountsTerms } from "@/src/components/discounts-page/DiscountsTerms/DiscountsTerms";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
@@ -54,6 +55,7 @@ import { Map } from "@/src/components/home-page/Map/Map";
 import { Services } from "@/src/components/home-page/Services/Services";
 import { NewsSlider } from "@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider";
 import { NewsList } from "@/src/components/news-page/NewsList/NewsList";
+import { VisitingRulesEmergencyPhones } from "@/src/components/visiting-rules-page/VisitingRulesEmergencyPhones/VisitingRulesEmergencyPhones";
 import { HttpStatusCode } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -289,9 +291,16 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.VISITING_RULES_EMERGENCY_PHONES) {
+    return (
+      <VisitingRulesEmergencyPhones {...MOCK_VISITING_RULES_EMERGENCY_PHONES} />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
+
         <h2 className="components-page__subtitle">Discount page components</h2>
         <li className="components-page__item">
           <Link href={ComponentName.DISCOUNTS_CATEGORIES}>Discounts categories</Link>
@@ -299,6 +308,7 @@ export default function ComponentsPage() {
         <li className="components-page__item">
           <Link href={ComponentName.DISCOUNTS_TERMS}>Discounts terms</Link>
         </li>
+
         <h2 className="components-page__subtitle">Documents page components</h2>
         <li className="components-page__item">
           <Link href={ComponentName.DOCUMENTS_LIST}>Documents list</Link>
@@ -346,6 +356,7 @@ export default function ComponentsPage() {
         <li className="components-page__item">
           <Link href={ComponentName.TICKETS}>Tickets</Link>
         </li>
+
         <h2 className="components-page__subtitle">Home page components</h2>
         <li className="components-page__item">
           <Link href={ComponentName.HOME_PAGE_HERO}>Home hero</Link>
@@ -362,6 +373,7 @@ export default function ComponentsPage() {
         <li className="components-page__item">
           <Link href={ComponentName.HOME_SERVICES}>Home services</Link>
         </li>
+
         <h2 className="components-page__subtitle">News page components</h2>
         <li className="components-page__item">
           <Link href={ComponentName.NEWS_SLIDER}>News slider</Link>
@@ -369,6 +381,16 @@ export default function ComponentsPage() {
         <li className="components-page__item">
           <Link href={ComponentName.NEWS_LIST}>News List</Link>
         </li>
+
+        <h2 className="components-page__subtitle">Visting rules page components</h2>
+        <li className="components-page__item">
+          <Link
+            href={ComponentName.VISITING_RULES_EMERGENCY_PHONES}
+          >
+            Visting rules emergency phones
+          </Link>
+        </li>
+
       </ul>
     </div>
   );
