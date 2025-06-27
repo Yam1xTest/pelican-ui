@@ -73,4 +73,5 @@ export enum ComponentName {
   NEWS_SLIDER = `news-slider`,
   NEWS_LIST = `news-list`,
   VISITING_RULES_EMERGENCY_PHONES = `visiting-rules-emergency-phones`,
+  VISITING_RULES_MAIN = `visiting-rules-main`,
 }

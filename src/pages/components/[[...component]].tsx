@@ -31,6 +31,7 @@ import { MOCK_SHARED_CARDS } from "@/src/common/mocks/internal-test-page-mock/bl
 import { MOCK_SHARED_CATEGORIES } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-categories";
 import { MOCK_NEWS_PAGE } from "@/src/common/mocks/news-page-mock/news-page-mock";
 import { MOCK_VISITING_RULES_EMERGENCY_PHONES } from "@/src/common/mocks/visiting-rules-page-mock/blocks/visiting-rules-emergency-phones-mock";
+import { MOCK_VISITING_RULES_MAIN } from "@/src/common/mocks/visiting-rules-page-mock/blocks/visiting-rules-main-mock";
 import { DiscountsCategories } from "@/src/components/discounts-page/DiscountsCategories/DiscountsCategories";
 import { DiscountsTerms } from "@/src/components/discounts-page/DiscountsTerms/DiscountsTerms";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
@@ -56,6 +57,7 @@ import { Services } from "@/src/components/home-page/Services/Services";
 import { NewsSlider } from "@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider";
 import { NewsList } from "@/src/components/news-page/NewsList/NewsList";
 import { VisitingRulesEmergencyPhones } from "@/src/components/visiting-rules-page/VisitingRulesEmergencyPhones/VisitingRulesEmergencyPhones";
+import { VisitingRulesMain } from "@/src/components/visiting-rules-page/VisitingRulesMain/VisitingRulesMain";
 import { HttpStatusCode } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -297,6 +299,12 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.VISITING_RULES_MAIN) {
+    return (
+      <VisitingRulesMain {...MOCK_VISITING_RULES_MAIN} />
+    );
+  }
+
   return (
     <div className="container components-page">
       <ul className="components-page__list">
@@ -388,6 +396,13 @@ export default function ComponentsPage() {
             href={ComponentName.VISITING_RULES_EMERGENCY_PHONES}
           >
             Visting rules emergency phones
+          </Link>
+        </li>
+        <li className="components-page__item">
+          <Link
+            href={ComponentName.VISITING_RULES_MAIN}
+          >
+            Visting rules main
           </Link>
         </li>
 
