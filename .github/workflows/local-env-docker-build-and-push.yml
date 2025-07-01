@@ -12,7 +12,8 @@ jobs:
   push_to_registry:
     uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@master
     with:
-        # Prefix used to be able to build images for local-env and prod-env with different tags
+        # We use CDN at prod, that enabling or disabling only during build and can't be enabled/disabled at runtime.   
+        # Prefix used to build several images, the first one with disabled CDN for Local Env and the second one with enabled CDN for Prod Env
         prefix: "local-env"
         # Build-args used to define variables that will be used in image
         build-args: |
