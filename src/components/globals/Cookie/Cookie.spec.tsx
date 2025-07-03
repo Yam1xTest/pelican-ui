@@ -1,10 +1,11 @@
+import { BREAKPOINTS } from '@/playwright-tests/constants/breakpoints';
 import {
   CustomTestFixtures,
   expect,
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
+import { ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `cookie`;
 
@@ -17,15 +18,21 @@ test.describe(`CookieTests`, () => {
 
   test(`ActionTest`, actionTest);
 
-  test(`MobileTest`, mobileTest);
-
-  test(`TabletTest`, tabletTest);
-
-  test(`TabletXlTest`, tabletXlTest);
-
-  test(`DesktopTest`, desktopTest);
-
-  test(`DesktopXlTest`, desktopXlTest);
+  for (const {
+    name,
+    breakpoint,
+    breakpointName,
+  } of BREAKPOINTS) {
+    test(name, async ({
+      testScreenshotAtBreakpoint,
+    }) => {
+      await testScreenshotAtBreakpoint({
+        testId: TEST_ID,
+        breakpoint,
+        breakpointName,
+      });
+    });
+  }
 });
 
 async function actionTest({
@@ -42,95 +49,4 @@ async function actionTest({
 
   await expect(page.getByTestId(TEST_ID))
     .toBeHidden();
-}
-
-async function mobileTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize();
-
-  await expect(getCookieByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}.png`);
-}
-
-async function tabletTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize({
-    width: Breakpoint.TABLET,
-  });
-
-  await expect(getCookieByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}.png`);
-}
-
-async function tabletXlTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize({
-    width: Breakpoint.TABLET_XL,
-  });
-
-  await expect(getCookieByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET_XL}.png`);
-}
-
-async function desktopTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize({
-    width: Breakpoint.DESKTOP,
-  });
-
-  await expect(getCookieByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}.png`);
-}
-
-async function desktopXlTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize({
-    width: Breakpoint.DESKTOP_XL,
-  });
-
-  await expect(getCookieByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP_XL}.png`);
-}
-
-function getCookieByTestId({
-  page,
-}: {
-  page: Page;
-}) {
-  return page.getByTestId(TEST_ID);
 }
