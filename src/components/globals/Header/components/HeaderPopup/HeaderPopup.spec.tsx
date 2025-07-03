@@ -1,15 +1,13 @@
+import { BREAKPOINTS } from '@/playwright-tests/constants/breakpoints';
 import {
   CustomTestFixtures,
   expect,
   Page,
   test,
 } from '@/playwright-tests/custom-test';
-import {
-  AppRoute,
-  Breakpoint,
-  BreakpointName,
-  ComponentName,
-} from '@/src/common/enum';
+import { AppRoute, Breakpoint, ComponentName } from '@/src/common/enum';
+
+const TEST_ID = `header-popup`;
 
 test.describe(`HeaderPopupTests`, () => {
   test.beforeEach(async ({
@@ -22,11 +20,25 @@ test.describe(`HeaderPopupTests`, () => {
 
   test(`NavigationTest`, navigationTest);
 
-  test(`MobilePopupTest`, mobilePopupTest);
+  const breakpoints = BREAKPOINTS.filter(
+    (breakpoint) => breakpoint.breakpoint !== Breakpoint.DESKTOP && breakpoint.breakpoint !== Breakpoint.DESKTOP_XL,
+  );
 
-  test(`TabletPopupTest`, tabletPopupTest);
-
-  test(`TabletXlPopupTest`, tabletXlPopupTest);
+  for (const {
+    name,
+    breakpoint,
+    breakpointName,
+  } of breakpoints) {
+    test(name, async ({
+      testScreenshotAtBreakpoint,
+    }) => {
+      await testScreenshotAtBreakpoint({
+        testId: `header-popup`,
+        breakpoint,
+        breakpointName,
+      });
+    });
+  }
 });
 
 async function actionTest({
@@ -38,7 +50,9 @@ async function actionTest({
 }) {
   await setViewportSize();
 
-  await expect(page.getByTestId(`header-popup`))
+  await expect(getHeaderPopupByTestId({
+    page,
+  }))
     .toContainText(`Льготы`);
 }
 
@@ -63,59 +77,10 @@ async function navigationTest({
     .toHaveURL(AppRoute.HOME);
 }
 
-async function mobilePopupTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize();
-
-  await expect(getHeaderPopupByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`header-popup-${BreakpointName.MOBILE}.png`);
-}
-
-async function tabletPopupTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize({
-    width: Breakpoint.TABLET,
-  });
-
-  await expect(getHeaderPopupByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`header-popup-${BreakpointName.TABLET}.png`);
-}
-
-async function tabletXlPopupTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize({
-    width: Breakpoint.TABLET_XL,
-  });
-
-  await expect(getHeaderPopupByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`header-popup-${BreakpointName.TABLET_XL}.png`);
-}
-
 function getHeaderPopupByTestId({
   page,
 }: {
   page: Page;
 }) {
-  return page.getByTestId(`header-popup`);
+  return page.getByTestId(TEST_ID);
 }
