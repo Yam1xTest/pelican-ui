@@ -13,6 +13,7 @@ export type CustomTestFixtures = {
       testId: string;
       breakpoint: Breakpoint;
       breakpointName: BreakpointName;
+      customNameOfScreenshotFiles?: string;
     }) => void;
   apiImageMock: () => void;
   setViewportSize: (options?: { width?: number; height?: number; }) => void;
@@ -77,10 +78,12 @@ export const test = base.extend<CustomTestFixtures>({
       testId,
       breakpoint,
       breakpointName,
+      customNameOfScreenshotFiles,
     }: {
       testId: string;
       breakpoint: Breakpoint;
       breakpointName: BreakpointName;
+      customNameOfScreenshotFiles?: string;
     }) => {
       // This is necessary so that the tests do not crop the screenshots.
       await page.addStyleTag({
@@ -92,7 +95,7 @@ export const test = base.extend<CustomTestFixtures>({
       });
 
       await expect(page.getByTestId(testId))
-        .toHaveScreenshot(`${testId}-${breakpointName}.png`);
+        .toHaveScreenshot(`${customNameOfScreenshotFiles || `${testId}-${breakpointName}`}.png`);
     };
 
     await use(testScreenshotAtBreakpoint);

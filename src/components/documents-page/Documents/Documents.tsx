@@ -1,9 +1,9 @@
 import { CategoryProps, DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
-import { DocumentCard } from "@/src/components/documents-page/DocumentsList/components/DocumentCard/DocumentCard";
+import { DocumentCard } from "@/src/components/documents-page/Documents/components/DocumentCard/DocumentCard";
 import { useRouter } from "next/router";
 import { Tab } from "../../globals/Tab/Tab";
 
-export function DocumentsList({
+export function Documents({
   category,
   availableYears,
   documents,
