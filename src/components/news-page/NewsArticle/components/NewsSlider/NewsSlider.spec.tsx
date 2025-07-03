@@ -1,12 +1,6 @@
 import { BREAKPOINTS } from '@/playwright-tests/constants/breakpoints';
-import {
-  expect,
-  Page,
-  test
-} from '@/playwright-tests/custom-test';
-import {
-  AppRoute, ComponentName
-} from '@/src/common/enum';
+import { expect, Page, test } from '@/playwright-tests/custom-test';
+import { AppRoute, ComponentName } from '@/src/common/enum';
 
 test.describe(`NewsSliderComponentTest`, () => {
   test.beforeEach(async ({
