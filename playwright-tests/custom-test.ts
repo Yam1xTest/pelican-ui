@@ -1,6 +1,6 @@
-import { test as base } from '@playwright/test';
+import { test as base, expect } from '@playwright/test';
 import fs from 'fs';
-import { Breakpoint } from '@/src/common/enum';
+import { Breakpoint, BreakpointName } from '@/src/common/enum';
 
 export type CustomTestFixtures = {
   goto: (path?: string) => void;
@@ -8,6 +8,12 @@ export type CustomTestFixtures = {
   gotoWithDraftPreviewMode: (options?: {
     slug: string;
   }) => void;
+  testScreenshotAtBreakpoint: (
+    options: {
+      testId: string;
+      breakpoint: Breakpoint;
+      breakpointName: BreakpointName;
+    }) => void;
   apiImageMock: () => void;
   setViewportSize: (options?: { width?: number; height?: number; }) => void;
 };
@@ -61,6 +67,35 @@ export const test = base.extend<CustomTestFixtures>({
     };
 
     await use(gotoWithDraftPreviewMode);
+  },
+
+  testScreenshotAtBreakpoint: async ({
+    page,
+    setViewportSize,
+  }, use) => {
+    const testScreenshotAtBreakpoint = async ({
+      testId,
+      breakpoint,
+      breakpointName,
+    }: {
+      testId: string;
+      breakpoint: Breakpoint;
+      breakpointName: BreakpointName;
+    }) => {
+      // This is necessary so that the tests do not crop the screenshots.
+      await page.addStyleTag({
+        content: `html, body, #__next { height: auto !important; min-height: 100% !important; }`,
+      });
+
+      await setViewportSize({
+        width: breakpoint,
+      });
+
+      await expect(page.getByTestId(testId))
+        .toHaveScreenshot(`${testId}-${breakpointName}.png`);
+    };
+
+    await use(testScreenshotAtBreakpoint);
   },
 
   setViewportSize: async ({
