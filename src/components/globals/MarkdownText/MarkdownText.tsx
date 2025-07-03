@@ -80,7 +80,7 @@ export function MarkdownText({
         },
       }}
     >
-      {formatTextWithLineBreaks(children)}
+      {children}
     </ReactMarkdown>
   );
 }
