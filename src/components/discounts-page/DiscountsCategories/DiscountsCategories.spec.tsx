@@ -2,8 +2,6 @@ import { BREAKPOINTS } from '@/playwright-tests/constants/breakpoints';
 import { test } from '@/playwright-tests/custom-test';
 import { ComponentName } from '@/src/common/enum';
 
-const TEST_ID = `discounts-categories`;
-
 test.describe(`DiscountsCategoriesTests`, () => {
   test.beforeEach(async ({
     goToComponentsPage,
@@ -20,7 +18,7 @@ test.describe(`DiscountsCategoriesTests`, () => {
       testScreenshotAtBreakpoint,
     }) => {
       await testScreenshotAtBreakpoint({
-        testId: TEST_ID,
+        testId: `discounts-categories`,
         breakpoint,
         breakpointName,
       });
