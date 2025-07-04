@@ -1,12 +1,6 @@
-import {
-  CustomTestFixtures,
-  expect,
-  Page,
-  test,
-} from '@/playwright-tests/custom-test';
-import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
-
-const TEST_ID = `header`;
+import { BREAKPOINTS } from '@/playwright-tests/constants/breakpoints';
+import { test } from '@/playwright-tests/custom-test';
+import { Breakpoint, ComponentName } from '@/src/common/enum';
 
 test.describe(`HeaderComponentTests`, () => {
   test.beforeEach(async ({
@@ -15,85 +9,21 @@ test.describe(`HeaderComponentTests`, () => {
     await goToComponentsPage(ComponentName.HEADER);
   });
 
-  test(`MobileTest`, mobileTest);
+  const breakpoints = BREAKPOINTS.filter((breakpoint) => breakpoint.breakpoint !== Breakpoint.TABLET_XL);
 
-  test(`TabletTest`, tabletTest);
-
-  test(`DesktopTest`, desktopTest);
-
-  test(`DesktopXlTest`, desktopXlTest);
+  for (const {
+    name,
+    breakpoint,
+    breakpointName,
+  } of breakpoints) {
+    test(name, async ({
+      testScreenshotAtBreakpoint,
+    }) => {
+      await testScreenshotAtBreakpoint({
+        testId: `header`,
+        breakpoint,
+        breakpointName,
+      });
+    });
+  }
 });
-
-async function mobileTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize();
-
-  await expect(getHeaderByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}.png`);
-}
-
-async function tabletTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize({
-    width: Breakpoint.TABLET,
-  });
-
-  await expect(getHeaderByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}.png`);
-}
-
-async function desktopTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize({
-    width: Breakpoint.DESKTOP,
-  });
-
-  await expect(getHeaderByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}.png`);
-}
-
-async function desktopXlTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize({
-    width: Breakpoint.DESKTOP_XL,
-  });
-
-  await expect(getHeaderByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP_XL}.png`);
-}
-
-function getHeaderByTestId({
-  page,
-}: {
-  page: Page;
-}) {
-  return page.getByTestId(TEST_ID);
-}

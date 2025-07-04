@@ -1,5 +1,4 @@
-
-/* eslint-disable @stylistic/max-len */
+/* eslint-disable max-len */
 import { BlockTypes } from "@/src/common/enum";
 import { ArticleComponentProps } from "@/src/common/types";
 import employeeImage from "@/public/images/news/employee.png";

@@ -1,12 +1,6 @@
-import {
-  CustomTestFixtures,
-  expect,
-  Page,
-  test,
-} from '@/playwright-tests/custom-test';
-import { Breakpoint, BreakpointName, ComponentName } from '@/src/common/enum';
-
-const TEST_ID = `visiting-rules-main`;
+import { BREAKPOINTS } from '@/playwright-tests/constants/breakpoints';
+import { test } from '@/playwright-tests/custom-test';
+import { ComponentName } from '@/src/common/enum';
 
 test.describe(`VisitingRulesMainComponentTest`, () => {
   test.beforeEach(async ({
@@ -15,110 +9,19 @@ test.describe(`VisitingRulesMainComponentTest`, () => {
     await goToComponentsPage(ComponentName.VISITING_RULES_MAIN);
   });
 
-  test(`MobileTest`, mobileTest);
-
-  test(`TabletTest`, tabletTest);
-
-  test(`TabletXlTest`, tabletXlTest);
-
-  test(`DesktopTest`, desktopTest);
-
-  test(`DesktopXlTest`, desktopXlTest);
+  for (const {
+    name,
+    breakpoint,
+    breakpointName,
+  } of BREAKPOINTS) {
+    test(name, async ({
+      testScreenshotAtBreakpoint,
+    }) => {
+      await testScreenshotAtBreakpoint({
+        testId: `visiting-rules-main`,
+        breakpoint,
+        breakpointName,
+      });
+    });
+  }
 });
-
-async function mobileTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize({
-    height: 1389,
-  });
-
-  await expect(getVisitingRulesByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}.png`);
-}
-
-async function tabletTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize({
-    width: Breakpoint.TABLET,
-    height: 844,
-  });
-
-  await expect(getVisitingRulesByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}.png`);
-}
-
-async function tabletXlTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize({
-    width: Breakpoint.TABLET_XL,
-    height: 939,
-  });
-
-  await expect(getVisitingRulesByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET_XL}.png`);
-}
-
-async function desktopTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize({
-    width: Breakpoint.DESKTOP,
-    height: 1074,
-  });
-
-  await expect(getVisitingRulesByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}.png`);
-}
-
-async function desktopXlTest({
-  page,
-  setViewportSize,
-}: {
-  page: Page;
-  setViewportSize: CustomTestFixtures['setViewportSize'];
-}) {
-  await setViewportSize({
-    width: Breakpoint.DESKTOP_XL,
-    height: 1195,
-  });
-
-  await expect(getVisitingRulesByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP_XL}.png`);
-}
-
-function getVisitingRulesByTestId({
-  page,
-}: {
-  page: Page;
-}) {
-  return page.getByTestId(TEST_ID);
-}

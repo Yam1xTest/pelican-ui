@@ -11,7 +11,7 @@ import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-co
 import { CategoryProps, DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
 import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryParams";
 import { apiFetch } from "@/src/common/utils/HttpClient";
-import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
+import { Documents } from "@/src/components/documents-page/Documents/Documents";
 import { SeoHead } from "@/src/components/globals/SeoHead/SeoHead";
 import dayjs from "dayjs";
 import qs from "qs";
@@ -40,7 +40,7 @@ export default function DocumentsCategories({
         metaDescription={category?.seo?.metaDescription}
         metaKeywords={category?.seo?.metaKeywords}
       />
-      <DocumentsList
+      <Documents
         category={category}
         availableYears={availableYears}
         documents={documents}

@@ -36,7 +36,7 @@ import { MOCK_VISITING_RULES_PHOTOS_POLICY } from "@/src/common/mocks/visiting-r
 import { MOCK_VISITING_RULES_WARNINGS } from "@/src/common/mocks/visiting-rules-page-mock/blocks/visiting-rules-warnings-mock";
 import { DiscountsCategories } from "@/src/components/discounts-page/DiscountsCategories/DiscountsCategories";
 import { DiscountsTerms } from "@/src/components/discounts-page/DiscountsTerms/DiscountsTerms";
-import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
+import { Documents } from "@/src/components/documents-page/Documents/Documents";
 import { Article } from "@/src/components/globals/Article/Article";
 import { Cards } from "@/src/components/globals/Cards/Cards";
 import { Categories } from "@/src/components/globals/Categories/Categories";
@@ -94,7 +94,7 @@ export default function ComponentsPage() {
   if (componentName === ComponentName.DOCUMENTS_LIST) {
     const queryYear = Number(query?.year);
     return (
-      <DocumentsList
+      <Documents
         category={MOCK_DOCUMENTS_CATEGORIES[0]}
         currentYear={queryYear || 2025}
         availableYears={[
