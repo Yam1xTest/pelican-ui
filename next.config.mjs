@@ -10,7 +10,7 @@ const nextConfig = {
     return [
       // Icons are not cached by default, so we do it manually
       {
-        source: "/(apple-touch-icon|favicon-96x96.png|favicon.ico|favicon.svg|web-app-manifest-192x192.png|web-app-manifest-512x512.png)",
+        source: "/(apple-touch-icon|favicon-96x96.png|favicon.ico|favicon.svg|web-app-manifest-192x192.png|web-app-manifest-512x512.png|site.webmanifest)",
         headers: [
           {
             key: "Cache-Control",
