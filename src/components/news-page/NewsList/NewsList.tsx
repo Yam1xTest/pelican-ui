@@ -1,5 +1,10 @@
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { NewsArticleProps } from "@/src/common/types";
 import { AppRoute, ComponentName } from "@/src/common/enum";
 import { Cards } from "../../globals/Cards/Cards";
@@ -25,16 +30,21 @@ export function NewsList({
 
   useEffect(() => {
     if (Object.keys(router.query).length > 0) {
-      router.replace(
-        isComponentsPage ? `${AppRoute.COMPONENTS}/${ComponentName.NEWS_LIST}` : AppRoute.NEWS,
-        undefined,
-        {
-          shallow: true,
-        },
-      );
+      const targetPath = isComponentsPage
+        ? `${AppRoute.COMPONENTS}/${ComponentName.NEWS_LIST}`
+        : AppRoute.NEWS;
+
+      if (router.asPath !== targetPath) {
+        router.replace(
+          targetPath,
+          undefined,
+          {
+            shallow: true,
+          },
+        );
+      }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router]);
+  }, [router, isComponentsPage]);
 
   useEffect(() => {
     setNewsList((prevData) => {
@@ -55,16 +65,21 @@ export function NewsList({
 
   const isPaginationAvailable = currentPage < pageCount;
 
+  const newsCards = useMemo(
+    () => newsList.map((newsItem) => ({
+      ...newsItem,
+      link: `${AppRoute.NEWS}/${newsItem.slug}`,
+    })),
+    [newsList],
+  );
+
   return (
     <Cards
       className="news-list"
       dataTestId="news-list"
       title={newsTitle}
       isNews
-      cards={newsList.map((newsItem) => ({
-        ...newsItem,
-        link: `${AppRoute.NEWS}/${newsItem.slug}`,
-      }))}
+      cards={newsCards}
       firstCardRef={firstNewsRef}
       currentPageSize={currentPage > 1 ? (currentPage - 1) * NEWS_LIMIT : undefined}
     >
@@ -84,12 +99,13 @@ export function NewsList({
   );
 
   function loadMoreNews() {
+    const nextPage = currentPage + 1;
     router.replace({
       query: {
-        page: currentPage + 1,
+        page: nextPage,
       },
     });
 
-    setCurrentPage(currentPage + 1);
+    setCurrentPage(nextPage);
   }
 }
