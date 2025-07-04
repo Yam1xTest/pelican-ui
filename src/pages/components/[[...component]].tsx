@@ -26,9 +26,7 @@ import { MOCK_MAP } from "@/src/common/mocks/home-page-mock/blocks/map-mock";
 import { MOCK_SERVICES } from "@/src/common/mocks/home-page-mock/blocks/services-mock";
 import { MOCK_TEXT_AND_MEDIA } from "@/src/common/mocks/home-page-mock/blocks/text-and-media-mock";
 import { MOCK_HOME_TICKETS } from "@/src/common/mocks/home-page-mock/blocks/tickets-mock";
-import { MOCK_SHARED_ARTICLE } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-article";
-import { MOCK_SHARED_CARDS } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-cards-mock";
-import { MOCK_SHARED_CATEGORIES } from "@/src/common/mocks/internal-test-page-mock/blocks/shared-categories";
+import { MOCK_SHARED_ARTICLE } from "@/src/common/mocks/components-page-mock/blocks/shared-article";
 import { MOCK_NEWS_PAGE } from "@/src/common/mocks/news-page-mock/news-page-mock";
 import { MOCK_VISITING_RULES_EMERGENCY_PHONES } from "@/src/common/mocks/visiting-rules-page-mock/blocks/visiting-rules-emergency-phones-mock";
 import { MOCK_VISITING_RULES_MAIN } from "@/src/common/mocks/visiting-rules-page-mock/blocks/visiting-rules-main-mock";
@@ -124,13 +122,19 @@ export default function ComponentsPage() {
 
   if (componentName === ComponentName.CARDS) {
     return (
-      <Cards {...MOCK_SHARED_CARDS} />
+      <Cards
+        title="Наши услуги"
+        cards={MOCK_SERVICES.cards}
+      />
     );
   }
 
   if (componentName === ComponentName.CATEGORIES) {
     return (
-      <Categories {...MOCK_SHARED_CATEGORIES} />
+      <Categories
+        categoriesTitle={`Информация о\u00A0деятельности МБУК\u00A0«Зоопарк»`}
+        categories={MOCK_DOCUMENTS_CATEGORIES}
+      />
     );
   }
 
