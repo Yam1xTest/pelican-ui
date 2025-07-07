@@ -18,5 +18,6 @@ jobs:
         build-args: |
           CDN_ENABLED=true
           CDN_DOMAIN=cdn.chelzoo.tech
+          CORS_ORIGIN=https://chelzoo.tech
     # without this it cannot login to the registry
     secrets: inherit
