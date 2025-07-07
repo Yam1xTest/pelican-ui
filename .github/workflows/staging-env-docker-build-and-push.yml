@@ -1,4 +1,4 @@
-name: Publish Docker image for prod-env
+name: Publish Docker image for staging-env
 
 on:
   push:
@@ -13,6 +13,6 @@ jobs:
         # Build-args used to define variables that will be used in image
         build-args: |
           CDN_ENABLED=true
-          CDN_DOMAIN=cdn.chelzoo.ru
+          CDN_DOMAIN=cdn.chelzoo.tech
     # without this it cannot login to the registry
     secrets: inherit
