@@ -33,7 +33,9 @@ const nextConfig = {
           // Specifies the origin that has access to the resource
           {
             key: "Access-Control-Allow-Origin",
-            value: process.env.CORS_ORIGIN,
+            value: process.env.NODE_ENV === "production"
+              ? process.env.CORS_ORIGIN
+              : process.env.CORS_ORIGIN || "http://localhost:3000",
           },
 
           // Indicates how the browser should handle opening new windows and tabs in the context of cross-origin requests
