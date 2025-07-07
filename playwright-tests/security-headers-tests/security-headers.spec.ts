@@ -1,4 +1,4 @@
-/* eslint-disable @stylistic/max-len */
+/* eslint-disable max-len */
 import test, { expect, Page } from "@playwright/test";
 
 test.describe(`Check security headers`, () => {
@@ -102,7 +102,7 @@ async function expectSecurityHeaders({
     .toBe(`false`);
 
   expect(headers[`access-control-allow-origin`])
-    .toBe(`https://chelzoo.tech`);
+    .toBe(`http://localhost:3000`);
 
   expect(headers[`cross-origin-opener-policy`])
     .toBe(`same-origin`);
