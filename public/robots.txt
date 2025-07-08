@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /components
-
-Host: chelzoo.ru
-
-Sitemap: https://chelzoo.ru/api/get-sitemap
