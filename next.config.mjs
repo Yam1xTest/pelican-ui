@@ -33,7 +33,9 @@ const nextConfig = {
           // Specifies the origin that has access to the resource
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://chelzoo.tech",
+            value: process.env.NODE_ENV === "production"
+              ? process.env.CORS_ORIGIN
+              : process.env.CORS_ORIGIN || "http://localhost:3000",
           },
 
           // Indicates how the browser should handle opening new windows and tabs in the context of cross-origin requests
@@ -160,7 +162,7 @@ const nextConfig = {
 
     // lifetime in seconds for cached optimized images
     // https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl
-    minimumCacheTTL: 3600,
+    minimumCacheTTL: 86400,
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {

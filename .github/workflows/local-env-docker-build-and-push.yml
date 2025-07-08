@@ -19,5 +19,6 @@ jobs:
         # Build-args used to define variables that will be used in image
         build-args: |
           CDN_ENABLED=false
+          CORS_ORIGIN=http://localhost:40110
     # without this it cannot login to the registry
     secrets: inherit
