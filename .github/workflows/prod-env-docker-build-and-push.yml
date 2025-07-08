@@ -13,7 +13,7 @@ jobs:
         # Build-args used to define variables that will be used in image
         build-args: |
           CDN_ENABLED=true
-          CDN_DOMAIN=cdn.chelzoo.tech
-          CORS_ORIGIN=https://chelzoo.tech
+          CDN_DOMAIN=cdn.chelzoo.ru
+          CORS_ORIGIN=https://chelzoo.ru
     # without this it cannot login to the registry
     secrets: inherit

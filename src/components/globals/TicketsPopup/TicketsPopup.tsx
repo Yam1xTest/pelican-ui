@@ -76,6 +76,7 @@ export function TicketsPopup({
                   priority
                   src={crossIcon}
                   alt="Close tickets popup"
+                  loading="eager"
                 />
               </button>
             </div>
