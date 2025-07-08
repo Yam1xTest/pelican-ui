@@ -3,6 +3,7 @@ module.exports = {
   siteUrl: `https://chelzoo.ru`,
   generateRobotsTxt: true,
   generateIndexSitemap: false,
+  exclude: [`*`],
   robotsTxtOptions: {
     policies: [
       process.env.ENABLE_SEO_INDEXING === `true` ? {
