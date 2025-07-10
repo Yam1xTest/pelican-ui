@@ -9,9 +9,16 @@ import { MutableRefObject } from "react";
 import clsx from "clsx";
 import { AppRoute, ComponentName } from "@/src/common/enum";
 import { normalizeSlug } from "@/src/common/utils/normalizeSlug";
+import dynamic from "next/dynamic";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
-import { GosBanner } from "../../home-page/GosBanner/GosBanner";
 import { IconGit } from "./components/IconGit/IconGit";
+
+const GosBanner = dynamic(
+  () => import(`../../home-page/GosBanner/GosBanner`).then((component) => component.GosBanner),
+  {
+    ssr: true,
+  },
+);
 
 type FooterProps =
   Omit<GlobalComponentProps,
