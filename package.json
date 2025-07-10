@@ -30,8 +30,6 @@
     "generate-api-types": "docker-compose -f ./api-types/docker-compose.yml up --build ts_generator"
   },
   "dependencies": {
-    "axe-core": "^4.10.3",
-    "axios": "^1.10.0",
     "clsx": "^2.1.1",
     "cookies-next": "^4.3.0",
     "dayjs": "^1.11.13",
@@ -43,8 +41,7 @@
     "react-focus-lock": "^2.13.6",
     "react-glider": "^4.0.2",
     "react-markdown": "^9.1.0",
-    "rehype-raw": "^7.0.0",
-    "sharp": "^0.34.2"
+    "rehype-raw": "^7.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
@@ -59,7 +56,9 @@
     "@types/react-plyr": "^2.1.4",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
+    "axe-core": "^4.10.3",
     "axe-html-reporter": "^2.2.11",
+    "axios": "^1.10.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.57.1",
     "eslint-config-airbnb": "^19.0.4",
