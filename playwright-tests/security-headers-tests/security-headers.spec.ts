@@ -7,7 +7,9 @@ test.describe(`Check security headers`, () => {
     async ({
       page,
     }) => {
-      const response = await page.goto(``);
+      const response = await page.goto(``, {
+        waitUntil: `networkidle`,
+      });
 
       const headers = response!.headers();
 
