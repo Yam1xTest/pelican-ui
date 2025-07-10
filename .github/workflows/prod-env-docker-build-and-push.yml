@@ -15,5 +15,6 @@ jobs:
           CDN_ENABLED=true
           CDN_DOMAIN=cdn.chelzoo.ru
           CORS_ORIGIN=https://chelzoo.ru
+          ENABLE_SEO_INDEXING=true
     # without this it cannot login to the registry
     secrets: inherit
