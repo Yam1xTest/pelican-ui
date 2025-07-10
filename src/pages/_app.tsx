@@ -47,6 +47,7 @@ const inter = localFont({
     },
   ],
   variable: '--font-inter',
+  display: 'swap',
 });
 
 const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === 'true';
