@@ -259,6 +259,8 @@
   &__copyright-link {
     @include caption-2-medium;
 
+    display: block;
+    width: fit-content;
     background: linear-gradient(90deg, #ff8fd2 0%, #c38cff 54%, #9abfff 100%);
     background-clip: text;
     -webkit-text-fill-color: transparent;
