@@ -44,8 +44,10 @@ test.describe(`Check security headers`, () => {
     }) => {
       const headers = await getResponseHeadersByExtension({
         page,
-        extension: `.svg`,
+        extension: `.png`,
       });
+
+      await page.waitForTimeout(500);
 
       await expectSecurityHeaders({
         page,
