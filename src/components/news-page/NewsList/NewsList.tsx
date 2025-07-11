@@ -52,16 +52,13 @@ export function NewsList({
       const filteredPrev = prevData.filter((item) => !newIds.has(item.id));
       return [...filteredPrev, ...news];
     });
-
-    const timer = setTimeout(() => {
-      if (firstNewsRef.current) {
-        firstNewsRef.current.focus();
-      }
-    }, 100);
-
-    return () => clearTimeout(timer);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [news]);
+
+  useEffect(() => {
+    if (firstNewsRef.current) {
+      firstNewsRef.current.focus();
+    }
+  }, [newsList]);
 
   const isPaginationAvailable = currentPage < pageCount;
 
@@ -83,7 +80,7 @@ export function NewsList({
       firstCardRef={firstNewsRef}
       currentPageSize={currentPage > 1 ? (currentPage - 1) * NEWS_LIMIT : undefined}
     >
-      {isPaginationAvailable && (
+      {newsCards.length > 0 && isPaginationAvailable && (
         <div className="news-list__button-container">
           <Button
             className="news-list__button"

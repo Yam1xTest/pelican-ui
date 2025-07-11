@@ -63,7 +63,7 @@ export function TextAndMedia({
             alt={media.alternativeText}
             fill
             priority
-            sizes="(min-width: 768px) 50vw, 100vw"
+            sizes="(max-width: 768px) 98vw, 48vw"
           />
         </div>
       )}

@@ -107,7 +107,7 @@ class AppDocument extends Document {
 
           <Script
             id="yandex-metrika"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
             nonce={nonce}
             // integrity - check hash of the sctipt to be confident that the script has not changed in origin
             integrity={yMetricHash}
@@ -120,7 +120,7 @@ class AppDocument extends Document {
 
           <Script
             id="gosWidgetScript"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
             nonce={nonce}
             integrity={gosUslugiHash}
             crossOrigin="anonymous"
