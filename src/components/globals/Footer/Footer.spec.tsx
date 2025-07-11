@@ -4,7 +4,6 @@ import { ComponentName } from '@/src/common/enum';
 
 test.describe(`FooterTests`, () => {
   test.beforeEach(async ({
-    page,
     goToComponentsPage,
   }) => {
     await goToComponentsPage(ComponentName.FOOTER);
