@@ -82,7 +82,9 @@ async function getResponseHeadersByExtension({
   const responses: any[] = [];
   page.on(`response`, (res) => responses.push(res));
 
-  await page.goto(``);
+  await page.goto(``, {
+    waitUntil: `networkidle`,
+  });
 
   const filtered = responses.filter((res) => res.url()
     .endsWith(extension));
