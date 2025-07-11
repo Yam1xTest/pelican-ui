@@ -62,17 +62,20 @@ export async function getServerSideProps({
     };
   }
 
-  const newsPageData = await getNewsPageData({
-    isPreview: preview,
-  });
-
-  const {
-    news,
-    pageCount,
-  } = await getNewsData({
-    isPreview: preview,
-    page: currentPage,
-  });
+  const [
+    newsPageData,
+    {
+      news, pageCount,
+    },
+  ] = await Promise.all([
+    getNewsPageData({
+      isPreview: preview,
+    }),
+    getNewsData({
+      isPreview: preview,
+      page: currentPage,
+    }),
+  ]);
 
   return {
     props: {

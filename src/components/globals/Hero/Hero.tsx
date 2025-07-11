@@ -64,7 +64,7 @@ export function Hero({
           data-testid="hero-image"
           src={image.url}
           alt={image.alternativeText}
-          sizes="(min-width: 768px) 50vw, 100vw"
+          sizes="(max-width: 768px) 98vw, (max-width: 1366px) 48vw, 38vw"
           fill
           loading="eager"
           priority

@@ -113,7 +113,7 @@ function renderCardMarkup({
         <Image
           src={image.url}
           fill
-          sizes="(min-width: 768px) 50vw, (min-width: 1366px) 33vw, 100vw"
+          sizes="(max-width: 768px) 98vw, (max-width: 1366px) 48vw, 30vw"
           alt={image.alternativeText}
         />
       </div>
