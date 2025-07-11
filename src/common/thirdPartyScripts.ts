@@ -70,7 +70,7 @@ export const gosUslugiScript = `
         "decor-grid-column": "initial",
         "decor-grid-row": "initial",
         "decor-padding": "30px 30px 0 30px",
-        "bg-url": "url('/images/gos-banner/banner-fluid-bg-2-small.svg')",
+        "bg-url": "url('https://pos.gosuslugi.ru/bin/banner-fluid/2/banner-fluid-bg-2-small.svg')",
         "bg-position": "calc(10% + 64px) calc(100% - 20px)",
         "bg-size": "cover",
         "content-padding": "0 30px 30px 30px",
@@ -101,7 +101,7 @@ export const gosUslugiScript = `
         if (n > 405) t["slogan-font-size"] = "24px", t["logo-wrap-padding"] = "30px 50px 30px 70px";
         if (n > 500) t["grid-template-columns"] = "min-content 1fr", t["grid-template-rows"] = "100%", t["decor-grid-column"] = "2", t["decor-grid-row"] = "1", t["decor-padding"] = "30px 30px 30px 0", t["content-padding"] = "30px", t["bg-position"] = "0% calc(100% - 70px)", t["logo-wrap-padding"] = "30px 30px 24px 40px", t["logo-wrap-top"] = "initial", t["logo-wrap-bottom"] = "0", t["logo-wrap-border-radius"] = "80px 0 0 0";
         if (n > 585) t["bg-position"] = "0% calc(100% - 6px)";
-        if (n > 800) t["bg-url"] = "url('/images/gos-banner/banner-fluid-bg-2.svg')", t["bg-position"] = "0% center";
+        if (n > 800) t["bg-url"] = "url('https://pos.gosuslugi.ru/bin/banner-fluid/2/banner-fluid-bg-2.svg')", t["bg-position"] = "0% center";
         if (n > 1020) t["slogan-font-size"] = "32px", t["line-height"] = "40px", t["logo-wrap-padding"] = "30px 30px 24px 50px";
         
         setStyles(t, e)
