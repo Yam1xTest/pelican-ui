@@ -10,7 +10,7 @@ export function GosBanner() {
               className="bf-2__logo"
               width={200}
               height={400}
-              src={'/images/gos-banner/gosuslugi-logo.svg'}
+              src="/images/gos-banner/gosuslugi-logo.svg"
               unoptimized
               alt="Госуслуги"
             />

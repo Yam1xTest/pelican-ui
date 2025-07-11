@@ -85,7 +85,7 @@ async function getResponseHeadersByExtension({
   page.on(`response`, (res) => responses.push(res));
 
   await page.goto(``);
-  console.log(responses.map((res) => res.url()));
+
   const filtered = responses.filter((res) => res.url()
     .endsWith(extension));
 
