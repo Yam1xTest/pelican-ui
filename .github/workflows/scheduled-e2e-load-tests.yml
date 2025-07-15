@@ -100,7 +100,7 @@ jobs:
           API_URL: 'http://localhost:40110/cms/api'
 
       - name: Install StepCI
-        run: npm install stepci
+        run: npm install -g stepci
 
       - name: Run load tests and validate metrics
         run: |
