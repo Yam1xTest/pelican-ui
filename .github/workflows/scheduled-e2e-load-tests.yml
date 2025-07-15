@@ -111,6 +111,14 @@ jobs:
         env:
           HOST: http://chelzoo.tech
 
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: html-report--attempt-${{ github.run_attempt }}
+          path: playwright-report
+          retention-days: 7
+
       - name: Archive reports
         uses: actions/upload-artifact@v4
         with:
@@ -118,12 +126,4 @@ jobs:
           path: |
             playwright-report/
             loadtest-*.html
-          retention-days: 7
-
-      - name: Upload HTML report
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: html-report--attempt-${{ github.run_attempt }}
-          path: playwright-report
           retention-days: 7
