@@ -1,12 +1,8 @@
 name: Scheduled E2E and Load Tests
 
-# ToDo should it be triggered only as part of an open PR?
-# currently it triggers for any commit in a FB
 on:
   schedule:
-    # Запускать каждые 5 минут
     - cron: '*/5 * * * *'
-    # - cron: '30 2 * * *'
   push:
     branches:
       - master
