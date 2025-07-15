@@ -5,24 +5,15 @@ name: Run scheduled playwright E2E tests and load test script
 on:
   schedule:
     # Запускать каждые 5 минут
-    - cron: '*/5 * * * *'
+    - cron: '*/15 * * * *'
     # - cron: '30 2 * * *'
-  push:
-    branches:
-      - feature/scheduled-pipelines-w-load-and-e2e-tests
+  # push:
+  #   branches:
+  #     - feature/scheduled-pipelines-w-load-and-e2e-tests
       
 jobs:
-  # this is needed to wait for the new docker image to be build and published to the registry
-  # so that we can use the image to run ui of the needed commit related version as part of local-env
-  # the idea is taken from here https://stackoverflow.com/a/71489231
-  push_to_registry:
-    uses: ./.github/workflows/local-env-docker-build-and-push.yml
-    # without this it cannot login to the registry
-    secrets: inherit
-
   run-playwright-e2e-tests:
     runs-on: ubuntu-24.04
-    needs: push_to_registry
 
     strategy:
       fail-fast: false
