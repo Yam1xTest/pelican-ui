@@ -1,15 +1,15 @@
-name: Run scheduled playwright E2E tests and load test script
+name: Scheduled E2E and Load Tests
 
 # ToDo should it be triggered only as part of an open PR?
 # currently it triggers for any commit in a FB
 on:
   schedule:
     # Запускать каждые 5 минут
-    - cron: '*/15 * * * *'
+    - cron: '*/5 * * * *'
     # - cron: '30 2 * * *'
-  # push:
-  #   branches:
-  #     - feature/scheduled-pipelines-w-load-and-e2e-tests
+  push:
+    branches:
+      - master
       
 jobs:
   run-playwright-e2e-tests:
