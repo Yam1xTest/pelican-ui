@@ -1,7 +1,7 @@
 version: "1.1"
 name: loadTest
 env:
-  host: chelzoo.tech # Домен, куда полетят ваши запросы
+  host: chelzoo.ru # Домен, куда полетят ваши запросы
 
 config:
   loadTest:
