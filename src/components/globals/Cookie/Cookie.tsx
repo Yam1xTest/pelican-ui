@@ -16,7 +16,7 @@ export const optionYandexMetrika: OptionYM = {
   webvisor: true,
 };
 
-const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
+const isYandexMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
 
 export function Cookie({
   isComponentPage,
@@ -65,7 +65,7 @@ export function Cookie({
     if (!isComponentPage) {
       setCookie(COOKIE_ACCEPT, true);
 
-      if (isMetricsEnabled) {
+      if (isYandexMetricsEnabled) {
         window.ym(Number(yandexId), `init`, optionYandexMetrika);
       }
     }
