@@ -2,7 +2,7 @@ name: Scheduled E2E and Load Tests
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '0 4 * * *'
   push:
     branches:
       - master
@@ -96,7 +96,7 @@ jobs:
           stepci run --loadtest ./load-tests/loadtestDocumentsPage.yml
           stepci run --loadtest ./load-tests/loadtestNewsPage.yml
         env:
-          HOST: http://chelzoo.tech
+          HOST: http://chelzoo.ru
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v4
