@@ -15,6 +15,9 @@ jobs:
       - name: echo commit
         run: echo "${{ github.event.head_commit.message }}"
         
+      - name: echo commit
+        run: echo "${{ github.event.head_commit.message }}" | tr \n \\n
+        
       - name: Write short-sha to GitHub Env 
         run: |
           echo "SHORT_SHA=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
