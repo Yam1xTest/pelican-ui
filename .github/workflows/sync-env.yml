@@ -15,8 +15,6 @@ jobs:
       - name: echo commit
         run: echo "${{ github.event.head_commit.message }}"
         
-      - name: echo commit
-        run: echo "${{ toJson(github.event.head_commit.message) }}" | sed 's/\\n/\/g'
       - name: Write short-sha to GitHub Env 
         run: |
           echo "SHORT_SHA=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
@@ -30,7 +28,7 @@ jobs:
           "event_type": "latest-ui-image-tag",
           "client_payload": {
             "image_tag": "local-env-sha-${{ github.sha }}",
-            "commit_message": "${{ github.event.head_commit.message }}",
+            "commit_message": "${{ toJson(github.event.head_commit.message) }}",
             "repository": "${{ github.event.repository.name }}",
             "short_sha": "${{ env.SHORT_SHA }}",
             "path_to_values": "deploy/values-ui.yaml.gotmpl"
