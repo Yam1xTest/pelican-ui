@@ -16,8 +16,7 @@ jobs:
         run: echo "${{ github.event.head_commit.message }}"
         
       - name: echo commit
-        run: echo "${{ toJson(github.event.head_commit.message) }}"
-        
+        run: echo "${{ toJson(github.event.head_commit.message) }}" | sed 's/\\n/\/g'
       - name: Write short-sha to GitHub Env 
         run: |
           echo "SHORT_SHA=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
