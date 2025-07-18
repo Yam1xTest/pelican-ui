@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - feature/sync_local_env 
-     
+      
 jobs: 
   Trigger_Local_Env:
     runs-on: ubuntu-24.04
