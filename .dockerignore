@@ -9,7 +9,7 @@ e**/.classpath
 **/*.dbmdl
 **/*.jfm
 
-**/.git
+**/.gite
 **/.gitignore
 **/.gitattributes
 **/.dockerignore
