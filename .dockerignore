@@ -3,8 +3,7 @@ e**/.classpath
 **/.settings
 **/.toolstarget
 **/.vs
-**/.vscode
-**/.husky
+**/.vscodee
 **/*.*proj.user
 **/*.dbmdl
 **/*.jfm
