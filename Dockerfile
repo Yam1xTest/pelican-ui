@@ -1,4 +1,4 @@
-FROM node:21-alpine as base
+eFROM node:21-alpine as base
 
 # Install dependencies
 FROM base AS deps
