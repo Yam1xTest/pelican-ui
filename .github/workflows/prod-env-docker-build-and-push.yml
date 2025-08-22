@@ -9,32 +9,38 @@ on:
   workflow_call:
 
 jobs:
+  push_to_registry:
+    uses: ./.github/workflows/local-env-docker-build-and-push.yml
+    # without this it cannot login to the registry
+    secrets: inherit
   arm:
+    needs: push_to_registry
     runs-on: ubuntu-24.04-arm
     steps:
     - name: pull
-      run: docker pull ghcr.io/yam1xtest/pelican-ui:local-env-sha-a03eaf6592e2d1f96ef8b8ee67d35c8221baef3c
+      run: docker pull "ghcr.io/yam1xtest/pelican-ui:local-env-sha-${{ github.sha }}"
 
     - name: pull og
       run: docker pull ghcr.io/tourmalinecore/pelican-ui:local-env-latest
 
     - name: Inspect
-      run: docker inspect ghcr.io/yam1xtest/pelican-ui:local-env-sha-a03eaf6592e2d1f96ef8b8ee67d35c8221baef3c
+      run: docker inspect "ghcr.io/yam1xtest/pelican-ui:local-env-sha-${{ github.sha }}"
 
     - name: Inspect og
       run: docker inspect ghcr.io/tourmalinecore/pelican-ui:local-env-latest
 
   amd:
+    needs: push_to_registry
     runs-on: ubuntu-24.04
     steps:
     - name: pull
-      run: docker pull ghcr.io/yam1xtest/pelican-ui:local-env-sha-a03eaf6592e2d1f96ef8b8ee67d35c8221baef3c
+      run: docker pull "ghcr.io/yam1xtest/pelican-ui:local-env-sha-${{ github.sha }}"
 
     - name: pull og
       run: docker pull ghcr.io/tourmalinecore/pelican-ui:local-env-latest
 
     - name: Inspect
-      run: docker inspect ghcr.io/yam1xtest/pelican-ui:local-env-sha-a03eaf6592e2d1f96ef8b8ee67d35c8221baef3c
+      run: docker inspect "ghcr.io/yam1xtest/pelican-ui:local-env-sha-${{ github.sha }}"
 
     - name: Inspect og
       run: docker inspect ghcr.io/tourmalinecore/pelican-ui:local-env-latest
