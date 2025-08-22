@@ -9,16 +9,20 @@ on:
   workflow_call:
 
 jobs:
-  push_to_registry:
-    uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@master
-    with:
-        # Build-args used to define variables that will be used in image
-        build-args: |
-          CDN_ENABLED=true
-          CDN_DOMAIN=cdn.chelzoo.ru
-          CORS_ORIGIN=https://chelzoo.ru
-          ENABLE_SEO_INDEXING=true
-        # build-env is used to write current env to digest name to be able to build several docker images for several envs in one workflow
-        build-env: "prod"
-    # without this it cannot login to the registry
-    secrets: inherit
+  arm:
+    runs-on: ubuntu-24.04-arm
+    steps:
+    - name: pull
+      run: docker pull ghcr.io/yam1xtest/pelican-ui:local-env-sha-a03eaf6592e2d1f96ef8b8ee67d35c8221baef3c
+
+    - name: Inspect
+      run: docker inspect ghcr.io/yam1xtest/pelican-ui:local-env-sha-a03eaf6592e2d1f96ef8b8ee67d35c8221baef3c
+
+  amd:
+    runs-on: ubuntu-24.04
+    steps:
+    - name: pull
+      run: docker pull ghcr.io/yam1xtest/pelican-ui:local-env-sha-a03eaf6592e2d1f96ef8b8ee67d35c8221baef3c
+
+    - name: Inspect
+      run: docker inspect ghcr.io/yam1xtest/pelican-ui:local-env-sha-a03eaf6592e2d1f96ef8b8ee67d35c8221baef3c
