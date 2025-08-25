@@ -44,3 +44,25 @@ jobs:
 
     - name: Inspect og
       run: docker inspect ghcr.io/tourmalinecore/pelican-ui:local-env-latest
+
+    - name: test err
+      run: err
+      
+  amd22-04:
+    needs: push_to_registry
+    runs-on: ubuntu-22.04
+    steps:
+    - name: pull
+      run: docker pull "ghcr.io/yam1xtest/pelican-ui:local-env-sha-${{ github.sha }}"
+
+    - name: pull og
+      run: docker pull ghcr.io/tourmalinecore/pelican-ui:local-env-latest
+
+    - name: Inspect
+      run: docker inspect "ghcr.io/yam1xtest/pelican-ui:local-env-sha-${{ github.sha }}"
+
+    - name: Inspect og
+      run: docker inspect ghcr.io/tourmalinecore/pelican-ui:local-env-latest
+
+    - name: test err
+      run: err
