@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: downcase REPO
       run: |
-        echo "REPO=${${{ github.repository }},,}"
+        echo ${{  github.repository }}
 
   # this is needed to wait for the new docker image to be build and published to the registry
   # so that we can use the image to run ui of the needed commit related version as part of local-env
